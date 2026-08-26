@@ -8760,6 +8760,56 @@ ALTER TABLE `wordsearches`
 --
 ALTER TABLE `wordsearchuserprogress`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Table structure for table `mushrooms`
+--
+
+CREATE TABLE `mushrooms` (
+  `mushroomType` int(11) NOT NULL,
+  `rewardAmount` int(11) NOT NULL,
+  `rewardType` varchar(255) NOT NULL,
+  `validUntil` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `mushrooms` (`mushroomType`, `rewardAmount`, `rewardType`, `validUntil`) VALUES
+(1, 5, 'mulch', NULL),
+(2, 10, 'mulch', NULL),
+(3, 20, 'mulch', NULL),
+(4, 50, 'mulch', NULL),
+(5, 100, 'mulch', NULL),
+(6, 500, 'mulch', NULL),
+(7, 2, 'xp', NULL),
+(8, 5, 'xp', NULL),
+(9, 10, 'xp', NULL),
+(10, 20, 'xp', NULL),
+(11, 50, 'xp', NULL),
+(12, 75, 'mulch', NULL),
+(13, 15, 'xp', NULL);
+
+ALTER TABLE `mushrooms`
+  ADD PRIMARY KEY (`mushroomType`);
+
+ALTER TABLE `mushrooms`
+  MODIFY `mushroomType` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- Table structure for table `claimedmushrooms`
+--
+
+CREATE TABLE `claimedmushrooms` (
+  `id` int(11) NOT NULL,
+  `idx` int(11) NOT NULL,
+  `mushroomType` int(11) NOT NULL,
+  `lastClaimed` varchar(255) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE `claimedmushrooms`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `claimedmushrooms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

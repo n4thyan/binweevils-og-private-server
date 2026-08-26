@@ -9,6 +9,7 @@ const waitFor = (ms) => new Promise(r => setTimeout(r, ms))
 var fs = require('fs');
 var filter = require('leo-profanity');
 var linereader = require('line-reader');
+var db = require('./db');
 
 class BinWeevils {
 
@@ -27,6 +28,22 @@ class BinWeevils {
         this.canSpawnPuddles = true;
         this.puddleTimer = undefined;
         this.roomWithIds = {};
+
+        // Flum's Fountain (modern mushroom event state)
+        this.flumsMushrooms = [];
+        this.flumsMushroomsGrowthSteps = {0: true, 4: false, 8: false, 12: false, 16: false, 20: false, 24: false, 28: false, 32: false, 36: false, 40: false, 44: false, 48: false};
+        this.mushroomCap = 10;
+        this.currentPadID = undefined;
+        this.padIDTimer = undefined;
+
+        // Figg's Cafe (room 287)
+        this.figgsTrays = {1: null, 2: null, 3: null}; // tray id => nickname (null if tray isn't occupied)
+        this.figgsPlates = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0}; // plate id => food id
+
+        // Dosh's Palace (room 265)
+        this.doshCount = 0;
+        this.doshCountTimer = undefined;
+        this.doshTimer = undefined;
         this.setRoomIds();
         // room stuff
 
@@ -78,6 +95,260 @@ class BinWeevils {
                 });
             });
         });
+    }
+
+    // ---- Room-event timer helpers (Flum's Fountain / Dosh's Palace) ----
+    onPuddleTimerFinish(weevil) {
+        weevil.canSpawnPuddles = true;
+        clearInterval(weevil.puddleTimer);
+    }
+
+    onPadTimerFinish(weevil) {
+        weevil.currentPadID = undefined;
+        clearInterval(weevil.padIDTimer);
+    }
+
+    onDoshCountTimerFinish(weevil) {
+        clearInterval(weevil.doshCountTimer);
+        weevil.doshCountTimer = undefined;
+    }
+
+    onDoshTimerFinish(weevil) {
+        clearInterval(weevil.doshTimer);
+        weevil.doshTimer = undefined;
+    }
+
+    // ---- Flum's Fountain (room 282) ----
+    isMushroomCoordsValid(mushroomX, mushroomZ) {
+        const fountainCenter = { x: 0, z: 1000 };
+        const fountainRadius = 170;
+
+        const dx = mushroomX - fountainCenter.x;
+        const dz = mushroomZ - fountainCenter.z;
+        const distance = Math.sqrt(dx * dx + dz * dz);
+
+        if (distance <= fountainRadius) return false;
+        else return true;
+    }
+
+    hasMushroomFinishedGrowing(mushroom, data, growthStage) {
+        if (data == ("m" + mushroom.m + ":0") && mushroom.growthSteps[44] == true && growthStage == 48) return true;
+        else return false;
+    }
+
+    setNewMushroomUnix(mushroomType) {
+        const validUntil = Math.floor(Date.now() / 1000) + 7;
+
+        db.query("UPDATE mushrooms SET validUntil = ? WHERE mushroomType = ?", [validUntil, mushroomType], function(err, result) {
+            if(err) {
+                console.log(err);
+                return false;
+            }
+            else if (result.affectedRows == 1) {
+                return true;
+            }
+            else return false;
+        });
+    }
+
+    handleFlums(data, weevil) {
+        if (weevil.loggedIn) {
+            const roomID = parseInt(data[4]);
+            let flumsData = data[5].toString();
+
+            if (roomID == 282 && weevil.currentRoomID == 282 && flumsData != null) {
+                let splitFlumsData = flumsData.split(";");
+                const action = parseInt(splitFlumsData[0]);
+
+                if (action == 1) {
+                    // Spawning a puddle
+                    const packetIdx = parseInt(splitFlumsData[1]);
+                    const padId = parseInt(splitFlumsData[2]);
+
+                    if (packetIdx != weevil.idx || padId < 0 || padId > 26) return;
+
+                    if (!this.canSpawnPuddles) return;
+                    else {
+                        this.canSpawnPuddles = false;
+                        this.puddleTimer = setInterval(this.onPuddleTimerFinish, 9000, this);
+                        this.currentPadID = padId;
+                        this.padIDTimer = setInterval(this.onPadTimerFinish, 4000, this);
+                    }
+
+                    weevil.roomEvent(roomID, flumsData, this.weevils);
+                    return;
+                }
+                else if (action == 2) {
+                    // Spawning a droplet / stepping on puddle
+                    const packetPadId = parseInt(splitFlumsData[1]);
+                    const packetIdx = parseInt(splitFlumsData[2]);
+
+                    if (packetIdx != weevil.idx || this.currentPadID == undefined || packetPadId != this.currentPadID) return;
+                    else {
+                        this.currentPadID = undefined;
+                        clearInterval(this.padIDTimer);
+                        this.padIDTimer = undefined;
+                    }
+
+                    weevil.roomEvent(roomID, flumsData, this.weevils);
+                    return;
+                }
+                else if (action == 3) {
+                    // Spawn Mushroom
+                    const m = parseInt(splitFlumsData[1]);
+                    const mushroomType = parseInt(splitFlumsData[2]);
+                    const mushroomX = parseInt(splitFlumsData[3]);
+                    const mushroomZ = parseInt(splitFlumsData[4]);
+
+                    if(this.flumsMushrooms.length >= this.mushroomCap || mushroomType < 1 || mushroomType > 13) return;
+
+                    if(!this.isMushroomCoordsValid(mushroomX, mushroomZ)) {
+                        console.log(weevil.nickname + " tried to spawn an invalid mushroom at X: " + mushroomX.toString() + ", Z: " + mushroomZ.toString());
+                        return;
+                    }
+
+                    let mushroomData = JSON.parse(JSON.stringify({"m": m, "mushroomType": mushroomType, "growthStage": 0, "X": mushroomX, "Z": mushroomZ, "growthSteps": this.flumsMushroomsGrowthSteps}));
+                    this.flumsMushrooms.push(mushroomData);
+
+                    weevil.roomEvent(roomID, flumsData, this.weevils);
+                    return;
+                }
+                else if (action == 4) {
+                    // Growing Mushroom
+                    let tryingToPop = false;
+                    let success = false;
+                    const mushroomID = parseInt(splitFlumsData[1]);
+                    const newGrowthStage = parseInt(splitFlumsData[2]);
+                    const mushroomData = data[6].toString();
+                    if (mushroomData != ("m" + mushroomID + ":0")) {
+                        var mushroomX = parseInt(mushroomData.split(";")[2]);
+                        var mushroomZ = parseInt(mushroomData.split(";")[3]);
+                    }
+                    else {
+                        tryingToPop = true;
+                    }
+
+                    if (newGrowthStage < 0 || newGrowthStage > 48) return;
+
+                    for (let i = 0; i < this.flumsMushrooms.length; i++) {
+                        const mushroom = this.flumsMushrooms[i];
+
+                        if (tryingToPop) {
+                            if (mushroom.m == mushroomID) {
+                                if (this.hasMushroomFinishedGrowing(mushroom, mushroomData, newGrowthStage)) {
+                                    this.setNewMushroomUnix(mushroom.mushroomType);
+                                    this.flumsMushrooms.splice(i, 1);
+                                    success = true;
+                                    break;
+                                }
+                                else return;
+                            }
+                        }
+                        else if (mushroom.m == mushroomID && mushroom.X == mushroomX && mushroom.Z == mushroomZ) {
+                            if ((newGrowthStage - mushroom.growthStage) != 4) return;
+
+                            if (mushroom.growthSteps[newGrowthStage] == false) {
+                                this.flumsMushrooms[i].growthStage = newGrowthStage;
+                                this.flumsMushrooms[i].growthSteps[newGrowthStage] = true;
+                                success = true;
+                                break;
+                            }
+                            else return;
+                        }
+                    }
+
+                    if (success) weevil.roomEvent(roomID, flumsData, this.weevils);
+                    return;
+                }
+                else {
+                    console.log("Invalid flums packet action from " + weevil.nickname + ":", action);
+                    return;
+                }
+            }
+            else return;
+        }
+        else {
+            weevil.socket.end();
+            weevil.socket.destroy();
+        }
+    }
+
+    // ---- Figg's Cafe (room 287) ----
+    handleFiggs(data, weevil) {
+        if (weevil.loggedIn) {
+            const roomID = parseInt(data[4]);
+            const figgsData = data[5].toString();
+
+            if (roomID == 287 && weevil.currentRoomID == 287 && figgsData != null) {
+                const splitFiggsData = figgsData.split(";");
+                const action = parseInt(splitFiggsData[0]);
+
+                if (action == 1) {
+                    // Updating food/plate states
+                    const p = parseInt(splitFiggsData[1]);
+                    const value = parseInt(splitFiggsData[2]);
+
+                    if (p < 1 || p > 15 || value > 8 || value < 0 || !weevil.isWaiter()) return;
+                    else {
+                        this.figgsPlates[p] = value;
+                    }
+
+                    weevil.roomEvent(roomID, figgsData, this.weevils);
+                    return;
+                }
+                else if (action == 2) {
+                    // Eating food
+                    const p = parseInt(splitFiggsData[1]);
+
+                    if (p < 1 || p > 12 || weevil.isWaiter() || this.figgsPlates[p] < 2) return;
+                    else {
+                        this.figgsPlates[p] = 1; // 1 => empty plate
+                    }
+
+                    weevil.roomEvent(roomID, figgsData, this.weevils);
+                    return;
+                }
+                else {
+                    console.log(weevil.nickname + " sent an invalid action for Figg's Cafe:", action);
+                    return;
+                }
+            }
+        }
+        else {
+            weevil.socket.end();
+            weevil.socket.destroy();
+        }
+    }
+
+    // ---- Dosh's Palace (room 265) ----
+    handleDoshs(data, weevil) {
+        if (weevil.loggedIn) {
+            const roomID = parseInt(data[4]);
+            const count = parseInt(data[5]);
+
+            if (roomID == 265 && weevil.currentRoomID == 265 && count != null) {
+                if(count - this.doshCount != 1 || this.doshCountTimer != undefined || this.doshTimer != undefined) return;
+                else {
+                    this.doshCount = count;
+
+                    if(this.doshCount >= 25) { // 25 means dosh spawns
+                        this.doshCount = -1;
+                        this.doshTimer = setInterval(this.onDoshTimerFinish, 30000, this);
+                    }
+                    else {
+                        this.doshCountTimer = setInterval(this.onDoshCountTimerFinish, 5950, this);
+                    }
+
+                    weevil.roomEvent(roomID, count, this.weevils);
+                    return;
+                }
+            }
+            else return;
+        }
+        else {
+            weevil.socket.end();
+            weevil.socket.destroy();
+        }
     }
 
     addWeevil(weevil) {
@@ -274,11 +545,6 @@ class BinWeevils {
         }
     }
 
-    onPuddleTimerFinsih(bws) {
-        bws.canSpawnPuddles = true;
-        clearInterval(bws.puddleTimer);
-    }
-
     getRandomIntInclusive(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
@@ -431,39 +697,43 @@ class BinWeevils {
                         weevil.changeRoom(data[5], data[6], data[7], data[8], data[9], data[11], this.weevils, this.socketIdList);
                     }
                     else if(data[3] == "2#5") {
-                        // even packets (at least i think, ik this is for tinks tree)
-                        if(data[6] != "" && data[6] != null) {
-                            if(data[6].toString().includes(":")) {
-                                var edited = false;
-                                for(var id in this.flumMushroomsData) {
-                                    if(data[6].split(':')[0].toString() == this.flumMushroomsData[parseInt(id)]["m"]) {
-                                        if(data[6].split(':')[1].toString() == "0") {
-                                            delete this.flumMushroomsData[parseInt(id)];
+                        // Room events (Flum's Fountain / Figg's Cafe / Dosh's Palace)
+                        const roomEvt = parseInt(data[4]);
+                        switch(roomEvt) {
+                            case 265:
+                                this.handleDoshs(data, weevil);
+                                return;
+                            case 282:
+                                this.handleFlums(data, weevil);
+                                return;
+                            case 287:
+                                this.handleFiggs(data, weevil);
+                                return;
+                            default:
+                                // Legacy 2#5 behaviour (e.g. tinks tree) preserved
+                                if(data[6] != "" && data[6] != null) {
+                                    if(data[6].toString().includes(":")) {
+                                        var edited = false;
+                                        for(var id in this.flumMushroomsData) {
+                                            if(data[6].split(':')[0].toString() == this.flumMushroomsData[parseInt(id)]["m"]) {
+                                                if(data[6].split(':')[1].toString() == "0") {
+                                                    delete this.flumMushroomsData[parseInt(id)];
+                                                }
+                                                else {
+                                                    this.flumMushroomsData[parseInt(id)]["data"] = data[6].split(':')[1].toString();
+                                                    edited = true;
+                                                }
+                                            }
                                         }
-                                        else {
-                                            this.flumMushroomsData[parseInt(id)]["data"] = data[6].split(':')[1].toString();
-                                            edited = true;
-                                        }
-                                    }
-                                }
 
-                                if(!edited) {
-                                    var mushroomData = JSON.parse(JSON.stringify({"m":data[6].split(':')[0].toString(), "data":data[6].split(':')[1].toString()}));
-                                    this.flumMushroomsData.push(mushroomData);
-                                }
-                            }
-                            else if(data[6].toString() == "-1") {
-                                // hopefully this means puddles lol
-                                if(data[5].split(';').length == 3) {
-                                    if(!this.canSpawnPuddles) return;
-                                    else {
-                                        this.canSpawnPuddles = false;
-                                        this.puddleTimer = setInterval(this.onPuddleTimerFinsih, 9000, this);
+                                        if(!edited) {
+                                            var mushroomData = JSON.parse(JSON.stringify({"m":data[6].split(':')[0].toString(), "data":data[6].split(':')[1].toString()}));
+                                            this.flumMushroomsData.push(mushroomData);
+                                        }
                                     }
                                 }
-                            }
+                                weevil.roomEvent(data[4], data[5], this.weevils, this.socketIdList);
                         }
-                        weevil.roomEvent(data[4], data[5], this.weevils, this.socketIdList);
                     }
                     else if(data[3] == "2#6") {
                         // gives current datetime, dont care

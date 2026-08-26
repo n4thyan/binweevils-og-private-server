@@ -375,6 +375,20 @@ class Weevil {
 
                 joinok += "</vars><uLs r='" + roomId + "'>";
             }
+            else if(parseInt(roomId) == 287) {
+                // Figg's Cafe (room 287) — tray + plate state on join
+                joinok += "<vars>";
+
+                for (var tray in this.server.figgsTrays) {
+                    joinok += "<var n='t" + tray + "' t='s'><![CDATA[" + this.server.figgsTrays[tray] + "]]></var>";
+                }
+
+                for (var plate in this.server.figgsPlates) {
+                    joinok += "<var n='p" + plate + "' t='s'><![CDATA[" + this.server.figgsPlates[plate] + "]]></var>";
+                }
+
+                joinok += "</vars><vars/><uLs r='" + roomId + "'>";
+            }
             else if(parseInt(roomId) == 291) {
                 var p = 1;
                 var weevilNames = "";
@@ -936,6 +950,42 @@ class Weevil {
         }
         else {
             this.dropOnly("pre-login action (race) ignored");
+        }
+    }
+
+    becomeWaiter(roomId, trayId, weevilList = undefined, socketIdList = undefined) {
+        if (this.loggedIn) {
+            if (trayId < 1 || trayId > 3 || this.currentRoomId != 287) return;
+
+            if (this.server.figgsTrays[trayId] != null || this.isWaiter()) return;
+            else {
+                var packet = "%xt%2#5%" + roomId + "%3;" + trayId + ";" + this.nickname + "%";
+                this.server.figgsTrays[trayId] = this.nickname;
+
+                for(var id in weevilList) {
+                    if(weevilList[id].currentRoomId == roomId) {
+                        weevilList[id].send(packet);
+                    }
+                }
+            }
+        }
+        else {
+            this.socket.end();
+            this.socket.destroy();
+        }
+    }
+
+    isWaiter() {
+        if (this.loggedIn) {
+            for (var tray in this.server.figgsTrays) {
+                if (this.server.figgsTrays[tray] == this.nickname) return true;
+            }
+
+            return false;
+        }
+        else {
+            this.socket.end();
+            this.socket.destroy();
         }
     }
 

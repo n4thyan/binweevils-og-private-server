@@ -4632,4 +4632,112 @@
 		return null;
 	}
 
+
+	function canMushroomBeClaimed($type, $rewardAmt) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("SELECT * FROM mushrooms WHERE mushroomType = ? AND rewardAmount = ? AND validUntil > ?");
+				$q->bind_param("sss", $type, $rewardAmt, time());
+				$q->execute();
+
+				$res = $q->get_result();
+
+				if($res = $res->fetch_array())
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	function checkForExistingMushroomData($idx, $type) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("SELECT * FROM claimedmushrooms WHERE idx = ? AND mushroomType = ?");
+				$q->bind_param("ss", $idx, $type);
+				$q->execute();
+
+				$res = $q->get_result();
+
+				if($res = $res->fetch_array())
+				return true;
+				else {
+					$q = $db->prepare("INSERT INTO claimedmushrooms (`idx`, `mushroomType`) VALUES (?, ?)");
+					$q->bind_param("ss", $idx, $type);
+					$q->execute();
+
+					if($q->affected_rows == 1)
+                	return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	function getMushroomData($type) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("SELECT * FROM mushrooms WHERE mushroomType = ?");
+				$q->bind_param("s", $type);
+				$q->execute();
+
+				$res = $q->get_result();
+
+				if($res = $res->fetch_array())
+				return $res;
+			}
+		}
+
+		return null;
+	}
+
+	function getMushroomRewardData($idx, $type) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("SELECT * FROM claimedmushrooms WHERE idx = ? AND mushroomType = ?");
+				$q->bind_param("ss", $idx, $type);
+				$q->execute();
+
+				$res = $q->get_result();
+
+				if($res = $res->fetch_array())
+				return $res;
+			}
+		}
+
+		return null;
+	}
+
+	function setNewMushroomRewardTime($newUnix, $type, $idx) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("UPDATE claimedmushrooms SET lastClaimed = ? WHERE idx = ? AND mushroomType = ?");
+				$q->bind_param("sss", $newUnix, $idx, $type);
+				$q->execute();
+
+				if($q->affected_rows == 1)
+                return true;
+			}
+		}
+
+		return null;
+	}
+
+
 ?>
