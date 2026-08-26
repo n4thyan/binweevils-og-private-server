@@ -137,3 +137,46 @@ history) without touching the rest of the baseline.
 Do not merge later broken project files into this baseline wholesale. Apply future fixes
 incrementally and test each one. This baseline exists so we always have a known-good
 starting point to return to.
+
+## Continue tomorrow (session state as of 2026-08-26)
+
+**Repo is PUBLIC** for friend review. Both branches are in sync at commit `f9b38ad`.
+
+**Done this session (all on `feature/room-events-mushrooms`, merged into `main`):**
+- Room events re-added: Flum's Fountain (282), Figg's Cafe (287), Dosh's Palace (265)
+  — dispatchers in `server/BinWeevils.js`; `becomeWaiter`/`isWaiter` + joinOK tray/plate
+  state in `server/Weevil.js`.
+- Mushroom event DB re-added: `mushrooms` + `claimedmushrooms` tables in `bwps.sql`,
+  5 helper functions in `game-full/essential/internal.php`, new
+  `game-full/php2/mushroom/collect-mushroom.php`.
+- Stress-test dev instrumentation REMOVED from `server/BinWeevils.js` (Stress Test /
+  Stress Walk Test / Stress Move + the hard-coded `roomchange_debug.log` write). `fs`
+  import kept (used for `roomids.txt`).
+- Docs updated: README, GITHUB-HANDOFF, ROADMAP ticked (§2 room events DONE w/ caveat).
+
+**NOT done yet (next-session candidates):**
+1. Shop split — Nestco = Mulch-only, BinMart = Dosh-only (server-side currency filter
+   + `getStockItemsForLevel.php`); see ROADMAP §8 (still PARKED/investigated-only).
+2. Dosh furniture thumbnail rendering fix (thumbnails didn't render before).
+3. Launcher `.bat` scripts (Apache/MySQL check → Node → Electron) + diagnostic script.
+4. **Runtime verification** of everything above — see blocker below.
+
+**OPEN DECISION (security):** `CHECKPOINT_A_ADMIN_CREDS.txt` is now world-readable
+(public repo). It's localhost-only admin logins (DB stores bcrypt hashes), not a live
+secret, but say the word if you want it `git rm`'d or history-purged.
+
+**KNOWN GOTCHAS for the next agent:**
+- Room IDs per the supplied code: **265 = Dosh's Palace, 282 = Flum's Fountain,
+  287 = Figg's Cafe.** (An earlier audit had 265/287 inverted — trust the code.)
+- Baseline `Weevil.js` uses `this.nickname` (not `this.username`). Supplied snippets
+  used `this.username` — already adapted during integration.
+- `server/db.js` is the original baseline version (exports `query(sql, params, cb)`);
+  do NOT rewrite it.
+- The broken `Project Binweevils\Binweevils-main (1)` working copy is DEAD — work only
+  from the GitHub clone / this mirror at `C:\repos\binweevils-og-private-server`.
+
+**BLOCKER (environment):** This machine has **no `node`, `php`, or MySQL** runtime, so
+nothing was executed — only static/ad-hoc verification (balanced delimiters, defs-once,
+diff-scoped to intended changes). Full validation requires a machine with the runtimes:
+`npm install` in `server/` + `electron/`, import `bwps.sql` into MySQL, start
+`node server/server.js`, exercise rooms 265/282/287, POST `collect-mushroom.php`.
