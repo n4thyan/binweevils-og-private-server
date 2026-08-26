@@ -1,0 +1,11 @@
+<itemConfig name='f_EM_glammThrone' type='furniture' path='assetsNest/f_EM_glammThrone.swf' thumb='assetsNest/f_EM_glammThrone_thumb.swf' h='75' boundType='rect' clickable='yes'>
+	
+	
+	<pos frame='1' bounds='-200,340,80,20' x='-130' y='0' z='370' ry='-45' gridSqs='31,32'/>
+	<pos frame='2' bounds='-100,340,40,20' x='-70' y='0' z='370' ry='0' gridSqs='33,34'/>
+	<pos frame='3' bounds='-20,340,40,20' x='0' y='0' z='370' ry='0' gridSqs='35,36'/>
+	<pos frame='4' bounds='60,340,40,20' x='70' y='0' z='370' ry='0' gridSqs='37,38'/>
+	<pos frame='5' bounds='140,340,30,20' x='130' y='0' z='370' ry='45' gridSqs='39,40'/>
+
+
+</itemConfig>

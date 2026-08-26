@@ -1,0 +1,6 @@
+<itemConfig name='f_unitFloorCorner1' type='furniture' path='assetsNest/f_unitFloorCorner1.swf' thumb='assetsNest/f_unitFloorCorner1_thumb.swf' h='20' boundType='rect' numSpots='0'>
+	<pos frame='1' bounds='-200,0,60,60' x='-180' y='0' z='80' gridSqs='41,42'/>
+	<pos frame='2' bounds='-200,320,60,60' x='-160' y='0' z='400' gridSqs='31,32'/>
+	<pos frame='3' bounds='140,320,60,60' x='-160' y='0' z='399' gridSqs='39,40'/>
+	<pos frame='4' bounds='140,0,60,60' x='-160' y='0' z='79' gridSqs='49,50'/>
+</itemConfig>

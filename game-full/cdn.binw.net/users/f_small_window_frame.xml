@@ -1,0 +1,10 @@
+<itemConfig name='f_small_window_frame' type='furniture' path='assetsNest/f_small_window_frame.swf' thumb='assetsNest/f_small_window_frame_thumb.swf' h='80' boundType='0' clickable='no'>
+	
+	<pos frame='1' bounds='' x='-80' y='120' z='450' ry='0' gridSqs='33,34'/>
+	<pos frame='2' bounds='' x='0' y='120' z='450' ry='0' gridSqs='35,36'/>
+	<pos frame='3' bounds='' x='80' y='120' z='450' ry='0' gridSqs='37,38'/>
+	
+	<pos frame='4' bounds='' x='-80' y='80' z='450' ry='0' gridSqs='33,34'/>
+	<pos frame='5' bounds='' x='0' y='80' z='450' ry='0' gridSqs='35,36'/>
+	<pos frame='6' bounds='' x='80' y='80' z='450' ry='0' gridSqs='37,38'/>
+</itemConfig>

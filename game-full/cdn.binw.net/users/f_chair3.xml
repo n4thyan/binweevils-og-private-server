@@ -1,0 +1,6 @@
+<itemConfig name='f_chair3' type='furniture' path='assetsNest/f_chair3.swf' thumb='assetsNest/f_chair3_thumb.swf' h='40' boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-200,0,80,80' x='-180' y='0' z='80' ry='-135' gridSqs='41,42'/>
+	<pos frame='2' bounds='-200,320,80,80' x='-160' y='0' z='402' ry='-45' gridSqs='31,32'/>
+	<pos frame='3' bounds='120,320,80,80' x='-160' y='0' z='404' ry='45' gridSqs='39,40'/>
+	<pos frame='4' bounds='120,0,80,80' x='-160' y='0' z='79' ry='135' gridSqs='49,50'/>
+</itemConfig>

@@ -1,0 +1,8 @@
+<itemConfig name='f_sassy_burger_throne' type='furniture' path='assetsNest/f_sassy_burger_throne.swf' thumb='assetsNest/f_sassy_burger_throne_thumb.swf' h='150' boundType='rect' numSpots='0' clickable='yes'>
+	
+	<pos frame='1' bounds='-200,322,120,65' x='-200' y='0' z='403' ry='0' gridSqs='31,32,33'/>
+	<pos frame='2' bounds='-120,320,120,65' x='-120' y='0' z='401' ry='0' gridSqs='33,34,35'/>
+	<pos frame='3' bounds='-40,319,80,65' x='-40' y='0' z='400' ry='0' gridSqs='34,35,36,37'/>
+	<pos frame='4' bounds='0,321,120,65' x='0' y='0' z='402' ry='0' gridSqs='36,37,38'/>
+	<pos frame='5' bounds='80,323,120,65' x='80' y='0' z='404' ry='0' gridSqs='38,39,40'/>
+</itemConfig>

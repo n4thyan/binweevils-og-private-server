@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+	the num node links each question type to a menu button
+	the friendlyName is not used at the moment, just here for easy reference
+-->
+
+<brainTraining>
+	<qType num="0" menuScreen="0">
+		<friendlyName>Simple Maths</friendlyName>
+		<swf>simpleMaths.swf</swf>
+		<ttt>
+			<en><![CDATA[Know your numbers?<br>Test your skills now]]></en>
+			<es><![CDATA[Practica problemas<br>simples de matemtica]]></es>
+		</ttt>
+	</qType>
+	<qType num="1" menuScreen="0">
+		<friendlyName>How Many Shapes</friendlyName>
+		<swf>shapesHowMany.swf</swf>
+		<ttt>
+			<en><![CDATA[See how many of the same<br>shapes are in the molecules]]></en>
+			<es><![CDATA[Vea cuantas de una cierta<br>forma que haya en la molécula]]></es>
+		</ttt>
+	</qType>
+	<qType num="2" menuScreen="0">
+		<friendlyName>Clocks</friendlyName>
+		<swf>clocks.swf</swf>
+		<ttt>
+			<en><![CDATA[Match the clocks]]></en>
+			<es><![CDATA[]]></es>
+		</ttt>
+	</qType>
+	<qType num="3" menuScreen="0">
+		<friendlyName>Flags</friendlyName>
+		<swf>flags.swf</swf>
+		<ttt>
+			<en><![CDATA[Match the flag to <br>the right country!]]></en>
+			<es><![CDATA[]]></es>
+		</ttt>
+	</qType>
+	<qType num="4" menuScreen="0">
+		<friendlyName>Map</friendlyName>
+		<swf>map.swf</swf>
+		<ttt>
+			<en><![CDATA[How well do you know<br>your countries?]]></en>
+			<es><![CDATA[]]></es>
+		</ttt>
+	</qType>
+	<qType num="5" menuScreen="0">
+		<friendlyName>Hit The Switch</friendlyName>
+		<swf>hitTheSwitch.swf</swf>
+		<ttt>
+			<en><![CDATA[Which switch lights the bulb?]]></en>
+			<es><![CDATA[]]></es>
+		</ttt>
+	</qType>
+	<qType num="6" menuScreen="0">
+		<friendlyName>French Vocab</friendlyName>
+		<swf>frenchVocab.swf</swf>
+		<ttt>
+			<en><![CDATA[How good is your french?]]></en>
+			<es><![CDATA[]]></es>
+		</ttt>
+	</qType>
+	<qType num="7" menuScreen="0">
+		<friendlyName>Algebra</friendlyName>
+		<swf>algebra.swf</swf>
+		<ttt>
+			<en><![CDATA[A, B, C is easy as 1, 2, 3!]]></en>
+			<es><![CDATA[]]></es>
+		</ttt>
+	</qType>
+	<qType num="8" menuScreen="0">
+		<friendlyName>Jigsaw Jam</friendlyName>
+		<swf>jigsaw.swf</swf>
+		<ttt>
+			<en><![CDATA[Find the missing piece!]]></en>
+			<es><![CDATA[]]></es>
+		</ttt>
+	</qType>
+</brainTraining>

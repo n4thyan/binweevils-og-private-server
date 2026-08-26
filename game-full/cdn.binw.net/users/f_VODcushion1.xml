@@ -1,0 +1,20 @@
+<itemConfig name='f_VODcushion1' type='furniture' path='assetsTycoon/f_VODcushion1.swf' thumb='assetsTycoon/f_VODcushion1_thumb.swf' h='25' boundType='radial' boundRadius='14' clickable='yes'>
+	<pos frame='1' bounds='' x='-160' y='0' z='283' ry='-110' gridSqs='11'/>
+	<pos frame='2' bounds='' x='-160' y='0' z='203' ry='-125' gridSqs='6'/>
+	<pos frame='3' bounds='' x='-160' y='0' z='123' ry='-135' gridSqs='1'/>
+
+	<pos frame='4' bounds='' x='-80' y='0' z='281' ry='-155' gridSqs='12'/>
+	<pos frame='5' bounds='' x='-80' y='0' z='201' ry='-165' gridSqs='7'/>
+	<pos frame='6' bounds='' x='-80' y='0' z='121' ry='-170' gridSqs='2'/>
+
+	<pos frame='7' bounds='' x='0' y='0' z='280' ry='180' gridSqs='13'/>
+	<pos frame='8' bounds='' x='0' y='0' z='200' ry='180' gridSqs='8'/>
+	<pos frame='9' bounds='' x='0' y='0' z='120' ry='180' gridSqs='3'/>
+
+	<pos frame='10' bounds='' x='80' y='0' z='282' ry='155' gridSqs='14'/>
+	<pos frame='11' bounds='' x='80' y='0' z='202' ry='165' gridSqs='9'/>
+	<pos frame='12' bounds='' x='80' y='0' z='122' ry='170' gridSqs='4'/>
+
+	<pos frame='13' bounds='' x='160' y='0' z='240' ry='110' gridSqs='10'/>
+	<pos frame='14' bounds='' x='160' y='0' z='124' ry='135' gridSqs='5'/>
+</itemConfig>

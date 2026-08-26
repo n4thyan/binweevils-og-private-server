@@ -1,0 +1,26 @@
+<itemConfig name='f_NinjaTurtles' type='furniture' path='assetsNest/f_NinjaTurtles.swf' thumb='assetsNest/f_NinjaTurtles_thumb.swf' h='80' boundType='' clickable='yes'>
+	<pos frame='1' bounds='' x='-200' y='0' z='340' ry='0' gridSqs='31,32'/>
+	<pos frame='2' bounds='' x='-200' y='0' z='260' ry='0' gridSqs='21,22'/>
+	<pos frame='3' bounds='' x='-200' y='0' z='180' ry='0' gridSqs='11,12'/>
+	<pos frame='4' bounds='' x='-200' y='0' z='100' ry='0' gridSqs='1,2'/>
+	
+	<pos frame='5' bounds='' x='-120' y='0' z='340' ry='0' gridSqs='33,34'/>
+	<pos frame='6' bounds='' x='-120' y='0' z='260' ry='0' gridSqs='23,24'/>
+	<pos frame='7' bounds='' x='-120' y='0' z='180' ry='0' gridSqs='13,14'/>
+	<pos frame='8' bounds='' x='-120' y='0' z='100' ry='0' gridSqs='3,4'/>
+	
+	<pos frame='9' bounds='' x='-40' y='0' z='340' ry='0' gridSqs='35,36'/>
+	<pos frame='10' bounds='' x='-40' y='0' z='260' ry='0' gridSqs='25,26'/>
+	<pos frame='11' bounds='' x='-40' y='0' z='180' ry='0' gridSqs='15,16'/>
+	<pos frame='12' bounds='' x='-40' y='0' z='100' ry='0' gridSqs='5,6'/>
+	
+	<pos frame='13' bounds='' x='40' y='0' z='340' ry='0' gridSqs='37,38'/>
+	<pos frame='14' bounds='' x='40' y='0' z='260' ry='0' gridSqs='27,28'/>
+	<pos frame='15' bounds='' x='40' y='0' z='180' ry='0' gridSqs='17,18'/>
+	<pos frame='16' bounds='' x='40' y='0' z='100' ry='0' gridSqs='7,8'/>
+	
+	<pos frame='17' bounds='' x='120' y='0' z='340' ry='0' gridSqs='39,40'/>
+	<pos frame='18' bounds='' x='120' y='0' z='260' ry='0' gridSqs='29,30'/>
+	<pos frame='19' bounds='' x='120' y='0' z='180' ry='0' gridSqs='19,20'/>
+	<pos frame='20' bounds='' x='120' y='0' z='100' ry='0' gridSqs='9,10'/>
+</itemConfig>

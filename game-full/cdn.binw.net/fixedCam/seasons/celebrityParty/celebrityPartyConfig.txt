@@ -1,0 +1,160 @@
+<location id="10007" name="Campaign7" type="2" boundType="rad" boundary="0,185,168" keepFree="1,6,5,10" camPos="0,145,-115" camAim="0,15,500" entryPos="0,200" weevilScale="0.16" noZoom="yes" timerID="86" playList="53">
+<roomBG path="fixedCam/partyBox/celebrity/celebrityPartyHallway.swf"/>
+<door id="1" toLoc="125" toDoor="4" x1="0" z1="180" x2="0" z2="0" y="0" entryDir="0"/>
+<!--  to flem manor  -->
+<door id="2" toLoc="10008" toDoor="1" x1="-160" z1="190" x2="-240" z2="190"/>
+<!--  to bowling alley  -->
+<door id="3" toLoc="10009" toDoor="1" x1="-105 " z1="305" x2="-145" z2="340"/>
+<!--  to café  -->
+<door id="4" extUIData="locName:CelebrityPartyShop,path:externalUIs/partyBox/celebrity/CelebrityPartyShop.swf" x1="105" z1="305" x2="145" z2="340"/>
+<!-- shop -->
+<door id="5" toLoc="10010" toDoor="1" x1="160" z1="190" x2="240" z2="190"/>
+<!--  to disco room  -->
+<object name="door2_mc" x="0" y="0" z="186"/>
+<object name="door3_mc" x="0" y="0" z="310"/>
+<object name="door4_mc" x="0" y="0" z="311"/>
+<object name="door5_mc" x="0" y="0" z="185"/>
+<object name="quotes_mc" x="0" y="0" z="1"/>
+<object name="signDoor2Bowling" x="0" y="0" z="195"/>
+<object name="signDoor5Disco" x="0" y="0" z="196"/>
+</location>
+<!--  Bowling Alley  -->
+<location id="10008" name="Campaign8" type="2" boundType="rect" boundary="-200,80,400,190" camPos="0,145,-115" camAim="0,15,500" entryPos="120,150" weevilScale="0.18" noZoom="yes" timerID="86" playList="53">
+<roomBG path="fixedCam/partyBox/celebrity/partyCelebrityBowlingAlley.swf"/>
+<door id="1" toLoc="10007" toDoor="2" x1="170" z1="200" x2="210" z2="200" y="0" entryDir="90"/>
+<door id="2" toLoc="810" toDoor="1" x1="-134" z1="152" x2="-162" z2="170" y="0" entryDir="90"/>
+<object name="door1_mc" x="0" y="0" z="170"/>
+<object name="door2_mc" x="0" y="0" z="164"/>
+<object name="door2Overlay_mc" x="0" y="0" z="162"/>
+<interactive type="object" path="door2_mc.door" actRect="-140, 146, 12, 12"/>
+<object name="table1_mc" x="0" y="0" z="-10"/>
+<object name="table2_mc" x="0" y="0" z="-11"/>
+<object name="table3_mc" x="0" y="0" z="-12"/>
+<object name="nestItemOverlay_mc" x="0" y="0" z="-20"/>
+<object name="stool0" x="0" y="0" z="81"/>
+<object name="stool1" x="0" y="0" z="96"/>
+<object name="stool2" x="0" y="0" z="97"/>
+<object name="stool3" x="0" y="0" z="82"/>
+<object name="stool4" x="0" y="0" z="80"/>
+<object name="stool5" x="0" y="0" z="98"/>
+<object name="stool6" x="0" y="0" z="97"/>
+<object name="stool7" x="0" y="0" z="79"/>
+<object name="stool8" x="0" y="0" z="78"/>
+<object name="stool9" x="0" y="0" z="95"/>
+<object name="stool10" x="0" y="0" z="94"/>
+<object name="stool11" x="0" y="0" z="77"/>
+<object name="ballMachine1Front" x="0" y="0" z="218"/>
+<object name="ballMachine2Front" x="0" y="0" z="208"/>
+<object name="ballMachine3Front" x="0" y="0" z="214"/>
+<noGoArea type="rect" x="-74" z="234" w="24" h="20"/>
+<!--  stop walking thru ball machine 2  -->
+</location>
+<location id="10009" name="Campaign9" type="2" boundType="rect" boundary="-190,80,380,330" camPos="0,145,-115" camAim="0,15,500" entryPos="0,80" weevilScale="0.20" noZoom="yes" roomEvents="yes" timerID="86" playList="53">
+<roomBG path="fixedCam/partyBox/celebrity/celebrityPartyCafe_week2.swf"/>
+<!--  change to week 2 at start of week2. It's on the server  -->
+<door id="1" toLoc="10007" toDoor="3" x1="-5" z1="126" x2="-5" z2="0" y="0" entryDir="0"/>
+<door id="2" toLoc="809" toDoor="1" x1="-136" z1="205" x2="-175" z2="240" y="0" entryDir="0"/>
+<object name="door2_mc" x="0" y="0" z="215"/>
+<object name="door2Back_mc" x="0" y="0" z="245"/>
+<interactive type="object" path="door2Back_mc.door" actRect="-160, 200, 40, 40"/>
+<object name="exibitsOverlay_mc" x="0" y="0" z="-5"/>
+<object name="snappyCam" x="0" y="0" z="125"/>
+<object name="inks" x="0" y="0" z="126"/>
+<object name="wawaBowl" x="0" y="0" z="255"/>
+<object name="potion" x="0" y="0" z="256"/>
+<object name="flamPaperPlane" x="0" y="0" z="200"/>
+<object name="dragonTooth" x="0" y="0" z="195"/>
+<object name="webHenchman" x="0" y="0" z="250"/>
+<object name="peelParkStatue" x="0" y="0" z="120"/>
+<object name="kipsNut" x="0" y="0" z="360"/>
+<object name="kart" x="0" y="0" z="199"/>
+<object name="redSeatBottom" x="0" y="0" z="171"/>
+<object name="redSeatTopFront" x="0" y="15" z="170"/>
+<object name="redSeatTopBack" x="0" y="15" z="225"/>
+<noGoArea type="rad" x="-2" z="190" r="48"/>
+<!--  stop walking thru layers of red round seat  -->
+<!--  stools  -->
+<object name="seat0" x="0" y="0" z="388"/>
+<object name="seat1" x="0" y="0" z="389"/>
+<object name="seat2" x="0" y="0" z="390"/>
+<object name="seat3" x="0" y="0" z="391"/>
+<object name="seat4" x="0" y="0" z="392"/>
+<object name="seat5" x="0" y="15" z="163"/>
+<!--  jump weevil to -2, 162  -->
+<object name="seat6" x="0" y="15" z="167"/>
+<!--  jump weevil to -22, 166  -->
+<object name="seat10" x="0" y="15" z="165"/>
+<!--  jump weevil to 17, 164  -->
+<object name="seat7" x="0" y="15" z="197"/>
+<!--  jump weevil to -22, 196  -->
+<object name="seat8" x="0" y="15" z="209"/>
+<!--  jump weevil to  -2, 208 -->
+<object name="seat9" x="0" y="15" z="199"/>
+<!--  jump weevil to 17, 198  -->
+</location>
+<location id="10010" name="Campaign10" type="2" boundType="rect" boundary="-200,80,400,620" camPos="0,145,-115" camAim="0,15,500" entryPos="0,80" weevilScale="0.19" noZoom="yes" maintainY="yes" roomEvents="yes" timerID="86" playList="53">
+<roomBG path="fixedCam/partyBox/celebrity/celebrityPartyDisco.swf"/>
+<!--  disco room  -->
+<door id="1" toLoc="10007" toDoor="5" x1="-170" z1="190" x2="-210" z2="190" y="0" entryDir="-90"/>
+<door id="2" toLoc="808" toDoor="1" x1="-60" z1="347" x2="-75" z2="357" y="0" entryDir="-90"/>
+<!--  pointin to hallway for now  -->
+<object name="door1_mc" x="0" y="0" z="170"/>
+<object name="door2_mc" x="0" y="0" z="338"/>
+<object name="door2Back_mc" x="0" y="0" z="355"/>
+<interactive type="object" path="door2Back_mc.door" actRect="-70, 345, 40, 12"/>
+<object name="podium0" x="0" y="0" z="139"/>
+<object name="podium1" x="0" y="0" z="294"/>
+<object name="podium2" x="0" y="0" z="295"/>
+<object name="podium3" x="0" y="0" z="140"/>
+<noGoArea type="rad" x="-148" z="138" r="15"/>
+<noGoArea type="rad" x="-148" z="293" r="15"/>
+<noGoArea type="rad" x="148" z="293" r="15"/>
+<noGoArea type="rad" x="148" z="138" r="15"/>
+<object name="danceMoves_mc" x="0" y="0" z="-10"/>
+<object name="infoOverlay_mc" x="0" y="0" z="-15"/>
+<object name="booth_mc" x="0" y="0" z="300"/>
+<object name="fling_mc" x="0" y="10" z="450"/>
+<!--  floor no go is from 380, stop floating off stage  -->
+<noGoArea type="rect" x="190" z="380" w="10" h="140"/>
+<noGoArea type="rect" x="180" z="380" w="10" h="130"/>
+<noGoArea type="rect" x="170" z="380" w="10" h="120"/>
+<noGoArea type="rect" x="150" z="380" w="20" h="100"/>
+<noGoArea type="rect" x="130" z="380" w="20" h="80"/>
+<noGoArea type="rect" x="110" z="380" w="20" h="60"/>
+<noGoArea type="rect" x="90" z="380" w="20" h="50"/>
+<noGoArea type="rect" x="-90" z="380" w="180" h="40"/>
+<!--  same but -ve  -->
+<noGoArea type="rect" x="-200" z="380" w="10" h="140"/>
+<noGoArea type="rect" x="-190" z="380" w="10" h="130"/>
+<noGoArea type="rect" x="-180" z="380" w="10" h="120"/>
+<noGoArea type="rect" x="-170" z="380" w="20" h="100"/>
+<noGoArea type="rect" x="-150" z="380" w="20" h="80"/>
+<noGoArea type="rect" x="-130" z="380" w="20" h="60"/>
+<noGoArea type="rect" x="-110" z="380" w="20" h="50"/>
+</location>
+<location id="808" name="Limbo1" type="2" boundary="-170,100,340,270" bounds="-200,0,0,200,240,400" keepFree="11" camPos="0,190,-330" camAim="0,90,260" entryPos="0,80" weevilScale="0.6" noZoom="yes">
+<roomBG path="fixedCam/partyBox/celebrity/celebrityPhotobooth_WeevilsGroup.swf"/>
+<door id="1" toLoc="10010" toDoor="2" x1="150" z1="70" x2="300" y2="500" z2="80"/>
+<object name="light" x="0" y="0" z="170"/>
+<object name="camera" x="0" y="0" z="100"/>
+<object name="howToPoster_btn" x="0" y="0" z="400"/>
+<object name="instructions" x="0" y="0" z="-10"/>
+</location>
+<location id="809" name="Limbo2" type="2" boundary="-170,100,340,270" bounds="-200,0,0,200,240,400" keepFree="11" camPos="0,190,-330" camAim="0,90,260" entryPos="0,80" weevilScale="0.7" noZoom="yes">
+<roomBG path="fixedCam/partyBox/celebrity/celebrityPhotobooth_scribbles.swf"/>
+<door id="1" toLoc="10009" toDoor="2" x1="150" z1="70" x2="300" y2="500" z2="80"/>
+<object name="light" x="0" y="0" z="170"/>
+<object name="camera" x="0" y="0" z="100"/>
+<object name="howToPoster_btn" x="0" y="0" z="400"/>
+<object name="instructions" x="0" y="0" z="-10"/>
+<object name="scribbles_mc" x="0" y="0" z="200"/>
+</location>
+<location id="810" name="Limbo3" type="2" boundary="-170,100,340,270" bounds="-200,0,0,200,240,400" keepFree="11" camPos="0,190,-330" camAim="0,90,260" entryPos="0,80" weevilScale="0.6" noZoom="yes">
+<roomBG path="fixedCam/partyBox/celebrity/celebrityPhotobooth_TinkClott.swf"/>
+<door id="1" toLoc="10008" toDoor="2" x1="150" z1="70" x2="300" y2="500" z2="80"/>
+<object name="light" x="0" y="0" z="170"/>
+<object name="camera" x="0" y="0" z="100"/>
+<object name="howToPoster_btn" x="0" y="0" z="400"/>
+<object name="instructions" x="0" y="0" z="-10"/>
+<object name="bush_mc" x="0" y="0" z="250"/>
+</location>

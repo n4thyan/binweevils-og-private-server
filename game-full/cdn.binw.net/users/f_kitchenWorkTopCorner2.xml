@@ -1,0 +1,6 @@
+<itemConfig name='f_kitchenWorkTopCorner2' type='furniture' path='assetsNest/f_kitchenWorkTopCorner2.swf' thumb='assetsNest/f_kitchenWorkTopCorner2_thumb.swf' h='2' boundType='rect' numSpots='1'>
+	<pos frame='1' bounds='-200,0,70,70' x='-180' y='38' z='9' gridSqs='41,42'/>
+	<pos frame='2' bounds='-200,320,70,70' x='-160' y='38' z='400' gridSqs='31,32'/>
+	<pos frame='3' bounds='130,320,70,70' x='-160' y='38' z='399' gridSqs='39,40'/>
+	<pos frame='4' bounds='130,0,70,70' x='-160' y='38' z='8' gridSqs='49,50'/>
+</itemConfig>

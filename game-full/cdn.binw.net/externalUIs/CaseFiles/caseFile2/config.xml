@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<case_file>
+		<name>Case File 1: Good Vs Weevil</name>
+		<quest_id>18</quest_id>
+		<MISSION_ACCEPTED_TASK>1100</MISSION_ACCEPTED_TASK>
+		<MISSION_VALUE>1</MISSION_VALUE> 
+		<intro_path>storyPages/CaseFile2startPage.swf</intro_path>
+		<debug_start>1207</debug_start>
+		<startId>1200</startId>
+		<areas>
+			<area>
+				<area_id>startPanel</area_id>
+				<area_name>AREA_00_STORY</area_name>
+				<area_type>AREATYPE_STORY</area_type>
+				<task_id>1201</task_id>
+				<asset_path>storyPages/CaseFile2page1.swf</asset_path>
+			</area>
+			<area>
+				<area_id>stolenBottle</area_id>
+				<area_name>AREA_01_STORY</area_name>
+				<area_type>AREATYPE_STORY</area_type>
+				<task_id>1202</task_id>
+				<asset_path>storyPages/CaseFile2page2.swf</asset_path>
+			</area>
+			<area>
+				<area_id>codeBreakerGame</area_id>
+				<area_name>AREA_02_PUZZLe</area_name>
+				<area_type>AREATYPE_PUZZLE</area_type>
+				<task_id>1203</task_id>
+				<asset_path>puzzlePages/MastermindGame.swf</asset_path>
+			</area>
+			<area>
+				<area_id>thuggTracker</area_id>
+				<area_name>AREA_01_STORY</area_name>
+				<area_type>AREATYPE_PUZZLE</area_type>
+				<task_id>1205</task_id>
+				<asset_path>puzzlePages/CalibrationGame.swf</asset_path>
+			</area>				
+			<area>
+				<area_id>shrinking</area_id>
+				<area_name>AREA_01_STORY</area_name>
+				<area_type>AREATYPE_STORY</area_type>
+				<task_id>1206</task_id>
+				<asset_path>storyPages/CaseFile2page4.swf</asset_path>
+			</area>				
+			<area>
+				<area_id>gumballGame</area_id>
+				<area_name>AREA_01_STORY</area_name>
+				<area_type>AREATYPE_PUZZLE</area_type>
+				<task_id>1207</task_id>
+				<asset_path>puzzlePages/GumballGame.swf</asset_path>
+			</area>	
+
+			<area>
+				<area_id>popcornGame</area_id>
+				<area_name>AREA_01_STORY</area_name>
+				<area_type>AREATYPE_PUZZLE</area_type>
+				<task_id>1209</task_id>
+				<asset_path>puzzlePages/Popcorn.swf</asset_path>
+			</area>	
+			<area>
+				<area_id>archeryGame</area_id>
+				<area_name>AREA_01_STORY</area_name>
+				<area_type>AREATYPE_PUZZLE</area_type>
+				<task_id>1210</task_id>
+				<asset_path>puzzlePages/ArcheryGame.swf</asset_path>
+			</area>	
+			<area>
+				<area_id>ducksGame</area_id>
+				<area_name>AREA_01_STORY</area_name>
+				<area_type>AREATYPE_PUZZLE</area_type>
+				<task_id>1208</task_id>
+				<asset_path>puzzlePages/DucksGame.swf</asset_path>
+			</area>				
+			<area>
+				<area_id>intoHandbag</area_id>
+				<area_name>AREA_01_STORY</area_name>
+				<area_type>AREATYPE_STORY</area_type>
+				<task_id>1211</task_id>
+				<asset_path>storyPages/CaseFile2page5.swf</asset_path>
+			</area>	
+			<area>
+				<area_id>rescueGame</area_id>
+				<area_name>AREA_01_STORY</area_name>
+				<area_type>AREATYPE_PUZZLE</area_type>
+				<task_id>1212</task_id>
+				<asset_path>puzzlePages/RescueWordGame.swf</asset_path>
+			</area>				
+			<area>
+				<area_id>wellDone</area_id>
+				<area_name>AREA_02_PUZZLe</area_name>
+				<area_type>AREATYPE_STORY</area_type>
+				<task_id>1221</task_id>
+				<asset_path>storyPages/CaseFile2page6.swf</asset_path>
+			</area>
+		</areas>
+		<completeId>1213</completeId>
+		<cluesTaskId>1214</cluesTaskId>
+		<!--clue id="hat" taskId="1215">Wow a hat belonging to a bin weevil</clue>
+		<clue id="pin" taskId="1216">A weevil touched me in my special place</clue>
+		<clue id="ball" taskId="1217">That was planted!</clue>
+		<clue id="note" taskId="1218">This note says you are mean</clue>
+		<clue id="spanner" taskId="1219">Rusty and broken. Just like my heart.</clue>
+		<clue id="smokingGun" taskId="1220">It wasn't me guv</clue-->
+	</case_file>
+</data>

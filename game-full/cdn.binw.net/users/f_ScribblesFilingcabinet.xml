@@ -1,0 +1,15 @@
+<itemConfig name='f_ScribblesFilingcabinet' type='furniture' path='assetsNest/f_ScribblesFilingcabinet.swf' thumb='assetsNest/f_ScribblesFilingcabinet_thumb.swf' h='98' boundType='rect' numSpots='2' clickable='yes'>
+	
+	<pos frame='1' bounds='-200,80,40,160' x='-200' y='0' z='100' ry='0' gridSqs='1,11'/>
+	<pos frame='2' bounds='-200,260,40,160' x='-200' y='0' z='390' ry='0' gridSqs='21,31'/>
+	
+	<pos frame='3' bounds='-200,360,120,80' x='-200' y='0' z='340' ry='0' gridSqs='31,32,33'/>
+	<pos frame='4' bounds='-60,360,120,80' x='-40' y='0' z='340' ry='0' gridSqs='34,35,36,37'/>
+	<pos frame='5' bounds='80,360,120,80' x='40' y='0' z='340' ry='0' gridSqs='38,39,40'/>
+	
+	<pos frame='6' bounds='160,260,40,160' x='120' y='0' z='390' ry='0' gridSqs='30,40'/>
+	<pos frame='7' bounds='160,80,40,160' x='120' y='0' z='260' ry='0' gridSqs='10,20'/>
+	
+
+	
+</itemConfig>

@@ -1,0 +1,25 @@
+<SOURCE>
+
+	<PRIZELIST>
+		<PRIZE1 type='mulch' id='5000'>5000</PRIZE1>
+		<PRIZE2 type='dosh' id='20'>20</PRIZE2>
+		<PRIZE3 type='xp' id='250'>250</PRIZE3>
+		<PRIZE4 type='xp' id='100'>100</PRIZE4>
+		<PRIZE5 type='item' id='333' path='o_fishbowl_01_thumb.swf' desc='A Goldfish bowl for your nest!'>Fish Bowl</PRIZE5>
+		<PRIZE6 type='seed' id='75'>1</PRIZE6>
+		<PRIZE7 type='mulch' id='25'>100</PRIZE7>
+		<PRIZE8 type='mulch' id='25'>50</PRIZE8>
+	</PRIZELIST>
+	
+	<COLORLIST>
+		<color>0xFFFF33</color>
+		<color>0x009933</color>
+		<color>0xFF6600</color>
+		<color>0x0033CC</color>
+		<color>0xFF0000</color>
+		<color>0x660099</color>
+		<color>0x0099FF</color>
+		<color>0xCC9900</color>
+	</COLORLIST>
+	
+</SOURCE>

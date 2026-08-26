@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<character>
+	<tasks>
+		<task description="Calapult_incomplete" questControlID="223" />
+		<task description="Mission_incomplete" questControlID="234" />
+		<task description="Mission_complete" questControlID="299" />
+	</tasks>	
+	
+	<phase num="0" animFrame="Talk_in" sticky="1">
+		<text>Go away, I'm too busy for visitors.</text>			
+		<userResponse>
+			<option progressTo="1">I'm sorry to intrude, but the SWS need your help!</option>
+			<option progressTo="1">I'm an SWS agent on an urgent mission!</option>
+			<option progressTo="2">It's not that important, I guess I'll come back later.</option>
+		</userResponse>		
+	</phase>	
+		
+	<phase num="1" animFrame="Talk_in">
+		<text>You're an SWS agent, huh? I could use a little help myself.</text>
+			
+		<userResponse>
+			<option progressTo="3">Helping's what I do best! I'm happy to be of service.</option>
+			<option progressTo="3">Of course! I'll be glad to help you if you'll help me in return.</option>
+			<option progressTo="4">Are you kidding me? I'm on an important mission here!</option>
+		</userResponse>		
+	</phase>		
+
+	<phase num="2" animFrame="Talk_in">
+		<text>No, wait. Actually, I could use your help if you've got time to spare.</text>
+			
+		<userResponse>
+			<option progressTo="3">I'm an SWS agent, I'm happy to be of service.</option>
+			<option progressTo="3">I'll be glad to, if you'll help me in return - I'm an SWS agent, you see.</option>
+			<option progressTo="4">Are you kidding? I'm an SWS agent on an important mission here!</option>
+		</userResponse>		
+	</phase>			
+	
+	<phase num="3" animFrame="Talk_in">
+		<text>I've found a fragment of this stone tablet over here, but I need to collect and assemble the rest of the pieces before I can tell what it means.</text>
+			
+		<userResponse>
+			<option progressTo="5">I'm on the case, you can count on me!</option>
+			<option progressTo="5">I'll start looking around right away!</option>
+			<option progressTo="6">Ugh! I'm not getting my weevily feet dirty in this pit!</option>
+		</userResponse>		
+	</phase>		
+	
+	<phase num="4" animFrame="Talk_in">
+		<text>Hmmph! I was considering helping you, but if you want to take that attitude...</text>
+			
+		<userResponse>
+			<option progressTo="3">Well, maybe I can spare some time. What do you need done?</option>
+			<option progressTo="3">Then again, maybe there's a clue around here.  What can I help you with?</option>
+		</userResponse>		
+	</phase>			
+
+	<phase num="5" animFrame="Talk_in" sticky="1">
+		<text>Great! Let me know when you've found all the pieces and put them together, then I may be able to help you!</text>
+		<textOnReturn>
+		Please help me find all the pieces and put that tablet together. Then I'll be able to help you further.
+		</textOnReturn>	
+	</phase>		
+
+	<phase num="6" animFrame="Talk_in">
+		<text>If that's the way it is, then be gone. I don't need any more tourists poking around on my turf!</text>
+			
+		<userResponse>
+			<option progressTo="5">Okay, okay, keep your antennae on! I'll take a quick look around.</option>
+			<option progressTo="5">I'm sorry.  I guess I could have a wander and see what I can find for you.</option>
+		</userResponse>		
+	</phase>
+	
+	<phase num="7" animFrame="Talk_out" questControlPoint="Calapult_incomplete">
+		<text>Have you spoken to my colleague at the temple? You're going to have to find a way past the guard and get inside!</text>
+	</phase>
+	
+	<phase num="8" animFrame="Talk_out" questControlPoint="Mission_complete">
+		<text>Good to see you back! Your mission is complete, but you're free to explore anywhere you like!</text>
+	</phase>
+	
+	<phase num="99" animFrame="Talk_out">
+	<text>Sorry, I can't let you go down there. Not until you help me.</text>
+	</phase>
+	
+</character>

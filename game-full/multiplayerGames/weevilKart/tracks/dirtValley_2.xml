@@ -1,0 +1,83 @@
+<trackDef>
+	<track name='track1' start0='293,1020,180' start1='303,1020,180' start2='283,1020,180' start3='313,1020,180' camPos='270,20,920'>
+		<checkpoint id='0' x='1166' z='402' w='230' h='140'/>
+		<checkpoint id='1' x='492' z='690' w='240' h='160'/>
+		<checkpoint id='2' x='992' z='1144' w='140' h='200'/>
+		<checkpoint id='3' x='212' z='900' w='170' h='120'/>
+
+		<resetPos x='290' z='1142' r='180'/>
+		<resetPos x='215' z='723' r='180'/>
+		<resetPos x='282' z='445' r='180'/>
+		<resetPos x='560' z='265' r='-90'/>
+		<resetPos x='1046' z='293' r='-90'/>
+		<resetPos x='1246' z='439' r='0'/>
+		<resetPos x='1268' z='770' r='90'/>
+		<resetPos x='1171' z='1205' r='90'/>
+		<resetPos x='620' z='1264' r='90'/>
+
+		<ramp x='298' z='826' r='180'/>
+		<ramp x='250' z='800' r='180'/>
+		<ramp x='346' z='800' r='180'/>
+		<ramp x='980' z='770' r='90'/>
+		<ramp x='798' z='770' r='90'/>
+		<ramp x='890' z='210' r='-90'/>
+		<ramp x='765' z='1245' r='90'/>
+
+		<object path='multiplayerGames/weevilKart/assets3D/nut2.swf' boundShape='rad' boundType='hard' w='20' l='18' h='12' x='1126' y='0' z='1114' scale='0.13' ry='0' rxMin='6' rxMax='58.5' ryMin='0' ryMax='360' framesY='16' symAxes='8' rIncr='1.5'/>
+
+		<object path='multiplayerGames/weevilKart/assets3D/mould3.swf' boundShape='rad' boundType='soft' w='12' h='6' l='8' x='1350' y='0' z='226' scale='0.09' ry='10' rxMin='10' rxMax='40' ryMin='0' ryMax='360' framesY='10' symAxes='4' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mould3.swf' boundShape='rad' boundType='soft' w='12' h='6' l='8' x='699' y='0' z='704' scale='0.09' ry='0' rxMin='10' rxMax='40' ryMin='0' ryMax='360' framesY='10' symAxes='4' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mould3.swf' boundShape='rad' boundType='soft' w='12' h='6' l='8' x='751' y='0' z='654' scale='0.09' ry='10' rxMin='10' rxMax='40' ryMin='0' ryMax='360' framesY='10' symAxes='4' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mould3.swf' boundShape='rad' boundType='soft' w='12' h='6' l='8' x='819' y='0' z='666' scale='0.08' ry='20' rxMin='10' rxMax='40' ryMin='0' ryMax='360' framesY='10' symAxes='4' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mould4.swf' boundShape='rad' boundType='soft' w='7' h='5' l='7' x='381' y='0' z='408' scale='0.09' ry='0' rxMin='10' rxMax='40' ryMin='0' ryMax='360' framesY='37' symAxes='1' rIncr='5'/>
+
+		<object path='multiplayerGames/weevilKart/assets3D/rock3.swf' boundShape='rad' boundType='hard' w='8' l='6' h='10' x='722' y='0' z='468' scale='0.12' ry='15' rxMin='6' rxMax='39' ryMin='0' ryMax='360' framesY='61' symAxes='1' rIncr='3'/>
+		<object path='multiplayerGames/weevilKart/assets3D/rock3.swf' boundShape='rad' boundType='hard' w='8' l='6' h='10' x='620' y='0' z='498' scale='0.12' ry='0' rxMin='6' rxMax='39' ryMin='0' ryMax='360' framesY='61' symAxes='1' rIncr='3'/>
+		<object path='multiplayerGames/weevilKart/assets3D/rock3.swf' boundShape='rad' boundType='hard' w='8' l='6' h='10' x='550' y='0' z='558' scale='0.11' ry='20' rxMin='6' rxMax='39' ryMin='0' ryMax='360' framesY='61' symAxes='1' rIncr='3'/>
+		<object path='multiplayerGames/weevilKart/assets3D/rock3.swf' boundShape='rad' boundType='hard' w='8' l='6' h='10' x='504' y='0' z='642' scale='0.14' ry='40' rxMin='6' rxMax='39' ryMin='0' ryMax='360' framesY='61' symAxes='1' rIncr='3'/>
+		<object path='multiplayerGames/weevilKart/assets3D/rock3.swf' boundShape='rad' boundType='hard' w='8' l='6' h='10' x='494' y='0' z='742' scale='0.1' ry='10' rxMin='6' rxMax='39' ryMin='0' ryMax='360' framesY='61' symAxes='1' rIncr='3'/>
+		<object path='multiplayerGames/weevilKart/assets3D/rock3.swf' boundShape='rad' boundType='hard' w='8' l='6' h='10' x='514' y='0' z='843' scale='0.12' ry='30' rxMin='6' rxMax='39' ryMin='0' ryMax='360' framesY='61' symAxes='1' rIncr='3'/>
+		<object path='multiplayerGames/weevilKart/assets3D/rock3.swf' boundShape='rad' boundType='hard' w='8' l='6' h='10' x='568' y='0' z='933' scale='0.12' ry='70' rxMin='6' rxMax='39' ryMin='0' ryMax='360' framesY='61' symAxes='1' rIncr='3'/>
+		<object path='multiplayerGames/weevilKart/assets3D/rock3.swf' boundShape='rad' boundType='hard' w='8' l='6' h='10' x='662' y='0' z='984' scale='0.13' ry='20' rxMin='6' rxMax='39' ryMin='0' ryMax='360' framesY='61' symAxes='1' rIncr='3'/>
+
+		<object path='multiplayerGames/weevilKart/assets3D/rock3.swf' boundShape='rad' boundType='hard' w='8' l='6' h='10' x='1279' y='0' z='1014' scale='0.13' ry='10' rxMin='6' rxMax='39' ryMin='0' ryMax='360' framesY='61' symAxes='1' rIncr='3'/>
+		<object path='multiplayerGames/weevilKart/assets3D/rock3.swf' boundShape='rad' boundType='hard' w='8' l='6' h='10' x='1346' y='0' z='1078' scale='0.12' ry='0' rxMin='6' rxMax='39' ryMin='0' ryMax='360' framesY='61' symAxes='1' rIncr='3'/>
+		<object path='multiplayerGames/weevilKart/assets3D/rock3.swf' boundShape='rad' boundType='hard' w='8' l='6' h='10' x='1360' y='0' z='1156' scale='0.14' ry='40' rxMin='6' rxMax='39' ryMin='0' ryMax='360' framesY='61' symAxes='1' rIncr='3'/>
+		<object path='multiplayerGames/weevilKart/assets3D/rock3.swf' boundShape='rad' boundType='hard' w='8' l='6' h='10' x='1333' y='0' z='1235' scale='0.13' ry='70' rxMin='6' rxMax='39' ryMin='0' ryMax='360' framesY='61' symAxes='1' rIncr='3'/>
+		<object path='multiplayerGames/weevilKart/assets3D/rock3.swf' boundShape='rad' boundType='hard' w='8' l='6' h='10' x='1262' y='0' z='1290' scale='0.13' ry='100' rxMin='6' rxMax='39' ryMin='0' ryMax='360' framesY='61' symAxes='1' rIncr='3'/>
+		<object path='multiplayerGames/weevilKart/assets3D/rock3.swf' boundShape='rad' boundType='hard' w='8' l='6' h='10' x='1168' y='0' z='1308' scale='0.13' ry='20' rxMin='6' rxMax='39' ryMin='0' ryMax='360' framesY='61' symAxes='1' rIncr='3'/>
+
+		<object path='multiplayerGames/weevilKart/assets3D/mouldOnStick3.swf' boundShape='rad' boundType='hard' w='4' h='12' l='20' x='1177' y='0' z='644' scale='0.08' ry='0' rxMin='5' rxMax='50' ryMin='0' ryMax='360' framesY='37' symAxes='1' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mould4.swf' boundShape='rad' boundType='soft' w='7' h='5' l='7' x='1219' y='0' z='839' scale='0.1' ry='0' rxMin='10' rxMax='40' ryMin='0' ryMax='360' framesY='37' symAxes='1' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mouldOnStick3.swf' boundShape='rad' boundType='hard' w='4' h='12' l='20' x='1257' y='0' z='829' scale='0.1' ry='0' rxMin='5' rxMax='50' ryMin='0' ryMax='360' framesY='37' symAxes='1' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mould4.swf' boundShape='rad' boundType='soft' w='7' h='5' l='7' x='1293' y='0' z='810' scale='0.1' ry='30' rxMin='10' rxMax='40' ryMin='0' ryMax='360' framesY='37' symAxes='1' rIncr='5'/>
+
+		<object path='multiplayerGames/weevilKart/assets3D/mouldOnStick3.swf' boundShape='rad' boundType='hard' w='4' h='12' l='20' x='955' y='0' z='264' scale='0.08' ry='0' rxMin='5' rxMax='50' ryMin='0' ryMax='360' framesY='37' symAxes='1' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mouldOnStick3.swf' boundShape='rad' boundType='hard' w='4' h='12' l='20' x='800' y='0' z='310' scale='0.1' ry='40' rxMin='5' rxMax='50' ryMin='0' ryMax='360' framesY='37' symAxes='1' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mouldOnStick3.swf' boundShape='rad' boundType='hard' w='4' h='12' l='20' x='1166' y='0' z='372' scale='0.1' ry='40' rxMin='5' rxMax='50' ryMin='0' ryMax='360' framesY='37' symAxes='1' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mouldOnStick3.swf' boundShape='rad' boundType='hard' w='4' h='12' l='20' x='785' y='0' z='1184' scale='0.1' ry='40' rxMin='5' rxMax='50' ryMin='0' ryMax='360' framesY='37' symAxes='1' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mouldOnStick3.swf' boundShape='rad' boundType='hard' w='4' h='12' l='20' x='755' y='0' z='1312' scale='0.1' ry='40' rxMin='5' rxMax='50' ryMin='0' ryMax='360' framesY='37' symAxes='1' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mouldOnStick3.swf' boundShape='rad' boundType='hard' w='4' h='12' l='20' x='653' y='0' z='1189' scale='0.1' ry='40' rxMin='5' rxMax='50' ryMin='0' ryMax='360' framesY='37' symAxes='1' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mouldOnStick3.swf' boundShape='rad' boundType='hard' w='4' h='12' l='20' x='464' y='0' z='1190' scale='0.1' ry='40' rxMin='5' rxMax='50' ryMin='0' ryMax='360' framesY='37' symAxes='1' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mouldOnStick3.swf' boundShape='rad' boundType='hard' w='4' h='12' l='20' x='573' y='0' z='1319' scale='0.1' ry='40' rxMin='5' rxMax='50' ryMin='0' ryMax='360' framesY='37' symAxes='1' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mouldOnStick3.swf' boundShape='rad' boundType='hard' w='4' h='12' l='20' x='450' y='0' z='1318' scale='0.1' ry='40' rxMin='5' rxMax='50' ryMin='0' ryMax='360' framesY='37' symAxes='1' rIncr='5'/>
+
+		<object path='multiplayerGames/weevilKart/assets3D/mould3.swf' boundShape='rad' boundType='soft' w='12' h='6' l='8' x='180' y='0' z='1188' scale='0.09' ry='0' rxMin='10' rxMax='40' ryMin='0' ryMax='360' framesY='10' symAxes='4' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mould3.swf' boundShape='rad' boundType='soft' w='12' h='6' l='8' x='178' y='0' z='1247' scale='0.09' ry='0' rxMin='10' rxMax='40' ryMin='0' ryMax='360' framesY='10' symAxes='4' rIncr='5'/>
+		<object path='multiplayerGames/weevilKart/assets3D/mould3.swf' boundShape='rad' boundType='soft' w='12' h='6' l='8' x='204' y='0' z='1308' scale='0.09' ry='0' rxMin='10' rxMax='40' ryMin='0' ryMax='360' framesY='10' symAxes='4' rIncr='5'/>
+
+
+		<collectable x='298' y='11' z='800'/>
+		<collectable x='250' y='11' z='780'/>
+		<collectable x='346' y='11' z='780'/>
+
+		<collectable x='920' y='12' z='215'/>
+
+		<collectable x='1274' y='6' z='465'/>
+		<collectable x='1265' y='6' z='523'/>
+
+		<collectable x='1010' y='6' z='1216'/>
+		<collectable x='1010' y='6' z='1238'/>
+
+	</track>
+</trackDef>

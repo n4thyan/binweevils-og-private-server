@@ -1,0 +1,22 @@
+	<location id='128' name='PartyBoxInside' type='2' boundType='rect' boundary='-270,20,540,560' camPos='0,190,-330' camAim='0,90,260' entryPos='0,80' weevilScale='0.28' hasAudio='yes' maintainY='yes'>
+		<roomBG path='fixedCam/partyBox/creamTea/partyBox_creamTea1.swf'/>
+		<door id='1' toLoc='127' toDoor='4' x1='0' z1='125' x2='0' z2='-50' entryDir='180'/>
+		<door id='2' toLoc='130' toDoor='1' x1='260' z1='330' x2='320' z2='330' entryDir='180'/>
+		<object name='cups' x='0' y='0' z='168'/>
+		<object name='cupHandles' x='0' y='0' z='140'/>
+		<object name='tPot' x='0' y='0' z='500'/>
+		<object name='doorOverlay' x='0' y='0' z='90'/>
+	</location>
+
+	<location id='130' name='PartyBoxInside2' type='2' boundType='rect' boundary='-270,20,540,560' camPos='0,190,-330' camAim='0,90,260' entryPos='0,80' weevilScale='0.28' hasAudio='yes' maintainY='yes'>
+		<roomBG path='fixedCam/partyBox/creamTea/partyBox_creamTea2.swf'/>
+		<door id='1' toLoc='128' toDoor='1' x1='-260' z1='330' x2='-320' z2='330' entryDir='180'/>
+		<object name='c1' x='0' y='0' z='141'/>
+		<object name='c2' x='0' y='0' z='150'/>
+		<object name='c3' x='0' y='0' z='81'/>
+		<object name='c4' x='0' y='0' z='127'/>
+		<object name='c5' x='0' y='0' z='186'/>
+		<object name='sugarBowl' x='0' y='0' z='151'/>
+		<object name='tPot' x='0' y='0' z='500'/>
+		<object name='doorOverlay' x='0' y='0' z='90'/>
+	</location>

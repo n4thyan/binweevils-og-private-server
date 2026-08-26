@@ -1,0 +1,9 @@
+<itemConfig name='f_classroom_backpacks' type='furniture' path='assetsNest/f_classroom_backpacks.swf' thumb='assetsNest/f_classroom_backpacks_thumb.swf' h='80' boundType='rect' >
+
+	<pos frame='1' bounds='-200,400,400,20' x='-200' y='120' z='320' ry='0' gridSqs='1,11,21'/>
+	<pos frame='2' bounds='-200,400,400,20' x='-200' y='80' z='321' ry='0' gridSqs='1,11,21'/>
+	<pos frame='3' bounds='120,400,400,20' x='-200' y='120' z='320' ry='0' gridSqs='10,20,30'/>
+	<pos frame='4' bounds='120,400,400,20' x='-200' y='80' z='321' ry='0' gridSqs='10,20,30'/>
+
+
+</itemConfig>

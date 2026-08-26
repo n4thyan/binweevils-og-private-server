@@ -1,0 +1,44 @@
+<itemConfig name='f_sticker_Panini_TumsDinner' type='furniture' path='assetsNest/f_sticker_Panini_TumsDinner.swf' thumb='assetsNest/f_sticker_Panini_TumsDinner_thumb.swf' h='60' boundType='rect' clickable='no'>
+	
+	<pos frame='1' bounds='-200,150,80,20' x='-220' y='180' z='200' ry='0' gridSqs='1,11'/>
+	<pos frame='2' bounds='-200,230,80,20' x='-200' y='180' z='300' ry='0' gridSqs='23,31'/>
+		
+	<pos frame='3' bounds='-200,380,80,20' x='-200' y='180' z='404' ry='0' gridSqs='31,32'/>
+	<pos frame='4' bounds='-120,380,80,20' x='-120' y='180' z='403' ry='0' gridSqs='33,34'/>
+	<pos frame='5' bounds='-40,380,80,20' x='-40' y='180' z='400' ry='0' gridSqs='35,36'/>
+	<pos frame='6' bounds='40,380,80,20' x='40' y='180' z='401' ry='0' gridSqs='37,38'/>
+	<pos frame='7' bounds='120,380,80,20' x='120' y='180' z='402' ry='0' gridSqs='39,40'/>
+	
+	<pos frame='8' bounds='-200,230,80,20' x='200' y='180' z='300' ry='0' gridSqs='30,40'/>
+	<pos frame='9' bounds='-200,150,80,20' x='220' y='180' z='200' ry='0' gridSqs='10,20'/>
+	
+	
+
+	<pos frame='10' bounds='-200,150,80,20' x='-220' y='80' z='200' ry='0' gridSqs='1,11'/>
+	<pos frame='11' bounds='-200,230,80,20' x='-200' y='80' z='300' ry='0' gridSqs='23,31'/>
+	
+	<pos frame='12' bounds='-200,380,80,20' x='-200' y='80' z='404' ry='0' gridSqs='31,32'/>
+	<pos frame='13' bounds='-120,380,80,20' x='-120' y='80' z='403' ry='0' gridSqs='33,34'/>
+	<pos frame='14' bounds='-40,380,80,20' x='-40' y='80' z='400' ry='0' gridSqs='35,36'/>
+	<pos frame='15' bounds='40,380,80,20' x='40' y='80' z='401' ry='0' gridSqs='37,38'/>
+	<pos frame='16' bounds='120,380,80,20' x='120' y='80' z='402' ry='0' gridSqs='39,40'/>
+	
+	<pos frame='17' bounds='-200,230,80,20' x='200' y='80' z='300' ry='0' gridSqs='30,40'/>
+	<pos frame='18' bounds='-200,150,80,20' x='220' y='80' z='200' ry='0' gridSqs='10,20'/>
+	
+
+	
+	<pos frame='19' bounds='-200,150,80,20' x='-220' y='10' z='200' ry='0' gridSqs='1,11'/>
+	<pos frame='20' bounds='-200,230,80,20' x='-200' y='10' z='300' ry='0' gridSqs='23,31'/>
+	
+	<pos frame='21' bounds='-200,380,80,20' x='-200' y='10' z='404' ry='0' gridSqs='31,32'/>
+	<pos frame='22' bounds='-120,380,80,20' x='-120' y='10' z='403' ry='0' gridSqs='33,34'/>
+	<pos frame='23' bounds='-40,380,80,20' x='-40' y='10' z='400' ry='0' gridSqs='35,36'/>
+	<pos frame='24' bounds='40,380,80,20' x='40' y='10' z='401' ry='0' gridSqs='37,38'/>
+	<pos frame='25' bounds='120,380,80,20' x='120' y='10' z='402' ry='0' gridSqs='39,40'/>
+	
+	<pos frame='26' bounds='-200,230,80,20' x='200' y='10' z='300' ry='0' gridSqs='30,40'/>
+	<pos frame='27' bounds='-200,150,80,20' x='220' y='10' z='200' ry='0' gridSqs='10,20'/>
+
+
+</itemConfig>

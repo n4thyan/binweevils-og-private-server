@@ -1,0 +1,453 @@
+<xml>
+<quest>
+		<NAME>Raiders of The Lost Bin Pet</NAME>
+		<QUEST_ID>9</QUEST_ID>
+		<requiredCompletedQuests></requiredCompletedQuests>
+		<MISSION_ACCEPTED_TASK>200</MISSION_ACCEPTED_TASK><!--QUEST_CONTROL_POINT_MISSION_ACCEPTED_THIS-->
+		<MISSION_VALUE>1</MISSION_VALUE> 
+		<SPLASH_IMAGE>externalUIs/quests/lostBinPet/lbp_splashImage.png</SPLASH_IMAGE>
+		<BRIEFING>externalUIs/quests/lostBinPet/lbp_briefing.swf</BRIEFING>		
+		<startText>Posh's Bin Pet, Lady Wawa, has been kidnapped! Return her safely to Posh, and discover the identity of the kidnapper.</startText>
+		<resumeText>Posh's Bin Pet, Lady Wawa, has been kidnapped! Return her safely to Posh, and discover the identity of the kidnapper.</resumeText>
+			
+		<STARTING_LOCATIONS>
+			<LOC>
+				<id>137</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>200</requiredCompletedTaskIds>
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<LOC>
+				<!-- MulchIsland_brokenTilePuzzle -->
+				<id>200</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>201</requiredCompletedTaskIds>
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<LOC>
+				<!-- pet temple 1 -->
+				<id>205</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>234</requiredCompletedTaskIds>
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<LOC>
+				<!-- pet temple 2 -->
+				<id>206</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>236</requiredCompletedTaskIds>
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<LOC>
+				<!-- pet temple 3 -->
+				<id>207</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>239</requiredCompletedTaskIds>
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<LOC>
+				<!-- pet temple 4 -->
+				<id>208</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>241</requiredCompletedTaskIds>
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<LOC>
+				<!-- pet temple 5 -->
+				<id>209</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>243</requiredCompletedTaskIds><!-- enter room 5 -->
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<LOC>
+				<!-- pet temple 6 -->
+				<id>210</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>245</requiredCompletedTaskIds><!-- placed pet food-->
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+		</STARTING_LOCATIONS>
+		<DEBRIEF>
+			<IMG_BADGE>binBadges/BB_SWS_RLBP.swf</IMG_BADGE>
+			<IMG_BADGE_GOLD>binBadges/BB_SWS_RLBP_gold.swf</IMG_BADGE_GOLD>
+			<IMG_TITLE>externalUIs/quests/lostBinPet/debriefAssets/title_LBP.swf</IMG_TITLE>
+			<IMG_PHOTO1>externalUIs/quests/lostBinPet/debriefAssets/polaroid_01_LBP.png</IMG_PHOTO1>
+			<IMG_PHOTO2>externalUIs/quests/lostBinPet/debriefAssets/polaroid_02_01_LBP.png</IMG_PHOTO2>
+			<IMG_PHOTO3>externalUIs/quests/lostBinPet/debriefAssets/polaroid_02_02_LBP.png</IMG_PHOTO3>
+			<GRADING>
+				<SKILL A="8" B="6" C="4" D="2" E="1" F="0">
+					<TASK id="260"/><!-- catapult accuracy -->
+				</SKILL>
+				<SPEED A="10" B="8" C="6" D="4" E="2" F="0">
+					<TASK id="237"/><!-- temple room 2 -->
+					<TASK id="240"/><!-- temple room 3 -->
+					<TASK id="242"/><!-- temple room 4 -->				
+					<TASK id="244"/>	<!-- temple room 5 -->				
+					<TASK id="266"/>	<!-- temple room 6 -->				
+				</SPEED>
+				<SCAVENGER A="6" B="5" C="4" D="3" E="2" F="0">				
+					<TASK id="261"/>
+					<TASK id="262"/>
+					<TASK id="263"/>
+					<TASK id="264"/>
+					<TASK id="265"/>
+					<TASK id="267"/>
+				</SCAVENGER>
+			</GRADING>
+		</DEBRIEF>
+		<FILECLEARANCE>
+			<LOC id="200"/><!-- MulchIsland_brokenTilePuzzle -->
+			<LOC id="201"/><!-- MulchIsland_petFountain -->
+			<LOC id="202"/><!-- MulchIsland_scentFlowers -->
+			<LOC id="203"/><!-- outsideTemple_26_10_11 -->
+			<LOC id="204"/><!-- templeEntrance_26_10_11 -->
+			<LOC id="205"/><!-- petTemple1_26_10_11_v2 -->
+			<LOC id="206"/><!-- petTemple2_26_10_11 -->
+			<LOC id="207"/><!-- petTemple3 -->
+			<LOC id="208"/><!-- petTemple4 -->
+			<LOC id="209"/><!-- petTemple5 -->
+			<EXTUI id="missionsIndex"></EXTUI>
+		</FILECLEARANCE>
+	</quest>
+	<quest>
+		<NAME>The Hunt for Weevil X</NAME>
+		<QUEST_ID>10</QUEST_ID>
+		<requiredCompletedQuests></requiredCompletedQuests>
+		<MISSION_ACCEPTED_TASK>300</MISSION_ACCEPTED_TASK><!--QUEST_CONTROL_POINT_MISSION_ACCEPTED_THIS-->
+		<MISSION_VALUE>10</MISSION_VALUE> 
+		<SPLASH_IMAGE>externalUIs/quests/gemHunt/hwx_splashImage.png</SPLASH_IMAGE>
+		<BRIEFING>externalUIs/quests/gemHunt/hwx_briefing.swf</BRIEFING>			
+		<startText>I am waiting for you in the briefing room.</startText>
+		<resumeText>The search for the stolen gem has begun...</resumeText>		
+		<STARTING_LOCATIONS>
+			<LOC>
+				<!-- temple beach -->
+				<id>220</id>
+				<door>-1</door>
+				<requiredCompletedTaskIds></requiredCompletedTaskIds>
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>			
+			<LOC>
+				<!-- gemHuntRecluseIsland -->
+				<id>227</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>359</requiredCompletedTaskIds><!--completed hangman game-->
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<LOC>
+				<!-- base inside -->
+				<id>228</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>364</requiredCompletedTaskIds><!--inside base intro completed-->
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<LOC>
+				<!-- base outside (lighthouse) because you get stuck in the boss room if you go in there and have completed the quest -->
+				<id>229</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>399</requiredCompletedTaskIds><!--inside base intro completed-->
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+		</STARTING_LOCATIONS>			
+		<DEBRIEF>
+			<IMG_BADGE>binBadges/BB_SWS_HWX.swf</IMG_BADGE>
+			<IMG_BADGE_GOLD>binBadges/BB_SWS_HWX_gold.swf</IMG_BADGE_GOLD>			
+			<IMG_TITLE>externalUIs/quests/gemHunt/debriefAssets/title_hwx.swf</IMG_TITLE>
+			<IMG_PHOTO1>externalUIs/quests/gemHunt/debriefAssets/polaroid_01_H4WX.png</IMG_PHOTO1>
+			<IMG_PHOTO2>externalUIs/quests/gemHunt/debriefAssets/polaroid_02_01_H4WX.png</IMG_PHOTO2>
+			<IMG_PHOTO3>externalUIs/quests/gemHunt/debriefAssets/polaroid_02_02_H4WX.png</IMG_PHOTO3>
+			<GRADING>
+				<SKILL A="8" B="7" C="5" D="3" E="2" F="0">
+					<TASK id="369"/><!-- catapult -->	
+					<TASK id="371"/><!-- lighthouse -->	
+				</SKILL>
+				<SPEED A="7" B="6" C="5" D="3" E="2" F="0">
+					<TASK id="366"/><!-- inside base -->				
+					<TASK id="359"/>	<!-- hangman -->			
+				</SPEED>
+				<SCAVENGER A="9" B="7" C="5" D="3" E="2" F="0">				
+					<TASK id="372"/>	<!-- mulch -->
+					<TASK id="373"/>		
+					<TASK id="374"/>				
+					<TASK id="375"/>				
+					<TASK id="376"/>			
+					<TASK id="377"/>				
+					<TASK id="378"/>				
+					<TASK id="379"/>				
+					<TASK id="380"/>				
+					<TASK id="381"/>				
+				</SCAVENGER>
+			</GRADING>
+		</DEBRIEF>		
+		<FILECLEARANCE>
+			<LOC id="220"/><!-- templeBeach_23_02_12 -->
+			<LOC id="221"/><!-- templePier_20_02_12 -->
+			<LOC id="222"/><!-- fishermansIsland_24_02_12 -->
+			<LOC id="223"/><!-- gemHuntBeachA -->
+			<LOC id="224"/><!-- gemHuntBeachB -->
+			<LOC id="225"/><!-- gemHuntFlamsIsland -->
+			<LOC id="226"/><!-- catapultIsland_23_02_12 -->
+			<LOC id="227"/><!-- recluseIsland_24_02_12 -->
+			<LOC id="228"/><!-- baseInside -->
+			<LOC id="229"/><!-- lighthouse_24_02_12 -->
+		</FILECLEARANCE>
+	</quest>
+	
+	<quest>
+		<NAME>Danger at Dosh's Palace</NAME>
+		<QUEST_ID>12</QUEST_ID>
+		<MISSION_ACCEPTED_TASK>500</MISSION_ACCEPTED_TASK>
+		<requiredCompletedQuests>10</requiredCompletedQuests>
+		<MISSION_VALUE>10</MISSION_VALUE> 
+		<SPLASH_IMAGE>externalUIs/quests/doshHeritage/dh_splashImage.png</SPLASH_IMAGE>
+		<BRIEFING>externalUIs/quests/doshHeritage/dh_briefing_04_11_2014.swf</BRIEFING>		
+		<startText>I am waiting for you in the briefing room.</startText>
+		<resumeText>Dosh's Palace is still in danger!</resumeText>		
+		<STARTING_LOCATIONS>
+			<LOC>
+				<id>102</id>
+				<door>-1</door>
+				<requiredCompletedTaskIds>501</requiredCompletedTaskIds>
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<LOC>
+				<!-- gallery -->
+				<id>230</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>502</requiredCompletedTaskIds>	<!-- gallery pictures in order -->
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<LOC>
+				<!-- vault -->
+				<id>233</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>513,511</requiredCompletedTaskIds>	<!-- slushy made, vault open -->
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<LOC>
+				<!-- engine room completed -->
+				<id>234</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>599</requiredCompletedTaskIds><!--inside base intro completed-->
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+		</STARTING_LOCATIONS>		
+		<FILECLEARANCE>
+			<LOC id="230"/><!-- DoshGallery -->
+			<LOC id="231"/><!-- DoshStudy -->
+			<LOC id="232"/><!-- DoshKitchen -->
+			<LOC id="233"/><!-- vaultroom -->
+			<LOC id="234"/><!-- engineRoom -->
+		</FILECLEARANCE>		
+		<DEBRIEF>
+			<IMG_BADGE>binBadges/BB_SWS_DDP.swf</IMG_BADGE>
+			<IMG_BADGE_GOLD>binBadges/BB_SWS_DDP_gold.swf</IMG_BADGE_GOLD>
+			<IMG_TITLE>externalUIs/quests/doshHeritage/debriefAssets/title_DH.swf</IMG_TITLE>
+			<IMG_PHOTO1>externalUIs/quests/doshHeritage/debriefAssets/polaroid_01_DDP.png</IMG_PHOTO1>
+			<IMG_PHOTO2>externalUIs/quests/doshHeritage/debriefAssets/polaroid_02_01_DDP.png</IMG_PHOTO2>
+			<IMG_PHOTO3>externalUIs/quests/doshHeritage/debriefAssets/polaroid_02_02_DDP.png</IMG_PHOTO3>
+			<GRADING>
+				<SKILL A="8" B="6" C="4" D="2" E="1" F="0">
+					<TASK id="514"/><!-- ball lock 2 -->	
+					<TASK id="513"/><!-- sloshies 2 -->	
+					<TASK id="599"/><!-- engine room  4-->	
+				</SKILL>
+				<SPEED A="8" B="6" C="4" D="2" E="1" F="0">
+					<TASK id="502"/><!-- gallery 3 -->				
+					<TASK id="511"/>	<!--vault 3 -->				
+					<TASK id="527"/>	<!-- ingredients 2 -->			
+				</SPEED>
+				<SCAVENGER A="8" B="6" C="4" D="2" E="1" F="0">				
+					<TASK id="532"/>	<!-- mulch -->
+					<TASK id="533"/>		
+					<TASK id="534"/>				
+					<TASK id="535"/>				
+					<TASK id="536"/>			
+					<TASK id="537"/>				
+					<TASK id="538"/>				
+					<TASK id="539"/>				
+				</SCAVENGER>
+			</GRADING>			
+		</DEBRIEF>		
+	</quest>	
+	
+	<quest>
+		<NAME>Showdown at Tycoon Tv Towers</NAME>
+		<QUEST_ID>13</QUEST_ID>
+		<MISSION_ACCEPTED_TASK>600</MISSION_ACCEPTED_TASK>
+		<requiredCompletedQuests>12</requiredCompletedQuests> 
+		<MISSION_VALUE>10</MISSION_VALUE> 
+		<SPLASH_IMAGE>externalUIs/quests/tycoonTerrorTowers/ttt_splashImage.png</SPLASH_IMAGE>
+		<BRIEFING>externalUIs/quests/tycoonTerrorTowers/ttt_briefing.swf</BRIEFING>		
+		<startText>Weevil X and the WEB have taken hostages at Tycoon TV Towers!  Your skills are needed for a daring rescue.</startText>
+		<resumeText>Weevil X and the WEB have taken hostages at Tycoon TV Towers!  Your skills are needed for a daring rescue.</resumeText>
+		<STARTING_LOCATIONS>
+			<LOC>
+				<!-- TVTowersInside -->
+				<id>803</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>601</requiredCompletedTaskIds>
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>			
+			<LOC>
+				<!-- TVTowersLobby -->
+				<id>804</id><!--  -->
+				<door>1</door>
+				<requiredCompletedTaskIds>602</requiredCompletedTaskIds><!-- lift panel complete -->
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<LOC>
+				<!-- room with lia in web TTV_OctRoom -->
+				<id>805</id><!--  -->
+				<door>1</door>
+				<requiredCompletedTaskIds>607</requiredCompletedTaskIds><!-- fill vending machine -->
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>			
+		</STARTING_LOCATIONS>
+		<DEBRIEF>			
+			<IMG_BADGE>binBadges/BB_SWS_TTT.swf</IMG_BADGE>
+			<IMG_BADGE_GOLD>binBadges/BB_SWS_TTT_gold.swf</IMG_BADGE_GOLD>
+			<IMG_TITLE>externalUIs/quests/tycoonTerrorTowers/debriefAssets/title_TTT.swf</IMG_TITLE>
+			<IMG_PHOTO1>externalUIs/quests/tycoonTerrorTowers/debriefAssets/polaroid_01_TTT.png</IMG_PHOTO1>
+			<IMG_PHOTO2>externalUIs/quests/tycoonTerrorTowers/debriefAssets/polaroid_02_01_TTT.png</IMG_PHOTO2>
+			<IMG_PHOTO3>externalUIs/quests/tycoonTerrorTowers/debriefAssets/polaroid_02_02_TTT.png</IMG_PHOTO3>
+			<GRADING>
+				<SKILL A="6" B="4" C="3" D="2" E="1" F="0">
+					<TASK id="609"/><!-- hostage1 -->	
+					<TASK id="610"/><!-- hostage2 -->	
+					<TASK id="611"/><!-- hostage 3-->	
+				</SKILL>
+				<SPEED A="6" B="4" C="3" D="2" E="1" F="0">
+					<TASK id="601"/><!-- inside -->				
+					<TASK id="602"/>	<!--lobby -->					
+					<TASK id="603"/>	<!--lobby -->					
+					<TASK id="606"/>	<!-- lift -->					
+				</SPEED>
+				<SCAVENGER A="6" B="4" C="3" D="2" E="1" F="0">				
+					<TASK id="613"/>	<!-- mulch -->
+					<TASK id="614"/>	<!-- mulch -->
+					<TASK id="615"/>	<!-- mulch -->
+					<TASK id="616"/>	<!-- mulch -->
+					<TASK id="617"/>	<!-- mulch -->
+					<TASK id="618"/>	<!-- mulch -->							
+				</SCAVENGER>
+			</GRADING>
+		</DEBRIEF>		
+		<FILECLEARANCE>
+			<LOC id="803"/><!-- TycoonTVTowers_Inside -->
+			<LOC id="804"/><!-- TTV_Lobby -->
+			<LOC id="805"/><!-- TTV_OctRoom -->
+			<LOC id="806"/><!-- TowerTopWeb -->
+			<EXTUI pathName="TTT_LiftPanelPuzzle"/>
+		</FILECLEARANCE>
+	</quest>	
+	
+	<quest>
+		<NAME>Laboratory Lockdown</NAME>
+		<QUEST_ID>14</QUEST_ID>
+		<MISSION_ACCEPTED_TASK>700</MISSION_ACCEPTED_TASK>
+		<requiredCompletedQuests>13</requiredCompletedQuests> 
+		<MISSION_VALUE>10</MISSION_VALUE> 
+		<SPLASH_IMAGE>externalUIs/quests/laboratoryLockDown/lld_splashImage.png</SPLASH_IMAGE>
+		<BRIEFING>externalUIs/quests/laboratoryLockDown/lld_briefing.swf</BRIEFING>
+		<startText>We've lost all communication with Lab's Lab. It's up to you to investigate!</startText>
+		<resumeText>We've lost all communication with Lab's Lab. It's up to you to investigate!</resumeText>
+		<STARTING_LOCATIONS>
+			<!-- cloud 1-->
+			<LOC>
+				<id>241</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>700</requiredCompletedTaskIds>
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<!-- cloud 2-->
+			<LOC>
+				<id>242</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>723</requiredCompletedTaskIds>
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<!-- cloud 3-->
+			<LOC>
+				<id>243</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>724</requiredCompletedTaskIds>
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<!-- the room in which lia betrays you-->
+			<LOC>
+				<id>236</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>725</requiredCompletedTaskIds>
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<!-- the room in which you help sum computerRoom-->
+			<LOC>
+				<id>237</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>709</requiredCompletedTaskIds>	<!-- computer room screens on-->
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<!-- the dark room p1 - cannot ever confirm by tasks alone this is somewhere a user has been, also, never want to start user out in the dark-->
+			<!-- kems lab lab2Kem-->
+			<LOC>
+				<id>239</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>726</requiredCompletedTaskIds>	<!-- exit dark room in kem lab-->
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+			<!-- labsLab -->
+			<LOC>
+				<id>240</id>
+				<door>1</door>
+				<requiredCompletedTaskIds>711</requiredCompletedTaskIds>	<!-- lab free-->
+				<requiredUncompletedTaskIds></requiredUncompletedTaskIds>
+			</LOC>
+		</STARTING_LOCATIONS>
+		<DEBRIEF>
+			<IMG_BADGE>binBadges/BB_SWS_LLD.swf</IMG_BADGE>
+			<IMG_BADGE_GOLD>binBadges/BB_SWS_LLD_gold.swf</IMG_BADGE_GOLD>
+			<IMG_TITLE>externalUIs/quests/laboratoryLockDown/debriefAssets/title_LLD.swf</IMG_TITLE>
+			<IMG_PHOTO1>externalUIs/quests/laboratoryLockDown/debriefAssets/polaroid_01_LL.png</IMG_PHOTO1>
+			<IMG_PHOTO2>externalUIs/quests/laboratoryLockDown/debriefAssets/polaroid_02_01_LL.png</IMG_PHOTO2>
+			<IMG_PHOTO3>externalUIs/quests/laboratoryLockDown/debriefAssets/polaroid_02_02_LL.png</IMG_PHOTO3>
+			<GRADING>
+				<SKILL A="9" B="7" C="5" D="3" E="1" F="0">
+					<TASK id="710"/><!-- computer room screens on - number of moves -->	
+					<TASK id="727"/><!-- particle trap, number of tries, didn't cheat -->	
+					<TASK id="726"/><!-- dark room-->	
+				</SKILL>
+				<SPEED A="13" B="10" C="8" D="6" E="2" F="0">
+					<TASK id="723"/><!-- cloud level 1 -->				
+					<TASK id="724"/><!-- cloud level 2 -->				
+					<TASK id="725"/><!-- cloud level 3 -->				
+					<TASK id="709"/>	<!-- computer room generator speed -->					
+					<TASK id="712"/>	<!-- lablab generator speed -->					
+					<TASK id="799"/>	<!-- lablab lazer speed -->					
+				</SPEED>
+				<SCAVENGER A="9" B="7" C="5" D="3" E="1" F="0">				
+					<TASK id="728"/>	<!-- mulch -->
+					<TASK id="729"/>	<!-- mulch -->
+					<TASK id="730"/>	<!-- mulch -->
+					<TASK id="731"/>	<!-- mulch -->
+					<TASK id="732"/>	<!-- mulch -->
+					<TASK id="733"/>	<!-- mulch -->
+					<TASK id="734"/>	<!-- mulch -->
+					<TASK id="735"/>	<!-- mulch -->							
+				</SCAVENGER>
+			</GRADING>
+		</DEBRIEF>		
+		<FILECLEARANCE>			
+			<LOC id="241"/><!-- labsLabEntrance1 -->
+			<LOC id="242"/><!-- labsLabEntrance2 -->
+			<LOC id="243"/><!-- labsLabEntrance3 -->
+			<LOC id="236"/><!-- lab1Lia_14_12_12 -->
+			<LOC id="237"/><!-- computerRoom -->
+			<LOC id="238"/><!-- darkRoom_28_08_12 -->
+			<LOC id="239"/><!-- lab2Kem_29_08_12 -->
+			<LOC id="240"/><!-- labsLab_28_08_12 -->
+			<LOC id="244"/><!-- labsLabDestroyed -->
+		</FILECLEARANCE>
+	</quest>
+	
+</xml>

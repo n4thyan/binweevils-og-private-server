@@ -1,0 +1,233 @@
+@font-face {
+	font-family: Burbank Small Bold;
+	src: url(/assets/fonts/Burbank\ Small\ Bold.otf);
+}
+@font-face {
+	font-family: Burbank Small Medium;
+	src: url(/assets/fonts/Burbank\ Small\ Medium.otf);
+}
+html, body {
+	background: url(/assets/images/pattern2.png) #f3f3f3;
+	background-size: 300px;
+	font-family: Burbank Small Medium;
+	margin: 0;
+}
+img {
+	user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+a {
+	color: #318600;
+}
+a:hover {
+	color: #2a7201
+}
+.hero-body {
+	background: url(/assets/images/pattern.png) #35c0ff;
+	background-size: 700px;
+}
+.hero.is-info {
+	background: url(/assets/images/pattern2.png) #f3f3f3;
+	background-size: 300px;
+}
+.tabs.is-fullwidth li {
+	flex-grow: 0.1;
+	flex-shrink: 0;
+}
+.hero .navbar {
+	background: #f57304;
+}
+.hero.is-info a.navbar-item:hover {
+	background: #c25d0a;
+}
+.hero-foot {
+	background: #fff;
+	box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+	margin-bottom: 2.5rem;
+}
+.container {
+	flex-grow: 0;
+	margin: 0 auto;
+	position: relative;
+	width: auto;
+}
+.tabs {
+	font-size: 0rem;
+	padding: 1rem;
+}
+.navbar-item img {
+	max-height: 2.5rem;
+}
+.hero.is-info a.navbar-item.is-active {
+	background: #c9640b;
+}
+.navbar-item {
+	font-family: Burbank Small Bold;
+	padding: .5rem 1.2rem;
+	font-size: 18px;
+}
+.tile.is-ancestor {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2rem;
+}
+.hero.is-info .title {
+	color: #363636;
+}
+.btn-category {
+	margin-right: 5px;
+	width: 100%;
+}
+.tile.is-child {
+	margin: 0!important;
+	text-align: center;
+}
+.media {
+	align-items: flex-start;
+	display: flex;
+	text-align: inherit;
+	height: 80px;
+}
+.col-md-4 {
+	width: auto;
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+	display: inline-block;
+	white-space: nowrap;
+}
+.post {
+	margin-bottom: 40px;
+	background-color: #fff;
+	border-radius: 6px;
+	box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+	padding: 1.25rem;
+}
+.row {
+	margin-right: -15px;
+	margin-left: -15px;
+	display: inline-block;
+	min-width: 33%;
+}
+.post .post-img {
+	display: block;
+	-webkit-transition: 0.2s opacity;
+	transition: 0.2s opacity;
+}
+.post .post-meta {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.post-meta .post-category.cat-1 {
+	background-color: #58088e;
+}
+.post-meta .post-category.cat-2 {
+	background-color: #4e8eea;
+}
+.post-meta .post-category {
+	font-size: 13px;
+	text-transform: uppercase;
+	padding: 3px 10px;
+	font-weight: 600;
+	border-radius: 2px;
+	margin-right: 15px;
+	color: #FFF;
+	background-color: #212631;
+	-webkit-transition: 0.2s opacity;
+	transition: 0.2s opacity;
+}
+.post-meta .post-date {
+	font-size: 13px;
+	font-weight: 600;
+	color: #3d455c;
+}
+.post .post-title {
+	font-size: 18px;
+	margin-bottom: 0px;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: Burbank Small Bold;
+	font-weight: 700;
+	color: #212631;
+	margin: 0px 0px 15px;
+}
+.row::after {
+	display: table;
+	content: " ";
+}
+.blog-img {
+	border-radius: 6px;
+}
+.tile.is-parent {
+	padding: 1rem;
+}
+.tile.is-ancestor:last-child {
+	margin-bottom: 1rem;
+}
+.navbar-burger {
+	color: #fff;
+}
+.navbar-brand, .navbar-tabs {
+	align-items: stretch;
+	display: flex;
+	flex-shrink: 0;
+	height: 3.25rem;
+}
+.tile.is-vertical {
+	flex-direction: column;
+	margin-left: 1rem;
+}
+.tile is-child box {
+	margin-right: 1rem;
+}
+.read-btn {
+	margin-top: 1rem;
+}
+.box {
+	background-color: #fff;
+	border-radius: 6px;
+	box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+	color: #4a4a4a;
+	display: block;
+	padding: 1rem;
+}
+.tile.is-4 {
+	flex: none;
+	width: 25%;
+}
+.footer {
+	width: 100%;
+	background: #35c0ff;
+	color: #fff;
+	font-family: Burbank Small Bold;
+	padding: 2rem;
+}
+.box.cta {
+	border-radius: 0;
+	border-left: none;
+	border-right: none;
+	margin-bottom: 0;
+}
+.cta {
+	font-family: Burbank Small Bold;
+}
+.level:not(:last-child) {
+	margin-bottom: 0;
+}
+.hero.is-info .navbar-menu {
+	background-color: transparent;
+	box-shadow: none;
+}
+.tabs li {
+    display: block;
+    overflow: hidden;
+}

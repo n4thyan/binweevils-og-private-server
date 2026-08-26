@@ -1,0 +1,10 @@
+<itemConfig name='f_gungeTank' type='furniture' path='assetsNest/f_gungeTank.swf' thumb='assetsNest/f_gungeTank_thumb.swf' h='80' boundType='rect' clickable='yes'>
+	
+	<pos frame='1' bounds='-200,320,80,80' x='-200' y='160' z='320' ry='0' gridSqs='31,32'/>
+	<pos frame='2' bounds='-120,320,80,80' x='-120' y='160' z='320' ry='0' gridSqs='33,34'/>
+	<pos frame='3' bounds='-40,320,80,80' x='-40' y='160' z='320' ry='0' gridSqs='35,36'/>
+	<pos frame='4' bounds='40,320,80,80' x='40' y='160' z='320' ry='0' gridSqs='37,38'/>
+	<pos frame='5' bounds='120,320,80,80' x='120' y='160' z='320' ry='0' gridSqs='39,40'/>
+	
+	
+</itemConfig>

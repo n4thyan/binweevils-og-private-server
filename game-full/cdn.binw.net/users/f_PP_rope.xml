@@ -1,0 +1,12 @@
+<itemConfig name='f_PP_rope' type='furniture' path='assetsTycoon/f_PP_rope.swf' thumb='assetsTycoon/f_PP_rope_thumb.swf' h='160' boundType='0'>
+	<pos frame='1' bounds='' x='0' y='80' z='100' ry='0' gridSqs='10'/>
+	<pos frame='2' bounds='' x='0' y='80' z='180' ry='0' gridSqs='20'/>
+	<pos frame='3' bounds='' x='0' y='80' z='260' ry='0' gridSqs='30'/>
+	<pos frame='4' bounds='' x='0' y='80' z='340' ry='0' gridSqs='40'/>
+	
+	<pos frame='5' bounds='' x='-200' y='80' z='100' ry='0' gridSqs='1'/>
+	<pos frame='6' bounds='' x='-200' y='80' z='180' ry='0' gridSqs='11'/>
+	<pos frame='7' bounds='' x='-200' y='80' z='260' ry='0' gridSqs='21'/>
+	<pos frame='8' bounds='' x='-200' y='80' z='340' ry='0' gridSqs='31'/>
+	
+</itemConfig>

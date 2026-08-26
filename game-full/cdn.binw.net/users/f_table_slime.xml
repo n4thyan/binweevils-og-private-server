@@ -1,0 +1,26 @@
+<itemConfig name='f_table_slime' type='furniture' path='assetsNest/f_table_slime.swf' thumb='assetsNest/f_table_slime_thumb.swf' h='34' boundType='rect' numSpots='2'>
+	<pos frame='1' bounds='-200,95,20,45' x='-180' y='0' z='120' gridSqs='1'/>
+	<pos frame='2' bounds='-200,175,30,75' x='-170' y='0' z='210' gridSqs='11'/>
+	<pos frame='3' bounds='-200,255,35,95' x='-170' y='0' z='285' gridSqs='21'/>
+	<pos frame='4' bounds='-200,360,50,100' x='-145' y='0' z='380' gridSqs='31,32'/>
+	
+	<pos frame='5' bounds='-100,105,45,20' x='-60' y='0' z='110' gridSqs='3,4'/>
+	<pos frame='6' bounds='-100,165,46,15' x='-60' y='0' z='170' gridSqs='13,14'/>
+	<pos frame='7' bounds='-100,245,48,35' x='-58' y='0' z='255' gridSqs='23,24'/>
+	<pos frame='8' bounds='-100,360,50,100' x='-56' y='0' z='380' gridSqs='33,34'/>
+	
+	<pos frame='9' bounds='-25,105,45,20' x='0' y='0' z='110' gridSqs='5,6'/>
+	<pos frame='10' bounds='-25,165,46,15' x='0' y='0' z='170' gridSqs='15,16'/>
+	<pos frame='11' bounds='-25,245,48,35' x='0' y='0' z='255' gridSqs='25,26'/>
+	<pos frame='12' bounds='-25,360,50,100' x='0' y='0' z='380' gridSqs='35,36'/>
+	
+	<pos frame='13' bounds='50,105,45,20' x='50' y='0' z='110' gridSqs='7,8'/>
+	<pos frame='14' bounds='50,165,46,15' x='50' y='0' z='170' gridSqs='17,18'/>
+	<pos frame='15' bounds='50,245,48,35' x='50' y='0' z='255' gridSqs='27,28'/>
+	<pos frame='16' bounds='50,360,50,100' x='50' y='0' z='380' gridSqs='37,38'/>
+	
+	<pos frame='17' bounds='150,360,50,40' x='-145' y='0' z='380' gridSqs='39,40'/>
+	<pos frame='18' bounds='170,255,35,95' x='170' y='0' z='285' gridSqs='30'/>
+	<pos frame='19' bounds='170,175,30,75' x='170' y='0' z='210' gridSqs='20'/>
+	<pos frame='20' bounds='170,95,20,45' x='180' y='0' z='120' gridSqs='10'/>
+</itemConfig>

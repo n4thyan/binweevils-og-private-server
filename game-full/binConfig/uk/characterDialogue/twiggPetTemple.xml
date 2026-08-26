@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<character>
+	<tasks>
+		<task description="Quest_Complete" questControlID="299" />
+	</tasks>	
+	
+	<phase num="0" animFrame="Talk_in" sticky="1">
+		<text>Argh! Buzz off!</text>			
+		<userResponse>
+			<option progressTo="1">How rude, are you talking to me?</option>
+			<option progressTo="1">What's the matter?</option>
+		</userResponse>		
+	</phase>	
+		
+	<phase num="1" animFrame="Talk_in">
+		<text>Oh, sorry, I didn’t see you there! I was talking to these pesky flies, they're really annoying me!</text>
+		<userResponse>
+			<option progressTo="2">Why are they buzzing around you?</option>
+			<option progressTo="2">Something must be attracting them!</option>
+		</userResponse>		
+	</phase>		
+
+	<phase num="2" animFrame="Talk_in">
+		<text>It’s these scent flowers, I’m working too close to them and the flowers keep spraying me with scent!</text>
+		<userResponse>
+			<option progressTo="3">Haha, that’s funny!</option>
+			<option progressTo="3">You look hilarious swatting the flies away like that!</option>
+		</userResponse>		
+	</phase>			
+	
+	<phase num="3" animFrame="Talk_in">
+		<text>It is NOT funny! The flies love the scent, so now they're following me everywhere I go. It’s very distracting!</text>
+		<userResponse>
+			<option progressTo="4">Why don't you ask for a different assignment?</option>
+			<option progressTo="4">Don't you get tired of digging here all day?</option>
+		</userResponse>		
+	</phase>		
+	
+	<phase num="4" animFrame="Talk_in">
+		<text>I could take a turn working closer to the temple, but it's way too creepy over there.</text>
+		<userResponse>
+			<option progressTo="5">The temple?</option>
+			<option progressTo="5">What do you mean?</option>
+		</userResponse>		
+	</phase>			
+
+	<phase num="5" animFrame="Talk_out" sticky="1">
+		<text>Oh dear, I'd better not say any more about that. Anyway, I've got to get back to work.  You should keep moving.</text>
+		<textOnReturn>
+		If you're looking for some scent, you've come to the right place.  These flowers will scent anything, and you won't be able to keep the flies off it!
+		</textOnReturn>	
+	</phase>		
+
+	<phase num="6" animFrame="Talk_out" questControlPoint="Quest_Complete">
+		<text>Hello again! I hope you found what you were looking for!</text>
+	</phase>	
+	
+</character>

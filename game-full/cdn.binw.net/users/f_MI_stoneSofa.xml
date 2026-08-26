@@ -1,0 +1,18 @@
+<itemConfig name='f_MI_stoneSofa' type='furniture' path='assetsNest/f_MI_stoneSofa.swf' thumb='assetsNest/f_MI_stoneSofa_thumb.swf' h='50'  boundType='rect' numSpots='0' clickable='yes'>
+
+	<pos frame='1' bounds='-180,85,80,40' x='-155' y='0' z='120' ry='-25' gridSqs='1,2,3,4'/>
+	<pos frame='2' bounds='-180,170,80,40' x='-155' y='0' z='200' ry='-25' gridSqs='11,12,13,14'/>
+	<pos frame='3' bounds='-180,250,80,40' x='-155' y='0' z='280' ry='-45' gridSqs='21,22,23,24'/>
+	<pos frame='4' bounds='-180,330,80,40' x='-155' y='0' z='390' ry='-45' gridSqs='31,32,33,34'/>
+
+	<pos frame='5' bounds='-20,85,40,40' x='0' y='0' z='120' ry='0' gridSqs='4,5,6,7'/>
+	<pos frame='6' bounds='-20,170,40,40' x='0' y='0' z='200' ry='0' gridSqs='14,15,16,17'/>
+	<pos frame='7' bounds='-20,250,40,40' x='0' y='0' z='280' ry='0' gridSqs='24,25,26,27'/>
+	<pos frame='8' bounds='-20,330,40,40' x='0' y='0' z='391' ry='0' gridSqs='34,35,36,37'/>
+	
+	<pos frame='9' bounds='100,85,80,40' x='155' y='0' z='120' ry='25' gridSqs='7,8,9,10'/>
+	<pos frame='10' bounds='100,170,80,40' x='155' y='0' z='200' ry='25' gridSqs='17,18,19,20'/>
+	<pos frame='11' bounds='100,250,80,40' x='155' y='0' z='280' ry='45' gridSqs='27,28,29,30'/>
+	<pos frame='12' bounds='100,330,80,40' x='155' y='0' z='392' ry='45' gridSqs='37,38,39,40'/>
+	
+</itemConfig>

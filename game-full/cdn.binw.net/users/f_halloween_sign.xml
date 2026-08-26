@@ -1,0 +1,8 @@
+<itemConfig name='f_halloween_sign' type='furniture' path='assetsNest/f_halloween_sign.swf' thumb='assetsNest/f_halloween_sign_thumb.swf' h='120' boundType='rect' clickable='yes'>
+	<pos frame='1' bounds='-200,405,80,00' x='-120' y='245' z='456' ry='0' gridSqs=''/>
+	<pos frame='2' bounds='-120,406,80,00' x='0' y='245' z='455' ry='0' gridSqs=''/>
+	<pos frame='3' bounds='-40,403,80,00' x='120' y='245' z='454' ry='0' gridSqs=''/>
+	<pos frame='4' bounds='40,404,80,00' x='-120' y='245' z='453' ry='0' gridSqs=''/>
+	<pos frame='5' bounds='120,405,80,00' x='0' y='245' z='455' ry='0' gridSqs=''/>
+	<pos frame='6' bounds='120,405,80,00' x='120' y='245' z='456' ry='0' gridSqs=''/>
+</itemConfig>

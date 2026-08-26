@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /assets/
+
+# Allow any files or directories that exist to be displayed directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ downloader.php?f=$1 [L]

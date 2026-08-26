@@ -1,0 +1,649 @@
+body {
+/*	font-family:"Trebuchet MS", Helvetica, sans-serif;*/
+/*	font-size:14px;*/
+/*	color:#111111;*/
+/*	font-weight:normal;*/
+/*	background-color:#DAF6BC;*/
+/*	background-image:url(../BG_006.png), url("../BG_gradient_1.png");*/
+/*	background-repeat:no-repeat, repeat-x;*/
+/*	background-position: center top, left top;	*/
+
+	background: #6BC414 url(/login/bgTile2.png?2) repeat-x scroll center top;
+	font-family: "Trebuchet MS",Helvetica,sans-serif;
+	font-size: 14px;
+	color: #000000;
+}
+
+img {
+	border: 0px;
+	outline: none;
+}
+.leftBg{
+	margin:0 auto 0 auto;
+	width:940px;
+}
+
+a{
+	text-decoration: underline;
+/*	color: #DAF6BC;*/
+	outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.logo{
+    display: block;
+    position: absolute;
+    z-index: 1000;
+}
+
+.adBar{
+    background-image: url("../Leader_board.png");
+    height: 98px;
+    left: 180px;
+    position: relative;
+    top: -3px;
+    width: 747px;
+}
+
+.mainContainer{
+	background-image:url(/login/container.png);
+	height:389px;
+	width: 965px;
+	top: 30px;
+	position: relative;
+}
+
+.tinkClott{
+    left: 21px;
+    position: absolute;
+    top: -31px;
+}
+
+.adBlock{
+    background-image: url("../MPU.png");
+    height: 269px;
+    left: 39px;
+    position: relative;
+    top: 146px;
+    width: 308px;
+}
+
+.ad{
+    left: 4px;
+    position: relative;
+    top: 15px;
+    overflow-y: hidden;
+    height: 252px;
+}
+
+.leaderBoardAd{
+    left: 4px;
+    position: relative;
+    top: 4px;
+    height: 90px;
+    overflow-y: hidden;
+}
+.gameMembership{
+    left: 20px;
+    position: absolute;
+    top: 6px;
+}
+.gameDosh{
+    left: 115px;
+    position: absolute;
+    top: 5px;
+}
+.gameInvite{
+    left: 185px;
+    position: absolute;
+    top: 5px;
+}
+.gameWhatsnew{
+    left: 295px;
+    position: absolute;
+    top: 5px;
+}
+
+.gameShop{
+    left: 384px;
+    position: absolute;
+    top: -13px;
+}
+.newWeevil{
+    left: 304px;
+    position: absolute;
+    top: 8px;
+}
+
+.menu{
+	position: relative;
+	left: 120px;
+	margin-bottom: 23px;
+}
+
+.menuBar{
+    left: 117px;
+    position: relative;
+}
+
+.welcomeMembership{
+    left: 50px;
+    position: absolute;
+    top: -21px;
+}
+.welcomeWhatsnew{
+    left: 180px;
+    position: absolute;
+    top: -9px;
+}
+.welcomeHelp{
+    left: 305px;
+    position: absolute;
+    top: -18px;
+}
+.welcomeShop{
+    left: 325px;
+    position: absolute;
+    top: -17px;
+}
+
+.welcomeLogin{
+    left: 631px;
+    position: absolute;
+    top: -4px;
+}
+.welcomeNewWeevil{
+    left: 594px;
+    position: absolute;
+    top: 39px;
+}
+
+.loginForm{
+    left: 631px;
+    position: absolute;
+    top: 25px;
+}
+
+.heading{
+    left: 90px;
+    position: relative;
+/*    top: 10px;*/
+}
+
+.formContainer{
+    font-family: "Arial";
+    height: 132px;
+    position: relative;
+    top: -21px;
+}
+
+.alertMsg{
+	position: relative;
+	top: 8px;
+	left: -14px;
+	color: red;
+	width: 311px;
+	height: 40px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.nameLabel{
+    color: #035F7E;
+    font-size: 20px;
+    font-weight: bold;
+    left: 26px;
+    position: relative;
+    top: 38px;
+}
+
+.nameText{
+    left: 26px;
+    position: relative;
+    top: 38px;
+}
+
+.passLabel{
+    color: #035F7E;
+    font-size: 20px;
+    font-weight: bold;
+    left: 26px;
+    position: relative;
+    top: 50px;
+}
+
+.passText{
+    left: 26px;
+    position: relative;
+    top: 50px;
+}
+
+.userInput{
+    border-radius: 5px;
+	border: 5px solid #B10113;
+/*    margin-left: 20px;*/
+    width: 230px;
+    height: 26px;
+    font-size: 20px;
+    size: 50;
+}
+
+.passInput{
+    border-radius: 5px;
+	border: 5px solid #B10113;
+/*    margin-left: 20px;*/
+    width: 230px;
+    height: 26px;
+    font-size: 20px;
+    size: 50;
+}
+
+.rememberMeContainer{
+    left: 25px;
+    position: relative;
+    top: 55px;
+}
+
+.rememberMeText{
+    color: #035F7E;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    left: 3px;
+    position: relative;
+    top: -5px;
+}
+
+.forgotPassword{
+    color: #035F7E;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    left: 26px;
+    position: relative;
+    top: 64px;
+}
+
+.loginBtn{
+    left: 26px;
+    position: relative;
+    top: 76px;
+}
+
+.loginLoader{
+    color: #035F7E;
+    font-size: 18px;
+    font-weight: bold;
+    left: 26px;
+    position: relative;
+    top: 98px;
+}
+
+.bushes{
+	position: relative;
+	top: -20px;
+}
+
+.forgotPassword a{
+	text-decoration: none;
+	color: #035F7E;
+}
+
+.forgotPassword a:HOVER{
+	text-decoration: underline;
+	color: #035F7E;
+}
+
+.footer{
+    color: #FFFFFF;
+    font-size: 12px;
+    position: absolute;
+}
+
+/*.footerLinks{
+    display: inline;
+    left: 10px;
+    position: relative;
+    top: -15px;
+}*/
+.footerLinks{
+   /* display: inline;
+    position: relative;
+    top: 10px;*/
+    /*top: -37px;
+    left: -39px;
+    width: 677px;
+    */
+    left: 60px;
+    position: absolute;
+    top: 10px;
+}
+
+
+.footerLinks a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.footerLinks a:HOVER {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+/*.copyright{
+    display: inline;
+    left: 277px;
+    position: relative;
+    text-align: right;
+    top: -15px;
+}
+
+.safetyLogo{
+    display: inline;
+    left: 284px;
+    position: relative;
+    text-align: right;
+}
+*/
+
+.copyright{
+    /*display: inline;
+    position: relative;
+    left: 44px;
+    top: 10px;*/
+    /*left: 82px;
+    top: -40px;
+    width: 400px;*/
+    left: 60px;
+    position: absolute;
+    top: 30px;
+}
+
+.safetyLogo{
+    /*display: inline;
+    left: 89px;
+    position: relative;
+    top: -10px;
+    width: 100px;*/
+    float: right;
+}
+
+
+/*Resend Css*/
+
+.resendForm{
+    left: 367px;
+    position: absolute;
+	top: 12px;
+}
+
+.headingResend{
+	position: relative;
+	left: 67px;
+}
+
+.resendInputDiv{
+    left: 73px;
+    position: relative;
+    top: -17px;
+}
+
+.resendBtn{
+    display: inline;
+    left: 146px;
+    position: relative;
+    top: 34px;
+}
+
+.changeBtn{
+    display: inline;
+    left: 91px;
+    position: relative;
+    top: 34px;
+}
+
+.resendInputCs{
+    border: 1px solid #5FB3FA;
+    font-size: 27px;
+    height: 36px;
+    width: 402px;
+}
+
+.bkToLogin{
+    left: 424px;
+    position: absolute;
+    top: 320px;
+}
+
+.askParents{
+    left: 46px;
+    position: relative;
+    top: 35px;
+}
+
+.resendAlertMsg{
+    color: red;
+    font-weight: bold;
+    height: 40px;
+    left: 32px;
+    position: relative;
+    text-align: center;
+    top: 71px;
+}
+
+.resendAlertMsgAct{
+    color: red;
+    font-weight: bold;
+    height: 14px;
+    left: 63px;
+    position: relative;
+    text-align: center;
+    top: 10px;
+}
+
+.formDiv{
+	position: relative;
+/*	left:20px;*/
+	top: -5px;
+}
+
+.ageGenderLabelDiv{
+    left: 23px;
+    position: relative;
+}
+
+.ageGenderDiv {
+    left: 53px;
+    position: relative;
+}
+
+.ageText{
+    color: #035F7E;
+    font-size: 18px;
+    font-weight: bold;
+    left: 40px;
+    position: relative;
+    display:inline;
+}
+
+.genderText{
+    color: #035F7E;
+    font-size: 18px;
+    font-weight: bold;
+    left: 226px;
+    position: relative;
+    display:inline;
+}
+
+.ageTextDiv{
+    left: 20px;
+    position: absolute;
+    top: 20px;
+}
+
+.ageTextInput{
+	border: 0 none;
+    background-color: #D7FFD7;
+    font-size: 18px;
+    height: 30px;
+    width: 51px;
+}
+
+.genderDiv{
+    display: inline;
+    left: 172px;
+    position: absolute;
+    top: 21px;
+}
+
+.girlDiv{
+    left: 180px;
+    position: absolute;
+    top: 0;
+}
+
+.activeParentsEmailDiv{
+    color: #035F7E;
+    font-size: 18px;
+    font-weight: bold;
+    left: 191px;
+    position: relative;
+    top: 10px;
+    margin-top: 12px;
+}
+
+.activateEmail{
+    left: 68px;
+    position: relative;
+    top: 11px;
+}
+
+.activateEmailInput{
+    border: 4px solid #5FB3FA;
+    font-size: 20px;
+    height: 26px;
+    width: 348px;
+}
+
+.activateTandCCheck{
+    left: 74px;
+    position: absolute;
+    top: 203px;
+}
+
+.activateTandC{
+    color: #035F7E;
+    font-size: 13px;
+    left: 105px;
+    position: relative;
+    top: 28px;
+}
+.activateNewsCheck{
+    left: 74px;
+    position: absolute;
+    top: 230px;
+}
+
+.activateNews{
+    color: #035F7E;
+    font-size: 13px;
+    left: 105px;
+    position: relative;
+    top: 38px;
+}
+
+.bkToLoginActivate{
+    left: 415px;
+    position: absolute;
+    top: 270px;
+}
+
+.activateSubmit{
+    left: 143px;
+    position: relative;
+    top: 50px;
+}
+
+.headingActivation{
+    left: 105px;
+    position: relative;
+}
+
+.invalidAgeDiv{
+    left: 10px;
+    position: absolute;
+    top: 38px;
+}
+
+.invalidEmail{
+    left: 37px;
+    position: absolute;
+    top: 160px;
+}
+
+.invalidTC{
+    left: 46px;
+    position: absolute;
+    top: 206px;
+}
+
+.activationLoader{
+    color: #035F7E;
+    font-size: 18px;
+    font-weight: bold;
+    left: 72px;
+    position: absolute;
+    top: 295px;
+}
+
+.resendLoader{
+    color: #035F7E;
+    font-size: 18px;
+    font-weight: bold;
+    left: 183px;
+    position: relative;
+    top: 10px;
+}
+
+.loadingdv{
+    margin-top: 114px;
+    text-align: center;
+}
+
+.weevilNestAct{
+    left: 534px;
+    position: absolute;
+    top: -2px;
+}
+
+.weevilLoginAct{
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: bold;
+    left: 595px;
+    position: absolute;
+    top: 3px;
+}
+
+.weevilLogOutAct{
+    left: 584px;
+    position: absolute;
+    top: 27px;
+}
+.super-awesome-10198{
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 735px;
+}
+.super-awesome-10199{
+    position: absolute;
+    top: -8px;
+    left: -4px;
+    height: 300px;
+}

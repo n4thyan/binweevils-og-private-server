@@ -1,0 +1,4 @@
+# Map the extensionless /quests/task-completed (what the SWF requests) to task-completed.php.
+# Apache Multiviews is off, so this explicit rewrite is required for a 200 instead of 404.
+RewriteEngine On
+RewriteRule ^task-completed$ task-completed.php [L]

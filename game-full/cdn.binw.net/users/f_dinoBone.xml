@@ -1,0 +1,15 @@
+<itemConfig name='f_dinoBone' type='furniture' path='assetsNest/f_dinoBone.swf' thumb='assetsNest/f_dinoBone_thumb.swf' h='100' useCache='yes' boundType='rect' clickable='yes'>
+	<pos frame='1' bounds='-200,80,30,80' x='-170' y='0' z='160' gridSqs='1'/>
+	<pos frame='2' bounds='-200,160,30,80' x='-170' y='0' z='240' gridSqs='11'/>
+	<pos frame='3' bounds='-200,240,30,80' x='-170' y='0' z='320' gridSqs='21'/>
+	<pos frame='4' bounds='-200,320,30,80' x='-170' y='0' z='400' gridSqs='31'/>
+	<pos frame='5' bounds='-200,370,80,30' x='-160' y='0' z='400' gridSqs='31,32'/>
+	<pos frame='6' bounds='-120,370,80,30' x='-80' y='0' z='370' gridSqs='33,34'/>
+	<pos frame='7' bounds='-40,370,80,30' x='0' y='0' z='370' gridSqs='35,36'/>
+	<pos frame='8' bounds='40,370,80,30' x='80' y='0' z='370' gridSqs='37,38'/>
+	<pos frame='9' bounds='120,370,80,30' x='160' y='0' z='400' gridSqs='39,40'/>
+	<pos frame='10' bounds='170,320,30,80' x='170' y='0' z='400' gridSqs='40'/>
+	<pos frame='11' bounds='170,240,30,80' x='170' y='0' z='320' gridSqs='30'/>
+	<pos frame='12' bounds='170,160,30,80' x='170' y='0' z='240' gridSqs='20'/>
+	<pos frame='13' bounds='170,80,30,80' x='170' y='0' z='160' gridSqs='10'/>
+</itemConfig>

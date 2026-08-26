@@ -1,0 +1,11 @@
+<itemConfig name='f_16thcent_chair_double' type='furniture' path='assetsNest/f_16thcent_chair_double.swf' thumb='assetsNest/f_16thcent_chair_double_thumb.swf' h='85' boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-200,75,40,95' x='-200' y='0' z='165' ry='-90' gridSqs='1,2,11,12'/>
+	<pos frame='2' bounds='-200,240,40,160' x='-200' y='0' z='400' ry='-90' gridSqs='21,22,31,32'/>
+	
+	<pos frame='3' bounds='-200,370,115,30' x='-200' y='0' z='400' ry='0' gridSqs='31,32,33'/>
+	<pos frame='4' bounds='-50,370,115,30' x='-50' y='0' z='400' ry='0' gridSqs='34,35,36,37'/>
+	<pos frame='5' bounds='65,370,115,30' x='65' y='0' z='400' ry='0' gridSqs='38,39,40'/>
+
+	<pos frame='6' bounds='160,240,40,160' x='160' y='0' z='400' ry='90' gridSqs='39,40,29,30'/>
+	<pos frame='7' bounds='160,75,39,95' x='160' y='0' z='165' ry='90' gridSqs='9,10,49,50'/>
+</itemConfig>

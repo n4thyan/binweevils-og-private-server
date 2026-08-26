@@ -1,0 +1,9 @@
+<itemConfig name='f_FStones_oven' type='furniture' path='assetsNest/f_FStones_oven.swf' thumb='assetsNest/f_FStones_oven_thumb.swf' h='40' boundType='radial' boundRadius='58' numSpots='1' clickable='yes'>
+	
+	<pos frame='1' bounds='' x='-165' y='0' z='374' gridSqs='31,32'/>
+	<pos frame='2' bounds='' x='-85' y='0' z='371' gridSqs='33,34'/>
+	<pos frame='3' bounds='' x='0' y='0' z='370' gridSqs='35,36'/>
+	<pos frame='4' bounds='' x='85' y='0' z='372' gridSqs='37,38'/>
+	<pos frame='5' bounds='' x='165' y='0' z='374' gridSqs='39,40'/>
+	
+</itemConfig>

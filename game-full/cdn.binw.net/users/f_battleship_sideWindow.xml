@@ -1,0 +1,17 @@
+<itemConfig name='f_battleship_sideWindow' type='furniture' path='assetsNest/f_battleship_sideWindow.swf' thumb='assetsNest/f_battleship_sideWindow_thumb.swf' h='80'  boundType='rect' clickable='no'>
+
+	<pos frame='1' bounds='-205,80,10,160' x='-210' y='80' z='400' gridSqs='1,11,21'/>
+	<pos frame='2' bounds='-205,120,10,160' x='-210' y='120' z='400' gridSqs='1,11,21,31'/>
+	<pos frame='3' bounds='-205,80,10,160' x='-210' y='80' z='400' gridSqs='1,11,21'/>
+	<pos frame='4' bounds='-205,120,10,160' x='-210' y='120' z='400' gridSqs='1,11,21,31'/>
+	<pos frame='5' bounds='-205,80,10,160' x='-210' y='80' z='400' gridSqs='1,11,21'/>
+	<pos frame='6' bounds='-205,120,10,160' x='-210' y='120' z='400' gridSqs='1,11,21,31'/>
+	
+	<pos frame='7' bounds='190,80,10,160' x='210' y='80' z='400' gridSqs='10,20,30'/>
+	<pos frame='8' bounds='190,120,10,160' x='210' y='120' z='400' gridSqs='10,20,30,40'/>
+	<pos frame='9' bounds='190,80,10,160' x='210' y='80' z='400' gridSqs='10,20,30'/>
+	<pos frame='10' bounds='190,120,10,160' x='210' y='120' z='400' gridSqs='10,20,30,40'/>
+	<pos frame='11' bounds='190,80,10,160' x='210' y='80' z='400' gridSqs='10,20,30'/>
+	<pos frame='12' bounds='190,120,10,160' x='210' y='120' z='400' gridSqs='10,20,30,40'/>
+	
+</itemConfig>

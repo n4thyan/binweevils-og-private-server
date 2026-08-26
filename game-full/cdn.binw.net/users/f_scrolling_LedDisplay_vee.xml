@@ -1,0 +1,7 @@
+<itemConfig name='f_scrolling_LedDisplay_vee' type='furniture' path='assetsNest/f_scrolling_LedDisplay_vee2.swf' thumb='assetsNest/f_scrolling_LedDisplay_vee_thumb.swf' h='70' boundType='rect' clickable='yes'>
+	<pos frame='1' bounds='-120,320,240,80' x='-120' y='170' z='320' ry='0' gridSqs='33,34,35,36,37,38'/>
+	<pos frame='2' bounds='-120,240,240,80' x='-120' y='170' z='240' ry='0' gridSqs='23,24,25,26,27,28'/>
+	<pos frame='3' bounds='-160,180,240,80' x='-120' y='170' z='160' ry='0' gridSqs='13,14,15,16,17,18'/>
+	<pos frame='4' bounds='-80,260,240,80' x='-120' y='170' z='80' ry='0' gridSqs='3,4,5,6,7,8'/>
+	<pos frame='5' bounds='-20,340,240,80' x='-120' y='170' z='20' ry='0' gridSqs='43,44,45,46,47,48'/>
+</itemConfig>

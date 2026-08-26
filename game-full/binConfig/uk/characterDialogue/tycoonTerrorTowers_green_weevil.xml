@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<character defaultCloseAnimFrame="rest" direction="-1">	
+	<tasks>
+		<task description="roomCompleted" questControlID="601" />		
+	</tasks>	
+	
+	<phase num="0" animFrame="talk_in" >
+		<text>Help!</text>
+	</phase>			
+	
+	<phase num="1" animFrame="talk_in"  questControlPoint="roomCompleted">
+		<text>Thank you agent. You are my hero!</text>
+	</phase>	
+	
+</character>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<character defaultCloseAnimFrame="rest" direction="1">
+	<tasks>		
+		<task description="generatorFixed" questControlID="2707" />
+		<task description="generatorOn" questControlID="2708" />
+		<task description="thingComplete" questControlID="2710" />
+		<task description="thingInRoof" questControlID="2711" />
+		<task description="thingIsAwake" questControlID="2712" />
+		<task description="rewardMachineActive" questControlID="2713" />
+		<task description="missionComplete" questControlID="2799" />		
+	</tasks>
+	
+	<phase num="0" animFrame="talk_in" >
+		<text>Newton's ghost! What are you doing up here? My generator is broken, meet me down there so we can fix it!</text>
+		<userResponse>			
+			<option progressTo="-1">But I... aw, okay.</option>
+		</userResponse>
+	</phase>
+			
+	<phase num="1" animFrame="tallk_3"  questControlPoint="generatorFixed">
+		<text width="500">Hey... I still need your help inside!</text>
+		<userResponse>
+			<option progressTo="-1">Fine, fine!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="2" animFrame="tallk_3"  questControlPoint="thingInRoof">
+		<text width="500">Glad you could make it! Watch out for lightning bolts!</text>		
+		<userResponse>
+			<option progressTo="3">A lil' lightning doesn't scare me!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="3" animFrame="tallk_3" sticky="1" >
+		<text width="500">The energy from the storm should be able to power this machine. Try pulling those levers over there, we'll need just the right combination to make it work!</text>		
+		<userResponse>
+			<option progressTo="-1">I'll do my best!</option>
+			<option progressTo="-1">This... seems... unsafe...</option>
+		</userResponse>
+	</phase>
+
+	<phase num="4" animFrame="tallk_4"  questControlPoint="thingIsAwake">
+		<text width="500">IT'S... ALIIIIIIIVE!!!! Oh? You're still here? I've added a special TINK figure to your My Stuff Box. What's that? You want MORE rewards?</text>
+		<userResponse>
+			<option progressTo="5">That'd be great!</option>
+			<option progressTo="5">Yes please!</option>
+			<option progressTo="5">Gimme, gimme!</option>
+		</userResponse>
+	</phase>	
+	<phase num="5" animFrame="tallk_4"  sticky="1" >
+		<text width="500">Great Scott! The machine containing your rewards is stuck! Don't worry, I'll meet you back in the first room with the instructions to fix it!</text>
+		<userResponse>
+			<option progressTo="-1">Down I go!</option>			
+		</userResponse>
+	</phase>
+	<phase num="6" animFrame="tallk_4"  questControlPoint="rewardMachineActive">
+		<text width="500">The machine is working! It's reward time! You can also click on one of the slime pods to collect a replica item for your nest!</text>
+		<userResponse>			
+			<option progressTo="-1">BIN-TASTIC!</option>
+		</userResponse>
+	</phase>	
+	
+	<phase num="7" animFrame="tallk_4"  questControlPoint="missionComplete">
+		<text width="500">Einstein's underpants, you've done it! Enjoy your rewards!</text>
+		<userResponse>
+			<option progressTo="-1">Will do!</option>
+			<option progressTo="-1">See you next mission. Er, next time!</option>
+			
+		</userResponse>
+	</phase>
+	
+	<phase num="99" animFrame="tallk_3">
+		<text width="500">I can see found my ultra super secret contraption... But it'll only work once you've helped me downstairs!</text>
+		<userResponse>
+			<option progressTo="-1">Sure...</option>			
+		</userResponse>
+	</phase>
+		
+</character>

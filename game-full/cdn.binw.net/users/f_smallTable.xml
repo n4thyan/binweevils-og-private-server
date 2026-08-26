@@ -1,0 +1,25 @@
+<itemConfig name='f_smallTable' type='furniture' path='assetsNest/f_smallTable.swf' thumb='assetsNest/f_smallTable_thumb.swf' h='34' boundType='rect' numSpots='1'>
+	<pos frame='1' bounds='-194,80,36,60' x='-170' y='0' z='140' gridSqs='1'/>
+	<pos frame='2' bounds='-112,80,36,60' x='-100' y='0' z='110' gridSqs='3,4'/>
+	<pos frame='3' bounds='-18,80,36,60' x='0' y='0' z='80' gridSqs='5,6'/>
+	<pos frame='4' bounds='68,80,36,60' x='100' y='0' z='110' gridSqs='7,8'/>
+	<pos frame='5' bounds='158,80,36,60' x='170' y='0' z='140' gridSqs='10'/>
+
+	<pos frame='6' bounds='-194,160,36,60' x='-170' y='0' z='220' gridSqs='11'/>
+	<pos frame='7' bounds='-112,160,36,60' x='-100' y='0' z='190' gridSqs='13,14'/>
+	<pos frame='8' bounds='-18,160,36,60' x='0' y='0' z='160' gridSqs='15,16'/>
+	<pos frame='9' bounds='68,160,36,60' x='100' y='0' z='190' gridSqs='17,18'/>
+	<pos frame='10' bounds='158,160,36,60' x='170' y='0' z='220' gridSqs='20'/>
+
+	<pos frame='11' bounds='-194,244,36,60' x='-170' y='0' z='304' gridSqs='21'/>
+	<pos frame='12' bounds='-112,244,36,60' x='-100' y='0' z='274' gridSqs='23,24'/>
+	<pos frame='13' bounds='-18,244,36,60' x='0' y='0' z='244' gridSqs='25,26'/>
+	<pos frame='14' bounds='68,244,36,60' x='100' y='0' z='274' gridSqs='27,28'/>
+	<pos frame='15' bounds='158,244,36,60' x='170' y='0' z='304' gridSqs='30'/>
+
+	<pos frame='16' bounds='-194,335,36,60' x='-170' y='0' z='395' gridSqs='31'/>
+	<pos frame='17' bounds='-112,335,36,60' x='-100' y='0' z='365' gridSqs='33,34'/>
+	<pos frame='18' bounds='-18,335,36,60' x='0' y='0' z='335' gridSqs='35,36'/>
+	<pos frame='19' bounds='68,335,36,60' x='100' y='0' z='365' gridSqs='37,38'/>
+	<pos frame='20' bounds='158,335,36,60' x='170' y='0' z='395' gridSqs='40'/>
+</itemConfig>

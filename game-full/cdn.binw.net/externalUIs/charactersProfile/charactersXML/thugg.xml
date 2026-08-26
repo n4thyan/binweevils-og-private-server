@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<name>THUGG</name>
+	<!--<name><![CDATA[<font size="15">garden <br/>inspector</font>]]></name>-->
+	<buddies>80,80,80</buddies>
+	<family>14</family>
+	<position_in_family>3</position_in_family>
+	<profile_picture>thugg.png</profile_picture>
+	<photos>
+		<photo>
+			<url>thugg1.png</url>
+			<thumb_url>thugg1_thumb.png</thumb_url>
+			<capture>We serve the WEB</capture>
+		</photo>
+		<photo>
+			<url>thugg2.png</url>
+			<thumb_url>thugg2_thumb.png</thumb_url>
+			<capture>You copying me?!</capture>
+		</photo>
+		<photo>
+			<url>thugg3.png</url>
+			<thumb_url>thugg3_thumb.png</thumb_url>
+			<capture>Arrrgh! Those meddling SWS agents!</capture>
+		</photo>
+	</photos>
+	<fun_moment>
+		<url>thugg.png</url>
+		<text>The time Lady Wawa bit Weevil X and he shrieked like a little girl!</text>
+	</fun_moment>
+	<about>
+		<likes>Slime Jelly sandwiches</likes>
+		<dislikes>Buzzing flies!</dislikes>
+		<fun_fact>Thuggs look so much alike they can’t even tell each other apart!</fun_fact>
+		<text>This grumpy guard is a minion of the WEB – the Weevil Extermination Bureau! Serving the arch-enemies of the Secret Weevil Service, Thugg doesn’t exactly have a mind of his own.  No one is sure which Thugg is the real Thugg, since there are hundreds of clones of him!</text>
+		<interesting_fact>Never seen smiling</interesting_fact>
+		<pic_url>thugg.png</pic_url>
+	</about>
+</data>

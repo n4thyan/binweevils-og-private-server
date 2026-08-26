@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xml>
+  <level1 ballLocationX="-340" ballLocationY="-190" pocketLocationX="275" pocketLocationY="-129" maxTime="100" h="28" w="800" L="500" t="70" innerWallAlpha="0.5" innerWallClr="13369395" bombClr="13369344" pnClr="13369344" outerWallsClr="26265" floorClr="3407871">
+    <innerWalls>
+      <wall>
+        <point x="66 " y="-85"/>
+        <point x="-199 " y="-85"/>
+        <point x="-199 " y="129"/>
+        <point x="-312 " y="129"/>
+        <point x="-312 " y="-90"/>
+      </wall>
+      <wall>
+        <point x="356 " y="-46"/>
+        <point x="258 " y="-46"/>
+        <point x="258 " y="167"/>
+        <point x="-101 " y="167"/>
+        <point x="-101 " y="61"/>
+        <point x="-259 " y="61"/>
+        <point x="-259 " y="-193"/>
+      </wall>
+      <wall>
+        <point x="22 " y="-189"/>
+        <point x="22 " y="33"/>
+        <point x="118 " y="33"/>
+        <point x="118 " y="-162"/>
+        <point x="310 " y="-162"/>
+        <point x="310 " y="-97"/>
+        <point x="189 " y="-97"/>
+        <point x="189 " y="103"/>
+        <point x="-45 " y="103"/>
+        <point x="-45 " y="-11"/>
+        <point x="-139 " y="-11"/>
+      </wall>
+      <wall>
+        <point x="-54 " y="-149"/>
+        <point x="-313 " y="-149"/>
+      </wall>
+      <wall>
+        <point x="-150 " y="215"/>
+        <point x="-150 " y="109"/>
+      </wall>
+      <wall>
+        <point x="314 " y="215"/>
+        <point x="314 " y="4"/>
+      </wall>
+    </innerWalls>
+    <elements>
+      <bomb x="48" y="8" id="-1" loc="-1" delay="2000" activeDur="1500" inactiveDur="800" w="0" h="0" alpha_incr="0"/>
+      <collectible x="-230" y="30"/>
+      <collectible x="341" y="118"/>
+      <collectible x="94" y="12"/>
+      <pin x="-15" y="-150"/>
+      <hole rightEdgeX="-155" leftEdgeX="-195" bottomEdgeY="211" topEdgeY="171"/>
+    </elements>
+  </level1>
+</xml>

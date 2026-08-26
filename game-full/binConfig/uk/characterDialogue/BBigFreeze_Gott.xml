@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<character defaultCloseAnimFrame="rest" direction="-1">
+	<tasks>
+		<task description="missionStarted" questControlID="2800" />
+		<task description="gotBingsList" questControlID="2840" />
+		<task description="gotPresent" questControlID="2801" />
+		<task description="gotScanner" questControlID="2843" />		
+		<task description="missionComplete" questControlID="2899" />
+		
+	</tasks>
+	
+	<phase num="0" animFrame="talk_in" >
+		<text>I'm just here delivering presents! You should chat to Bing!</text>
+		<userResponse>
+			<option progressTo="-1">Sure thing Gott, thanks!</option>
+		</userResponse>
+	</phase>	
+	
+	<phase num="1" animFrame="talk_in"  questControlPoint="gotBingsList">
+		<text width="500">Hi there! Want some presents? I have some leftover deliveries in my satchel.</text>
+		<userResponse>
+			<option progressTo="3" fireEvent="binsBigFreeze_getGottPresent">Yes please! These will be perfect for Bing's tree.</option>
+			<option progressTo="2">What sort of presents are we talking here?</option>			
+		</userResponse>
+	</phase>	
+	
+	<phase num="2" animFrame="talk_in" >
+		<text>Some mouldy cheese, a fart-in-a-jar, an old sock, a haunted potato, a rainbow unicorn poop...</text>
+		<userResponse>
+			<option progressTo="-1">Err, no thanks, I think I'll give those a miss!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="3" animFrame="talk_in" questControlPoint="gotPresent">
+		<text>Oh... I found this too. It's an SWS Snow Scanner, might come in handy!</text>
+		<userResponse>
+			<option progressTo="-1" fireEvent="binsBigFreeze_getGottScanner">Cool! Thanks a lot, Gott!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="4" animFrame="talk_in" questControlPoint="gotScanner" >
+		<text>Good luck with the mission! I'm going to CHILL here for a while. He he he.</text>
+		<userResponse>
+			<option progressTo="-1">Yeeeah... OK... Have fun Gott!</option>
+		</userResponse>
+	</phase>
+	<phase num="5" animFrame="talk_in" questControlPoint="missionComplete" >
+		<text>So you fixed the out of control Snow Machine? Nice one!</text>
+		<userResponse>
+			<option progressTo="-1">Thanks Gott!</option>
+		</userResponse>
+	</phase>
+
+	
+</character>

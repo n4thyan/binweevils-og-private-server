@@ -1,0 +1,13 @@
+<itemConfig name='f_happy_new_year_2' type='furniture' path='assetsNest/f_happy_new_year_2.swf' thumb='assetsNest/f_happy_new_year_2_thumb.swf' h='120' boundType='rect' >
+
+	<pos frame='1' bounds='-200,240,2,160' x='-200' y='80' z='240' ry='0' gridSqs='1,11'/>
+	<pos frame='2' bounds='-200,401,2,160' x='-200' y='80' z='401' ry='0' gridSqs='21,31'/>
+	
+	<pos frame='3' bounds='-200,402,160,2' x='-200' y='80' z='402' ry='0' gridSqs='31,32,33,34'/>
+	<pos frame='4' bounds='-80,400,160,2' x='-80' y='80' z='400' ry='0' gridSqs='34,35,36,37'/>
+	<pos frame='5' bounds='40,403,160,2' x='40' y='80' z='403' ry='0' gridSqs='37,38,39,40'/>	
+	
+	<pos frame='6' bounds='200,405,2,160' x='200' y='80' z='405' ry='0' gridSqs='30,40'/>
+	<pos frame='7' bounds='200,240,2,160' x='200' y='80' z='240' ry='0' gridSqs='10,20'/>
+
+</itemConfig>

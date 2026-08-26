@@ -1,0 +1,14 @@
+<itemConfig name='f_winterChandelier' type='furniture' path='assetsNest/f_winterChandelier.swf' thumb='assetsNest/f_winterChandelier_thumb.swf' h='79' boundType='rect' clickable='yes'>
+
+	<pos frame='1' bounds='-120,80,80,80' x='-120' y='160' z='80' ry='0' gridSqs='3,4'/>
+	<pos frame='2' bounds='-120,240,80,80' x='-120' y='160' z='240' ry='0' gridSqs='23,24'/>
+
+	<pos frame='3' bounds='-40,80,80,80' x='-40' y='160' z='80' ry='0' gridSqs='5,6'/>
+	<pos frame='4' bounds='-40,240,80,80' x='-40' y='160' z='240' ry='0' gridSqs='25,26'/>
+
+	<pos frame='5' bounds='40,80,80,80' x='40' y='160' z='80' ry='0' gridSqs='7,8'/>
+	<pos frame='6' bounds='40,240,80,80' x='40' y='160' z='240' ry='0' gridSqs='27,28'/>
+
+	
+	
+</itemConfig>

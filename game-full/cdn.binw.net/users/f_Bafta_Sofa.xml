@@ -1,0 +1,6 @@
+<itemConfig name='f_Bafta_Sofa' type='furniture' path='assetsNest/f_Bafta_Sofa.swf' thumb='assetsNest/f_Bafta_Sofa_thumb.swf' h='80'  boundType='rect' numSpots='0' clickable='yes'>
+
+	<pos frame='1' bounds='-200,321,240,80' x='-120' y='0' z='380' ry='0' gridSqs='31,32,33,34,35,36'/>
+	<pos frame='2' bounds='-120,321,240,80' x='-40' y='0' z='380' ry='0' gridSqs='33,34,35,36,37,38'/>
+	<pos frame='3' bounds='-40,321,240,80' x='40' y='0' z='380' ry='0' gridSqs='35,36,37,38,39,40'/>
+</itemConfig>

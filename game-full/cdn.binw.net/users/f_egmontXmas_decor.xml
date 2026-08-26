@@ -1,0 +1,16 @@
+<itemConfig name='f_egmontXmas_decor' type='furniture' path='assetsNest/f_egmontXmas_decor.swf' thumb='assetsNest/f_egmontXmas_decor_thumb.swf' h='79' boundType='rect' clickable='no'>
+	
+	
+	<pos frame='1' bounds='' x='0' y='120' z='120' ry='0' gridSqs='1'/>
+	<pos frame='2' bounds='' x='0' y='120' z='200' ry='0' gridSqs='2'/>
+	<pos frame='3' bounds='' x='0' y='120' z='228' ry='0' gridSqs='3'/>
+	<pos frame='4' bounds='' x='0' y='120' z='360' ry='0' gridSqs='4'/>
+	
+	<!--
+	<pos frame='1' bounds='-200,110,400,20' x='0' y='120' z='120' ry='0' gridSqs='1,2,3,4,5,6,7,8,9,10'/>
+	<pos frame='2' bounds='-200,190,400,20' x='0' y='120' z='200' ry='0' gridSqs='1,2,3,4,5,6,7,8,9,10'/>
+	<pos frame='3' bounds='-200,270,400,20' x='0' y='120' z='228' ry='0' gridSqs='1,2,3,4,5,6,7,8,9,10'/>
+	<pos frame='4' bounds='-200,350,400,20' x='0' y='120' z='360' ry='0' gridSqs='1,2,3,4,5,6,7,8,9,10'/>
+	
+	-->
+</itemConfig>

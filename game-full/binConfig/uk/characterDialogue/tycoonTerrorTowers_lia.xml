@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<character defaultCloseAnimFrame="rest" direction="-1">	
+	<tasks>
+		<task description="machineDestroyed" questControlID="607" />		
+	</tasks>	
+	
+	<phase num="0" animFrame="talk_in" >
+		<text width="300">Thank goodness help is finally here!  My name is Lia. Are you here to rescue us?</text>
+		<userResponse>
+			<option progressTo="1">Don’t worry, Lia. I’ll have you out in a jiffy!</option>
+		</userResponse>
+	</phase>	
+		
+	<phase num="1" animFrame="talk_in" sticky="1" >
+		<text width="300">Listen, I have something that might help you.</text>		
+		<userResponse>	
+			<option progressTo="2">You have a pair of bolt cutters?</option>
+			<option progressTo="2">I thought a tissue might suffice!</option>
+			<option progressTo="2">You have a blowtorch?</option>
+		</userResponse>
+	</phase>	
+
+	<phase num="2" animFrame="talk_in" sticky="1" >
+		<text width="300">I built a gadget that might be able to get us out of here, and I just happened to have it with me!</text>
+		<userResponse>
+			<option progressTo="3">Well, tell me where I can find it!</option>
+			<option progressTo="3">I hope it’s not in that web with you.  I’ll never get you out if it is!</option>
+		</userResponse>
+	</phase>	
+	
+	<phase num="3" animFrame="talk_in" >
+		<text width="300">It's hidden over there... inside the claw machine.</text>
+		<userResponse>
+			<option progressTo="4">Funny place to put it!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="4" animFrame="talk_in"  >
+		<text width="300">I heard those thugs coming!  I didn’t want them getting a hold of it.</text>
+		<userResponse>
+			<option progressTo="5">Now how am I supposed to get in there?</option>
+			<option progressTo="5">Do you have any idea how to get the gadget out?</option>
+		</userResponse>
+	</phase>	
+			
+	<phase num="5" animFrame="talk_in"  sticky="1" >
+		<text width="300">The floor looks shaky under that vending machine on the back wall.</text>
+		<userResponse>
+			<option progressTo="6">What do you mean?</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="6" animFrame="talk_in"  sticky="1" >
+		<text width="300">Trust me, try filling up the vending machine with water, it should do something to help!</text>
+		<userResponse>
+			<option progressTo="7">I'm not so sure!</option>
+			<option progressTo="-1">I'll give it a go!</option>
+		</userResponse>
+	</phase>
+
+	<phase num="7" animFrame="talk_in"  sticky="1" >
+		<text width="300">Trust me! Get shooting... </text>
+	</phase>	
+	
+	<phase num="8" animFrame="talk_in" questControlPoint="machineDestroyed">
+		<text width="300">Well done!  Now load my new super water gun and shoot the web!</text>
+		<textOnReturn width="300">Great agent. Now please cut the me down!</textOnReturn>
+	</phase>
+		
+</character>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	
+	<character refName="Guard" charName="Guard" refAnim="Guard_mc">
+		<stage id="0" animation="open">
+			<text>Greetings, courageous agent //username//. To continue on this path, you must first brave the darkness and find the 4 missing shield pieces. Only a full shield will unlock this door.</text>
+		</stage>
+	</character>
+		
+	<character refName="Gam" charName="Gam" refAnim="Gam_mc">
+		<stage id="0" animation="open">
+			<text>Please, my dragon friend here desperately needs his teeth cleaned. You need to get very close each tooth to clean them. Only then will you be able to use the toothbrush.</text>
+			<response progressTo="2">Okay, you can count on me!</response>
+			<response progressTo="1">Won't I get too hot?</response>
+			<response progressTo="1">What about his fiery breath?</response>
+		</stage>
+		<stage id="1" animation="open">
+			<text>Don’t worry, if you get too hot, my guard here will cool you down. But be warned... it gets very hot at the back of his mouth!</text>
+			<response progressTo="2">Okay, you can count on me!</response>
+		</stage>
+		<stage id="2" animation="open">
+			<text>Stay cool, and good luck!</text>
+		</stage>
+	</character>
+</data> 
+
+

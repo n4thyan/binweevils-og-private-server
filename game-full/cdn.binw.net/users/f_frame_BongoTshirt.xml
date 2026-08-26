@@ -1,0 +1,13 @@
+<itemConfig name='f_frame_BongoTshirt' type='furniture' path='assetsNest/f_frame_BongoTshirt.swf' thumb='assetsNest/f_frame_BongoTshirt_thumb.swf' h='75' boundType='rect'>
+	<pos frame='1' bounds='-200,80,0,1' x='-200' y='80' z='160' ry='-90' gridSqs='1,11'/>
+	<pos frame='2' bounds='-200,240,0,1' x='-200' y='80' z='320' ry='-90' gridSqs='21,31'/>
+	
+	<pos frame='3' bounds='-160,400,0,1' x='-160' y='80' z='400' ry='0' gridSqs='31,32'/>
+	<pos frame='4' bounds='-80,400,0,1' x='-160' y='80' z='400' ry='0' gridSqs='33,34'/>
+	<pos frame='5' bounds='-0,400,0,1' x='-160' y='80' z='400' ry='0' gridSqs='35,36'/>
+	<pos frame='6' bounds='80,400,0,1' x='-160' y='80' z='400' ry='0' gridSqs='37,38'/>
+	<pos frame='7' bounds='160,400,0,1' x='-160' y='80' z='400' ry='0' gridSqs='39,40'/>
+	
+	<pos frame='8' bounds='200,240,0,1' x='200' y='80' z='320' ry='90' gridSqs='40,30'/>
+	<pos frame='9' bounds='200,80,0,1' x='200' y='80' z='160' ry='90' gridSqs='20,10'/>
+</itemConfig>

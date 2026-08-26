@@ -1,0 +1,6 @@
+# Map bare extensionless endpoints (what the SWF requests, e.g. /user, /session_start)
+# to their .php files, matching the pattern already used in weevil/ and rewards/.
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [L]

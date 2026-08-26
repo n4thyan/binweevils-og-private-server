@@ -1,0 +1,11 @@
+<itemConfig name='f_candy_window' type='furniture' path='assetsNest/f_candy_window.swf' thumb='assetsNest/f_candy_window_thumb.swf' h='120' boundType='0' clickable='no'>
+	<pos frame='1' bounds='' x='-120' y='120' z='450' ry='0' gridSqs='31,32,33,34'/>
+	<pos frame='2' bounds='' x='-40' y='120' z='450' ry='0' gridSqs='33,34,35,36'/>
+	<pos frame='3' bounds='' x='40' y='120' z='450' ry='0' gridSqs='35,36,37,38'/>
+	<pos frame='4' bounds='' x='120' y='120' z='450' ry='0' gridSqs='37,38,39,40'/>
+	
+	<pos frame='5' bounds='' x='-120' y='40' z='450' ry='0' gridSqs='31,32,33,34'/>
+	<pos frame='6' bounds='' x='-40' y='40' z='450' ry='0' gridSqs='33,34,35,36'/>
+	<pos frame='7' bounds='' x='40' y='40' z='450' ry='0' gridSqs='35,36,37,38'/>
+	<pos frame='8' bounds='' x='120' y='40' z='450' ry='0' gridSqs='37,38,39,40'/>
+</itemConfig>

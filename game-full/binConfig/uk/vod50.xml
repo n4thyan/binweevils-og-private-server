@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<vod>
+
+<!-- ======================================================    ads run as features in pods     ================================================== -->
+
+	<channel id="adverts" inMenu="false">
+		<show>
+			<title><![CDATA[Rango Trailer]]></title>
+			<flv>rangoTrailer</flv>
+			<series num="1">
+				<episode num="1">	
+				<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+			</series>
+		</show>	
+	</channel>	
+		
+	
+	
+	
+	<!-- ==========================================================     VOD ADS     =========================================================== -->
+	
+	<ads>
+	
+		<!--  
+			<screen id="1">  = example of 3 ads in one screen
+				<ad><![CDATA[Diary of a Wimpy Kid]]></ad>
+				<ad><![CDATA[Ravin Rabbids Xmas]]></ad>
+				<ad><![CDATA[Christmas Bonus]]></ad>
+			</screen>
+			
+			template ad to copy:
+			<ad><![CDATA[]]></ad>
+			
+			If there are no ads in a location, either comment out the entire location or the <ad> parts inside that location
+		-->
+		
+		<screens>
+			<screen id="1">
+
+				<!--<ad><![CDATA[MyMonopolyPreRoll]]></ad>-->
+	
+			</screen>
+			<screen id="2">
+
+				<!--<ad><![CDATA[MyMonopolyPreRoll]]></ad>-->
+
+			</screen>
+			<screen id="3">
+
+				<!--<ad><![CDATA[Bumpeez]]></ad>-->
+				<!--<ad><![CDATA[Zookeeper]]></ad>-->
+				<!--<ad><![CDATA[MrPoppersPenguins]]></ad>-->
+				<!--<ad><![CDATA[Smurfs]]></ad>-->
+	
+			</screen>
+			<screen id="4">
+
+
+				<!--<ad><![CDATA[MyMonopolyPreRoll]]></ad>-->
+				
+			</screen>
+			<screen id="pod1">
+			
+			<ad><![CDATA[Binweevils]]></ad>
+
+			</screen>
+			<screen id="pod2">
+				
+				<ad><![CDATA[Binweevils]]></ad>
+
+			</screen>
+			<screen id="pod3">
+
+				<ad><![CDATA[Binweevils]]></ad>
+
+			</screen>
+			<screen id="tycoonTowers"> 
+
+				<!--<ad><![CDATA[MyMonopolyPreRoll]]></ad>-->
+
+			</screen>
+			<screen id="homeCinema">
+
+				<!--<ad><![CDATA[MyMonopolyPreRoll]]></ad>-->
+
+			</screen>
+
+			
+		</screens>
+		
+		
+		<!--  
+			> flv names do not need the .flv extension; it is understood 
+			> tracking is taken care of by the vod system
+		  	  a '/click/' is added to the end of the trackingID when a user clicks on the ad
+		-->
+		
+		<!--
+		DO NOT DELETE - EXAMPLE
+		
+		<ad id="rabbids">   = gets put into CDATA
+			<campaignName><![CDATA[rabbidsTravel]]></campaignName>   = part of the tracking
+			<flv>rabbidsDec2010</flv>   = FLV name
+			<link><![CDATA[http://play.binweevils.com/php/redirect_cinema.php?loc=http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=tf%26c=20%26mc=click%26pli=1962716%26PluID=0%26ord=[timestamp]]]>
+			</link>		
+		</ad>
+		-->
+
+		<!--		
+		<ad id="smurfs2_trailer">
+		<campaignName><![CDATA[smurfs2_trailer]]></campaignName>
+		<flv> smurfs2_trailer </flv>
+		<link><![CDATA[http://play.binweevils.com/php/redirect_cinema.php?loc=http://servedby.flashtalking.com/click/1/27933;633456;369262;211;0/?url=http://www.smurfs2.co.uk/]]></link>		
+		
+		</ad>
+		-->
+
+		<ad id="NerfZombiePreRoll">
+		<campaignName><![CDATA[NerfZombiePreRoll]]></campaignName>
+		<flv> NerfZombiePreRoll </flv>
+		<link><![CDATA[http://play.binweevils.com/php/redirect_cinema.php?loc=http://ad.doubleclick.net/ddm/clk/285231486;112203625;w]]></link>
+
+		</ad>
+
+		<ad id="NerfRebelle_PreRoll_1">
+		<campaignName><![CDATA[NerfRebelle_PreRoll_1]]></campaignName>
+		<flv> NerfRebelle_PreRoll_1 </flv>
+		<link><![CDATA[http://play.binweevils.com/php/redirect_cinema.php?loc=http://ad.doubleclick.net/ddm/clk/285576396;110392877;y]]></link>
+
+		</ad>
+
+
+		<ad id="SUPERSMASHBROS_30_PreRoll">
+		<campaignName><![CDATA[SUPERSMASHBROS_30_PreRoll]]></campaignName>
+		<flv> SUPERSMASHBROS_30_PreRoll </flv>
+		<link><![CDATA[http://play.binweevils.com/php/redirect_cinema.php?loc=http%3A%2F%2Fservedby.flashtalking.com%2Fclick%2F1%2F38589%3B955033%3B50126%3B211%3B0%2F%3Fft_width%3D1%26ft_height%3D1%26url%3D5847242]]></link>		
+		
+		</ad>
+
+		<ad id="MyMonopolyPreRoll">
+		<campaignName><![CDATA[MyMonopolyPreRoll]]></campaignName>
+		<flv> MyMonopolyPreRoll </flv>
+		<link><![CDATA[http://play.binweevils.com/php/redirect_cinema.php?loc=http://ad.doubleclick.net/ddm/clk/285783125;110239402;y]]></link>		
+		
+		</ad>
+
+
+		<ad id="MyLittlePonyWTP20s">
+		<campaignName><![CDATA[MyLittlePonyWTP20s]]></campaignName>
+		<flv> MyLittlePonyWTP20s </flv>
+		<link><![CDATA[http://play.binweevils.com/php/redirect_cinema.php?loc=http://amzn.to/10KkSN7]]></link>		
+		
+		</ad>
+
+		<ad id="SkylandersTrapTeam-NewPreRoll10thOctLaunch">
+		<campaignName><![CDATA[SkylandersTrapTeam-NewPreRoll10thOctLaunch]]></campaignName>
+		<flv> SkylandersTrapTeam-NewPreRoll10thOctLaunch </flv>
+		<link><![CDATA[http://play.binweevils.com/php/redirect_cinema.php?loc=http%3A%2F%2Fbs.serving-sys.com%2FBurstingPipe%2FadServer.bs%3Fcn%3Dtf%26c%3D20%26mc%3Dclick%26pli%3D11081586%26PluID%3D0%26ord%3D%5Btimestamp%5D]]></link>		
+	
+		
+		</ad>
+		
+		<ad id="Skylanders_swapforce_pre_roll">
+		<campaignName><![CDATA[Skylanders_swapforce_pre_roll]]></campaignName>
+		<flv> Skylanders_swapforce_pre_roll </flv>
+		<link><![CDATA[http://play.binweevils.com/php/redirect_cinema.php?loc=http%3A%2F%2Fbs.serving-sys.com%2FBurstingPipe%2FadServer.bs%3Fcn%3Dtf%26c%3D20%26mc%3Dclick%26pli%3D8507100%26PluID%3D0%26ord%3D%5Btimestamp%5D]]></link>		
+		
+	
+		</ad>
+
+		<ad id="Teksta_final">
+		<campaignName><![CDATA[Teksta_final]]></campaignName>
+		<flv> Teksta_final </flv>
+		<link><![CDATA[http://play.binweevils.com/php/redirect_cinema.php?loc=http://www.character-online.com/products/Teksta/]]></link>		
+	
+		
+		</ad>
+				
+
+	</ads>	
+	
+	
+	<!-- ==========================================================     PODS     =========================================================== -->
+	
+	<!-- // startDate has now gone and comes from db dates are now in the format 2012-05-03 -->
+	<pods>	
+		<pod num="1" locID="177">
+			<!--	
+			<show>Vegetable Wrestling Federation</show>	
+			<geo>uk,us,ca</geo>			
+			<secure>true</secure>
+			<adAsFeature>false</adAsFeature>
+			<daysOffset>10</daysOffset>
+			-->
+			
+			<show>Binweevils</show>		
+			<geo>all</geo>		
+			<secure>false</secure>
+			<adAsFeature>false</adAsFeature>
+			<daysOffset>0</daysOffset>
+		</pod>
+		<pod num="2" locID="178">
+			<!-- 'VideoPod2' outside rum's airport -->
+			<show>Binweevils</show>		
+			<geo>all</geo>		
+			<secure>false</secure>
+			<adAsFeature>false</adAsFeature>
+			<daysOffset>0</daysOffset>
+		</pod>
+		<!-- 'VideoPod3' outside shopping mall -->
+		<pod num="3" locID="179">
+		<!--	
+			<show>Vegetable Wrestling Federation</show>	
+			<geo>uk,us,ca</geo>			
+			<secure>true</secure>
+			<adAsFeature>false</adAsFeature>
+			<daysOffset>10</daysOffset>
+			-->
+			
+			<show>Binweevils</show>		
+			<geo>all</geo>		
+			<secure>false</secure>
+			<adAsFeature>false</adAsFeature>
+			<daysOffset>0</daysOffset>
+			
+			
+		</pod>
+	</pods>
+	
+	<countryCodes>
+		<label id="uk">the UK</label>
+		<label id="us">the USA</label>
+		<label id="ca">Canada</label>
+	</countryCodes>
+
+</vod>
+
+
+<!--
+<episode num="">
+	<title><![CDATA[]]></title>
+	<synopsis><![CDATA[]]></synopsis>
+</episode>	
+-->

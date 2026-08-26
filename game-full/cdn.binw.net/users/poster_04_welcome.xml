@@ -1,0 +1,9 @@
+<itemConfig name='poster_04_welcome' type='furniture' path='assetsNest/poster_04_welcome.swf' thumb='assetsNest/poster_04_welcome_thumb.swf' h='75' boundType='rect'>
+	<pos frame='1' bounds='-201,404,0,160' x='-200' y='245' z='503' ry='-90' gridSqs='1,11'/>
+	<pos frame='2' bounds='-201,403,0,160' x='-200' y='245' z='502' ry='-90' gridSqs='21,31'/>
+	<pos frame='3' bounds='-200,402,160,0' x='-120' y='245' z='501' ry='0' gridSqs='31,32,33,34'/>
+	<pos frame='4' bounds='-60,401,160,0' x='0' y='245' z='500' ry='0' gridSqs='34,35,36,37'/>
+	<pos frame='5' bounds='50,402,160,0' x='120' y='245' z='501' ry='0' gridSqs='37,38,39,40'/>
+	<pos frame='6' bounds='201,403,0,160' x='200' y='245' z='502' ry='90' gridSqs='30,40'/>
+	<pos frame='7' bounds='201,404,0,160' x='200' y='245' z='503' ry='90' gridSqs='10,20'/>
+</itemConfig>

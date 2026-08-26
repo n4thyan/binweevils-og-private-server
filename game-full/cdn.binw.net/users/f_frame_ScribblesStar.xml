@@ -1,0 +1,13 @@
+<itemConfig name='f_frame_ScribblesStar' type='furniture' path='assetsNest/f_frame_ScribblesStar.swf' thumb='assetsNest/f_frame_ScribblesStar_thumb.swf' h='75' boundType='rect'>
+	
+	<pos frame='1' bounds='-200,80,0,1' x='-200' y='80' z='160' ry='-90' gridSqs='1,11'/>
+	<pos frame='2' bounds='-200,240,0,1' x='-200' y='80' z='320' ry='-90' gridSqs='21,31'/>
+	
+	<pos frame='3' bounds='-200,400,80,100' x='-160' y='120' z='499' ry='0' gridSqs='31,32,33,34'/>
+	<pos frame='4' bounds='-80,400,0,100' x='-40' y='120' z='499' ry='0' gridSqs='34,35,36,37'/>
+	<pos frame='5' bounds='80,400,0,100' x='80' y='120' z='499' ry='0' gridSqs='37,38,39,40'/>
+	
+	<pos frame='6' bounds='200,240,0,1' x='200' y='80' z='320' ry='90' gridSqs='40,30'/>
+	<pos frame='7' bounds='200,80,0,1' x='200' y='80' z='160' ry='90' gridSqs='20,10'/>
+	
+</itemConfig>

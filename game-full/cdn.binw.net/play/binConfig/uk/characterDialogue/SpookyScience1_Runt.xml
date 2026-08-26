@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<character defaultCloseAnimFrame="rest" direction="1">	
+	<tasks>			
+		<task description="placeTeslaPipe" questControlID="2705" />
+		<task description="openWall" questControlID="2706" />		
+		<task description="missionComplete" questControlID="2799" />
+		<task description="collectedRunt" questControlID="2716" />		
+	</tasks>	
+	
+	<phase num="0" animFrame="pose2" >
+		<text>You found me! It was so dark in here! Here, this might help you out!</text>
+		<userResponse>
+			<option progressTo="1">Thanks!</option>
+			<option progressTo="2">Er, who are you again?</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="1" animFrame="pose2" sticky="1">
+		<text>Take this coil and place it on the generator! Hurry!</text>
+		<userResponse>
+			<option progressTo="-1">Will do!</option>
+			<option progressTo="2">Er, who are you again?</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="2" animFrame="pose2" >
+		<text>It's me... Runt. You know... Runt!</text>
+		<userResponse>
+			<option progressTo="-1">Doesn't ring a bell...</option>
+			<option progressTo="-1">Er, I have to get going...</option>
+		</userResponse>
+	</phase>	
+		
+	<phase num="3" animFrame="finalPose" questControlPoint="placeTeslaPipe">
+		<text width="500">Psst! Come see me after you've finished helping Lab, I have a reward for you too!</text>
+		<userResponse>
+			<option progressTo="-1">Sure thing!</option>
+		</userResponse>
+	</phase>	
+	
+	<phase num="4" animFrame="pose2" questControlPoint="missionComplete">
+		<text>As promised, here's your reward! It's a spooky plushie of me, Runt! Shall I autograph it for you?</text>
+		<userResponse>
+			<option progressTo="5">Er, sure...</option>
+			<option progressTo="-1">That's okay...</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="5" animFrame="pose2" >
+		<text>Oh... nevermind. I don't have a pen. Sorry about that!</text>
+		<userResponse>
+			<option progressTo="-1">Don't worry.</option>
+			<option progressTo="-1">Maybe another time?</option>
+		</userResponse>
+	</phase>	
+	
+	<phase num="6" animFrame="finalPose" questControlPoint="collectedRunt">
+		<text>What are you still doing here? Go check out the secret Runt plushie reward I've sent to your Nest!</text>
+		<userResponse>
+			<option progressTo="-1">Running all the way.</option>
+			<option progressTo="-1">I think I'll look around a bit more.</option>
+		</userResponse>
+	</phase>
+
+</character>

@@ -1,0 +1,33 @@
+<itemConfig name='f_party_balloons_heart' type='furniture' path='assetsTycoon/f_party_balloons_heart.swf' thumb='assetsTycoon/f_party_balloons_heart_thumb.swf' h='240'  boundType='0' numSpots='0'>
+	
+	<pos frame='1' bounds='' x='-125' y='0' z='40' gridSqs='1'/>
+	<pos frame='2' bounds='' x='-125' y='0' z='120' gridSqs='6'/>
+	<pos frame='3' bounds='' x='-125' y='0' z='200' gridSqs='11'/>
+	<pos frame='4' bounds='' x='-125' y='0' z='280' gridSqs='16'/>
+	<pos frame='5' bounds='' x='-125' y='0' z='360' gridSqs='21'/>
+
+	<pos frame='6' bounds='' x='-80' y='0' z='40' gridSqs='2'/>
+	<pos frame='7' bounds='' x='-80' y='0' z='120' gridSqs='7'/>
+	<pos frame='8' bounds='' x='-80' y='0' z='200' gridSqs='12'/>
+	<pos frame='9' bounds='' x='-80' y='0' z='280' gridSqs='17'/>
+	<pos frame='10' bounds='' x='-80' y='0' z='360' gridSqs='22'/>
+
+	<pos frame='11' bounds='' x='0' y='0' z='40' gridSqs='3'/>
+	<pos frame='12' bounds='' x='0' y='0' z='120' gridSqs='8'/>
+	<pos frame='13' bounds='' x='0' y='0' z='200' gridSqs='13'/>	
+	<pos frame='14' bounds='' x='0' y='0' z='280' gridSqs='18'/>
+	<pos frame='15' bounds='' x='0' y='0' z='360' gridSqs='23'/>
+	
+	<pos frame='16' bounds='' x='80' y='0' z='40' gridSqs='4'/>
+	<pos frame='17' bounds='' x='80' y='0' z='120' gridSqs='9'/>	
+	<pos frame='18' bounds='' x='80' y='0' z='200' gridSqs='14'/>
+	<pos frame='19' bounds='' x='80' y='0' z='280' gridSqs='19'/>
+	<pos frame='20' bounds='' x='80' y='0' z='360' gridSqs='24'/>
+
+	<pos frame='21' bounds='' x='255' y='0' z='40' gridSqs='5'/>
+	<pos frame='22' bounds='' x='255' y='0' z='120' gridSqs='10'/>
+	<pos frame='23' bounds='' x='255' y='0' z='200' gridSqs='15'/>
+	<pos frame='24' bounds='' x='255' y='0' z='280' gridSqs='20'/>
+	<pos frame='25' bounds='' x='255' y='0' z='360' gridSqs='25'/>	
+
+</itemConfig>

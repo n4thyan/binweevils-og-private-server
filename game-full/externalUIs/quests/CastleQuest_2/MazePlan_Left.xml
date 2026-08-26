@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?> <!--ORIGIONAL LEVEL 2 -->
+<xml>
+  <level1 ballLocationX="-340" ballLocationY="-190" pocketLocationX="0" pocketLocationY="0" maxTime="100" h="28" w="800" L="500" t="70" innerWallAlpha="0.5" innerWallClr="16724838" bombClr="13369344" pnClr="0" outerWallsClr="39423" floorClr="13311">
+    <innerWalls>
+      <wall>
+        <point x="-33 " y="93"/>
+        <point x="-234 " y="93"/>
+        <point x="-234 " y="-154"/>
+        <point x="300 " y="-154"/>
+        <point x="300 " y="154"/>
+        <point x="-300 " y="154"/>
+        <point x="-300 " y="-205"/>
+      </wall>
+      <wall>
+        <point x="234 " y="-93"/>
+        <point x="-102 " y="-93"/>
+        <point x="-102 " y="-28"/>
+        <point x="102 " y="-28"/>
+        <point x="102 " y="32"/>
+        <point x="168 " y="32"/>
+        <point x="168 " y="-28"/>
+        <point x="234 " y="-28"/>
+        <point x="234 " y="93"/>
+        <point x="33 " y="93"/>
+        <point x="33 " y="32"/>
+        <point x="-168 " y="32"/>
+        <point x="-168 " y="-65"/>
+      </wall>
+    </innerWalls>
+    <elements>
+      <bomb x="136" y="63" id="-1" loc="-1" delay="2000" activeDur="1500" inactiveDur="1200" w="0" h="0" alpha_incr="0"/>
+      <bomb x="136" y="-185" id="-1" loc="-1" delay="2000" activeDur="1500" inactiveDur="1200" w="0" h="0" alpha_incr="0"/>
+      <collectible x="200" y="0"/>
+      <collectible x="135" y="0"/>
+      <collectible x="-280" y="175"/>
+      <collectible x="280" y="175"/>
+      <pin x="357" y="205"/>
+      <pin x="308" y="165"/>
+      <hole rightEdgeX="-40" leftEdgeX="-102" bottomEdgeY="-28" topEdgeY="-93"/>
+      <hole rightEdgeX="-30" leftEdgeX="30" bottomEdgeY="215" topEdgeY="190"/>
+    </elements>
+  </level1>
+</xml>

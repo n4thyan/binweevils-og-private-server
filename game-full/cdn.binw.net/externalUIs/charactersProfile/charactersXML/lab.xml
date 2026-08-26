@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<name>LAB</name>
+	<!--<name><![CDATA[<font size="15">garden <br/>inspector</font>]]></name>-->
+	<buddies>68,17,7</buddies>
+	<family>6</family>
+	<position_in_family>2</position_in_family>
+	<profile_picture>lab.png</profile_picture>
+	<photos>
+		<photo>
+			<url>lab1.png</url>
+			<thumb_url>lab1_thumb.png</thumb_url>
+			<capture>Mad scientist at work!</capture>
+		</photo>
+		<photo>
+			<url>lab2.png</url>
+			<thumb_url>lab2_thumb.png</thumb_url>
+			<capture>Am I invisible yet?</capture>
+		</photo>
+		<photo>
+			<url>lab3.png</url>
+			<thumb_url>lab3_thumb.png</thumb_url>
+			<capture>Aha! This ought to work!</capture>
+		</photo>
+	</photos>
+	<fun_moment>
+		<url>lab.png</url>
+		<text>The time he accidentally turned Rott into a Bin Pet.</text>
+	</fun_moment>
+	<about>
+		<likes>Experimenting</likes>
+		<dislikes>Experiments gone wrong</dislikes>
+		<fun_fact>He once accidentally shrank his entire workshop!</fun_fact>
+		<text>As mad inventors go, Lab’s got all the bases covered. From crazy gadgets to mysterious potions, his laboratory is filled with everything a scientist needs to get into a LOT of trouble. Lab’s inventions have a tendency to run amok and cause catastrophes.</text>
+		<interesting_fact>Loves board games</interesting_fact>
+		<pic_url>lab.png</pic_url>
+	</about>
+</data>

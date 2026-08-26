@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<character direction="-1">	
+	<tasks>
+		<task description="Puzzle_Complete" questControlID="223" />
+	</tasks>	
+	
+	<phase num="0" animFrame="anim_in" bgClickable="0">
+		<text>Welcome to my archaeological dig</text>
+		<userResponse>
+			<option progressTo="1">Thanks! How's the dig coming along?</option>
+			<option progressTo="2">It seems dangerous! How did you break your foot?</option>
+			<option progressTo="1">What's it like working out here?</option>
+		</userResponse>			
+	</phase>
+	
+	<phase num="1" animFrame="Talk_in" bgClickable="0">
+		<text>Usually I love my work, but lately there have been some mighty strange things going on in this jungle.</text>
+		<userResponse>
+			<option progressTo="4">Hmm... What do you mean by that?</option>
+			<option progressTo="4">Can you tell me more about these strange happenings?</option>
+		</userResponse>	
+	</phase>	
+	
+	<phase num="2" animFrame="Talk_in">
+		<text>That's a sore subject! The last bumbling fool of an agent who came through here was helping me with that tablet when he dropped a piece right on my foot!</text>
+		<userResponse>
+			<option progressTo="3">Oh, I'm sorry! I hope the work's not always this painful.</option>
+			<option progressTo="3">Yikes!  I'll do my best not to repeat that mistake!</option>
+		</userResponse>	
+	</phase>
+	
+	<phase num="3" animFrame="Talk_in"  bgClickable="0">
+		<text>That's not the worst thing that's happened out here; lately there have been some mighty strange things going on in this jungle.</text>
+		<userResponse>
+			<option progressTo="4">Hmm... What do you mean by that?</option>
+			<option progressTo="4">Can you tell me more about these strange happenings?</option>
+		</userResponse>	
+	</phase>
+	
+	<phase num="4" animFrame="Talk_in"  bgClickable="0">
+		<text>Maybe I'd better not say. I fear I've said too much already! There are forces you don't want to mess with...</text>
+		<userResponse>
+			<option progressTo="5">Could you just tell me if you've seen anyone suspicious on the island?</option>
+			<option progressTo="5">You can trust me, I'm an SWS agent and I'm here to protect you.</option>
+		</userResponse>	
+	</phase>
+	
+	<phase num="5" animFrame="Talk_in"  bgClickable="0">
+		<text>Maybe I'll tell you more after we finish assembling the tablet. Why don't you have a go at putting it together?</text>
+		<userResponse>
+			<option progressTo="-1" fireEvent="lostBinPet_puzzle_diggIntroComplete">I'll do my best!</option>
+		</userResponse>	
+	</phase>	
+	
+	<!-- Has at least one loose piece -->
+	<phase num="6" animFrame="anim_in" bgClickable="0" sticky="1">
+		<text>
+			Uh-oh! It looks like some of the pieces are still missing! You can try putting together the pieces you have now or take another look around for some more.
+		</text>
+		<userResponse>
+			<option progressTo="-1" fireEvent="lostBinPet_puzzle_diggOut">OK, Digg. I'll do my best!</option>
+		</userResponse>	
+	</phase>
+	
+	<!-- no loose pieces because all are in place -->
+	<phase num="7" animFrame="anim_in" bgClickable="0" sticky="1">
+		<text>
+			Uh-oh! It looks like some of the pieces are still missing! Take another look around for some more.
+		</text>
+		<userResponse>
+			<option progressTo="-1" fireEvent="lostBinPet_puzzle_diggOut">OK, Digg. I'll do my best!</option>
+		</userResponse>	
+	</phase>	
+	
+	<phase num="8" animFrame="anim_in" bgClickable="0" sticky="1">
+		<text>We're going to have to get that tablet back together before I can try to interpret its meaning!</text>
+		<userResponse>
+			<option progressTo="-1" fireEvent="lostBinPet_puzzle_diggOut">I'm on it!</option>
+		</userResponse>	
+	</phase>	
+	
+	<phase num="9" animFrame="anim_in" bgClickable="0" sticky="1" questControlPoint="Puzzle_Complete">
+		<text width="350">Astonishing! I can't believe it... I thought this was only a legend.  Do you know what this represents?</text>
+		<userResponse>
+			<option progressTo="10">No... Tell me about the legend!</option>
+			<option progressTo="10">How should I know? You're the archaeologist, explain it to me!</option>
+		</userResponse>	
+	</phase>
+
+	<phase num="10" animFrame="Talk_in" bgClickable="0">
+		<text width="350">Well, an old legend tells of a secret chamber deep within this island that contains a hidden object of enormous value.</text>
+		<userResponse>
+			<option progressTo="11" fireEvent="lostBinPet_puzzle_glowCrystal">What do you know about the object?</option>
+			<option progressTo="11" fireEvent="lostBinPet_puzzle_glowCrystal">It sounds dangerous!</option>
+			<option progressTo="11" fireEvent="lostBinPet_puzzle_glowCrystal">If it's that valuable, it must be well hidden!</option>
+		</userResponse>	
+	</phase>	
+	
+	<phase num="11" animFrame="Talk_in" bgClickable="0" picoDx="220">
+		<text width="250">They say it's a crystal of incredible power. If it falls into the wrong hands, its mystical energy could be extremely dangerous, so of course it's hard to find!</text>
+		<userResponse>
+			<option progressTo="12" fireEvent="lostBinPet_puzzle_glowBinPet">It looks like there's a Bin Pet there with the gem...</option>
+			<option progressTo="12" fireEvent="lostBinPet_puzzle_glowBinPet">What does that juggling Bin Pet have to do with it?</option>
+		</userResponse>	
+	</phase>
+	
+	<phase num="12" animFrame="Talk_in" bgClickable="0" picoDx="220">
+		<text width="250">The legend goes on to say that a juggling Bin Pet holds the key to unlocking the crystal's hiding place.</text>
+		<userResponse>
+			<option progressTo="13" fireEvent="lostBinPet_puzzle_hideGlowBinPet">I'm currently on the trail of a stolen Bin Pet that may have been brought here.</option>
+			<option progressTo="13" fireEvent="lostBinPet_puzzle_hideGlowBinPet">I wonder if this is connected to the Bin Pet kidnapping I'm investigating.</option>
+		</userResponse>	
+	</phase>
+	
+	<phase num="13" animFrame="Talk_in" bgClickable="0">
+		<text width="350">Hmmph. I knew there was something sinister on this island!</text>
+		<userResponse>
+			<option progressTo="14">You were saying about strange happenings around here?</option>
+			<option progressTo="14">Could you tell me more now about what you've seen?</option>
+		</userResponse>	
+	</phase>
+	
+	<phase num="14" animFrame="Talk_in" bgClickable="0">
+		<text width="350">There's a temple ruin we discovered nearby, but another group seems to have gotten to it before us, and there's something very shady about them.</text>
+		<userResponse>
+			<option progressTo="15">What are they doing at the temple?</option>
+			<option progressTo="15">Have you seen any suspicious activities?</option>
+		</userResponse>	
+	</phase>
+	
+	<phase num="15" animFrame="Talk_in" bgClickable="0">
+		<text width="350">Whoever they are, they've got the temple under constant guard and they won't let us anywhere near it!</text>
+		<userResponse>
+			<option progressTo="16">Where can I find the temple? I'd like to check this out for myself.</option>
+			<option progressTo="16">It sounds like I should definitely look into this. Can you show me?</option>
+		</userResponse>	
+	</phase>
+	
+	<phase num="16" animFrame="Talk_in" bgClickable="0">
+		<text width="350">There's no way I'm going over there myself, but follow the path behind me and you should find one of my colleagues nearby.</text>
+		<userResponse>
+			<option progressTo="-1" fireEvent="lostBinPet_puzzle_diggOut">Thanks for your help! I hope I can get to the bottom of this.</option>
+			<option progressTo="-1" fireEvent="lostBinPet_puzzle_diggOut">Be careful out there!</option>
+		</userResponse>	
+	</phase>
+	
+</character>

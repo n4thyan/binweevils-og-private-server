@@ -1,0 +1,8 @@
+<itemConfig name='f_microchargers' type='furniture' path='assetsNest/f_microchargers.swf' thumb='assetsNest/f_microchargers_thumb.swf' h='40' boundType='rect' clickable='yes'>
+	<pos frame='1' bounds='-200,80,160,160' x='-200' y='0' z='241' ry='0' gridSqs='11,12,13,14,21,22,23,24'/>
+	<pos frame='2' bounds='-90,80,160,160' x='-90' y='0' z='240' ry='0' gridSqs='14,15,16,17,24,25,26,27'/>
+	<pos frame='3' bounds='20,80,160,160' x='40' y='0' z='242' ry='0' gridSqs='17,18,19,20,27,28,29,30'/>
+	<pos frame='4' bounds='-200,160,160,160' x='-200' y='0' z='241' ry='0' gridSqs='21,22,23,24,31,32,33,34'/>
+	<pos frame='5' bounds='-90,160,160,160' x='-90' y='0' z='240' ry='0' gridSqs='24,25,26,27,34,35,36,37'/>
+	<pos frame='6' bounds='20,160,160,160' x='40' y='0' z='242' ry='0' gridSqs='27,28,29,30,37,38,39,40'/>
+</itemConfig>

@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+	=====================================================
+	*  NOTES ON AVAILABLE PARAMETERS AND CONTENT NODES  *
+	=====================================================
+	
+	
+	============================================
+	*  Trickey params not in this incarnation  *
+	============================================
+	String replacement:	  //username//
+	Shuffling of options: <stage shuffle="true">
+	
+	
+	============================================
+	*                  NODES                   *
+	============================================
+	
+	<character>
+	Attribute: direction 
+	Optional:  true (Default "1" if left out)
+	Values:    "-1" to flip direction of the bubble
+	
+	<phase>
+	*
+	Attribute: num 
+	Optional:  false
+	Value:     The number that marks this phase's point in the conversation
+	Default:   None - required attribute.
+	*
+	Attribute: animFrame
+	Optional:  true
+	Value:     The frame label of the character mc to be played when this phase shows
+	Default:   No anim
+	*
+	Attribute: sticky
+	Optional:  true
+	Values:    "0" and "1". Sticky means that it will fall back to this node from non-sticky nodes on reshow.
+	Default:   0
+	*
+	Attribute: picoDx
+	Optional:  true
+	Value:     A positive or negative integer number of pixels. 
+			   The 'pico' is the pointy bit to the mouth in the speech bubble and picoDx is its distance from the edge of the bubble
+	Default:   20
+	*
+	
+	<text>
+	Mandatory node. If omitted, an empty bubble is shown
+	Accepts html, so if there is html formatting, wrap the text in <![CDATA[]]> tags
+	
+	<textOnReturn>
+	Optional node (technically speaking but check if required by Rob). The text node is used on return to this phase if none is specified and a warning is traced.
+	Accepts html, so if there is html formatting, wrap the text in <![CDATA[]]> tags
+	
+	<userResponse>
+	Optional node. If omitted, just the text is displayed and the speech bubble is closed by clicking outside the bubble. A warning is traced.
+	WARNING: No userResponse node was found in the XML. This is valid only if it's close to accept.
+	*
+	Attribute: type
+	Optional:  true
+	Value:     "freeText". If set to freeText, an input child node is required instead of option nodes.
+	Default:   undefined. If undefined it looks for option child nodes.
+	
+	<option>
+	If the userResponse was untyped, then <option> is a mandatory node. One or more can be set.
+	*
+	Attribute: progressTo
+	Optional:  true (if userResponse untyped)
+	Value:     integer - the next phase in the conversation. Can be set to "-1" to show that you want it to just act like a close (same as omission) 
+	Default:   -1. If -1 it just acts like a close and shows an error message - ERROR: The next phase is invalid for phase (number)
+	*
+	
+	<input>
+	If the userResponse was type="freeText", then <input> is a mandatory node.
+	*
+	Attribute: width
+	Optional:  true
+	Value:     integer pixel size
+	Default:   150
+	*
+	Attribute: charLimit
+	Optional:  true
+	Value:     integer number of characters
+	Default:   0 (no limit)
+	*
+	Attribute: caseSensitive
+	Optional:  true
+	Value:     "0" or "1"
+	Default:   1
+	*
+	
+	<correctAns>
+	If the userResponse was type="freeText", then <correctAns> is a mandatory node.
+	This contains the text against which to validate the user input.
+	*
+	Attribute: progressTo
+	Optional:  false
+	Value:     integer - the next phase in the conversation.
+	Default:   none - mandatory attribute
+	*
+	
+	<incorrectAns>
+	If the userResponse was type="freeText", then <incorrectAns> is a mandatory node.
+	No text content; just @progressTo
+	*
+	Attribute: progressTo
+	Optional:  false
+	Value:     integer - the next phase in the conversation.
+	Default:   none - mandatory attribute
+	*
+	
+-->
+
+
+<character defaultCloseAnimFrame="rest">
+
+	
+	<tasks>
+		
+		<task description="seaching_parts" questControlID="328" /> 
+		<task description="machine_fixed" questControlID="329" /> 
+		<task description="boat_upgrade" questControlID="330" /> 
+		<task description="hangManCompleted" questControlID="359" />
+		
+		
+	</tasks>
+	
+	<phase num="0" animFrame="exaused_talk" sticky="1">
+		<text>Hey there!  I'm Flam.  We don't get many visitors around these islands...what are you doing here?</text>
+			
+		<userResponse>
+			<option progressTo="1">I'm an SWS agent on the trail of a very dangerous individual!</option>
+			<option progressTo="2">I thought I’d just take a break and catch some warm sunshine.</option>
+		</userResponse>		
+	</phase>	
+		
+	<phase num="1" animFrame="exaused_talk">
+		<text width="300">I've worked with them before, clever bunch!  I'm a pilot, and flying with the SWS was never short of adventure.  What's your mission?</text>
+			
+		<userResponse>
+			<option progressTo="3">An agent of our enemy has stolen the famous Bin Pet Gem and we suspect that he’s up to no good.</option>
+			<option progressTo="3">The ancient Bin Pet Gem has been snatched by evil forces!</option>
+		</userResponse>		
+	</phase>		
+
+	<phase num="2" animFrame="exaused_talk" sticky="1">
+		<text width="300">You've come to the right place!  I'm a pilot, so I can fly here myself any time I want to catch a beach break.  Are you on holiday?</text>
+		
+		<textOnReturn>
+			Ready to talk now?
+		</textOnReturn>		
+		
+		<userResponse>
+			<option progressTo="3">The truth is, I’m an SWS agent and I’m after the thief who stole the Bin Pet Gem.</option>
+			<option progressTo="15">None of your business, is it?</option>
+		</userResponse>		
+	</phase>			
+	
+	<phase num="3" animFrame="exaused_talk">
+		<text width="300">Oooh, the Bin Pet Gem!  They say its power is immense! I’ve wanted to get a hold of it myself, cause you can bet any engine powered by that would be unstoppable!</text>
+			
+		<userResponse>
+			<option progressTo="5">You’re a mechanic, then?</option>
+			<option progressTo="5">You know a lot about engines?</option>
+		</userResponse>		
+	</phase>		
+	
+	<phase num="4" animFrame="exaused_talk">
+		<text>----</text>
+			
+		<userResponse>
+			<option progressTo="5">----</option>
+			<option progressTo="5">---</option>
+		</userResponse>		
+	</phase>			
+
+
+	<phase num="5" animFrame="exaused_talk">
+		<text> You bet!  I’ve been working on this cooling machine over here, but the heat’s got me so tired out that I can’t get any work done!</text>
+			
+		<userResponse>
+			<option progressTo="6">This is some crazy heat, I’ve never felt anything like it!</option>
+			<option progressTo="6">Why is it so hot out here?</option>
+		</userResponse>		
+	</phase>	
+
+	<phase num="6" animFrame="exaused_talk">
+		<text width="300">It’s these fire snails!  Have you seen them all over the islands?  They’re attracted to these rare chilli plants and as soon as they crunch them up they produce so much heat that they could start a fire wherever they go!</text>
+			
+		<userResponse>
+			<option progressTo="7">Is there anything else you can tell me about the islands?</option>
+			
+		</userResponse>		
+	</phase>	
+	
+	<phase num="7" animFrame="exaused_talk">
+		<text>If you want more information about what’s going on around the islands, you’d best talk to the Hermit.</text>
+			
+		<userResponse>
+			<option progressTo="8">Where can I find him? </option>
+			<option progressTo="8">Could you tell me how to get to him?</option>
+		</userResponse>		
+	</phase>	
+
+	<phase num="8" animFrame="exaused_talk" sticky="1">
+		<text width="300">He lives on the big island just up there. But you’ll have a really hard time getting there in that shoddy little boat, the current is really strong!</text>
+
+			<textOnReturn>
+			So you need my help now with that useless boat?
+		    </textOnReturn>		
+			
+		<userResponse>
+			<option progressTo="9">Do you think you could help me upgrade my engine?</option>
+			<option progressTo="16">Hey, you watch what you say about my boat.</option>
+		</userResponse>		
+		
+	</phase>	
+
+	<phase num="9" animFrame="exaused_talk" sticky="1" >
+		<text width="300"> I could give your engine an awesome upgrade if I wasn’t so hot and tired.  Tell you what, if you help me finish this cooling machine, I’ll give your engine a few tweaks.  What do you say?</text>
+		
+		<userResponse>
+			<option progressTo="-1">Hmm.  I’ll think about it.</option>
+			<option progressTo="-1" fireEvent="flamIsland_MachinePartsStartSearch">I’m at your service!</option>
+		</userResponse>	
+		
+		
+	</phase>	
+
+	
+	<phase num="10" animFrame="exaused_talk" questControlPoint="seaching_parts">
+		<text>The machine is still missing some pieces, so you might have to hunt around a bit.  Let me know when you’ve finished!</text>
+		
+		<textOnReturn>
+			Don’t give up until you’ve got that machine working!  I’ll be right here with a cool drink…
+		</textOnReturn>	
+		<userResponse>
+			<option progressTo="-1">I'll get right on it.</option>
+			<option progressTo="6">Why is it so hot out here?</option>
+		</userResponse>	
+		
+	</phase>
+	
+
+	<phase num="11" animFrame="fan_start" questControlPoint="machine_fixed" closeAnimFrame="fan_loop">
+
+		<text>
+			Wow, great work!  Ahhh!!  Now that I can cool off, let’s take a look at that boat of yours.
+		</text>		
+		
+		<userResponse>
+		<option progressTo="-1" fireEvent="flamIsland_boatUpgrade">Oh! yes please!</option>
+		</userResponse>	
+		
+	</phase>
+	
+
+	<phase num="12" animFrame="fan_talk" questControlPoint="boat_upgrade"  closeAnimFrame="fan_loop">
+		<text width="300">
+			All done! You’ll need to collect the fuel bubbles to help you boost past the currents. Don’t forget to offer the Hermit something to eat, or he won’t listen to a thing you say! 
+
+		</text>
+		
+		<textOnReturn>
+			Back again?  I hope you’ve found everything you need!
+		</textOnReturn>		
+		
+		<userResponse>
+			<option>Thanks for everything!</option>
+		</userResponse>	
+
+	</phase>
+	
+	
+
+	<phase num="14" animFrame="fan_talk" questControlPoint="hangManCompleted" closeAnimFrame="fan_loop">
+		<text>
+		Welcome back!  Feel free to explore the islands and relax on the beach!
+		</text>
+		
+	</phase>
+	
+	
+	<phase num="15" animFrame="exaused_talk">
+		<text>Geez, you sound like you could use some relaxation!  Well, let me know if you need any help.</text>
+	</phase>
+	
+	<phase num="16" animFrame="exaused_talk">
+		<text>Suit yourself. Let me know when you’ve figured out you need my help.</text>
+	</phase>
+	
+	
+	
+		
+<!--
+
+
+
+
+
+	<phase num="1" animFrame="Welcome" sticky="1">
+		<text>Go away, I'm too busy for visitors.</text>
+			
+		<userResponse>
+			<option progressTo="1">I'm sorry to intrude, but the SWS need your help!</option>
+			<option progressTo="1">I'm an SWS agent on an urgent mission!</option>
+			<option progressTo="2">It's not that important, I guess I'll come back later.</option>
+		</userResponse>		
+	</phase>		
+
+	<phase num="1" animFrame="Welcome" sticky="1">
+		<text>Go away, I'm too busy for visitors.</text>
+			
+		<userResponse>
+			<option progressTo="1">I'm sorry to intrude, but the SWS need your help!</option>
+			<option progressTo="1">I'm an SWS agent on an urgent mission!</option>
+			<option progressTo="2">It's not that important, I guess I'll come back later.</option>
+		</userResponse>		
+	</phase>		
+
+	<phase num="1" animFrame="Welcome" sticky="1">
+		<text>Go away, I'm too busy for visitors.</text>
+			
+		<userResponse>
+			<option progressTo="1">I'm sorry to intrude, but the SWS need your help!</option>
+			<option progressTo="1">I'm an SWS agent on an urgent mission!</option>
+			<option progressTo="2">It's not that important, I guess I'll come back later.</option>
+		</userResponse>		
+	</phase>		
+
+	<phase num="1" animFrame="Welcome" sticky="1">
+		<text>Go away, I'm too busy for visitors.</text>
+			
+		<userResponse>
+			<option progressTo="1">I'm sorry to intrude, but the SWS need your help!</option>
+			<option progressTo="1">I'm an SWS agent on an urgent mission!</option>
+			<option progressTo="2">It's not that important, I guess I'll come back later.</option>
+		</userResponse>		
+	</phase>		
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		<!--	
+		<userResponse type="freeText">
+			<input width="400">
+				<correctAns progressTo="1"><![CDATA[nice]]></correctAns>
+				<incorrectAns progressTo="2"></incorrectAns>
+			</input>
+		</userResponse>
+		-->
+<!--
+	<phase num="0" animFrame="Welcome" sticky="1">
+		<text>Nice to see you, to see you...</text>
+		<textOnReturn>
+			Oh, thank goodness you came back! The dungeon plumbing has broken down and if its not fixed soon, the castle will be overrun with slime!
+		</textOnReturn>		
+					
+		<userResponse>
+			<option progressTo="1">I'll help you!</option>
+			<option progressTo="1">Sorry, I'm busy.</option>
+			<option progressTo="9">Have no fear! I am an SWS agent and I am at your service!</option>
+		</userResponse>		
+	</phase>	
+	-->
+<!--
+	<phase num="1" questControlPoint="Brucey_Complete">
+		<text>Excellent this is the 2nd speech i'll make</text>
+		<userResponse>
+			<option progressTo="1">And this is my second response1</option>
+			<option progressTo="2">And this is my second response2</option>
+			<option progressTo="9">And this is my second response3</option>
+		</userResponse>	
+	</phase>
+-->
+	
+	<!-- inSequence="false" 
+	<phase num="7" inSequence="0">
+	new CustomEvent("openCharacterDialogue",{jumpTo:7});
+	</phase> -->
+	
+	
+	
+</character>

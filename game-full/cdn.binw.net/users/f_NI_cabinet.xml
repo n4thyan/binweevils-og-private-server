@@ -1,0 +1,10 @@
+<itemConfig id='f_NI_cabinet' type='furniture' path='assetsNest/f_NI_cabinet.swf' thumb='assetsNest/f_NI_cabinet_thumb.swf' h='24' boundType='rect' numSpots='1'>
+
+	
+	<pos frame='1' bounds='-210,320,80,80' x='-160' y='60' z='360' gridSqs='31,32'/>
+	<pos frame='2' bounds='-125,320,80,80' x='-80' y='60' z='359' gridSqs='33,34'/>
+	<pos frame='3' bounds='-40,320,80,80' x='0' y='60' z='358' gridSqs='35,36'/>
+	<pos frame='4' bounds='45,320,80,80' x='80' y='60' z='359' gridSqs='37,38'/>
+	<pos frame='5' bounds='130,320,80,80' x='160' y='60' z='360' gridSqs='39,40'/>
+
+</itemConfig>

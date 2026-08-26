@@ -1,0 +1,14 @@
+<itemConfig name='f_TB_fiesta_table' type='furniture' path='assetsTycoon/f_TB_fiesta_table.swf' thumb='assetsTycoon/f_TB_fiesta_table_thumb.swf'  h='30' boundType='rect' clickable='yes'>
+	
+	<pos frame='1' bounds='' x='120' y='0' z='320' ry='0' gridSqs='19,20,24,25'/>
+	
+	<pos frame='2' bounds='' x='120' y='0' z='240' ry='0' gridSqs='14,15,19,20'/>
+	<pos frame='3' bounds='' x='120' y='0' z='160' ry='0' gridSqs='9,10,14,15'/>
+	
+	<pos frame='4' bounds='' x='-40' y='0' z='320' ry='0' gridSqs='17,18,22,23'/>
+	<pos frame='5' bounds='' x='-40' y='0' z='240' ry='0' gridSqs='12,13,17,18'/>
+	
+	<pos frame='6' bounds='' x='-40' y='0' z='160' ry='0' gridSqs='7,8,11,12'/>
+	
+
+</itemConfig>

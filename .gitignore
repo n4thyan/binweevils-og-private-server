@@ -1,0 +1,20 @@
+# --- Runtime / build artifacts (excluded, not source) ---
+node_modules/
+
+# --- OS / editor junk ---
+.DS_Store
+Thumbs.db
+*.tmp
+*.cache
+
+# --- Temporary logs / crash dumps / runtime caches ---
+*.log
+*.stackdump
+
+# --- Windows reserved-device-name redirect artifact (runtime junk) ---
+NUL
+
+# --- Local-dev plaintext credential file (kept locally; not pushed) ---
+# Contains plaintext BWPS panel admin logins; excluded per recovery-baseline
+# security policy. The DB itself stores bcrypt hashes.
+CHECKPOINT_A_ADMIN_CREDS.txt

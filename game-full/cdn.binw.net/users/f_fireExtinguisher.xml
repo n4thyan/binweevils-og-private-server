@@ -1,0 +1,17 @@
+<itemConfig name='f_fireExtinguisher' type='furniture' path='assetsNest/f_fireExtinguisher.swf' thumb='assetsNest/f_fireExtinguisher_thumb.swf' h='30' boundType='rect' clickable='yes'>
+	<pos frame='1' bounds='-200,110,20,20' x='-190' y='0' z='120' gridSqs='1'/>
+	<pos frame='2' bounds='-200,190,20,20' x='-190' y='0' z='200' gridSqs='11'/>
+	<pos frame='3' bounds='-200,270,20,20' x='-190' y='0' z='280' gridSqs='21'/>
+	<pos frame='4' bounds='-200,350,20,20' x='-190' y='0' z='360' gridSqs='31'/>
+	
+	<pos frame='5' bounds='-170,380,20,20' x='-160' y='0' z='397' gridSqs='31,32'/>
+	<pos frame='6' bounds='-90,380,20,20' x='-80' y='0' z='398' gridSqs='33,34'/>
+	<pos frame='7' bounds='-10,380,20,20' x='0' y='0' z='399' gridSqs='35,36'/>
+	<pos frame='8' bounds='70,380,20,20' x='80' y='0' z='395' gridSqs='37,38'/>
+	<pos frame='9' bounds='150,380,20,20' x='160' y='0' z='394' gridSqs='39,40'/>
+	
+	<pos frame='10' bounds='180,350,20,20' x='190' y='0' z='360' gridSqs='40'/>
+	<pos frame='11' bounds='180,270,20,20' x='190' y='0' z='280' gridSqs='30'/>
+	<pos frame='12' bounds='180,190,20,20' x='190' y='0' z='200' gridSqs='20'/>
+	<pos frame='13' bounds='180,110,20,20' x='190' y='0' z='120' gridSqs='10'/>
+</itemConfig>

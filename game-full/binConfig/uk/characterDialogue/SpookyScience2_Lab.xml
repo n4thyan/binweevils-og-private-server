@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<character defaultCloseAnimFrame="rest" direction="-1">
+	<tasks>
+		<task description="generatorFixed" questControlID="2707" />
+		<task description="generatorOn" questControlID="2708" />
+		<task description="thingComplete" questControlID="2710" />
+		<task description="thingInRoof" questControlID="2711" />		
+		<task description="thingIsAwake" questControlID="2712" />
+		<task description="rewardMachineActive" questControlID="2713" />
+		<task description="missionComplete" questControlID="2799" />			
+	</tasks>
+	
+	<phase num="0" animFrame="talk_in" >
+		<text>Hey... what are you doing all the way in here? I need your help fixing the generator in the other room!</text>
+		<userResponse>
+			<option progressTo="1">Generator?</option>
+			<option progressTo="-1">I'm exploring! We'll talk later!</option>
+		</userResponse>
+	</phase>	
+		
+	<phase num="1" animFrame="talk_3" sticky="1">
+		<text width="500">The great big, massive, gigantic generator in the room to the left...?</text>
+		<textOnReturn width="500">Hey, come on now! Help me fix my generator - the rewards will be amazing!</textOnReturn>
+		<userResponse>
+			<option progressTo="-1">Alright, alright...</option>
+		</userResponse>
+	</phase>	
+	
+	<phase num="2" animFrame="tallk_3"  questControlPoint="generatorFixed">
+		<text width="500">Excellent! You fixed the generator! Thank you, thank you! Now we need to switch it on!</text>
+		<userResponse>
+			<option progressTo="-1">Oh yeah, silly me!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="3" animFrame="tallk_3"  questControlPoint="generatorOn">
+		<text width="500">Great job with the generator! Now I need some help assembling THING! Press that green button to dispense some body parts!</text>
+		<textOnReturn width="500">Press the green arrow button over there to dispense some body parts!</textOnReturn>
+		<userResponse>
+			<option progressTo="4">Gross! Well, okay...</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="4" animFrame="tallk_3" >
+		<text width="500">Drag the correct body part into the THINGOGRAM. That's THING and HOLOGRAM combined, patent pending!</text>
+		<textOnReturn width="500">Drag the correct pieces of THING into the hologram!</textOnReturn>		
+		<userResponse>
+		<option progressTo="-1">Will do!</option>
+		</userResponse>
+	</phase>
+
+	<phase num="5" animFrame="tallk_4"  questControlPoint="thingComplete">
+		<text width="500">Fantastic! Now we'll just need a huge jolt of electricity to bring him to life!</text>
+		<userResponse>
+			<option progressTo="6">Good thing we got the generator working!</option>
+			<option progressTo="8">And let me guess.. you need MY help again?</option>			
+		</userResponse>
+	</phase>
+	
+	<phase num="6" animFrame="tallk_4">
+		<text width="500">The generator wont be powerful enough for this job. We need something with a bit more kick. Got any ideas?</text>
+		<textOnReturn width="500">We need something with a bit more kick. Got any other ideas?</textOnReturn>
+		<userResponse>
+			<option progressTo="7" fireEvent="spookyScience_thingTeleportedToRoof">How about lightning? It's storming outside!</option>
+			<option progressTo="13" >An electric... sandwich?</option>
+			<option progressTo="13" >Let's go fishing for an electric eel!</option>
+			<option progressTo="13" >Maybe a hundred batteries!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="7" animFrame="tallk_4">
+		<text width="500">Great! I'll teleport THING to the roof right away. Hurry now! Uh, the door is... oh yes, it's up on that ledge at the back!</text>
+		<userResponse>
+			<option progressTo="-1" >Heading there now!</option>
+			<option progressTo="-1">Wait, you want me to go on the roof during a storm?</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="8" animFrame="tallk_4">
+		<text width="500">Of course I do, I didn't hire you to just stand around!</text>
+		<userResponse>
+			<option progressTo="6">Fine, fine.</option>	
+			<option progressTo="-1">You didn't hire me at all!</option>	
+		</userResponse>
+	</phase>
+	
+	<phase num="9" animFrame="tallk_2"  questControlPoint="thingInRoof">
+		<text width="500">I need your help on the roof. Dont be scared, its just a little thunder and lightning and... yes, anyway, EXCELSIOR!</text>
+		<userResponse>
+			<option progressTo="-1">It better not be raining up there.</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="10" animFrame="tallk_2"  questControlPoint="thingIsAwake">
+		<text width="500">Looking for my lab notes? I think I left them in the room on the left...</text>
+		<userResponse>
+			<option progressTo="-1">Onward, FOR SCIENCE!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="11" animFrame="tallk_2"  questControlPoint="rewardMachineActive">
+		<text width="500">Have you seen the sky from the roof tonight? It looks INCREDIBLE!</text>
+		<userResponse>
+			<option progressTo="-1">I've gotta see this!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="12" animFrame="tallk_2"  questControlPoint="missionComplete">
+		<text width="500">Our job is complete! Let's enjoy the night sky from the terrace!</text>
+		<userResponse>
+			<option progressTo="-1">Sounds good to me!</option>
+		</userResponse>
+	</phase>
+	
+		<phase num="13" animFrame="tallk_2">
+		<text width="500">Sounds fun... but probably not powerful enough. Try again!</text>
+		<userResponse>
+			<option progressTo="6">Let me have a think...</option>
+		</userResponse>
+	</phase>	
+		
+</character>

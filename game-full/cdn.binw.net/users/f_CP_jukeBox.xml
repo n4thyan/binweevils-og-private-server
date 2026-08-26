@@ -1,0 +1,15 @@
+<itemConfig name='f_CP_jukeBox' type='furniture' path='assetsNest/f_CP_jukeBox.swf' thumb='assetsNest/f_CP_jukeBox_thumb.swf' h='80' boundType='rect' clickable='yes'>
+	<pos frame='1' bounds='-201,407,0,80' x='-200' y='0' z='160' ry='-90' gridSqs='1,2'/>
+	<pos frame='2' bounds='-201,406,0,80' x='-200' y='0' z='240' ry='-90' gridSqs='11,12'/>
+	<pos frame='3' bounds='-201,405,0,80' x='-200' y='0' z='320' ry='-90' gridSqs='21,22'/>
+
+	<pos frame='4' bounds='-200,403,80,00' x='-160' y='0' z='509' ry='0' gridSqs='31,32'/>
+	<pos frame='5' bounds='-120,402,80,00' x='-80' y='0' z='508' ry='0' gridSqs='33,34'/>
+	<pos frame='6' bounds='-40,401,80,00' x='0' y='0' z='501' ry='0' gridSqs='35,36'/>
+	<pos frame='7' bounds='40,402,80,00' x='80' y='0' z='502' ry='0' gridSqs='37,38'/>
+	<pos frame='8' bounds='120,403,80,00' x='160' y='0' z='503' ry='0' gridSqs='39,40'/>
+
+	<pos frame='9' bounds='201,405,0,80' x='200' y='0' z='320' ry='90' gridSqs='29,30'/>
+	<pos frame='10' bounds='201,406,0,80' x='200' y='0' z='240' ry='90' gridSqs='19,20'/>
+	<pos frame='11' bounds='201,407,0,80' x='200' y='0' z='160' ry='90' gridSqs='9,10'/>
+</itemConfig>

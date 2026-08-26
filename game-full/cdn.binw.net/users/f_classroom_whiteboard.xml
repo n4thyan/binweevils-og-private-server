@@ -1,0 +1,8 @@
+<itemConfig name='f_classroom_whiteboard' type='furniture' path='assetsNest/f_classroom_whiteboard.swf' thumb='assetsNest/f_classroom_whiteboard_thumb.swf' h='160' boundType='rect' numSpots='0' clickable='yes'>
+	
+	<pos frame='1' bounds='-200,401,200,80' x='-200' y='80' z='401'  ry='0' gridSqs='31,32,33,34,35'/>
+	<pos frame='2' bounds='-80,399,200,80'  x='-80' y='80' z='399' ry='0' gridSqs='34,35,36,37'/>
+	<pos frame='3' bounds='0,402,160,80' x='0' y='80' z='402' ry='0' gridSqs='36,37,38,39,40'/>
+
+
+</itemConfig>

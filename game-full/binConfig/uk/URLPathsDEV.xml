@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<xml>
+
+	<PATH NAME="lotto" URL="externalUIs/lotto_30_10_14_2.swf"/>
+
+	<PATH NAME="overlayUIS_generatorFuel" URL="overlayUIs/buyNestFuel.swf"/>
+	<PATH NAME="overlayUIS_NestTycoonVideo" URL="overlayUIs/NestTycoonVideo_050416.swf"/>
+
+	<PATH NAME="videoAdsUI" URL="externalUIs/videoAdsReward_280716.swf"/>
+
+	<PATH NAME="BPP_aerobics_trackList" URL="tracksList_210514.xml"/>
+	<PATH NAME="weevilPet_assets" URL="weevilPet_assets2.swf"/>
+<!-- WEEVIL WHEELS -->
+	<PATH NAME="WeevilWheelsGame" URL="multiplayerGames/weevilKart/weevilKart_080321b.swf"/>
+	<PATH NAME="WeevilWheelsModGateway" URL="externalUIs/WW_trackModGateway_22_01_16.swf"/>
+
+<!-- MISSIONS -->
+
+	<PATH NAME="helpBox" URL="questsCommon/helpBox2.swf"/>
+	<PATH NAME="questConfig" URL="binConfig/uk/questConfig.xml?2"/>
+	<PATH NAME="missionDebrief" URL="questsCommon/missionDebrief.swf"/>
+	<PATH NAME="missionsIndex" URL="externalUIs/missionsIndex_20_05_21.swf"></PATH>
+	<PATH NAME="missionIndex_nest" URL="externalUIs/missionIndex_nest_01_03_13.swf"></PATH>
+	<PATH NAME="RestrictedAreaTycoonOnly_extraMissions" URL="overlayUIs/SWS_tycoonsOnly.swf"></PATH>
+		<PATH NAME="caseFilesIndex" URL="externalUIs/CaseFiles/CaseFilesIndex_041013.swf"/>
+
+	<PATH NAME="RLBP_helpText" URL="binConfig/uk/helpBoxTxt/RLBP_helpText.xml"></PATH>
+	<PATH NAME="RLBP_puzzle" URL="externalUIs/quests/lostBinPet/puzzle/puzzle_04_02_13.swf"></PATH>
+	<PATH NAME="HWX_helpText" URL="binConfig/uk/helpBoxTxt/HWX_helpText.xml"></PATH>
+
+	<PATH NAME="DH_helpText" URL="binConfig/uk/helpBoxTxt/DH_helpText.xml"></PATH>
+	<PATH NAME="DH_secretLockGame" URL="externalUIs/quests/doshHeritage/secretLockGame_04_02_13.swf"></PATH>
+	<PATH NAME="DH_outro" URL="externalUIs/quests/doshHeritage/outro_04_02_13.swf"></PATH>
+
+	<PATH NAME="TTT_helpText" URL="binConfig/uk/helpBoxTxt/TTT_helpText.xml"></PATH>
+	<PATH NAME="TTT_outro" URL="externalUIs/quests/tycoonTerrorTowers/outro_04_02_13.swf"></PATH>
+
+	<PATH NAME="LLD_helpText" URL="binConfig/uk/helpBoxTxt/LLD_helpText.xml"></PATH>
+	<PATH NAME="LLD_labsLabRunOff" URL="externalUIs/quests/laboratoryLockDown/labsLabRunOff_04_02_13.swf"></PATH>
+	<PATH NAME="LLD_LiaToOcteelia" URL="externalUIs/quests/laboratoryLockDown/labsLab_LiaToOcteelia_04_02_13.swf"></PATH>
+	<PATH NAME="LLD_outro" URL="externalUIs/quests/laboratoryLockDown/outro_04_02_13.swf"></PATH>
+
+	<!-- inventory-->
+	<PATH NAME="doshHeritage_19_12_11" URL="doshHeritage_19_12_11"/>
+	<PATH NAME="tycoonTerrorTowers_04_02_13" URL="tycoonTerrorTowers_04_02_13"/>
+	<PATH NAME="labLockDown_04_02_13" URL="labLockDown_04_02_13"/>
+	<PATH NAME="gunTraining_20_05_13" URL="gunTraining_20_05_13"/>
+	<PATH NAME="lostBinPet_26_10_11" URL="lostBinPet_26_10_11"/>
+	<PATH NAME="gemHunt_20_02_12" URL="gemHunt_20_02_12"/>
+	<!--new inventory-->
+	<PATH NAME="binBigFreeze_inventoryID" URL="binBigFreeze"/>
+	<!--END of inventory-->
+
+
+	<PATH NAME="dialogueManager" URL="dialogueManager_10_11_2014.swf"/>
+    <PATH NAME="diggMulchIsland" URL="diggMulchIsland.xml?1"/>
+	<PATH NAME="FinkJungleGate" URL="FinkJungleGate.xml?1"/>
+	<PATH NAME="diggPetTemple" URL="diggPetTemple.xml?1"/>
+	<PATH NAME="digg_puzzle_lostBinPet" URL="digg_puzzle_lostBinPet.xml?1"/>
+	<PATH NAME="twiggPetTemple" URL="twiggPetTemple.xml?1"/>
+	<PATH NAME="siggPetTemple" URL="siggPetTemple.xml?1"/>
+	<PATH NAME="fishermentIsland_GemHunt" URL="fishermentIsland_GemHunt.xml?1"/>
+	<PATH NAME="flamGemHunt" URL="flamGemHunt.xml?1"/>
+	<PATH NAME="recluseIsland_GemHunt" URL="recluseIsland_GemHunt.xml?1"/>
+
+	<PATH NAME="doshHeritageGallery_Bosh" URL="doshHeritageGallery_Bosh.xml?1"/>
+	<PATH NAME="doshHeritageGallery_ink" URL="doshHeritageGallery_ink.xml?1"/>
+	<!--duplicate?-->
+	<PATH NAME="doshHeritageGallery_ink_19_12_11" URL="doshHeritageGallery_ink.xml?1"/>
+
+	<PATH NAME="tycoonTerrorTowers_Tink" URL="tycoonTerrorTowers_Tink.xml?1"/>
+	<PATH NAME="tycoonTerrorTowers_Clott" URL="tycoonTerrorTowers_Clott.xml"/>
+	<PATH NAME="tycoonTerrorTowers_green_weevil" URL="tycoonTerrorTowers_green_weevil.xml?1"/>
+	<PATH NAME="tycoonTerrorTowers_lia_14_02_12" URL="tycoonTerrorTowers_Lia.xml?1"/>
+
+	<PATH NAME="laboratoryLockDown_Lia" URL="laboratoryLockDown_Lia.xml?1"/>
+	<PATH NAME="laboratoryLockDown_sum" URL="laboratoryLockDown_sum.xml?1"/>
+	<PATH NAME="laboratoryLockDown_kem" URL="laboratoryLockDown_kem.xml?1"/>
+	<PATH NAME="laboratoryLockDown_labTrapped" URL="laboratoryLockDown_labTrapped.xml?1"/>
+	<PATH NAME="laboratoryLockDown_lab" URL="laboratoryLockDown_lab.xml?1"/>
+
+	<PATH NAME="itemControl" URL="overlayUIs/itemControl_010221.swf"/>
+	<PATH NAME="gardenItemControl" URL="overlayUIs/gardenItemControl_11_04_21.swf"/>
+	<PATH NAME="harvestCooldownOverlay" URL="overlayUIs/HarvestCooldownOverlay.swf"/>
+	
+	<PATH NAME="map" URL="externalUIs/mapSelection_27_03_21.swf"/>
+	<PATH NAME="oldMap" URL="externalUIs/mapOld_06_05_21b.swf"/>
+	<PATH NAME="newMap" URL="externalUIs/mapNew_280421.swf"/>
+	
+	<PATH NAME="tycoonBusinessList" URL="externalUIs/tycoonBusinesses_030513.swf"/>
+
+	<PATH NAME="overlayUIs_help_BinPetShop" URL="overlayUIs/help_BinPetShop.swf"/>
+	<PATH NAME="overlayUIs_help_ClubFling" URL="overlayUIs/help_ClubFling.swf"/>
+	<PATH NAME="overlayUIs_help_DirtValley" URL="overlayUIs/help_DirtValley.swf"/>
+	<PATH NAME="overlayUIs_help_FiggsCafe" URL="overlayUIs/help_FiggsCafe.swf"/>
+	<PATH NAME="overlayUIs_help_GamsCastle" URL="overlayUIs/help_GamsCastle.swf"/>
+	<PATH NAME="overlayUIs_help_TinksTree" URL="overlayUIs/help_TinksTree.swf"/>
+	<PATH NAME="overlayUIs_help_TumsDiner" URL="overlayUIs/help_TumsDiner.swf"/>
+
+	<PATH NAME="overlayUIs_help_LabsLab" URL="overlayUIs/help_LabsLab_270115.swf"/>
+	<PATH NAME="overlayUIs_help_TycoonPlaza" URL="overlayUIs/help_TycoonPlaza_27_01_2016.swf"/>
+	<PATH NAME="overlayUIs_help_Garden" URL="overlayUIs/help_Garden_29_05_13.swf"/>
+	<PATH NAME="overlayUIs_help_FlumsFountain" URL="overlayUIs/help_FlumsFountain.swf"/>
+
+	<PATH NAME="tutV" URL="944,927,928,900"/>
+	<PATH NAME="tutorial900" URL="newUserTutorial/tutorial1.swf"/>
+	<PATH NAME="tutorial927" URL="newUserTutorial/tutorial1.swf"/>
+	<PATH NAME="tutorial928" URL="newUserTutorial/tutorial2.swf"/>
+	<PATH NAME="tutorial944" URL="newUserTutorial/tutorial3.swf"/>
+	<PATH NAME="tutorial" URL="newUserTutorial/tutorial3_290115.swf"/>
+
+	<PATH NAME="tutorialLoginMessage" URL="overlayUIs/onLoginMessages/ActivateNow_260516.swf"/>
+
+	<PATH NAME="weevilChanger" URL="externalUIs/weevilChanger.swf"/>
+
+	<PATH NAME="camPicControl" URL="overlayUIs/camPicControl_03_06_13.swf"/>
+	<PATH NAME="GardeningShop" URL="externalUIs/GardenShop_24_04_21.swf"/>
+	<!--<PATH NAME="fireworks2014" URL="overlayUIs/seasons/bonfireNight2014/fireworks_UI.swf"/>
+	<PATH NAME="fireworksLink" URL="http://blog.binweevils.com/2015/10/firework-garden-items-arriving-tomorrow-firework-safety-tips/"/>
+	-->
+
+	<PATH NAME="extraFunctionality" URL="extraFunctionality/extraFunctionality17.swf"/>
+
+
+	<PATH NAME="BPPphotoStudio" URL="externalUIs/BPP/BPPphotoStudio_16_04_2016.swf"/>
+	<PATH NAME="BPPphotoAlbum" URL="externalUIs/BPP/BPPphotoAlbum_10_12_13.swf"/>
+
+	<PATH NAME="buddyPanel" URL="buddies/buddyPanel_09_04_21.swf"/>
+	<PATH NAME="buddyFeed" URL="buddies/buddyFeed_080916v2.swf"/>
+
+	<PATH NAME="nestco" URL="externalUIs/shops/nestco/nestco_30_04_15.swf"/>
+
+	<PATH NAME="nestcoShowroom" URL="externalUIs/shops/nestco/SwsVsWebShowroom.swf"/>
+	<PATH NAME="detailBundle" URL="externalUIs/shops/nestco/DetailBundle_02_05_14.swf"/>
+	<PATH NAME="detailNestItem" URL="externalUIs/shops/nestco/DetailNestItem_23_03_15.swf"/>
+
+	<PATH NAME="detailHat" URL="externalUIs/shops/hatshop/DetailHat_020315.swf"/>
+
+	<PATH NAME="tycoonRevenue" URL="externalUIs/tycoonRevenue_14_03_18.swf"/>
+	<PATH NAME="mysteryCodeMachine" URL="externalUIs/mysteryCodeMachine_180421.swf"/>
+
+	<PATH NAME="gameIntroNewPlayer" URL="externalUIs/gameIntro/NewUser_050115.swf"/>
+	<PATH NAME="gameIntroExistingPlayer" URL="externalUIs/gameIntro/ExistingUser.swf"/>
+
+
+	<PATH NAME="vodMenu" URL="externalUIs/vodMenu_180215.swf"/>
+	<PATH NAME="vodSkin" URL="http://cdn.binw.net/bwtv/SkinOverPlayStopSeekFullVol.swf"/>
+	<PATH NAME="vodPlayerVersion" URL="22"/>
+
+	<PATH NAME="rumsLuggageLeaderboard" URL="overlayUIs/rumsLuggageRummage/rumsLuggageRummageLeaderBoard_130215.swf"/>
+	<!-- easter hunt 
+	<PATH NAME="easterHunt" URL="externalUIs/seasons/easter/2021/easterHunt_010421.swf"/>-->
+	<PATH NAME="SF_BinPetBounceLeaderBoard" URL="overlayUIs/seasons/summerFair/LeaderboardSelector.swf"/>
+
+	<PATH NAME="Arcade_PirateLeaderboard" URL="overlayUIs/arcade/pirateGauntletLeaderboard.swf"/>
+	<PATH NAME="Arcade_AsteroidLeaderboard" URL="overlayUIs/arcade/gemsAsteroidsLeaderboard.swf"/>
+	<PATH NAME="Arcade_CongaLeaderboard" URL="overlayUIs/arcade/congaWithWandaLeaderboard.swf"/>
+	<PATH NAME="Arcade_PotionLeaderboard" URL="overlayUIs/arcade/labsPotionPartyLeaderboard.swf"/>
+	<!--Halloween
+	<PATH NAME="Halloween_openVaultUI" URL="overlayUIs/seasons/halloween2016/Halloween_openVaultUI_v2.swf"/>
+	<PATH NAME="spookyScience_introOverlay" URL="overlayUIs/seasons/halloween2016/SpookyScience_Intro.swf"/>
+	<PATH NAME="spookyScience_collectBatMove" URL="overlayUIs/seasons/halloween2016/CollectWereweevilMove.swf"/>
+	<PATH NAME="spookyScience_collectPumpkinMove" URL="overlayUIs/seasons/halloween2014/CollectPumpkinMove.swf"/>
+	<PATH NAME="spookyScience_collectGhostMove" URL="overlayUIs/seasons/halloween2014/ghostMoveOverlay.swf"/>
+	<PATH NAME="spookyScience_rewardMachineTycoonOnly" URL="overlayUIs/seasons/halloween2016/RewardMachineTycoonOnly.swf"/>
+	<PATH NAME="SpookyScience1_Lab" URL="SpookyScience1_Lab.xml?1"/>
+	<PATH NAME="SpookyScience2_Lab" URL="SpookyScience2_Lab.xml?1"/>
+	<PATH NAME="SpookyScience3_Lab" URL="SpookyScience3_Lab.xml?1"/>
+	<PATH NAME="SpookyScience1_Runt" URL="SpookyScience1_Runt.xml?1"/>-->
+
+
+	<!--Christmas
+	<PATH NAME="advent2014" URL="externalUIs/seasons/christmas/2016/AdventCalendar_1.swf"/>
+	<PATH NAME="snowWeevilFound" URL="overlayUIs/seasons/christmas2016/snowweevil_hunt_found.swf"/>
+	<PATH NAME="snowWeevilIntro" URL="overlayUIs/seasons/christmas2016/snowweevil_hunt_intro.swf"/>
+	
+	<PATH NAME="BBF_BingsList" URL="overlayUIs/quests/binsBigFreeze/BingsList.swf"/>
+	<PATH NAME="BBF_scannerInstructions" URL="overlayUIs/quests/binsBigFreeze/scannerInstructions.swf"/>
+	<PATH NAME="BBF_collectXmasTree" URL="overlayUIs/quests/binsBigFreeze/collectXmasTree_271115.swf"/>
+	<PATH NAME="BBF_collectSnowMachine" URL="overlayUIs/quests/binsBigFreeze/collectSnowMachine_271115.swf"/>
+	<PATH NAME="BBF_collectFireGem" URL="overlayUIs/quests/binsBigFreeze/collectFireGem_131216.swf"/>
+	<PATH NAME="BBF_collectIceGem" URL="overlayUIs/quests/binsBigFreeze/collectIceGem_131216.swf"/>
+	<PATH NAME="BBF_paintingMiniGame" URL="externalUIs/quests/binsBigFreeze/paintingMiniGame.swf"/>
+	<PATH NAME="BBF_userGuideBroken" URL="externalUIs/quests/binsBigFreeze/userGuideBroken.swf"/>
+	<PATH NAME="BBF_userGuide" URL="externalUIs/quests/binsBigFreeze/userGuide.swf"/>
+	<PATH NAME="BBF_brief" URL="externalUIs/quests/binsBigFreeze/briefing.swf"/>
+	<PATH NAME="BBF_intro" URL="externalUIs/quests/binsBigFreeze/BBF_intro_15_12_2014.swf"/>
+	<PATH NAME="BBF_endCutScene" URL="externalUIs/quests/binsBigFreeze/BBF_endCutScene.swf"/>
+	<PATH NAME="BBigFreeze_Bing" URL="BBigFreeze_Bing.xml"/>
+	<PATH NAME="BBigFreeze_Gott" URL="BBigFreeze_Gott.xml"/>
+	<PATH NAME="BBigFreeze_Dab" URL="BBigFreeze_Dab.xml?1"/>
+	<PATH NAME="BBigFreeze_Thugg" URL="BBigFreeze_Thugg.xml"/>
+-->
+
+
+</xml>

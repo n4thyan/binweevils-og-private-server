@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<character defaultCloseAnimFrame="rest" direction="-1">
+	<tasks>
+		<task description="missionStarted" questControlID="2800" />
+		<task description="missionComplete" questControlID="2899" />			
+	</tasks>
+	
+	<phase num="0" animFrame="shivering" >
+		<text>Hi there! Are you not cold? It's really chilly out here! I think there's something wrong...</text>
+		<userResponse>
+			<option progressTo="-1">Definitely. This snow isn't normal for the Binscape! I'll go chat to Gam.</option>
+			<option progressTo="-1">I'm very toasty thank you! I'm off to explore, bye!</option>
+		</userResponse>
+	</phase>	
+	
+	<phase num="1" animFrame="talking"  questControlPoint="missionStarted">
+		<text width="500">Hi there! Need something painted? Like, I don't know... a Christmas decoration? I need to keep my hands warm...</text>
+		<userResponse>
+			<!--<option progressTo="-1" fireEvent="binsBigFreeze_getGottPresent">Sure</option>-->
+			<option progressTo="2">Yes please!</option>			
+		</userResponse>
+	</phase>	
+	
+	<phase num="2" animFrame="talking" >
+		<text>Awesome! Just pass it over here and I'll see what I can do.</text>
+		<userResponse>
+			<option progressTo="-1">Cool, thanks!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="3" animFrame="talking" >
+		<text>One snazzy orange bauble. Here you go, I hope you like the pattern!</text>
+		<userResponse>
+			<option progressTo="-1" fireEvent="binsBigFreeze_DabGivesBaubleBalls_Orange">Thanks for the help Dab! I’m sure Bing will love this.</option>
+		</userResponse>
+	</phase>
+	<phase num="4" animFrame="talking" >
+		<text>One newly decorated green bauble. Here you go, I hope you like the pattern!</text>
+		<userResponse>
+			<option progressTo="-1" fireEvent="binsBigFreeze_DabGivesBaubleBalls_Green">Thanks for the help Dab! I’m sure Bing will love this.</option>
+		</userResponse>
+	</phase>
+	<phase num="5" animFrame="talking" >
+		<text>One patterned red bauble. Here you go, I hope you like the pattern!</text>
+		<userResponse>
+			<option progressTo="-1" fireEvent="binsBigFreeze_DabGivesBaubleBalls_Red">Thanks for the help Dab! I’m sure Bing will love this.</option>
+			
+		</userResponse>
+	</phase>
+	<phase num="6" animFrame="talking" >
+		<text>I know one Christmas crazy Bin Weevil who will enjoy those baubles!</text>
+		<userResponse>
+			<option progressTo="-1">Thanks, I'll go put them on the tree.</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="7" animFrame="talking" >
+		<text>Psst! You need to avoid being seen. Try turning white at the Weevil Changer to blend in with the snow!</text>		
+	</phase>
+	
+	<phase num="8" animFrame="talking" >
+		<text>I can't work with a PLAIN bauble! Go put some COLOUR on it first.</text>		
+	</phase>
+	
+	<phase num="9" animFrame="talking" >
+		<text>My job here is done. Now to wait for the snow to melt...</text>
+		<userResponse>
+			<option progressTo="-1">Have fun with that! See you soon!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="10" animFrame="talking" >
+		<text>What? I can't hear you! Come closer!</text>		
+	</phase>
+	
+	<phase num="11" animFrame="talking" questControlPoint="missionComplete">
+		<text>Nice work fixing the snow machine - my paints were starting to freeze up in all that snow!</text>		
+	</phase>
+		
+	
+	
+</character>

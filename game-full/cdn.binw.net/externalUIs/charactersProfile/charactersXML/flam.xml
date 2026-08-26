@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<name>FLAM</name>
+	<!--<name><![CDATA[<font size="15">garden <br/>inspector</font>]]></name>-->
+	<buddies>71,48,27</buddies>
+	<family>2</family>
+	<position_in_family>3</position_in_family>
+	<profile_picture>flam.png</profile_picture>
+	<photos>
+		<photo>
+			<url>flam1.png</url>
+			<thumb_url>flam1_thumb.png</thumb_url>
+			<capture>Airborne!</capture>
+		</photo>
+		<photo>
+			<url>flam2.png</url>
+			<thumb_url>flam2_thumb.png</thumb_url>
+			<capture>Off on another adventure</capture>
+		</photo>
+		<photo>
+			<url>flam3.png</url>
+			<thumb_url>flam3_thumb.png</thumb_url>
+			<capture>Chillaxing on the beach</capture>
+		</photo>
+	</photos>
+	<fun_moment>
+		<url>flam.png</url>
+		<text>The time Blem got too close to a fire snail!</text>
+	</fun_moment>
+	<about>
+		<likes>Being above the clouds</likes>
+		<dislikes>A rattling engine</dislikes>
+		<fun_fact>Has travelled more miles than any other Bin Weevil</fun_fact>
+		<text>This intrepid explorer travels around in her trusty biplane. She’s explored the Mulch Island archipelago and has stood on the Binscape’s highest peaks! Flam’s an ace mechanic and can fix anything – she’s just as handy with a spanner as Rigg.</text>
+		<interesting_fact>Builds her own gadgets</interesting_fact>
+		<pic_url>flam.png</pic_url>
+	</about>
+</data>

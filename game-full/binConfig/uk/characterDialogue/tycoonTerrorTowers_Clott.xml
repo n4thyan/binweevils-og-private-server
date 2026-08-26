@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<character defaultCloseAnimFrame="rest" direction="-1">	
+	<tasks>
+		<task description="roomComplete" questControlID="601" />
+	</tasks>	
+	
+	<phase num="0" animFrame="talk_in">
+		<text>Help! Help! They’ve taken Posh!</text>
+	</phase>	
+	
+</character>

@@ -1,0 +1,16 @@
+<itemConfig name='f_DiningRoomTable_kingSize' type='furniture' path='assetsNest/f_DiningRoomTable_kingSize.swf' thumb='assetsNest/f_DiningRoomTable_kingSize_thumb.swf' h='35' boundType='rect'  numSpots='2' clickable=''>
+	<pos frame='1' bounds='-200,70,160,80' x='-200' y='0' z='50' ry='0' gridSqs='41,42,43,44'/>
+	<pos frame='2' bounds='-200,140,160,80' x='-200' y='0' z='90' ry='0' gridSqs='1,2,3,4'/>
+	<pos frame='3' bounds='-200,230,160,80' x='-200' y='0' z='170' ry='0' gridSqs='11,12,13,14'/>
+	<pos frame='4' bounds='-200,320,160,60' x='-200' y='0' z='320' ry='0' gridSqs='31,32,33,34'/>
+	
+	<pos frame='5' bounds='-80,70,160,80' x='-80' y='0' z='50' ry='0' gridSqs='44,45,46,47'/>
+	<pos frame='6' bounds='-80,140,160,80' x='-80' y='0' z='90' ry='0' gridSqs='4,5,6,7'/>
+	<pos frame='7' bounds='-80,230,160,80' x='-80' y='0' z='170' ry='0' gridSqs='14,15,16,17'/>
+	<pos frame='8' bounds='-80,320,160,60' x='-80' y='0' z='320' ry='0' gridSqs='34,35,36,37'/>
+	
+	<pos frame='9' bounds='40,70,160,80' x='40' y='0' z='50' ry='0' gridSqs='47,48,49,50'/>
+	<pos frame='10' bounds='40,140,160,80' x='40' y='0' z='90' ry='0' gridSqs='7,8,9,10'/>
+	<pos frame='11' bounds='40,230,160,80' x='40' y='0' z='170' ry='0' gridSqs='17,18,19,20'/>
+	<pos frame='12' bounds='40,320,160,60' x='40' y='0' z='320' ry='0' gridSqs='37,38,39,40'/>
+</itemConfig>

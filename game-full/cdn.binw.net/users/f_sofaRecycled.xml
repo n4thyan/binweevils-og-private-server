@@ -1,0 +1,17 @@
+<itemConfig name='f_sofaRecycled' type='furniture' path='assetsNest/f_sofaRecycled.swf' thumb='assetsNest/f_sofaRecycled_thumb.swf' h='80' boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-200,80,40,80' x='-160' y='0' z='160' ry='-90' gridSqs='1,2'/>
+	<pos frame='2' bounds='-200,160,40,80' x='-160' y='0' z='240' ry='-90' gridSqs='11,12'/>
+	<pos frame='3' bounds='-200,240,40,80' x='-160' y='0' z='320' ry='-90' gridSqs='21,22'/>
+	<pos frame='4' bounds='-200,320,40,80' x='-160' y='0' z='400' ry='-90' gridSqs='31,32'/>
+
+	<pos frame='5' bounds='-200,320,80,80' x='-120' y='0' z='397' ry='0' gridSqs='31,32'/>
+	<pos frame='6' bounds='-130,321,80,80' x='-40' y='0' z='398' ry='0' gridSqs='32,33,34'/>
+	<pos frame='7' bounds='-50,323,80,80' x='0' y='0' z='399' ry='0' gridSqs='34,35,36'/>
+	<pos frame='8' bounds='30,322,80,80' x='30' y='0' z='395' ry='0' gridSqs='37,38,39'/>
+	<pos frame='9' bounds='110,320,80,80' x='70' y='0' z='394' ry='0' gridSqs='39,40'/>
+	
+	<pos frame='10' bounds='160,320,40,80' x='160' y='0' z='393' ry='90' gridSqs='39,40'/>
+	<pos frame='11' bounds='160,240,40,80' x='160' y='0' z='320' ry='90' gridSqs='29,30'/>
+	<pos frame='12' bounds='160,160,40,80' x='160' y='0' z='240' ry='90' gridSqs='19,20'/>
+	<pos frame='13' bounds='160,80,40,80' x='160' y='0' z='160' ry='90' gridSqs='9,10'/>
+</itemConfig>

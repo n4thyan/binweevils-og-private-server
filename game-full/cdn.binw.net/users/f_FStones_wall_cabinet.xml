@@ -1,0 +1,17 @@
+<itemConfig name='f_FStones_wall_cabinet' type='furniture' path='assetsNest/f_FStones_wall_cabinet.swf' thumb='assetsNest/f_FStones_wall_cabinet_thumb.swf' h='60'  boundType='radial' boundRadius='58' numSpots='1' clickable='no'>
+	<pos frame='1' bounds='' x='-180' y='100' z='105' gridSqs='1,2'/>
+	<pos frame='2' bounds='' x='-180' y='100' z='185' gridSqs='11,12'/>
+	<pos frame='3' bounds='' x='-180' y='100' z='265' gridSqs='21,22'/>
+	<pos frame='4' bounds='' x='-180' y='100' z='340' gridSqs='31,32'/>
+	
+	<pos frame='5' bounds='' x='-165' y='100' z='394' gridSqs='31,32'/>
+	<pos frame='6' bounds='' x='-85' y='100' z='391' gridSqs='33,34'/>
+	<pos frame='7' bounds='' x='0' y='100' z='380' gridSqs='35,36'/>
+	<pos frame='8' bounds='' x='85' y='100' z='392' gridSqs='37,38'/>
+	<pos frame='9' bounds='' x='165' y='100' z='394' gridSqs='39,40'/>
+	
+	<pos frame='10' bounds='' x='175' y='100' z='340' gridSqs='39,40'/>
+	<pos frame='11' bounds='' x='175' y='100' z='265' gridSqs='29,30'/>
+	<pos frame='12' bounds='' x='175' y='100' z='185' gridSqs='19,20'/>
+	<pos frame='13' bounds='' x='175' y='100' z='105' gridSqs='9,10'/>
+</itemConfig>

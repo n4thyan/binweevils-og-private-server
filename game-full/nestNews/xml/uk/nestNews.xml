@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+		****************************     NOTES     ****************************
+		
+		ask Andy R if you have any questions
+		
+		*********
+		TOP STORY
+		*********
+		if <topstory></topstory> has a 'y' in it, then the first story will be made the top story, eg <topstory>y</topstory>
+		Anything else will mean there's no top story
+		
+		
+		**
+		AD
+		**
+		Nest News can show 1 ad at a time, but you can put 2 ads here so that it can roll over from one to the other at midnight.
+		For example, if you want an ad to change at midnight 20/08/2010 and be different on 21/08/2010, make the end date of the first ad 20/08/2010 and the startDate of the second ad 21/08/2010
+		See the 'links' section below for information on the linkTarget and linkType
+		
+		<ad>
+			<fileName></fileName>
+			<startDate>11/08/2010</startDate>
+			<endDate>20/08/2010</endDate>
+			<linkTarget></linkTarget>
+			<linkType></linkType>
+			<trackingID></trackingID>
+		</ad>	
+		<ad>
+			<fileName></fileName>
+			<startDate>21/08/2010</startDate>
+			<endDate>30/08/2010</endDate>
+			<linkTarget></linkTarget>
+			<linkType></linkType>
+			<trackingID></trackingID>
+		</ad>	
+		
+		
+		**********
+		START DATE
+		**********
+		Each newsItem needs a startDate. It has to be in the format dd/mm/yyyy. 
+		If the date format is wrong, an error will be shown in the previewer.
+		
+		
+		**********
+		END DATE
+		**********
+		Optional - it will run forever if this is omitted.
+		The end date is inclusive, so will run that day and die at midnight.
+		It has to be in the format dd/mm/yyyy. 
+				
+				
+		********
+		CATEGORY
+		********
+		Use the following numbers for the categories, NOT the names
+		1) news
+		2) special area
+		3) tycoon
+		4) hunt
+		5) comp
+		
+		
+		********
+		HEADLINE
+		********
+		The headline needs to go inside CDATA tags to cover for funky characters, so 
+		BAD -> <headline>It's Summer</headline>
+		GOOD -> <headline><![CDATA[It's Summer]]></headline>
+		
+		
+		********
+		BODYTEXT
+		********
+		The bodyText needs to go inside CDATA tags to cover for funky characters and links
+		BAD -> <bodyText>He does too!!!!!!!!!!!!<a href="event:1">It's Summer</a></bodyText>
+		GOOD -> <bodyText><![CDATA[He does too!!!!!!!!!!!!<a href="event:1">It's Summer</a>]]><bodyText>
+		Links:
+		Links can go in the bodyText in 'a' tags like above. After 'event:', just put 1 for the first link info in
+		that newsItem, 2 for the next one etc.
+		
+		
+		*****
+		LINKS
+		*****
+		The 'links' tags can have any number of 'link' tags inside them. These relate to the 'a href' tags in the bodyText.
+		In the example below, the links would correspond to <a href="event:1"> and <a href="event:2">
+		
+		<links>
+			<link>
+				<linkTarget>www.otis.com</linkTarget>
+				<linkType></linkType>
+			</link>
+			<link>
+				<linkTarget>www.otis2.com</linkTarget>
+				<linkType></linkType>
+			</link>
+		</links>
+		
+		----------
+		linkTarget:
+		----------
+		can be
+		1) a web address
+		2) a location number from locationdefinitions.xml (102, 143 etc), 
+		3) an externalUI (the .swf path on the server)
+		------------
+		The linkType:
+		------------
+		can be one of the 3 numbers just above here 
+		
+-->
+
+<nestNews>	
+	<topstory>CELEBRITY PARTY COMING SOON</topstory>
+			
+<newsItem>				
+		<startDate>27/03/2021</startDate>
+		<endDate>29/03/2021</endDate>
+		<category>2</category>
+		<headline><![CDATA[CELEBRITY PARTY COMING SOON]]></headline>
+		<bodyText><![CDATA[Its time to get ready for the first party at Slams Party Box! Head there on the 28/03/21 @ 4PM UTC to see the grand opening of the Celebrity Party! There will be a lot of fun activities to do while the party is open.]]></bodyText>
+		<pic></pic>
+				<links>
+		</links>
+	</newsItem>	
+	
+<newsItem>				
+		<startDate>08/02/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline><![CDATA[FAN ART]]></headline>
+		<bodyText><![CDATA[How cool would it be to see your artwork up in the spot lights?! Very cool indeed! Check out some Bin-tastic Bin Weevils artwork on the <a href="event:1">FAN ART</a> page. If you would like to share your Bin Weevils artwork with us then please send it to, <a href="event:2">pics@binweevils.com</a><br><br></br> You can learn how to draw a Bin Weevil on the <a href="event:3">Fun Stuff</a> page.]]></bodyText>
+		<pic></pic>
+		<links>
+		<link>
+				<linkTarget>http://blog.binweevils.com/fan-art/</linkTarget>
+				<linkType>1</linkType>
+			</link>
+			<link>
+				<linkTarget>pics@binweevils.com</linkTarget>
+				<linkType>1</linkType>
+			</link>
+		<link>
+				<linkTarget>http://blog.binweevils.com/fun-stuff/</linkTarget>
+				<linkType>1</linkType>
+			</link>
+			</links>
+	</newsItem>
+
+	
+	<!--
+	<newsItem>
+		<startDate>18/08/2010</startDate>
+		<endDate></endDate>
+		<category>5</category>
+		<headline>Super Headline</headline>
+		<bodyText>Personalization and more</bodyText>
+		<pic></pic>
+		<links>
+		</links>
+	</newsItem>
+	<newsItem>
+		<startDate>19/08/2010</startDate>
+		<endDate></endDate>
+		<category>6</category>
+		<headline>Headline 5</headline>
+		<bodyText><![CDATA[Esto es una <a href="event:1">cagada</a> increble.]]></bodyText>
+		<pic>1278932345.jpg</pic>
+		<links>
+			<link>
+				<linkTarget>103</linkTarget>
+				<linkType>2</linkType>
+			</link>
+		</links>
+	</newsItem>
+	-->
+</nestNews>

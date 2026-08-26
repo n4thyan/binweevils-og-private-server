@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<name>GAM</name>
+	<!--<name><![CDATA[<font size="15">garden <br/>inspector</font>]]></name>-->
+	<buddies>28,32,81</buddies>
+	<family>2</family>
+	<position_in_family>1</position_in_family>
+	<profile_picture>gam.png</profile_picture>
+	<photos>
+		<photo>
+			<url>gam1.png</url>
+			<thumb_url>gam1_thumb.png</thumb_url>
+			<capture>The big boss of the SWS</capture>
+		</photo>
+		<photo>
+			<url>gam2.png</url>
+			<thumb_url>gam2_thumb.png</thumb_url>
+			<capture>A historic building</capture>
+		</photo>
+		<photo>
+			<url>gam3.png</url>
+			<thumb_url>gam3_thumb.png</thumb_url>
+			<capture>The perfect pet!</capture>
+		</photo>
+	</photos>
+	<fun_moment>
+		<url>gam.png</url>
+		<text>The time Colin sneezed and blew all the Castle Guards down!</text>
+	</fun_moment>
+	<about>
+		<likes>Walkies with Colin</likes>
+		<dislikes>The WEB’s plotting</dislikes>
+		<fun_fact>Can never remember when his birthday is!</fun_fact>
+		<text>The oldest of all the Bin Weevils always has a tale to tell about the good old days, and he’ll ramble on for hours if you’ll listen. From battling in the Great Bin War to founding the Secret Weevil Service, Gam has led a majorly exciting life, and he’s showing no signs of slowing down.</text>
+		<interesting_fact>Always wears his medals</interesting_fact>
+		<pic_url>gam.png</pic_url>
+	</about>
+</data>

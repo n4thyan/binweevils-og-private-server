@@ -1,0 +1,6 @@
+<itemConfig name='f_poster_clarksJackNano' type='furniture' path='assetsNest/f_poster_clarksJackNano.swf' thumb='assetsNest/f_poster_clarksJackNano_thumb.swf' h='100' boundType='0' clickable='no'>
+	<!-- posters go from y=90 to y=190 on back wall (h=100) -->
+	<pos frame='1' bounds='' x='-185' y='90' z='500' ry='0' gridSqs='31,32,33,34,35,36'/>
+	<pos frame='2' bounds='' x='-105' y='90' z='499' ry='0' gridSqs='33,34,35,36,37,38'/>
+	<pos frame='3' bounds='' x='-25' y='90' z='498' ry='0' gridSqs='35,36,37,38,39,40'/>
+</itemConfig>

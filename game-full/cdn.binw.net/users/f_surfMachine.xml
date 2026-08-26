@@ -1,0 +1,10 @@
+<itemConfig name='f_surfMachine' type='furniture' path='assetsNest/f_surfMachine.swf' thumb='assetsNest/f_surfMachine_thumb.swf' h='25'  boundType='radial' boundRadius='14' numSpots='0' clickable='yes'>
+	
+	
+	<pos frame='1' bounds='' x='0' y='0' z='120' ry='0' gridSqs='5,6'/>
+	<pos frame='2' bounds='' x='0' y='0' z='200' ry='0' gridSqs='15,16'/>
+	<pos frame='3' bounds='' x='0' y='0' z='280' ry='0' gridSqs='25,26'/>
+	<pos frame='4' bounds='' x='0' y='0' z='360' ry='0' gridSqs='35,36'/>	
+	
+	
+</itemConfig>

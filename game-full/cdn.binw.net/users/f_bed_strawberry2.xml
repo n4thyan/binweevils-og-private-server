@@ -1,0 +1,14 @@
+<itemConfig name='f_bed_strawberry2' type='furniture' path='assetsNest/f_bed_strawberry2.swf' thumb='assetsNest/f_bed_strawberry2_thumb.swf' h='80'  boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-200,80,160,80' x='-40' y='0' z='160' ry='-90' gridSqs='1,2,3,4'/>
+	<pos frame='2' bounds='-200,160,160,80' x='-40' y='0' z='240' ry='-90' gridSqs='11,12,13,14'/>
+	<pos frame='3' bounds='-200,240,160,80' x='-40' y='0' z='320' ry='-90' gridSqs='21,22,23,24'/>
+	
+	<pos frame='4' bounds='-200,243,160,160' x='-40' y='0' z='400' ry='0' gridSqs='21,22,23,24,31,32,33,34'/>
+	<pos frame='5' bounds='-120,241,160,160' x='40' y='0' z='400' ry='0' gridSqs='23,24,25,26,33,34,35,36'/>
+	<pos frame='6' bounds='-40,240,160,160' x='120' y='0' z='400' ry='0' gridSqs='25,26,27,28,35,36,37,38'/>
+	<pos frame='7' bounds='40,242,160,160' x='200' y='0' z='400' ry='0' gridSqs='27,28,29,30,37,38,39,40'/>
+	
+	<pos frame='8' bounds='40,240,160,80' x='200' y='0' z='320' ry='90' gridSqs='27,28,29,30'/>
+	<pos frame='9' bounds='40,160,160,80' x='200' y='0' z='240' ry='90' gridSqs='17,18,19,20'/>
+	<pos frame='10' bounds='40,80,160,80' x='200' y='0' z='160' ry='90' gridSqs='7,8,9,10'/>
+</itemConfig>

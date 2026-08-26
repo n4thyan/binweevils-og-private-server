@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<character defaultCloseAnimFrame="rest" direction="1">
+	<tasks>
+		<task description="missionStarted" questControlID="2800" />
+		<task description="gaveList" questControlID="2840" />
+		<task description="treeComplete" questControlID="2802" />
+		<task description="gaveUserGuide" questControlID="2834" />
+		<task description="userGuideFixed" questControlID="2835" />
+		<task description="missionComplete" questControlID="2899" />			
+	</tasks>
+	
+	<phase num="0" animFrame="talk_in" >
+		<text width="300">Hi! The Bin is completely frozen, this is the best day ever!</text>
+		<userResponse>
+			<option progressTo="-1">Hmm. That's not right - I should talk to Gam about this!</option>
+			<option progressTo="-1">I'm busy exploring! Seeya later Bing!</option>
+		</userResponse>
+	</phase>	
+	
+	<phase num="1" animFrame="talk_in"  questControlPoint="missionStarted">
+		<text width="300">Hey! Check out all this FREEZING snow! Isn't it amazing?</text>
+		<userResponse>
+			<option progressTo="2">Not really Bing, the whole Bin is frozen! Do you know how we can fix your out of control snow machine?</option>
+			<option progressTo="12">Who are you?</option>			
+		</userResponse>
+	</phase>	
+	
+	<phase num="2" animFrame="talk_in" >
+		<text width="300">The WHOLE Bin is frozen? Aw, well... my snow machine is in the frozen cabin. I'll give you the instruction manual only if you help me find my tree decorations!</text>
+		<userResponse>
+			<option progressTo="3">So if I help find your decorations, you'll promise to give me the instruction manual?</option>
+			<option progressTo="-1">Actually, I'm with you on this one - let it snow!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="3" animFrame="talk_in" sticky="1">
+		<text width="300">I promise. Here's the list of decorations I need for my Christmas tree!</text>
+		<userResponse>
+			<option progressTo="-1" fireEvent="binsBigFreeze_bingGivesList">Alrighty then! Let's get searching!</option>			
+		</userResponse>
+	</phase>
+	
+	<phase num="4" animFrame="talk_in" questControlPoint="gaveList">
+		<text width="300">The Christmas Tree is still looking a bit bare...</text>
+		<userResponse>
+			<option progressTo="-1" >I'm on the case Bing!</option>			
+		</userResponse>
+	</phase>
+	<phase num="5" animFrame="talk_in" questControlPoint="treeComplete">
+		<text width="300">The Christmas tree looks Bin-credible! Thanks!</text>
+		<userResponse>
+			<option progressTo="6" fireEvent="binsBigFreeze_bingGivesUserGuide" >No problemo! So have you got the instruction manual for the Snow Machine?</option>			
+		</userResponse>
+	</phase>
+	<phase num="6" animFrame="talk_in" sticky="1">
+		<text width="300">Here you go, this is the Snow Machine's instruction manual! Oh and it's a bit... not exactly stuck together.</text>
+		<userResponse>
+			<option progressTo="-1" >*sigh* Looks like I better put it together again! Thanks a lot, Bing...</option>			
+		</userResponse>
+	</phase>
+	<phase num="7" animFrame="talk_in" questControlPoint="gaveUserGuide">
+		<text width="300">You need to put it together again to read it.</text>
+	</phase>
+	<phase num="8" animFrame="talk_in" questControlPoint="userGuideFixed">
+		<text width="300">Wow, you actually fixed the manual? Now you can turn the pages to find more information on the snow machine!</text>		
+	</phase>
+	<phase num="9" animFrame="talk_in" questControlPoint="missionComplete">
+		<text width="300">I didn't want to admit it, but that was TOO much snow, even for me! Thanks!</text>
+		<userResponse>
+			<option progressTo="-1" >Enjoy your Christmas today Bing! And tomorrow. And the day after tomorrow. And the day after the day after tomorrow. And...</option>			
+		</userResponse>
+	</phase>
+	
+	<phase num="10" animFrame="talk_in" >
+		<text width="300"> This bauble isn't the right colour! </text>
+		
+	</phase>
+	
+	<phase num="11" animFrame="talk_in" >
+		<text width="300">This bauble is not snazzy enough. Try adding a pattern! Maybe there's an artist nearby who can help you... </text>
+		
+	</phase>
+	
+	<phase num="12" animFrame="talk_in" >
+		<text width="300">I'm Bing! I am OBSESSED with Christmas. I don't just wish it could be Christmas everydaaaaay, I MAKE it Christmas every day!</text>
+		<userResponse>
+			<option progressTo="-1">That's not weird at all! Oh look is that the time? I have to go... Bye!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="13" animFrame="talk_in" >
+		<text width="300">The door is frozen shut! Maybe there's something hidden in the snow that can open it.</text>		
+	</phase>
+	<phase num="14" animFrame="talk_in" >
+		<text width="300">You can faintly see the snow machine through the ice...</text>		
+	</phase>
+	
+</character>

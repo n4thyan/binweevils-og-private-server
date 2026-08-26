@@ -1,0 +1,8 @@
+<itemConfig name='f_battleship_controlPanel' type='furniture' path='assetsNest/f_battleship_controlPanel.swf' thumb='assetsNest/f_battleship_controlPanel_thumb.swf' h='80'  boundType='' numSpots='0' clickable='yes'>
+
+	<pos frame='1' bounds='' x='-120' y='0' z='380' gridSqs='31,32,33,34,35,21,22,23,24,25'/>
+	<pos frame='2' bounds='' x='-80' y='0' z='380' gridSqs='32,33,34,35,36,22,23,24,25,26'/>
+	<pos frame='3' bounds='' x='0' y='0' z='380' gridSqs='34,35,36,37,38,24,25,26,27,28'/>
+	<pos frame='4' bounds='' x='80' y='0' z='380' gridSqs='35,36,37,38,39,25,26,27,28,29'/>
+	<pos frame='5' bounds='' x='120' y='0' z='380' gridSqs='36,37,38,39,40,26,27,28,29,30'/>
+</itemConfig>

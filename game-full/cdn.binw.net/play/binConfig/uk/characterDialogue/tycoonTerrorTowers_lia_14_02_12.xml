@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+	=====================================================
+	*  NOTES ON AVAILABLE PARAMETERS AND CONTENT NODES  *
+	=====================================================
+	
+	
+	============================================
+	*  Trickey params not in this incarnation  *
+	============================================
+	String replacement:	  //username//
+	Shuffling of options: <stage shuffle="true">
+	
+	
+	============================================
+	*                  NODES                   *
+	============================================
+	
+	<character>
+	Attribute: direction 
+	Optional:  true (Default "1" if left out)
+	Values:    "-1" to flip direction of the bubble
+	
+	<phase>
+	*
+	Attribute: num 
+	Optional:  false
+	Value:     The number that marks this phase's point in the conversation
+	Default:   None - required attribute.
+	*
+	Attribute: animFrame
+	Optional:  true
+	Value:     The frame label of the character mc to be played when this phase shows
+	Default:   No anim
+	*
+	Attribute: sticky
+	Optional:  true
+	Values:    "0" and "1". Sticky means that it will fall back to this node from non-sticky nodes on reshow.
+	Default:   0
+	*
+	Attribute: picoDx
+	Optional:  true
+	Value:     A positive or negative integer number of pixels. 
+			   The 'pico' is the pointy bit to the mouth in the speech bubble and picoDx is its distance from the edge of the bubble
+	Default:   20
+	*
+	
+	<text>
+	Mandatory node. If omitted, an empty bubble is shown
+	Accepts html, so if there is html formatting, wrap the text in <![CDATA[]]> tags
+	
+	<textOnReturn>
+	Optional node (technically speaking but check if required by Rob). The text node is used on return to this phase if none is specified and a warning is traced.
+	Accepts html, so if there is html formatting, wrap the text in <![CDATA[]]> tags
+	
+	<userResponse>
+	Optional node. If omitted, just the text is displayed and the speech bubble is closed by clicking outside the bubble. A warning is traced.
+	WARNING: No userResponse node was found in the XML. This is valid only if it's close to accept.
+	*
+	Attribute: type
+	Optional:  true
+	Value:     "freeText". If set to freeText, an input child node is required instead of option nodes.
+	Default:   undefined. If undefined it looks for option child nodes.
+	
+	<option>
+	If the userResponse was untyped, then <option> is a mandatory node. One or more can be set.
+	*
+	Attribute: progressTo
+	Optional:  true (if userResponse untyped)
+	Value:     integer - the next phase in the conversation. Can be set to "-1" to show that you want it to just act like a close (same as omission) 
+	Default:   -1. If -1 it just acts like a close and shows an error message - ERROR: The next phase is invalid for phase (number)
+	*
+	
+	<input>
+	If the userResponse was type="freeText", then <input> is a mandatory node.
+	*
+	Attribute: width
+	Optional:  true
+	Value:     integer pixel size
+	Default:   150
+	*
+	Attribute: charLimit
+	Optional:  true
+	Value:     integer number of characters
+	Default:   0 (no limit)
+	*
+	Attribute: caseSensitive
+	Optional:  true
+	Value:     "0" or "1"
+	Default:   1
+	*
+	
+	<correctAns>
+	If the userResponse was type="freeText", then <correctAns> is a mandatory node.
+	This contains the text against which to validate the user input.
+	*
+	Attribute: progressTo
+	Optional:  false
+	Value:     integer - the next phase in the conversation.
+	Default:   none - mandatory attribute
+	*
+	
+	<incorrectAns>
+	If the userResponse was type="freeText", then <incorrectAns> is a mandatory node.
+	No text content; just @progressTo
+	*
+	Attribute: progressTo
+	Optional:  false
+	Value:     integer - the next phase in the conversation.
+	Default:   none - mandatory attribute
+	*
+	
+-->
+
+
+<character defaultCloseAnimFrame="rest" direction="-1">
+
+	
+	<tasks>
+		<task description="machineDestroyed" questControlID="607" />
+		
+	</tasks>
+	
+	
+	<phase num="0" animFrame="talk_in" >
+		<text width="300">Thank goodness help is finally here!  My name is Lia. Are you here to rescue us?</text>
+		<userResponse>
+			<option progressTo="1">Don’t worry, Lia. I’ll have you out in a jiffy!</option>
+		</userResponse>
+	</phase>	
+		
+	<phase num="1" animFrame="talk_in" sticky="1" >
+		<text width="300">Listen, I have something that might help you.</text>
+		
+		<userResponse>	
+			<option progressTo="2">You have a pair of bolt cutters?</option>
+			<option progressTo="2">I thought a tissue might suffice!</option>
+			<option progressTo="2">You have a blowtorch?</option>
+		</userResponse>
+	</phase>	
+
+	<phase num="2" animFrame="talk_in" sticky="1" >
+		<text width="300">I built a gadget that might be able to get us out of here, and I just happened to have it with me!</text>
+		<userResponse>
+			<option progressTo="3">Well, tell me where I can find it!</option>
+			<option progressTo="3">I hope it’s not in that web with you.  I’ll never get you out if it is!</option>
+		</userResponse>
+	</phase>	
+	
+	<phase num="3" animFrame="talk_in" >
+		<text width="300">It's hidden over there... inside the claw machine.</text>
+		<userResponse>
+			<option progressTo="4">Funny place to put it!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="4" animFrame="talk_in"  >
+		<text width="300">I heard those thugs coming!  I didn’t want them getting a hold of it.</text>
+		<userResponse>
+			<option progressTo="5">Now how am I supposed to get in there?</option>
+			<option progressTo="5">Do you have any idea how to get the gadget out?</option>
+		</userResponse>
+	</phase>
+	
+			
+	<phase num="5" animFrame="talk_in"  sticky="1" >
+		<text width="300">The floor looks shaky under that vending machine on the back wall.</text>
+		<userResponse>
+			<option progressTo="6">What do you mean?</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="6" animFrame="talk_in"  sticky="1" >
+		<text width="300">Trust me, try filling up the vending machine with water, it should do something to help!</text>
+		<userResponse>
+			<option progressTo="7">I'm not so sure!</option>
+			<option progressTo="-1">I'll give it a go!</option>
+		</userResponse>
+	</phase>
+
+	<phase num="7" animFrame="talk_in"  sticky="1">
+		<text width="300">Trust me! Get shooting...</text>
+	</phase>
+	
+	
+	<phase num="8" animFrame="talk_in" questControlPoint="machineDestroyed">
+		<text width="300">Well done!  Now load my new super water gun and shoot the web!</text>
+		<textOnReturn width="300">Great work, agent! Now please cut me down!</textOnReturn>
+	</phase>
+		
+</character>

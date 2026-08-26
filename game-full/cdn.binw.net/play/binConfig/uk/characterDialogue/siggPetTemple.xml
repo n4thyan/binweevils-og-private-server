@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<character>
+	<tasks>
+		<task description="Temple_Entered" questControlID="234" />
+		<task description="Quest_Complete" questControlID="299" />
+	</tasks>	
+	
+	<phase num="0" animFrame="Talk_in" sticky="1">
+		<text>Hi there! You must be the SWS agent that Digg mentioned!</text>			
+		<userResponse>
+			<option progressTo="1">Yeah, that's me!</option>
+			<option progressTo="1">You're looking at one of the best agents in the force!</option>
+		</userResponse>		
+	</phase>	
+		
+	<phase num="1" animFrame="Talk_in">
+		<text>Great, we could use some protection around here. This is the temple...and up there, that's the guard.</text>
+		<userResponse>
+			<option progressTo="2">Wow, he looks mean!</option>
+			<option progressTo="3">How long has he been up there?</option>
+		</userResponse>		
+	</phase>		
+
+	<phase num="2" animFrame="Talk_in">
+		<text>You bet.  We'd better keep out of sight, because if he sees us, we're toast!</text>
+		<userResponse>
+			<option progressTo="4">Who's he working for?</option>
+			<option progressTo="3">Does he ever leave his post?</option>
+		</userResponse>		
+	</phase>			
+	
+	<phase num="3" animFrame="Talk_in">
+		<text>He's been up there for days. I don't think he ever sleeps! He's always on watch.</text>
+		<userResponse>
+			<option progressTo="5">Have you seen anyone going into the temple?</option>
+			<option progressTo="4">Do you have any clue what he's guarding?</option>
+		</userResponse>		
+	</phase>		
+	
+	<phase num="4" animFrame="Talk_in">
+		<text>We have no idea, but whoever's behind all this, they're up to no good!</text>
+		<userResponse>
+			<option progressTo="5">Have you seen anyone suspicious talking to the guard?</option>
+			<option progressTo="5">When is the last time you saw anyone go inside the temple?</option>
+		</userResponse>		
+	</phase>	
+
+	<phase num="5" animFrame="Talk_in">
+		<text>Actually, there was someone here not too long ago. The guard let a very strange-looking Bin Weevil inside, carrying something under his arm.</text>
+		<userResponse>
+			<option progressTo="6">It must be the Bin Pet kidnapper!  I've got to get inside that temple!</option>
+			<option progressTo="6">We have to find a way past that guard so I can chase that Evil Weevil down!</option>
+		</userResponse>		
+	</phase>	
+
+	<phase num="6" animFrame="Talk_in">
+		<text>I swear, the guard never moves from that ledge, you'll have to distract him somehow.</text>
+		<userResponse>
+			<option progressTo="7">I'm an SWS agent, I'll find a way.</option>
+			<option progressTo="8">Do you know how to open that locked door he's watching?</option>
+		</userResponse>		
+	</phase>	
+	
+	<phase num="7" animFrame="Talk_in">
+		<text>Look around and see if there's something you could use to create a distraction.</text>
+		<userResponse>
+			<option progressTo="8">I'm sure I can come up with something. But how will I get inside?</option>
+			<option progressTo="8">I'll still need to open that door, and it looks like it's locked tight.</option>
+		</userResponse>		
+	</phase>	
+
+	<phase num="8" animFrame="Talk_in">
+		<text>Once you get to the door, you can open it with a secret code. The guard taps the code into that panel when he opens the door, but it's too far away to see... I hope you've got some binoculars!</text>
+		<userResponse>
+			<option progressTo="9">Thanks for your help - I'd better get to work on a distraction contraption!</option>
+			<option progressTo="9">You've been a great help. Now watch an awesome agent in action!</option>
+		</userResponse>		
+	</phase>	
+
+	<phase num="9" animFrame="Talk_out" sticky="1">
+		<text>I'll be here if you need me...but remember, DON'T let that guard see you, or you'll be in trouble!</text>
+		<textOnReturn>
+			Make sure you've looked everywhere for items that could help you distract that guard. I hope you've got some binoculars to spot that code!
+		</textOnReturn>		
+	</phase>
+	
+	<phase num="11" animFrame="Talk_out" questControlPoint="Quest_Complete">
+		<text>My favourite agent! So glad to see you back. You can explore to your heart's content! I'm going to stay here and keep an eye on things.</text>
+	</phase>	
+	
+</character>

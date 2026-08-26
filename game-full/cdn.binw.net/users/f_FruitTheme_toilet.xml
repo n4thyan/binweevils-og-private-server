@@ -1,0 +1,15 @@
+<itemConfig name='f_FruitTheme_toilet' type='furniture' path='assetsNest/f_FruitTheme_toilet.swf' thumb='assetsNest/f_FruitTheme_toilet_thumb.swf' h='50' boundType='rect' clickable='yes'>
+	<pos frame='1' bounds='-190,80,80,80' x='-160' y='0' z='160' ry='-90' gridSqs='1,2'/>
+	<pos frame='2' bounds='-190,160,80,80' x='-160' y='0' z='240' ry='-90' gridSqs='11,12'/>
+	<pos frame='3' bounds='-190,240,80,80' x='-160' y='0' z='320' ry='-90' gridSqs='21,22'/>
+	<pos frame='4' bounds='-190,320,80,80' x='-160' y='0' z='400' ry='-90' gridSqs='31,32'/>
+	
+	<pos frame='5' bounds='-120,350,80,50' x='-80' y='0' z='390' ry='0' gridSqs='33,34'/>
+	<pos frame='6' bounds='-40,350,80,50' x='0' y='0' z='380' ry='0' gridSqs='35,36'/>
+	<pos frame='7' bounds='40,350,80,50' x='80' y='0' z='388' ry='0' gridSqs='37,38'/>
+	
+	<pos frame='8' bounds='120,330,65,80' x='160' y='0' z='399' ry='90' gridSqs='39,40'/>
+	<pos frame='9' bounds='120,240,65,80' x='160' y='0' z='319' ry='90' gridSqs='29,30'/>
+	<pos frame='10' bounds='120,160,65,80' x='160' y='0' z='239' ry='90' gridSqs='19,20'/>
+	<pos frame='11' bounds='120,80,65,80' x='160' y='0' z='159' ry='90' gridSqs='9,10'/>
+</itemConfig>

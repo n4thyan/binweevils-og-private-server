@@ -1,0 +1,12 @@
+<itemConfig name='f_SSpyRoom_bookcase' type='furniture' path='assetsNest/f_SSpyRoom_bookcase.swf' thumb='assetsNest/f_SSpyRoom_bookcase_thumb.swf' h='70' boundType='rect' numSpots='1' clickable='yes'>
+	<pos frame='1' bounds='-205,365,60,30' x='-200' y='0' z='407' gridSqs='31,32,33'/>
+	<pos frame='2' bounds='-205,275,60,30' x='-200' y='0' z='327' gridSqs='21,22,23'/>
+	<pos frame='3' bounds='-205,190,60,30' x='-200' y='0' z='247' gridSqs='11,12,13'/>
+	<pos frame='4' bounds='-205,110,60,30' x='-200' y='0' z='87' gridSqs='1,2,3'/>
+	
+	<pos frame='5' bounds='140,365,80,30' x='140' y='0' z='406' gridSqs='38,39,40'/>
+	<pos frame='6' bounds='140,275,80,30' x='140' y='0' z='326' gridSqs='28,29,30'/>
+	<pos frame='7' bounds='140,190,80,30' x='140' y='0' z='246' gridSqs='18,19,20'/>
+	<pos frame='8' bounds='140,110,80,30' x='140' y='0' z='86' gridSqs='8,9,10' />
+
+</itemConfig>

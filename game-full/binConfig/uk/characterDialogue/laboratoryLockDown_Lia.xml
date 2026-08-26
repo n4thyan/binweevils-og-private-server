@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<character defaultCloseAnimFrame="rest" direction="-1">	
+	<tasks>
+		<task description="middleDoorClosed" questControlID="718" />		
+	</tasks>	
+
+	<phase num="0" animFrame="Greeting" >
+		<text width="500">Jeepers! Where did YOU come from? Oh...(giggle) it's you, the SWS agent! We just keep running into each other, don't we?</text>
+		<userResponse>
+			<option progressTo="1">I remember you... Lia! I rescued you at Tycoon TV Towers! You just can't stay out of trouble, can you?</option>
+		</userResponse>
+	</phase>	
+		
+	<phase num="1" animFrame="talk_in" >
+		<text width="500">Uh-oh, well, I guess I'm in trouble again! I was waiting to meet Lab when the security system suddenly went into emergency lockdown mode, and now I'm trapped. I'm scared!</text>
+		<userResponse>
+			<option progressTo="2">Don't worry, there must be another way out of here!</option>
+		</userResponse>
+	</phase>	
+
+	<phase num="2" animFrame="talk_in"  sticky="1">
+		<text width="500">Look, I found this emergency generator that's powered by water. If we manage to get it going, it should generate enough power for me to activate the exit door.</text>
+		<userResponse>
+			<option progressTo="3">Oh, you are SO clever! No wonder Lab thinks you're something special! Let's see what I can do.</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="31" animFrame="talk_in"  sticky="1">
+		<text width="500">Ooops! It looks like the water has leaked out!</text>
+		<userResponse>
+			<option progressTo="3">I'll do my best to fix this!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="3" animFrame="talk_in"  sticky="1">
+		<text width="500" >Agent, there are two tanks up there. We need lots of water, so let's find a way to fill both of them!</text>
+		<textOnReturn width="500">Look! On the floor, over there! That looks like a pump - why don't you try jumping on it to see if we can get some water!</textOnReturn>
+		<userResponse>
+			<option progressTo="-1">I'll have a look!</option>
+		</userResponse>		
+	</phase>	
+	
+	<phase num="4" animFrame="talk_in" sticky="1">
+		<text width="500" >Woohoo! Good work, Agent. We have some power, but it looks like the generator isn't connected to the grid properly. Why don't you try pulling that switch across the room?</text>
+	</phase>		
+	
+	<phase num="5" animFrame="talk_in"  sticky="1"   questControlPoint="middleDoorClosed" >
+		<text width="500" >MWAHAHAHA! Awww, look at that, you're trapped! Does the SWS Agent need some help now? HAHAHAHA! The door's sealed shut...you're stuck there now!</text>
+		<userResponse>
+			<option progressTo="6">What?! You tricked me? After all I've done for you? I don't understand!</option>
+		</userResponse>
+	</phase>	
+	
+	<phase num="6" animFrame="talk_in"  sticky="1">
+		<text width="500" >Thanks for helping with my amazingly evil plan! Gotta run, I have some inventions to steal...and soon the whole Bin will be mine! HAHAHAHA!</text>
+		<userResponse>
+			<option progressTo="-1" fireEvent="labLocDown_LiaRunOff">NO! It was you - you're working for the WEB! You betrayed Lab and released the Thuggs! </option>
+		</userResponse>
+	</phase>
+	
+	<phase num="7" animFrame="escape"  sticky="1">
+		<text width="500" >Oooh, how smart of you to figure that out. Too late! So long, silly Agent!</text>
+	</phase>
+		
+		
+</character>

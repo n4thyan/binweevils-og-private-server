@@ -1,0 +1,17 @@
+<itemConfig name='f_medieval_mosaicWindow' type='furniture' path='assetsNest/f_medieval_mosaicWindow.swf' thumb='assetsNest/f_medieval_mosaicWindow_thumb.swf' h='90' boundType='rect' clickable='no'>
+	
+
+	
+	<pos frame='1' bounds='-200,380,80,20' x='-200' y='150' z='406' ry='0' gridSqs='31,32,33'/>
+	<pos frame='2' bounds='-40,380,80,20' x='-40' y='150' z='405' ry='0' gridSqs='35,36'/>
+	<pos frame='3' bounds='120,380,80,20' x='120' y='150' z='407' ry='0' gridSqs='38,39,40'/>
+	
+	<pos frame='4' bounds='-200,380,80,20' x='-200' y='20' z='409' ry='0' gridSqs='31,32,33'/>
+	<pos frame='5' bounds='-40,380,80,20' x='-40' y='20' z='408' ry='0' gridSqs='35,36'/>
+	<pos frame='6' bounds='120,380,80,20' x='120' y='20' z='410' ry='0' gridSqs='38,39,40'/>
+	
+	
+	
+
+
+</itemConfig>

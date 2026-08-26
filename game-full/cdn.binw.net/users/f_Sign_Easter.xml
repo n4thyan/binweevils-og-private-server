@@ -1,0 +1,11 @@
+<itemConfig name='f_Sign_Easter' type='furniture' path='assetsNest/f_Sign_Easter.swf' thumb='assetsNest/f_Sign_Easter_thumb.swf' h='75'  boundType='' numSpots='0'>
+	<pos frame='1' bounds='' x='-190' y='100' z='240' ry='-90' gridSqs='1,11'/>
+	<pos frame='2' bounds='' x='-190' y='100' z='402' ry='-90' gridSqs='21,31'/>
+
+	<pos frame='3' bounds='' x='-180' y='100' z='401' ry='0' gridSqs='31,32,33,34'/>
+	<pos frame='4' bounds='' x='-60' y='100' z='400' ry='0' gridSqs='34,35,36,37'/>
+	<pos frame='5' bounds='' x='60' y='100' z='403' ry='0' gridSqs='37,38,39,40'/>
+
+	<pos frame='6' bounds='' x='190' y='100' z='404' ry='90' gridSqs='30,40'/>
+	<pos frame='7' bounds='' x='190' y='100' z='240' ry='90' gridSqs='10,20'/>
+</itemConfig>

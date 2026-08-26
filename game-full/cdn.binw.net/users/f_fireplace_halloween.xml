@@ -1,0 +1,8 @@
+<itemConfig name='f_fireplace_halloween' type='furniture' path='assetsNest/f_fireplace_halloween.swf' thumb='assetsNest/f_fireplace_halloween_thumb.swf' h='90'  boundType='rect' clickable='yes'>
+	<pos frame='1' bounds='-200,323,80,80' x='-200' y='0' z='402' ry='0' gridSqs='31,32,33'/>
+	<pos frame='2' bounds='-120,321,80,80' x='-120' y='0' z='401' ry='0' gridSqs='32,33,34,35'/>
+	<pos frame='3' bounds='-40,320,80,80' x='-40' y='0' z='400' ry='0' gridSqs='34,35,36,37'/>
+	<pos frame='4' bounds='40,322,80,80' x='40' y='0' z='403' ry='0' gridSqs='36,37,38,39'/>
+	<pos frame='5' bounds='120,324,80,80' x='120' y='0' z='404' ry='0' gridSqs='38,39,40'/>
+
+</itemConfig>

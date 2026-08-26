@@ -1,0 +1,6 @@
+<itemConfig name='f_bed6' type='furniture' path='assetsNest/f_bed6.swf' thumb='assetsNest/f_bed6_thumb.swf' h='40' boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-200,80,80,160' x='-160' y='0' z='240' ry='180' gridSqs='1,2,11,12'/>
+	<pos frame='2' bounds='-200,240,80,160' x='-160' y='0' z='400' ry='180' gridSqs='21,22,31,32'/>
+	<pos frame='3' bounds='120,240,80,160' x='160' y='0' z='400' ry='180' gridSqs='39,40,29,30'/>
+	<pos frame='4' bounds='120,80,80,160' x='160' y='0' z='240' ry='180' gridSqs='9,10,19,20'/>
+</itemConfig>

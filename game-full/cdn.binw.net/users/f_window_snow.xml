@@ -1,0 +1,9 @@
+<itemConfig name='f_window_snow' type='furniture' path='assetsNest/f_window_snow.swf' thumb='assetsNest/f_window_snow_thumb.swf' h='50' boundType='rect' clickable='yes'>
+	<pos frame='1' bounds='-200,380,10,20' x='-190' y='118' z='240' gridSqs='1,11'/>
+	
+	<pos frame='2' bounds='-160,380,80,20' x='-100' y='118' z='400' gridSqs='32'/>
+	<pos frame='3' bounds='-40,380,80,20' x='0' y='118' z='400' gridSqs='35,36'/>
+	<pos frame='4' bounds='80,380,80,20' x='100' y='118' z='400' gridSqs='39'/>
+
+	<pos frame='5' bounds='-190,380,10,20' x='190' y='118' z='240' gridSqs='10,20'/>
+</itemConfig>

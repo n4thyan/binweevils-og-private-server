@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<character defaultCloseAnimFrame="rest" direction="-1">
+	<tasks>
+				
+	</tasks>	
+	
+	<phase num="0" animFrame="talk_in" >
+		<text width="500">Oh! Oh! Thank goodness, help is here! Please, hurry and HELP ME!!</text>
+		<userResponse>
+			<option progressTo="1">Don’t worry, Lab. I’ll have you out in a jiffy!</option>
+		</userResponse>
+	</phase>	
+		
+	<phase num="1" animFrame="talk_in" >
+		<text width="500">Oh, woe! It was Lia! Lia betrayed me! She's EVIL! I was working on an upgrade to the Bin Weevil Changer, and I showed her everything... </text>
+		<userResponse>
+			<option progressTo="2">I know about Lia, she tricked me too. Don't panic, I'll find a way to stop her!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="2" animFrame="talk_in"  sticky="1">
+		<text width="500">You don't understand...with a few tweaks to my invention, she could transform every single Bin Weevil into a nasty Thugg IN ONE GO!</text>
+		<userResponse>
+			<option progressTo="3">Then we'd better stop her!</option>
+		</userResponse>
+	</phase>
+
+	<phase num="3" animFrame="talk_in"  sticky="1">
+		<text width="500">I can't believe I trusted her! Aaah, my precious inventions, my potions, my robots! We're running out of time, cut me free! I have an idea!</text>
+		<textOnReturn width="500">Please, hurry and cut me free. Use your gun!</textOnReturn>
+		<userResponse>
+			<option progressTo="-1">Ok, I'm on it!</option>
+		</userResponse>
+	</phase>	
+	
+		
+</character>

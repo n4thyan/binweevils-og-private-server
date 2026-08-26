@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	
+	
+	
+	
+	<character refName="Gam" charName="Gam" refAnim="Gam_mc">
+		<stage id="0" animation="open">
+			<text>Oh, thank goodness you're here! The dungeon plumbing has broken down and if it’s not fixed soon, the castle will be overrun with slime!</text>
+			<textReturn>Oh, thank goodness you came back! The dungeon plumbing has broken down and if it’s not fixed soon, the castle will be overrun with slime!</textReturn>
+			<response progressTo="1">I'll help you!</response>
+			<response progressTo="5">Sorry, I'm busy.</response>
+			<response progressTo="1">Have no fear! I am an SWS agent and I am at your service!</response>
+		</stage>
+		<stage id="1" animation="pos">
+			<text>Oh, thank you sir, I salute you! You must find your way through the dungeon and fix those pipes as fast as you can!</text>
+			<textReturn>Oh, you came back! You must find your way through the dungeon and fix those pipes as fast as you can!</textReturn>
+			<response progressTo="2" fireEvent="Gam_Complete">You can count on me! //username// is on the case!</response>
+		</stage>
+		<stage id="2" animation="pos" >
+			<text>Oh thank you! Take this key. It will open the door to the dungeons. Here, put it in your backpack.</text>
+			<response progressTo="6">How do I use my backpack?</response>
+			<response progressTo="5">Thanks Gam, I won't let you down! Bye.</response>
+		</stage>
+		<stage id="3" stick="true" eventRequired="Gam_Complete" animation="neg" shuffle="false">
+			<text>Please! Fix those pipes quickly!</text>
+			<response progressTo="8">Okay, I'm on my way!</response>
+			<response progressTo="6">Tell me about my backpack again?</response>
+		</stage>
+		<stage id="4" eventRequired="Quest_Complete" animation="pos" >
+			<text>Thank you so much for fixing those pipes. You really saved the day!</text>
+		</stage>
+		<stage id="5" animation="neg">
+			<text>Very well. DISMISSED!!</text>
+		</stage>
+		<stage id="6" animation="pos" shuffle="false">
+			<text>Simply click on the backpack icon at the top right of your screen to see what you are carrying. From there you can use an item by dragging it to where you need it.</text>
+			<response progressTo="7">Tell me more!</response>
+			<response progressTo="8">No more please!</response>
+		</stage>
+		<stage id="7" animation="pos" shuffle="false">
+			<text>To pick up an item just click on it and it will appear in your backpack, ready for you to use.</text>
+			<response progressTo="8">Okay, got it.</response>
+		</stage>
+		<stage id="8" animation="pos" shuffle="false">
+			<text>Well then, good luck, soldier! Oh, and remember to be nice to my guards.</text>
+			
+		</stage>
+	</character>
+	
+	<questEvent text="Gam_Complete" questControlID="72" />
+	<questEvent text="Quest_Complete" questControlID="84" />
+	
+	
+	
+	
+	<character refName="Guard1" charName="Guard" refAnim="Guard_mc">
+		<stage id="0" animation="open">
+			<text>'Ello 'ello 'ello! What do we have here? What's a little Bin Weevil like you doing in these here dungeons?</text>
+			<textReturn>Back again? Well, are you going to tell me what you're doing here?</textReturn>
+			<response progressTo="4">None of your business!</response>
+			<response progressTo="1">Gam has sent me on a secret mission!</response>
+			<response progressTo="1">I have to fix the dungeon plumbing before the castle floods with snot!</response>
+		</stage>
+		<stage id="1" stick="true" animation="pos">
+			<text>Gam sent you, ay? Hmmm... Well, I'm going to need proof that you really know him before I let you through.</text>
+			<textReturn>I still need proof that you know Gam before I can let you through.</textReturn>
+			<response progressTo="2">Okay, ask me anything!</response>
+			<response progressTo="5">I don't have to prove anything.</response>
+			<response progressTo="2">I could tell you something about him.</response>
+		</stage>
+		<stage id="2" animation="pos">
+			<text>I'll tell you what. I'll let you through if you can tell me how many stars are on Gam's cape.</text>
+			<textReturn>I'll let you through if you can tell me how many stars are on Gam's cape.</textReturn>
+			<response progressTo="6">$$random,4,9$$</response>
+			<response progressTo="3" fireEvent="Guard1_Complete">3</response>
+			<response progressTo="6">$$random,0,2$$</response>
+		</stage>
+		<stage id="3" stick="true" eventRequired="Guard1_Complete" animation="positive">
+			<text>That's right! Okay, you may pass.</text>
+			<textReturn>You may pass.</textReturn>
+		</stage>
+		<stage id="4" animation="neg">
+			<text>Well, if that's your attitude, forget it!</text>
+		</stage>
+		<stage id="5" animation="neg">
+			<text>Sorry, I'm afraid I can't let you in without proof.</text>
+		</stage>
+		<stage id="6" animation="neg">
+			<text>Ha ha, nice try. I knew you were pulling me leg. Come back when you know the answer.</text>
+		</stage>
+	</character>
+	
+	<questEvent text="Guard1_Complete" questControlID="65" />
+
+	
+	
+	
+	
+	
+	<character refName="Guard2" charName="Guard" refAnim="Guard_mc">
+		<stage id="0" animation="open">
+			<text>Oh, good day, brave agent. What are you doing down here? No, no, don't tell me... I'll wager that you're on a highly dangerous mission, or a magical quest. Am I right?</text>
+			<textReturn>Hello again, brave agent! So, are you on a highly dangerous mission, or a magical quest?</textReturn>
+			<response progressTo="1">That's right! Gam has sent me here to stop the castle flooding.</response>
+			<response progressTo="6">Who's asking?!</response>
+			<response progressTo="1">The dungeon is filling with snot! I have to stop it!</response>
+		</stage>
+		<stage id="1" animation="pos">
+			<text>A noble quest indeed. You must be a courageous and powerful Bin Weevil.</text>
+			<response progressTo="2">May I pass?</response>
+			<response progressTo="2">What's through that door?</response>
+			<response progressTo="8">Braver and stronger than you, that's for sure!</response>
+		</stage>
+		<stage id="2" stick="true" animation="pos">
+			<text>Before I let you through, you must answer me these questions three. Question 1: What... is your name?</text>
+			<textReturn>Hello again. Ready to try the first question? Okay! Question 1: What... is your name?</textReturn>
+			<response progressTo="7">Sir Lancelot</response>
+			<response progressTo="7">Tink the brave!</response>
+			<response progressTo="3">//username//</response>
+		</stage>
+		<stage id="3" animation="pos">
+			<text>Excellent, I'm pleased to meet you! Question 2: Which... of these colours do you like best?</text>
+			<response progressTo="4">Red</response>
+			<response progressTo="4">Blue</response>
+			<response progressTo="4">Pink</response>
+		</stage>
+		<stage id="4" animation="pos">
+			<text>Hmm, interesting! Question 3: What... is the capital of Assyria?</text>
+			<response progressTo="5" fireEvent="Guard2_Complete" >Wha...?</response>
+			<response progressTo="5" fireEvent="Guard2_Complete">Ay...?</response>
+			<response progressTo="5" fireEvent="Guard2_Complete">Ummm...?</response>
+		</stage>
+		<stage id="5" stick="true" animation="pos" eventRequired="Guard2_Complete">
+			<text>Ha ha ha! Only joking, agent //username//. You may pass!</text>
+			<textReturn>You may pass.</textReturn>
+		</stage>
+		<stage id="6" animation="neg">
+			<text>Unfortunately for you, I'm the Bin Weevil that guards this door. Now be gone!</text>
+		</stage>
+		<stage id="7" animation="neg">
+			<text>Do not try to deceive me! I know he's on a quest in a distant land! Come back when you can be more honest!</text>
+		</stage>
+		<stage id="8" animation="neg">
+			<text>Fine! Shame, I was thinking of letting you pass.</text>
+		</stage>
+	</character>
+	<questEvent text="Guard2_Complete" questControlID="66" />
+	
+	
+	
+	
+	<character refName="KipAwake" charName="Kip" refAnim="Kip_mc">
+		<stage id="0" animation="open">
+			<text>Ah... Wa?... Splutter! Oh no, I must have fallen asleep again! [yawn] I'm so tired.</text>
+			<textReturn>Ah... Wa?... Splutter! Oh no, I must have fallen asleep again! [yawn] I'm so tired.</textReturn>
+			<response progressTo="1" >How did you get down here?</response>
+		</stage>
+		<stage id="1" stick="true" animation="pos">
+			<text>I came down to bring Ink his pen, but I fell asleep before I found him! Hey! Could you take the pen to Ink for me? </text>
+			<textReturn>Ah... Wa?... Splutter! Oh it's you again. Please, please take this pen to Ink for me!</textReturn>
+			<response progressTo="2" fireEvent="RecievedPen">Sure thing!</response>
+			<response progressTo="3">Sorry, I don't have time!</response>
+		</stage>
+		<stage id="2" stick="true" eventRequired="RecievedPen" animation="neg">
+			<text>Oh thank you! I'll just... [yawn]... Wait here...</text>
+		</stage>
+		<stage id="3" animation="neg">
+			<text>What a shame. I guess... [yawn]... I'll never... find him now... zzzzZZZZzzzzZZZZzzzz</text>
+		</stage>
+	</character>
+	<questEvent text="RecievedPen" questControlID="67" />
+	
+	
+	<character refName="Kip" charName="Kip" refAnim="Kip_mc">
+		<stage id="0" animation="sleep">
+			<text>zzzzZZZZzzzzZZZZzzzzZZZZ</text>
+		</stage>
+	</character>
+
+	
+	<character refName="Guard3" charName="Guard" refAnim="Guard_mc">
+		<stage id="0" animation="neg">
+			<text>[groan] I can't talk, I'm too hungry! There is some food over there but I'm not allowed to leave my post!</text>
+		</stage>
+		<stage id="1" eventRequired="RecievedApple" animation="open"><!--If you have an apple-->
+			<text>[groan] Hello! Have you got any food on you? I'm terribly hungry and I'm not allowed to leave my post!</text>
+			<response progressTo="2" fireEvent="UsedApple">Here, have this apple!</response>
+			<response progressTo="4">No, sorry.</response>
+			<response progressTo="4">Go get it yourself!</response>
+		</stage>
+		<stage id="2" eventRequired="UsedApple" animation="pos">
+			<text>Wow, that's so kind of you! You can be my new best friend. Is there anything I can do to thank you?</text>
+			<textReturn>Wow, that was so kind of you! Is there anything I can do to thank you?</textReturn>
+			<response progressTo="3" fireEvent="Guard3_Complete">Please let me pass, I'm on an important mission!</response>
+			<response progressTo="5">No thanks! I like waiting here.</response>
+			<response progressTo="5">I can't think of anything.</response>
+		</stage>
+		<stage id="3" stick="true" eventRequired="Guard3_Complete" animation="pos">
+			<text>It's the least I can do! You may pass.</text>
+			<textReturn>You may pass!</textReturn>
+		</stage>
+		<stage id="4" animation="neg">
+			<text>I'm so hungry!</text>
+		</stage>
+		<stage id="5" animation="neg">
+			<text>Righty oh! Let me know if you need anything.</text>
+		</stage>
+	</character>
+	<questEvent text="RecievedApple" questControlID="69" />
+	<questEvent text="UsedApple" questControlID="70" />
+	<questEvent text="Guard3_Complete" questControlID="71" />
+	
+	
+	<character refName="Ink_withoutPen" charName="Ink" refAnim="Ink_mc">
+		<stage id="0" animation="open">
+			<text>Hello there, are you an SWS agent?</text>
+			<response progressTo="1" fireEvent="InkIntro">My  name is //username//. SWS Agent //username//. I am on a top secret mission.</response>
+			<response progressTo="6">No, but I am a Bin Tycoon property agent. Are you looking to remortgage?</response>
+			<response progressTo="6">No, I was on guided tour of the castle and got lost.</response>
+		</stage>
+		<stage id="1" animation="pos">
+			<text>I'm on a secret mission too. I'm trying to decode this encrypted message, but I've lost my pen. Can you help me?</text>
+			<textReturn>Will you help me find my pen?</textReturn>
+			<response progressTo="5">Where should I look?</response>
+			<response progressTo="6">No way.</response>
+			<response progressTo="6">What's it worth?</response>
+		</stage>
+		<stage id="2"  animation="pos">
+			<text>Great! Let me know when you've found the pen!</text>
+			<textReturn>Let me know when you've found the pen!</textReturn>
+		</stage>
+		<stage id="3" stick="true" animation="pos" eventRequired="InkIntro">
+			<text>Have you found my pen?</text>
+			<response progressTo="5">Where should I look again?</response>
+			<response progressTo="2">No, I'll keep looking.</response>
+		</stage>
+		<stage id="4" animation="neg">
+			<text>Hmmmm... Sorry, but I'm only authorised to talk to the SWS!</text>
+		</stage>
+		<stage id="5" animation="neg">
+			<text>Kip was supposed to be bring my pen here but I fear he's fallen asleep again. Could you find him and bring the pen to me? I would be very grateful.</text>
+			<response progressTo="2">//username// is on the case!</response>
+		</stage>
+		<stage id="6" animation="neg">
+			<text>Fine, have it your way. I'm sure a brave agent will pass through here soon enough.</text>
+		</stage>
+	</character>
+	<questEvent text="InkIntro" questControlID="82" />
+	
+	
+	<character refName="Ink_withPen" charName="Ink" refAnim="Ink_mc">
+		<stage id="0" animation="open">
+			<text>Hello there, are you an SWS agent?</text>
+			<response progressTo="1" fireEvent="InkIntro">My  name is //username//. SWS Agent //username//. I am on a top secret mission.</response>
+			<response progressTo="6">No, but I am a Bin Tycoon property agent. Are you looking to remortgage?</response>
+			<response progressTo="6">No, I was on guided tour of the castle and got lost.</response>
+		</stage>
+		<stage id="1" animation="pos">
+			<text>I'm on a secret mission too. I'm trying to decode this encrypted message, but I've lost my pen. Can you help me?</text>
+			<textReturn>Will you help me find my pen?</textReturn>
+			<response progressTo="5">Where should I look?</response>
+			<response progressTo="7" fireEvent="UsedPen">Here, kip asked me to give you this pen.</response>
+			<response progressTo="6">What's it worth?</response>
+		</stage>
+		<stage id="2"  animation="pos">
+			<text>Great! Let me know when you've found the pen!</text>
+			<textReturn>Let me know when you've found the pen!</textReturn>
+		</stage>
+		<stage id="3" stick="true" animation="pos" eventRequired="InkIntro">
+			<text>Have you found my pen?</text>
+			<response progressTo="5">Where should I look again?</response>
+			<response progressTo="2">No, I'll keep looking.</response>
+			<response progressTo="7" fireEvent="UsedPen">Yes, it wasn't easy but here it is.</response>
+		</stage>
+		<stage id="4" animation="neg">
+			<text>Hmmmm... Sorry, but I'm only authorised to talk to the SWS!</text>
+		</stage>
+		<stage id="5" animation="neg">
+			<text>Kip was supposed to be bring my pen here but I fear he's fallen asleep again. Could you find him and bring the pen to me? I would be very grateful.</text>
+			<response progressTo="7" fireEvent="UsedPen">Here, I got this from kip earlyer!</response>
+			<response progressTo="2">//username// is on the case!</response>
+		</stage>
+		<stage id="6" animation="neg">
+			<text>Fine, have it your way. I'm sure a brave agent will pass through here soon enough.</text>
+		</stage>
+		<stage id="7" stick="true" eventRequired="UsedPen" fireEvent="RecieveKey5" animation="pos">
+			<text>Thank you! Now I can finish my work! Take this key, you’ll be needing it soon. I believe there is a book in here somewhere that will also help you. Good luck!</text>
+		</stage>
+		<stage id="8" eventRequired="DragonCodeEntered" animation="open">
+			<text>Oh, you got through the dragon door? Well done, young agent!</text>
+		</stage>
+		<stage id="9" eventRequired="RecieveKey5" animation="pos">
+			<text>Hmmm... I'm sure there is a code in one of these books.</text>
+		</stage>
+	</character>
+	<questEvent text="UsedPen" questControlID="68" />
+	<questEvent text="RecieveKey5" questControlID="83" />
+	<questEvent text="DragonCodeEntered" questControlID="63" />
+	
+	
+	
+	<character refName="Ink_penDragged" charName="Ink" refAnim="Ink_mc">
+		<stage id="0" fireEvent="InkIntro,RecieveKey5,UsedPen" animation="open">
+			<text>Wow! You found my pen! But how did you know it was mine? Oh well. Take this key, you will need it soon. There is a book in here somewhere that will help too. Good luck!</text>
+		</stage>
+		<stage id="1" eventRequired="InkIntro" fireEvent="RecieveKey5,UsedPen" animation="pos">
+			<text>Thank you! Now I can finish my work! Take this key, you’ll be needing it soon. I believe there is a book in here somewhere that will also help you. Good luck!</text>
+		</stage>
+	</character>
+	
+	
+	
+	<character refName="Rigg" charName="Rigg" refAnim="Rigg_mc">
+		<stage id="0" animation="open">
+			<text>That’s just like Gam to forget I’m down here.  Rigg’s the name and building’s my game! In fact, I probably built your nest.</text>
+			<response progressTo="1">What are you doing down here?</response>
+		</stage>
+		<stage id="1" stick="true" animation="pos">
+			<text>Gam asked me to fix the slime pump, and with your help we should be able to. Are you up for the challenge?</text>
+			<response progressTo="3">Sure, let’s get started!</response>
+			<response progressTo="3">Where do we start?</response>
+			<response progressTo="2">No way am I going near that snotfest!</response>
+		</stage>
+		<stage id="2" animation="neg">
+			<text>If that’s how you feel, you might as well go!</text>
+		</stage>
+		<stage id="3" stick="true" animation="pos">
+			<text>Great, the slime pump seems to be missing some parts. Have you seen any pipes on your travels? If you replace them all, we'll have this slime pump working in no time.</text>
+		</stage>
+		<stage id="4" eventRequired="AtLeastOnePipePlaced" animation="neg">
+			<text>Mmmm... we’re still missing $$function.getNumPipesLeft$$ for the pump. Are you sure you’ve looked everywhere?</text>
+		</stage>
+		<stage id="5" eventRequired="Quest_Complete" animation="neg">
+			<text>My saviour returns! Thanks for your help with the plumbing. You can use the service pipe to get back to Castle Gam quickly.</text>
+		</stage>
+	</character>
+	<questEvent text="AtLeastOnePipePlaced" questControlID="75,77,79,81" />
+</data> 
+
+

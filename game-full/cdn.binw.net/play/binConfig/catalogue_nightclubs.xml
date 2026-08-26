@@ -1,0 +1,129 @@
+<catalogue baseURL="http://www.binweevils.com/play/">
+	<cPalettes>
+		<!--idx 0 or 1 not allowed-->
+		<palette idx="2" colours="0xFFFFFF,0xF9F19B,0xFFD5DD,0xAADFFF,0xAEFFAE"/>
+		<palette idx="3" colours="0xFFFFFF,0xAADFFF,0x00EEEE,0xAAFF00,0xEEEE00"/>
+		<palette idx="4" colours="0xFFFFFF,0xAADFFF,0xCC00CC,0xEEEE00,0xFF8484"/>
+		<palette idx="5" colours="0xFFFFFF,0xAADFFF,0xFFD5DD,0xEEEE00,0xFBEDC4"/>
+		<palette idx="6" colours="0xFFFFFF,0xAA8237,0xFFCC00,0xFBEDC4,0xDCCA61"/>
+		<palette idx="7" colours="0xFFFFFF,0xAADFFF,0xFF9900,0x00EEEE,0xEEEE00"/>
+		<palette idx="8" colours="0xFFFFFF,0xAADFFF,0x00EEEE,0xFFCC00,0xFF8484"/>
+		<palette idx="9" colours="0xFF9900,0x00EEEE,0xFFD5DD,0xAAFF00,0xFFCC00"/>
+		<palette idx="10" colours="0x00EEEE,0xFFFFFF,0xAAFF00,0xFFCC00,0xEEEE00"/>
+		<palette idx="11" colours="0xFFFFFF,0xAADFFF,0x0066FF,0xFF9900,0xAAFF00"/>
+		<palette idx="12" colours="0xFFFFFF,0x00EEEE,0xAAFF00,0xFFCC00,0xFF84E0"/>
+		<palette idx="13" colours="0xFFFFFF,0xAADFFF,0x0066FF,0xAAFF00,0xFFCC00"/>
+		<palette idx="14" colours="0xFFFFFF,0x0066FF,0xFF9900,0xFFCC00,0xFF8484"/>
+		<palette idx="15" colours="0xFFFFFF,0xFF9900,0x00EEEE,0xAAFF00,0xEEEE00"/>
+		<palette idx="16" colours="0xFFFFFF,0x00EEEE,0xAAFF00,0xFFAA00,0xFFAAAA"/>
+		<palette idx="17" colours="0xFFFFFF,0x00EEEE,0xCC00CC,0xAAFF00,0xFF8484"/>
+	</cPalettes>
+	
+	<page idx="1" template="titleTwoVert_mc" title="Club Fronts">
+		<item idx="0" typeID="163" name="Club Front 1" price="795" bgColour="lime" paletteID="12" thumb="facade_nightClub1_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="175" name="Club Front 2" price="795" bgColour="blue" paletteID="12" thumb="facade_nightClub2_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="2" template="threeHoriz_mc">
+		<item idx="0" typeID="176" name="Club Front 3" price="795" bgColour="peach" paletteID="12" thumb="facade_nightClub3_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="177" name="Club Front 4" price="795" bgColour="blue" paletteID="12" thumb="facade_nightClub4_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="3" template="titleTwoVert_mc" title="Floor">
+		<item idx="0" typeID="161" name="Floor 1" price="650" bgColour="lime" paletteID="12" thumb="floor_disco1_thumb"allowPickColour="0"/>
+		<item idx="1" typeID="179" name="Floor Edge 1" price="195" bgColour="blue" paletteID="12" thumb="floor_edge_disco1_thumb" allowPickColour="0"/>
+	</page>
+
+
+	<page idx="4" template="titleTwoHoriz_mc" title="Wallpaper">
+		<item idx="0" typeID="198" name="Bubble Wrap" price="425" bgColour="purple" paletteID="1" thumb="f_tycoon_wallBubbleWrap_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="197" name="Wall Sachets" price="425" bgColour="peach" paletteID="0" thumb="f_tycoon_wallSachets_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="5" template="titleTwoVert_mc" title="Lighting">
+		<item idx="0" typeID="199" name="Fruit Pastilles" price="325" bgColour="lime" paletteID="0" thumb="f_tycoon_fruitPastilles_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="195" name="Wall Light Lines" price="525" bgColour="blue" paletteID="12" thumb="f_party_wallLight_lines_thumb" allowPickColour="0"/>
+	</page>
+
+
+	<page idx="6" template="threeHoriz_mc">
+		<item idx="0" typeID="194" name="Wall Light Dots" price="525" bgColour="lime" paletteID="12" thumb="f_party_wallLight_dots_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="7" template="titleTwoHoriz_mc" title="Music Equipment">
+		<item idx="0" typeID="162" name="DJ Booth 1" price="995" bgColour="peach" paletteID="12" thumb="f_djbooth_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="192" name="Large Speaker" price="495" bgColour="lime" paletteID="12" thumb="f_tycoon_largeSpeaker_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="8" template="threeHoriz_mc">
+		<item idx="0" typeID="196" name="Wall Speakers 1" price="595" bgColour="purple" paletteID="12" thumb="f_party_speakerWall_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="200" name="Wall Speaker 2" price="125" bgColour="blue" paletteID="12" thumb="f_tycoon_wallSpeaker_thumb" allowPickColour="0"/>
+	</page>
+
+
+	<page idx="9" template="titleTwoVert_mc" title="Furniture">
+		<item idx="0" typeID="184" name="Pink Gum Booth" price="325" bgColour="lime" paletteID="0" thumb="f_party_gumbooth_pink_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="185" name="Yellow Gum Booth" price="325" bgColour="purple" paletteID="0" thumb="f_party_gumbooth_yellow_thumb" allowPickColour="0"/>
+	</page>
+	
+	<page idx="10" template="threeHoriz_mc">
+		<item idx="0" typeID="186" name="Blue Gum Booth" price="325" bgColour="purple" paletteID="0" thumb="f_party_gumbooth_blue_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="190" name="Juice Bar" price="795" bgColour="blue" paletteID="12" thumb="f_tycoon_juiceBar_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="187" name="Stage 1" price="595" bgColour="peach" paletteID="0" thumb="f_party_stage1_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="11" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="191" name="Corner Seat" price="425" bgColour="lime" paletteID="1" thumb="f_tycoon_cornerSeat_thumb" allowPickColour="0"/>
+	</page>
+
+
+	<page idx="12" template="titleTwoHoriz_mc" title="Accessories">
+		<item idx="0" typeID="189" name="Spider" price="195" bgColour="lime" paletteID="0" thumb="f_tycoon_spider_thumb"allowPickColour="0"/>
+		<item idx="1" typeID="188" name="Pumpkin" price="195" bgColour="blue" paletteID="0" thumb="f_tycoon_pumpkin_thumb" allowPickColour="0"/>
+	</page>
+	
+	<page idx="13" template="threeHoriz_mc">
+		<item idx="0" typeID="181" name="Heart Balloons" price="95" bgColour="peach" paletteID="1" thumb="f_party_balloons_heart_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="180" name="Star Balloons" price="95" bgColour="blue" paletteID="1" thumb="f_party_balloons_star_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="182" name="A Bunch of Balloons" price="95" bgColour="blue" paletteID="1" thumb="f_party_balloons_bunch_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="14" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="193" name="Stage Decoration 1" price="95" bgColour="lime" paletteID="12" thumb="f_tycoon_stageDeco1_thumb" allowPickColour="0"/>
+	</page>
+
+
+	<page idx="15" template="titleTwoHoriz_mc" title="Photo Studio Props">
+		<item idx="0" typeID="210" name="Beach Backdrop" price="295" bgColour="lime" paletteID="0" thumb="ps_backdrop_beach_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="217" name="Sandy Floor" price="95" bgColour="blue" paletteID="0" thumb="ps_floor_sand_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="16" template="threeHoriz_mc">
+		<item idx="0" typeID="211" name="Palm Tree" price="250" bgColour="peach" paletteID="0" thumb="f_ps_palmtree_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="212" name="Surfboard" price="125" bgColour="blue" paletteID="0" thumb="f_ps_surfboard_yg_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="213" name="Surfboard" price="125" bgColour="blue" paletteID="0" thumb="f_ps_surfboard_bo_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="17" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="214" name="Rock" price="65" bgColour="lime" paletteID="0" thumb="f_ps_rock2_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="216" name="Seagull" price="125" bgColour="blue" paletteID="0" thumb="f_ps_seagull_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="18" template="threeHoriz_mc">
+		<item idx="0" typeID="334" name="Chinese New Year 1 backdrop" price="300" bgColour="peach" paletteID="0" thumb="ps_backdrop_cny_fireworks_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="335" name="Chinese New Year 2 backdrop" price="300" bgColour="blue" paletteID="0" thumb="ps_backdrop_cny_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="336" name="Chinese New Year floor 01" price="80" bgColour="blue" paletteID="0" thumb="ps_floor_cny_dirt_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="19" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="337" name="Chinese New Year floor 1" price="80" bgColour="lime" paletteID="0" thumb="ps_floor_cny_stone_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="338" name="Chinese stool" price="100" bgColour="blue" paletteID="0" thumb="f_ps_cny_stool_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="339" name="Happy Chinese New Year Sign" price="250" bgColour="purple" paletteID="0" thumb="f_ps_cny_border1_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="20" template="threeHoriz_mc">
+		<item idx="0" typeID="340" name="Happy Chinese New Year Sign" price="250" bgColour="peach" paletteID="0" thumb="f_ps_cny_border2_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="341" name="Chinese Lantern 1" price="125" bgColour="blue" paletteID="0" thumb="f_ps_lantern1_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="342" name="Chinese Lantern 2" price="125" bgColour="purple" paletteID="0" thumb="f_ps_lantern2_thumb" allowPickColour="0"/>
+	</page>
+</catalogue>

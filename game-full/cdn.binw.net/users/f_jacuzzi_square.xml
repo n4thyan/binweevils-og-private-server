@@ -1,0 +1,6 @@
+<itemConfig name='f_jacuzzi_square' type='furniture' path='assetsNest/f_jacuzzi_square.swf' thumb='assetsNest/f_jacuzzi_square_thumb.swf' h='65' boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='' x='-140' y='0' z='80' gridSqs='41,42,43'/>
+	<pos frame='2' bounds='' x='-140' y='0' z='360' gridSqs='31,32,33'/>
+	<pos frame='3' bounds='' x='150' y='0' z='360' gridSqs='38,39,40'/>
+	<pos frame='4' bounds='' x='150' y='0' z='80' gridSqs='48,49,50'/>
+</itemConfig>

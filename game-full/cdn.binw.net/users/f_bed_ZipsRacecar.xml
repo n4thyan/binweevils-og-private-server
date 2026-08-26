@@ -1,0 +1,6 @@
+<itemConfig name='f_bed_ZipsRacecar' type='furniture' path='assetsNest/f_bed_ZipsRacecar.swf' thumb='assetsNest/f_bed_ZipsRacecar_thumb.swf' h='40' boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-200,90,45,160' x='-160' y='0' z='280' ry='180' gridSqs='1,2,11,12'/>
+	<pos frame='2' bounds='-200,260,45,160' x='-160' y='0' z='440' ry='180' gridSqs='21,22,31,32'/>
+	<pos frame='3' bounds='132,260,90,160' x='160' y='0' z='440' ry='180' gridSqs='39,40,29,30'/>
+	<pos frame='4' bounds='132,90,90,160' x='160' y='0' z='280' ry='180' gridSqs='9,10,19,20'/>
+</itemConfig>

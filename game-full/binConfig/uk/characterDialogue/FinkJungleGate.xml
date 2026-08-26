@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<character>
+	<tasks>
+		<task description="SWS_Member" questControlID="200" />
+		<task description="GuardCorrectAnswer" questControlID="201" />
+	</tasks>
+	
+
+	<phase num="0" animFrame="Talk_in">
+		<text>Stop! Keep out!</text>
+			
+		<userResponse>
+			<option progressTo="1">What's happening?</option>
+		</userResponse>		
+	</phase>	
+	
+	<phase num="1" animFrame="Talk_in">
+		<text>It's top secret and only authorized Secret Weevil Service agents can pass.</text>
+			
+		<userResponse>
+			<option progressTo="2">I'm not an SWS agent. How do I become one?</option>
+			<option progressTo="3">I am an SWS agent!</option>
+		</userResponse>		
+	</phase>	
+	
+	<phase num="2" animFrame="Talk_out">
+		<text>The SWS HQ is inside Castle Gam. You should go there now! I have a feeling I'll be seeing you again soon!</text>
+	</phase>	
+	
+	<phase num="3" animFrame="Talk_out">
+		<text>Agent, you'd best hurry back to the SWS HQ inside Castle Gam to accept your mission.</text>
+	</phase>	
+	
+	<phase num="4" animFrame="Talk_in" questControlPoint="SWS_Member">
+		<text>Stop! Keep out!</text>
+			
+		<userResponse>
+			<option progressTo="5">I'm an SWS agent on an important mission! I'm here on Gam's authorization! </option>
+			<option progressTo="6">You'd better let me pass if you know what's good for you.</option>
+		</userResponse>		
+	</phase>	
+		
+	<phase num="5" animFrame="Talk_in">
+		<text>What are you looking for here? This is a top-secret dig site and the archaeologists don't like visitors.</text>
+			
+		<userResponse>
+			<option progressTo="7">I'm looking for a missing Bin Pet. It's been kidnapped!</option>
+			<option progressTo="7">We've got intelligence that a stolen Bin Pet may have been brought here.</option>
+		</userResponse>		
+	</phase>		
+
+	<phase num="6" animFrame="Talk_in">
+		<text>Well well well, a little cheeky, aren't you? Who said you could waltz in here?</text>
+			
+		<userResponse>
+			<option progressTo="5">I'm a special agent of the SWS, that's all you need to know.</option>
+			<option progressTo="5">Gam sent me. I've come direct from SWS Headquarters.</option>
+		</userResponse>		
+	</phase>	
+	
+	<phase num="7" animFrame="Talk_in" sticky="1">
+		<text>If you're really Gam's special agent, then what colour is the Bin Pet you're looking for?</text>
+			
+		<userResponse type="freeText">
+			<input width="400" caseSensitive="0">
+				<correctAns progressTo="8"><![CDATA[pink,purple]]></correctAns>
+				<incorrectAns progressTo="9"></incorrectAns>
+			</input>
+		</userResponse>
+		
+	</phase>		
+	
+	<phase num="8" animFrame="open" questControlPoint="GuardCorrectAnswer">
+		<text>All right, I guess you've convinced me. You can go in, but make it quick!</text>
+		<textOnReturn>
+			You again! You just can't stay away, can you.
+		</textOnReturn>	
+	</phase>			
+
+	<phase num="9" animFrame="Talk_out">
+		<text>Thought you'd fool me, did you? You'd better run back to HQ and take another look at that report.</text>
+	</phase>		
+
+</character>

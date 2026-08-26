@@ -1,0 +1,11 @@
+<itemConfig name='f_sb_Frame' type='furniture' path='assetsNest/f_sb_Frame.swf' thumb='assetsNest/f_sb_Frame_thumb.swf' h='75' boundType='rect'>
+	<pos frame='1' bounds='-200,80,0,160' x='-200' y='120' z='160' ry='-90' gridSqs='1,11'/>
+	<pos frame='2' bounds='-200,240,0,160' x='-200' y='120' z='320' ry='-90' gridSqs='21,31'/>
+	<pos frame='3' bounds='-200,400,0,160' x='-200' y='120' z='400' ry='0' gridSqs='31,32'/>
+	<pos frame='4' bounds='-200,400,0,160' x='-200' y='120' z='400' ry='0' gridSqs='33,34'/>
+	<pos frame='5' bounds='-50,400,0,160' x='-50' y='120' z='400' ry='0' gridSqs='35,36'/>
+	<pos frame='6' bounds='50,400,0,160' x='50' y='120' z='400' ry='0' gridSqs='36,38'/>
+	<pos frame='7' bounds='50,400,0,160' x='50' y='120' z='400' ry='0' gridSqs='39,40'/>
+	<pos frame='8' bounds='200,240,0,160' x='200' y='120' z='320' ry='90' gridSqs='40,30'/>
+	<pos frame='9' bounds='200,80,0,160' x='200' y='120' z='160' ry='90' gridSqs='10,20'/>
+</itemConfig>

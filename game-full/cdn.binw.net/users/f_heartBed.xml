@@ -1,0 +1,12 @@
+<itemConfig name='f_heartBed' type='furniture' path='assetsNest/f_heartBed.swf' thumb='assetsNest/f_heartBed_thumb.swf' h='240'  boundType='rect' clickable='yes'>
+
+	
+	<pos frame='1' bounds='-200,260,140,160' x='-200' y='0' z='404' ry='0' gridSqs='21,22,23,24,31,32,33,34'/>
+	<pos frame='2' bounds='-200,100,140,160' x='-200' y='0' z='244' ry='0' gridSqs='1,2,3,4,11,12,13,14'/>
+	
+	<pos frame='3' bounds='40,260,180,160' x='40' y='0' z='405' ry='0' gridSqs='27,28,29,30,37,38,39,40'/>
+	<pos frame='4' bounds='40,100,180,160' x='40' y='0' z='245' ry='0' gridSqs='7,8,9,10,17,18,19,20'/>	
+
+	
+	
+</itemConfig>

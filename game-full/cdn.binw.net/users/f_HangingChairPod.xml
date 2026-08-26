@@ -1,0 +1,15 @@
+<itemConfig name='f_HangingChairPod' type='furniture' path='assetsNest/f_HangingChairPod.swf' thumb='assetsNest/f_HangingChairPod_thumb.swf' h='75' boundType='radial' boundRadius='14' clickable='yes'>
+	<pos frame='1' bounds='' x='-160' y='0' z='90' ry='-50' gridSqs='1,2'/>
+	<pos frame='2' bounds='' x='-155' y='0' z='175' ry='-50' gridSqs='11,12'/>
+	<pos frame='3' bounds='' x='-155' y='0' z='257' ry='-50' gridSqs='21,22'/>
+	
+	<pos frame='4' bounds='' x='-150' y='0' z='340' ry='-45' gridSqs='31,32'/>
+	<pos frame='5' bounds='' x='-70' y='0' z='340' ry='-30' gridSqs='33,34'/>
+	<pos frame='6' bounds='' x='0' y='0' z='340' ry='0' gridSqs='35,36'/>
+	<pos frame='7' bounds='' x='70' y='0' z='340' ry='30' gridSqs='37,38'/>
+	<pos frame='8' bounds='' x='150' y='0' z='340' ry='45' gridSqs='39,40'/>
+
+	<pos frame='9' bounds='' x='155' y='0' z='257' ry='50' gridSqs='29,30'/>
+	<pos frame='10' bounds='' x='155' y='0' z='175' ry='50' gridSqs='19,20'/>
+	<pos frame='11' bounds='' x='160' y='0' z='90' ry='50' gridSqs='9,10'/>
+</itemConfig>

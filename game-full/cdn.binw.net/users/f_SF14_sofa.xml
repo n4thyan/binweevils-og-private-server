@@ -1,0 +1,18 @@
+<itemConfig name='f_SF14_sofa' type='furniture' path='assetsNest/f_SF14_sofa.swf' thumb='assetsNest/f_SF14_sofa_thumb.swf' h='90' boundType='rect' numSpots='0' clickable='yes'>
+	<!-- bounds have been done on the base -->
+	<pos frame='1' bounds='-200,0,70,160' x='0' y='0' z='200' ry='-90' gridSqs='41,42,1,2'/>	
+	<pos frame='2' bounds='-200,120,70,160' x='0' y='0' z='280' ry='-90' gridSqs='1,2,11,12,21,22'/>		
+	<pos frame='3' bounds='-200,200,70,160' x='0' y='0' z='360' ry='-90' gridSqs='11,12,21,22,31,32'/>	
+	
+	<!-- z back wall, front 340 + 40 for weevil = 380 -->	
+	<pos frame='4' bounds='-200,330,160,70' x='0' y='0' z='390' ry='0' gridSqs='31,32,33,34,35'/>	
+	<pos frame='5' bounds='-80,330,160,70' x='0' y='0' z='390' ry='0' gridSqs='33,34,35,36,37,38'/>		
+	<pos frame='6' bounds='20,330,160,70' x='0' y='0' z='391' ry='0' gridSqs='36,37,38,39,40'/><!-- different z cos can be on with frame 4 at same time -->
+	
+	<pos frame='7' bounds='130,200,70,160' x='0' y='0' z='361' ry='90' gridSqs='39,40,29,30,19,20'/>
+	<pos frame='8' bounds='130,120,70,160' x='0' y='0' z='281' ry='90' gridSqs='9,10,19,20,29,30'/>	
+	<pos frame='9' bounds='130,0,70,160' x='0' y='0' z='201' ry='90' gridSqs='49,50,9,10'/>		
+	
+	
+
+</itemConfig>

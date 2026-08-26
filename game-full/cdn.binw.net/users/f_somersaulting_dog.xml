@@ -1,0 +1,26 @@
+<itemConfig name='f_somersaulting_dog' type='furniture' path='assetsNest/f_somersaulting_dog.swf' thumb='assetsNest/f_somersaulting_dog_thumb.swf' h='55' boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-170, 370,55,20' x='-130' y='0' z='340' gridSqs='31,32'/>
+	<pos frame='2' bounds='-170,240,55,20' x='-130' y='0' z='240' gridSqs='21,22'/>
+	<pos frame='3' bounds='-170,170,55,20' x='-130' y='0' z='165' gridSqs='11,12'/>
+	<pos frame='4' bounds='-170, 110,55,20' x='-130' y='0' z='120' gridSqs='1,2'/>
+
+	<pos frame='5' bounds='-80,370,55,20' x='-50' y='0' z='340' gridSqs='33,34'/>
+	<pos frame='6' bounds='-80,240,55,20' x='-50' y='0' z='240' gridSqs='23,24'/>
+	<pos frame='7' bounds='-80,170,55,20' x='-50' y='0' z='165' gridSqs='13,14'/>
+	<pos frame='8' bounds='-80,110,55,20' x='-50' y='0' z='120' gridSqs='3,4'/>
+	
+	<pos frame='9' bounds='-25,370,55,20' x='0' y='0' z='340' gridSqs='35,36'/>
+	<pos frame='10' bounds='-25,240,55,20' x='0' y='0' z='240' gridSqs='25,26'/>
+	<pos frame='11' bounds='-25,170,55,20' x='0' y='0' z='165' gridSqs='15,16'/>
+	<pos frame='12' bounds='-25,110,455,20' x='0' y='0' z='120' gridSqs='5,6'/>
+	
+	<pos frame='13' bounds='60,370,55,20' x='50' y='0' z='340' gridSqs='37,38'/>
+	<pos frame='14' bounds='60,240,55,20' x='50' y='0' z='240' gridSqs='27,28'/>
+	<pos frame='15' bounds='60,170,55,20' x='50' y='0' z='165' gridSqs='17,18'/>
+	<pos frame='16' bounds='60,110,55,20' x='50' y='0' z='120' gridSqs='7,8'/>
+	
+	<pos frame='17' bounds='140,370,55,20' x='130' y='0' z='340' gridSqs='39,40'/>
+	<pos frame='18' bounds='140,240,55,20' x='130' y='0' z='240' gridSqs='29,30'/>
+	<pos frame='19' bounds='140,170,55,20' x='130' y='0' z='165' gridSqs='19,20'/>
+	<pos frame='20' bounds='140,110,55,20' x='130' y='0' z='120' gridSqs='9,10'/>
+</itemConfig>

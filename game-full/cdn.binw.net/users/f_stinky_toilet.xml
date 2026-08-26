@@ -1,0 +1,13 @@
+<itemConfig name='f_stinky_toilet' type='furniture' path='assetsNest/f_stinky_toilet.swf' thumb='assetsNest/f_stinky_toilet_thumb.swf' h='80'  boundType='rect' numSpots='0' clickable='yes'>
+
+	<pos frame='1' bounds='-200,90,80,70' x='-160' y='0' z='120' ry='45' gridSqs='1,2'/>
+	<pos frame='2' bounds='-200,170,80,70' x='-160' y='0' z='200' ry='45' gridSqs='11,12'/>
+	<pos frame='3' bounds='-200,250,80,70' x='-160' y='0' z='280' ry='45' gridSqs='21,22'/>
+	<pos frame='4' bounds='-200,330,80,70' x='-160' y='0' z='340' ry='45' gridSqs='31,32'/>
+
+	<pos frame='5' bounds='200,90,80,70' x='160' y='0' z='120' ry='-45' gridSqs='9,10'/>
+	<pos frame='6' bounds='200,170,80,70' x='160' y='0' z='200' ry='-45' gridSqs='19,20'/>
+	<pos frame='7' bounds='200,250,80,70' x='160' y='0' z='280' ry='-45' gridSqs='29,30'/>
+	<pos frame='8' bounds='200,330,80,70' x='160' y='0' z='340' ry='-45' gridSqs='39,40'/>
+	
+</itemConfig>

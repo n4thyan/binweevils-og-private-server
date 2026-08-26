@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--all file (images) names should be lower case-->
+<data>
+	<!--this field suports htmlTxt and is used in the character profile -->
+	<!--example-->
+	<!--<name><![CDATA[<font size="15">garden <br/>inspector</font>]]></name>-->
+	<!--must be UPPERCASE-->
+	<name>BUNTY</name>	
+	<!--ids of the bin buddies, corresponds to the id given in the main xml -->
+	<buddies>20,14,26</buddies>
+	<!-- id of the family, corresponds to the id given in the main xml -->
+	<family>12</family>
+	<!--this image id in te folder \externalUIs\charactersProfile\profilePhotos -->
+	<profile_picture>bunty.png</profile_picture>
+	<photos> 
+		<!--this images are in the folder \externalUIs\charactersProfile\photos 
+		the file names should be lower case 
+		charactername1.png and charactername1_thumb.png 
+		if they need to be relaced to avoid cache issues they can be named: 
+		charactername1_date.png and charactername1_thumb_date.png 
+		-->
+		<photo>
+			<url>bunty1.png</url>
+			<thumb_url>bunty1_thumb.png</thumb_url>
+			<capture>Celebrity spotting!</capture>
+		</photo>
+		<photo>
+			<url>bunty2.png</url>
+			<thumb_url>bunty2_thumb.png</thumb_url>
+			<capture>Wow, thanks!</capture>
+		</photo>
+		<photo>
+			<url>bunty3.png</url>
+			<thumb_url>bunty3_thumb.png</thumb_url>
+			<capture>Time for a girlie night!</capture>
+		</photo>
+	</photos>
+	<fun_moment>
+		<!-- this image is in the folder \externalUIs\charactersProfile\funMoments -->
+		<url>bunty.png</url>
+		<text>The time Posh accidentally farted at the Smoothie Shack during a girls’ night out!</text>
+	</fun_moment>
+	<about>
+		<likes>Meeting celebs</likes>
+		<dislikes>Silence</dislikes>
+		<fun_fact>Can talk nonstop for 3 minutes without a breath</fun_fact>
+		<text>The biggest chatterbox in the Binscape can always be counted upon to have the latest bit of gossip. Getting her to keep quiet is pretty much impossible – if there’s a juicy secret, she’ll spill it! The only thing Bunty loves better than a hot story is collecting celebrity autographs.</text>
+		<interesting_fact>Has 1237 autographs</interesting_fact>
+		<!-- this image must be in the folder externalUIs\charactersProfile\aboutMe -->
+		<pic_url>bunty.png</pic_url>
+	</about>
+</data>

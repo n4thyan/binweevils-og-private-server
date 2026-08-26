@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+	=====================================================
+	*  NOTES ON AVAILABLE PARAMETERS AND CONTENT NODES  *
+	=====================================================
+	
+	
+	============================================
+	*  Trickey params not in this incarnation  *
+	============================================
+	String replacement:	  //username//
+	Shuffling of options: <stage shuffle="true">
+	
+	
+	============================================
+	*                  NODES                   *
+	============================================
+	
+	<character>
+	Attribute: direction 
+	Optional:  true (Default "1" if left out)
+	Values:    "-1" to flip direction of the bubble
+	
+	<phase>
+	*
+	Attribute: num 
+	Optional:  false
+	Value:     The number that marks this phase's point in the conversation
+	Default:   None - required attribute.
+	*
+	Attribute: animFrame
+	Optional:  true
+	Value:     The frame label of the character mc to be played when this phase shows
+	Default:   No anim
+	*
+	Attribute: sticky
+	Optional:  true
+	Values:    "0" and "1". Sticky means that it will fall back to this node from non-sticky nodes on reshow.
+	Default:   0
+	*
+	Attribute: picoDx
+	Optional:  true
+	Value:     A positive or negative integer number of pixels. 
+			   The 'pico' is the pointy bit to the mouth in the speech bubble and picoDx is its distance from the edge of the bubble
+	Default:   20
+	*
+	
+	<text>
+	Mandatory node. If omitted, an empty bubble is shown
+	Accepts html, so if there is html formatting, wrap the text in <![CDATA[]]> tags
+	
+	<textOnReturn>
+	Optional node (technically speaking but check if required by Rob). The text node is used on return to this phase if none is specified and a warning is traced.
+	Accepts html, so if there is html formatting, wrap the text in <![CDATA[]]> tags
+	
+	<userResponse>
+	Optional node. If omitted, just the text is displayed and the speech bubble is closed by clicking outside the bubble. A warning is traced.
+	WARNING: No userResponse node was found in the XML. This is valid only if it's close to accept.
+	*
+	Attribute: type
+	Optional:  true
+	Value:     "freeText". If set to freeText, an input child node is required instead of option nodes.
+	Default:   undefined. If undefined it looks for option child nodes.
+	
+	<option>
+	If the userResponse was untyped, then <option> is a mandatory node. One or more can be set.
+	*
+	Attribute: progressTo
+	Optional:  true (if userResponse untyped)
+	Value:     integer - the next phase in the conversation. Can be set to "-1" to show that you want it to just act like a close (same as omission) 
+	Default:   -1. If -1 it just acts like a close and shows an error message - ERROR: The next phase is invalid for phase (number)
+	*
+	
+	<input>
+	If the userResponse was type="freeText", then <input> is a mandatory node.
+	*
+	Attribute: width
+	Optional:  true
+	Value:     integer pixel size
+	Default:   150
+	*
+	Attribute: charLimit
+	Optional:  true
+	Value:     integer number of characters
+	Default:   0 (no limit)
+	*
+	Attribute: caseSensitive
+	Optional:  true
+	Value:     "0" or "1"
+	Default:   1
+	*
+	
+	<correctAns>
+	If the userResponse was type="freeText", then <correctAns> is a mandatory node.
+	This contains the text against which to validate the user input.
+	*
+	Attribute: progressTo
+	Optional:  false
+	Value:     integer - the next phase in the conversation.
+	Default:   none - mandatory attribute
+	*
+	
+	<incorrectAns>
+	If the userResponse was type="freeText", then <incorrectAns> is a mandatory node.
+	No text content; just @progressTo
+	*
+	Attribute: progressTo
+	Optional:  false
+	Value:     integer - the next phase in the conversation.
+	Default:   none - mandatory attribute
+	*
+	
+-->
+
+
+<character defaultCloseAnimFrame="rest" direction="-1">
+
+	
+	<tasks>
+		<task description="generatorOn" questControlID="712" />
+		<task description="missionComplete" questControlID="799" />
+		
+	</tasks>
+	
+	
+	<phase num="0" animFrame="removeWeb" >
+		<text>Ohhh, thank you! Hey - have you seen my assistants? Are they all right?</text>
+		<userResponse>
+			<option progressTo="1">Yes, I think everyone is safe! But not for long if we don't stop Lia from tampering with your machine!</option>
+		</userResponse>
+	</phase>	
+		
+	<phase num="1" animFrame="talk_3" >
+		<text width="500">Oh nooooo! It is absolutely impossible to get into that chamber, I made it out of Ultra-Unbreakabilium! Our only hope is to somehow overheat the machine and destroy it!</text>
+		<userResponse>
+			<option progressTo="2">And how do you suggest we do that??</option>
+		</userResponse>
+	</phase>	
+
+	
+	<phase num="2" animFrame="talk_2"  sticky="1">
+		
+		<text width="500">Right. Think, brain, think! AHA! Got it! You can use the laser to shoot those boosters on the wall. The energy surge will overload the machine. First, you have to connect the generator to activate the laser.</text>
+		<textOnReturn width="500">Go on, connect the generator!</textOnReturn>
+		<userResponse>
+			<option progressTo="-1" fireEvent="labLocDown_GeneratorOpen">You're a true genius, Lab! Let's do this!</option>
+		</userResponse>
+		
+	</phase>
+
+	
+	<phase num="3" animFrame="tallk_4"  questControlPoint="generatorOn">
+		<text width="500">Oooooh, well done! I've had trouble myself getting that bucket of bolts to work!</text>
+		<userResponse>
+			<option progressTo="4">No problem! It's what I've been trained to do!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="4" animFrame="talk_6" sticky="1">
+		<text width="500">Go to the laser now! Aim carefully and shoot those boosters on the wall. Hit them when they're active and the green light is ON!</text>
+		<userResponse>
+			<option progressTo="5">Good thing I've been doing my target practice!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="5" animFrame="talk_in">
+		<text width="500">Oh, one more wee word of advice. That machine? You'll have to overload ALL the boosters at once. If you miss any green lights, the system will repair itself and you'll have to start again. I built this thing well!</text>
+		<userResponse>
+			<option progressTo="-1">Thanks, Lab! Here's hoping...</option>
+		</userResponse>
+	</phase>
+	<phase num="6" animFrame="talk_in" questControlPoint="missionComplete">
+		<text width="500">Don't worry my lab explodes all the time. Maybe I should invent a lab-rebuilding machine.</text>
+	</phase>
+	
+	<!--
+	<phase num="6" animFrame="walkOff" sticky="1">
+		<text width="500">Aaaah! We've gotta get out of here!  Run for it! That chamber is about to BLOW!</text>
+	</phase>
+	-->
+	
+		
+</character>

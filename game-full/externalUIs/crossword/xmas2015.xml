@@ -1,0 +1,43 @@
+<crossWord id='102' heading='Can you solve the answers to this Christmas crossword?' reward='500'>
+
+    <row id='0'>----------------</row>
+    <row id='1'>----------------</row>
+    <row id='2'>---BAUBLE-------</row>
+    <row id='3'>----D-I---------</row>
+    <row id='4'>----V-N---------</row>
+    <row id='5'>----E-G---------</row>
+    <row id='6'>----N---------W-</row>
+    <row id='7'>----TINSEL----R-</row>
+    <row id='8'>--P----P--T---A-</row>
+    <row id='9'>-CRACKER-RUDOLPH</row>
+    <row id='10'>--E----O--R---P-</row>
+    <row id='11'>--SNOW-U--K---I-</row>
+    <row id='12'>--E----TREE---N-</row>
+    <row id='13'>MINCE-----Y---G-</row>
+    <row id='14'>--T-------------</row>
+    <row id='15'>----------------</row>
+
+
+    <across>
+    <clue y='2' x1='3' x2='8'>This object is often hung from Christmas trees. (6)</clue> <!-- BAUBLE -->
+    <clue y='7' x1='4' x2='9'>A sparkly Christmas tree scarf. (6)</clue> <!-- TINSEL -->
+    <clue y='9' x1='1' x2='7'>These items make a bang when you pull them. (7)</clue> <!-- CRACKER -->
+    <clue y='9' x1='9' x2='15'>This reindeer has a bright red nose. (7)</clue> <!-- RUDOLPH -->
+    <clue y='11' x1='2' x2='5'>Something cold that falls from the sky. (4)</clue> <!-- SNOW -->
+    <clue y='12' x1='7' x2='10'>Something you decorate at Christmas. (4)</clue> <!-- TREE -->
+    <clue y='13' x1='0' x2='4'>The main ingredient of a popular Christmas pie. (5)</clue> <!-- MINCE -->
+    </across>
+
+
+
+    <down>
+    <clue x='4' y1='2' y2='7'>A type of calendar with doors hiding rewards. (6)</clue> <!-- ADVENT -->
+    <clue x='6' y1='2' y2='5'>The Weevil that wishes Christmas was every day. (4)</clue> <!-- BING -->
+    <clue x='2' y1='8' y2='14'>Something that belongs under the tree. (7)</clue> <!-- PRESENT -->
+    <clue x='7' y1='7' y2='12'>A green vegetable eaten at Christmas. (6)</clue> <!-- SPROUT -->
+    <clue x='10' y1='8' y2='13'>The traditional bird eaten at Christmas. (6)</clue> <!-- TURKEY -->
+    <clue x='14' y1='6' y2='13'>A type of paper used to cover your presents. (8)</clue> <!-- WRAPPING -->
+    </down>
+
+	
+</crossWord>

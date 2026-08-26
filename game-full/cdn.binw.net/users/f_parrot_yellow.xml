@@ -1,0 +1,31 @@
+<itemConfig name='f_parrot_yellow' type='furniture' path='assetsNest/f_parrot_yellow.swf' thumb='assetsNest/f_parrot_yellow_thumb.swf' h='39' boundType='rect' clickable='no'>
+	<pos frame='1' bounds='-200,320,80,80' x='-200' y='200' z='320' ry='0' gridSqs='31,32'/>
+	<pos frame='2' bounds='-200,240,80,80' x='-200' y='200' z='240' ry='0' gridSqs='21,22'/>
+	<pos frame='3' bounds='-200,160,80,80' x='-200' y='200' z='160' ry='0' gridSqs='11,12'/>
+	<pos frame='4' bounds='-200,80,80,80' x='-200' y='200' z='80' ry='0' gridSqs='1,2'/>
+	<pos frame='5' bounds='-200,0,80,80' x='-200' y='200' z='0' ry='0' gridSqs='41,42'/>
+
+	<pos frame='6' bounds='-120,320,80,80' x='-120' y='200' z='320' ry='0' gridSqs='33,34'/>
+	<pos frame='7' bounds='-120,240,80,80' x='-120' y='200' z='240' ry='0' gridSqs='23,24'/>
+	<pos frame='8' bounds='-120,160,80,80' x='-120' y='200' z='160' ry='0' gridSqs='13,14'/>
+	<pos frame='9' bounds='-120,80,80,80' x='-120' y='200' z='80' ry='0' gridSqs='3,4'/>
+	<pos frame='10' bounds='-120,0,80,80' x='-120' y='200' z='0' ry='0' gridSqs='43,44'/>
+
+	<pos frame='11' bounds='-40,320,80,80' x='-40' y='200' z='320' ry='0' gridSqs='35,46'/>
+	<pos frame='12' bounds='-40,240,80,80' x='-40' y='200' z='240' ry='0' gridSqs='25,26'/>
+	<pos frame='13' bounds='-40,160,80,80' x='-40' y='200' z='160' ry='0' gridSqs='15,16'/>
+	<pos frame='14' bounds='-40,80,80,80' x='-40' y='200' z='80' ry='0' gridSqs='5,6'/>
+	<pos frame='15' bounds='-40,0,80,80' x='-40' y='200' z='0' ry='0' gridSqs='45,46'/>
+	
+	<pos frame='16' bounds='40,320,80,80' x='40' y='200' z='320' ry='0' gridSqs='37,38'/>
+	<pos frame='17' bounds='40,240,80,80' x='40' y='200' z='240' ry='0' gridSqs='27,28'/>
+	<pos frame='18' bounds='40,160,80,80' x='40' y='200' z='160' ry='0' gridSqs='17,18'/>
+	<pos frame='19' bounds='40,80,80,80' x='40' y='200' z='80' ry='0' gridSqs='7,8'/>
+	<pos frame='20' bounds='40,0,80,80' x='40' y='200' z='0' ry='0' gridSqs='47,48'/>
+	
+	<pos frame='21' bounds='120,320,80,80' x='120' y='200' z='320' ry='0' gridSqs='39,40'/>
+	<pos frame='22' bounds='120,240,80,80' x='120' y='200' z='240' ry='0' gridSqs='29,30'/>
+	<pos frame='23' bounds='120,160,80,80' x='120' y='200' z='160' ry='0' gridSqs='19,20'/>
+	<pos frame='24' bounds='120,80,80,80' x='120' y='200' z='80' ry='0' gridSqs='9,10'/>
+	<pos frame='25' bounds='120,0,80,80' x='120' y='200' z='0' ry='0' gridSqs='49,50'/>
+</itemConfig>

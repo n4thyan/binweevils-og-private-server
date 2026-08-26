@@ -1,0 +1,10 @@
+<itemConfig name='f_battleship_window_torpedo' type='furniture' path='assetsNest/f_battleship_window_torpedo.swf' thumb='assetsNest/f_battleship_window_torpedo_thumb.swf' h='120' boundType='0' clickable='yes'>
+	
+	<pos frame='1' bounds='' x='-20' y='201' z='450' ry='0' gridSqs='31,32,33,34,35,36,37,38,39'/>
+	<pos frame='2' bounds='' x='0' y='201' z='450' ry='0' gridSqs='32,33,34,35,36,37,38,39'/>
+	<pos frame='3' bounds='' x='20' y='201' z='450' ry='0' gridSqs='32,33,34,35,36,37,38,39'/>
+	
+	<pos frame='4' bounds='' x='-20' y='201' z='450' ry='0' gridSqs='31,32,33,34,35,36,37,38,39'/>
+	<pos frame='5' bounds='' x='0' y='201' z='450' ry='0' gridSqs='32,33,34,35,36,37,38,39'/>
+	<pos frame='6' bounds='' x='20' y='201' z='450' ry='0' gridSqs='32,33,34,35,36,37,38,39'/>
+</itemConfig>

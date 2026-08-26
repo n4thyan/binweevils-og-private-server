@@ -1,0 +1,11 @@
+<itemConfig name='f_toilet_Slimey' type='furniture' path='assetsNest/f_toilet_Slimey.swf' thumb='assetsNest/f_toilet_Slimey_thumb.swf' h='80' boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-200,80,60,80' x='-160' y='0' z='120' ry='-90' gridSqs='1,2'/>
+	<pos frame='2' bounds='-200,160,60,80' x='-160' y='0' z='200' ry='-90' gridSqs='11,12'/>
+	<pos frame='3' bounds='-200,240,60,80' x='-160' y='0' z='320' ry='-90' gridSqs='21,22'/>
+	<pos frame='4' bounds='-200,320,60,80' x='-160' y='0' z='400' ry='-90' gridSqs='31,32'/>
+
+	<pos frame='5' bounds='150,330,60,80' x='160' y='0' z='399' ry='90' gridSqs='39,40'/>
+	<pos frame='6' bounds='150,240,60,80' x='160' y='0' z='321' ry='90' gridSqs='29,30'/>
+	<pos frame='7' bounds='150,160,60,80' x='160' y='0' z='201' ry='90' gridSqs='19,20'/>
+	<pos frame='8' bounds='150,80,60,80' x='160' y='0' z='121' ry='90' gridSqs='9,10'/>
+</itemConfig>

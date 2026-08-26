@@ -1,0 +1,12 @@
+<itemConfig name='f_SSpyRoom_cabinet2' type='furniture' path='assetsNest/f_SSpyRoom_cabinet2.swf' thumb='assetsNest/f_SSpyRoom_cabinet2_thumb.swf' h='105' boundType='radial' boundRadius='10' numSpots='1' clickable='yes'>
+	<pos frame='1' bounds='-200,240,50,70' x='-170' y='0' z='90' gridSqs='1,2,11,12'/>
+	<pos frame='2' bounds='-200,320,50,70' x='-170' y='0' z='170' gridSqs='11,12,21,22'/>
+	<pos frame='3' bounds='-200,405,50,70' x='-170' y='0' z='250' gridSqs='21,22,31,32'/>
+	
+	<pos frame='4' bounds='120,240,50,70' x='170' y='0' z='90' gridSqs='9,10,19,20'/>
+	<pos frame='5' bounds='120,320,50,70' x='170' y='0' z='170' gridSqs='19,20,29,30'/>
+	<pos frame='6' bounds='120,406,50,70' x='170' y='0' z='250' gridSqs='29,30,39,40'/>
+	
+	
+	
+</itemConfig>

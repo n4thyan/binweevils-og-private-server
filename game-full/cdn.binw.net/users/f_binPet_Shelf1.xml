@@ -1,0 +1,13 @@
+<itemConfig id='f_binPet_Shelf1' type='furniture' path='assetsNest/f_binPet_Shelf1.swf' thumb='assetsNest/f_binPet_Shelf1_thumb.swf' h='49' boundType='rect' numSpots='3'>
+
+	<pos frame='1' bounds='-160,360,160,40' x='-120' y='118' z='318' gridSqs='32,33,34,35'/>
+	<pos frame='2' bounds='0,360,160,40' x='0' y='117' z='318' gridSqs='36,37,38,39'/>
+
+	
+	<pos frame='3' bounds='-160,360,160,40' x='-120' y='51' z='318' gridSqs='32,33,34,35'/>
+	<pos frame='4' bounds='0,360,160,40' x='0' y='51' z='318' gridSqs='36,37,38,39'/>
+	
+	<pos frame='5' bounds='-160,360,160,40' x='-120' y='-25' z='318' gridSqs='32,33,34,35'/>
+	<pos frame='6' bounds='0,360,160,40' x='0' y='-25' z='318' gridSqs='36,37,38,39'/>
+
+</itemConfig>

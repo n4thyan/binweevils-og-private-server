@@ -1,0 +1,6 @@
+<itemConfig name='f_rollercoaster_back' type='furniture' path='assetsNest/f_rollercoaster_back.swf' thumb='assetsNest/f_rollercoaster_back_thumb.swf' h='80'  boundType='radial' boundRadius='58' numSpots='0' clickable='yes'>
+	<pos frame='4' bounds='' x='160' y='0' z='120' gridSqs='9,10'/>
+	<pos frame='3' bounds='' x='160' y='0' z='200' gridSqs='19,20'/>
+	<pos frame='2' bounds='' x='160' y='0' z='280' gridSqs='29,30'/>
+	<pos frame='1' bounds='' x='160' y='0' z='340' gridSqs='39,40'/>
+</itemConfig>

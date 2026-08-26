@@ -1,0 +1,1641 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	channel.show.type = 0 (cartoon), channel.show.type = 1 (live action)
+	show.popularityRanking is WITHIN EACH PROVIDER only, starting from number 1
+-->
+<vod>
+	<!--<thumbsPath>http://c0594452.cdn.cloudfiles.rackspacecloud.com/</thumbsPath>-->
+	<thumbsPath>http://play.binweevils.com/bwtv/thumbs/</thumbsPath>
+
+	<!-- ==========================================================    NickelOdeon     ========================================================== -->
+	
+
+	<channel id="nickleodeon" url="http://nick.co.uk/">
+		<show>
+			<title><![CDATA[The Fairly Odd Parents]]></title>
+			<type>0</type>
+			<duration>30</duration>
+			<flv>fairlyOddParents</flv>
+			<alphabetical>f</alphabetical>
+			<popularityRanking>4</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[The Big Problem / Power Mad]]></title>
+					<synopsis><![CDATA[A wish too far; the ultimate video game.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[Spaced Out / Transparents]]></title>
+					<synopsis><![CDATA[Earth in danger; fairies as parents.]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Chin Up / Dog's Day Afternoon]]></title>
+					<synopsis><![CDATA[Comic books get real; Timmy becomes a dog.]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[A Wish Too Far / Tiny Timmy]]></title>
+					<synopsis><![CDATA[Timmy's on trial; Vicky eats the fairies.]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Father Time / Apartnership]]></title>
+					<synopsis><![CDATA[Timmy changes time; Cosmo and Wanda split.]]></synopsis>
+				</episode>
+				<!--
+				EPISODE 6 NOT DELIVERED
+				<episode num="6">				
+					<title><![CDATA[FOP 6]]></title>
+					<synopsis><![CDATA[ FOP synopsis 6 ]]></synopsis>
+				</episode>
+				-->
+				<episode num="7">				
+					<title><![CDATA[Christmas Every Day]]></title>
+					<synopsis><![CDATA[Timmy wishes for 365 days of Christmas a year.]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[The Boys In The Band / The Hex Games]]></title>
+					<synopsis><![CDATA[Vicky kidnaps a singer, Timmy challenges Vicky.]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[Boy Toy / Inspection Detection]]></title>
+					<synopsis><![CDATA[Timmy gets small. Timmy's parents think he's a thief.]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[Action Packed / Smarty Pants]]></title>
+					<synopsis><![CDATA[Timmy lives the movie life, and then knows everything.]]></synopsis>
+				</episode>
+				<episode num="11">				
+					<title><![CDATA[A Mile In My Shoes / Super Bike]]></title>
+					<synopsis><![CDATA[Timmy swaps places, then wishes up a bike.]]></synopsis>
+				</episode>
+			</series>
+		</show>
+		<show>
+			<title><![CDATA[The Mighty B!]]></title>
+			<type>0</type>
+			<duration>30</duration>
+			<flv>theMightyB</flv>
+			<alphabetical>m</alphabetical>
+			<popularityRanking>8</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[So Happy Together/ Sweet Sixteenth]]></title>
+					<synopsis><![CDATA[Bessie gets a dog and rides a rollercoaster.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[Bee My Baby/ Bee Afraid]]></title>
+					<synopsis><![CDATA[Bessie goes babysitting, and camps out in the woods.]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Artificial Unintelligence/ We get the be]]></title>
+					<synopsis><![CDATA[Bessie builds a mad robot, and takes up drumming.]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Bat Mitzvah Crashers/ Super Secret Weakn]]></title>
+					<synopsis><![CDATA[Bessie is determined to uncover the Mighty Bee's weakness.]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[An I See Bee/ Woodward and Beesting]]></title>
+					<synopsis><![CDATA[Bessie can see the future, and the girls are keeping secrets]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[Dopplefinger/ Little Womyn]]></title>
+					<synopsis><![CDATA[Finger gets hurt, Bessie's Mom becomes troop leader.]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[Li'l Orphan Happy/ Bodyrockers]]></title>
+					<synopsis><![CDATA[Happy's Mother is absent; Honeybees take a fantastic voyage.]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[The Apprentice/Beenedict]]></title>
+					<synopsis><![CDATA[Mary puts the Honeybees to work; Happy leaves.]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[Boston Beean/ Penny Hearts Joey]]></title>
+					<synopsis><![CDATA[Bessie has a foreign Honeybee; Penny befriends a robot kangaroo.]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[Ten Little Honeybees/ Toot Toot]]></title>
+					<synopsis><![CDATA[Portia throws a party; Bessie lets something slip.]]></synopsis>
+				</episode>
+			</series>
+		</show>
+		<show>
+			<title><![CDATA[The Superhero Squad Show]]></title>
+			<type>0</type>
+			<duration>30</duration>
+			<flv>superheroSquad</flv>
+			<alphabetical>s</alphabetical>
+			<popularityRanking>6</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[And Lo… A Pilot Shall Come!]]></title>
+					<synopsis><![CDATA[The Squad has a big mission to keep a fractal from Dr. Doom.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[This Silver, This Surfer]]></title>
+					<synopsis><![CDATA[Silver Surfer can't get a hang of earth customs!]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Hulk Talk Smack!]]></title>
+					<synopsis><![CDATA[A fractal's cosmic power turns the Hulk into the Grey Hulk.]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[To Err is Superhuman]]></title>
+					<synopsis><![CDATA[Wolverine is assigned to mentor a new trainee.]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Enter: Dormammu]]></title>
+					<synopsis><![CDATA[Supernatural wackiness is turning everything upside down!]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[A Bratt Walks Among Us]]></title>
+					<synopsis><![CDATA[A 3-year old girl gains terrifying power over reality.]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[Oh, Brother!]]></title>
+					<synopsis><![CDATA[Loki's scheming sends the Squad into twists & turns.]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[From The Atom… It Rises]]></title>
+					<synopsis><![CDATA[A mysterious new villan, Scorpio, outwits the Squad.]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[Night In The Sanctorum]]></title>
+					<synopsis><![CDATA[When the Helicarrier is smashed, the gang needs a new place.]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[This Forest Green]]></title>
+					<synopsis><![CDATA[Doom's ally, Egghead, hatches a scheme to steal a fractal.]]></synopsis>
+				</episode>
+			</series>
+		</show>
+		<show>
+			<title><![CDATA[Spongebob Squarepants]]></title>
+			<type>0</type>
+			<duration>30</duration>
+			<flv>spongebob</flv>
+			<alphabetical>s</alphabetical>
+			<popularityRanking>1</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[SHELP WANTED/REEF BLOWER/TEA AT THE T]]></title>
+					<synopsis><![CDATA[SpongeBob gets his dream job, and meets Sandy Cheeks.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[BUBBLESTAND/RIPPED PANTS]]></title>
+					<synopsis><![CDATA[SpongeBob blows bubbles and tries to impress Sandy.]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[JELLYFISH/PLANKTON]]></title>
+					<synopsis><![CDATA[SpongeBob goes jellyfishing, Plankton has an evil scheme.]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[NAUGHTY NAUTICAL NEIGHBOURS/BOATING SC]]></title>
+					<synopsis><![CDATA[Squidward pranks SpongeBob, SpongeBob takes a boating exam.]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[PIZZA DELIVERY/HOME SWEET PINEAPPLE]]></title>
+					<synopsis><![CDATA[SpongeBob & Squid deliver pizzas, SpongeBob loses his house.]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[MERMAIDMAN AND BARNACLEBOY]]></title>
+					<synopsis><![CDATA[SpongeBob meets his hero, and loses his self-confidence.]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[HALL MONITOR/JELLYFISH JAM]]></title>
+					<synopsis><![CDATA[SpongeBob is hall monitor, then takes a jellyfish home.]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[SANDY'S ROCKET/SQUEAKY BOOTS]]></title>
+					<synopsis><![CDATA[The guys launch a rocket, and SpongeBob gets some odd shoes.]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[NATURE PANTS/OPPOSITE DAY]]></title>
+					<synopsis><![CDATA[SpongeBob lives with jellyfish, Squidward sells his house.]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[CULTURE SHOCK/F.U.N]]></title>
+					<synopsis><![CDATA[There's a talent show. SpongeBob befriends Plankton.]]></synopsis>
+				</episode>
+			</series>
+		</show>
+		<show>
+			<title><![CDATA[Invader Zim]]></title>
+			<type>0</type>
+			<duration>30</duration>
+			<flv>invaderZim</flv>
+			<alphabetical>i</alphabetical>
+			<popularityRanking>7</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[The Nightmare Begins]]></title>
+					<synopsis><![CDATA[Invader Zim, banished from his home planet, comes to Earth.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[Bestest Friend/Nanozim]]></title>
+					<synopsis><![CDATA[Zim auditions for a best friend; Dib gets a picture of Zim.]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Parent/Teacher Night-Walk of Doom]]></title>
+					<synopsis><![CDATA[Parent/teacher night for Zim; Gir and Zim get lost.]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Germs/Dark Harvest]]></title>
+					<synopsis><![CDATA[Zim is scared of Germs; Zim steals body parts.]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Attack of the Saucer Morons/The Wettening]]></title>
+					<synopsis><![CDATA[Zim's spaceship lands; Zim discovers rain.]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[Career Day/Battle Dib]]></title>
+					<synopsis><![CDATA[Zim and Dib get jobs; Dib shares his knowledge.]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[Planet Jackers/Rise of the Zitboy]]></title>
+					<synopsis><![CDATA[Earth is about to be stolen; Zim gets a pimple.]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[Invasion of the Idiot Dog Brain/Bad, Bad Rubber Piggy  Piggy]]></title>
+					<synopsis><![CDATA[Gir becomes part of the house; Zim launches a war of piggies]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[A Room With a Moose/Hamstergeddon]]></title>
+					<synopsis><![CDATA[Zim plots against Dib; Zim enlarges the class hamster.]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[A Plague of Hogs/Bloaty's Pizza Hog]]></title>
+					<synopsis><![CDATA[Spy babies from next door; Dib has a plan.]]></synopsis>
+				</episode>
+			</series>
+		</show>
+		<show>
+			<title><![CDATA[iCarly]]></title>
+			<type>1</type>
+			<duration>30</duration>
+			<flv>iCarly</flv>
+			<alphabetical>i</alphabetical>
+			<popularityRanking>2</popularityRanking>
+			<series num="1">			
+				<episode num="1">				
+					<title><![CDATA[iPilot]]></title>
+					<synopsis><![CDATA[Carly and friends decide to host their own online web show.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[iWant More viewers]]></title>
+					<synopsis><![CDATA[The gang compete to get more viewers for the webcast.]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[iDream of Dancing]]></title>
+					<synopsis><![CDATA[Carly, Sam and Freddie have a musical dream.]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[iLike Jake]]></title>
+					<synopsis><![CDATA[Carly's crush, Jake Krandle, appears on the show.]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[iWanna Stay With Spencer]]></title>
+					<synopsis><![CDATA[Carly and Spencer's granddad makes a surprise visit.]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[iNevel]]></title>
+					<synopsis><![CDATA[The gang want their show to be reviewed by a hot website.]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[iWant a World record]]></title>
+					<synopsis><![CDATA[The gang try to break the record for the longest webcast.]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[iSpy a Mean Teacher]]></title>
+					<synopsis><![CDATA[Carly's webcast shows what teachers do while not in school.]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[iWant to Date Freddy]]></title>
+					<synopsis><![CDATA[A fan, Valerie, asks Freddie on a date.]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[iScream on Halloween]]></title>
+					<synopsis><![CDATA[The gang webcast from an apparently haunted apartment.]]></synopsis>
+				</episode>
+			</series>
+		</show>
+		<show>
+			<title><![CDATA[Avatar]]></title>
+			<type>0</type>
+			<duration>30</duration>
+			<flv>avatar</flv>
+			<alphabetical>a</alphabetical>
+			<popularityRanking>3</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[The Boy in the Iceberg]]></title>
+					<synopsis><![CDATA[Katara and Sokka discover a boy frozen in an iceberg.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[The Avatar Returns]]></title>
+					<synopsis><![CDATA[Prince Zuko tracks Aang down to the Southern Water Tribe.]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[The Southern Air Temple ]]></title>
+					<synopsis><![CDATA[Aang visits the Air Temple where he was raised.]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[The Warriors of Kyoshi]]></title>
+					<synopsis><![CDATA[Sokka meets some female warriors.]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[The King of Omashu]]></title>
+					<synopsis><![CDATA[The King puts Aang to a series of challenges.]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[Imprisoned]]></title>
+					<synopsis><![CDATA[Aang meets an Earthbender who must hide his abilities.]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[Winter Solstice Part 1]]></title>
+					<synopsis><![CDATA[A town is being terrorized by a mysterious spirit force.]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[Winter Solstice part 2:  Avatar Roku]]></title>
+					<synopsis><![CDATA[Aang must reach a Fire Nation temple while dodging guards.]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[The Waterbending Scroll ]]></title>
+					<synopsis><![CDATA[The kids find themselves on the run from pirates!]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[Jet]]></title>
+					<synopsis><![CDATA[Our heroes meet Jet, a teenager leading a band of rebels.]]></synopsis>
+				</episode>
+			</series>
+		</show>
+		<show>
+			<title><![CDATA[True Jackson]]></title>
+			<type>1</type>
+			<duration>30</duration>
+			<flv>trueJackson</flv>
+			<alphabetical>t</alphabetical>
+			<popularityRanking>5</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[Pilot]]></title>
+					<synopsis><![CDATA[A 15-year-old gets a job at a major fashion label. ]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[True Takes Iceland]]></title>
+					<synopsis><![CDATA[Lulu screws up one of True's projects.]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Firing Lulu]]></title>
+					<synopsis><![CDATA[True is forced to babysit a very high-maintenance model. ]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Babysitting Dakota]]></title>
+					<synopsis><![CDATA[True has to design gear for skater Ryan Sheckler.]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Telling Amanda]]></title>
+					<synopsis><![CDATA[Ryan discovers Amanda's boyfriend is cheating on her.]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[True Matchmaker]]></title>
+					<synopsis><![CDATA[True lends Lulu an unfinished dress.]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[Re-True--nion]]></title>
+					<synopsis><![CDATA[Amanda attends her high school reunion.]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[The Prototype]]></title>
+					<synopsis><![CDATA[Amanda and True compete to see whose design is best.]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[Ryan on Wheels]]></title>
+					<synopsis><![CDATA[True tries to fix Max up with the librarian.]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[Red Carpet]]></title>
+					<synopsis><![CDATA[Max's fashion nemesis tries to lure True to work for him.]]></synopsis>
+				</episode>
+			</series>
+		</show>
+		
+	</channel>
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- ============================================================     BWTV     ============================================================ -->
+	
+	<!-- 
+		0 = empty skeleton, 1 = show skeleton with correct num episodes, 2 ready to go, 3 all shows in
+		arthur - 2 pop1
+		brushLee - 2 pop2
+		popat - 2 pop3
+		crampTwins - 0 n/a
+		vegetableWrestling - 2 pop4
+		delilahAndJulius - 2 pop5
+		olliversAdventures - 2	 pop 6
+	-->
+	
+	<channel id="bwtv">
+		<show>
+			<title><![CDATA[King Athur's Disasters]]></title>
+			<type>0</type>
+			<duration>24</duration>
+			<flv>arthur</flv>
+			<alphabetical>k</alphabetical>
+			<popularityRanking>1</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[Splinters In The Knight]]></title>
+					<synopsis><![CDATA[Princess Guinevere's terrible drumming annoys everyone.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[The Yodelling Dolphin of Kirkwall]]></title>
+					<synopsis><![CDATA[Guinevere asks Arthur to find the Yodelling Dolphin. ]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[The Parchment of Arusella]]></title>
+					<synopsis><![CDATA[Guinevere needs a Father’s Day present for her dad.]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[The Labyrinth Of Lost Souls]]></title>
+					<synopsis><![CDATA[Guinevere wants Arthur to turn her slipper into gold.]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[The Surprise Quest]]></title>
+					<synopsis><![CDATA[Arthur accidentally gives a love potion to Petal.]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[The Glass Rose]]></title>
+					<synopsis><![CDATA[Arthur and friends must steal a stained-glass window from France.]]></synopsis>
+				</episode>
+				<!--
+				<episode num="7">				
+					<title><![CDATA[Arthur 7]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 7 ]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[Arthur 8]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 8 ]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[Arthur 9]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 9 ]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[Arthur 10]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 10 ]]></synopsis>
+				</episode>
+				<episode num="11">				
+					<title><![CDATA[Arthur 11]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 10 ]]></synopsis>
+				</episode>
+				<episode num="12">				
+					<title><![CDATA[Arthur 12]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 10 ]]></synopsis>
+				</episode>
+				<episode num="13">				
+					<title><![CDATA[Arthur 13]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 10 ]]></synopsis>
+				</episode>
+				-->
+			</series>
+			<!-- ****************************  series 2  ****************************** -->
+			<!--
+			<series num="2">
+				<episode num="1">				
+					<title><![CDATA[Arthur 1]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 1 ]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[Arthur 2]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 2 ]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Arthur 3]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 3 ]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Arthur 4]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 4 ]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Arthur 5]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 5 ]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[Arthur 6]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 6 ]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[Arthur 7]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 7 ]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[Arthur 8]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 8 ]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[Arthur 9]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 9 ]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[Arthur 10]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 10 ]]></synopsis>
+				</episode>
+				<episode num="11">				
+					<title><![CDATA[Arthur 11]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 10 ]]></synopsis>
+				</episode>
+				<episode num="12">				
+					<title><![CDATA[Arthur 12]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 10 ]]></synopsis>
+				</episode>
+				<episode num="13">				
+					<title><![CDATA[Arthur 13]]></title>
+					<synopsis><![CDATA[ Arthur synopsis 10 ]]></synopsis>
+				</episode>
+			</series>
+			-->
+		</show>				
+		<show>
+			<title><![CDATA[The Adventures of Brush Lee and Jackie Chain]]></title>
+			<type>0</type>
+			<duration>2</duration>
+			<flv>brushLee</flv>
+			<alphabetical>a</alphabetical>
+			<popularityRanking>2</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[Episode One]]></title>
+					<synopsis><![CDATA[Brush Lee swears revenge when his master falls to Jackie Chain.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[Episode Two]]></title>
+					<synopsis><![CDATA[Brush Lee faces off with Ninja Shower Gel.]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Episode Three]]></title>
+					<synopsis><![CDATA[Brush Lee agrees to take Ketchuppy as his apprentice.]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Episode Four]]></title>
+					<synopsis><![CDATA[Brush Lee and Ketchuppy must fight a toaster.]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Episode Five]]></title>
+					<synopsis><![CDATA[Ketchuppy rescues Brush Lee from Jackie Chain.]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[Episode Six]]></title>
+					<synopsis><![CDATA[A monster attacks Brush Lee and Ketchuppy on the sofa.]]></synopsis>
+				</episode>
+				<!--
+				<episode num="7">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="11">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="12">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="13">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="14">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="15">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="16">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="17">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="18">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="119">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="20">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="21">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="22">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="23">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="24">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="25">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				-->
+			</series>
+		</show>		
+		<show>
+			<!-- imdb says only 14 in 2 seasons, not 30 -->
+			<title><![CDATA[My Life as a Popat]]></title>
+			<type>1</type>
+			<duration>22</duration>
+			<flv>popat</flv>
+			<alphabetical>m</alphabetical>
+			<popularityRanking>3</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[Men in Turbans]]></title>
+					<synopsis><![CDATA[Anand is keen to make a good impression on his neighbour Holly.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[Entertaining Radha]]></title>
+					<synopsis><![CDATA[Bratty showbiz cousin Radha comes to visit from Bombay.]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Dimplicious]]></title>
+					<synopsis><![CDATA[Dimple's endless singing practice drives her brothers nuts.]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Health Is Wealth]]></title>
+					<synopsis><![CDATA[Anand tries to change his family's unhealthy eating habits.]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Happy Diwali]]></title>
+					<synopsis><![CDATA[Dimple, Chetan and Anand try to escape from a family celebration.]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[Take Your Child to Work Day]]></title>
+					<synopsis><![CDATA[Anand dreads having to go to work with his father Ramesh.]]></synopsis>
+				</episode>
+			</series>
+			<!-- ******************************  series 2  ****************************** -->
+			<!--
+			<series num="2">
+				<episode num="1">				
+					<title><![CDATA[Juvenile Delinquent]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[Tit for Tat]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Ghost]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Girlfiend]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Evil Granny]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[Royal Popats]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[Like Father Like Son]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[Popat Idol]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+			</series>
+			-->
+		</show>
+		
+		
+		<show>
+			<title><![CDATA[Vegetable Wrestling Federation]]></title>
+			<type>0</type>
+			<duration>4</duration>
+			<flv>vegetableWrestling</flv>
+			<alphabetical>v</alphabetical>
+			<popularityRanking>4</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[Episode One]]></title>
+					<synopsis><![CDATA[Bad Asparagus vs Granny Smith]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[Episode Two]]></title>
+					<synopsis><![CDATA[Benny the Burpin' Gherkin vs Bad Asparagus]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Episode Three]]></title>
+					<synopsis><![CDATA[The Broccoli vs Yam van Yam]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Episode Four]]></title>
+					<synopsis><![CDATA[Carrot Angel vs The Great Zucchini]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Episode Five]]></title>
+					<synopsis><![CDATA[Radishus vs Fat Satsumo]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[Episode Six]]></title>
+					<synopsis><![CDATA[Granny Smith vs Passion Fruit]]></synopsis>
+				</episode>
+				<!--
+				<episode num="7">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="11">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="12">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="13">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="14">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="15">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="16">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="17">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="18">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="19">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="20">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="21">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="22">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="23">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="24">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="25">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				-->
+			</series>
+		</show>
+		
+		<show>
+			<title><![CDATA[Delilah & Julius]]></title>
+			<type>0</type>
+			<duration>22</duration>
+			<flv>delilahAndJulius</flv>
+			<alphabetical>d</alphabetical>
+			<popularityRanking>5</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[The Underground]]></title>
+					<synopsis><![CDATA[Missing train full of foreign athletes and a plot to annihilate the planet]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[Fun for all]]></title>
+					<synopsis><![CDATA[Dr. Dismay is about to unleash a deadly virus at the amusement park]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Ice, Ice, Baby]]></title>
+					<synopsis><![CDATA[The entire planet is plunged into the Dark Ages.]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[The Delilah Identity]]></title>
+					<synopsis><![CDATA[Delilah is suspected of being a mole in the Academy]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Mayans Ruined]]></title>
+					<synopsis><![CDATA[D&J head to Mexico to investigate a missing archeologist]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[All You Need Is Love]]></title>
+					<synopsis><![CDATA[Delilah becomes embroiled in a revenge plot involving her parents]]></synopsis>
+				</episode>
+				<!--
+				<episode num="7">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="11">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="12">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="13">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="14">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="15">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="16">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="17">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="18">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="19">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="20">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="21">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="22">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="23">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="24">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="25">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="26">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				-->
+			</series>
+			<!--
+			<series num="2">
+				<episode num="1">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="11">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="11">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="12">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="13">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="14">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="15">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="16">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="17">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="18">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="19">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="20">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="21">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="22">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="23">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="24">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="25">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="26">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+			</series>
+			-->
+		</show>
+		
+		
+			
+		<show>
+			<title><![CDATA[Olliver's Adventures]]></title>
+			<type>0</type>
+			<duration></duration>
+			<flv>olliversAdventures</flv>
+			<alphabetical>o</alphabetical>
+			<popularityRanking>6</popularityRanking>
+			<series num="1">
+				<!--
+				missing ep 1
+				<episode num="1">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				-->
+				<episode num="2">				
+					<title><![CDATA[Air Show]]></title>
+					<synopsis><![CDATA[Pilots have been hypnotized by the broccoli-munching Cuddle Cubs.]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Ollie-Hood And His Marry Men]]></title>
+					<synopsis><![CDATA[Olliver and his gang of Merry Men must stop the evil Sheriff!]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Sufferin' Sasquatch]]></title>
+					<synopsis><![CDATA[Camping trip turns into a kidnapping!]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Time Out]]></title>
+					<synopsis><![CDATA[Olliver and Jorge venture to the Land of Time.]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[Hectic Celtic]]></title>
+					<synopsis><![CDATA[A boring school concert is livened up by the Cuddle Cubs.]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[Vikings from Outer Space]]></title>
+					<synopsis><![CDATA[Olliver is cleaning his room but he is interrupted by Vikings]]></synopsis>
+				</episode>
+				<!--
+				<episode num="8">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="11">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="12">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="13">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="14">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="15">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="16">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="17">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="18">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="19">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="20">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="21">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="22">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="23">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="24">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="25">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="26">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="27">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="28">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="29">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="30">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="31">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="32">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="33">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="34">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="35">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="36">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="37">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="38">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="39">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				-->
+			</series>
+		</show>
+		
+		<!-- COMING SOON - need source crampTwins
+		<show>
+			<title><![CDATA[]]></title>
+			<type>0</type>
+			<duration></duration>
+			<flv></flv>
+			<alphabetical></alphabetical>
+			<popularityRanking></popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="8">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="9">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+				<episode num="10">				
+					<title><![CDATA[]]></title>
+					<synopsis><![CDATA[  ]]></synopsis>
+				</episode>
+			</series>
+		</show>		
+		
+		 -->
+	</channel>
+	
+	
+	
+	
+	<!-- =======================================================     Cartoon Network     ====================================================== -->
+	
+	<channel id="cartoonNetwork" url="http://www.cartoonnetwork.co.uk/">
+	<!--
+		bakuganBattleBrawlers
+		ben10
+		ben10AlienForce  
+		billyAndMandy
+		chowder
+		edEddnEddy
+		misadventuresOfFlapjack
+		powerpuffGirls
+		secretSaturdays
+	-->
+		<show>
+			<title>Bakugan Battle Brawlers<![CDATA[]]></title>
+			<type>0</type>
+			<duration></duration>
+			<flv>bakuganBattleBrawlers</flv>
+			<alphabetical>b</alphabetical>
+			<popularityRanking>1</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[The Battle Begins]]></title>
+					<synopsis><![CDATA[It's the first time we get to see Dan in Bakugan battle action!]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[The Masquerade Ball]]></title>
+					<synopsis><![CDATA[Dan puts an end to a Bakugan player that has been stealing Bakugans from kids!]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[A Feud Between Friends]]></title>
+					<synopsis><![CDATA[A rift is caused between the two allies Dan and Drago!]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Dan and Drago]]></title>
+					<synopsis><![CDATA[Ryo is recruited by Masquerade to do his dirty work.]]></synopsis>
+				</episode>
+			</series>
+		</show>		
+		<show>
+			<title><![CDATA[Ben 10]]></title>
+			<type>0</type>
+			<duration></duration>
+			<flv>ben10</flv>
+			<alphabetical>b</alphabetical>
+			<popularityRanking>2</popularityRanking>
+			<series num="2">
+				<episode num="1">				
+					<title><![CDATA[Washington B.C.]]></title>
+					<synopsis><![CDATA[Ben must battle the mad scientist Dr Animo, who plans to destroy Washington D.C.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[And Then There Were 10]]></title>
+					<synopsis><![CDATA[On a sumer road trip Ben finds a device that allows him to change into ten.]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[The Krakken]]></title>
+					<synopsis><![CDATA[While camping at the lake, Ben encounters a sea monster during an attack.]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Permanent Retirement]]></title>
+					<synopsis><![CDATA[Ben finds that a retirement community has been overrun by a group of aliens.]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Hunted]]></title>
+					<synopsis><![CDATA[Vilgax sends three alien bounty hunters to retrieve the Omnitrix.]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[Tourist Trap]]></title>
+					<synopsis><![CDATA[Ben's prank backfires when he accidentally releases a Megawhatt.]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[Kevin 11]]></title>
+					<synopsis><![CDATA[Ben  encounters a boy who has the power to absorb energy.]]></synopsis>
+				</episode>
+			</series>
+		</show>		
+		<show>
+			<title><![CDATA[Ben 10 Alien Force]]></title>
+			<type>0</type>
+			<duration></duration>
+			<flv>ben10AlienForce</flv>
+			<alphabetical>b</alphabetical>
+			<popularityRanking>3</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[Ben 10 Returns: Pt. 1]]></title>
+					<synopsis><![CDATA[Ben is attacked by an alien and discovers that GRANDPA MAX is missing.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[Ben 10 Returns: Pt. 2]]></title>
+					<synopsis><![CDATA[Ben, Gwen & Kevin team up to find Grandpa Max but have to face a spaceship first.]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Everybody Talks About the Weather]]></title>
+					<synopsis><![CDATA[Gwen discovers Grandpa Max’s Plumbers Badge that emits a map ]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Kevin's Big Score]]></title>
+					<synopsis><![CDATA[Ben & Gwen help Kevin claim the important alien tech!]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[All That Glitters]]></title>
+					<synopsis><![CDATA[Grandpa Max has left a message for Ben instructing him to gather a team of heroes.]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[Max Out]]></title>
+					<synopsis><![CDATA[Gwen's older brother disappears and she gets Ben and Kevin to help her track him down.]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[Pier Pressure]]></title>
+					<synopsis><![CDATA[Ben's date with Julie Yamamoto at the carnival is ruined by an Alien Pilot.]]></synopsis>
+				</episode>
+			</series>
+		</show>		
+		<show>
+			<title><![CDATA[Billy And Mandy]]></title>
+			<type>0</type>
+			<duration></duration>
+			<flv>billyAndMandy</flv>
+			<alphabetical>b</alphabetical>
+			<popularityRanking>4</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[Spider's Little Daddy/Tricycle of Terror]]></title>
+					<synopsis><![CDATA[Jeff the Spider gives his dad a father's day present.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[Dumb Luck/No Body Loves Grim]]></title>
+					<synopsis><![CDATA[Billy has a 'bad-luck snail' living in his brain; Billy loses Grim's body]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Lil Pork Chop/Skarred for Life]]></title>
+					<synopsis><![CDATA[Billy's pet fish grows into a giant; General Skarr moves to the neighbourhood]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[The House of Pain/A Grim Prophecy/Mandy Bites A Dog]]></title>
+					<synopsis><![CDATA[Lord Pain is asked to kill Billy and Mandy]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Nursery Crimes/My Peeps]]></title>
+					<synopsis><![CDATA[Billy asks Mandy to read him a story to send him to sleep]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[Nigel Planter and the Chamber Pot of Secrets/Circus of Fear]]></title>
+					<synopsis><![CDATA[Billy and Mandy try to help boy wizard Nigel Plante]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[Bully Boogie/Here Thar Be Dwarves!]]></title>
+					<synopsis><![CDATA[Grim accepts the challenge of the Boogie Man; Billy tries to help the Dwarves]]></synopsis>
+				</episode>
+			</series>
+		</show>		
+		<show>
+			<title><![CDATA[Chowder]]></title>
+			<type>0</type>
+			<duration></duration>
+			<flv>chowder</flv>
+			<alphabetical>c</alphabetical>
+			<popularityRanking>5</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[The Thrice Cream Man/The Flibber-Flabber Diet]]></title>
+					<synopsis><![CDATA[Mung cooks up a way to break Chowder sweet obsession]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[The Froggy Apple Crumple Thumpkin/Chowder's Girlfriend]]></title>
+					<synopsis><![CDATA[Panini sets her love-struck eyes on Chowder]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Mahjongg Night/Stinky Love]]></title>
+					<synopsis><![CDATA[Chowder learns that messing with Truffles' game night means doom]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Certifrycation Class/Sing Beans]]></title>
+					<synopsis><![CDATA[Mung must decide - to stay true to his chef instincts or swallow his pride]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Grubble Gum/The Cinnamini Monster]]></title>
+					<synopsis><![CDATA[The whole gang have to find a way to escape the monster.]]></synopsis>
+				</episode>
+				<episode num="6">				
+					<title><![CDATA[The Wrong Address/The Wrong Customer]]></title>
+					<synopsis><![CDATA[A normail delivery is not so normal for Chowder and Mung.]]></synopsis>
+				</episode>
+				<episode num="7">				
+					<title><![CDATA[Burple Nurples/Shnitzel Makes a Deposit]]></title>
+					<synopsis><![CDATA[Mung keeps poisoned food away from the citizens!]]></synopsis>
+				</episode>
+			</series>
+		</show>		
+		<show>
+			<title><![CDATA[Ed, Edd n Eddy]]></title>
+			<type>0</type>
+			<duration></duration>
+			<flv>edEddnEddy</flv>
+			<alphabetical>e</alphabetical>
+			<popularityRanking>6</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[Sir Ed A Lot/A Pinch To Grow an Ed]]></title>
+					<synopsis><![CDATA[Eddy asks the gang for their help in devising a plan to help him grow taller.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[Dawn Of The Eds/Vert-Ed-Go]]></title>
+					<synopsis><![CDATA[The Eds find themselves in a junkyard they believe they are on another planet. ]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Read All About Ed/Quick Shot Ed]]></title>
+					<synopsis><![CDATA[ Eddy signs the gang up to deliver all of the town's newspapers. ]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[An Ed Too Many/Ed-N-Seek]]></title>
+					<synopsis><![CDATA[When Sarah falls in love with Ed, the rest of the gang try to break them up.]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Look Into My Eds/Tag Yer Ed]]></title>
+					<synopsis><![CDATA[The Eds use a hypnotising pinwheel to control everyone in town.]]></synopsis>
+				</episode>
+			</series>
+		</show>		
+		<show>
+			<title><![CDATA[The Marvelous Misadventures of Flapjack]]></title>
+			<type>0</type>
+			<duration></duration>
+			<flv>misadventuresOfFlapjack</flv>
+			<alphabetical>m</alphabetical>
+			<popularityRanking>7</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[Several Leagues Under the Sea/Cammie Island]]></title>
+					<synopsis><![CDATA[Flapjack meets a crazy inventor and brags that Bubbie is faster than a machine.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[Several Leagues Above the Sea/That's a Wrap]]></title>
+					<synopsis><![CDATA[Up, up and a whale!]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Lookin' For Love in All the Wrong Barrels/Beard Buddies]]></title>
+					<synopsis><![CDATA[Flapjack helps a lonely K'nuckles find love]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Skooled/Snarked!]]></title>
+					<synopsis><![CDATA[Flapjack thinks he’s a dummy so K'nuckles takes him to school]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Shave and a Haircut, Two Friends/Eye Sea You]]></title>
+					<synopsis><![CDATA[K'nuckles finds a treasure map and needs Flapjack's help to read it.]]></synopsis>
+				</episode>
+			</series>
+		</show>		
+		<show>
+			<title><![CDATA[The Powerpuff Girls]]></title>
+			<type>0</type>
+			<duration></duration>
+			<flv>powerpuffGirls</flv>
+			<alphabetical>p</alphabetical>
+			<popularityRanking>8</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[Insect Inside/Powerpuff Bluff]]></title>
+					<synopsis><![CDATA[Millions of bugs take over the gang must fight their bug fears]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[Monkey See, Doggie Do/Mommy Fearest]]></title>
+					<synopsis><![CDATA[Mojo Jojo attacks the city with a laser that can turn people into dogs. ]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[Octi Evil/Geshundfight]]></title>
+					<synopsis><![CDATA[Evil villain tries to use Bubbles' sweet nature to defeat the Powerpuff Girls.]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[Buttercrush/Fuzzy Logic]]></title>
+					<synopsis><![CDATA[Buttercup puts the others in danger when she falls in love.]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Boogie Frights/Abracadaver]]></title>
+					<synopsis><![CDATA[The girls must fight to stop the Boogey Man's plans to block the sun.]]></synopsis>
+				</episode>
+			</series>
+		</show>		
+		<show>
+			<title><![CDATA[The Secret Saturdays]]></title>
+			<type>0</type>
+			<duration></duration>
+			<flv>secretSaturdays</flv>
+			<alphabetical>s</alphabetical>
+			<popularityRanking>9</popularityRanking>
+			<series num="1">
+				<episode num="1">				
+					<title><![CDATA[The Kur Stone - Part 1]]></title>
+					<synopsis><![CDATA[Doc and Drew realize that Argost is trying to recover the Kur Stone.]]></synopsis>
+				</episode>
+				<episode num="2">				
+					<title><![CDATA[The Kur Stone - Part 2]]></title>
+					<synopsis><![CDATA[Doc and Drew realize that Argost is trying to recover the Kur Stone.]]></synopsis>
+				</episode>
+				<episode num="3">				
+					<title><![CDATA[The Vengeance of Hibagon]]></title>
+					<synopsis><![CDATA[The Saturdays try to stop the Japanese bigfoot Hibagon]]></synopsis>
+				</episode>
+				<episode num="4">				
+					<title><![CDATA[The Ice Caverns of Ellef Ringnes]]></title>
+					<synopsis><![CDATA[The team disturbs a "summoning chamber", unleashing both a violent snowstorm]]></synopsis>
+				</episode>
+				<episode num="5">				
+					<title><![CDATA[Guess Who's Going To Be Dinner?]]></title>
+					<synopsis><![CDATA[Doc and Drew’s anniversary]]></synopsis>
+				</episode>
+			</series>
+		</show>		
+	</channel>
+	
+	<!-- ==========================================================     VOD ADS     =========================================================== -->
+	
+	<ads>
+	</ads>
+	
+</vod>

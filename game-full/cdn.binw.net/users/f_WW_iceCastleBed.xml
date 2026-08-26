@@ -1,0 +1,10 @@
+<itemConfig name='f_WW_iceCastleBed' type='furniture' path='assetsNest/f_WW_iceCastleBed.swf' thumb='assetsNest/f_WW_iceCastleBed_thumb.swf' h='240'  boundType='rect' clickable='yes'>
+	<pos frame='1' bounds='-180,240,160,160' x='-180' y='0' z='403' ry='0' gridSqs='21,22,23,24,31,32,33,34'/>
+	<pos frame='2' bounds='-180,80,160,160' x='-180' y='0' z='244' ry='0' gridSqs='1,2,3,4,11,12,13,14'/>
+	
+	<pos frame='3' bounds='-60,240,160,160' x='-60' y='0' z='401' ry='0' gridSqs='24,25,26,27,34,35,36,37'/>
+	<pos frame='4' bounds='-60,80,160,160' x='-60' y='0' z='241' ry='0' gridSqs='4,5,6,7,14,15,16,17'/>
+	
+	<pos frame='5' bounds='60,240,160,160' x='60' y='0' z='404' ry='0' gridSqs='27,28,29,30,37,38,39,40'/>
+	<pos frame='6' bounds='60,80,160,160' x='60' y='0' z='245' ry='0' gridSqs='7,8,9,10,17,18,19,20'/>
+</itemConfig>

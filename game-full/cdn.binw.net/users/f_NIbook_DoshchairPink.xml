@@ -1,0 +1,25 @@
+<itemConfig name='f_NIbook_DoshchairPink' type='furniture' path='assetsNest/f_NIbook_DoshchairPink.swf' thumb='assetsNest/f_NIbook_DoshchairPink_thumb.swf' h='40' boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-200,0,60,80' x='-160' y='0' z='80' ry='-90' gridSqs='41,42'/>
+	<pos frame='2' bounds='-200,80,60,80' x='-160' y='0' z='160' ry='-90' gridSqs='1,2'/>
+	<pos frame='3' bounds='-200,160,60,80' x='-160' y='0' z='240' ry='-90' gridSqs='11,12'/>
+	<pos frame='4' bounds='-200,240,60,80' x='-160' y='0' z='320' ry='-90' gridSqs='21,22'/>
+	<pos frame='5' bounds='-200,320,60,80' x='-160' y='0' z='398' ry='-90' gridSqs='31,32'/>
+
+	<pos frame='6' bounds='-200,340,80,60' x='-160' y='0' z='402' ry='0' gridSqs='31,32'/>
+	<pos frame='7' bounds='-120,340,80,60' x='-80' y='0' z='401' ry='0' gridSqs='33,34'/>
+	<pos frame='8' bounds='-40,340,80,60' x='0' y='0' z='400' ry='0' gridSqs='35,36'/>
+	<pos frame='9' bounds='40,340,80,60' x='80' y='0' z='403' ry='0' gridSqs='37,38'/>
+	<pos frame='10' bounds='120,340,80,60' x='160' y='0' z='404' ry='0' gridSqs='39,40'/>
+
+	<pos frame='11' bounds='140,320,60,80' x='160' y='0' z='399' ry='90' gridSqs='39,40'/>
+	<pos frame='12' bounds='140,240,60,80' x='160' y='0' z='319' ry='90' gridSqs='29,30'/>
+	<pos frame='13' bounds='140,160,60,80' x='160' y='0' z='239' ry='90' gridSqs='19,20'/>
+	<pos frame='14' bounds='140,80,60,80' x='160' y='0' z='159' ry='90' gridSqs='9,10'/>
+	<pos frame='15' bounds='140,0,60,80' x='160' y='0' z='79' ry='90' gridSqs='49,50'/>
+
+	<pos frame='16' bounds='140,-10,40,50' x='160' y='0' z='8' ry='180' gridSqs='49,50'/>
+	<pos frame='17' bounds='50,-10,50,50' x='80' y='0' z='6' ry='180' gridSqs='47,48'/>
+	<pos frame='18' bounds='-25,-10,50,50' x='0' y='0' z='5' ry='180' gridSqs='45,46'/>
+	<pos frame='19' bounds='-100,-10,50,50' x='-80' y='0' z='7' ry='180' gridSqs='43,44'/>
+	<pos frame='20' bounds='-200,-10,50,50' x='-160' y='0' z='9' ry='180' gridSqs='41,42'/>
+</itemConfig>

@@ -1,0 +1,21 @@
+<itemConfig name='f_WW_mirror' type='furniture' path='assetsNest/f_WW_mirror.swf' thumb='assetsNest/f_WW_mirror_thumb.swf' h='100' boundType='rect' numSpots='0'>
+	<pos frame='1' bounds='-200,80,5,160' x='-200' y='120' z='240' gridSqs='1,11'/>
+	<pos frame='2' bounds='-200,160,5,160' x='-200' y='120' z='408' gridSqs='21,31'/>
+
+	<pos frame='3' bounds='-180,406,100,5' x='-180' y='120' z='406' gridSqs='31,32,33'/>
+	<pos frame='4' bounds='-60,405,100,5' x='-60' y='120' z='405' gridSqs='34,35,36,37'/>
+	<pos frame='5' bounds='-80,407,100,5' x='80' y='120' z='406' gridSqs='38,39,40'/>
+
+	<pos frame='6' bounds='195,160,5,160' x='195' y='120' z='409' gridSqs='30,40'/>
+	<pos frame='7' bounds='195,80,5,160' x='195' y='120' z='241' gridSqs='10,20'/>
+	
+	<pos frame='8' bounds='-200,80,5,160' x='-200' y='10' z='240' gridSqs='1,11'/>
+	<pos frame='9' bounds='-200,160,5,160' x='-200' y='10' z='403' gridSqs='21,31'/>
+
+	<pos frame='10' bounds='-180,401,100,5' x='-180' y='10' z='401' gridSqs='31,32,33'/>
+	<pos frame='11' bounds='-60,400,100,5' x='-60' y='10' z='400' gridSqs='34,35,36,37'/>
+	<pos frame='12' bounds='-80,402,100,5' x='80' y='10' z='402' gridSqs='38,39,40'/>
+
+	<pos frame='13' bounds='195,160,5,160' x='195' y='10' z='404' gridSqs='30,40'/>
+	<pos frame='14' bounds='195,80,5,160' x='195' y='10' z='241' gridSqs='10,20'/>
+</itemConfig>

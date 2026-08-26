@@ -1,0 +1,24 @@
+<itemConfig name='f_under_sea_fish_rug_3' type='furniture' path='assetsNest/f_under_sea_fish_rug_3.swf' thumb='assetsNest/f_under_sea_fish_rug_3_thumb.swf' h='1' boundType='rect' >
+	<pos frame='1' bounds='40,408,160,80' x='200' y='-10' z='405' gridSqs='37,38,39,40'/>
+	<pos frame='2' bounds='-40,406,160,80' x='120' y='-10' z='405' gridSqs='35,36,37,38'/>
+	<pos frame='3' bounds='-120,407,160,80' x='40' y='-10' z='405' gridSqs='33,34,35,36'/>
+	<pos frame='4' bounds='-200,409,160,80' x='-40' y='-10' z='405' gridSqs='31,32,33,34'/>
+	
+	<pos frame='5' bounds='-200,325,160,80' x='-40' y='-10' z='405' gridSqs='21,22,23,24'/>
+	<pos frame='6' bounds='-120,326,160,80' x='40' y='-10' z='406' gridSqs='23,24,25,26'/>
+	<pos frame='7' bounds='-40,327,160,80' x='120' y='-10' z='407' gridSqs='25,26,27,28'/>
+	<pos frame='8' bounds='40,328,160,80' x='200' y='-10' z='408' gridSqs='27,28,29,30'/>
+	
+	<pos frame='9' bounds='40,160,160,80' x='200' y='-10' z='405' gridSqs='17,18,19,20'/>
+	<pos frame='10' bounds='-40,160,160,80' x='120' y='-10' z='406' gridSqs='15,16,17,18'/>
+	<pos frame='11' bounds='-120,160,160,80' x='40' y='-10' z='407' gridSqs='13,14,15,16'/>
+	<pos frame='12' bounds='-200,160,160,80' x='-40' y='-10' z='408' gridSqs='11,12,13,14'/>
+	
+	<pos frame='13' bounds='-200,80,160,80' x='-40' y='-10' z='405' gridSqs='1,2,3,4'/>
+	<pos frame='14' bounds='-120,80,160,80' x='40' y='-10' z='406' gridSqs='3,4,5,6'/>
+	<pos frame='15' bounds='-40,80,160,80' x='120' y='-10' z='407' gridSqs='5,6,7,8'/>
+	<pos frame='16' bounds='40,80,160,80' x='200' y='-10' z='408' gridSqs='7,8,9,10'/>
+	
+
+
+</itemConfig>

@@ -1,0 +1,8 @@
+<itemConfig name='f_bigTeddy_pink' type='furniture' path='assetsNest/f_bigTeddy_pink.swf' thumb='assetsNest/f_bigTeddy_pink_thumb.swf' h='165' boundType='rect' clickable='no'>
+	
+	<pos frame='1' bounds='-200,80,80,80' x='-120' y='0' z='160' gridSqs='1,2,3,4,11,12,13,14'/>
+	<pos frame='2' bounds='-200,240,80,80' x='-120' y='0' z='320' gridSqs='31,32,33,34,21,22,23,24'/>
+	<pos frame='3' bounds='40,240,80,80' x='120' y='0' z='320' gridSqs='37,38,39,40,27,28,29,30'/>
+	<pos frame='4' bounds='40,80,80,80' x='120' y='0' z='160' gridSqs='7,8,9,10,17,18,19,20'/>
+	
+</itemConfig>

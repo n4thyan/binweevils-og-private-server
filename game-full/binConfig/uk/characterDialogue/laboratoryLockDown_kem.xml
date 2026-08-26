@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<character defaultCloseAnimFrame="rest" direction="-1">	
+	<tasks>
+		<task description="generatorOn" questControlID="713" />
+		<task description="ballGameCompleted" questControlID="714" />
+		<task description="gunUpgradeComplete" questControlID="702" />
+		<task description="labFree" questControlID="711" />
+		<task description="missionCompleted" questControlID="799" />
+	</tasks>	
+	
+	<phase num="0" animFrame="talk_in" >
+		<text  width="500" >Ahhhh! Please, don't hurt me!</text>
+		<userResponse>
+			<option progressTo="1">Stay calm! It's OK, I'm an SWS Agent! Sum told me where to find you. I need your help!</option>
+		</userResponse>
+	</phase>	
+		
+	<phase num="1" animFrame="talk_in" sticky="1">
+		<text width="500">Oh! Then Sum is all right?! I've been so worried about her and the others! There are Thuggs on the loose out there!</text>
+		<userResponse>
+			<option progressTo="2">Sum is fine... but Lia has betrayed Lab! She's the one who released the Thuggs from their cells!</option>
+		</userResponse>
+	</phase>	
+	
+	<phase num="2" animFrame="talk_in"  sticky="1">
+		<text width="500">Oh no! Not Lia! She seemed so nice and sweet... but she must be working for the WEB! Lab's in big trouble!</text>
+		<userResponse>
+			<option progressTo="3">Yes. We need to get to him fast, and you're the only one who can help me. Sum said you have a potion to make my water gun more powerful against the Thuggs!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="3" animFrame="experimenting" sticky="1">
+		<text width="500">I was just finishing off an experiment that might be useful. We could load your gun with this combination of special solutions... but I haven't had a chance to test it properly yet, I'm not sure it's safe.</text>
+		<userResponse>
+			<option progressTo="4">Kem, we have no time - we'll just have to wear our goggles and hope for the best! Let's get it ready!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="4" animFrame="pressButton" sticky="1">
+		<text width="500">Hmm, all right. But we'll have to be careful! I'm just restoring power to my systems now, and then we can start putting the formula together!</text>
+		<userResponse>
+		<option progressTo="-1" fireEvent="labLocDown_KemGeneratorOn">Well done, Kem!</option>
+		</userResponse>
+	</phase>	
+
+	<phase num="5" animFrame="reaction" questControlPoint="generatorOn"> <!--questControlPoint="generatorOn"-->
+		<text width="500">Uh-oh...the power surge must have caused a short-circuit in the machine. Dangerous! The particle arm is moving uncontrollably!</text>
+		<userResponse>
+			<option progressTo="6">Can we fix that?</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="6" animFrame="talk_in" sticky="1"> <!--questControlPoint="generatorOn"-->
+		<text width="500">I'll have to deal with it later. Let's get the potion started first, shall we?  First, check the petri dish through that microscope. We need to group particles of the same kind together!</text>
+		<textOnReturn width="500">Check the petri dish through that microscope. We need to group particles of the same kind together!</textOnReturn>
+		<userResponse>
+			<option progressTo="-1" fireEvent="labLocDown_KemMicroscopeActivate" >I'm on it!</option>
+		</userResponse>
+	</phase>	
+		
+	<phase num="7" animFrame="talk_in">
+		<text width="500">Brilliant work, Agent! The machine is now loaded with particles of chemicals. We need to carefully drop them into the right jars.</text>
+		<userResponse>
+			<option progressTo="8">How do we do that?</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="8" animFrame="talk_in" sticky="1">
+		<text width="500">Well, the mechanical arm that collects the particles isn't working properly. You'll have to rely on your skills to drop each particle into the right container!</text>
+		<textOnReturn width="500">Use the green button at the bottom to release a particle. That should still be working! BE CAREFUL!</textOnReturn>
+		<userResponse>
+			<option progressTo="9">This looks tricky, but an SWS Agent doesn't back down from a challenge!</option>
+		</userResponse>
+	</phase>	
+	
+	<phase num="9" animFrame="talk_in">
+		<text width="500">Good luck, Agent...and remember, timing is everything!</text>
+	</phase>	
+	
+	<phase num="10" animFrame="talk_in" sticky="1">
+		<text width="500">Uh-oh. It looks like the machine needs reloading. Go back to the microscope and help me group some more particles together.</text>
+		<userResponse>
+			<option progressTo="-1" fireEvent="labLocDown_KemMicroscopeActivate" >Ok, Kem! I won't give up!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="11" animFrame="talk_in" questControlPoint="ballGameCompleted" sticky="1">
+		<text width="500">Wow! Amazing work! Now for the final stage, the chemicals will need to be mixed in the correct quantities. I think when this is all over, you should join our science team! </text>
+		<userResponse>
+			<option progressTo="13">Thanks, Kem. But we have to hurry and get this done, or you won't have a Lab left!</option>
+		</userResponse>
+	</phase>
+		
+	<phase num="12" animFrame="talk_in" sticky="1">
+		<text width="500">OK, Agent. Drag the collected flasks onto the holders on the front desk. Be careful!</text>
+		<userResponse>
+			<option progressTo="11">And that's it?</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="13" animFrame="experimenting" sticky="1">		
+		<text width="500">This isn't as simple as it seems...I haven't determined the final formula yet. Check my notebook on the desk and follow the formula exactly as shown!</text>
+		<textOnReturn width="500">Check my notebook on the desk and make sure to mix the required quantities into that flask!  Stay alert, you need to match those quantities closely or the mix will explode!</textOnReturn>
+		<userResponse>
+			<option progressTo="14">I won't let you down, Kem!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="14" animFrame="talk_in" >
+		<text width="500">Good luck! This is tricky work even for a trained scientist!</text>
+	</phase>
+	
+	<phase num="15" animFrame="talk_in" questControlPoint="gunUpgradeComplete">
+		<text width="500">Unbelievable! You really are a whiz! Now that you've got the formula, I just hope it works against those nasty Thuggs!</text>
+		<userResponse>
+			<option progressTo="-1">Thanks for your help, Kem! I'd better try to find Lab before Lia and the Thuggs do!</option>
+		</userResponse>
+	</phase>
+		
+	<phase num="16" animFrame="talk_in" questControlPoint="labFree">
+		<text width="500">Agent! Is it safe yet?</text>
+		<option progressTo="17">Kem, you stay here and stay hidden. The Thuggs are nearby. Luckily they haven't found you yet!</option>
+	</phase>
+	
+	<phase num="17" animFrame="talk_in">
+		<text width="500">Good Luck agent!</text>
+	</phase>
+	
+	<phase num="18" animFrame="talk_in" questControlPoint="missionCompleted">
+		<text width="500">Welcome back, agent! Thanks for your hard work and for saving us all!</text>
+	</phase>
+	
+	<phase num="19" animFrame="talk_in" sticky="1">
+		<text>Brilliant work, Agent!</text>	
+	</phase>
+	
+	
+</character>

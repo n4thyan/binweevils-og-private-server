@@ -1,0 +1,313 @@
+<catalogue baseURL="http://www.binweevils.com/play/">
+	<cPalettes>
+		<!--idx 0 or 1 not allowed-->
+		<palette idx="2" colours="0xFFFFFF,0xF9F19B,0xFFD5DD,0xAADFFF,0xAEFFAE"/>
+		<palette idx="3" colours="0xFFFFFF,0xAADFFF,0x00EEEE,0xAAFF00,0xEEEE00"/>
+		<palette idx="4" colours="0xFFFFFF,0xAADFFF,0xCC00CC,0xEEEE00,0xFF8484"/>
+		<palette idx="5" colours="0xFFFFFF,0xAADFFF,0xFFD5DD,0xEEEE00,0xFBEDC4"/>
+		<palette idx="6" colours="0xFFFFFF,0xAA8237,0xFFCC00,0xFBEDC4,0xDCCA61"/>
+		<palette idx="7" colours="0xFFFFFF,0xAADFFF,0xFF9900,0x00EEEE,0xEEEE00"/>
+		<palette idx="8" colours="0xFFFFFF,0xAADFFF,0x00EEEE,0xFFCC00,0xFF8484"/>
+		<palette idx="9" colours="0xFF9900,0x00EEEE,0xFFD5DD,0xAAFF00,0xFFCC00"/>
+		<palette idx="10" colours="0x00EEEE,0xFFFFFF,0xAAFF00,0xFFCC00,0xEEEE00"/>
+		<palette idx="11" colours="0xFFFFFF,0xAADFFF,0x0066FF,0xFF9900,0xAAFF00"/>
+		<palette idx="12" colours="0xFFFFFF,0x00EEEE,0xAAFF00,0xFFCC00,0xFF84E0"/>
+		<palette idx="13" colours="0xFFFFFF,0xAADFFF,0x0066FF,0xAAFF00,0xFFCC00"/>
+		<palette idx="14" colours="0xFFFFFF,0x0066FF,0xFF9900,0xFFCC00,0xFF8484"/>
+		<palette idx="15" colours="0xFFFFFF,0xFF9900,0x00EEEE,0xAAFF00,0xEEEE00"/>
+		<palette idx="16" colours="0xFFFFFF,0x00EEEE,0xAAFF00,0xFFAA00,0xFFAAAA"/>
+		<palette idx="17" colours="0xFFFFFF,0x00EEEE,0xCC00CC,0xAAFF00,0xFF8484"/>
+		<palette idx="18" colours="0xFFFFFF,0x00AA00,0x00EEEE,0xEEEE00,0xDCCA61"/>
+	</cPalettes>
+
+	<page idx="1" template="titleTwoVert_mc" title="Furniture">
+		<item idx="0" typeID="11" name="Small Arm Chair" price="240" bgColour="lime" paletteID="1" thumb="f_chair1_thumb" defClrId="0" allowPickColour="0"/>
+		<item idx="1" typeID="14" name="2 Seater Sofa" price="350" bgColour="blue" paletteID="1" thumb="f_sofa1_thumb"  defClrId="0" allowPickColour="0"/>
+	</page>
+
+	<page idx="2" template="threeHoriz_mc">
+		<item idx="0" typeID="4" name="Small cupboard" price="180" bgColour="purple" paletteID="1" thumb="f_smallCupboard_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="5" name="Wardrobe" price="280" bgColour="green" paletteID="0" thumb="f_wardrobe1_thumb" allowPickColour="0"/>
+		<!--<item idx="2" typeID="8" name="Single Bed" price="350" onSpecial="true" oldPrice="100" bgColour="peach" paletteID="0" thumb="f_bed_thumb"/>-->
+		<item idx="2" typeID="8" name="Single Bed" price="350" bgColour="peach" paletteID="0" thumb="f_bed1_thumb" allowPickColour="0"/>
+		<!--<item idx="2" typeID="8" name="Single Bed" price="350" bgColour="peach" paletteID="0" thumb="f_bed_thumb" allowPickColour="0"/>-->
+	</page>
+		
+	<page idx="3" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="323" name="Blue Weevil Wheels Bed" price="650" bgColour="purple" paletteID="0" thumb="f_bedRacingCarBlue_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="324" name="Pink Weevil Wheels Bed" price="650" bgColour="lime" paletteID="0" thumb="f_bedRacingCarPink_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="325" name="Red Weevil Wheels Bed" price="650" bgColour="blue" paletteID="0" thumb="f_bedRacingCarRed_thumb" allowPickColour="0"/>
+	</page>	
+	
+	<page idx="4" template="threeHoriz_mc">
+		<item idx="0" typeID="47" name="Leather Chair" price="250" bgColour="blue" paletteID="1" thumb="f_chair2_thumb" defClrId="12" allowPickColour="0"/>
+		<item idx="1" typeID="48" name="Leather Corner Chair" price="295" bgColour="lime" paletteID="1" thumb="f_chair3_thumb" defClrId="14" allowPickColour="0"/>
+		<item idx="2" typeID="49" name="Sofa" price="320" bgColour="purple" paletteID="8" thumb="f_sofa2_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="5" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="50" name="Chair" price="265" bgColour="lime" paletteID="7" thumb="f_chair4_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="10" name="Small Table" price="150" bgColour="blue" paletteID="0" thumb="f_smallTable_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="46" name="Small Round Table" price="195" bgColour="peach" paletteID="1" thumb="f_roundTable1_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="6" template="threeHoriz_mc">
+		<item idx="0" typeID="155" name="Lips Chair" price="350" bgColour="lime" paletteID="0" thumb="f_lipschair_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="156" name="Beanbag Round Head" price="280" bgColour="blue" paletteID="1" thumb="f_beanbag_roundhead_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="157" name="Beanbag Square Head" price="280" bgColour="peach" paletteID="1" thumb="f_beanbag_squarehead_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="7" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="158" name="Beanbag Triangle Head" price="280" bgColour="lime" paletteID="1" thumb="f_beanbag_trihead_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="8" template="titleTwoHoriz_mc" title="Fireplaces">
+		<item idx="0" typeID="27" name="Stone green" price="1395" bgColour="peach" paletteID="0" thumb="f_fireplace1_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="28" name="Stone purple" price="1395" bgColour="green" paletteID="0" thumb="f_fireplace2_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="9" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="29" name="Furnace" price="1595" bgColour="blue" paletteID="5" thumb="f_fireplace3_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="30" name="Brick" price="1695" bgColour="lime" paletteID="0" thumb="f_fireplace4_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="31" name="Weevil Fireplace" price="1995" bgColour="purple" paletteID="5" thumb="f_fireplace5_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="10" template="titleTwoVert_mc" title="Clocks">
+		<item idx="0" typeID="43" name="Balloon Clock" price="190" bgColour="blue" paletteID="0" thumb="clock3_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="42" name="Wooden Clock" price="190" bgColour="lime" paletteID="0" thumb="clock2_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="11" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="44" name="Fish Clock" price="190" bgColour="blue" paletteID="0" thumb="clock4_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="41" name="Weevil Clock" price="190" bgColour="peach" paletteID="0" thumb="clock1_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="45" name="Flower Clock" price="190" bgColour="green" paletteID="0" thumb="clock5_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="12" template="titleTwoVert_mc" title="Wallpapers">
+		<item idx="0" typeID="7" name="Fish Pattern" price="120" bgColour="lime" paletteID="11" thumb="wallpaper1_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="9" name="Weevil Pattern" price="120" bgColour="purple" paletteID="10" thumb="wallpaper2_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="13" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="15" name="Nail Pattern" price="120" bgColour="blue" paletteID="10" thumb="wallpaper3_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="16" name="Pin Pattern" price="120" bgColour="peach" paletteID="11" thumb="wallpaper4_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="17" name="Bubble Pattern" price="120" bgColour="green" paletteID="11" thumb="wallpaper5_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="14" template="threeHoriz_mc">
+		<item idx="0" typeID="18" name="Bin Pattern" price="120" bgColour="blue" paletteID="11" thumb="wallpaper6_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="19" name="Weevil Pattern" price="120" bgColour="blue" paletteID="9" thumb="wallpaper7_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="331" name="Weevil Wheels Pattern" price="320" bgColour="blue" paletteID="0" thumb="wallpaper_weevilWheels_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="15" template="titleTwoVert_mc" title="Carpets">
+		<item idx="0" typeID="64" name="Plain Carpet" price="225" bgColour="lime" paletteID="1" thumb="carpet13_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="21" name="Crown Carpet" price="225" bgColour="purple" paletteID="0" thumb="carpet2_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="16" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="22" name="Swirl Carpet" price="225" bgColour="blue" paletteID="3" thumb="carpet3_thumb" allowPickColour="0"/>
+  		<item idx="1" typeID="23" name="Checkered Carpet" price="225" bgColour="lime" paletteID="0" thumb="carpet4_thumb" allowPickColour="0"/>
+ 		 <item idx="2" typeID="24" name="Lined Carpet" price="225" bgColour="purple" paletteID="0" thumb="carpet5_thumb" allowPickColour="0"/>
+	</page>
+ 
+	<page idx="17" template="threeHoriz_mc" >
+		<item idx="0" typeID="26" name="Star Carpet" price="225" bgColour="blue" paletteID="0" thumb="carpet7_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="25" name="Bin Weevils Carpet" price="225" bgColour="peach" paletteID="0" thumb="carpet6_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="330" name="Weevil Wheels Carpet" price="225" bgColour="purple" paletteID="0" thumb="carpet_weevilWheels_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="18" template="titleTwoVert_mc" title="Wood Floors">
+		<item idx="0" typeID="61" name="Floorboards" price="225" bgColour="blue" paletteID="1" thumb="carpet10_thumb" defClrId="14" allowPickColour="0"/>
+		<item idx="1" typeID="65" name="Parquet Floor" price="275" bgColour="peach" paletteID="1" thumb="carpet14_thumb" defClrId="14" allowPickColour="0"/>
+	</page>
+
+	<page idx="19" template="titleTwoHoriz_mc" title="Tiled Floors">
+		<item idx="0" typeID="63" name="Checkered Tiles" price="225" bgColour="blue" paletteID="1" thumb="carpet12_thumb" defClrId="19" allowPickColour="0"/>
+		<item idx="1" typeID="116" name="Checkered Tiles" price="225" bgColour="peach" paletteID="1" thumb="carpet_checkPale_thumb" defClrId="5" allowPickColour="0"/>
+	</page>
+
+	<page idx="20" template="threeHoriz_mc" >
+		<item idx="0" typeID="60" name="Mosaic" price="325" bgColour="blue" paletteID="17" thumb="carpet9_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="59" name="Mosaic" price="325" bgColour="green" paletteID="1" thumb="carpet8_thumb" defClrId="9" allowPickColour="0"/>
+		<item idx="2" typeID="62" name="Circle pattern" price="335" bgColour="peach" paletteID="1" thumb="carpet11_thumb" defClrId="5" allowPickColour="0"/>
+	</page>
+
+	<page idx="21" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="117" name="Checkered Tiles" price="225" bgColour="green" paletteID="1" thumb="carpet_checkDiagPale_thumb" defClrId="12" allowPickColour="0"/>
+		<item idx="1" typeID="118" name="Checkered Tiles" price="225" bgColour="peach" paletteID="1" thumb="carpet_checkDiagDark_thumb" defClrId="19" allowPickColour="0"/>
+		<item idx="2" typeID="115" name="Stone Tiles" price="395" bgColour="blue" paletteID="1" thumb="carpet_stone_thumb" defClrId="19" allowPickColour="0"/>
+	</page>
+
+
+	<page idx="22" template="titleTwoVert_mc" title="Rugs">
+		<item idx="0" typeID="3" name="Mulch stained Rug" price="180" bgColour="green" paletteID="4" thumb="rug1_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="66" name="Plain Round Rug" price="180" bgColour="blue" paletteID="1" thumb="rug2_thumb" defClrId="7" allowPickColour="0"/>
+	</page>
+
+	<page idx="23" template="threeHoriz_mc" >
+		<item idx="0" typeID="67" name="Star Shaped Rug" price="180" bgColour="blue" paletteID="1" thumb="rug3_thumb" defClrId="13" allowPickColour="0"/>
+		<item idx="1" typeID="68" name="Weevil Head Rug" price="180" bgColour="green" paletteID="16" thumb="rug4_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="69" name="Large Round Rug" price="180" bgColour="peach" paletteID="13" thumb="rug5_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="24" template="oneHorizTwoVert_mc" >
+		<item idx="0" typeID="70" name="Large Round Rug" price="180" bgColour="peach" paletteID="14" thumb="rug6_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="71" name="Circle Pattern Rug" price="180" bgColour="peach" paletteID="15" thumb="rug7_thumb" allowPickColour="0"/>
+	</page>
+
+
+	<page idx="25" template="titleTwoHoriz_mc" title="Lighting">
+		<item idx="0" typeID="51" name="Chandelier" price="500" bgColour="blue" paletteID="2" thumb="f_chandelier1_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="52" name="Disco Ball" price="235" bgColour="lime" paletteID="0" thumb="f_discoBall_thumb" allowPickColour="0"/>
+	</page>
+ 
+	<page idx="26" template="oneHorizTwoVert_mc" >
+		<item idx="0" typeID="53" name="Candle" price="175" bgColour="purple" paletteID="2" thumb="o_candle1_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="72" name="Lamp" price="175" bgColour="lime" paletteID="2" thumb="o_lamp1_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="73" name="Lamp" price="175" bgColour="blue" paletteID="2" thumb="o_lamp2_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="27" template="threeHoriz_mc" >
+		<item idx="0" typeID="74" name="Lamp" price="175" bgColour="lime" paletteID="2" thumb="o_lamp3_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="75" name="Lamp" price="175" bgColour="blue" paletteID="2" thumb="o_lamp4_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="125" name="Wall Light" price="175" bgColour="peach" paletteID="2" thumb="f_wallLight1_thumb" allowPickColour="0"/>
+	</page>
+ 
+	<page idx="28" template="oneHorizTwoVert_mc" >
+		<item idx="0" typeID="126" name="Wall Light" price="175" bgColour="lime" paletteID="2" thumb="f_wallLight2_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="127" name="Ceiling Light" price="125" bgColour="blue" paletteID="2" thumb="f_ceilingLight1_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="128" name="Spot Light" price="95" bgColour="peach" paletteID="2" thumb="f_spotLight_thumb" allowPickColour="0"/>
+	</page>
+ 
+	<page idx="29" template="titleTwoHoriz_mc" title="Piano">
+		<item idx="0" typeID="76" name="Piano" price="995" bgColour="blue" paletteID="0" thumb="f_piano1_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="30" template="titleTwoVert_mc" title="Kitchen">
+		<item idx="0" typeID="106" name="Cooker" price="595" bgColour="blue" paletteID="0" thumb="f_cooker_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="107" name="Cooker Hood" price="195" bgColour="blue" paletteID="0" thumb="f_cookerHood_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="31" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="104" name="Washing Machine" price="595" bgColour="blue" paletteID="0" thumb="f_washingMachine1_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="94" name="Kitchen Sink" price="425" bgColour="lime" paletteID="0" thumb="f_kitchenSink_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="98" name="Kitchen Sink Cladding" price="110" bgColour="lime" paletteID="1" thumb="f_unitSinkCladding1_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="32" template="threeHoriz_mc" >
+		<item idx="0" typeID="105" name="Fridge" price="675" bgColour="green" paletteID="0" thumb="f_fridgeTall1_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="96" name="Floor unit" price="175" bgColour="blue" paletteID="1" thumb="f_unitFloor1_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="99" name="Floor corner unit" price="175" bgColour="blue" paletteID="1" thumb="f_unitFloorCorner1_thumb" allowPickColour="0"/>
+	</page>
+	
+	<page idx="33" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="101" name="Tall Corner Unit" price="595" bgColour="blue" paletteID="1" thumb="f_unitTallCorner1_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="97" name="Wall Unit" price="425" bgColour="lime" paletteID="1" thumb="f_unitWall1_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="100" name="Wall Corner Unit" price="110" bgColour="lime" paletteID="1" thumb="f_unitWallCorner1_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="34" template="threeHoriz_mc" >
+		<item idx="0" typeID="102" name="Wood Worktop" price="155" bgColour="green" paletteID="6" thumb="f_kitchenWorkTop1_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="103" name="Wood Corner Worktop" price="195" bgColour="green" paletteID="6" thumb="f_kitchenWorkTopCorner1_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="113" name="Glass Worktop" price="225" bgColour="blue" paletteID="2" thumb="f_kitchenWorkTop2_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="35" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="114" name="Glass Corner Worktop" price="295" bgColour="blue" paletteID="2" thumb="f_kitchenWorkTopCorner2_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="123" name="Granite Worktop" price="265" bgColour="lime" paletteID="5" thumb="f_kitchenWorkTop3_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="124" name="Granite Corner Worktop" price="325" bgColour="lime" paletteID="5" thumb="f_kitchenWorkTopCorner3_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="36" template="threeHoriz_mc" >
+		<item idx="0" typeID="92" name="Large Round Table" price="325" bgColour="peach" paletteID="1" thumb="f_roundTable2_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="93" name="Glass Round Table" price="355" bgColour="purple" paletteID="2" thumb="f_roundTable3_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="109" name="Large Glass Table" price="355" bgColour="blue" paletteID="2" thumb="f_tableGlassRect_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="37" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="95" name="Kitchen Stool" price="195" bgColour="blue" paletteID="1" thumb="f_stool1_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="119" name="Kitchen Tiles 1" price="225" bgColour="lime" paletteID="1" thumb="wallpaper_tile1_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="120" name="Kitchen Tiles 2" price="225" bgColour="purple" paletteID="1" thumb="wallpaper_tile2_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="38" template="threeHoriz_mc" >
+		<item idx="0" typeID="121" name="Kitchen Tiles 3" price="225" bgColour="lime" paletteID="1" thumb="wallpaper_tile3_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="122" name="Kitchen Tiles 4" price="255" bgColour="blue" paletteID="1" thumb="wallpaper_tile4_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="108" name="Frying Pan" price="95" bgColour="peach" paletteID="0" thumb="o_fryingPan_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="39" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="111" name="Teapot" price="125" bgColour="lime" paletteID="18" thumb="o_teapot_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="112" name="Teacup" price="65" bgColour="blue" paletteID="18" thumb="o_teacup_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="110" name="Glass" price="65" bgColour="peach" paletteID="2" thumb="o_glass_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="40" template="threeHoriz_mc" >
+		<item idx="0" typeID="131" name="Plate" price="95" bgColour="peach" paletteID="2" thumb="o_plate_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="129" name="Blender" price="195" bgColour="lime" paletteID="2" thumb="o_blender_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="130" name="Kettle" price="195" bgColour="blue" paletteID="2" thumb="o_kettle_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="41" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="91" name="Kitchen Bin" price="95" bgColour="lime" paletteID="1" thumb="f_kitchenBin_thumb" defClrId="5" allowPickColour="0"/>
+		<item idx="1" typeID="135" name="Dishwasher" price="600" bgColour="blue" paletteID="0" thumb="f_dishWasher_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="42" template="titleTwoVert_mc" title="Bathroom">
+		<item idx="0" typeID="136" name="Bath" price="695" bgColour="blue" paletteID="2" thumb="f_bath1_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="137" name="Roll top bath" price="750" bgColour="blue" paletteID="2" thumb="f_bath2_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="43" template="threeHoriz_mc" >
+		<item idx="0" typeID="138" name="Corner bath" price="750" bgColour="peach" paletteID="2" thumb="f_bath3_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="139" name="Shower" price="695" bgColour="lime" paletteID="2" thumb="f_shower_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="140" name="Toilet" price="500" bgColour="blue" paletteID="2" thumb="f_toilet_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="44" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="141" name="Wash basin" price="425" bgColour="lime" paletteID="2" thumb="f_washBasin_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="142" name="Mirror" price="295" bgColour="blue" paletteID="2" thumb="f_mirror_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="146" name="Towel rack" price="115" bgColour="peach" paletteID="2" thumb="f_towelRack_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="45" template="threeHoriz_mc" >
+		<item idx="0" typeID="145" name="Bathroom cabinet" price="250" bgColour="peach" paletteID="2" thumb="f_bathroomCabinet_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="143" name="Toilet mat" price="65" bgColour="lime" paletteID="1" thumb="f_toiletMat_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="144" name="Mat" price="65" bgColour="blue" paletteID="1" thumb="f_sinkMat_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="46" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="147" name="Wall tiles" price="250" bgColour="lime" paletteID="1" thumb="wallpaper_tileBathRoom_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="148" name="Floor tiles" price="225" bgColour="blue" paletteID="1" thumb="carpet_tileBathRoom_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="47" template="titleTwoHoriz_mc" title="Accessories">
+		<item idx="0" typeID="12" name="Hanging Picture" price="250" bgColour="green" paletteID="0" thumb="f_framedPic_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="2" name="Shelf" price="130" bgColour="lime" paletteID="6" thumb="f_shelf1_thumb" allowPickColour="0"/>
+		<!--<page idx="6" template="customSpecialOfferInfo_mc">-->
+	</page>
+
+	<page idx="48" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="166" name="Roman Column" price="50" bgColour="lime" paletteID="1" thumb="f_romancolumn_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="321" name="Bubblegum Machine" price="595" bgColour="blue" paletteID="0" thumb="f_bubblegum_machine_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="322" name="Bubble Machine" price="595" bgColour="lime" paletteID="0" thumb="f_bubble_machine_thumb" allowPickColour="0"/>
+	</page>
+	
+	<page idx="49" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="6" name="Lava Lamp" price="190" bgColour="purple" paletteID="0" thumb="o_lavaLamp_thumb" allowPickColour="0"/>	
+		<item idx="1" typeID="58" name="Teddy bear" price="95" bgColour="blue" paletteID="12" thumb="o_teddyBear_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="159" name="Mobile Plane" price="200" bgColour="peach" paletteID="0" thumb="f_biplane_mobile_thumb" allowPickColour="0"/>	
+	</page>
+	
+	<page idx="50" template="threeHoriz_mc" >
+		<item idx="0" typeID="151" name="Dinosaur" price="135" bgColour="lime" paletteID="0" thumb="o_dinosaur_thumb" allowPickColour="0"/>
+		<item idx="1" typeID="152" name="Dinosaur" price="135" bgColour="blue" paletteID="0" thumb="o_dinosaur_pink_thumb" allowPickColour="0"/>
+		<item idx="2" typeID="153" name="Dinosaur" price="135" bgColour="peach" paletteID="0" thumb="o_dinosaur_blue_thumb" allowPickColour="0"/>
+	</page>
+
+	<page idx="51" template="oneHorizTwoVert_mc">
+		<item idx="0" typeID="332" name="Weevil Wheels shelf" price="180" bgColour="purple" paletteID="0" thumb="f_shelf_weevilWheels_thumb" allowPickColour="0"/>		
+</page>
+
+</catalogue>

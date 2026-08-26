@@ -1,0 +1,7 @@
+<itemConfig name='f_throne_scribblesSub' type='furniture' path='assetsNest/f_throne_scribblesSub.swf' thumb='assetsNest/f_throne_scribblesSub_thumb.swf' h='100' boundType='rect' clickable='yes'>
+	
+	<pos frame='1' bounds='-170,350,80,20' x='-120' y='0' z='370' ry='05' gridSqs='31,32,33,34'/>
+	<pos frame='2' bounds='-40,350,80,20' x='-0' y='0' z='370' ry='0' gridSqs='34,35,36,37'/>
+	<pos frame='3' bounds='90,350,80,20' x='120' y='0' z='370' ry='0' gridSqs='37,38,39,40'/>
+
+</itemConfig>

@@ -1,0 +1,13 @@
+<itemConfig name='f_window_Dosh2' type='furniture' path='assetsNest/f_window_Dosh2.swf' thumb='assetsNest/f_window_Dosh2_thumb.swf' h='100' boundType='rect'>
+	<pos frame='1' bounds='-200,380,10,20' x='-190' y='118' z='240' gridSqs='1'/>
+	<pos frame='2' bounds='-200,380,10,20' x='-190' y='118' z='320' gridSqs='11'/>
+	<pos frame='3' bounds='-200,380,10,20' x='-190' y='118' z='400' gridSqs='21'/>
+	
+	<pos frame='4' bounds='-180,380,90,20' x='-100' y='118' z='400' gridSqs='33,34'/>
+	<pos frame='5' bounds='-45,380,90,20' x='0' y='118' z='400' gridSqs='35,36'/>
+	<pos frame='6' bounds='80,380,90,20' x='100' y='118' z='400' gridSqs='37,38'/>
+	
+	<pos frame='7' bounds='-190,380,10,20' x='190' y='118' z='400' gridSqs='30'/>
+	<pos frame='8' bounds='-190,380,10,20' x='190' y='118' z='320' gridSqs='20'/>
+	<pos frame='9' bounds='-190,380,10,20' x='190' y='118' z='240' gridSqs='10'/>
+</itemConfig>

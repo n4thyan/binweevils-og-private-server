@@ -1,0 +1,9 @@
+<itemConfig name='ps_chair2' type='furniture' path='assetsTycoon/ps_chair2.swf' thumb='assetsTycoon/ps_chair2_thumb.swf' h='20'  boundType='radial' boundRadius='14' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='' x='-40' y='0' z='200' ry='0' gridSqs='14'/>
+	<pos frame='2' bounds='' x='-40' y='0' z='280' ry='0' gridSqs='24'/>
+	<pos frame='3' bounds='' x='-40' y='0' z='340' ry='0' gridSqs='34'/>
+
+	<pos frame='4' bounds='' x='40' y='0' z='200' ry='0' gridSqs='17'/>
+	<pos frame='5' bounds='' x='40' y='0' z='280' ry='0' gridSqs='27'/>
+	<pos frame='6' bounds='' x='40' y='0' z='340' ry='0' gridSqs='37'/>
+</itemConfig>

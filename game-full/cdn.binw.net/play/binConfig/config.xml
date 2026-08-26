@@ -1,0 +1,39 @@
+<config>
+	<domain/>
+	<servicesLocation>http://api.binweevils.com/</servicesLocation>
+	<restrictFlashPlayers>true</restrictFlashPlayers>
+	<!--
+	<pathItemConfigs>http://c1881402.cdn.cloudfiles.rackspacecloud.com/</pathItemConfigs>
+	<pathAssetsNest>http://c1881402.cdn.cloudfiles.rackspacecloud.com/</pathAssetsNest>
+	<pathAssetsTycoon>http://c1881402.cdn.cloudfiles.rackspacecloud.com/</pathAssetsTycoon>
+	<pathAssets3D>http://c1853612.cdn.cloudfiles.rackspacecloud.com/</pathAssets3D>
+	-->
+	
+	<!--
+	<basePathSmall>http://cdn.binw.net/</basePathSmall>
+	<basePathLarge>http://main.binw.net/</basePathLarge>
+	<pathItemConfigs>http://users.binw.net/</pathItemConfigs>
+	<pathAssetsNest>http://users.binw.net/</pathAssetsNest>
+	<pathAssetsTycoon>http://users.binw.net/</pathAssetsTycoon>
+	<pathAssetsGarden>http://garden.binw.net/</pathAssetsGarden>
+	<pathAssets3D>http://3d.binw.net/</pathAssets3D>
+	-->
+
+	<basePathSmall>https://cdn.binw.net/</basePathSmall>
+	<basePathLarge>https://cdn.binw.net/</basePathLarge>
+	<pathItemConfigs>https://cdn.binw.net/users/</pathItemConfigs>
+	<pathAssetsNest>https://cdn.binw.net/users/</pathAssetsNest>
+	<pathAssetsTycoon>https://cdn.binw.net/users/</pathAssetsTycoon>
+	<pathAssetsGarden>https://cdn.binw.net/assetsGarden/</pathAssetsGarden>
+	<pathAssets3D>https://cdn.binw.net/assets3D/</pathAssets3D>
+
+	<!--
+	<basePathSmall/>
+	<basePathLarge/>
+	<pathItemConfigs>nestDef/itemConfigs/</pathItemConfigs>
+	<pathAssetsNest>assetsNest/</pathAssetsNest>
+	<pathAssetsTycoon>assetsTycoon/</pathAssetsTycoon>
+	<pathAssetsGarden>assetsGarden/</pathAssetsGarden>
+	<pathAssets3D>assets3D/</pathAssets3D>
+	-->
+</config>

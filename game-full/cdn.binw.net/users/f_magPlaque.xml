@@ -1,0 +1,9 @@
+<itemConfig name='f_magPlaque' type='furniture' path='assetsNest/f_magPlaque.swf' thumb='assetsNest/f_magPlaque_thumb.swf' h='75' boundType='rect'>
+
+	<pos frame='1' bounds='-160,400,0,1' x='-160' y='80' z='400' ry='0' gridSqs='31,32'/>
+	<pos frame='2' bounds='-80,400,0,1' x='-160' y='80' z='400' ry='0' gridSqs='33,34'/>
+	<pos frame='3' bounds='-0,400,0,1' x='-160' y='80' z='400' ry='0' gridSqs='35,36'/>
+	<pos frame='4' bounds='80,400,0,1' x='-160' y='80' z='400' ry='0' gridSqs='37,38'/>
+	<pos frame='5' bounds='160,400,0,1' x='-160' y='80' z='400' ry='0' gridSqs='39,40'/>
+	
+</itemConfig>

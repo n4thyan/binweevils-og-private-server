@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<character defaultCloseAnimFrame="rest" direction="-1">	
+	<tasks>		
+		<task description="bait_search" questControlID="341" />
+		<task description="allFishCaught" questControlID="352" />
+		<task description="chili_used" questControlID="327" />
+		<task description="stew_completed" questControlID="353" />
+		<task description="stew_used" questControlID="357" />
+		<task description="Quest_Complete" questControlID="399" />		
+	</tasks>	
+	
+	<phase num="0" animFrame="talk_in">
+		<text>Ehhh?  Who’s that there?</text>			
+		<userResponse>
+			<option progressTo="1">Greetings!  I hope you can spare some time to help out an SWS agent!</option>
+			<option progressTo="2">Who are YOU?</option>
+		</userResponse>		
+	</phase>	
+		
+	<phase num="1" animFrame="talk_in" >
+		<text>An SWS agent, are ya?  We don’t get many of those around here!  But with all the funny business going on I’m not surprised you’re here.</text>
+		<userResponse>
+			<option progressTo="3">I’m following a potentially dangerous criminal!  Have you seen anyone strange around here?</option>
+			<option progressTo="3">Funny business? What have you seen?</option>
+		</userResponse>		
+	</phase>		
+
+	<phase num="2" animFrame="talk_in">
+		<text>Me, I’m just a humble fisherman.  Nothing exciting, I’m afraid.  But you look like you might be up to something…</text>
+		<userResponse>
+			<option progressTo="3">I’m an SWS agent and I’m looking for a thief.</option>
+			<option progressTo="3">I’m on a mission for the SWS. Seen anything suspicious lately?</option>
+		</userResponse>		
+	</phase>		
+		
+	<phase num="3" animFrame="talk_in">
+		<text width="300">There’s some mighty creepy characters that’ve been hanging around an island not far from here.  But me, I just mind my own business and try not to get involved.</text>
+		<userResponse>
+			<option progressTo="4">Any information you can tell me might be important.</option>
+			<option progressTo="4">That’s probably wise. But a brave agent like me has nothing to fear.</option>
+		</userResponse>		
+	</phase>		
+	
+	<phase num="4" animFrame="bait" sticky="1">
+		<text width="300">There’s an old hermit who lives on an island around here who probably knows a lot more than I do.  Right now, I’m a lot more concerned that I’m not catching the fish I need for my stew!</text>
+		<textOnReturn width="300">
+			Oh, so you’re ready to help me now? Tell you what, if you help me get this fire started, find me some better bait and cook up a nice fish stew, you can take some of the stew over to the Hermit to see if you can win him over.
+		</textOnReturn>	
+		<userResponse>
+			<option progressTo="5">Hmm, it looks like you could use some different bait!</option>
+			<option progressTo="14">I’ve got more important things to do than hang around fishing!</option>
+		</userResponse>		
+	</phase>			
+
+	 <phase num="5" animFrame="bait">
+		<text width="300" >Ehhh… Do you think so? Tell you what, if you help me get this fire started, find me some better bait and cook up a nice fish stew, you can take some of the stew over to the Hermit to see if you can win him over.</text>
+		<userResponse>
+			<option progressTo="-1">Hmm.  I’ll think about it.</option>
+			<option progressTo="6" fireTaskID="bait_search">I’ll get right to work!</option>
+		</userResponse>		
+	</phase>	
+	
+	<phase num="6" animFrame="bait" sticky="1">
+		<text width="300">Still… I don’t know if you’ll get to his island in that dinky little boat of yours. There’s a mightily clever mechanic on one of these islands who might be able to give you a hand.</text>
+	</phase>	
+	
+	<phase num="7" animFrame="bait" questControlPoint="bait_search" closeAnimFrame="bait_standBy">
+		<text>I don’t see any fish stew yet!  We’re going to need a fire and at least 5 kinds of fish.</text>
+	</phase>	
+	
+	<phase num="8" animFrame="talk_in" questControlPoint="allFishCaught">
+		<text>Thanks!  Wow, that bait really did work!!  Next, we need to get that fire started before adding the fish.</text>
+	</phase>	
+	
+	<phase num="9" animFrame="talk_in" questControlPoint="chili_used">
+		<text>Nice work on that fire. Now all we need is to start cooking that lovely fish.</text>
+	</phase>	
+
+	<phase num="10" animFrame="talk_in" questControlPoint="stew_completed">
+		<text>I can’t thank you enough.  Good luck finding the Hermit, I’m sure this stew you made will bring him out of his cave!</text>
+		<textOnReturn>
+			You’re not going to get anywhere with the hermit unless you bring him some food! Take him a coconut shell full of stew!
+		</textOnReturn>			
+	</phase>
+	
+	<phase num="11" animFrame="talk_in" questControlPoint="stew_used">
+		<text>Well?  Did he like the stew?  I told you that he would love it!  Good luck with your mission.</text>
+		<textOnReturn>
+			Welcome back!  Feel free to explore the islands and relax on the beach!
+		</textOnReturn>		
+	</phase>	
+	
+	<phase num="12" animFrame="talk_in">
+		<text>Hey!  Leave that alone!  Why don’t you help me out first and then you can come back for any supplies you need from my island.</text>
+	</phase>
+	
+	<phase num="13" animFrame="talk_in">
+		<text>There's no point starting that fire until all the fish have been caught!</text>
+	</phase>	
+	
+	<phase num="14" animFrame="bait">
+		<text width="300">You’ll need my help if you want to talk to that hermit, so you’d better change your attitude!</text>
+	</phase>
+
+	
+</character>

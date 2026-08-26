@@ -1,0 +1,176 @@
+/* CSS Document */
+
+a{
+/*	color:#008A00;*/
+	outline: none;
+	text-decoration: none;
+}
+
+#container{
+/*	position:relative;*/
+/*	margin-left:auto;*/
+/*	margin-right:auto;*/
+/*	width:960px;*/
+	/*border:1px solid #000000;*/
+	margin: 0 auto;
+    position: relative;
+    width: 960px;
+}
+
+#logo{
+    height: 66px;
+    left: 21px;
+    position: absolute;
+    top: -10px;
+    z-index: 1000;
+}
+
+#frameLeft{
+    position: absolute;
+    top: 111px;
+    z-index: 0;
+}
+
+#nav{
+	position:absolute;
+	left:140px;
+	top:0px;
+	height:66px;
+	width:820px;
+	text-align:center; /* just centered for the comment to look better ! */
+	z-index:5;
+}
+
+#flash{
+	position:relative;
+	top:66px;
+	left:20px;
+	height:630px;
+	width:940px;
+	/*border:1px solid #FF0000;*/
+/*	z-index:999;*/
+}
+
+#flashRegister{
+	/*position:absolute;
+	top:0px;
+	left:20px;
+	height:720px;
+	width:1024px;
+	/*border:1px solid #FF0000;
+	z-index:999;*/
+	float: left;
+}
+
+#footer{
+/*	margin-left:120px;*/
+
+	text-align:center;
+/*	padding-top:800px;	*/
+}
+
+#affiliateheader{
+	padding-bottom:10px;
+}
+
+#affiliatefooter{
+	margin-top:10px;
+}
+
+/*
+Copied css from www/css/style.css
+*/
+
+.maindiv{
+	width:100%;
+	float:left;
+}
+
+.maincenter{
+	width:926px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.maindiv{
+	width:100%;
+	float:left;
+}
+
+.menu2{
+	height:62px;
+	padding-left:82px;
+	width:844px;
+	float:left;
+	background-image:url(../images/contenttop.html);
+	background-position:0px 32px;
+	background-repeat:no-repeat;
+}
+
+.content{
+	background-image:url(../images/contentbg.html);
+	background-repeat:repeat-y;
+	padding-bottom:100px;
+	float: left;
+}
+
+.contentbottom{
+	height:45px;
+	background-image:url(../images/contentbottom.html);
+	position:relative;
+}
+
+.bottomct{
+	position:absolute;
+	top:-92px;
+	left:-42px;
+}
+
+.footerbg{
+	width:785px;
+	height:58px;
+	padding-left:76px;
+	background-position:76px 0px;
+	background-image:url(../images/footerbg.html);
+	background-repeat:no-repeat;
+	float:left;
+}
+
+.Regcontainer {
+	width: 854px;
+	text-align: center;
+	background-color: #FFFFFF;
+	margin-left: 43px;
+	position: inherit;
+}
+
+#mainTable {
+    width: 650px;
+    margin: 0 auto 0 auto;
+    border-collapse: collapse;
+}
+
+#mainTable td {
+    margin: 0;
+    padding: 10px 5px;
+    vertical-align: middle;
+    text-align: left;
+}
+
+#mainTable p {
+    text-align: justify;
+    line-height: 1.3em;
+    font-size: 15px;
+    color: #000000;
+}
+
+#mainTable h3 {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #000000;
+}
+
+.txtyellow{
+	color:#fdfd8b;
+}

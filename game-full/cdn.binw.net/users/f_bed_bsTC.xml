@@ -1,0 +1,10 @@
+<itemConfig name='f_bed_bsTC' type='furniture' path='assetsNest/f_bed_bsTC.swf' thumb='assetsNest/f_bed_bsTC_thumb.swf' h='50' boundType='rect'  clickable='yes'>
+	
+	<pos frame='1' bounds='-200,243,80,160' x='-120' y='0' z='403' ry='0' gridSqs='21,22,31,32'/>
+	<pos frame='2' bounds='-120,241,80,160' x='-40' y='0' z='401' ry='0' gridSqs='23,24,33,34'/>
+	<pos frame='3' bounds='-40,240,80,160' x='40' y='0' z='400' ry='0' gridSqs='25,26,35,36'/>
+	<pos frame='4' bounds='40,242,80,160' x='120' y='0' z='402' ry='0' gridSqs='27,28,37,38'/>
+	<pos frame='5' bounds='120,244,80,160' x='200' y='0' z='404' ry='0' gridSqs='29,30,39,40'/>	
+	
+
+</itemConfig>

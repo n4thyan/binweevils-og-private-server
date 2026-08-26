@@ -1,0 +1,17 @@
+<itemConfig name='f_16thcent_table' type='furniture' path='assetsNest/f_16thcent_table.swf' thumb='assetsNest/f_16thcent_table_thumb.swf' h='39' boundType='rect' numSpots='1'>
+	<pos frame='1' bounds='-200,40,60,32' x='-200' y='0' z='80' ry='-90' gridSqs='41,42'/>
+	<pos frame='2' bounds='-200,100,60,32' x='-200' y='0' z='150' ry='-90' gridSqs='1,2'/>
+	<pos frame='3' bounds='-200,175,60,32' x='-200' y='0' z='230' ry='-90' gridSqs='11,12'/>
+	<pos frame='4' bounds='-200,250,60,32' x='-200' y='0' z='310' ry='-90' gridSqs='21,22'/>
+
+	<pos frame='5' bounds='-200,330,60,70' x='-200' y='0' z='400' ry='0' gridSqs='31,32'/>
+	<pos frame='6' bounds='-100,330,60,70' x='-100' y='0' z='400' ry='0' gridSqs='33,34'/>
+	<pos frame='7' bounds='-20,330,60,70' x='-20' y='0' z='400' ry='0' gridSqs='35,36'/>
+	<pos frame='8' bounds='55,330,60,70' x='55' y='0' z='400' ry='0' gridSqs='37,38'/>
+	<pos frame='9' bounds='160,330,60,70' x='160' y='0' z='400' ry='0' gridSqs='39,40'/>
+
+	<pos frame='10' bounds='160,250,40,32' x='160' y='0' z='310' ry='90' gridSqs='29,30'/>
+	<pos frame='11' bounds='160,175,40,32' x='160' y='0' z='230' ry='90' gridSqs='19,20'/>
+	<pos frame='12' bounds='160,100,40,32' x='160' y='0' z='150' ry='90' gridSqs='9,10'/>
+	<pos frame='13' bounds='160,60,20,32' x='160' y='0' z='80' ry='90' gridSqs='49,50'/>
+</itemConfig>

@@ -1,0 +1,17 @@
+<itemConfig name='f_washBasin' type='furniture' path='assetsNest/f_washBasin.swf' thumb='assetsNest/f_washBasin_thumb.swf' h='20' boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-200,80,25,80' x='-160' y='20' z='160' gridSqs='1,2'/>
+	<pos frame='2' bounds='-200,160,25,80' x='-160' y='20' z='240' gridSqs='11,12'/>
+	<pos frame='3' bounds='-200,240,25,80' x='-160' y='20' z='320' gridSqs='21,22'/>
+	<pos frame='4' bounds='-200,320,25,80' x='-160' y='20' z='400' gridSqs='31,32'/>
+
+	<pos frame='5' bounds='-200,375,80,25' x='-160' y='20' z='400' gridSqs='31,32'/>
+	<pos frame='6' bounds='-120,375,80,25' x='-80' y='20' z='380' gridSqs='33,34'/>
+	<pos frame='7' bounds='-40,375,80,25' x='0' y='20' z='370' gridSqs='35,36'/>
+	<pos frame='8' bounds='40,375,80,25' x='80' y='20' z='378' gridSqs='37,38'/>
+	<pos frame='9' bounds='120,375,80,25' x='160' y='20' z='399' gridSqs='39,40'/>
+
+	<pos frame='10' bounds='175,330,25,80' x='160' y='20' z='399' gridSqs='39,40'/>
+	<pos frame='11' bounds='175,240,25,80' x='160' y='20' z='319' gridSqs='29,30'/>
+	<pos frame='12' bounds='175,160,25,80' x='160' y='20' z='239' gridSqs='19,20'/>
+	<pos frame='13' bounds='175,80,25,80' x='160' y='20' z='159' gridSqs='9,10'/>
+</itemConfig>

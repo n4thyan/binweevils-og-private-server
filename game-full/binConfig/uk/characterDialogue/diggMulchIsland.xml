@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<character>	
+		<tasks>
+		<task description="Quest_Complete" questControlID="1" />
+	</tasks>	
+	<phase num="0" animFrame="Talk_in" sticky="1">
+		<text>Glad you could make it. I'm Digg!</text>			
+		<userResponse>
+			<option progressTo="1">What happened here?!</option>
+		</userResponse>		
+	</phase>	
+		
+	<phase num="1" animFrame="Talk_in">
+		<text>An earthquake appeared out of nowhere, which caused the volcano to erupt! The time portal became unstable and started leaking out the old landscape.</text>
+			
+		<userResponse>
+			<option progressTo="2">Oh wow! What places were affected?</option>
+			<option progressTo="3">Thank god for that!</option>
+		</userResponse>		
+	</phase>		
+
+	<phase num="2" animFrame="Talk_in">
+		<text>Everywhere in the bin was affected. As you can see Mulch Island was affected by a volcanic eruption!</text>
+			
+		<userResponse>
+		<option progressTo="4">...</option>
+		</userResponse>		
+	</phase>			
+	
+	<phase num="3" animFrame="Talk_in">
+		<text>Haha, guess you didn't like the new bin?</text>
+			
+		<userResponse>
+			<option progressTo="98">Nope, not one bit!</option>
+		</userResponse>		
+	</phase>		
+	
+	<phase num="4" animFrame="Talk_in">
+		<text>Some places have kept intact, like Flum's Fountain and Dosh's Palace. However, we have had to put a gigantic tank below the fountain at Flum's Fountain to keep the ground saturated with nutrients to keep the mushrooms growing!</text>
+			
+		<userResponse>
+			<option progressTo="99">Thank you for letting me know!</option>
+		</userResponse>		
+	</phase>			
+	<phase num="98" animFrame="Talk_out">
+	<text>See you around soon. Feel free to look around the bin. We've rebuilt a few areas on new land so you can explore the 2010 and 2014 bin.</text>
+	</phase>
+	<phase num="99" animFrame="Talk_out">
+	<text>No problem! See you around soon. Feel free to look around the bin. We've rebuilt a few areas on new land so you can explore the 2010 and 2014 bin.</text>
+	</phase>
+	
+</character>

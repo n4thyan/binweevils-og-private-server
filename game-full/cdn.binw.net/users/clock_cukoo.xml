@@ -1,0 +1,7 @@
+<itemConfig name='clock_cukoo' type='furniture' path='assetsNest/clock_cukoo.swf' thumb='assetsNest/clock_cukoo_thumb.swf' h='75' boundType='rect' clickable='yes'>
+	<pos frame='1' bounds='-180,380,40,20' x='-180' y='100' z='400' ry='0' gridSqs='31,32'/>
+	<pos frame='2' bounds='-100,380,40,20' x='-100' y='100' z='400' ry='0' gridSqs='33,34'/>
+	<pos frame='3' bounds='-20,380,40,20' x='-20' y='100' z='400' ry='0' gridSqs='35,36'/>
+	<pos frame='4' bounds='60,380,40,20' x='60' y='100' z='400' ry='0' gridSqs='37,38'/>
+	<pos frame='5' bounds='140,380,40,20' x='140' y='100' z='400' ry='0' gridSqs='39,40'/>
+</itemConfig>

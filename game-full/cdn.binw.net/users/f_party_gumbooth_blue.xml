@@ -1,0 +1,12 @@
+<itemConfig name='f_party_gumbooth_blue' type='furniture' path='assetsTycoon/f_party_gumbooth_blue.swf' thumb='assetsTycoon/f_party_gumbooth_blue_thumb.swf' useCache='yes' h='120' boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-200,320,80,80' x='-120' y='0' z='320' ry='0' gridSqs='21'/>
+	<pos frame='2' bounds='-120,320,80,80' x='-40' y='0' z='320' ry='0' gridSqs='22'/>
+	<pos frame='3' bounds='-40,320,80,80' x='40' y='0' z='320' ry='0' gridSqs='23'/>
+	<pos frame='4' bounds='40,320,80,80' x='120' y='0' z='320' ry='0' gridSqs='24'/>
+	<pos frame='5' bounds='120,320,80,80' x='200' y='0' z='320' ry='0' gridSqs='25'/>
+	<pos frame='6' bounds='120,320,80,80' x='120' y='0' z='400' ry='90' gridSqs='25'/>
+	<pos frame='7' bounds='120,240,80,80' x='120' y='0' z='320' ry='90' gridSqs='20'/>
+	<pos frame='8' bounds='120,160,80,80' x='120' y='0' z='240' ry='90' gridSqs='15'/>
+	<pos frame='9' bounds='120,80,80,80' x='120' y='0' z='160' ry='90' gridSqs='10'/>
+	<pos frame='10' bounds='120,0,80,80' x='120' y='0' z='80' ry='90' gridSqs='5'/>
+</itemConfig>

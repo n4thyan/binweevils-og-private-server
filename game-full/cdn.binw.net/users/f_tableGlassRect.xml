@@ -1,0 +1,12 @@
+<itemConfig name='f_tableGlassRect' type='furniture' path='assetsNest/f_tableGlassRect.swf' thumb='assetsNest/f_tableGlassRect_thumb.swf' h='40' boundType='rect' numSpots='4'>
+	<pos frame='1' bounds='-40,0,80,130' x='0' y='0' z='1' gridSqs='45,46,5,6'/>
+	<pos frame='2' bounds='-200,80,80,160' x='-160' y='0' z='240' gridSqs='1,2,11,12'/>
+	<pos frame='3' bounds='-200,160,80,160' x='-160' y='0' z='320' gridSqs='11,12,21,22'/>
+	<pos frame='4' bounds='-200,240,80,160' x='-160' y='0' z='400' gridSqs='21,22,31,32'/>
+	<pos frame='5' bounds='-200,320,160,80' x='-160' y='0' z='400' gridSqs='31,32,33,34'/>
+	<pos frame='6' bounds='-40,240,80,160' x='0' y='0' z='240' gridSqs='25,26,35,36'/>
+	<pos frame='7' bounds='40,320,160,80' x='40' y='0' z='400' gridSqs='37,38,39,40'/>
+	<pos frame='8' bounds='120,240,80,160' x='120' y='0' z='400' gridSqs='29,30,39,40'/>
+	<pos frame='9' bounds='120,160,80,160' x='120' y='0' z='320' gridSqs='19,20,29,30'/>
+	<pos frame='10' bounds='120,80,80,160' x='120' y='0' z='240' gridSqs='9,10,19,20'/>
+</itemConfig>

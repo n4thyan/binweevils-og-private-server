@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<help id="30">
+		<text>These security measures are pretty tricky. Why not install this security override to downgrade them?</text>
+		<solutionText>The security on this floor has been downgraded, so you should be able to solve this puzzle much more easily.</solutionText>
+		<toggleOffText>The security on this floor has been restored back to factory settings, much more tricky! Good luck!</toggleOffText>
+	</help>	
+	<help id="31">
+		<text>These security measures are pretty tricky. Why not install this security override to downgrade them?</text>
+		<solutionText>The security on this floor has been downgraded, so you should be able to solve this puzzle much more easily.</solutionText>
+		<toggleOffText>The security on this floor has been restored back to factory settings, much more tricky! Good luck!</toggleOffText>
+	</help>	
+	<help id="32">
+		<text>These security measures are pretty tricky. Why not install this security override to downgrade them?</text>
+		<solutionText>The security on this floor has been downgraded, so you should be able to solve this puzzle much more easily.</solutionText>
+		<toggleOffText>The security on this floor has been restored back to factory settings, much more tricky! Good luck!</toggleOffText>
+	</help>	
+	<help id="33">
+		<text>Need a hand filling the water tanks? Use this upgrade to set the valves to the correct position to fill the tank and to make the pump much more efficient.</text>
+		<solutionText>The valves have been rigged to allow you fill the water tanks, and the pump is now three times as efficient. All you need to do now is to jump on the pump a few times!</solutionText>
+		<toggleOffText>The valves have been set back to their original positions and the pump is back to its original efficiency. If you want to fill the water tank, you'll have to set the valves yourself!</toggleOffText>
+	</help>	
+	<help id="44">
+		<text>Not sure how to work the vending machine? Grab this upgrade for a hint and some labels.</text>
+		<solutionText>To make the vending machine work, you need to choose what item you want, put in tokens up to the value of that item and then enter the item's code.
+		\n\nYou can work out the item's code by getting the letter of the row of the item and adding the number of the column it is in.
+		\n\nFor example, an item in the top right corner of the vending machine would have the code 'A4'.</solutionText>
+		<toggleOffText></toggleOffText>
+	</help>	
+	<help id="34">
+		<text>Is setting the security screens slightly too tricky? Use this upgrade to make the task much easier.</text>
+		<solutionText>One row of security screens has been removed from the puzzle. You should be able to solve it much faster now!</solutionText>
+		<toggleOffText>All of the security screens have been restored to their previous settings. Good luck!</toggleOffText>
+	</help>	
+	<help id="35">
+		<text>Those Thuggs are pretty difficult to sneak past even in the dark! Use this upgrade to knock one of them out.</text>
+		<solutionText>One of the Thuggs is fast asleep. He won't be able to stop you getting past him!</solutionText>
+		<toggleOffText>The Thugg has woken up! You'll need to be careful if you are going to get past him!</toggleOffText>
+	</help>	
+	<help id="36">
+		<text>Those Thuggs are pretty difficult to sneak past even in the dark. Use this upgrade to knock one of them out.</text>
+		<solutionText>One of the Thuggs is fast asleep. He won't be able to stop you getting past him!</solutionText>
+		<toggleOffText>The Thugg has woken up! You'll need to be careful if you are going to get past him!</toggleOffText>
+	</help>	
+	<help id="37">
+		<text>Those Thuggs are pretty difficult to sneak past even in the dark. Use this upgrade to knock one of them out.</text>
+		<solutionText>One of the Thuggs is fast asleep. He won't be able to stop you getting past him!</solutionText>
+		<toggleOffText>The Thugg has woken up! You'll need to be careful if you are going to get past him!</toggleOffText>
+	</help>	
+	<help id="38">
+		<text>Keep running out of time to trap all the particles? Use this upgrade to give yourself 50% more time!</text>
+		<solutionText>Now you've got much more time to try and catch the particles. It should be much easier to collect them.</solutionText>
+		<toggleOffText>The time extension has been turned off. You'll have to really concentrate to collect all the particles in time!</toggleOffText>
+	</help>	
+	<help id="39">
+		<text>Having difficulty sorting the particles into their jars? Use this upgrade to slow down the mechanical arm.</text>
+		<solutionText>The mechanical arm has been slowed down. You should find it much easier to judge when to drop the particles now.</solutionText>
+		<toggleOffText>The mechanical arm has been reset to it's original speed. It'll be more of a challenge to sort the particles now!</toggleOffText>
+	</help>	
+	<help id="40">
+		<text>Those Thuggs are tough as old boots! Use this upgrade so that it takes less shots of the potion to transform them.</text>
+		<solutionText>The Thuggs have been weakened. You'll only need to hit them a couple of times to transform them now!</solutionText>
+		<toggleOffText>The Thuggs are back up to their usual vitality. You'll need to give them a healthy dousing of potion in order to transform them.</toggleOffText>
+	</help>	
+	<help id="41">
+		<text>That potion doesn't seem to transform the Thuggs for very long! Use this upgrade so that they stay transformed for much longer!</text>
+		<solutionText>The potion has been beefed up. Thuggs will now stay transformed for longer, abd it should be much easier to get past them.</solutionText>
+		<toggleOffText>The potion is back to its usual strength. Thuggs won't stay transformed for as long, so you'll need to be swift to get past them.</toggleOffText>
+	</help>	
+	<help id="42">
+		<text>Need a hand defeating Lia? Use this upgrade to make  your laser much more powerful! It'll take fewer hits on the boosters to overload the machine!</text>
+		<solutionText>The laser is now much more powerful! It'll take fewer hits on the boosters to overload the machine!</solutionText>
+		<toggleOffText>The laser has been reset to its normal power setting, so it'll take more hits on the boosters to overload the machine now.</toggleOffText>
+	</help>	
+	<help id="43">
+		<text>Are the boosters changing too quickly for you? Use this upgrade to make the boosters change less often.</text>
+		<solutionText>The boosters will now take longer to switch. You'll have more time to hit them as much as you can and overload the machine!</solutionText>
+		<toggleOffText>The boosters will now take less time to switch. You'll have less time to hit them as much as you can and overload the machine!</toggleOffText>
+	</help>	
+	<help id="45">
+		<text>Need a hand pouring the flasks into the beaker? Use this upgrade to add numbered labels to the beaker.</text>
+		<solutionText></solutionText>
+		<toggleOffText></toggleOffText>
+	</help>	
+
+</data>

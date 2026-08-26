@@ -1,0 +1,16 @@
+<itemConfig name='f_safari_hangingMonkey' type='furniture' path='assetsNest/f_safari_hangingMonkey.swf' thumb='assetsNest/f_safari_hangingMonkey_thumb.swf' h='120' boundType='rect' clickable='yes'>
+
+	<pos frame='1' bounds='-200,400,120,20' x='-200' y='120' z='400' ry='0' gridSqs='31,32'/>
+	<pos frame='2' bounds='-200,320,120,20' x='-200' y='120' z='320' ry='0' gridSqs='21,22'/>
+	<pos frame='3' bounds='-200,240,120,20' x='-200' y='120' z='240' ry='0' gridSqs='11,12'/>
+	<pos frame='4' bounds='-200,160,120,20' x='-200' y='120' z='160' ry='0' gridSqs='1,2'/>
+
+
+	<pos frame='5' bounds='40,400,120,20' x='40' y='120' z='400' ry='0' gridSqs='38,39'/>
+	<pos frame='6' bounds='40,320,120,20' x='40' y='120' z='320' ry='0' gridSqs='28,29'/>
+	<pos frame='7' bounds='40,240,120,20' x='40' y='120' z='240' ry='0' gridSqs='18,19'/>
+	<pos frame='8' bounds='40,160,120,20' x='40' y='120' z='160' ry='0' gridSqs='8,9'/>
+
+	
+
+</itemConfig>

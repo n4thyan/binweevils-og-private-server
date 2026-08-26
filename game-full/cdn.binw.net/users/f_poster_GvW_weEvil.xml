@@ -1,0 +1,8 @@
+<itemConfig name='f_poster_GvW_weEvil' type='furniture' path='assetsNest/f_poster_GvW_weEvil.swf' thumb='assetsNest/f_poster_GvW_weEvil_thumb.swf' h='100' boundType='0' clickable='no'>
+	<!-- posters go from y=90 to y=100 on back wall (h=100) -->
+	<pos frame='1' bounds='' x='-160' y='90' z='500' ry='0' gridSqs='31,32'/>
+	<pos frame='2' bounds='' x='-80' y='90' z='499' ry='0' gridSqs='33,34'/>
+	<pos frame='3' bounds='' x='0' y='90' z='498' ry='0' gridSqs='35,36'/>
+	<pos frame='4' bounds='' x='80' y='90' z='497' ry='0' gridSqs='37,38'/>
+	<pos frame='5' bounds='' x='160' y='90' z='496' ry='0' gridSqs='39,40'/>
+</itemConfig>

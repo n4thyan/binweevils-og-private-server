@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<character defaultCloseAnimFrame="rest">	
+	<tasks>
+		<task description="roomCompleted" questControlID="601" />		
+	</tasks>	
+	
+	<phase num="0" animFrame="talk_in">
+		<text>I don’t think that water pistol is powerful enough! </text>
+		<textOnReturn>
+			That stage lighting isn’t stable! It’s about to come down!
+		</textOnReturn>	
+	</phase>			
+
+	<phase num="1" animFrame="talk_in"  questControlPoint="roomCompleted">
+		<text>Good luck agent!</text>
+	</phase>	
+	
+</character>

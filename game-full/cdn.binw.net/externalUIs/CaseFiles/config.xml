@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<caseFile questId="17" initialTaskId="1100" finalTaskNumber="1135" maxScore="1">
+		<title>#1 Good Vs WeEVIL</title>
+		<description>Emergency alert! All agents report! Following a disastrous experiment by Lab, a ghastly gas has cloaked the Binscape, creating mysterious mutated WeEvils!</description>
+		<caseFilePath>GoodVsWeevil/GoodVsWeevilMain.swf</caseFilePath>
+		<imagePath>GoodVsWeevil/indexImageGoodVsWeEVIL.swf</imagePath>
+		<intro>GoodVsWeevil/GoodVsWeevilIntro.swf</intro>
+		<tycoonOnlyOverlay></tycoonOnlyOverlay>
+	</caseFile>
+	<caseFile questId="18" initialTaskId="1200" finalTaskNumber="1213" maxScore="3">
+		<title>#2 Micro Mayhem</title>
+		<description>Emergency alert! All agents report! There’s been a WEB break-in at Lab’s Lab and something very important has been stolen. We must investigate immediately!</description>
+		<caseFilePath>caseFile2/CaseFileMain.swf</caseFilePath>
+		<imagePath>caseFile2/indexImageCaseFile2.swf</imagePath>
+		<tycoonOnlyOverlay>caseFile2/tycoonOnlyOverlayCaseFile2.swf</tycoonOnlyOverlay>
+		<intro></intro>
+	</caseFile>
+</data>

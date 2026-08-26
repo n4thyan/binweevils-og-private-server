@@ -1,0 +1,13 @@
+<itemConfig name='ps_gam_candlestick' type='furniture' path='assetsTycoon/ps_gam_candlestick.swf' thumb='assetsTycoon/ps_gam_candlestick_thumb.swf' h='40' boundType='rect' numSpots='0' >
+	<pos frame='1' bounds='' x='-40' y='0' z='200' ry='0' gridSqs='13,14'/>
+	<pos frame='2' bounds='' x='-40' y='0' z='280' ry='0' gridSqs='23,24'/>
+	<pos frame='3' bounds='' x='-40' y='0' z='340' ry='0' gridSqs='33,34'/>
+	
+	<pos frame='4' bounds='' x='40' y='0' z='200' ry='0' gridSqs='15,16'/>
+	<pos frame='5' bounds='' x='40' y='0' z='280' ry='0' gridSqs='25,26'/>
+	<pos frame='6' bounds='' x='40' y='0' z='340' ry='0' gridSqs='35,36'/>
+
+	<pos frame='7' bounds='' x='120' y='0' z='200' ry='0' gridSqs='17,18'/>
+	<pos frame='8' bounds='' x='120' y='0' z='280' ry='0' gridSqs='27,28'/>
+	<pos frame='9' bounds='' x='120' y='0' z='340' ry='0' gridSqs='37,38'/>
+</itemConfig>

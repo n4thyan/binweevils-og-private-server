@@ -1,0 +1,103 @@
+@font-face {
+	font-family: Burbank Small Bold;
+	src: url(/assets/fonts/Burbank\ Small\ Bold.otf);
+}
+@font-face {
+	font-family: Burbank Small Medium;
+	src: url(/assets/fonts/Burbank\ Small\ Medium.otf);
+}
+html, body {
+    background: #68B500 url(/assets/images/repeatBG.jpg) repeat-x scroll center top;
+	font-family: Burbank Small Medium;
+	margin: 0;
+}
+img {
+	user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+img {
+	user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+.hero-head {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding-bottom: 40px;
+}
+.navbar-item img {
+	max-height: 7rem;
+}
+.navbar-bg {
+	background-image: url(/assets/images/navbar.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	margin-top: 20px;
+	padding: 5px 50px;
+}
+.hero.is-info.is-bold {
+	background: transparent;
+}
+.tabs {
+	font-size: 1.2rem;
+	font-family: Burbank Small Bold;
+	text-shadow: 0 0 10px #0c792a, 0 0 10px #0c792a, 0 0 10px #0c792a;
+}
+.navbar-burger {
+	color: #fff;
+}
+#logo {
+    height: 66px;
+    left: 21px;
+    position: absolute;
+    top: -10px;
+    z-index: 1000;
+}
+.hero.is-info.is-bold .navbar-menu {
+	background: transparent;
+	box-shadow: none;
+}
+.box.cta {
+	border-radius: 0;
+	border-left: none;
+	border-right: none;
+	margin-bottom: 0;
+}
+.tabs a {
+	transition: transform .2s;
+}
+.tabs a:hover {
+	cursor: pointer;
+	transform: scale(1.15);
+}
+.tabs li {
+    display: block;
+    overflow: hidden;
+}
+footer li:before {
+	content: '\f1b2';
+	font-family: 'FontAwesome';
+	float: left;
+	margin-left: -1.5em;
+	color: #147efb;
+}
+.footer {
+	width: 100%;
+	background: #35c0ff;
+	color: #fff;
+	font-family: Burbank Small Bold;
+	padding: 2rem;
+	height: fit;
+	bottom: 0;
+}
+.cta {
+	font-family: Burbank Small Bold;
+}

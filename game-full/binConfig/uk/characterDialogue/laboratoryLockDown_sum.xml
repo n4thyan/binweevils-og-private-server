@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<character defaultCloseAnimFrame="rest" direction="-1">	
+	<tasks>
+		<task description="generatorOn" questControlID="709" />
+		<task description="screensOn" questControlID="710" />
+		<task description="googlesColelcted" questControlID="701" />
+		<task description="lab1DoorGdoorOpen" questControlID="722" />
+		<task description="missionCompleted" questControlID="799" />		
+	</tasks>	
+	
+	<phase num="0" animFrame="talk_in" >
+		<text  width="500" >Ahhh! Who are you? How did you get in here?!</text>
+		<userResponse>
+			<option progressTo="1">Relax, I'm an SWS Agent, and I'm here to sort this mess out!</option>
+		</userResponse>
+	</phase>	
+		
+	<phase num="1" animFrame="talk_in" sticky="1">
+		<text width="500">Whew! I'm Sum, Lab's assistant. It's been awful, the Thuggs somehow escaped from their cells, and then the power went out - the Laboratory has gone into emergency lockdown! The WEB are after us!</text>
+		<userResponse>
+			<option progressTo="2">This is worse than I thought. Do you know where the Thuggs are right now?</option>
+		</userResponse>
+	</phase>	
+	
+	<phase num="2" animFrame="talk_in"  sticky="1">
+		<text width="500">These screens usually show us CCTV from all over the Lab. But since the system was sabotaged, I have no idea what's out there! Poor Lab could be hurt!</text>
+		<userResponse>
+			<option progressTo="3">I know who's behind all this, but we need to get those cameras back on. Can I help you fix them?</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="3" animFrame="talk_in" sticky="1">
+		<text width="500">Well, we'd have to get this grid rewired first. Do you know anything about wiring?</text>
+		<userResponse>
+			<option progressTo="4" fireEvent="labLocDown_CR_activateGenAccess">I'm an SWS Agent! No task is too difficult!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="4" animFrame="talk_in">
+		<text  width="500">Please hurry! I'm worried that Lab could be in real danger!</text>
+	</phase>	
+
+	<phase num="5" animFrame="talk_in" questControlPoint="generatorOn">
+		<text width="500">Amazing work, Agent! But it looks like the screens aren't set correctly...</text>
+		<userResponse>
+			<option progressTo="6">Let's see if I can sort that out!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="6" animFrame="talk_in">
+		<text width="500">Agent, you're my hero!</text>
+	</phase>	
+		
+	<phase num="7" animFrame="talk_in" questControlPoint="screensOn">
+		<text width="500">Okay, the screens are on! Let's see what those Thuggs are up to! Ohhh, I hope Lab is safe!</text>
+		<userResponse>
+			<option progressTo="-1" fireEvent="labLocDown_openLeaThugsCutScene">Brilliant! The cameras are still working!</option>
+		</userResponse>
+	</phase>	
+		
+	<phase num="8" animFrame="talk_in">
+		<text width="500">GASP! Lia! I knew she was trouble the minute she got here! I tried to tell Lab that she was up to no good, but he wouldn't listen to me.</text>
+		<userResponse>
+			<option progressTo="9">She tricked me, too...and if Lab still trusts her, then he's in serious danger.</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="9" animFrame="talk_in">
+		<text width="500">It looks like the Thuggs are trying to get to Lab by breaking through that security door!</text>
+		<userResponse>
+			<option progressTo="10">We've got to help him, and fast!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="10" animFrame="talk_in" sticky="1">
+		<text width="500">I think they might be after his latest experiment. Oh, please save him! Please save us all!</text>
+		<userResponse>
+			<option progressTo="11">Don't worry, Sum. I'll stop them and I'll protect Lab. How do I get to that room?</option>
+		</userResponse>
+	</phase>		
+	
+	<phase num="11" animFrame="talk_in">
+		<text width="500">I can show you the way, but you'll need a more powerful weapon to defend yourself.</text>
+		<userResponse>
+			<option progressTo="12">Won't my supercharged water gun work?</option>
+		</userResponse>
+	</phase>
+		
+	<phase num="12" animFrame="talk_in">
+		<text width="500">No. You'll need to load it up with a new potion. We've been working on something to stop those evil Thuggs once and for all!</text>
+		<userResponse>
+			<option progressTo="13">Great! Where can I get it?</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="13" animFrame="talk_in">
+		<text width="500">You'll have to speak to Kem first, and help her get the solution ready. Oh gosh, I hope Kem is okay! You'll need to head over to Laboratory #2 - it's the door across the room from where Lia and the Thuggs are right now!</text>
+		<userResponse>
+			<option progressTo="14">I'll need to sneak past them. It'll be dark in there, because the power's still out, but I have to avoid running into them!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="14" animFrame="talk_in" sticky="1">
+		<text width="500">I have some night vision goggles. Would you like to take them with you?</text>
+		<textOnReturn width="500">I have some night vision goggles. Would you like to take them with you?</textOnReturn>
+		<userResponse>
+			<option progressTo="-1" fireEvent="labLocDown_acceptGoggles">They would be perfect! Thanks, Sum.</option>
+		</userResponse>		
+	</phase>
+	
+	<phase num="15" animFrame="talk_in" questControlPoint="googlesColelcted">
+		<text width="500">Thank YOU, agent! I've opened the glass quarantine door for you. From there, you can follow Lia's footsteps!</text>
+		<userResponse>
+			<option progressTo="16" fireEvent="labLocDown_OpenDoor">I'll catch Lia AND those Thuggs. You stay here and keep watch!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="16" animFrame="talk_in" questControlPoint="lab1DoorGdoorOpen">
+		<text width="500">Make sure to avoid being seen by those Thuggs until you've got Kem's potion! Good luck!</text>
+		<textOnReturn width="500">Go back the same way you came... and don't forget to stay out of view of those Thuggs! Good luck!</textOnReturn>
+	</phase>
+	
+	<phase num="17" animFrame="talk_in" questControlPoint="missionCompleted">
+		<text width="500">Welcome back, my hero agent!</text>
+	</phase>
+	
+	
+</character>

@@ -1,0 +1,13 @@
+<itemConfig name='f_medieval_table' type='furniture' path='assetsNest/f_medieval_table.swf' thumb='assetsNest/f_medieval_table_thumb.swf' h='35'  boundType='radial' boundRadius='58' numSpots='4'>
+
+	<pos frame='1' bounds='' x='-80' y='0' z='160' gridSqs='3,4,13,14'/>
+	<pos frame='2' bounds='' x='-80' y='0' z='320' gridSqs='23,24,33,34'/>	
+	
+	<pos frame='3' bounds='' x='0' y='0' z='160' gridSqs='5,6,15,16'/>
+	<pos frame='4' bounds='' x='0' y='0' z='320' gridSqs='25,26,35,36'/>
+	
+	<pos frame='5' bounds='' x='80' y='0' z='160' gridSqs='7,8,17,18'/>
+	<pos frame='6' bounds='' x='80' y='0' z='320' gridSqs='27,28,37,38'/>
+	
+
+</itemConfig>

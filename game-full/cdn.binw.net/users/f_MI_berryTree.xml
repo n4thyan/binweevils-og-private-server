@@ -1,0 +1,14 @@
+<itemConfig name='f_MI_berryTree' type='furniture' path='assetsNest/f_MI_berryTree.swf' thumb='assetsNest/f_MI_berryTree_thumb.swf' h='150'  boundType='radial' boundRadius='14' numSpots='0' clickable='no'>
+	
+	<pos frame='1' bounds='' x='-120' y='0' z='120' ry='0' gridSqs='1,2,3,4'/>
+	<pos frame='2' bounds='' x='-120' y='0' z='200' ry='0' gridSqs='11,12,13,14'/>
+	<pos frame='3' bounds='' x='-120' y='0' z='280' ry='0' gridSqs='21,22,23,24'/>
+	<pos frame='4' bounds='' x='-120' y='0' z='360' ry='0' gridSqs='31,32,33,34'/>	
+	
+	
+	<pos frame='5' bounds='' x='120' y='0' z='120' ry='0' gridSqs='7,8,9,10'/>	
+	<pos frame='6' bounds='' x='130' y='0' z='200' ry='0' gridSqs='17,18,19,20'/>	
+	<pos frame='7' bounds='' x='140' y='0' z='280' ry='0' gridSqs='27,,28,29,30'/>	
+	<pos frame='8' bounds='' x='150' y='0' z='360' ry='0' gridSqs='37,38,39,40'/>
+	
+</itemConfig>

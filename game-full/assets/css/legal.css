@@ -1,0 +1,132 @@
+@font-face {
+	font-family: Burbank Small Bold;
+	src: url(/assets/fonts/Burbank\ Small\ Bold.otf);
+}
+@font-face {
+	font-family: Burbank Small Medium;
+	src: url(/assets/fonts/Burbank\ Small\ Medium.otf);
+}
+body, html {
+	background: #f2f2f2;
+	font-family: Burbank Small Medium;
+	font-size: 16px;
+}
+img {
+	user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+pre, .message {
+	max-width: 960px;
+}
+li {
+	margin: 10px
+}
+.hero.is-primary {
+	background: url(/assets/images/help-banner.png) no-repeat;
+	background-size: cover;
+	height: 266px;
+}
+.box {
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.box span.icon {
+	float: right;
+	font-size: 1.7em;
+	padding: 2rem 2rem 0 0;
+}
+.is-large.fab {
+	font-size: 7em;
+}
+.is-large.fas {
+	font-size: 5em;
+	margin-left: 0.2em;
+}
+.media-content {
+	overflow: hidden;
+}
+.token.number {
+	display: inline;
+	padding: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	text-align: inherit;
+	vertical-align: inherit;
+	border-radius: inherit;
+	font-weight: inherit;
+	white-space: inherit;
+	background: inherit;
+	margin: inherit;
+}
+.footer {
+	background-color: white;
+}
+.menu-list a.is-active {
+	background-color: #4d94ff;
+	color: #fff;
+	font-family: Burbank Small Bold;
+	margin: 10px;
+	text-align: center;
+}
+.menu-list a.is-active:hover {
+	background: #4685e4;
+}
+.title.is-3 {
+	font-size: 24px;
+	font-family: Burbank Small Bold;
+	margin-top: 10px;
+}
+.legal-banner {
+	align-items: stretch;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+li {
+	font-size: 16px;
+	margin-left: 40px;
+	margin: 0 40px 20px;
+}
+.menu.is-medium {
+	font-size: 1.25rem;
+}
+b {
+	color: #363636;
+}
+p {
+	font-size: 16px;
+	word-wrap: break-word;
+}
+.tag:not(body) {
+	align-items: center;
+	background-color: #4d94ff;
+	border-radius: 4px;
+	color: #fff;
+	display: inline-flex;
+	font-size: 0.75rem;
+	height: 2em;
+	justify-content: center;
+	line-height: 1.5;
+	padding-left: 0.75em;
+	padding-right: 0.75em;
+	white-space: nowrap;
+}
+.tag:not(body).is-info {
+	background-color: #4685e4;
+	color: #fff;
+}
+.tags {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+.fa-undo {
+	margin-right: 10px;
+}
+.menu-label {
+	text-align: center;
+}

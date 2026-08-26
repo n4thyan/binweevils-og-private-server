@@ -1,0 +1,27 @@
+<itemConfig name='f_zookeeper_giraffe' type='furniture' path='assetsNest/f_zookeeper_giraffe.swf' thumb='assetsNest/f_zookeeper_giraffe_thumb.swf' useCache='yes' h='140' boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-190,90,60,30' x='-130' y='0' z='120' ry='0' gridSqs='1,2'/>
+	<pos frame='2' bounds='-110,90,60,30' x='-130' y='0' z='119' ry='0' gridSqs='3,4'/>
+	<pos frame='3' bounds='-30,90,60,30' x='-30' y='0' z='118' ry='0' gridSqs='5,6'/>
+	<pos frame='4' bounds='50,90,60,30' x='50' y='0' z='121' ry='0' gridSqs='7,8'/>
+	<pos frame='5' bounds='130,90,60,30' x='130' y='0' z='122' ry='0' gridSqs='9,10'/>
+	
+	<pos frame='6' bounds='-190,170,60,30' x='-130' y='0' z='200' ry='0' gridSqs='11,12'/>
+	<pos frame='7' bounds='-110,170,60,30' x='-130' y='0' z='199' ry='0' gridSqs='13,14'/>
+	<pos frame='8' bounds='-30,170,60,30' x='-30' y='0' z='198' ry='0' gridSqs='15,16'/>
+	<pos frame='9' bounds='50,170,60,30' x='50' y='0' z='201' ry='0' gridSqs='17,18'/>
+	<pos frame='10' bounds='130,170,60,30' x='130' y='0' z='202' ry='0' gridSqs='19,20'/>
+	
+	
+	<pos frame='11' bounds='-190,250,60,30' x='-130' y='0' z='280' ry='0' gridSqs='21,22'/>
+	<pos frame='12' bounds='-110,250,60,30' x='-130' y='0' z='279' ry='0' gridSqs='23,23'/>
+	<pos frame='13' bounds='-30,250,60,30' x='-30' y='0' z='278' ry='0' gridSqs='25,26'/>
+	<pos frame='14' bounds='50,250,60,30' x='50' y='0' z='281' ry='0' gridSqs='27,28'/>
+	<pos frame='15' bounds='130,250,60,30' x='130' y='0' z='282' ry='0' gridSqs='29,30'/>
+	
+	
+	<pos frame='16' bounds='-190,320,60,30' x='-130' y='0' z='360' ry='0' gridSqs='31,32'/>	
+	<pos frame='17' bounds='-110,320,60,30' x='-130' y='0' z='359' ry='0' gridSqs='33,34'/>	
+	<pos frame='18' bounds='-30,320,60,30' x='-30' y='0' z='358' ry='0' gridSqs='35,36'/>	
+	<pos frame='19' bounds='50,320,60,30' x='50' y='0' z='361' ry='0' gridSqs='37,38'/>	
+	<pos frame='20' bounds='130,320,60,30' x='130' y='0' z='362' ry='0' gridSqs='39,40'/>
+</itemConfig>

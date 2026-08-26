@@ -1,0 +1,13 @@
+<itemConfig name='f_SSpyRoom_clock' type='furniture' path='assetsNest/f_SSpyRoom_clock.swf' thumb='assetsNest/f_SSpyRoom_clock_thumb.swf' h='60' boundType='rect'>
+	<pos frame='1' bounds='-201,407,0,80' x='-200' y='160' z='513' gridSqs='1'/>
+	<pos frame='2' bounds='-201,406,0,80' x='-200' y='160' z='512' gridSqs='11'/>
+	<pos frame='3' bounds='-201,405,0,80' x='-200' y='160' z='511' gridSqs='21'/>
+	<pos frame='4' bounds='-201,404,0,80' x='-200' y='160' z='510' gridSqs='31'/>
+	
+	<pos frame='5' bounds='201,408,0,80' x='-200' y='160' z='514' gridSqs='10'/>
+	<pos frame='6' bounds='201,409,0,80' x='-200' y='160' z='515' gridSqs='20'/>
+	<pos frame='7' bounds='201,410,0,80' x='-200' y='160' z='516' gridSqs='30'/>
+	<pos frame='8' bounds='201,411,0,80' x='-200' y='160' z='517' gridSqs='40'/>
+	
+
+</itemConfig>

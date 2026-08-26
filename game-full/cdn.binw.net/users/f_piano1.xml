@@ -1,0 +1,9 @@
+<itemConfig name='f_piano1' type='furniture' path='assetsNest/f_piano1.swf' thumb='assetsNest/f_piano1_thumb.swf' h='80' boundType='rect' numSpots='2' clickable='yes'>
+	<pos frame='1' bounds='-200,80,36,80' x='-160' y='0' z='160' ry='90' gridSqs='1'/>
+	<pos frame='2' bounds='-200,240,36,80' x='-160' y='0' z='320' ry='90' gridSqs='21'/>
+	<pos frame='3' bounds='-160,360,80,36' x='-160' y='0' z='350' ry='180' gridSqs='32,33'/>
+	<pos frame='4' bounds='-40,360,80,36' x='0' y='0' z='350' ry='180' gridSqs='35,36'/>
+	<pos frame='5' bounds='80,360,80,36' x='160' y='0' z='350' ry='180' gridSqs='38,39'/>
+	<pos frame='6' bounds='164,240,36,80' x='160' y='0' z='320' ry='90' gridSqs='30'/>
+	<pos frame='7' bounds='164,80,36,80' x='160' y='0' z='160' ry='90' gridSqs='10'/>
+</itemConfig>

@@ -1,0 +1,7 @@
+<itemConfig name='f_clock_grandfather' type='furniture' path='assetsNest/f_clock_grandfather.swf' thumb='assetsNest/f_clock_grandfather_thumb.swf' h='240' boundType='rect' clickable='yes'>
+	<pos frame='1' bounds='-200,380,80,20' x='-200' y='0' z='400' ry='0' gridSqs='31,32'/>
+	<pos frame='2' bounds='-115,380,75,20' x='-115' y='0' z='400' ry='0' gridSqs='33,34'/>
+	<pos frame='3' bounds='35,380,70,20' x='35' y='0' z='400' ry='0' gridSqs='35,36'/>
+	<pos frame='4' bounds='45,380,75,20' x='45' y='0' z='400' ry='0' gridSqs='37,38'/>
+	<pos frame='5' bounds='120,380,80,20' x='120' y='0' z='400' ry='0' gridSqs='39,40'/>
+</itemConfig>

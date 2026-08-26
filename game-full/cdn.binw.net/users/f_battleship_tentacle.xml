@@ -1,0 +1,12 @@
+<itemConfig name='f_battleship_tentacle' type='furniture' path='assetsNest/f_battleship_tentacle.swf' thumb='assetsNest/f_battleship_tentacle_thumb.swf' h='40'  boundType='rect' clickable='yes'>
+
+
+	<pos frame='1' bounds='-200,80,45,80' x='-200' y='160' z='160' gridSqs='1,2'/>
+	<pos frame='2' bounds='-200,160,45,80' x='-200' y='160' z='240' gridSqs='11,12'/>
+	<pos frame='3' bounds='-200,240,45,160' x='-200' y='160' z='380' gridSqs='21,22,31,32'/>
+	
+	<pos frame='4' bounds='180,80,45,80' x='200' y='160' z='160' gridSqs='9,10'/>
+	<pos frame='5' bounds='180,160,45,80' x='200' y='160' z='240' gridSqs='19,20'/>
+	<pos frame='6' bounds='180,240,45,160' x='200' y='160' z='380' gridSqs='29,30,39,40'/>
+	
+</itemConfig>

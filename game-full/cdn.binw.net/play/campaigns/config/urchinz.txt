@@ -1,0 +1,35 @@
+{
+	"idCampaign": "campaigns/urchinz/",
+	"campaign": "urchinz",
+	"urls": {
+		"redirect": "http://play.binweevils.com/php/redirect.php?loc=",
+		"terms": "http://www.binweevils.com/terms.php",
+		"official": "https://www.youtube.com/channel/UCcDrN92JAncCsRTgOwffdeA",
+		"logo": "https://www.youtube.com/channel/UCcDrN92JAncCsRTgOwffdeA",
+		"channel" : "https://www.youtube.com/channel/UCcDrN92JAncCsRTgOwffdeA",
+    "video0": "https://www.youtube.com/channel/UCcDrN92JAncCsRTgOwffdeA",
+    "video1": "https://www.youtube.com/channel/UCcDrN92JAncCsRTgOwffdeA",
+    "video2": ""
+	},
+	"area": {
+		"sectionID": "PartyBoxInside",
+		"roomID": 10005,
+		"video": {
+			"fileType": "mp4",
+			"defaultVideo": 0,
+			"loopMode": "ALL",
+			"manifest": [
+			  "Urchinz_Hasbro_Nerf_Nitro_Motofury_unboxing_SuperAwesome"
+			],
+			"labels": [
+			  "Nerf Nitro Motofury Unboxing"
+			]
+		},
+		"tasks" : {
+		},
+		"alerts" : {
+		},
+		"messages" : {
+		}
+	}
+}

@@ -1,0 +1,15 @@
+<itemConfig name='f_showerCubicle' type='furniture' path='assetsNest/f_showerCubicle.swf' thumb='assetsNest/f_showerCubicle_thumb.swf' h='160'  boundType='rect' numSpots='0'>
+	<pos frame='1' bounds='' x='-160' y='0' z='90' gridSqs='41,42,1,2'/>
+	<pos frame='2' bounds='' x='-160' y='0' z='160' gridSqs='1,2,11,12'/>
+	<pos frame='3' bounds='' x='-160' y='0' z='240' gridSqs='11,12,21,22'/>
+	<pos frame='4' bounds='' x='-160' y='0' z='402' gridSqs='21,22,31,32'/>
+	
+	<pos frame='5' bounds='' x='-80' y='0' z='401' gridSqs='23,24,33,34'/>
+	<pos frame='6' bounds='' x='0' y='0' z='400' gridSqs='25,26,35,36'/>
+	<pos frame='7' bounds='' x='80' y='0' z='403' gridSqs='27,28,37,38'/>
+	
+	<pos frame='8' bounds='' x='160' y='0' z='404' gridSqs='39,40,29,30'/>
+	<pos frame='9' bounds='' x='160' y='0' z='240' gridSqs='19,20,29,30'/>
+	<pos frame='10' bounds='' x='160' y='0' z='160' gridSqs='9,10,19,20'/>
+	<pos frame='11' bounds='' x='160' y='0' z='90' gridSqs='9,10,39,40'/>
+</itemConfig>

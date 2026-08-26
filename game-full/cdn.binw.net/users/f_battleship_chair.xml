@@ -1,0 +1,10 @@
+<itemConfig name='f_battleship_chair' type='furniture' path='assetsNest/f_battleship_chair.swf' thumb='assetsNest/f_battleship_chair_thumb.swf' h='80'  boundType='radial' boundRadius='60' numSpots='0' clickable='yes'>
+
+	<pos frame='1' bounds='' x='-113' y='0' z='320' ry='5' gridSqs='21,22,23,24,31,32,33,34'/>
+	<pos frame='2' bounds='' x='0' y='0' z='320' ry='0' gridSqs='24,25,26,27,34,35,36,37'/>
+	<pos frame='3' bounds='' x='113' y='0' z='320' ry='-5' gridSqs='27,28,29,30,37,38,39,40'/>
+	
+	<pos frame='4' bounds='' x='-113' y='0' z='160' ry='5' gridSqs='1,2,3,4,11,12,13,14'/>
+	<pos frame='5' bounds='' x='0' y='0' z='160' ry='0' gridSqs='4,5,6,7,14,15,16,17'/>
+	<pos frame='6' bounds='' x='113' y='0' z='160' ry='-5' gridSqs='7,8,9,10,17,18,19,20'/>
+</itemConfig>

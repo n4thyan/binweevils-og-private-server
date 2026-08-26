@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<character defaultCloseAnimFrame="rest" direction="-1">
+	<tasks>	
+		<task description="placeCoal" questControlID="2702" />
+		<task description="placeLever" questControlID="2703" />
+		<task description="placeWheel" questControlID="2704" />
+		<task description="placeTeslaPipe" questControlID="2705" />
+		<task description="openWall" questControlID="2706" />
+		<task description="generatorFixed" questControlID="2707" />
+		<task description="generatorOn" questControlID="2708" />
+		<task description="generatorOn" questControlID="2708" />
+		<task description="thingComplete" questControlID="2710" />
+		<task description="thingInRoof" questControlID="2711" />
+		<task description="thingIsAwake" questControlID="2712" />
+		<task description="rewardMachineActive" questControlID="2713" />
+		<task description="missionComplete" questControlID="2799" />		
+	</tasks>	
+	
+	<phase num="0" animFrame="talk_in" >
+		<text>I'm so glad you're here! I need your help fixing my generator!</text>
+		<userResponse>
+			<option progressTo="1">What's wrong with it?</option>
+			<option progressTo="-1">I want to explore first. I'll help you later.</option>
+		</userResponse>
+	</phase>	
+		
+	<phase num="1" animFrame="talk_3" sticky="1">
+		<text width="500">I seem to have misplaced the generator parts around this room! Will you help me find them? Come speak to me if you get stuck!</text>
+		<textOnReturn width="500">Each missing piece goes somewhere on the generator!</textOnReturn>
+		<userResponse>
+			<option progressTo="-1">Sure thing!</option>
+			<option progressTo="7">Any other tips?</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="2" animFrame="tallk_2"  questControlPoint="placeCoal">
+		<text width="500">Of course! Coal in the furnace! Excellent work! Can you find the other pieces?</text>
+		<userResponse>
+			<option progressTo="-1">I'll try!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="3" animFrame="tallk_2"  questControlPoint="placeWheel">
+		<text width="500">Brilliant, we're getting there! More pieces are missing though!</text>
+		<textOnReturn width="500">If we had a lever, we could turn the generator on...</textOnReturn>
+		<userResponse>
+			<option progressTo="-1">I'll keep looking!</option>
+			<option progressTo="7">Any other tips?</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="4" animFrame="tallk_4"  questControlPoint="placeLever">
+		<text width="500">Hm... I found a riddle when I was searching. "Click five times on green, a secret passage will be seen!" Isn't that candle there green?</text>
+		<userResponse>
+			<option progressTo="-1">Wow, you're right!</option>
+			
+		</userResponse>
+	</phase>
+	
+	<phase num="5" animFrame="tallk_4"  questControlPoint="openWall">
+		<text width="500">EUREKA! A secret passage! Quickly, place that coil on the generator!</text>
+		<userResponse>
+			<option progressTo="-1">Right away!</option>
+			<option progressTo="-1">Always with the orders...</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="6" animFrame="tallk_4"  questControlPoint="placeTeslaPipe">
+		<text width="500">Great work... but I think a few pieces are still missing...</text>
+		<userResponse>
+			<option progressTo="-1">Okay, I'll keep looking!</option>
+			<option progressTo="7">More pieces? Are you sure?</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="7" animFrame="tallk_4">
+		<text width="500">I found this super convenient poster earlier, should help you out!</text>
+		<textOnReturn width="500">Try checking the poster I put on the wall!</textOnReturn>
+		<userResponse>
+			<option progressTo="-1" fireEvent="spookyScience_instruction1Given">Cool! Thanks Lab!</option>	
+			<option progressTo="-1" fireEvent="spookyScience_instruction1Given">Wow, that IS convenient!</option>			
+		</userResponse>
+	</phase>
+	
+	<phase num="8" animFrame="tallk_4"  questControlPoint="generatorFixed">
+		<text width="500">By the power of SCIENCE, I think you've fixed it! Now you just need to turn it on!</text>
+		<userResponse>
+			<option progressTo="-1">Sure thing!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="9" animFrame="tallk_4"  questControlPoint="generatorOn">
+		<text width="500">Excellent work! Next I'll need your help through that door on the right!</text>
+		<textOnReturn width="500">What are you waiting for? Hurry through the door on the right to continue the experiment!</textOnReturn>		
+		<userResponse>
+			<option progressTo="-1">More help? Hurrying there now!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="10" animFrame="tallk_4"  questControlPoint="thingComplete">
+		<text width="500">I still need your help! Meet me in that room on the right!</text>
+		<textOnReturn width="500">Please help me out the room to the right.</textOnReturn>		
+		<userResponse>
+			<option progressTo="-1">On my way!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="11" animFrame="tallk_4"  questControlPoint="thingInRoof">
+		<text width="500">I'll teleport THING up to the roof. Hurry to the roof through that door on the right!</text>			
+		<userResponse>
+			<option progressTo="-1">Roger, roger!.</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="12" animFrame="tallk_4"  questControlPoint="thingIsAwake">
+		<text width="500">I think those five symbols on the wall above the door appear on those five slime pods on the roof! Perhaps if you tried clicking the pods in that order...</text>			
+		<userResponse>
+			<option progressTo="-1">Good spot!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="13" animFrame="tallk_4"  questControlPoint="rewardMachineActive">
+		<text width="500">Sorry, but I still need your help in the roof...</text>			
+		<userResponse>
+			<option progressTo="-1">On my way up now!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="14" animFrame="tallk_4"  questControlPoint="missionComplete">
+		<text width="500">BIN-TASTIC job! Have you ever considered a career in SCIENCE? What's that? You want to check out Flem's Vault and get rich instead? Well... okay!</text>	
+		<textOnReturn width="500">You'd make an amazing Lab assistant! Come back any time!</textOnReturn>	
+		<userResponse>
+			<option progressTo="-1">Later Lab!</option>
+			<option progressTo="-1">Vault now, volts later!</option>
+		</userResponse>
+	</phase>
+	
+	<phase num="15" animFrame="talk_in" >
+		<text>Oh, someone help! I need a Bin Weevil to help me!</text>
+		<userResponse>
+			<option progressTo="0">I'm a Bin Weevil!</option>
+			<option progressTo="-1">Eh, maybe later...</option>
+		</userResponse>
+	</phase>	
+		
+</character>

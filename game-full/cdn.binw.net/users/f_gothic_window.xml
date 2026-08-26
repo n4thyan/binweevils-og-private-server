@@ -1,0 +1,15 @@
+<itemConfig name='f_gothic_window' type='furniture' path='assetsNest/f_gothic_window.swf' thumb='assetsNest/f_gothic_window_thumb.swf' h='40' boundType='' clickable='no'>
+	
+	<pos frame='1' bounds='' x='-200' y='160' z='455' ry='0' gridSqs='41'/>
+	<pos frame='2' bounds='' x='-200' y='160' z='456' ry='0' gridSqs='11'/>
+	<pos frame='3' bounds='' x='-200' y='160' z='457' ry='0' gridSqs='31'/>
+	
+	<pos frame='4' bounds='' x='-200' y='160' z='458' ry='0' gridSqs='31,32,33'/>
+	<pos frame='5' bounds='' x='-200' y='160' z='459' ry='0' gridSqs='34,35'/>
+	<pos frame='6' bounds='' x='-200' y='160' z='458' ry='0' gridSqs='38,39,40'/>
+	
+	<pos frame='7' bounds='' x='-200' y='160' z='457' ry='0' gridSqs='40'/>
+	<pos frame='8' bounds='' x='-200' y='160' z='456' ry='0' gridSqs='20'/>
+	<pos frame='9' bounds='' x='-200' y='160' z='455' ry='0' gridSqs='50'/>
+
+</itemConfig>

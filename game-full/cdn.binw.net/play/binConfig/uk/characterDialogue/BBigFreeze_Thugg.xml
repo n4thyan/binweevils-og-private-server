@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<character defaultCloseAnimFrame="rest" direction="-1">
+	
+	<phase num="0" animFrame="talking" >
+		<text width="200">Where do you think you're going?! Get 'em, boys!</text>		
+	</phase>	
+	
+	<phase num="1" animFrame="rest">
+		<text width="150">Huh? Is that a floating hat?</text>		
+	</phase>	
+	
+	<phase num="2" animFrame="rest" >
+		<text width="150">Yap I think so...</text>		
+	</phase>
+	
+</character>

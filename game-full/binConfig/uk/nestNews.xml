@@ -1,0 +1,649 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+		****************************     NOTES     ****************************
+		
+		ask Andy R if you have any questions
+		
+		*********
+		TOP STORY
+		*********
+		if <topstory></topstory> has a 'y' in it, then the first story will be made the top story, eg <topstory>y</topstory>
+		Anything else will mean there's no top story
+		
+		
+		**
+		AD
+		**
+		Nest News can show 1 ad at a time, but you can put 2 ads here so that it can roll over from one to the other at midnight.
+		For example, if you want an ad to change at midnight 20/08/2010 and be different on 21/08/2010, make the end date of the first ad 20/08/2010 and the startDate of the second ad 21/08/2010
+		See the 'links' section below for information on the linkTarget and linkType
+		
+		<ad>
+			<fileName></fileName>
+			<startDate>11/08/2010</startDate>
+			<endDate>20/08/2010</endDate>
+			<linkTarget></linkTarget>
+			<linkType></linkType>
+			<trackingID></trackingID>
+		</ad>	
+		<ad>
+			<fileName></fileName>
+			<startDate>21/08/2010</startDate>
+			<endDate>30/08/2010</endDate>
+			<linkTarget></linkTarget>
+			<linkType></linkType>
+			<trackingID></trackingID>
+		</ad>	
+		
+		
+		**********
+		START DATE
+		**********
+		Each newsItem needs a startDate. It has to be in the format dd/mm/yyyy. 
+		If the date format is wrong, an error will be shown in the previewer.
+		
+		
+		**********
+		END DATE
+		**********
+		Optional - it will run forever if this is omitted.
+		The end date is inclusive, so will run that day and die at midnight.
+		It has to be in the format dd/mm/yyyy. 
+				
+				
+		********
+		CATEGORY
+		********
+		Use the following numbers for the categories, NOT the names
+		1) news
+		2) special area
+		3) tycoon
+		4) hunt
+		5) comp
+		
+		
+		********
+		HEADLINE
+		********
+		The headline needs to go inside CDATA tags to cover for funky characters, so 
+		BAD -> <headline>It's Summer</headline>
+		GOOD -> <headline><![CDATA[It's Summer]]></headline>
+		
+		
+		********
+		BODYTEXT
+		********
+		The bodyText needs to go inside CDATA tags to cover for funky characters and links
+		BAD -> <bodyText>He does too!!!!!!!!!!!!<a href="event:1">It's Summer</a></bodyText>
+		GOOD -> <bodyText><![CDATA[He does too!!!!!!!!!!!!<a href="event:1">It's Summer</a>]]><bodyText>
+		Links:
+		Links can go in the bodyText in 'a' tags like above. After 'event:', just put 1 for the first link info in
+		that newsItem, 2 for the next one etc.
+		
+		
+		*****
+		LINKS
+		*****
+		The 'links' tags can have any number of 'link' tags inside them. These relate to the 'a href' tags in the bodyText.
+		In the example below, the links would correspond to <a href="event:1"> and <a href="event:2">
+		
+		<links>
+			<link>
+				<linkTarget>www.otis.com</linkTarget>
+				<linkType></linkType>
+			</link>
+			<link>
+				<linkTarget>www.otis2.com</linkTarget>
+				<linkType></linkType>
+			</link>
+		</links>
+		
+		----------
+		linkTarget:
+		----------
+		can be
+		1) a web address
+		2) a location number from locationdefinitions.xml (102, 143 etc), 
+		3) an externalUI (the .swf path on the server)
+		------------
+		The linkType:
+		------------
+		can be one of the 3 numbers just above here 
+		
+-->
+
+<nestNews>	
+	<topstory>MULCH ISLAND</topstory>		
+	
+	<newsItem>
+		<startDate>04/09/2020</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>MULCH ISLAND</headline>
+		<bodyText><![CDATA[Flights are now leaving to go to<a href="event:1"> Mulch Island</a>! Mulch Island is a new discovery in the bin! Fly over to it now and hunt for the golden coin buried in the sand - it's worth 50 Mulch! <br> Happy Weeviling!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>129</linkTarget>
+				<linkType>2</linkType>
+			</link>
+		</links>
+</newsItem>
+
+<newsItem>
+		<startDate>01/04/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>HORRID HENRY HUNT!</headline>
+		<bodyText><![CDATA[<b> Horrid Henry </b> is back in the brand new DVD <b> Horrid Henry and the King of Bling </b>!<br><br>To celebrate the release of the new DVD, we've let Horrid Henry himself take over Bin Weevils with his very own Horrid Henry hunt!<br><br>Meet Henry and 3 of his friends by searching around the Binscape and you'll be rewarded with an awesome trailer for the new DVD, Mulch and even a chance to win <b> your very own copy of the DVD! </b>  Happy Hunting!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+			</link>
+		</links>
+</newsItem>
+	
+<newsItem>
+		<startDate>01/04/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>It's BOOMco Time!</headline>
+		<bodyText><![CDATA[<b>BOOMco </b> is here and to celebrate, we’ve set up a whole area dedicated to the awesome new blasters!<br><br>Head to the <a href="event:1"> Shopping Mall </a> and enter the <b> BOOMco </b> shutter to be transported to the brand new <b> BOOMco </b> hangout area. Enter competitions, collect your very own <b> BOOMco </b> wall poster, play games, find out all about the different blasters and much more!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>104</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>
+	
+<newsItem>
+		<startDate>17/03/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>FURBLINGS ARE HERE!</headline>
+		<bodyText><![CDATA[<b>Furby </b> is back in the Binscape with <b> Furby Furblings! </b><br><br>Head to the <b> Furblings HQ </b> at <a href="event:1"> Gong's Pipenest </a> to watch exclusive new videos, grab info on the <b>Furby</b> app, hang out with the new generation of <b> Furby Boom </b> colours and more!<br><br>Can you find all 6 of the <b> Furblings </b> around the Binscape? There's plenty of Mulch to be won if you can!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>103</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>
+
+<newsItem>
+		<startDate>14/03/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>MY LITTLE PONY</headline>
+		<bodyText><![CDATA[The next episode of <b>My Little Pony: Friendship Is Magic Series 3</b> is out now at <a href="event:1">Rigg's Multiplex!</a><br><br>Join Twilight Sparkle, Rainbow Dash and the rest of the gang in Ponyville where you can watch all new episodes, grab yourself a handful of awesome downloads, earn nest items, win prizes and much more!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>111</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>
+
+<newsItem>
+		<startDate>06/03/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>HARVEY DREW IS HERE!</headline>
+		<bodyText><![CDATA[<b>Harvey Drew and the Bin Men From Outer Space </b> is the brand new book from Cas Lester filled with adventure, space and...rubbish?!<br><br>Head to <a href="event:1"> Flem Manor Library </a> now where you'll be greeted with an exclusive extract of the new book to read!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>144</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>
+	
+<newsItem>
+		<startDate>28/02/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>FRUBES GIVEAWAY!</headline>
+		<bodyText><![CDATA[If you haven't managed to earn all of the <b> Frubes Academy </b> contestant posters then now's your chance!<br><br>We're giving away all of the <b> Frubes Academy </b> posters with just one simple click. Enter the <b> Frubes Academy </b> area at <a href="event:1"> Slam's Party box </a> and start any of the games to instantly receive that contestants poster!<br><br>But you better hurry as this weekend is your last chance to get the exclusive posters and transform your nest into a Frube-tastic wonderland!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>127</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>
+
+<newsItem>
+		<startDate>27/02/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>TIMMY FAILURE!</headline>
+		<bodyText><![CDATA[Timmy Failure is back and he’s about to crack the biggest case of his generation.<br>But someone is clearly trying to game the system. Bamboozle. Hoodwink.<br><br>So, naturally, he has to guard against the one thing that can bring him down:<br>SHENANIGANS.<br><br>Timmy and Total set up their new office in the Binscape last year, and the office has now re-opened for business!<br><br>Visit Total Failure, Inc. outside  <a href="event:1">Rum's Airport</a> now to watch videos, read extracts, and win 10,000 Mulch as well as a copy of <b> Timmy Failure: Now Look What You’ve Done.</b>]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>129</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>		
+
+<newsItem>
+		<startDate>14/02/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>FRUBES ACADEMY GAME ON!</headline>
+		<bodyText><![CDATA[Have you played the <b> Frubes Academy </b> games yet?<br><br>There are 6 awesome games in total, one for each of the <b> Frubes Academy </b> contestants. There's also a hi-score leaderboard for each game so try and beat your friends to the top and become number one!<br><br>There's plenty of Mulch to be won every day as well as 6 amazing <b> Frubes Academy </b> character posters for your nest. There's even a super secret nest item hidden in one of the games so complete them all to find out where it is!<br><br>Head to <a href="event:1"> Slam's Party box </a> to enter the Frubes Academy area now!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>127</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>		
+
+<newsItem>
+		<startDate>10/02/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>FRUBES ACADEMY WINNER!</headline>
+		<bodyText><![CDATA[The <b> Frubes Academy </b> votes have been counted and the winner has been announced!<br><br>Can you guess which of the <b> Frubes Academy </b> characters took the top spot? Head to the area at <a href="event:1"> Slam's Party box </a> now to find out!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>127</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>	
+	
+<newsItem>
+		<startDate>06/02/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>MYSTERY NEST ITEM!</headline>
+		<bodyText><![CDATA[Have you played the <b> Frubes Academy </b> games yet?<br><br>If not then now's your chance! We've hidden a secret mystery  <b>  Frubes Academy </b>  nest item in one of the them and all you have to do is complete the games to find out which of the 6 games we've hidden the nest item in!<br><br>Head to the <b> Frubes Academy </b>  area at <a href="event:1"> Slam's Party box </a> now!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>127</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>	
+	
+<newsItem>
+		<startDate>03/02/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>THE LEGO MOVIE!</headline>
+		<bodyText><![CDATA[<b>The LEGO Movie </b> has assembled in Bin Weevils!<br><br>Head to <a href="event:1"> Flem Manor </a> and enter the<b> LEGO </b>portal to be transported to the world of <b> The LEGO Movie </b><br><br>Join Emmet, Batman, Wyldstyle and the rest of the <b> LEGO </b>gang and grab free nest items, enter awesome competitions, play games and much, much more!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>125</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>	
+	
+<newsItem>
+		<startDate>03/02/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>WIMPY KID IS BACK!</headline>
+		<bodyText><![CDATA[<b>Diary of a Wimpy Kid: The Third Wheel </b> is out now in paperback so we thought we'd celebrate in style by revamping <a href="event:1"> Flem Manor Library </a> with some new and exciting <b> Diary of a Wimpy Kid </b> awesomeness!<br><br>Head there now and vote for your favourite <b> Diary of a Wimpy Kid </b> book,read a hilarious extract, enter our amazing competition to win a <b> SIGNED </b> copy of the book and more!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>144</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>	
+	
+<newsItem>
+		<startDate>27/01/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>HOW YOUR BODY WORKS!</headline>
+		<bodyText><![CDATA[<b>How Your Body Works</b> is back in the Binscape!<br><br>Head to the <a href="event:1">Shopping Mall</a> now and enter the giant Billie Bones to be transported inside the world of the human body!<br><br>Play games, enter competitions for massive amounts of Mulch, read all about the cool <b>How Your Body Works</b> mag and more!<br><br>You can even help create your own Billie Bones in our Build Your Body mission! Five of his body parts have been spread out across the Binscape and you have to find them all to put him back to together again!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>104</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>	
+
+<newsItem>
+		<startDate>16/01/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>FRUBES ACADEMY!</headline>
+		<bodyText><![CDATA[<b>THE FRUBES ACADEMY HAS TAKEN OVER <a href="event:1">SLAM'S PARTY BOX!</a></b><br><br>There are 6 amazing <b>Frubes</b> character games to play, each with their own unique poster up for grabs for your nest! Can you beat your friends to the top of the game leaderboards?</b></b><br>You can also enter our amazing <b>Frubes</b> competition to win a massive <b>50,000 Mulch!</b><br><br><br>And don't forget to vote for your favourite <b>Frubes</b> contestant! We'll announce the <b>Frubes Academy</b> winner once all the votes are in!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>127</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>	
+	
+<newsItem>
+		<startDate>14/01/2014</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>WIN AN IPAD MINI!</headline>
+		<bodyText><![CDATA[If you head over to the Cupets site right now by <a href="event:1">clicking HERE</a>, you'll be in for a chance to win an <b>AMAZING iPad Mini</b>  as well as 20 super cool Cupet toys.<br><br>Head there now and good luck!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>http://play.binweevils.com/php/redirect2.php?loc=http://www.evolutioncomps.co.uk/cupets</linkTarget>
+				<linkType>1</linkType>
+				</link>
+		</links>
+</newsItem>	
+
+
+<newsItem>
+		<startDate>26/12/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>Adventure Sketchers</headline>
+		<bodyText><![CDATA[Head to the <b>LeapFrog Adventure Sketchers</b> area outside the <a href="event:1">Shopping Mall</a> and have a go at sketching your very own hero!<br><br><b>Tink</b> and <b>Clott</b> have had a go too so be sure to take part in our <b>Tink & Clott Sketch-Off</b> vote to decide whose is the best whilst you're there!<br><br>Draw, play and create with <b>LeapFrog Adventure Sketchers!</b>]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>104</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>	
+
+<newsItem>
+		<startDate>20/12/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>SKYLANDERS ARE BACK!</headline>
+		<bodyText><![CDATA[How well do you know the world of <b>Skylanders</b>? Find out with the brand new <b>Skylanders A-Z of Skylands Book</b>!<br><br>Head to <a href="event:1">Flem Manor library</a> now and test your knowledge with our ultimate <b>Skylanders Quiz</b>. You can even take a sneak peek inside the fab book with our exclusive extract AND win your very own copy in our amazing <b>Skylanders</b> competition!<br><br>]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>144</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>
+
+<newsItem>
+		<startDate>17/12/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>Visit The Dinosaurs!</headline>
+		<bodyText><![CDATA[Have you entered the prehistoric world of <b>Walking With Dinosaurs</b>?<br><br>If you haven't then head to <a href="event:1">Slam's Party Box!</a> and travel back in time to the land of the giants!<br><br>Meet Patchi, Juniper and the rest of the Dino-gang. Play games, win prizes, learn all about the upcoming film and much, much more!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>127</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+</newsItem>
+
+<newsItem>
+		<startDate>06/11/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>Can you be the best? </headline>
+		<bodyText><![CDATA[Top the leaderboards with <a href="event:1">the brand new Nerf levels</a> for both Mega Centurion and RapidStrike competitions!<br><br>It's unlimited ammo so take aim and become the best!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>121</linkTarget>
+				<linkType>2</linkType>
+			</link>
+		</links>
+</newsItem>	
+
+<newsItem>
+		<startDate>01/11/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>VIP PETS ARE HERE</headline>
+		<bodyText><![CDATA[Head to Gong's Pipenest and enter the <a href="event:1">VIP Pets Brilliant Beauty Salon!</a>. There's tons to do with amazing prizes to be won, nest items to own, awesome downloads to grab and plenty of info on each of the VIP Pets.]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>10007</linkTarget>
+				<linkType>2</linkType>
+			</link>
+		</links>
+</newsItem>
+
+<newsItem>
+		<startDate>17/10/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>CLOUDY 2</headline>
+		<bodyText><![CDATA[Head to the Cloudy with a chance of Meatballs 2 area to pick up a brand new 'Steve the Monkey' nest item! You can fly to the Cloudy with a chance of Meatballs 2 area from <a href="event:1">Rum's Airport</a>, or why not click one of the four 'foodimals' now hanging around the Binscape to go straight there!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>129</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+	</newsItem>	
+
+<newsItem>
+		<startDate>15/10/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>SKYLANDERS</headline>
+		<bodyText><![CDATA[Skylanders are back with the all new Skylanders Swap Force! Head to <a href="event:1">Slam’s Party Box</a> to be transported to the world of Skylanders! Play our exclusive Swap Force game, learn about the all new characters, win plenty of Mulch and much, much more!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>127</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+	</newsItem>	
+	
+<newsItem>
+		<startDate>14/10/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>TEKSTA ROBOTIC DOG!</headline>
+		<bodyText><![CDATA[Get ready for launch! Teksta the robotic puppy has arrived in the Bin and is gearing up for his biggest adventure yet: SPACE!Enter the Teksta Mission Control outside <a href="event:1">Rum’s Airport</a> and play the Teksta Training game and Parachute Training game every day to get Teksta ready for his mission. The more you play, the more Teksta will learn for his record-breaking adventure!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>132</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+	</newsItem>		
+
+<newsItem>
+		<startDate>10/10/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>FURBY EXPERIENCE</headline>
+		<bodyText><![CDATA[Share your Furby Boom experience with your friends by sending them a Furby friendship card! Head to the Furby Boom area at <a href="event:1">Gong's Pipenest</a> now!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>103</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+	</newsItem>	
+	
+<newsItem>
+		<startDate>08/10/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>CLOUDY 2</headline>
+		<bodyText><![CDATA[Cloudy with a chance of Meatballs 2 is here and to celebrate, you can now fly to the tantalisingly tasty world through <a href="event:1">Rum's Airport!</a> Head there now to play ton's of chewy games, enter our crunchy competition, earn our delectable nest items and much, much more!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>132</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+	</newsItem>	
+	
+<newsItem>
+		<startDate>04/10/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>HEROES OF OLYMPUS</headline>
+		<bodyText><![CDATA[From the author that brought you Percy Jackson and The Lightning Thief, we're proud to announce the brand new Heroes Of Olympus book, The House Of Hades, here in the Binscape! Head to <a href="event:1">Flem Manor library</a> to read an exclusive chapter of the new book!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>144</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+	</newsItem>	
+
+<newsItem>
+		<startDate>02/10/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>LEAPPAD ULTRA</headline>
+		<bodyText><![CDATA[The LeapFrog LeapPad Ultra is back! Head to the LeapPad Ultraverse by zooming up the Ultra tube outside <a href="event:1">Flem Manor</a> and you'll be transported to space! Test your skills with four amazing LeapPad Ultraverse missions and become an Ultra Bin Weevil!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>125</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+	</newsItem>	
+	
+<newsItem>
+		<startDate>16/09/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>EPIC IS HERE!</headline>
+		<bodyText><![CDATA[Join Mub, Grub and the rest of the EPIC gang outside the <a href="event:1">Shopping Mall!</a> There's lots to do with hilarious trailers to watch, fantastic nest items to earn and even a Mub & Grub Garden Inspector Takeover where you can win one of the rarest items on Bin Weevils; a solid GOLD Mub & Grub garden statue! Not only that but there's also 3 EPIC games dotted around the Binscape for you to play and earn Mulch!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>104</linkTarget>
+				<linkType>2</linkType>
+				</link>
+		</links>
+	</newsItem>	
+	
+<newsItem>
+		<startDate>30/08/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>SKY SPORTS GAME</headline>
+		<bodyText><![CDATA[Sky Sports Game Changers has entered the Binscape with an exclusive competition where you can win a whole range of awesome sports equipment! There’s 3 footballs kicking around the Bin Weevils world so if you spot them, give them a click and enter for your chance to win! Remember, Game Changers is on Saturday’s at 9AM on Sky Sports 1.]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget></linkTarget>
+				<linkType></linkType>
+				</link>
+		</links>
+	</newsItem>	
+
+	
+<newsItem>
+		<startDate>28/03/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>HOBBIT INTERVIEWS</headline>
+		<bodyText><![CDATA[Watch 3 exclusive Bin Weevils interviews with the cast from the movie <strong>The Hobbit: An Unexpected Journey</strong> and find out which colours they would pick for their Bin Weevils accounts. Watch now on the <a href="event:1">What's New Blog.</a>]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget>http://blog.binweevils.com/2013/03/the-hobbit-an-unexpected-journey-interviews/</linkTarget>
+				<linkType>1</linkType>
+			</link>
+		</links>
+	</newsItem>
+
+<newsItem>
+		<startDate>10/01/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline>TRADE BIN BOTS</headline>
+		<bodyText><![CDATA[Bin-tastic news, Bin Bot collectors! Bin Tycoons can now trade their Bin Bots with other Bin Tycoons…so if you’re missing that special bot you need for your collection, just find a buddy who’s got an extra! You can swap your bots as many times as you like, for FREE! To get started, click on the Bin Bots Portal inside the front room of your nest!]]></bodyText>
+		<pic></pic>
+		<links>
+			<link>
+				<linkTarget></linkTarget>
+				<linkType></linkType>
+			</link>
+		</links>
+	</newsItem>
+
+
+<newsItem>				
+		<startDate>08/02/2013</startDate>
+		<endDate></endDate>
+		<category>1</category>
+		<headline><![CDATA[FAN ART]]></headline>
+		<bodyText><![CDATA[How cool would it be to see your artwork up in the spot lights?! Very cool indeed! Check out some Bin-tastic Bin Weevils artwork on the <a href="event:1">FAN ART</a> page. If you would like to share your Bin Weevils artwork with us then please send it to, <a href="event:2">pics@binweevils.com</a><br><br></br> You can learn how to draw a Bin Weevil on the <a href="event:3">Fun Stuff</a> page.]]></bodyText>
+		<pic></pic>
+		<links>
+		<link>
+				<linkTarget>http://blog.binweevils.com/fan-art/</linkTarget>
+				<linkType>1</linkType>
+			</link>
+			<link>
+				<linkTarget>pics@binweevils.com</linkTarget>
+				<linkType>1</linkType>
+			</link>
+		<link>
+				<linkTarget>http://blog.binweevils.com/fun-stuff/</linkTarget>
+				<linkType>1</linkType>
+			</link>
+			</links>
+	</newsItem>
+
+	
+	<!--
+	<newsItem>
+		<startDate>18/08/2010</startDate>
+		<endDate></endDate>
+		<category>5</category>
+		<headline>Super Headline</headline>
+		<bodyText>Personalization and more</bodyText>
+		<pic></pic>
+		<links>
+		</links>
+	</newsItem>
+	<newsItem>
+		<startDate>19/08/2010</startDate>
+		<endDate></endDate>
+		<category>6</category>
+		<headline>Headline 5</headline>
+		<bodyText><![CDATA[Esto es una <a href="event:1">cagada</a> increble.]]></bodyText>
+		<pic>1278932345.jpg</pic>
+		<links>
+			<link>
+				<linkTarget>103</linkTarget>
+				<linkType>2</linkType>
+			</link>
+		</links>
+	</newsItem>
+	-->
+</nestNews>

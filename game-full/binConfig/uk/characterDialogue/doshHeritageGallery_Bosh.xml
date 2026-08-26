@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<character defaultCloseAnimFrame="rest" direction="-1">
+	<tasks>		
+		<task description="galleryChallengeON" questControlID="501" />
+		<task description="challengeCompleted" questControlID="502" />
+		<task description="frameOnWall" questControlID="504" />
+		<task description="picOnWall" questControlID="506" />	
+	</tasks>	
+	
+	<phase num="0" animFrame="talk_in">
+		<text>Hey! Who's that?</text>
+		<userResponse>
+			<option progressTo="1">I'm an SWS agent! You can relax.</option>
+			<option progressTo="1">No need to panic, I'm a friend who's here to help.</option>
+		</userResponse>		
+	</phase>	
+		
+	<phase num="1" animFrame="talk_in" >
+		<text width="300">Oh, thank goodness. Those intruders have made a right mess in here, and I have a feeling they're still around!</text>
+			
+		<userResponse>
+			<option progressTo="3">Where do you think they've gone to?</option>
+			<option progressTo="2">Do you need a hand cleaning up?</option>
+		</userResponse>		
+	</phase>		
+	
+	<phase num="2" animFrame="talk_in" sticky="1">
+		<text width="300" >Well, if you're offering, I sure could use your help getting these pictures back into the right places!</text>
+		<userResponse>		
+		<option progressTo="5" fireTaskID="galleryChallengeON">No problem, I'm here to help!</option>
+		</userResponse>		
+	</phase>	
+
+	<phase num="3" animFrame="talk_in">
+		<text width="300">They could be anywhere! There are so many hidden passageways in this palace, no one's explored them all.</text>
+			
+		<userResponse>
+			<option progressTo="4">If they're still in here, I'll make sure to track them down.</option>
+		</userResponse>		
+	</phase>		
+		
+	<phase num="4" animFrame="talk_in" sticky="1">
+		<text width="300">Do you mind helping me get these pictures back into the right places first? </text>		
+		<textOnReturn>
+			 Changed your mind?  Are you ready to help me now?
+		</textOnReturn>				
+		<userResponse>
+			<option progressTo="5" fireTaskID="galleryChallengeON">Sure! Let's get started!</option>
+			<option progressTo="-1">Sorry, I don't have time right now!</option>
+		</userResponse>		
+	</phase>		
+	
+	<phase num="5" animFrame="talk_in" sticky="1" questControlPoint="galleryChallengeON">
+		<text width="300">I've got a hunch that one of these portraits is missing.  It could be an important clue!  Let's get to work sorting them out.</text>
+		<textOnReturn>
+			 These pictures still aren't in the right places. We've got to sort them out to see if there's a clue here.
+		</textOnReturn>			
+	</phase>	
+	
+	<phase num="6" animFrame="talk_in" sticky="1" questControlPoint="challengeCompleted">
+		<text  width="300">That’s odd! The picture of Slosh is missing!  Why would anyone want to steal that picture? </text>
+		<userResponse>		
+		<option progressTo="7">Do you have any idea who might know something?</option>
+		</userResponse>		
+	</phase>		
+	
+	<phase num="7" animFrame="bait">
+		<text  width="300">Why don't you try looking in the library... </text>
+		<userResponse>
+		<option progressTo="8">Good plan, Bosh! I'll have a look around.</option>
+		</userResponse>		
+	</phase>	
+	
+	<phase num="8" animFrame="talk_in"  sticky="1" >
+		<text  width="300">Good luck, my friend!</text>
+		<textOnReturn>
+			Thanks again for your help, agent!
+		</textOnReturn>	
+	</phase>		
+	
+	<phase num="9" animFrame="talk_in" questControlPoint="frameOnWall">
+		<text  width="300">Well done for finding the frame, but the picture is still missing!</text>
+	</phase>	
+	
+	<phase num="10" animFrame="talk_in" questControlPoint="picOnWall">
+		<text>Great work!  That's the picture, all right!</text>
+		<textOnReturn>
+			Thanks again for your help, agent!
+		</textOnReturn>	
+	</phase>		
+	
+</character>

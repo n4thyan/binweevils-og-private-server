@@ -1,0 +1,1 @@
+{"items": [{"price": 250, "currency":"mulch", "minLevel": 8, "shopType": "nestco", "tycoonOnly": "0", "probability": 128, "name": "Dancing Daisy Flower Pot", "configLocation": "o_dancingVase1", "hexcolour": "-1"}]}

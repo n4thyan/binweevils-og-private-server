@@ -1,0 +1,5 @@
+<itemConfig id='f_framedPic' type='furniture' path='assetsNest/f_framedPic.swf' thumb='assetsNest/f_framedPic_thumb.swf' h='90' boundType='rect' numSpots='0'>
+	<pos frame='1' bounds='-200,80,5,160' x='-160' y='120' z='240' gridSqs='1,11'/>
+	<pos frame='2' bounds='-80,395,160,5' x='-160' y='120' z='395' gridSqs='34,35,36,37'/>
+	<pos frame='3' bounds='200,80,6,160' x='-120' y='120' z='240' gridSqs='10,20'/>
+</itemConfig>

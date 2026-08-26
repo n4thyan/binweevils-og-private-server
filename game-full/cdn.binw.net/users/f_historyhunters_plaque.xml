@@ -1,0 +1,9 @@
+<itemConfig name='f_historyhunters_plaque' type='furniture' path='assetsNest/f_historyhunters_plaque.swf' thumb='assetsNest/f_historyhunters_plaque_thumb.swf' h='100' boundType='' clickable='no'>
+	<pos frame='1' bounds='' x='-120' y='200' z='402' ry='0' gridSqs='31,32,33,34'/>
+	<pos frame='2' bounds='' x='0' y='200' z='402' ry='0' gridSqs='35,36'/>
+	<pos frame='3' bounds='' x='120' y='200' z='402' ry='0' gridSqs='37,38,39,40'/>
+	
+	<pos frame='4' bounds='' x='-120' y='60' z='402' ry='0' gridSqs='31,32,33,34'/>
+	<pos frame='5' bounds='' x='0' y='60' z='402' ry='0' gridSqs='35,36'/>
+	<pos frame='6' bounds='' x='120' y='60' z='402' ry='0' gridSqs='37,38,39,40'/>
+</itemConfig>

@@ -1,0 +1,12 @@
+<itemConfig name='f_safari_bed' type='furniture' path='assetsNest/f_safari_bed.swf' thumb='assetsNest/f_safari_bed_thumb.swf' h='60'  boundType='rect' clickable='yes'>
+
+	<pos frame='1' bounds='-200,80,120,160' x='-80' y='0' z='240' ry='-90' gridSqs='1,2,3,11,12,13'/>
+	<pos frame='2' bounds='-200,240,120,160' x='-80' y='0' z='404' ry='-90' gridSqs='21,22,23,31,32,33'/>
+
+	<pos frame='3' bounds='-200,240,120,160' x='-80' y='0' z='404' ry='0' gridSqs='21,22,23,31,32,33'/>
+	<pos frame='4' bounds='80,240,120,160' x='200' y='0' z='405' ry='0' gridSqs='28,29,30,38,39,40'/>
+	
+	<pos frame='5' bounds='80,240,120,160' x='200' y='0' z='405' ry='90' gridSqs='28,29,30,38,39,40'/>
+	<pos frame='6' bounds='80,80,120,160' x='200' y='0' z='240' ry='90' gridSqs='8,9,10,18,19,20'/>
+	
+</itemConfig>

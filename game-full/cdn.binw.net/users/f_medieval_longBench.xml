@@ -1,0 +1,5 @@
+<itemConfig name='f_medieval_longBench' type='furniture' path='assetsNest/f_medieval_longBench.swf' thumb='assetsNest/f_medieval_longBench_thumb.swf' h='40'  boundType='rect'  numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-200,200,40,320' x='-180' y='0' z='404' ry='-90' gridSqs='1,11,21,31'/>	
+	<pos frame='2' bounds='160,200,40,320' x='180' y='0' z='405' ry='90' gridSqs='10,20,30,40'/>
+
+</itemConfig>

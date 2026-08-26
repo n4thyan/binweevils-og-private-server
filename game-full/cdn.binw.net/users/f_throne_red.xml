@@ -1,0 +1,5 @@
+<itemConfig name='f_throne_red' type='furniture' path='assetsNest/f_throne_red.swf' thumb='assetsNest/f_throne_red_thumb.swf' h='175' boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-80,320,80,65' x='-40' y='0' z='340' ry='0' gridSqs='34,35'/>
+	<pos frame='2' bounds='-40,319,80,65' x='0' y='0' z='339' ry='0' gridSqs='35,36'/>
+	<pos frame='3' bounds='0,321,80,65' x='40' y='0' z='341' ry='0' gridSqs='36,37'/>
+</itemConfig>

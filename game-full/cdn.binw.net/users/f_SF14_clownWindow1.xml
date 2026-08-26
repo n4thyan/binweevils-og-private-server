@@ -1,0 +1,8 @@
+<itemConfig name='f_SF14_clownWindow1' type='furniture' path='assetsNest/f_SF14_clownWindow1.swf' thumb='assetsNest/f_SF14_clownWindow1_thumb.swf' h='80' boundType='rect' clickable='no'>
+	<pos frame='1' bounds='-140,380,80,20' x='-100' y='120' z='400' gridSqs='32,33,34'/>
+	<pos frame='2' bounds='-60,380,80,20' x='0' y='120' z='400' gridSqs='34,35,36,37'/>
+	<pos frame='3' bounds='60,380,80,20' x='100' y='120' z='400' gridSqs='37,38,39'/>
+	<pos frame='4' bounds='-140,380,80,20' x='-100' y='80' z='400' gridSqs='32,33,34'/>
+	<pos frame='5' bounds='-60,380,80,20' x='0' y='80' z='400' gridSqs='34,35,36,37'/>
+	<pos frame='6' bounds='60,380,80,20' x='100' y='80' z='400' gridSqs='37,38,39'/>
+</itemConfig>

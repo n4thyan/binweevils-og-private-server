@@ -1,0 +1,8 @@
+<itemConfig name='f_halloween2016_bed' type='furniture' path='assetsNest/f_halloween2016_bed.swf' thumb='assetsNest/f_halloween2016_bed_thumb.swf' h='40'  boundType='rect' numSpots='0' clickable='yes'>
+	<pos frame='1' bounds='-200,80,160,160' x='-40' y='0' z='160' ry='-90' gridSqs='1,2,3,4'/>
+	<pos frame='2' bounds='-200,160,160,160' x='-40' y='0' z='240' ry='-90' gridSqs='11,12,13,14,21,22,23,24'/>
+	<pos frame='3' bounds='-200,240,160,160' x='-40' y='0' z='401' ry='-90' gridSqs='21,22,23,24,31,32,33,34'/>
+	<pos frame='4' bounds='40,80,160,160' x='40' y='0' z='160' ry='90' gridSqs='7,8,9,10'/>
+	<pos frame='5' bounds='40,160,160,160' x='40' y='0' z='240' ry='90' gridSqs='17,18,19,20,27,28,29,30'/>
+	<pos frame='6' bounds='40,240,160,160' x='40' y='0' z='404' ry='90' gridSqs='27,28,29,30,37,38,39,40'/>
+</itemConfig>

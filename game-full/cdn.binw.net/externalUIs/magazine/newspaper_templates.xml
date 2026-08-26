@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<templates thumbsPath="http://cdn.binw.net/externalUIs/magazine/magazineTemplates/">
+	<!-- front cover has title, 1 large image and issuenum - not treated here in the config -->
+	<!-- if the left is doubleSpread, the right will be <page template="empty"> -->
+	<page template="double" doubleSpread="true">
+		<img sz="4" x="37" y="29" />
+	</page>		
+	<page template="cols2" doubleSpread="false">
+		<txt width="135" height="347" x="26" y="29"></txt>
+		<txt width="135" height="347" x="171" y="29"></txt>
+	</page>
+	<page template="onepage" doubleSpread="false">
+		<img sz="3" x="26" y="29" />
+	</page>	
+	<page template="tworowspictop" doubleSpread="false">
+		<img sz="2" x="26" y="29" />
+		<txt width="280" height="168" x="26" y="208"></txt>
+	</page>	
+	<page template="tworows2text1pic" doubleSpread="false">
+		<txt width="135" height="168" x="26" y="29"></txt>
+		<txt width="135" height="168" x="171" y="29"></txt>
+		<img sz="2" x="26" y="208" />
+	</page>	
+	<page template="coltextcoltextpic" doubleSpread="false">
+		<txt width="135" height="347" x="26" y="29"></txt>
+		<txt width="135" height="168" x="171" y="29"></txt>
+		<img sz="1" x="171" y="208" />
+	</page>	
+	<page template="rowtextrowpic" doubleSpread="false">
+		<txt width="280" height="168" x="26" y="29"></txt>
+		<img sz="2" x="26" y="208" />
+	</page>
+	<page template="rowpicrow2text" doubleSpread="false">		
+		<img sz="2" x="26" y="29" />
+		<txt width="135" height="168" x="26" y="208"></txt>
+		<txt width="135" height="168" x="171" y="208"></txt>
+	</page>	
+	<page template="rowpicrowpictext" doubleSpread="false">		
+		<img sz="2" x="26" y="29" />
+		<img sz="1" x="26" y="208" />
+		<txt width="135" height="168" x="171" y="208"></txt>
+	</page>	
+	<page template="rowpictextrowpic" doubleSpread="false">		
+		<img sz="1" x="26" y="29" />
+		<txt width="135" height="168" x="171" y="29"></txt>
+		<img sz="2" x="26" y="208" />
+	</page>	
+	<page template="rowpicrowtextpic" doubleSpread="false">		
+		<img sz="2" x="26" y="29" />		
+		<txt width="135" height="168" x="26" y="208"></txt>
+		<img sz="1" x="171" y="208" />
+	</page>
+	<page template="coltextcol2pics" doubleSpread="false">
+		<txt width="135" height="347" x="26" y="29"></txt>
+		<img sz="1" x="171" y="29" />
+		<img sz="1" x="171" y="208" />
+	</page>		
+	<page template="pics4" doubleSpread="false">
+		<img sz="1" x="26" y="29" />
+		<img sz="1" x="26" y="208" />
+		<img sz="1" x="171" y="29" />
+		<img sz="1" x="171" y="208" />
+	</page>	
+	<page template="rowpicrowpic" doubleSpread="false">
+		<img sz="2" x="26" y="29" />
+		<img sz="2" x="26" y="208" />
+	</page>	
+	<page template="row2textrow2pic" doubleSpread="false">
+		<txt width="135" height="168" x="26" y="29"></txt>
+		<txt width="135" height="168" x="171" y="29"></txt>
+		<img sz="1" x="26" y="208" />
+		<img sz="1" x="171" y="208" />
+	</page>	
+	<page template="row2picsrow2text" doubleSpread="false">
+		<img sz="1" x="26" y="29" />
+		<img sz="1" x="171" y="29" />
+		<txt width="135" height="168" x="26" y="208"></txt>
+		<txt width="135" height="168" x="171" y="208"></txt>
+	</page>		
+	<page template="rowpictextrowtextpic" doubleSpread="false">
+		<img sz="1" x="26" y="29" />
+		<txt width="135" height="168" x="171" y="29"></txt>		
+		<txt width="135" height="168" x="26" y="208"></txt>
+		<img sz="1" x="171" y="208" />
+	</page>	
+	<page template="rowtextpicrowpictext" doubleSpread="false">
+		<txt width="135" height="168" x="26" y="29"></txt>		
+		<img sz="1" x="171" y="29" />
+		<img sz="1" x="26" y="208" />
+		<txt width="135" height="168" x="171" y="208"></txt>
+	</page>	
+	<page template="text4" doubleSpread="false">
+		<txt width="135" height="168" x="26" y="29"></txt>
+		<txt width="135" height="168" x="171" y="29"></txt>
+		<txt width="135" height="168" x="26" y="208"></txt>
+		<txt width="135" height="168" x="171" y="208"></txt>
+	</page>	
+	<page template="rowtextrowtext" doubleSpread="false">
+		<txt width="280" height="168" x="26" y="29"></txt>
+		<txt width="280" height="168" x="26" y="208"></txt>
+	</page>
+</templates>

@@ -1,0 +1,22 @@
+<itemConfig name='f_buntingWatermelon' type='furniture' path='assetsNest/f_buntingWatermelon.swf' thumb='assetsNest/f_buntingWatermelon_thumb.swf' h='40' boundType='rect' >
+
+	<pos frame='1' bounds='-200,400,20,20' x='-200' y='200' z='401' ry='0' gridSqs='41,1,11,21,31'/>
+	<pos frame='2' bounds='-200,400,20,20' x='-200' y='160' z='402' ry='0' gridSqs='41,1,11,21,31'/>
+	<pos frame='3' bounds='-200,400,20,20' x='-200' y='120' z='403' ry='0' gridSqs='41,1,11,21,31'/>
+	<pos frame='4' bounds='-200,400,20,20' x='-200' y='80' z='404' ry='0' gridSqs='41,1,11,21,31'/>
+	<pos frame='5' bounds='-200,400,20,20' x='-200' y='40' z='405' ry='0' gridSqs='41,1,11,21,31'/>
+	
+	<pos frame='6' bounds='-200,400,400,20' x='-200' y='200' z='411' ry='0' gridSqs='32,33,34,35,36,37,38,39'/>
+	<pos frame='7' bounds='-200,400,400,20' x='-200' y='160' z='412' ry='0' gridSqs='32,33,34,35,36,37,38,39'/>
+	<pos frame='8' bounds='-200,400,400,20' x='-200' y='120' z='413' ry='0' gridSqs='32,33,34,35,36,37,38,39'/>
+	<pos frame='9' bounds='-200,400,400,20' x='-200' y='80' z='414' ry='0' gridSqs='32,33,34,35,36,37,38,39'/>
+	<pos frame='10' bounds='-200,400,400,20' x='-200' y='40' z='415' ry='0' gridSqs='32,33,34,35,36,37,38,39'/>
+	
+	<pos frame='11' bounds='-200,400,20,20' x='-200' y='200' z='406' ry='0' gridSqs='40,30,20,10,50'/>
+	<pos frame='12' bounds='-200,400,20,20' x='-200' y='160' z='407' ry='0' gridSqs='40,30,20,10,50'/>
+	<pos frame='13' bounds='-200,400,20,20' x='-200' y='120' z='408' ry='0' gridSqs='40,30,20,10,50'/>
+	<pos frame='14' bounds='-200,400,20,20' x='-200' y='80' z='409' ry='0' gridSqs='40,30,20,10,50'/>
+	<pos frame='15' bounds='-200,400,20,20' x='-200' y='40' z='410' ry='0' gridSqs='40,30,20,10,50'/>
+	
+
+</itemConfig>

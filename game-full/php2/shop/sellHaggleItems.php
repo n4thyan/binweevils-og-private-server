@@ -1,0 +1,132 @@
+<?php
+error_reporting(0);
+include('../../essential/backbone.php');
+
+if(isset($_POST)) {
+    $nestItemsArray = removeEmptyValuesFromArray(explode(',', $_POST['items'] . ','));
+    $gardenItemsArray = removeEmptyValuesFromArray(explode(',', $_POST['gardenItems'] . ','));
+    $choice = $_POST['choice'];
+    $items = $_POST['items'];
+    $garden = $_POST['gardenItems'];
+    $hash = $_POST['hash'];
+    $timer = $_POST['timer'];
+    
+    if(!checkHash(["hash" => $hash, "items" => $items, "gardenItems" => $garden, "choice" => $choice, "timer" => $timer]) || count($nestItemsArray) <= 0 && count($gardenItemsArray) <= 0 || (count($nestItemsArray) + count($gardenItemsArray)) > 20)
+    echo 'responseCode=999&message=Looks like you are trying to do something here... Please do not attempt anything you may regret.';
+    else {
+        $weevilStats = getAllWeevilStatsByName($_COOKIE['weevil_name']);
+        $currentNestItems = getWeevilItems($weevilStats["id"]);
+        $currentGardenItems = getWeevilGardenItems($_COOKIE['weevil_name'], 2);
+        $mulchEarned = 0;
+        $gamblePrice1Earned = 0;
+        $gamblePrice2Earned = 0;
+        $gamblePrice3Earned = 0;
+        $idsCheckedArray = [];
+        $idsCheckedGardenArray = [];
+
+        foreach($currentNestItems as $nestItems) {
+            if($nestItems[11] == 2 || $nestItems[11] == 6 || $nestItems[11] == 3 || $nestItems[11] == 4) {
+                // nightclub items
+                $itemData = getNightclubItemDataById($nestItems[2]);
+
+                if($itemData["canBuy"] == 1) {
+                    for($i = 0; $i < count($nestItemsArray); $i++) {
+                        if($nestItems[0] == $nestItemsArray[$i] && !in_array($nestItemsArray[$i], $idsCheckedArray)) {
+                            $safePrice = floor((20 / 100) * ($itemData["currency"] == "dosh" ? ($itemData["price"] * 500) : $itemData["price"]));
+                            $gamblePrice1 = floor((10 / 100) * ($itemData["currency"] == "dosh" ? ($itemData["price"] * 500) : $itemData["price"]));
+                            $gamblePrice2 = floor((15 / 100) * ($itemData["currency"] == "dosh" ? ($itemData["price"] * 500) : $itemData["price"]));
+                            $gamblePrice3 = floor((40 / 100) * ($itemData["currency"] == "dosh" ? ($itemData["price"] * 500) : $itemData["price"]));
+
+                            $mulchEarned = $mulchEarned + $safePrice;
+                            $gamblePrice1Earned = $gamblePrice1Earned + $gamblePrice1;
+                            $gamblePrice2Earned = $gamblePrice2Earned + $gamblePrice2;
+                            $gamblePrice3Earned = $gamblePrice3Earned + $gamblePrice3;
+                            array_push($idsCheckedArray, $nestItemsArray[$i]);
+                        }
+                    }
+                }
+            }
+            else {
+                $itemData = getItemDataById($nestItems[2]);
+
+                if($itemData["canBuy"] == 1) {
+                    for($i = 0; $i < count($nestItemsArray); $i++) {
+                        if($nestItems[0] == $nestItemsArray[$i] && !in_array($nestItemsArray[$i], $idsCheckedArray)) {
+                            $safePrice = floor((20 / 100) * ($itemData["currency"] == "dosh" ? ($itemData["price"] * 500) : $itemData["price"]));
+                            $gamblePrice1 = floor((10 / 100) * ($itemData["currency"] == "dosh" ? ($itemData["price"] * 500) : $itemData["price"]));
+                            $gamblePrice2 = floor((15 / 100) * ($itemData["currency"] == "dosh" ? ($itemData["price"] * 500) : $itemData["price"]));
+                            $gamblePrice3 = floor((40 / 100) * ($itemData["currency"] == "dosh" ? ($itemData["price"] * 500) : $itemData["price"]));
+
+                            $mulchEarned = $mulchEarned + $safePrice;
+                            $gamblePrice1Earned = $gamblePrice1Earned + $gamblePrice1;
+                            $gamblePrice2Earned = $gamblePrice2Earned + $gamblePrice2;
+                            $gamblePrice3Earned = $gamblePrice3Earned + $gamblePrice3;
+                            array_push($idsCheckedArray, $nestItemsArray[$i]);
+                        }
+                    }
+                }
+                else if($itemData["canBuy"] == 2)
+                unlink("../../php/amfphp/Images/sp" . $nestItems[0] . ".jpg");
+            }
+        }
+
+        foreach($currentGardenItems as $gardenItems) {
+            $itemData = getGardenItemConfigById($gardenItems[2]);
+
+            if($itemData["canBuy"] == 1) {
+                for($i = 0; $i < count($gardenItemsArray); $i++) {
+                    if($gardenItems[0] == $gardenItemsArray[$i] && !in_array($gardenItemsArray[$i], $idsCheckedGardenArray)) {
+                        $safePrice = floor((20 / 100) * ($itemData["currency"] == "dosh" ? ($itemData["price"] * 500) : $itemData["price"]));
+                        $gamblePrice1 = floor((10 / 100) * ($itemData["currency"] == "dosh" ? ($itemData["price"] * 500) : $itemData["price"]));
+                        $gamblePrice2 = floor((15 / 100) * ($itemData["currency"] == "dosh" ? ($itemData["price"] * 500) : $itemData["price"]));
+                        $gamblePrice3 = floor((40 / 100) * ($itemData["currency"] == "dosh" ? ($itemData["price"] * 500) : $itemData["price"]));
+    
+                        $mulchEarned = $mulchEarned + $safePrice;
+                        $gamblePrice1Earned = $gamblePrice1Earned + $gamblePrice1;
+                        $gamblePrice2Earned = $gamblePrice2Earned + $gamblePrice2;
+                        $gamblePrice3Earned = $gamblePrice3Earned + $gamblePrice3;
+                        array_push($idsCheckedGardenArray, $gardenItemsArray[$i]);
+                    }
+                }
+            }
+        }
+
+        if($choice == "gamble1") {
+            addMulchByName($_COOKIE['weevil_name'], $gamblePrice1Earned);
+            removeHaggleItems($weevilStats, $nestItemsArray, $gardenItemsArray);
+            echo 'responseCode=1&mulchBalance=' . ($weevilStats["mulch"] + $gamblePrice1Earned);
+        }
+        else if($choice == "gamble2") {
+            addMulchByName($_COOKIE['weevil_name'], $gamblePrice2Earned);
+            removeHaggleItems($weevilStats, $nestItemsArray, $gardenItemsArray);
+            echo 'responseCode=1&mulchBalance=' . ($weevilStats["mulch"] + $gamblePrice2Earned);
+        }
+        else if($choice == "gamble3") {
+            addMulchByName($_COOKIE['weevil_name'], $gamblePrice3Earned);
+            removeHaggleItems($weevilStats, $nestItemsArray, $gardenItemsArray);
+            echo 'responseCode=1&mulchBalance=' . ($weevilStats["mulch"] + $gamblePrice3Earned);
+        }
+        else if($choice == "safe") {
+            addMulchByName($_COOKIE['weevil_name'], $mulchEarned);
+            removeHaggleItems($weevilStats, $nestItemsArray, $gardenItemsArray);
+            echo 'responseCode=1&mulchBalance=' . ($weevilStats["mulch"] + $mulchEarned);
+        }
+        else if($choice == "throwAway") {
+            removeHaggleItems($weevilStats, $nestItemsArray, $gardenItemsArray);
+            echo 'responseCode=1&mulchBalance=' . ($weevilStats["mulch"] + $mulchEarned);
+        }
+        else
+        echo 'responseCode=999&message=Looks like you are trying to do something here... Please do not attempt anything you may regret.';
+    }
+}
+else
+echo 'responseCode=999&message=Looks like you are trying to do something here... Please do not attempt anything you may regret.';
+
+function removeHaggleItems($weevilStats, $nest, $garden) {
+    if(count($nest) > 0)
+    deleteNestItemsFromHaggle($weevilStats["id"], $nest);
+
+    if(count($garden) > 0)
+    deleteGardenItemsFromHaggle($weevilStats["username"], $garden);
+}
+?>

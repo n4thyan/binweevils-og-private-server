@@ -1,0 +1,5 @@
+<itemConfig name='f_tycoon_cornerSeat' type='furniture' path='assetsTycoon/f_tycoon_cornerSeat.swf' thumb='assetsTycoon/f_tycoon_cornerSeat_thumb.swf' useCache='yes' h='40' boundType='radial' boundRadius='100' numSpots='0'>
+	<pos frame='1' bounds='' x='-190' y='0' z='400' ry='0' gridSqs='16,21,22'/>
+	<pos frame='2' bounds='' x='190' y='0' z='390' ry='0' gridSqs='20,24,25'/>
+	<pos frame='3' bounds='' x='200' y='0' z='0' ry='0' gridSqs='4,5,10'/>
+</itemConfig>

@@ -1,0 +1,23 @@
+<itemConfig id='f_shelf_bsTC' type='furniture' path='assetsNest/f_shelf_bsTC.swf' thumb='assetsNest/f_shelf_bsTC_thumb.swf' h='49' boundType='rect' numSpots='3'>
+
+	<pos frame='1' bounds='-200,80,40,160' x='-160' y='118' z='159' gridSqs='1,11'/>
+	<pos frame='2' bounds='-200,240,40,160' x='-160' y='118' z='320' gridSqs='21,31'/>
+	<pos frame='3' bounds='-160,360,160,40' x='-120' y='118' z='318' gridSqs='32,33,34,35'/>
+	<pos frame='4' bounds='0,360,160,40' x='0' y='117' z='317' gridSqs='36,37,38,39'/>
+	<pos frame='5' bounds='160,240,40,160' x='120' y='118' z='319' gridSqs='30,40'/>
+	<pos frame='6' bounds='160,80,40,160' x='160' y='118' z='158' gridSqs='10,20'/>
+	
+	<pos frame='7' bounds='-200,80,40,160' x='-160' y='51' z='159' gridSqs='1,11'/>
+	<pos frame='8' bounds='-200,240,40,160' x='-160' y='51' z='320' gridSqs='21,31'/>
+	<pos frame='9' bounds='-160,360,160,40' x='-120' y='51' z='318' gridSqs='32,33,34,35'/>
+	<pos frame='10' bounds='0,360,160,40' x='0' y='51' z='317' gridSqs='36,37,38,39'/>
+	<pos frame='11' bounds='160,240,40,160' x='120' y='51' z='319' gridSqs='30,40'/>
+	<pos frame='12' bounds='160,80,40,160' x='160' y='51' z='158' gridSqs='10,20'/>
+	
+	<pos frame='13' bounds='-200,80,40,160' x='-160' y='-27' z='159' gridSqs='1,11'/>
+	<pos frame='14' bounds='-200,240,40,160' x='-160' y='-27' z='373' gridSqs='21,31'/>
+	<pos frame='15' bounds='-160,360,160,40' x='-120' y='-27' z='371' gridSqs='32,33,34,35'/>
+	<pos frame='16' bounds='0,360,160,40' x='0' y='-27' z='372' gridSqs='36,37,38,39'/>
+	<pos frame='17' bounds='160,240,40,160' x='120' y='-27' z='374' gridSqs='30,40'/>
+	<pos frame='18' bounds='160,80,40,160' x='160' y='-27' z='158' gridSqs='10,20'/>
+</itemConfig>
