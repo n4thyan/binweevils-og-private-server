@@ -23,7 +23,7 @@ C:\Users\pc\Desktop\binweevils-backup-20260818-1330
 - Name: `binweevils-og-private-server`
 - Owner: `n4thyan`
 - URL: `https://github.com/n4thyan/binweevils-og-private-server`
-- Visibility: **PRIVATE**
+- Visibility: **PUBLIC** (made public 2026-08-26 for friend review)
 - Default branch: `main`
 
 ## Baseline commit
@@ -102,10 +102,36 @@ guarantee they run as-is and does not modify anything.
 - Hermes performs local runtime testing / deployment and verifies the actually-served artifact.
 - Binary SWF editing / decompile / recompile remains a local Hermes task when necessary.
 
+## Progress since the baseline (feature branch)
+All post-baseline reapply work is isolated on the branch **`feature/room-events-mushrooms`**
+so `main` stays the pristine recovery snapshot. Current state on that branch:
+
+- **Re-added (not yet runtime-tested here):** room events for Flum's Fountain (282),
+  Figg's Cafe (287), Dosh's Palace (265) — dispatchers in `server/BinWeevils.js`,
+  `becomeWaiter`/`isWaiter` + joinOK tray/plate state in `server/Weevil.js`, 5 mushroom
+  helper functions appended to `game-full/essential/internal.php`, new
+  `game-full/php2/mushroom/collect-mushroom.php` endpoint, and `mushrooms` +
+  `claimedmushrooms` tables added to `bwps.sql` (standalone dumps in `sql/`).
+- **Removed:** the old dev "stress test" instrumentation — "Stress Test" / "Stress Walk Test"
+  / "Stress Move" branches and a hard-coded `appendFileSync(...roomchange_debug.log...)`
+  write in `server/BinWeevils.js`. The `fs` import is retained (used for `roomids.txt`).
+- **Not done yet:** shop split (Nestco=Mulch / BinMart=Dosh), Dosh furniture thumbnail fix,
+  launcher `.bat` scripts, and full runtime verification of the above.
+
+> Verification note: the edits were statically checked (balanced, no duplicate methods,
+> diff-scoped to the intended changes) but NOT executed — this environment had no Node/PHP/
+> MySQL runtime. Runtime testing is still required.
+
 ## Security note
 No VPS private keys, `.pem` SSH keys, API tokens, or external-service credentials were
 found. Local private-server DB configuration (localhost/root-style) is normal and is
 intentionally retained as part of the project.
+
+**Now that the repo is PUBLIC:** `CHECKPOINT_A_ADMIN_CREDS.txt` (plaintext localhost admin
+panel logins) is world-readable. It is not a live/external secret (the DB stores bcrypt
+hashes), but reviewers should not reuse those passwords anywhere real. If you'd prefer it
+removed from the public repo, say so — it can be `git rm`'d (and, if needed, purged from
+history) without touching the rest of the baseline.
 
 ## WARNING
 Do not merge later broken project files into this baseline wholesale. Apply future fixes
