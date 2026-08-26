@@ -5,6 +5,27 @@ confirmed by the developer. This is a FUTURE-WORK LIST. Nothing here has been
 started. Each item carries the reason it was deferred during the backend
 bring-up pass.
 
+> **STATUS UPDATE (2026-08-26) — read this first.**
+> The project is now preserved on GitHub as a known-good **recovery baseline**
+> (`main`, baseline commit `e7cf4d1`). Work is done on the branch
+> `feature/room-events-mushrooms`. The broken `Project Binweevils\Binweevils-main (1)`
+> working copy referenced below is DEAD — do not use it. See `GITHUB-HANDOFF.md`.
+>
+> Completed since this roadmap was written:
+> - **Room events (§2): DONE** — Flum's Fountain (282), Figg's Cafe (287),
+>   Dosh's Palace (265) re-added on the feature branch. Caveat: statically
+>   verified only, NOT runtime-tested (no Node/PHP/MySQL runtime available).
+> - **Stress-test dev instrumentation removed** — "Stress Test" / "Stress Walk
+>   Test" / "Stress Move" branches + the hard-coded `roomchange_debug.log` write
+>   removed from `server/BinWeevils.js`.
+> - **Mushroom event DB re-added** — `mushrooms` + `claimedmushrooms` tables in
+>   `bwps.sql`, 5 helper functions in `internal.php`, `collect-mushroom.php`
+>   endpoint. NOT runtime-tested.
+>
+> Still OPEN (not done): §8 shop split (Nestco=Mulch / BinMart=Dosh), Dosh
+> furniture thumbnail fix, launcher `.bat` scripts, full runtime verification,
+> and everything in §1/§3/§4/§5/§6/§7.
+
 Working copy: `C:\Users\pc\Desktop\Project Binweevils\Binweevils-main (1)\Binweevils-main\`
 Source baseline: KnowYourKnot/Binweevilsworks, used 1:1 (architecture preserved).
 Two pristine reference copies + three ZIP archives remain UNTOUCHED.
@@ -46,12 +67,14 @@ upsert + single-userID fetch) deliberately NOT done — over-scoped against the
   Reason: moderation/quit currently `socket.end()`/`destroy()` hard. A logout
   notification packet is polish, not stability. Defer.
 
-## 2. Room events (deferred — separate code to be supplied)
+## 2. Room events — **DONE (2026-08-26, on `feature/room-events-mushrooms`)**
 
-- The developer has a SEPARATE room-event implementation to supply later.
-  Do NOT write room-event logic now. When supplied, migrate into
-  `BinWeevils.js` dispatch alongside the existing `2#5` (roomEvent) handler.
-  Reason: explicitly out of scope this pass; code owned by developer.
+- ~~The developer has a SEPARATE room-event implementation to supply later.
+  Do NOT write room-event logic now.~~ **Supplied and re-added.** Migrated into
+  `BinWeevils.js` dispatch alongside the existing `2#5` (roomEvent) handler, covering
+  Flum's Fountain (282), Figg's Cafe (287), Dosh's Palace (265); `becomeWaiter`/
+  `isWaiter` + joinOK tray/plate state in `Weevil.js`; mushroom DB/endpoint on the
+  same branch. **Caveat: statically verified only — not yet runtime-tested.**
 
 ## 3. File cleanup (deferred — audit before delete)
 
