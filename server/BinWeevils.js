@@ -571,20 +571,6 @@ class BinWeevils {
                 //console.log("[RECEIVED]:" + weevil.socket.remoteAddress + " - " + dataStr[i]);
                 if(dataStr[i] == "" || dataStr[i] == null) return;
 
-                if(dataStr[i].includes("Stress Test")){
-                    weevil.def = JSON.parse(dataStr[i].substr(11))['def'];
-                    weevil.changeRoom2('FlumsFountain', '43.08083554729819', '0', '986.500544231385', '-180', '190', this.weevils, this.socketIdList);
-                }
-                else if(dataStr[i] == "Stress Walk Test"){
-                    weevil.userID = weevil.socketID;
-                    weevil.moveWeevil('282','84','993','133', this.weevils, this.socketIdList);
-                }
-                else if(dataStr[i].includes("Stress Move")){
-                    var action = JSON.parse(dataStr[i].substr(11))['action'];
-                    var coords = JSON.parse(dataStr[i].substr(11))['coords'];
-                    weevil.userID = weevil.socketID;
-                    weevil.doAction('282', weevil.userID, action, coords, this.weevils, this.socketIdList);
-                }
                 else if(dataStr[i].startsWith('<')) {
                     // msg packet
                     if(dataStr[i].includes("<policy-file-request/>")) {
@@ -692,8 +678,6 @@ class BinWeevils {
                     }
                     else if(data[3] == "2#4") {
                         // change room packet
-                        require('fs').appendFileSync("C:/Users/pc/Desktop/Project Binweevils/Binweevils-main (1)/Binweevils-main/server/roomchange_debug.log",
-                            new Date().toISOString() + " roomChange: data[5]=" + data[5] + " data[6]=" + data[6] + " data[7]=" + data[7] + " data[8]=" + data[8] + " data[9]=" + data[9] + " data[11]=" + data[11] + "\n");
                         weevil.changeRoom(data[5], data[6], data[7], data[8], data[9], data[11], this.weevils, this.socketIdList);
                     }
                     else if(data[3] == "2#5") {
