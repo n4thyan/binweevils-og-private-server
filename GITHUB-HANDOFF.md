@@ -1,8 +1,12 @@
 # GitHub Handoff — OG Bin Weevils Flash Private Server (Recovery Baseline)
 
+## Project
+OG original Flash Bin Weevils private server.
+
 ## Purpose
-This repository is an **immutable recovery baseline** for the original (OG) Bin Weevils
-Flash private server. It was captured BEFORE later changes that broke the working project.
+Known-good pre-breakage recovery baseline. This repository is an **immutable recovery
+baseline** for the original (OG) Bin Weevils Flash private server. It was captured BEFORE
+later changes that broke the working project.
 
 **Do not merge later broken project files into this baseline wholesale.** Apply future
 fixes incrementally and test each one against this baseline.
@@ -36,10 +40,10 @@ inside `C:\Users\pc`, which is itself an unrelated Git repo; to avoid nesting, t
 was copied to a clean path before `git init`). The original Desktop folder was NOT modified.
 
 ## Size / contents
-- Tracked files: 22,679
+- Tracked files: 22,681 (22,680 legitimate project files + this handoff + the file inventory)
 - Approx. repository size: ~1.42 GB (excluding `node_modules`)
 - Git LFS: **not required** — no single file exceeds GitHub's 100 MB hard limit
-  (largest asset is a ~6 MB SWF; 16,165 SWF files total).
+  (largest file is a 43.96 MB `.flv` video; 16,165 SWF files total, all under ~6 MB).
 
 ## What is excluded (and why)
 - `node_modules/` (npm install artifacts under `electron/`, `server/`, and
@@ -48,19 +52,20 @@ was copied to a clean path before `git init`). The original Desktop folder was N
 - Temporary logs / crash dumps: `*.log` (e.g. `server/roomchange_debug.log`).
 - `NUL` — a Windows reserved-device-name redirect artifact (37 KB HTML) at the backup
   root; runtime junk, not part of the game.
-- `CHECKPOINT_A_ADMIN_CREDS.txt` — plaintext local-dev admin panel login credentials.
-  Excluded per the recovery-baseline security policy. It remains on the local disk but
-  was NOT pushed. The database (`bwps.sql`) stores bcrypt hashes; this file only held the
-  plaintext for local login convenience.
 
-SWFs, PHP, JS, XML, SQL, game configuration, source assets, room/location data, and the
-Electron client are intentionally retained — they are essential parts of the private server.
+All SWFs, PHP, JS, XML, SQL, game configuration, source assets, room/location data, the
+Electron client, and binary game resources (`.flv`, `.dll` Flash players, audio, images)
+are intentionally retained — they are essential parts of the private server.
+
+`CHECKPOINT_A_ADMIN_CREDS.txt` (plaintext local-dev admin panel logins) is **tracked** —
+it is ordinary private-server configuration (the DB stores bcrypt hashes), not a live
+external secret, so it is preserved as part of the known-good baseline.
 
 ## Basic directory map (as present in this baseline)
 - `game-full/` — the Flash game client / web front-end
   - `binConfig/` — client/game configuration
   - `php/`, `php2/` — PHP endpoints
-  - `cdn.binw.net/`, `externalUIs/`, `assets/`, `sounds/` — original/local SWFs, assets
+  - `cdn.binw.net/`, `externalUIs/`, `assets/`, `sounds/` — original/local SWFs, FLV videos, assets
   - `848fjogfndsl/panel/` — admin panel (its `node_modules` is excluded)
 - `server/` — Node.js private-server source
   - `server.js` — server entry point
@@ -68,10 +73,12 @@ Electron client are intentionally retained — they are essential parts of the p
   - `static/` — static assets
 - `electron/` — Electron client launcher
   - `package.json` (`start` script: `electron .`)
-  - `plugins/`
+  - `plugins/` (includes `pepflashplayer` Flash player DLLs)
 - `bwps.sql` — database dump / schema
 - `reset_admins_checkpointA.sql` — admin reseed SQL
 - `README.md`, `ROADMAP.md`, `HANDOFF_2026-08-17.md` — project docs from the backup
+- `CHECKPOINT_A_ADMIN_CREDS.txt` — local-dev admin logins (see note above)
+- `BASELINE-FILE-INVENTORY.md` — machine-readable file inventory
 
 ## How to launch locally (only what is identifiable from the backup)
 These are launch procedures identified from files present in the backup. They assume a
@@ -88,11 +95,17 @@ guarantee they run as-is and does not modify anything.
 - Database:
   `bwps.sql` is the schema/dump for the local MySQL instance used by the server.
 
+## Development model (going forward)
+- GitHub is the **source of truth**.
+- Code/config changes (PHP, JS, XML, SQL, config) should preferably be prepared and
+  reviewed through GitHub, so another coding agent can work directly from the repo.
+- Hermes performs local runtime testing / deployment and verifies the actually-served artifact.
+- Binary SWF editing / decompile / recompile remains a local Hermes task when necessary.
+
 ## Security note
 No VPS private keys, `.pem` SSH keys, API tokens, or external-service credentials were
-found outside the excluded local-dev admin credential file. Local private-server DB
-configuration (localhost/root-style) is normal and is intentionally retained as part of
-the project.
+found. Local private-server DB configuration (localhost/root-style) is normal and is
+intentionally retained as part of the project.
 
 ## WARNING
 Do not merge later broken project files into this baseline wholesale. Apply future fixes
