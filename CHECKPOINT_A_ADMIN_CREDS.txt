@@ -1,0 +1,20 @@
+Bin Weevils Private Server — Checkpoint A admin accounts (Option Y, fresh reseed)
+Generated: 2026-08-17
+Database: bwps (localhost / XAMPP)
+Passwords are bcrypt-hashed in the DB; plaintext shown here for your local-dev login.
+
+Username : Rick
+Password : 4ca57bfee477
+isModerator: 1
+
+Username : Raving
+Password : 3300bd16a1ed
+isModerator: 1
+
+Username : Sludge
+Password : ed0df9e32928
+isModerator: 1
+
+NOTE: These are local-dev credentials. The moderator socket token (modToken) is issued
+at panel login (848fjogfndsl/) and stored server-side; the panel no longer sends a
+plaintext admin password over the socket (Option A).

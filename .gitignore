@@ -14,7 +14,8 @@ Thumbs.db
 # --- Windows reserved-device-name redirect artifact (runtime junk) ---
 NUL
 
-# --- Local-dev plaintext credential file (kept locally; not pushed) ---
-# Contains plaintext BWPS panel admin logins; excluded per recovery-baseline
-# security policy. The DB itself stores bcrypt hashes.
-CHECKPOINT_A_ADMIN_CREDS.txt
+# NOTE: CHECKPOINT_A_ADMIN_CREDS.txt is intentionally TRACKED. It holds only
+# plaintext LOCAL-DEV admin panel logins for the private server (the DB stores
+# bcrypt hashes). Per the recovery-baseline policy this is ordinary
+# private-server configuration, not an external/live secret, so it is preserved
+# as part of the known-good baseline.
