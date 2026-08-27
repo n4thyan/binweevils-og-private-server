@@ -5,26 +5,38 @@ confirmed by the developer. This is a FUTURE-WORK LIST. Nothing here has been
 started. Each item carries the reason it was deferred during the backend
 bring-up pass.
 
-> **STATUS UPDATE (2026-08-26) — read this first.**
-> The project is now preserved on GitHub as a known-good **recovery baseline**
-> (`main`, baseline commit `e7cf4d1`). Work is done on the branch
-> `feature/room-events-mushrooms`. The broken `Project Binweevils\Binweevils-main (1)`
-> working copy referenced below is DEAD — do not use it. See `GITHUB-HANDOFF.md`.
+> **STATUS UPDATE (2026-08-27, night) — read this first.**
+> The project is preserved on GitHub on **`main`** (tip `929b4eeb`). The earlier
+> `feature/room-events-mushrooms` branch, plus `feature/nestco-catalogue-population`
+> and `fix/live-server-drift-sync`, have all been **folded into `main` and the
+> redundant branches deleted** for tidiness — `main` is now the single source of
+> truth and already contains every file those branches contributed. The broken
+> `Project Binweevils\Binweevils-main (1)` working copy referenced below is DEAD —
+> do not use it. See `GITHUB-HANDOFF.md`.
 >
-> Completed since this roadmap was written:
+> Completed since the 2026-08-26 baseline:
 > - **Room events (§2): DONE** — Flum's Fountain (282), Figg's Cafe (287),
->   Dosh's Palace (265) re-added on the feature branch. Caveat: statically
->   verified only, NOT runtime-tested (no Node/PHP/MySQL runtime available).
-> - **Stress-test dev instrumentation removed** — "Stress Test" / "Stress Walk
->   Test" / "Stress Move" branches + the hard-coded `roomchange_debug.log` write
->   removed from `server/BinWeevils.js`.
-> - **Mushroom event DB re-added** — `mushrooms` + `claimedmushrooms` tables in
->   `bwps.sql`, 5 helper functions in `internal.php`, `collect-mushroom.php`
->   endpoint. NOT runtime-tested.
+>   Dosh's Palace (265) re-added and **server-side deployment/dispatch/DB verified
+>   at runtime** (live Node on :9339 loads from `server/`, `roomids.txt` loads the
+>   three rooms, handlers wire to the `2#5` packet, mushroom DB provisioned).
+>   Final in-client visual/gameplay test still PENDING (needs eyes in the client).
+> - **Garden seed shop (§9.4): FIXED on `main`** (commit `1b948caa`) — restored the
+>   two missing `usort` comparator classes; `/gardenshop/fetch` now returns valid
+>   XML (24 items + 75 seeds). Visual client confirm still PENDING.
+> - **XP accounting (§9.1/§9.2): DONE on `main`** (commit `8c2958f4`) — multi-level
+>   catch-up, Prestige 0–13 cycle, prestige-aware trophies. §9.3 reward shop +
+>   leaderboard deliberately DEFERRED (post-release, after website redesign).
+> - Shop currency split (§8) and Nestco/BinMart catalogue work shipped on `main`.
 >
-> Still OPEN (not done): §8 shop split (Nestco=Mulch / BinMart=Dosh), Dosh
-> furniture thumbnail fix, launcher `.bat` scripts, full runtime verification,
-> and everything in §1/§3/§4/§5/§6/§7.
+> Still OPEN (not done): §9.3 XP reward shop + leaderboard, §9.8 login-key/hash
+> design (blocked — needs the auth design chat), Nestco catalogue SWF, Bundles/
+> Showroom UI lock SWF, `loungue` tag data fix, Bin Pets species-name placeholders,
+> referral system, structural refactors (§1), and client visual confirms above.
+>
+> NOTE: the working tree is checked out on the old local `feature/room-events-
+> mushrooms` label, but its content is fully on `main`; `git status` appears dirty
+> because of that — it is not unsaved work. Edit against `game-full/` and commit to
+> `main` via plumbing (LFS checkout hangs on this clone).
 
 Working copy: `C:\Users\pc\Desktop\Project Binweevils\Binweevils-main (1)\Binweevils-main\`
 Source baseline: KnowYourKnot/Binweevilsworks, used 1:1 (architecture preserved).
@@ -67,14 +79,17 @@ upsert + single-userID fetch) deliberately NOT done — over-scoped against the
   Reason: moderation/quit currently `socket.end()`/`destroy()` hard. A logout
   notification packet is polish, not stability. Defer.
 
-## 2. Room events — **DONE (2026-08-26, on `feature/room-events-mushrooms`)**
+## 2. Room events — **DONE (2026-08-27, on `main` — server-side runtime-verified)**
 
 - ~~The developer has a SEPARATE room-event implementation to supply later.
   Do NOT write room-event logic now.~~ **Supplied and re-added.** Migrated into
   `BinWeevils.js` dispatch alongside the existing `2#5` (roomEvent) handler, covering
   Flum's Fountain (282), Figg's Cafe (287), Dosh's Palace (265); `becomeWaiter`/
-  `isWaiter` + joinOK tray/plate state in `Weevil.js`; mushroom DB/endpoint on the
-  same branch. **Caveat: statically verified only — not yet runtime-tested.**
+  `isWaiter` + joinOK tray/plate state in `Weevil.js`; mushroom DB/endpoint.
+  **Server-side deployment/dispatch/DB verified at runtime** (live Node on :9339
+  serves from `server/`, `roomids.txt` loads the three rooms, handlers wire to the
+  `2#5` packet, `mushrooms` table provisioned). Final in-client visual/gameplay
+  test still PENDING (needs eyes in the live client).
 
 ## 3. File cleanup (deferred — audit before delete)
 
