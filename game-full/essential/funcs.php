@@ -1,6 +1,31 @@
 <?php
 error_reporting(0);
 
+// Garden-shop / seed-shop sort comparators.
+// These classes were referenced by the original garden-shop stock builders
+// (getItems2() -> Weevils_Gardenshop_Helper, getPlants2() -> Weevils_Models_Itemtype)
+// via usort($arr, array("ClassName","compareItems")) but were never present in
+// any preserved copy of the codebase. Under PHP 8 the missing usort callback is a
+// fatal TypeError, which (with error_reporting(0)) produced an empty /gardenshop/fetch
+// body. They are restored here as plain stable comparators using the fields already
+// present in the item/seed arrays. Ordering is level-ascending then price-ascending,
+// which matches the per-level grouping the surrounding code performs.
+class Weevils_Gardenshop_Helper {
+    public static function compareItems($a, $b) {
+        $lvl = intval($a['minLevel']) <=> intval($b['minLevel']);
+        if ($lvl !== 0) return $lvl;
+        return intval($a['price']) <=> intval($b['price']);
+    }
+}
+
+class Weevils_Models_Itemtype {
+    public static function compareItems($a, $b) {
+        $lvl = intval($a['level']) <=> intval($b['level']);
+        if ($lvl !== 0) return $lvl;
+        return intval($a['price']) <=> intval($b['price']);
+    }
+}
+
 /// Admin Functions
 function getNextPage($page){
     $offset = $page * 4;
