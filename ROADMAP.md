@@ -182,10 +182,36 @@ Context:
   • No server-side invite/login-message scaffolding exists yet; build fresh
     on the website side during the redesign.
 
-## 8. BinMart/Nestco shop split + bulk purchasing (PARKED — investigation done, build not started)
+## 8. BinMart/Nestco shop split + bulk purchasing (SHOP-CURRENCY-SPLIT DONE 2026-08-27 — bulk purchasing still PARKED)
+
+SERVER-SIDE CURRENCY SPLIT COMPLETE 2026-08-27 (see "BUILD LOG" below). Bulk/multi-qty
+purchase remains PARKED (separate SWF work; not started).
 
 PARKED 2026-08-18 after two investigation gates (no code written; both SWF copies
 decompressed read-only in C:\Users\pc\shop_swf_investigation\, originals hashed).
+
+### BUILD LOG — server-side currency split (2026-08-27)
+- Changed `getNestShopItems()` + `getPopularNestShopItems()` in
+  `game-full/essential/internal.php` to split the two department stores by currency.
+- IMPORTANT CORRECTION to the original "KEY FINDINGS": the SWFs ALREADY self-identify —
+  `Binmart.setStoreName` sets literal `"binmart"`, `Nestco.setStoreName` sets `"nestco"`
+  (confirmed by disassembling both SWFs and reading the deployed binaries). The ROADMAP's
+  old "open item: which shopType the SWF POSTs is INFERRED" is RESOLVED: it is explicit.
+- The DB has NO `binmart` shopType value — every department-store item is
+  `shopType='nestco'`, distinguished by `currency` (dosh/mulch). So the filter maps
+  `storeName -> (shopType='nestco', currency)`: binmart=>dosh, nestco=>mulch.
+  (First attempt wrongly bound `shopType=$storeName`; since no row has shopType='binmart'
+  that returned ZERO items — caught by ad-hoc simulation against the real itemtype dump.)
+- binPetShop path is exempt (returns all its stock).
+- NO SWF edit required for the split (SWFs already send the right storeName). NO DB schema
+  change. `buyItem.php` already branches on currency, so purchase logic is untouched.
+- Ad-hoc verification (no PHP/MySQL runtime here): simulated the exact WHERE predicate
+  against the real 1,353-row `bwps.sql` itemtype dump -> Binmart(dosh)=462, Nestco(mulch)=706,
+  old mixed=1,168, lossless (462+706=1,168). Binmart cat-9 returns dosh items only.
+- Full runtime test still pending (no PHP/MySQL on this machine — known blocker).
+- Catalog endpoint the SWFs actually call is `getStockItemsForTag.php` (NOT the stale
+  `getShopItems.php` the old findings named). `getStockItemsForLevel.php` is referenced by
+  the SWF but does NOT exist in the repo — that's why non-default tabs return empty.
 
 INTENT:
   • BinMart → Dosh-only store. Nestco → Mulch-only store (split by currency).
