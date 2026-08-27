@@ -290,3 +290,153 @@ The working tree's git root is the user HOME directory, not this project
 folder. Scoped `git add` of ONLY the project paths is required to avoid staging
 the whole profile. Commit strategy (per-checkpoint vs single "checkpoints A–D"
 commit) to be confirmed with the developer before any `git commit` runs.
+
+---
+
+## 9. Roadmap additions agreed 2026-08-27
+
+These are the current agreed gameplay, world, economy and security additions for the OG private server. They were discussed after the older roadmap above and should be treated as the up-to-date feature list.
+
+### 9.1 Automatic multi-level catch-up + Prestige 0–13
+
+- Fix the current behaviour where enough banked XP for several levels still requires repeated nest exit/re-entry.
+- One progression reconciliation should grant every legitimately earned missing level in sequence and award every corresponding trophy/reward.
+- Preserve the original Level 1–80 XP curve for Prestige 0.
+- Add Prestige 1 through Prestige 13; maximum prestige is 13.
+- Prestige difficulty is additive, using `1 + (prestige * 0.5)`: P0=1.0x, P1=1.5x, P2=2.0x ... P13=7.5x.
+- After first reaching Level 80, the visible Level 80 badge remains permanently; prestige uses a fresh internal 1–80 progression/reward cycle behind that badge.
+- At the end of each prestige cycle, award that prestige's Level 80 reward before advancing to the next prestige.
+- Allow a fresh set of the original level trophies to be earned once per prestige. Trophy ownership must therefore be prestige-aware while remaining idempotent inside one prestige.
+- Add a `prestige` field/column in the appropriate player table (default 0), unless audit shows an existing equivalent.
+- Prestige 13 completed through internal Level 80 is the progression cap; XP earning itself can continue beyond the cap.
+
+### 9.2 Lifetime XP vs banked/progression XP + XP reward shop
+
+Use two linked XP concepts:
+
+- **Lifetime XP** = total XP ever earned. It only increases, never decreases, and is the value used for lifetime statistics/leaderboards.
+- **Banked/progression XP** = currently usable XP that drives the progress bar toward the next level/prestige milestone and may be spent.
+- When 500 XP has been earned and 300 XP is spent, lifetime XP remains 500 while banked/progression XP becomes 200.
+- Spending XP must never de-level a player, reduce an already-earned prestige, or remove trophies/rewards already earned. It only reduces progress toward the next unearned milestone.
+- All legitimate XP rewards should go through one canonical award path so lifetime XP and banked XP stay consistent.
+- Build an XP reward shop for cosmetic/status rewards such as coloured names, titles, badges, cosmetic effects, selected cosmetics and harmless command privileges/command packs.
+- Support both permanent unlocks and temporary XP sinks where useful.
+- Prestige may unlock higher reward-shop tiers, while purchases still cost banked XP.
+- Never allow XP purchases to grant moderation/admin powers such as ban, kick, mute, currency modification, XP modification or staff status.
+
+### 9.3 Lifetime-XP leaderboard
+
+- If the original/current game does not already have a suitable XP leaderboard, add one ranked by **lifetime XP**.
+- Spending banked XP must not reduce leaderboard position/value.
+
+### 9.4 Garden seed shop population bug
+
+- The Garden seed shop opens but its product shelves/catalogue do not populate.
+- Audit the seed-shop identity, stock endpoint, PHP/database response, level/category/currency filters and client response contract.
+- Restore the intended seed catalogue and verify it in the real client without disturbing BinMart/Nestco.
+
+### 9.5 Nestco remaining catalogue bug
+
+Current live state after the currency split:
+
+- BinMart works as intended and populates its Dosh catalogue.
+- Nestco Featured populates Mulch items, but the normal categories do not populate.
+- Featured currently has duplicated entries that must be traced to the correct backend/config/client layer.
+- `getBundles.php` is observed returning 404 when the Bundles tab is selected and must be recovered/implemented according to the client contract rather than stubbed.
+- Use working BinMart as the control path and compare endpoint, parameters, response body and SWF parsing against Nestco before making further speculative edits.
+- Final requirement: Nestco must populate its complete valid Mulch catalogue while BinMart remains Dosh-only.
+
+### 9.6 Nest teleporter expansion
+
+- Expand the nest teleporter's destination pool toward every valid/recoverable room/location in the game.
+- Build the pool from verified room/location definitions rather than guessed IDs.
+- Normal public locations can use normal weighting.
+- Historical, hidden, seasonal and event-only locations should be **extremely rare** teleporter outcomes.
+- Only include unusual rooms after verifying they load safely and have a safe exit; exclude broken/test/system/soft-lock rooms.
+- Include the Old Bin as a supported legacy teleporter destination.
+- Keep destination IDs, names, rarity weights and exclusions data-driven/documented.
+
+### 9.7 Out-of-bounds detection using BinConfig `localDefinitions`
+
+- Extend movement validation so normal players are checked against the authoritative room coordinate/boundary data in BinConfig `localDefinitions` wherever available.
+- Do not use one generic hardcoded room rectangle when room-specific definitions exist.
+- Correct an out-of-bounds player to the last known valid/safe position without unnecessary room changes.
+- Avoid false positives at valid doors, transitions, ramps, event mechanics and special movement zones.
+- Rooms with missing/ambiguous boundary metadata should be handled conservatively and documented.
+- **Admins are exempt** from out-of-bounds enforcement for debugging/exploration; exemption must come from trusted server-side permissions, never a client flag.
+
+### 9.8 Login-key replay/session exploit hardening — security blocker
+
+Before wider public deployment, harden the web-login -> game-login key flow:
+
+- Treat game login keys as short-lived, single-use credentials rather than reusable bearer values.
+- Generate keys using a cryptographically secure random source with adequate entropy.
+- Bind a key to the intended account and authenticated web/session context.
+- Consume it atomically on the first successful game-server login; replay must fail.
+- Reject expired, used, malformed, wrong-account and wrong-session keys.
+- Rotate/invalidate outstanding keys on fresh login, logout and relevant session/security resets.
+- Do not treat client-side packet encryption or any client-embedded secret as proof of identity; client secrets are recoverable.
+- Rate-limit failed game-login attempts and log suspicious replay attempts without logging raw credentials.
+- Regression-test: fresh key works once, replay fails, expiry fails, logout invalidates, and one account/session cannot use another account's key.
+
+### 9.9 Mulchtastic implementation
+
+- Restore/implement the Mulchtastic attraction rather than leaving it as non-functional scenery.
+- Audit existing Mulchtastic SWFs, room/object definitions, scripts, endpoints, DB data and server handlers first.
+- Recover the original interaction flow from preserved assets/source where possible rather than inventing behaviour.
+- Keep rewards/currency/XP server-authoritative and validate any client-reported result.
+- Add only the persistence/cooldowns needed by the real mechanic and protect it from replay/reward abuse.
+- Verify entry/activation/result/reward end-to-end in the real client before marking complete.
+
+### 9.10 One canonical 2014-era map + Old Bin via teleporter
+
+- Replace the two-map arrangement with one canonical main map from the 2014 era.
+- Audit available 2014-era map SWFs and choose one whose normal navigation does not depend on the currently broken Summer Fair.
+- Verify every visible destination/button on the selected map before making it canonical.
+- Remove/disable the redundant second-map switching path only after the selected map is proven stable.
+- Preserve the Old Bin as legacy content and access it through the nest teleporter rather than a second main map.
+
+### 9.11 Summer Fair restoration
+
+- Summer Fair currently fails to load and should be restored as a separate task instead of blocking the main map.
+- Audit its room/location definitions, SWFs, dependencies, PHP endpoints, server handlers and map hooks to identify the actual failure.
+- Recover original assets/logic where available.
+- Verify entry, room loading, exits, interactive objects, event mechanics and rewards in the real client.
+- Only reconnect Summer Fair to the live map after the destination is stable.
+
+### 9.12 Expanded Secret/Mystery Code system
+
+Extend the existing code system so codes can be configured as:
+
+- one-time per account (existing/default behaviour);
+- X redemptions per account per calendar day;
+- X redemptions per account per calendar month;
+- X redemptions per account per calendar year;
+- optionally a code-wide/global redemption cap for limited community drops.
+
+Requirements:
+
+- Reuse/extend the existing code tables/endpoints/reward logic rather than creating a disconnected second system.
+- Store code string, enabled state, reward(s), optional start/end dates, redemption mode, per-period limit and optional global cap as data/configuration.
+- Track successful redemptions by account and server timestamp.
+- Use server-side calendar windows; never trust the client's clock/date.
+- Validation and reward granting must be atomic so concurrent submissions cannot exceed limits or duplicate rewards.
+- Preserve old one-time codes unless deliberately migrated.
+- Support existing valid reward types such as Mulch, Dosh, XP and items.
+- Provide clear existing-compatible failure responses for expired, disabled, exhausted and over-limit codes.
+- Make codes admin-maintainable/configurable without hardcoding a new PHP path for each event.
+
+### 9.13 Suggested order for these additions
+
+1. Finish the current Nestco catalogue population fix without regressing BinMart.
+2. Harden the login-key replay/session weakness before public release.
+3. Implement automatic multi-level catch-up + Prestige 0–13 and prestige-aware trophy history.
+4. Add the lifetime XP / banked XP split that the XP reward shop depends on.
+5. Add the XP reward shop and lifetime-XP leaderboard.
+6. Fix the Garden seed shop catalogue.
+7. Select/verify the canonical 2014-era main map.
+8. Expand the nest teleporter, including Old Bin and ultra-rare safe event/hidden destinations.
+9. Restore Summer Fair independently.
+10. Add BinConfig `localDefinitions`-based out-of-bounds enforcement for non-admins.
+11. Restore/implement Mulchtastic.
+12. Expand Secret/Mystery Code redemption modes.
