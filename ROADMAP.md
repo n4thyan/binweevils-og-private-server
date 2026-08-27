@@ -244,7 +244,7 @@ INTENT:
 KEY FINDINGS (verified, do not re-derive):
   • Catalog endpoint: POST php2/shop/departmentStore/getShopItems.php (params
     tag, shopType, hash, timer). Backend getNestShopItems() filters
-    itemtype WHERE category=? AND shopType=?.
+    itemtype WHERE category=? AND shopType=?... .
   • Purchase endpoint (LIVE path, both stores): POST php2/shop/departmentStore/buyItem.php
     (params itemTypeID, userIDX, colour; NO qty today; cookie-session only, no hash).
     Parallel buyDoshShopItem.php exists but is NOT the live path.
@@ -310,24 +310,29 @@ These are the current agreed gameplay, world, economy and security additions for
 - Add a `prestige` field/column in the appropriate player table (default 0), unless audit shows an existing equivalent.
 - Prestige 13 completed through internal Level 80 is the progression cap; XP earning itself can continue beyond the cap.
 
-### 9.2 Lifetime XP vs banked/progression XP + XP reward shop
+### 9.2 Lifetime XP vs banked/progression XP
 
 Use two linked XP concepts:
 
-- **Lifetime XP** = total XP ever earned. It only increases, never decreases, and is the value used for lifetime statistics/leaderboards.
-- **Banked/progression XP** = currently usable XP that drives the progress bar toward the next level/prestige milestone and may be spent.
-- When 500 XP has been earned and 300 XP is spent, lifetime XP remains 500 while banked/progression XP becomes 200.
-- Spending XP must never de-level a player, reduce an already-earned prestige, or remove trophies/rewards already earned. It only reduces progress toward the next unearned milestone.
+- **Lifetime XP** = total XP ever earned. It only increases, never decreases, and is the value reserved for lifetime statistics and the later leaderboard.
+- **Banked/progression XP** = currently usable XP that drives the progress bar toward the next level/prestige milestone and may later be spent.
+- When 500 XP has been earned and 300 banked XP is eventually spent, lifetime XP remains 500 while banked/progression XP becomes 200.
+- Spending banked XP must never de-level a player, reduce an already-earned prestige, or remove trophies/rewards already earned. It only reduces progress toward the next unearned milestone.
 - All legitimate XP rewards should go through one canonical award path so lifetime XP and banked XP stay consistent.
-- Build an XP reward shop for cosmetic/status rewards such as coloured names, titles, badges, cosmetic effects, selected cosmetics and harmless command privileges/command packs.
+- The accounting/model can be introduced alongside progression if useful, but **the XP reward shop itself is POST-RELEASE work and must not block launch**.
+
+### 9.3 POST-RELEASE: XP reward shop + lifetime-XP leaderboard — after website redesign
+
+This entire feature is deliberately deferred until **after the initial game release and after the website redesign is complete**. It should be treated as one of the final roadmap additions, not a pre-release blocker.
+
+- Build an XP reward shop that spends **banked/progression XP**, never lifetime XP.
+- Candidate rewards include coloured names, titles, badges, cosmetic effects, selected cosmetics and harmless command privileges/command packs.
 - Support both permanent unlocks and temporary XP sinks where useful.
 - Prestige may unlock higher reward-shop tiers, while purchases still cost banked XP.
 - Never allow XP purchases to grant moderation/admin powers such as ban, kick, mute, currency modification, XP modification or staff status.
-
-### 9.3 Lifetime-XP leaderboard
-
-- If the original/current game does not already have a suitable XP leaderboard, add one ranked by **lifetime XP**.
-- Spending banked XP must not reduce leaderboard position/value.
+- Add/restore a leaderboard ranked by **lifetime XP** after the redesigned website is ready to present/manage it properly.
+- Spending banked XP must never reduce the lifetime-XP leaderboard value or position.
+- If the original/current game already contains a suitable XP leaderboard, audit/reuse it rather than building a competing system.
 
 ### 9.4 Garden seed shop population bug
 
@@ -430,13 +435,14 @@ Requirements:
 
 1. Finish the current Nestco catalogue population fix without regressing BinMart.
 2. Harden the login-key replay/session weakness before public release.
-3. Implement automatic multi-level catch-up + Prestige 0–13 and prestige-aware trophy history.
-4. Add the lifetime XP / banked XP split that the XP reward shop depends on.
-5. Add the XP reward shop and lifetime-XP leaderboard.
-6. Fix the Garden seed shop catalogue.
-7. Select/verify the canonical 2014-era main map.
-8. Expand the nest teleporter, including Old Bin and ultra-rare safe event/hidden destinations.
-9. Restore Summer Fair independently.
-10. Add BinConfig `localDefinitions`-based out-of-bounds enforcement for non-admins.
-11. Restore/implement Mulchtastic.
-12. Expand Secret/Mystery Code redemption modes.
+3. Implement automatic multi-level catch-up + Prestige 0–13 and prestige-aware trophy history; establish the lifetime/banked XP accounting needed by progression.
+4. Fix the Garden seed shop catalogue.
+5. Select/verify the canonical 2014-era main map.
+6. Expand the nest teleporter, including Old Bin and ultra-rare safe event/hidden destinations.
+7. Restore Summer Fair independently.
+8. Add BinConfig `localDefinitions`-based out-of-bounds enforcement for non-admins.
+9. Restore/implement Mulchtastic.
+10. Expand Secret/Mystery Code redemption modes.
+11. Finish release-critical stability/security work and ship the initial release.
+12. **POST-RELEASE:** complete the website redesign.
+13. **LAST:** after the website redesign, implement the XP reward shop and lifetime-XP leaderboard.
