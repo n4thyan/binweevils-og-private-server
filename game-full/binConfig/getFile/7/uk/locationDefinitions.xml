@@ -95,10 +95,10 @@
 	<roomBG path='fixedCam/DeptStore_BinMart.swf'/>                  
 	<door id='1' toLoc='105' toDoor='3' x1='60' z1='36' x2='60' z2='-10' entryDir='270'/>   
 	
-	<door id='2' extUIData="locName:in Nestco,pathName:nestco" x1='-60' z1='74' x2='-75' z2='80' entryDir='-90'/>
-	<door id='3' extUIData="locName:in Nestco,pathName:nestco" x1='-140' z1='180' x2='-160' z2='220' entryDir='0'/>
-	<door id='4' extUIData="locName:in Nestco,pathName:nestco" x1='-60' z1='200' x2='-75' z2='240' entryDir='0'/>
-	<door id='5' extUIData="locName:in Nestco,pathName:nestco" x1='30' z1='210' x2='20' z2='250' entryDir='0'/>
+		<door id='2' extUIData="locName:Binmart,path:externalUIs/shops/departmentStores/binmart_15_01_14.swf" x1='-60' z1='74' x2='-75' z2='80' entryDir='-90'/>
+		<door id='3' extUIData="locName:Binmart,path:externalUIs/shops/departmentStores/binmart_15_01_14.swf" x1='-140' z1='180' x2='-160' z2='220' entryDir='0'/>
+		<door id='4' extUIData="locName:Binmart,path:externalUIs/shops/departmentStores/binmart_15_01_14.swf" x1='-60' z1='200' x2='-75' z2='240' entryDir='0'/>
+		<door id='5' extUIData="locName:Binmart,path:externalUIs/shops/departmentStores/binmart_15_01_14.swf" x1='30' z1='210' x2='20' z2='250' entryDir='0'/>
 	
 	<noGoArea type='rad' x='140' z='130' r='75'/>
 	<object name='door2_mc' x='-140' y='0' z='70'/>

@@ -1,13 +1,16 @@
 <?php
 
-//error_reporting(0);
+// Shop grid feed for low-level weevils (myLevel <= 5).
+// The DepartmentStore SWF calls this (instead of getStockItemsForTag) for the
+// initial Featured view when the player's level is <= 5. It posts ONLY
+// `storeName` (no tag, no hash), so we resolve the Featured set for that store.
 include('../../../essential/backbone.php');
 
 if(isset($_POST)) {
-    $tag = $_POST['tag'];
     $storeName = $_POST['storeName'];
-    $shopItems = getNestShopItems($tag,$storeName);
-    $itemArr=array();
+    $tag = 'featured'; // low-level grid shows the Featured set
+    $shopItems = getNestShopItems($tag, $storeName);
+    $itemArr = array();
     $itemData = "";
     $itemcnt1 = 0;
     $itemcnt2 = -1;
@@ -23,7 +26,7 @@ if(isset($_POST)) {
         $currency = $item[6];
         $price = $item[7];
         $minLevel= $item[19];
-        $tycoonOnly = $item[20]; 
+        $tycoonOnly = $item[20];
         $expPoints = $item[15];
         $palettedId = $item[4];
         $defaultHex = $item[5];

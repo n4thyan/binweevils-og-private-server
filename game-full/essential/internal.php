@@ -1009,8 +1009,42 @@
 			$q->bind_param('s', $storeName);
 		} else if(isset($storeMap[$storeName])) {
 			$map = $storeMap[$storeName];
-			$q = $db->prepare("SELECT * FROM itemtype WHERE `category` = ? AND `canBuy` = 1 AND `shopType` = ? AND `currency` = ? ORDER BY `ordering` DESC,`itemTypeID` DESC;");
-			$q->bind_param('sss', $tag, $map['shopType'], $map['currency']);
+			if($tag === 'featured') {
+				// Featured set is the popular/featured items (proven query).
+				$q = $db->prepare("SELECT * FROM itemtype WHERE `canBuy` = 1 AND `shopType` = ? AND `currency` = ? AND `category` = 666 ORDER BY `purchases` DESC LIMIT 30;");
+				$q->bind_param('ss', $map['shopType'], $map['currency']);
+			} else if(is_numeric($tag)) {
+				// Served 2015 Nestco/BinMart SWFs post INTEGER category ids
+				// (e.g. 57). Match the integer `category` column directly.
+				// bind_param needs a variable by reference, so assign first.
+				$tagInt = (int)$tag;
+				$q = $db->prepare("SELECT * FROM itemtype WHERE `category` = ? AND `canBuy` = 1 AND `shopType` = ? AND `currency` = ? ORDER BY `ordering` DESC,`itemTypeID` DESC;");
+				$q->bind_param('iss', $tagInt, $map['shopType'], $map['currency']);
+			} else {
+				// The 2015 Nestco/BinMart SWFs post human-readable MENU LABELS
+				// ("nest items", "nestige", "bundles", "showroom", ...) that are
+				// NOT db `tags` tokens. Translate them to tag sets. For unknown
+				// labels fall back to a direct FIND_IN_SET on the literal tag.
+				$labelMap = array(
+					'nest items' => array('lounge','seating','bedroom','kitchen','bathroom','lighting','flooring','walls','wall stuff','ceilings','storage','shelving','tables','plants','toys','gadgets','other stuff'),
+					'nestige'    => array('statues'),
+					'bundles'    => array('sale'),
+					'showroom'   => array('trophies'),
+				);
+				if(isset($labelMap[$tag])) {
+					$toks = $labelMap[$tag];
+					$conds = array();
+					foreach($toks as $t) { $conds[] = 'FIND_IN_SET(?, `tags`)'; }
+					$sql = 'SELECT * FROM itemtype WHERE ('.implode(' OR ', $conds).') AND `canBuy` = 1 AND `shopType` = ? AND `currency` = ? ORDER BY `ordering` DESC,`itemTypeID` DESC;';
+					$q = $db->prepare($sql);
+					$types = str_repeat('s', count($toks)).'ss';
+					$args = array_merge($toks, array($map['shopType'], $map['currency']));
+					$q->bind_param($types, ...$args);
+				} else {
+					$q = $db->prepare("SELECT * FROM itemtype WHERE FIND_IN_SET(?, `tags`) AND `canBuy` = 1 AND `shopType` = ? AND `currency` = ? ORDER BY `ordering` DESC,`itemTypeID` DESC;");
+					$q->bind_param('sss', $tag, $map['shopType'], $map['currency']);
+				}
+			}
 		} else {
 			$q = $db->prepare("SELECT * FROM itemtype WHERE `category` = ? AND `canBuy` = 1 AND `shopType` = ? ORDER BY `ordering` DESC,`itemTypeID` DESC;");
 			$q->bind_param('ss', $tag, $storeName);
@@ -1036,8 +1070,35 @@
 		);
 		if(isset($storeMap[$storeName])) {
 			$map = $storeMap[$storeName];
-			$q = $db->prepare("SELECT * FROM itemtype WHERE `category` = ? AND `shopType` = ? AND `currency` = ? ORDER BY `purchases` DESC LIMIT 3;");
-			$q->bind_param('sss', $tag, $map['shopType'], $map['currency']);
+			if($tag === 'featured') {
+				$q = $db->prepare("SELECT * FROM itemtype WHERE `shopType` = ? AND `currency` = ? AND `category` = 666 ORDER BY `purchases` DESC LIMIT 3;");
+				$q->bind_param('ss', $map['shopType'], $map['currency']);
+			} else if(is_numeric($tag)) {
+				$tagInt = (int)$tag;
+				$q = $db->prepare("SELECT * FROM itemtype WHERE `category` = ? AND `shopType` = ? AND `currency` = ? ORDER BY `purchases` DESC LIMIT 3;");
+				$q->bind_param('iss', $tagInt, $map['shopType'], $map['currency']);
+			} else {
+				// Same label->tags translation as getNestShopItems (2015 SWF menu labels).
+				$labelMap = array(
+					'nest items' => array('lounge','seating','bedroom','kitchen','bathroom','lighting','flooring','walls','wall stuff','ceilings','storage','shelving','tables','plants','toys','gadgets','other stuff'),
+					'nestige'    => array('statues'),
+					'bundles'    => array('sale'),
+					'showroom'   => array('trophies'),
+				);
+				if(isset($labelMap[$tag])) {
+					$toks = $labelMap[$tag];
+					$conds = array();
+					foreach($toks as $t) { $conds[] = 'FIND_IN_SET(?, `tags`)'; }
+					$sql = 'SELECT * FROM itemtype WHERE ('.implode(' OR ', $conds).') AND `shopType` = ? AND `currency` = ? ORDER BY `purchases` DESC LIMIT 3;';
+					$q = $db->prepare($sql);
+					$types = str_repeat('s', count($toks)).'ss';
+					$args = array_merge($toks, array($map['shopType'], $map['currency']));
+					$q->bind_param($types, ...$args);
+				} else {
+					$q = $db->prepare("SELECT * FROM itemtype WHERE FIND_IN_SET(?, `tags`) AND `shopType` = ? AND `currency` = ? ORDER BY `purchases` DESC LIMIT 3;");
+					$q->bind_param('sss', $tag, $map['shopType'], $map['currency']);
+				}
+			}
 		} else {
 			$q = $db->prepare("SELECT * FROM itemtype WHERE `category` = ? AND `shopType` = ? ORDER BY `purchases` DESC LIMIT 3;");
 			$q->bind_param('ss', $tag, $storeName);
