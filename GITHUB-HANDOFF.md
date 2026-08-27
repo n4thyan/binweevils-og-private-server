@@ -218,3 +218,91 @@ diff-scoped to intended changes). Full validation requires a machine with the ru
 - Bulk/multi-qty purchase still PARKED (separate SWF change).
 - Launcher `.bat` scripts (Apache/MySQL check -> Node -> Electron) + diagnostic — not started.
 - Full runtime verification of the shop split + rooms/mushrooms — needs PHP/MySQL/Node box.
+
+## Continue (session state as of 2026-08-27, NIGHT)
+
+**The runtime blocker is GONE.** This machine now HAS a full live stack:
+Apache DocumentRoot `C:/xampp/htdocs`, MySQL `bwps` (root, no password), Node
+serving the game on `:9339` (pid 12848, launched from `C:/repos/binweevils-og-private-server/server`),
+WebSocket buddy server on `:2087`. The Electron client is launched from
+`~/Desktop/binweevils-og-backup-20260827-1000/electron` and connects to
+`http://localhost`. So "verify the actually-served artifact" is now real, not
+simulated. The earlier handoff's "no node/php/MySQL" note is HISTORICAL — ignore it.
+
+**Repo reality check:** the working tree is on `feature/room-events-mushrooms`
+(585eecda); `main` (1b948caa) is ahead and is the branch that actually holds the
+shipped fixes. `git status` shows shop/garden files as "modified" only because
+HEAD is the feature branch — they are already committed on `main`. Don't be
+alarmed by that status; trust `origin/main`.
+
+### DONE since the previous continue block
+
+1. **Shop work preserved cleanly to `main`** (commit `bb57d0ae`).
+   - BinMart = Dosh, works. Nestco = Mulch, Featured works but normal catalogue
+     still incomplete (OPEN). BinMart room doors now explicitly load
+     `binmart_15_01_14.swf` (Nestco's own room wiring untouched).
+   - Files: `getShopItems.php` (storeName param), `getStockItemsForTag.php`
+     (img field + currency resolver), `getStockItemsForLevel.php` (recovered),
+     `getFeatured.php` (name dedupe + valid JSON), `getBundles.php` (new, was
+     404), `internal.php` (currency split), both `locationDefinitions.xml`.
+   - **SECURITY FLAG (not a fix):** `getShopItems.php` still has a
+     `checkHash()` bypass (`if(isset($tag) && isset($storeName))`) carried from
+     earlier work. Required for local play (SWF secret != build secret) but MUST
+     be resolved before any public/VPS deploy. Same root cause as the §9.8
+     login-key work. `updatePetStats.php` has the same hash-999 class of bug.
+
+2. **Room events — SERVER-SIDE verified** (task #1, runtime this session).
+   - Confirmed the LIVE Node server (pid 12848) is the repo `server/` at `main`:
+     `git diff origin/main -- server/` is empty.
+   - Packet `2#5` dispatches 265->handleDoshs, 282->handleFlums, 287->handleFiggs
+     (BinWeevils.js 683-695); handlers fully implemented + input-validated;
+     `becomeWaiter`/`isWaiter` in Weevil.js complete; `roomids.txt` has all three
+     rooms (server parsed it at startup, so they're live); `mushrooms` table has
+     13 type rows.
+   - **NOT a raw-socket fire-and-forget test** — no blind login script. Static +
+     data proof only. FINAL IN-CLIENT VISUAL/GAMEPLAY TEST still PENDING: walk
+     into Flum's Fountain (282), Figg's Cafe (287), Dosh's Palace (265) and
+     confirm mechanics animate/pay out. That's the developer's eyes, not mine.
+
+3. **Garden seed shop fixed** (commit `1b948caa`, tonight).
+   - Root cause: `getItems2()`/`getPlants2()` call `usort()` with
+     `Weevils_Gardenshop_Helper::compareItems` and `Weevils_Models_Itemtype::
+     compareItems` — NEITHER CLASS EXISTED anywhere (not in repo, not in either
+     Desktop checkout). PHP 8 fatal TypeError swallowed by `error_reporting(0)`
+     => `GET /gardenshop/fetch` returned 200 + 0 bytes.
+   - Fix: restored both as plain stable comparators (level asc, then price asc).
+     Reconstruction of the sort order — the original classes were never
+     recovered, so exact original ordering is unknown. No DB/schema/store change.
+   - Verified: `php -l` clean; live fetch now 17,062 bytes, well-formed XML,
+     24 `<item>` + 75 `<seed>` rows, no leaked errors.
+   - FINAL VISUAL CLIENT TEST pending (SWF renders shelves/prices) — dev's eyes.
+
+### OPEN SHOP BUGS (not fixed, deliberately)
+- Nestco normal catalogue still doesn't populate in-client (Featured does).
+  Server probes returned correct mulch-only rows for all 19 categories, so the
+  remaining fault is most likely client-side/SWF, not PHP.
+- Bundles/Showroom tabs glitch the store UI, panels blank, no way back to items.
+  Bundles is data-empty by proof (no bundle table, collectionID 0/NULL,
+  internalCategory NULL on all 1182 mulch rows) — so this is a UI-robustness
+  defect, not missing data.
+- `loungue` typo tag: 39 mulch + 29 dosh lounge rows invisible in both stores.
+
+### KNOWN GOTCHAS (carried + new)
+- Room IDs: 265=Dosh's Palace, 282=Flum's Fountain, 287=Figg's Cafe.
+- `server/db.js` is baseline version (`query(sql,params,cb)`) — don't rewrite.
+- **ROADMAP.md working copy is DRIFTED:** it is the 269-line version missing the
+  entire §9 (2026-08-27 additions: prestige, login-key blocker, garden-shop bug,
+  map/teleporter/summer-fair, code-system, and the explicit post-release ordering
+  of website-redesign THEN xp-shop/leaderboard). The `main` ROADMAP.md (448 lines)
+  is authoritative. Do NOT commit the working-copy ROADMAP.md — it would clobber
+  §9. (Workspace ROADMAP.md was synced to origin/main this session to defuse it.)
+- The two earlier branches `feature/nestco-catalogue-population` and
+  `fix/live-server-drift-sync` (pushed from the OTHER clone) are now redundant —
+  `main` already contains everything. Safe to delete.
+
+### WHERE TO PICK UP TONIGHT
+1. (Visual, dev-only) Confirm room events + garden shop in the live client.
+2. Decide the client-hash/secret story (§9.8 + getShopItems bypass + updatePetStats
+   999) — needs the design chat, it's auth. Don't do blind.
+3. Then, if wanted: Nestco catalogue (SWF) / Bundles-Showroom UI lock (SWF) /
+   loungue tag (5-min data fix) / Garden visual confirm.
