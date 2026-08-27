@@ -992,12 +992,28 @@
 		// Bin Pets are adopted (customised at adoption), not slotted into the
 		// normal category taxonomy — return all binPetShop stock regardless of
 		// the requested category tag so the Bin Pet Shop always populates.
+		// Shop currency split (2026-08-27): Binmart is Dosh-only, Nestco is
+		// Mulch-only. The SWF posts an explicit storeName (Binmart.setStoreName
+		// => "binmart", Nestco.setStoreName => "nestco"). In the DB every
+		// department-store item carries shopType="nestco" (the storeName is a
+		// client concept); the two stores are distinguished by `currency`. So
+		// map storeName -> (shopType, currency) and filter on both. binPetShop
+		// is exempt (returns all its stock). Any unknown storeName falls back
+		// to the original category+shopType behaviour.
+		$storeMap = array(
+			'binmart' => array('shopType' => 'nestco', 'currency' => 'dosh'),
+			'nestco'  => array('shopType' => 'nestco', 'currency' => 'mulch'),
+		);
 		if($storeName === 'binPetShop') {
 			$q = $db->prepare("SELECT * FROM itemtype WHERE `canBuy` = 1 AND `shopType` = ? ORDER BY `ordering` DESC,`itemTypeID` DESC;");
 			$q->bind_param('s', $storeName);
+		} else if(isset($storeMap[$storeName])) {
+			$map = $storeMap[$storeName];
+			$q = $db->prepare("SELECT * FROM itemtype WHERE `category` = ? AND `canBuy` = 1 AND `shopType` = ? AND `currency` = ? ORDER BY `ordering` DESC,`itemTypeID` DESC;");
+			$q->bind_param('sss', $tag, $map['shopType'], $map['currency']);
 		} else {
 			$q = $db->prepare("SELECT * FROM itemtype WHERE `category` = ? AND `canBuy` = 1 AND `shopType` = ? ORDER BY `ordering` DESC,`itemTypeID` DESC;");
-			$q->bind_param('ss', $tag,$storeName);
+			$q->bind_param('ss', $tag, $storeName);
 		}
 		$q->execute();
 
@@ -1009,8 +1025,23 @@
 
 	function getPopularNestShopItems($tag,$storeName) {
 		$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-		$q = $db->prepare("SELECT * FROM itemtype WHERE `category` = ? AND `shopType` = ? ORDER BY `purchases` DESC LIMIT 3;");
-		$q->bind_param('ss', $tag,$storeName);
+		// Shop currency split (2026-08-27): keep the "popular" tiles within the
+		// same per-store currency as getNestShopItems so Binmart shows only
+		// dosh-priced popular items and Nestco only mulch-priced ones. Map
+		// storeName -> (shopType, currency); DB rows use shopType="nestco" for
+		// both department stores, distinguished by `currency`.
+		$storeMap = array(
+			'binmart' => array('shopType' => 'nestco', 'currency' => 'dosh'),
+			'nestco'  => array('shopType' => 'nestco', 'currency' => 'mulch'),
+		);
+		if(isset($storeMap[$storeName])) {
+			$map = $storeMap[$storeName];
+			$q = $db->prepare("SELECT * FROM itemtype WHERE `category` = ? AND `shopType` = ? AND `currency` = ? ORDER BY `purchases` DESC LIMIT 3;");
+			$q->bind_param('sss', $tag, $map['shopType'], $map['currency']);
+		} else {
+			$q = $db->prepare("SELECT * FROM itemtype WHERE `category` = ? AND `shopType` = ? ORDER BY `purchases` DESC LIMIT 3;");
+			$q->bind_param('ss', $tag, $storeName);
+		}
 		$q->execute();
 
 		$res = $q->get_result();

@@ -180,3 +180,41 @@ nothing was executed — only static/ad-hoc verification (balanced delimiters, d
 diff-scoped to intended changes). Full validation requires a machine with the runtimes:
 `npm install` in `server/` + `electron/`, import `bwps.sql` into MySQL, start
 `node server/server.js`, exercise rooms 265/282/287, POST `collect-mushroom.php`.
+
+## Continue (session state as of 2026-08-27)
+
+**Branch:** work is on `feature/room-events-mushrooms` (then synced to `main`).
+
+**DONE this session:**
+1. **Shop currency split (ROADMAP §8 server half) — COMPLETE.**
+   - `getNestShopItems()` + `getPopularNestShopItems()` in `game-full/essential/internal.php`
+     now split Binmart (dosh-only) / Nestco (mulch-only) by currency.
+   - KEY correction: SWFs ALREADY self-identify — `Binmart.setStoreName` => `"binmart"`,
+     `Nestco.setStoreName` => `"nestco"` (confirmed via SWF disassembly + deployed binaries).
+     So NO SWF edit needed for the split.
+   - DB has no `binmart` shopType; all dept-store items are `shopType='nestco'` distinguished
+     by `currency`. Filter maps `storeName -> (shopType='nestco', currency)`.
+   - Ad-hoc-verified against real `bwps.sql` itemtype dump: Binmart(dosh)=462, Nestco(mulch)=706,
+     lossless vs old mixed 1,168. (First attempt bound `shopType=$storeName` and would have
+     returned ZERO for Binmart — caught by the sim, fixed.)
+   - Catalog endpoint actually used is `getStockItemsForTag.php` (not the stale `getShopItems.php`).
+   - NOT runtime-tested (no PHP/MySQL here — known blocker).
+
+2. **Binmart thumbnail diagnosis (item 2) — INVESTIGATED, NOT YET FIXED.**
+   - Thumbnail URL = `IMG_PATH("users/") + data.img + "_thumb.swf"`
+     (e.g. `cdn.binw.net/users/f_castlegam_slimefall_thumb.swf`), loaded by
+     `DepartmentStoreItem` via `URLhandler.loadFromCDN`.
+   - Those `_thumb.swf` assets DO exist for both dosh AND mulch items (3,618 under
+     `cdn.binw.net/users/`), and both stores share the identical loader code. So this is
+     very unlikely a missing-asset or SWF-code bug.
+   - Symptom report ("none of the Binmart thumbnails load") predates the user standing the
+     server up. Most likely environmental (server not running / Apache DocumentRoot / CDN
+     path). Needs the live screenshot + a `curl -I
+     http://localhost/cdn.binw.net/users/f_castlegam_slimefall_thumb.swf` (expect 200)
+     before any code change. HOLDING edits until that evidence arrives.
+
+**OPEN / NEXT:**
+- Item 2 fix pending live evidence (screenshot + curl 200 check above).
+- Bulk/multi-qty purchase still PARKED (separate SWF change).
+- Launcher `.bat` scripts (Apache/MySQL check -> Node -> Electron) + diagnostic — not started.
+- Full runtime verification of the shop split + rooms/mushrooms — needs PHP/MySQL/Node box.
