@@ -306,3 +306,43 @@ alarmed by that status; trust `origin/main`.
    999) — needs the design chat, it's auth. Don't do blind.
 3. Then, if wanted: Nestco catalogue (SWF) / Bundles-Showroom UI lock (SWF) /
    loungue tag (5-min data fix) / Garden visual confirm.
+
+---
+
+## Continue — XP accounting pass (2026-08-27, night)
+
+User approved the PRE-RELEASE XP accounting only (§9.1/§9.2), explicitly leaving
+the §9.3 reward shop + leaderboard deferred. Done on `main` (commit `8c2958f4`).
+
+**What changed**
+- `game-full/essential/internal.php` — `addExperience*` advance lifetime `xp` AND
+  cycle `xp1`; `levelWeevil()` rewritten to loop (multi-level catch-up, overflow
+  carried), award L80 prestige reward at cap, and begin the next prestige cycle
+  (prestige_count++, prestige_xp_base snapshot, reset to L1, difficulty
+  `1 + prestige*0.5`); `rewardUserTrophy()` records in `prestige_trophies`
+  (prestige-aware, idempotent per prestige).
+- `game-full/php2/nest/level-up.php` — no longer double-awards; `levelWeevil()`
+  handles per-level trophy/alert; endpoint just echoes final state + same hash.
+
+**Key audit finding:** the XP schema already existed (xp/xp1/xp2/prestige_count/
+prestige_xp_base/levels 1–80/prestige_trophies). No schema change. At prestige 0
+the leveling formula is unchanged from before except it now catches up multiple
+levels in one call.
+
+**Verified against live bwps DB:** throwaway test weevil, cleaned up after. +5M
+banked → L1→L65 in one call (overflow carried); bigger grant → L80, prestige
+reward awarded, prestige_count→1, fresh L1 cycle (xp2=45=30×1.5). `php -l` clean;
+no debug instrumentation; temp scripts removed.
+
+**NOT done (per user scope):** §9.3 XP reward shop + lifetime leaderboard
+(post-release, after website redesign). No client/Flash visual test of the
+prestige UI was possible (can't see Flash) — the server model is correct but the
+L80 badge + prestige-pip rendering is a client item to eyeball later.
+
+**Open / next when resumed**
+- Client visual confirm of prestige cycle (badge stays L80, prestige pips increment).
+- §9.8 login-key + getShopItems hash bypass + updatePetStats 999 (the auth design
+  chat — still blocked, needs user decision).
+- Remaining shop bugs: Nestco catalogue (SWF), Bundles/Showroom UI lock (SWF),
+  loungue tag (data fix).
+- Post-release per §9.13 order: website redesign → LAST XP reward shop + leaderboard.

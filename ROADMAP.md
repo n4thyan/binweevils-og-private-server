@@ -321,6 +321,12 @@ Use two linked XP concepts:
 - All legitimate XP rewards should go through one canonical award path so lifetime XP and banked XP stay consistent.
 - The accounting/model can be introduced alongside progression if useful, but **the XP reward shop itself is POST-RELEASE work and must not block launch**.
 
+**STATUS (2026-08-27, night): §9.1 + §9.2 PRE-RELEASE ACCOUNTING — DONE on `main` (commit `8c2958f4`).**
+- Audit found the schema already carried the needed columns, so no schema change was required: `users.xp` (lifetime), `users.xp1`/`xp2` (cycle progress / next-level cost), `users.prestige_count`, `users.prestige_xp_base`, the `levels` 1–80 curve, and a `prestige_trophies` table. The work was wiring the logic.
+- `addExperience*` now advances both lifetime `xp` and cycle `xp1`; `levelWeevil()` loops to grant every banked level in one call (catch-up), carrying overflow; at L80 it awards the prestige reward and (below the prestige-13 cap) increments `prestige_count`, snapshots `prestige_xp_base`, resets to a fresh L1 cycle with difficulty `1 + prestige*0.5`. `rewardUserTrophy()` records each award in `prestige_trophies` (prestige-aware, idempotent per prestige).
+- Verified against the live DB (throwaway test weevil, cleaned up): +5M banked XP leveled 1→65 in one call carrying overflow; a larger grant drove to L80, awarded the prestige reward, and incremented `prestige_count` to 1 with a fresh L1 cycle (xp2 = 30×1.5 = 45).
+- **Deferred per roadmap: §9.3 (XP reward shop + lifetime-XP leaderboard) remains POST-RELEASE, after the website redesign.** No code for it was written.
+
 ### 9.3 POST-RELEASE: XP reward shop + lifetime-XP leaderboard — after website redesign
 
 This entire feature is deliberately deferred until **after the initial game release and after the website redesign is complete**. It should be treated as one of the final roadmap additions, not a pre-release blocker.
