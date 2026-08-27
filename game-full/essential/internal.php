@@ -1267,51 +1267,57 @@
 	}
 
 	function addExperience($weevilId, $total) {
-		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
-			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+	    if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+	        $loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
 
-			if($loggedIn == true) {
-				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-				$q = $db->prepare("UPDATE `users` SET `xp` = xp + ? WHERE `id` = ?;");
-				$q->bind_param('ss', $total, $weevilId);
-				$q->execute();
+	        if($loggedIn == true) {
+	            $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+	            // xp = lifetime (never decreases); xp1 = progress within the current
+	            // prestige cycle, so banked XP actually drives leveling. Both advance
+	            // together (see ROADMAP §9.1/§9.2 — lifetime vs banked/progression XP).
+	            $t = intval($total);
+	            $q = $db->prepare("UPDATE `users` SET `xp` = xp + ?, `xp1` = xp1 + ? WHERE `id` = ?;");
+	            $q->bind_param('sss', $t, $t, $weevilId);
+	            $q->execute();
 
-				$res = $q->get_result();
+	            $res = $q->get_result();
 
-				if($q->affected_rows == 1)
-				return true;
-			}
-		}
+	            if($q->affected_rows == 1)
+	            return true;
+	        }
+	    }
 
-		return false;
+	    return false;
 	}
-	
+
 	function addExperienceByName($weevilName, $total) {
-		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
-			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+	    if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+	        $loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
 
-			if($loggedIn == true) {
-				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-				$q = $db->prepare("UPDATE `users` SET `xp` = xp + ? WHERE `users`.`username` = ?;");
-				$q->bind_param('ss', intval($total), $weevilName);
-				$q->execute();
+	        if($loggedIn == true) {
+	            $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+	            $t = intval($total);
+	            $q = $db->prepare("UPDATE `users` SET `xp` = xp + ?, `xp1` = xp1 + ? WHERE `users`.`username` = ?;");
+	            $q->bind_param('sss', $t, $t, $weevilName);
+	            $q->execute();
 
-				$res = $q->get_result();
+	            $res = $q->get_result();
 
-				if($q->affected_rows == 1){
-					return true;
-				}
-			}
-		}
-		
-		return false;
+	            if($q->affected_rows == 1){
+	                return true;
+	            }
+	        }
+	    }
+
+	    return false;
 	}
 
 	function addExperienceByNameMod($weevilName, $total) {
-		$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-				$q = $db->prepare("UPDATE `users` SET `xp` = xp + ? WHERE `users`.`username` = ?;");
-				$q->bind_param('ss', intval($total), $weevilName);
-				$q->execute();
+	    $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+	    $t = intval($total);
+	    $q = $db->prepare("UPDATE `users` SET `xp` = xp + ?, `xp1` = xp1 + ? WHERE `users`.`username` = ?;");
+	    $q->bind_param('sss', $t, $t, $weevilName);
+	    $q->execute();
 
 				$res = $q->get_result();
 
@@ -1390,41 +1396,74 @@
     
     function levelWeevil($weevil) {
         if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
-			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+            $loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
 
-            $currentData = getAllWeevilStatsByName($weevil);
-            $newXP2 = getXPDataByLevel($currentData['level'] + 2);
-            $newXP = $newXP2['xpRequired'];
+            if($loggedIn == true) {
+                $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                // Grant EVERY legitimately-earned level in sequence (ROADMAP §9.1
+                // multi-level catch-up), instead of one level per call. Each level
+                // awards its trophy + alert. At the top of the 1-80 cycle we award
+                // the Level 80 (prestige) reward and, if below the cap (prestige 13),
+                // begin the next prestige cycle (fresh 1-80 progression behind the
+                // permanent L80 badge). Difficulty scales 1 + prestige*0.5.
+                $guard = 0;
+                while($guard++ < 300) {
+                    $currentData = getAllWeevilStatsByName($weevil);
+                    if(!is_array($currentData)) break;
+                    $mult = 1 + intval($currentData['prestige_count']) * 0.5;
 
-			if($loggedIn == true) {
-                if($currentData['xp'] >= $currentData['xp2']) {
-                    $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-					
-					if($currentData['level'] + 1 >= 80) { // force people to be top level unless changed by admins
-						$q = $db->prepare("UPDATE `users` SET `level` = 80, `xp1` = `xp2` WHERE `users`.`username` = ?;");
-						$q->bind_param('s', $weevil);
-						$q->execute();
-		
-						$res = $q->get_result();
-		
-						if($q->affected_rows == 1)
-						return true;
-					}
-					else {
-						$q = $db->prepare("UPDATE `users` SET `level` = `level` + 1, `xp1` = `xp2`, `xp2` = ? WHERE `users`.`username` = ?;");
-						$q->bind_param('ss', $newXP, $weevil);
-						$q->execute();
-		
-						$res = $q->get_result();
-		
-						if($q->affected_rows == 1)
-						return true;
-					}
+                    if($currentData['xp1'] < $currentData['xp2']) break; // nothing due
+
+                    if($currentData['level'] + 1 >= 80) {
+                        // Entering / at the top of the cycle: award the L80 reward once.
+                        if(intval($currentData['level']) < 80) {
+                            rewardUserTrophy($weevil, $currentData['id'], 80);
+                            $icon = 'cdn.binw.net/users/o_levelTrophy80_thumb.swf';
+                            $alrtMsg = '<a href="event:weevil|'.strval($currentData['id']).'">'.$weevil.'</a> has reached level 80!';
+                            sendAlert($weevil, $alrtMsg, $icon, time());
+                        }
+
+                        if(intval($currentData['prestige_count']) < 13) {
+                            // Begin the next prestige cycle.
+                            $newMult = 1 + (intval($currentData['prestige_count']) + 1) * 0.5;
+                            $next = getXPDataByLevel(2);
+                            $newXP2 = $next ? intval($next['xpRequired']) * $newMult : 30 * $newMult;
+                            $q = $db->prepare("UPDATE `users` SET `prestige_count` = `prestige_count` + 1, `prestige_xp_base` = `xp`, `level` = 1, `xp1` = 0, `xp2` = ? WHERE `users`.`username` = ?;");
+                            $q->bind_param('ss', $newXP2, $weevil);
+                            $q->execute();
+                            // loop continues; next iteration xp1=0 < xp2 so it breaks
+                        }
+                        else {
+                            // Max prestige reached: clamp at 80.
+                            $q = $db->prepare("UPDATE `users` SET `level` = 80, `xp1` = `xp2` WHERE `users`.`username` = ?;");
+                            $q->bind_param('s', $weevil);
+                            $q->execute();
+                            break;
+                        }
+                    }
+                    else {
+                        $newXP2row = getXPDataByLevel($currentData['level'] + 2);
+                        $newXP = $newXP2row ? intval($newXP2row['xpRequired']) * $mult : 30 * $mult;
+                        // Carry the overflow: xp1 keeps the banked XP above the
+                        // threshold just spent, so a large banked grant levels the
+                        // weevil all the way up in one call (ROADMAP §9.1 catch-up).
+                        $spend = $currentData['xp2'];
+                        $q = $db->prepare("UPDATE `users` SET `level` = `level` + 1, `xp1` = `xp1` - ?, `xp2` = ? WHERE `users`.`username` = ?;");
+                        $q->bind_param('sss', $spend, $newXP, $weevil);
+                        $q->execute();
+
+                        $cd = getAllWeevilStatsByName($weevil);
+                        rewardUserTrophy($weevil, $cd['id'], $cd['level']);
+                        $icon = 'cdn.binw.net/users/o_levelTrophy'.strval($cd['level']).'_thumb.swf';
+                        $alrtMsg = '<a href="event:weevil|'.strval($cd['id']).'">'.$weevil.'</a> has reached level '.strval($cd['level']).'!';
+                        sendAlert($weevil, $alrtMsg, $icon, time());
+                    }
                 }
-			}
-		}
+                return true;
+            }
+        }
 
-		return false;
+        return false;
     }
 
     function itemCountById($itemId, $weevilId, $colour) {
@@ -1528,26 +1567,37 @@
 
     function rewardUserTrophy($weevilname, $userIDX, $level) {
         if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
-			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
-			if($loggedIn == true) {
+            $loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+            if($loggedIn == true) {
 
                 $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
                 $configLoc = "o_levelTrophy". strval($level);
                 $idata = GetItemDataByConfig($configLoc);
                 $itemId = $idata['itemTypeID'];
 
+                // Record the award as prestige-aware (ROADMAP §9.1): a fresh set of
+                // level trophies is earnable once per prestige, while remaining
+                // idempotent inside one prestige. The physical item is granted each
+                // cycle (a new trophy), and the prestige_trophies row lets the game
+                // prove/idempotency-check ownership per (user, prestige, level).
+                $stats = getAllWeevilStatsByName($weevilname);
+                $pc = is_array($stats) ? intval($stats['prestige_count']) : 0;
+                $q = $db->prepare("INSERT INTO `prestige_trophies` (`weevil_id`, `username`, `prestige_count`, `level`) VALUES (?, ?, ?, ?)");
+                $q->bind_param('isii', $userIDX, $weevilname, $pc, $level);
+                $q->execute();
+
                 $q = $db->prepare("INSERT INTO `weevilitems` (`weevilID`, `itemId`, `category`, `configName`) VALUES (?, ?, '993', ?)");
-				$q->bind_param('sss', $userIDX, $itemId, $configLoc);
+                $q->bind_param('sss', $userIDX, $itemId, $configLoc);
                 $q->execute();
 
                 $res = $q->get_result();
 
                 if($q->affected_rows == 1)
-				return true;
-			}
-		}
+                return true;
+            }
+        }
 
-		return false;
+        return false;
     }
 
     function checkNest($weevilname, $nestID) {
