@@ -86,6 +86,7 @@ include('site/header.php');
                 <a class="bw-button bw-button--green" href="#login">Log in &amp; play</a>
                 <a class="bw-button bw-button--blue" href="/register/">Create a Weevil</a>
             </div>
+            <a class="bw-play-now" href="#login" aria-label="Play Bin Weevils"><img src="/assets/images/play-now.png" alt="Play Now!"></a>
         <?php endif; ?>
         <img class="bw-characters" src="/assets/images/rigg.png" alt="" aria-hidden="true">
     </div>
@@ -127,36 +128,38 @@ include('site/header.php');
     <?php endif; ?>
 </section>
 
-<?php if(site_has_ads('home-rectangle')): ?>
-<section class="bw-home-ad" aria-label="Sponsor">
-    <?php site_ad_slot('home-rectangle', 'rectangle'); ?>
-</section>
-<?php endif; ?>
+<div class="bw-home-layout">
+    <section class="bw-home-grid" aria-label="Explore the site">
+        <article class="bw-panel bw-feature-card">
+            <img src="/assets/images/racing.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
+            <p class="bw-eyebrow">Play</p>
+            <h2>Enter the Bin</h2>
+            <p>Launch the restored classic client and pick up exactly where your Weevil left off.</p>
+            <a class="bw-button bw-button--green bw-button--small" href="<?php echo $siteLoggedIn ? '/game.php' : '/#login'; ?>"><?php echo $siteLoggedIn ? 'Play now' : 'Log in'; ?></a>
+        </article>
 
-<section class="bw-home-grid" aria-label="Explore the site">
-    <article class="bw-panel bw-feature-card">
-        <img src="/assets/images/racing.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
-        <p class="bw-eyebrow">Play</p>
-        <h2>Enter the Bin</h2>
-        <p>Launch the restored classic client and pick up exactly where your Weevil left off.</p>
-        <a class="bw-button bw-button--green bw-button--small" href="<?php echo $siteLoggedIn ? '/game.php' : '/#login'; ?>"><?php echo $siteLoggedIn ? 'Play now' : 'Log in'; ?></a>
-    </article>
+        <article class="bw-panel bw-panel--orange bw-feature-card">
+            <img src="/assets/images/nest.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
+            <p class="bw-eyebrow">Community</p>
+            <h2>xat Chat</h2>
+            <p>The website community room uses xat for a proper old-school Bin-era chat experience.</p>
+            <a class="bw-button bw-button--small" href="/community/">Open community</a>
+        </article>
 
-    <article class="bw-panel bw-panel--orange bw-feature-card">
-        <img src="/assets/images/nest.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
-        <p class="bw-eyebrow">Community</p>
-        <h2>xat Chat</h2>
-        <p>The website community room uses xat for a proper old-school Bin-era chat experience.</p>
-        <a class="bw-button bw-button--small" href="/community/">Open community</a>
-    </article>
+        <article class="bw-panel bw-feature-card">
+            <img src="/assets/images/garden.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
+            <p class="bw-eyebrow"><?php echo $siteLoggedIn ? 'Account' : 'New player'; ?></p>
+            <h2><?php echo $siteLoggedIn ? 'My Weevil' : 'Create a Weevil'; ?></h2>
+            <p><?php echo $siteLoggedIn ? 'View your progression, account options and unlocked customisation in one place.' : 'Make a new Weevil using the existing account system and head straight into the game.'; ?></p>
+            <a class="bw-button bw-button--blue bw-button--small" href="<?php echo $siteLoggedIn ? '/settings/' : '/register/'; ?>"><?php echo $siteLoggedIn ? 'Open settings' : 'Get started'; ?></a>
+        </article>
+    </section>
 
-    <article class="bw-panel bw-feature-card">
-        <img src="/assets/images/garden.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
-        <p class="bw-eyebrow"><?php echo $siteLoggedIn ? 'Account' : 'New player'; ?></p>
-        <h2><?php echo $siteLoggedIn ? 'My Weevil' : 'Create a Weevil'; ?></h2>
-        <p><?php echo $siteLoggedIn ? 'View your progression, account options and unlocked customisation in one place.' : 'Make a new Weevil using the existing account system and head straight into the game.'; ?></p>
-        <a class="bw-button bw-button--blue bw-button--small" href="<?php echo $siteLoggedIn ? '/settings/' : '/register/'; ?>"><?php echo $siteLoggedIn ? 'Open settings' : 'Get started'; ?></a>
-    </article>
-</section>
+    <?php if(site_has_ads('home-rectangle')): ?>
+    <aside class="bw-home-rail" aria-label="Sponsor">
+        <?php site_ad_slot('home-rectangle', 'rectangle'); ?>
+    </aside>
+    <?php endif; ?>
+</div>
 
 <?php include('site/footer.php'); ?>
