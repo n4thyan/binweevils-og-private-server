@@ -8,6 +8,9 @@ if(!$siteLoggedIn || !is_array($siteUser)) {
 
 $sitePageTitle = 'Play';
 $siteActive = 'play';
+$flashMovie = isset($siteConfig['flash_movie']) ? (string)$siteConfig['flash_movie'] : '/mainDEV663.swf?ver=1';
+$flashLoginPath = isset($siteConfig['flash_login_path']) ? (string)$siteConfig['flash_login_path'] : 'http://localhost/';
+$websocketUrl = isset($siteConfig['websocket_url']) ? (string)$siteConfig['websocket_url'] : 'ws://localhost:2087';
 include('site/header.php');
 ?>
 
@@ -16,7 +19,7 @@ include('site/header.php');
         <div>
             <p class="bw-eyebrow">Play</p>
             <h1 class="bw-section-title" style="margin-bottom:4px;">Enter the Bin</h1>
-            <p class="bw-section-intro" style="margin:0;">Logged in as <?php echo site_e($siteUser['username']); ?> · Level <?php echo (int)$siteUser['level']; ?> · Prestige <?php echo (int)$siteUser['prestige_count']; ?></p>
+            <p class="bw-section-intro" style="margin:0;">Logged in as <span data-account-stat="username"><?php echo site_e($siteUser['username']); ?></span> · Level <span data-account-stat="level"><?php echo (int)$siteUser['level']; ?></span> · Prestige <span data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></span></p>
         </div>
         <a class="bw-button bw-button--blue bw-button--small" href="/settings/">My Weevil</a>
     </div>
@@ -25,10 +28,10 @@ include('site/header.php');
         <object
             type="application/x-shockwave-flash"
             id="flashContentObject"
-            data="/mainDEV663.swf?ver=1"
+            data="<?php echo site_e($flashMovie); ?>"
             style="display:block;width:940px;height:650px;margin:0 auto;border-radius:20px;overflow:hidden;background:#dff4fb;">
-            <param name="movie" value="/mainDEV663.swf?ver=1">
-            <param name="FlashVars" value="cluster=uk&amp;loginPath=http://localhost/&amp;autoBin=false&amp;zone=">
+            <param name="movie" value="<?php echo site_e($flashMovie); ?>">
+            <param name="FlashVars" value="cluster=uk&amp;loginPath=<?php echo site_e($flashLoginPath); ?>&amp;autoBin=false&amp;zone=">
             <param name="allowFullScreen" value="true">
             <param name="wmode" value="opaque">
             <param name="allowScriptAccess" value="always">
@@ -41,6 +44,7 @@ include('site/header.php');
     var ws = null;
     var reconnectTimer = null;
     var pingTimer = null;
+    var websocketUrl = <?php echo json_encode($websocketUrl); ?>;
 
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -49,7 +53,7 @@ include('site/header.php');
     function startWs() {
         if (ws && (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING)) return;
 
-        ws = new WebSocket('ws://localhost:2087');
+        ws = new WebSocket(websocketUrl);
 
         ws.onopen = function () {
             if (pingTimer) clearInterval(pingTimer);
