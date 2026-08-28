@@ -34,6 +34,17 @@ import { WeevilCanvasRenderer } from '/weevil-creator/src/runtime/WeevilCanvasRe
                 var source = String(rawDefinition || '').trim();
                 var defString = /^\d{18}$/.test(source) ? source : '401135129001323200';
                 var definition = getDefObj(defString);
+
+                // Website previews are BODY-ONLY. The shared HTML5 renderer reads
+                // hat/headwear fields from the definition; zero them here so the
+                // website never draws an equipped hat. This only affects the
+                // website wrapper -- the Flash game, Hem's Hat Shop and the game
+                // hat inventory are untouched. ht is the def's hat-type digit.
+                definition.hat = 0;
+                definition.hatc = 0;
+                definition.htc = 0;
+                definition.et = 0;
+                definition.ht = 0;
                 var width = Math.max(64, Math.round(mount.clientWidth || 220));
                 var height = Math.max(68, Math.round(mount.clientHeight || 220));
 
