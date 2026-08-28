@@ -19,9 +19,13 @@ return [
     ],
 
     // Set this to the final xat embed URL/group once the room has been chosen.
-    // Keeping it in one config file means the Community page never needs a redesign
-    // just to change rooms.
     'xat_embed_url' => '',
+
+    // Local-first play defaults. VPS deployment changes these in one place rather
+    // than editing the Play page or its preserved Flash/WebSocket contract.
+    'flash_movie' => '/mainDEV663.swf?ver=1',
+    'flash_login_path' => 'http://localhost/',
+    'websocket_url' => 'ws://localhost:2087',
 
     'build_label' => 'Development build',
 ];
