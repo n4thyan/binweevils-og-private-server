@@ -9,7 +9,7 @@ include('../site/header.php');
 <section class="bw-panel bw-panel--green bw-content-panel">
     <p class="bw-eyebrow">Need a hand?</p>
     <h1 class="bw-section-title">Bin Weevils Help</h1>
-    <p class="bw-section-intro">Quick help for accounts, launching the restored client and the main classic Bin Weevils systems.</p>
+    <p class="bw-section-intro">Quick help for accounts, downloading and launching the restored client, and the main classic Bin Weevils systems.</p>
     <div class="bw-button-row">
         <a class="bw-button bw-button--green bw-button--small" href="#account">Account</a>
         <a class="bw-button bw-button--blue bw-button--small" href="#playing">Playing</a>
@@ -20,10 +20,10 @@ include('../site/header.php');
 
 <section class="bw-home-grid" style="margin-top:27px;" aria-label="Help shortcuts">
     <article class="bw-panel bw-feature-card">
-        <p class="bw-eyebrow">New player</p>
-        <h2>Create a Weevil</h2>
-        <p>Use the existing registration flow to make your account, then sign in from the homepage.</p>
-        <a class="bw-button bw-button--blue bw-button--small" href="/register/">Create a Weevil</a>
+        <p class="bw-eyebrow">Desktop</p>
+        <h2>Download client</h2>
+        <p>Get the current Electron desktop client from the website's canonical download page.</p>
+        <a class="bw-button bw-button--green bw-button--small" href="/download/">Open Downloads</a>
     </article>
 
     <article class="bw-panel bw-panel--orange bw-feature-card">
@@ -52,8 +52,9 @@ include('../site/header.php');
 
 <section class="bw-panel bw-panel--green bw-content-panel" id="playing" style="margin-top:27px;">
     <p class="bw-eyebrow">Playing</p>
-    <h2 class="bw-card-title">Launching the restored classic client</h2>
-    <p class="bw-muted">After signing in, choose <strong>Play</strong> or <strong>Enter the Bin</strong>. The Play page hosts the restored classic Bin Weevils client and keeps the existing game connection bridge intact.</p>
+    <h2 class="bw-card-title">Downloading and launching the restored classic client</h2>
+    <p class="bw-muted"><strong>Download:</strong> use <a href="/download/">the Download page</a> for the current official project client. Do not use old Bin Weevils Rewritten installers or third-party launchers for this private server.</p>
+    <p class="bw-muted"><strong>Launch:</strong> after signing in, choose <strong>Play</strong> or <strong>Enter the Bin</strong>. The Play page hosts the restored classic Bin Weevils client and keeps the existing game connection bridge intact.</p>
     <p class="bw-muted">This preservation build is primarily a desktop experience. If the game frame itself does not start, that is separate from the website login: check that the local game/server stack is running before changing your account details.</p>
     <p class="bw-muted">The website redesign does not replace the game client. Rooms, Weevils, inventory, shops and other in-game systems continue to come from the restored game and server.</p>
 </section>
@@ -61,7 +62,7 @@ include('../site/header.php');
 <section class="bw-panel bw-panel--orange bw-content-panel" id="progression" style="margin-top:27px;">
     <p class="bw-eyebrow">Progression</p>
     <h2 class="bw-card-title">Levels, XP, Mulch &amp; Dosh</h2>
-    <p class="bw-muted"><strong>XP</strong> drives level progression. The website distinguishes permanent <strong>Lifetime XP</strong> from <strong>Banked XP</strong>, the spendable/progression balance reserved for the planned XP rewards catalogue.</p>
+    <p class="bw-muted"><strong>XP</strong> drives level progression. The website distinguishes permanent <strong>Lifetime XP</strong> from <strong>Banked XP</strong>, the spendable/progression balance used by XP Rewards.</p>
     <p class="bw-muted"><strong>Mulch</strong> and <strong>Dosh</strong> are separate in-game currencies. Shops continue to decide which currency applies to their own stock rather than the website changing purchase rules.</p>
     <p class="bw-muted">Your current level, Prestige, XP, Mulch and Dosh are shown on <a href="/settings/">My Weevil</a> when signed in.</p>
 </section>

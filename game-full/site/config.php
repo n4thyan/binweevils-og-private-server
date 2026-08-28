@@ -21,6 +21,19 @@ return [
     // Add the final xat embed URL/group here when the room has been chosen.
     'xat_embed_url' => '',
 
+    // Public desktop-client downloads. Keep the URL out of page templates so a
+    // release can be replaced without redesigning the site. On a VPS, these can
+    // be supplied as environment variables instead of committed URLs.
+    'client_downloads' => [
+        'windows' => [
+            'label' => 'Windows',
+            'url' => getenv('BW_WINDOWS_CLIENT_URL') ?: '',
+            'version' => getenv('BW_WINDOWS_CLIENT_VERSION') ?: 'Development build',
+            'size' => getenv('BW_WINDOWS_CLIENT_SIZE') ?: '',
+        ],
+        'source_url' => 'https://github.com/n4thyan/binweevils-og-private-server/tree/main/electron',
+    ],
+
     // Video and static creatives use the same rotation. Leave a placement empty
     // until its local media files exist under /assets/ads/. Example creative:
     // ['type' => 'video', 'src' => '/assets/ads/example.mp4', 'label' => 'Advertisement']

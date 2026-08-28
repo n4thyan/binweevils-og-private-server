@@ -33,6 +33,7 @@ $siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 
         <nav class="bw-nav" data-nav>
             <a class="bw-nav-link<?php echo site_active('home', $siteActive); ?>" href="/">Home</a>
             <a class="bw-nav-link<?php echo site_active('play', $siteActive); ?>" href="<?php echo $siteLoggedIn ? '/game.php' : '/#login'; ?>">Play</a>
+            <a class="bw-nav-link<?php echo site_active('download', $siteActive); ?>" href="/download/">Download</a>
             <a class="bw-nav-link<?php echo site_active('community', $siteActive); ?>" href="/community/">Community</a>
             <?php if($siteLoggedIn): ?>
                 <a class="bw-nav-link<?php echo site_active('settings', $siteActive); ?>" href="/settings/">My Weevil</a>

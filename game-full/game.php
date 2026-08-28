@@ -21,7 +21,10 @@ include('site/header.php');
             <h1 class="bw-section-title" style="margin-bottom:4px;">Enter the Bin</h1>
             <p class="bw-section-intro" style="margin:0;">Logged in as <span data-account-stat="username"><?php echo site_e($siteUser['username']); ?></span> · Level <span data-account-stat="level"><?php echo (int)$siteUser['level']; ?></span> · Prestige <span data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></span></p>
         </div>
-        <a class="bw-button bw-button--blue bw-button--small" href="/settings/">My Weevil</a>
+        <div class="bw-button-row">
+            <a class="bw-button bw-button--green bw-button--small" href="/download/">Desktop client</a>
+            <a class="bw-button bw-button--blue bw-button--small" href="/settings/">My Weevil</a>
+        </div>
     </div>
 
     <div style="width:100%;overflow-x:auto;padding:8px 0 14px;text-align:center;">
