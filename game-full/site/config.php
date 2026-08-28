@@ -7,7 +7,7 @@ return [
             'urgent' => false,
         ],
         [
-            'text' => 'Community chat is moving to xat.',
+            'text' => 'Community chat is on xat.',
             'href' => '/community/',
             'urgent' => false,
         ],
@@ -18,7 +18,7 @@ return [
         ],
     ],
 
-    // Set this to the final xat embed URL/group once the room has been chosen.
+    // Add the final xat embed URL/group here when the room has been chosen.
     'xat_embed_url' => '',
 
     // Local-first play defaults. VPS deployment changes these in one place rather
