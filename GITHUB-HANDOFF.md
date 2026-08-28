@@ -346,3 +346,33 @@ L80 badge + prestige-pip rendering is a client item to eyeball later.
 - Remaining shop bugs: Nestco catalogue (SWF), Bundles/Showroom UI lock (SWF),
   loungue tag (data fix).
 - Post-release per §9.13 order: website redesign → LAST XP reward shop + leaderboard.
+
+
+---
+
+## 2026-08-28 morning harden (verified against live served stack)
+
+Repository tip is now `main` (push of two commits on top of `929b4eeb`/`1e6469b1`):
+
+1. `fix(shop): restore proper getShopItems hash validation` — removed the
+   `tag`+`storeName` presence bypass in `departmentStore/getShopItems.php`.
+   Root cause was a parameter-KEY mismatch (OG code signed under `shopType`;
+   the served 2015 Nestco SWF posts and signs `storeName`, and carries the SAME
+   secret `P07aJK8soogA815CxjkTcA==` as `calcHash()`), NOT a secret mismatch.
+   Validation restores the legacy `checkHash((hash,storeName,tag,timer))`
+   contract used by the working `buyDoshShopItem.php`. Verified: valid request
+   accepted (responseCode:1), missing/wrong/tampered hash rejected (res=999),
+   empty storeName rejected. BinMart=dosh-only, Nestco=mulch-only preserved
+   (no cross-currency leakage). `php -l` clean.
+
+2. `fix(xp): preserve progression overflow across prestige boundary` —
+   `levelWeevil()` previously set `xp1 = 0` on Prestige advance, destroying
+   banked overflow above the L80 threshold. Now pays only the L80 threshold
+   (`xp1 - xp2`) and keeps overflow to continue the new Prestige in one call;
+   P13 cap clamps without advancing/re-awarding. Verified Cases A–F on live
+   DB with throwaway weevils (all removed). `prestige_trophies` UNIQUE
+   (user,prestige,level) enforces per-Prestige idempotency; a new Prestige
+   earns a fresh physical level-trophy set. `php -l` clean.
+
+Both commits pushed to `origin/main`. No temporary bypasses, debug scripts, or
+test accounts remain in the repo or DB.

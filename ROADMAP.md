@@ -342,6 +342,21 @@ Use two linked XP concepts:
 - Verified against the live DB (throwaway test weevil, cleaned up): +5M banked XP leveled 1→65 in one call carrying overflow; a larger grant drove to L80, awarded the prestige reward, and incremented `prestige_count` to 1 with a fresh L1 cycle (xp2 = 30×1.5 = 45).
 - **Deferred per roadmap: §9.3 (XP reward shop + lifetime-XP leaderboard) remains POST-RELEASE, after the website redesign.** No code for it was written.
 
+**2026-08-28 morning harden (verified):** The Prestige-boundary catch-up was
+audited end-to-end against the live DB. A regression was found: `levelWeevil()`
+zeroed `xp1` on the Prestige transition, destroying banked overflow above the
+consumed Level-80 threshold. Fixed in `fix(xp)` commit: prestige advance now
+pays only the L80 threshold (`xp1 = xp1 - xp2`) and keeps remaining banked XP
+to continue the new Prestige's cycle in the same call; the P13 L80 cap clamps
+(`xp1 = xp1 - xp2`) without advancing or re-awarding. Verified Cases A–F on
+throwaway weevils (cleaned up): ordinary catch-up, exact P-boundary, overflow-
+across-boundary (overflow preserved), full duplicate-trophy set per Prestige
+(L10 physical copies = 2 across P0/P1, idempotent on re-run), large cross-
+boundary grant, and P13 cap stability. `prestige_trophies` UNIQUE(user,prestige,level)
+enforces per-Prestige idempotency while allowing a fresh physical set each
+Prestige.
+
+
 ### 9.3 POST-RELEASE: XP reward shop + lifetime-XP leaderboard — after website redesign
 
 This entire feature is deliberately deferred until **after the initial game release and after the website redesign is complete**. It should be treated as one of the final roadmap additions, not a pre-release blocker.
