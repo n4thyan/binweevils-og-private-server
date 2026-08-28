@@ -12,6 +12,7 @@ if(!isset($siteShowTopAd)) $siteShowTopAd = true;
     <title><?php echo site_e($sitePageTitle); ?> · Bin Weevils</title>
     <link rel="icon" href="/assets/images/weevil.png" type="image/png">
     <link rel="stylesheet" href="/assets/css/site-redesign.css?v=1">
+    <link rel="stylesheet" href="/assets/css/site-preferences.css?v=1">
     <link rel="stylesheet" href="/assets/css/site-ads.css?v=1">
 </head>
 <body>
