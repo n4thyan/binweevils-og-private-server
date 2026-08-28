@@ -2,6 +2,8 @@
 if(!isset($sitePageTitle)) $sitePageTitle = 'Bin Weevils';
 if(!isset($siteActive)) $siteActive = '';
 if(!isset($siteShowTopAd)) $siteShowTopAd = true;
+$siteHeaderNameColor = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 'username_color', '#075d86') : '#075d86';
+$siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 'title', '') : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +47,8 @@ if(!isset($siteShowTopAd)) $siteShowTopAd = true;
                     <span class="bw-render-pending">Weevil</span>
                 </a>
                 <div class="bw-account-copy">
-                    <strong data-account-stat="username"><?php echo site_e($siteUser['username']); ?></strong>
+                    <strong data-account-stat="username" style="color:<?php echo site_e($siteHeaderNameColor); ?>"><?php echo site_e($siteUser['username']); ?></strong>
+                    <?php if($siteHeaderTitle !== ''): ?><em class="bw-account-title"><?php echo site_e($siteHeaderTitle); ?></em><?php endif; ?>
                     <span>Lv <b data-account-stat="level"><?php echo (int)$siteUser['level']; ?></b> · P<b data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></b></span>
                     <small><a href="/settings/">Settings</a> · <a href="/login/login.php">Logout</a></small>
                 </div>
