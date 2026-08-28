@@ -25,6 +25,15 @@ if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
     }
 }
 
+if(!isset($_SESSION['site_csrf']) || !is_string($_SESSION['site_csrf']) || strlen($_SESSION['site_csrf']) < 32) {
+    try {
+        $_SESSION['site_csrf'] = bin2hex(random_bytes(32));
+    }
+    catch(Exception $e) {
+        $_SESSION['site_csrf'] = hash('sha256', session_id() . '|' . microtime(true) . '|' . mt_rand());
+    }
+}
+
 function site_e($value) {
     return htmlspecialchars((string)$value, ENT_QUOTES, 'UTF-8');
 }
@@ -35,6 +44,15 @@ function site_active($name, $active) {
 
 function site_int($value) {
     return number_format((int)$value);
+}
+
+function site_csrf_token() {
+    return isset($_SESSION['site_csrf']) ? (string)$_SESSION['site_csrf'] : '';
+}
+
+function site_csrf_valid($token) {
+    $known = site_csrf_token();
+    return $known !== '' && is_string($token) && hash_equals($known, $token);
 }
 
 function site_ad_slot($placement, $format = 'leaderboard') {
