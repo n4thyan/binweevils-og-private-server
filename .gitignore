@@ -20,3 +20,7 @@ NUL
 # bcrypt hashes). Per the recovery-baseline policy this is ordinary
 # private-server configuration, not an external/live secret, so it is preserved
 # as part of the known-good baseline.
+
+# --- Local website Weevil-preview runtime (synced via scripts/sync-website-weevil-renderer.ps1) ---
+# The renderer assets are large and sourced locally; never commit them.
+game-full/weevil-creator/
