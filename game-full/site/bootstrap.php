@@ -1,10 +1,16 @@
 <?php
 error_reporting(0);
 include_once(dirname(__DIR__) . '/essential/backbone.php');
+include_once(dirname(__FILE__) . '/cosmetics.php');
 
 $siteConfig = include(dirname(__FILE__) . '/config.php');
 $siteLoggedIn = false;
 $siteUser = null;
+$siteCosmetics = [
+    'ready' => false,
+    'unlocked' => [],
+    'equipped' => [],
+];
 
 if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
     $siteLoggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']) === true;
@@ -18,6 +24,7 @@ if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
 
         if($row = $res->fetch_array(MYSQLI_ASSOC)) {
             $siteUser = $row;
+            $siteCosmetics = site_cosmetics_state($db, (int)$row['id']);
         }
         else {
             $siteLoggedIn = false;
