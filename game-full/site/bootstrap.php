@@ -36,4 +36,10 @@ function site_active($name, $active) {
 function site_int($value) {
     return number_format((int)$value);
 }
+
+function site_ad_slot($placement, $format = 'leaderboard') {
+    $safePlacement = site_e($placement);
+    $safeFormat = preg_replace('/[^a-z0-9_-]/i', '', (string)$format);
+    echo '<aside class="bw-ad-slot bw-ad-slot--' . $safeFormat . '" data-ad-slot="' . $safePlacement . '" aria-label="Reserved advert space"></aside>';
+}
 ?>
