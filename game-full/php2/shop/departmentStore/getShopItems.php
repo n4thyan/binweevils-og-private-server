@@ -6,20 +6,25 @@ if(isset($_POST)) {
     $tag = $_POST['tag'];
     // The served 2015 Nestco SWF (externalUIs/shops/nestco/nestco_30_04_15.swf)
     // posts the store identity as `storeName` — its ABC string pool contains
-    // `storeName` and NO `shopType` literal at all. This file previously read
-    // only $_POST['shopType'], so every Nestco category click failed the
-    // isset() guard below and returned the 7-byte body `res=999`, leaving the
-    // grid empty (visible in access.log as "getShopItems.php 200 7").
-    // Accept either name; prefer shopType for any older caller that sends it.
+    // `storeName` and NO `shopType` literal at all, and it carries the SAME
+    // secret `P07aJK8soogA815CxjkTcA==` that calcHash() concatenates. The OG
+    // baseline read $_POST['shopType'] (null from this SWF) and signed under
+    // the key `shopType`; the SWF signs `storeName`. That key mismatch — not a
+    // secret mismatch — is what made checkHash() return res=999 and emptied
+    // the grid. Accept either posted name (prefer shopType for any older
+    // caller) but ALWAYS hash under the key the SWF actually uses (`storeName`),
+    // exactly like the working buyDoshShopItem.php flow does.
     $storeName = isset($_POST['shopType']) ? $_POST['shopType'] : (isset($_POST['storeName']) ? $_POST['storeName'] : null);
     $hash = $_POST['hash'];
     $timer = $_POST['timer'];
 
-    // Local dev: the SWF's compiled hash secret doesn't match this recovery
-    // build's secret, so checkHash() always fails (res=999) and the category
-    // grid never populates. For a private/local server (anti-cheat irrelevant)
-    // we accept the request when the required params are present.
-    if(isset($tag) && isset($storeName)) {
+    // Restore legitimate legacy hash validation (the real client contract).
+    // Param set must mirror the SWF's makeHash(): timer present => ksort by
+    // key => values concatenated in key order (storeName, tag, timer), wrapped
+    // with the shared secret inside calcHash(). A request is accepted only
+    // when its hash verifies; missing/empty hash or a tampered signed field
+    // (tag/storeName/timer) is rejected with res=999.
+    if(isset($tag) && isset($storeName) && isset($hash) && checkHash(["hash" => $hash, "storeName" => $storeName, "tag" => $tag, "timer" => $timer])) {
         $shopItems = getNestShopItems($tag, $storeName);
         $itemArr= array();
         $itemData = "";
