@@ -13,6 +13,7 @@ if(!isset($siteShowTopAd)) $siteShowTopAd = true;
     <link rel="icon" href="/assets/images/weevil.png" type="image/png">
     <link rel="stylesheet" href="/assets/css/site-redesign.css?v=1">
     <link rel="stylesheet" href="/assets/css/site-preferences.css?v=1">
+    <link rel="stylesheet" href="/assets/css/site-live.css?v=1">
     <link rel="stylesheet" href="/assets/css/site-ads.css?v=1">
 </head>
 <body>
