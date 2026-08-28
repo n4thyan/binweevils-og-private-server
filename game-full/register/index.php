@@ -1,233 +1,116 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Bin Weevils Rewritten - Register</title>
-    <link rel="icon" type="image/png" href="../assets/images/icons/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon"/>
-    <meta property="og:image" content="http://binweevils.net/assets/img/logo.png">
-    <meta name="description" content="Bin Weevils Rewritten - The newly and improved Bin Weevils, bringing back the stuff that you love!">
-	<link rel="icon" type="image/png" href="../assets/img/logo.png">
-    <meta name="theme-color" content="#22b305">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
-    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css"
-    rel="stylesheet" type="text/css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=McLaren&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-<script data-ad-client="ca-pub-9438037613750689" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.css" rel="stylesheet">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
+<?php
+include('../site/bootstrap.php');
 
-    <script src="https://contextual.media.net/dmedianet.js?cid=8CU7F56KI" async="async"></script>
-    <script type="text/javascript">
-        window._mNHandle = window._mNHandle || {};
-        window._mNHandle.queue = window._mNHandle.queue || [];
-        medianet_versionId = "3121199";
-    </script>
-
-<style type="text/css">
-      #recaptcha > div {
-      width: auto !important;
-      margin-bottom: .5em;
-    }
-  </style>
-
-<script type="text/javascript">
-  if (screen.width <= 1000) {
-    document.location = "mobile.php";
-  }
-</script>
-  </head>
-  <body>
-    <nav>
-      <input type="checkbox" id="check">
-      <label for="check" class="checkbtn">
-        <i class="fas fa-bars"></i>
-      </label>
-      <a href="#" class="logo"><img src="../assets/images/logo.png" width="110px"></a>
-      <ul>
-        <li><a href="localhost">Home</a></li>
-        <li><a href="#">Blog</a></li>
-        <!--<li><a href="http://play.binweevils.net/help">Help</a></li>-->
-        	<li><a href="#">Legal</a></li>
-        <li><a href="">Topups</a></li>
-    	<li><a href="#">Discord</a></li>
-        <li><button id="login" class="play">LOGIN</button></li>
-      </ul>
-
-    </nav>
-
-    <div class="help-header">
-     <h3>Create Account</h3>
-    </div>
-
-    <div id="contentLogin">
-	
-<div id="container">
-<img class="img-guys" src="../assets/images/tink_clott.png" alt="">
-
-<div class="splitscreen2">
-    <div class="left">
-        <img src="../assets/images/welcome.jpg" width="280px" style="border-radius:10px;">
-    </div>
-
-<div class="right">
-<div id="login-title">Register</div>
-<div class="label-container-name">
-   <label class="login-payment-label" for="userID">Bin Weevil Name</label>
-   <input class="name login-payment-input" type="text" name="userID" id="userID" value="" required="">
-</div>
-<div class="label-container-pass">
-    <label class="login-payment-label" for="password">Password</label>
-    <input class="password login-payment-input" type="password" name="password" id="password" required="">
-</div>
-<button id="myBtn" class="login" onclick="submit()">Sign Up</button>
-<input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-</div>
-</div>
-
-</div>
-
-    <footer>
-      <div class="main-content">
-        <div class="left box">
-          <div class="content">
-            <a href="#" class="footer-logo"><img src="/assets/images/logo.png" width="200px"></a>
-          </div>
-        </div>
-
-        <div class="center box">
-          <h2>Quick Links</h2>
-          <div class="content">
-            <div class="support">
-              <span class="fab fa-twitter"></span>
-              <span class="text">Twitter</span>
-            </div>
-            <div class="policy">
-              <span class="fab fa-youtube"></span>
-              <span class="text">YouTube</span>
-            </div>
-            <div class="email">
-              <span class="fab fa-discord"></span>
-              <span class="text">Discord</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="right box">
-          <h2>Weevil of the Week</h2>
-          <div class="content">
-            <div class="wow">
-              <img src="/assets/images/wow.png" width="270px" style="border-radius:3px;">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="bottom">
-        <center>
-          <span class="credit">Bin Weevils Rewritten is a fan-made recreation and is in no way affiliated with 55Pixels Ltd.</span>
-        </center>
-      </div>
-    </footer>
-
-  </body>
-</html>
-
-<style>
-nav ul {
-    float: right;
-    margin-right: 260px;
+if($siteLoggedIn) {
+    header('Location: /settings/');
+    exit;
 }
-</style>
+
+$sitePageTitle = 'Create a Weevil';
+$siteActive = 'register';
+include('../site/header.php');
+?>
+
+<section class="bw-hero">
+    <div class="bw-panel bw-panel--green bw-hero-copy">
+        <p class="bw-eyebrow">New player</p>
+        <h1>Create your Weevil</h1>
+        <p class="bw-hero-lead">Choose a Bin Weevil name and password, then jump straight into the restored game. The existing account rules, reserved-name checks, profanity filtering and rate limiting are all preserved behind this new page.</p>
+        <img class="bw-characters" src="/assets/images/login/Tink_Clott.png" alt="" aria-hidden="true">
+    </div>
+
+    <aside class="bw-panel bw-login-card">
+        <p class="bw-eyebrow">Join the Bin</p>
+        <h2 class="bw-card-title">Create account</h2>
+        <div class="bw-alert" id="register-error" role="alert" hidden></div>
+        <form id="register-form">
+            <div class="bw-field">
+                <label for="userID">Bin Weevil Name</label>
+                <input class="bw-input" id="userID" name="userID" type="text" minlength="3" maxlength="16" autocomplete="username" required>
+            </div>
+            <div class="bw-field">
+                <label for="password">Password</label>
+                <input class="bw-input" id="password" name="password" type="password" autocomplete="new-password" required>
+            </div>
+            <button class="bw-button bw-button--green" id="register-submit" type="submit">Create my Weevil</button>
+        </form>
+        <p class="bw-form-note">Already have a Weevil? <a href="/#login">Log in here.</a></p>
+    </aside>
+</section>
+
+<section class="bw-home-grid">
+    <article class="bw-panel bw-feature-card">
+        <p class="bw-eyebrow">Names</p>
+        <h2>Pick carefully</h2>
+        <p>Weevil names are 3–16 characters and are checked against reserved names and the game's existing filters.</p>
+    </article>
+    <article class="bw-panel bw-panel--orange bw-feature-card">
+        <p class="bw-eyebrow">Security</p>
+        <h2>Keep it private</h2>
+        <p>Use a password you do not share with anyone in-game or on xat. Staff should never need your password.</p>
+    </article>
+    <article class="bw-panel bw-panel--green bw-feature-card">
+        <p class="bw-eyebrow">After signup</p>
+        <h2>Straight into the Bin</h2>
+        <p>A successful signup creates your existing game session and takes you directly to the game, just like the original flow.</p>
+    </article>
+</section>
 
 <script>
-        //remember me check/uncheck
-        function toggleTick() {
-            var rememberMe = $("#rememberMe");
-            var checked = $("#rememberMe:checked").length;
-            var tick = $("#tick");
-            $(".blank-tick").toggle();
+(function () {
+    var form = document.getElementById('register-form');
+    var error = document.getElementById('register-error');
+    var submit = document.getElementById('register-submit');
+    if (!form) return;
 
-            if (checked == 0) {
-                rememberMe.prop("checked", "checked");
-                tick.attr("src", "../assets/images/tickbox.png");
-            } else {
-                rememberMe.prop("checked", "");
-                tick.attr("src", "../assets/images/tickbox2.png");
-            }
-        }
-</script>
-
-<script type="text/javascript">
-    document.getElementById("login").onclick = function () {
-        location.href = "/login/login.php";
-    };
-
-    async function submit() {
-      var userID = document.getElementById("userID");
-      var password = document.getElementById("password");
-      var recaptchaResponse = document.getElementById('recaptchaResponse');
-
-      if(userID.value == "" || password.value == "") {
-        Swal.fire(
-          'Error',
-          'Please fill out all fields!',
-          'error'
-        );
-      }
-      else {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    if(this.responseText.includes('responseCode=2'))
-                    {
-                        Swal.fire(
-                            'Error',
-                            'There was a problem with creating your account. Please check all information and try again.',
-                            'error'
-                            );
-                    }
-                    else if(this.responseText.includes('responseCode=3')) {
-                        Swal.fire(
-                            'Error',
-                            'Sorry, this account is either reserved or already exists!',
-                            'error'
-                            );
-                    }
-                    else if(this.responseText.includes('responseCode=999')) {
-                        Swal.fire(
-                            'Error',
-                            'An error has occurred!',
-                            'info'
-                            );
-                    }
-                    else if(this.responseText.includes('Please download the latest build')) {
-                        window.location.replace("http://localhost/game.php");
-                    }
-                    else {
-                        Swal.fire(
-                            'Information',
-                            this.responseText,
-                            'info'
-                            );
-                    }
-                }
-            };
-            xhttp.open("POST", "create-new-weevil.php");
-            xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhttp.send("userID=" + userID.value + "&password=" + password.value + "&recap=1");
-        }
+    function showError(message) {
+        error.textContent = message;
+        error.hidden = false;
     }
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        error.hidden = true;
+        submit.disabled = true;
+        submit.textContent = 'Creating…';
+
+        var data = new URLSearchParams();
+        data.set('userID', document.getElementById('userID').value);
+        data.set('password', document.getElementById('password').value);
+        data.set('recap', '1');
+
+        fetch('/register/create-new-weevil.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
+            body: data.toString(),
+            credentials: 'same-origin'
+        }).then(function (response) {
+            if (response.redirected && response.url.indexOf('/game.php') !== -1) {
+                window.location.href = response.url;
+                return null;
+            }
+            return response.text();
+        }).then(function (text) {
+            if (text === null) return;
+            if (text.indexOf('responseCode=3') !== -1) {
+                showError('That Weevil name is unavailable or does not meet the name rules.');
+            } else if (text.indexOf('responseCode=429') !== -1) {
+                showError('Too many accounts have been created from this connection. Try again later.');
+            } else if (text.indexOf('responseCode=2') !== -1) {
+                showError('We could not create the account. Check your details and try again.');
+            } else if (text.indexOf('responseCode=999') !== -1) {
+                showError('Please fill in both fields and try again.');
+            } else {
+                window.location.href = '/game.php';
+            }
+        }).catch(function () {
+            showError('The registration service could not be reached.');
+        }).finally(function () {
+            submit.disabled = false;
+            submit.textContent = 'Create my Weevil';
+        });
+    });
+}());
 </script>
+
+<?php include('../site/footer.php'); ?>
