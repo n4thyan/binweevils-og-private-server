@@ -93,6 +93,7 @@ include('site/header.php');
                     <label for="password">Password</label>
                     <input class="bw-input" id="password" name="password" type="password" autocomplete="current-password" required>
                 </div>
+                <label class="bw-remember-row"><input type="checkbox" data-remember-username> Remember my Weevil name on this device</label>
                 <button class="bw-button bw-button--green" type="submit">Log in &amp; play</button>
             </form>
             <p class="bw-form-note">New to the Bin? <a href="/register/">Create your Weevil here.</a></p>
