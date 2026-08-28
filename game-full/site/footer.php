@@ -5,6 +5,7 @@
             <img src="/assets/images/weevil.png" alt="" aria-hidden="true">
         </div>
         <nav aria-label="Footer links">
+            <a href="/about/">About</a>
             <a href="/help/">Help</a>
             <a href="/community/">Community</a>
             <a href="/legal/">Legal</a>
