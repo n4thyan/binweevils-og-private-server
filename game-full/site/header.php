@@ -1,7 +1,7 @@
 <?php
 if(!isset($sitePageTitle)) $sitePageTitle = 'Bin Weevils';
 if(!isset($siteActive)) $siteActive = '';
-if(!isset($siteShowTopAd)) $siteShowTopAd = false;
+if(!isset($siteShowTopAd)) $siteShowTopAd = site_has_ads('site-top');
 $siteHeaderNameColor = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 'username_color', '#075d86') : '#075d86';
 $siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 'title', '') : '';
 ?>
@@ -17,7 +17,7 @@ $siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 
     <link rel="stylesheet" href="/assets/css/site-preferences.css?v=1">
     <link rel="stylesheet" href="/assets/css/site-live.css?v=1">
     <link rel="stylesheet" href="/assets/css/site-rewards.css?v=1">
-    <link rel="stylesheet" href="/assets/css/site-ads.css?v=1">
+    <link rel="stylesheet" href="/assets/css/site-ads.css?v=2">
 </head>
 <body>
 <div class="bw-page-shell"<?php echo $siteLoggedIn ? ' data-account-live' : ''; ?>>
