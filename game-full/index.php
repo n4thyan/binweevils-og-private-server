@@ -1,295 +1,126 @@
-﻿<?php
-error_reporting(0);
-include('essential/backbone.php');
-header("X-XSS-Protection: 1; mode=block");
-header("X-Content-Type-Options: nosniff");
-$aes = new AES256;
-$err = $_GET['err'];
-$err = $aes->decrypt($err, "hdjjsdarkkarecool");
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta content="IE=edge" http-equiv="X-UA-Compatible">
-	<meta content="width=device-width, initial-scale=1" name="viewport">
-	<title>Bin Weevils Rewritten – Login</title>
-	<link href="../assets/images/weevil.png" rel="shortcut icon" type="image/x-icon">
-	<meta content="/assets/images/logo.png" property="og:image">
-	<meta content="Bin Weevils Rewritten - The newly and improved Bin Weevils, bringing back the stuff that you love!" name="description">
-	<meta content="games, free online games, games, kids games, racing games, multiplayer games, maths games, virtual pets, pets, competitions, videos, bin, weevils, wivles, benwivles, bin weevils, bin weevils rewritten, bwr, bwrewritten" name="keywords">
-	<meta content="#22b305" name="theme-color">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"><!-- Bulma Version 0.9.0-->
-	<link href="../assets/css/bulma.min.css" rel="stylesheet">
-	<link href="../assets/css/login.css?2" rel="stylesheet" type="text/css">
-	<link href="../assets/css/modal-fx.min.css" rel="stylesheet">
-	    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.css" rel="stylesheet">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
-	<script src="https://kit.fontawesome.com/4a71c0ba56.js">
-	</script>
-	<script data-ad-client="ca-pub-9438037613750689" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-</head>
-<body>
-	<section class="hero is-info is-medium is-bold">
-		<div class="hero-head">
-			<nav class="navbar">
-				<div class="container">
-					<span class="navbar-burger burger" data-target="navbarMenu"><span></span> <span></span> <span></span></span>
-				</div>
-				<div class="navbar-menu" id="navbarMenu">
-					<div class="navbar-end">
-						<div class="navbar-bg">
-							<div class="tabs is-right">
-								<ul>
-									<li class="is-active">
-										<a href="http://localhost/">Home</a>
-									</li>
-									<li>
-										<a href="/blog/">Blog</a>
-									</li>
-									<li>
-										<a href="/help/">Help</a>
-									</li>
-									<li>
-										<a href="http://localhost">Topups</a>
-									</li>
-									<li>
-										<a href="/legal/">Legal</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</section>
-
-	<div class="central-container">
-        <!-- vertical ad -->
-		<img alt="" class="login-container" src="/assets/images/login/mainContainerBG.png"> 
-        <img alt="" class="img-guys" src="/assets/images/login/Tink_Clott.png">
-
-		<div class="download-section">
-			<h1>Haven't installed our app yet? Download it now!</h1>
-		</div>
-		<div class="download-buttons">
-			<a data-os="windows" href="/download/#windows"><button class="button"><i aria-hidden="true" class="fa fa-windows"></i> Windows</button></a> <a data-os="mac" href="/download/#mac"><button class="button"><i aria-hidden="true" class="fa fa-apple"></i> Mac</button></a>
-		</div>
-		 <a href="/register"><img alt="" class="new-player img-hover" onmouseout="this.src='/assets/images/login/new_player_1.png'" onmouseover="this.src='/assets/images/login/new_player_2.png'" src="/assets/images/login/new_player_1.png"></a>
-	<!--Login Form -->
-	<!--action="/login/login.php"-->
-		<form  id="login-play-form" action="http://localhost/login/login.php" method="POST" >
-			<input name="redirect_url" type="hidden" value="http://localhost/game.php"> <img alt="" class="img-responsive img-align-center" src="/assets/images/login/returning_player.png" style="margin-bottom: 30px; max-width: 170px;">
-			<div class="label-container-name">
-				<label class="login-payment-label" for="userID">Bin Weevil Name</label>
-	<input class="name login-payment-input" id="userID" name="userID" required="" type="text" value="">
-			</div>
-			<div class="label-container-pass">
-				<label class="login-payment-label" for="password">Password</label> 
-	<input class="password login-payment-input" id="password" name="password" required="" type="password">
-			</div>
-	<input class="input-submit" type="submit"> 
-	<a class="login-btn" href="javascript:{}" onclick="document.getElementById('login-play-form').submit();">
-	<img class="img-hover img-responsive img-align-center wait-onclick" onmouseout="this.src='/assets/images/login/login_1.png'" onmouseover="this.src='/assets/images/login/login_2.png'" src="/assets/images/login/login_1.png" style="margin-top: 30px; max-width: 170px;"></input>
-	</a>
-			<div align="center" id="loading" style="margin-top: 5px;">
-				<img alt="" src="/assets/images/while-waiting.svg"> <span>Please wait...</span>
-			</div>
-		</form>
-	</div>
-
-
-	<div class="box cta">
-		<p class="has-text-centered"></p>
-		<nav class="level">
-			<p class="level-item has-text-centered"><a class="link is-info" href="privacy.html">Privacy</a></p>
-			<p class="level-item has-text-centered"><a class="link is-info" href="about.html">About Us</a></p>
-			<p class="level-item has-text-centered"><img alt="" src="/assets/images/weevil.png" style="height: 30px;"></p>
-			<p class="level-item has-text-centered"><a class="link is-info" href="https://discord.gg/F9F6zN8RhY" target="_blank">Discord</a></p>
-			<p class="level-item has-text-centered"><a class="link is-info" href="https://twitter.com/bwrewritten" target="_blank">Twitter</a></p>
-		</nav>
-		<p></p>
-	</div>
-	<footer class="footer">
-		<div class="content has-text-centered">
-			<p>Bin Weevils Rewritten is a fan-made recreation and is in no way affiliated with 55Pixels Ltd.</p>
-			<p>Created with <i class="fas fa-heart"></i> by Darkk & Jasper</p>
-		</div>
-		<script src="../assets/js/bulma.js">
-		</script>
-	</footer>
-	<style>
-	             html, body {
-				   background: url("/assets/images/background.png") no-repeat center center fixed;
-            background-size:     cover;
-        background-repeat:   no-repeat;
-        background-position: center center; 
-	             }
-	             .hero.is-info.is-bold {
-	               background: transparent;
-	             }
-	             .login-container {
-	               margin: 50px auto 0;
-	             }
-	             .central-container {
-	               position: relative;
-	               width: 941px;
-	               margin: 0 auto;
-	             }
-	             .img-guys {
-	               position: absolute;
-	               top: 20px;
-	               left: 15px;
-	             }
-	             .new-player {
-	               position: absolute;
-	               top: 80px;
-	               left: 371px;
-	               width: 265px;
-	               height: auto;
-	             }
-
-                .adcontent {
-                    width: 300px;
-                    border: 15px;
-                    padding: 50px;
-                    margin: 20px;
-                }
-	#login-play-form {
-	   position: absolute;
-	   top: 80px;
-	   right: 26px;
-	   width: 265px;
-	   height: 389px;
-	   background-color: #e5f4fa;
-	   border-radius: 10px;
-	   padding: 15px;
-	}
-	#login-play-form .login-payment-label {
-	 font-family: Burbank Small Bold;
-	   color: #00528c;
-	   font-size: 18px;
-	   margin-bottom: 0;
-	}
-	#login-play-form .login-payment-input {
-	   font-size: 18px;
-	   border: solid #29a1cc 3px;
-	   border-radius: 10px;
-	   background-color: #e0eaf2;
-	   width: 100%;
-	   padding: 5px 10px;
-	}
-	.label-container-pass {
-	   margin-top: 15px;
-	}
-	#login-play-form a.forgotten-label {
-	   margin-left: 0;
-	   margin-top: -2px;
-	}
-	form#login-play-form .remember-me-label {
-	   color: #00528c;
-	   font-size: 15px;
-	   font-weight: 700;
-	   margin-left: 10px;
-	   margin-top: 2px;
-	}
-	#login-play-form a.forgotten-label {
-	   margin-left: 0;
-	   margin-top: -2px;
-	}
-	.pull-left {
-	   float: left!important;
-	}
-	.pull-right {
-	   float: right!important;
-	}
-	#login-play-form .blank-tick {
-	   display: none;
-	   width: 22px;
-	   height: 22px;
-	}
-	#login-play-form .hidden-tick {
-	   display: none;
-	   position: absolute;
-	   top: 165px;
-	   left: 40px;
-	}
-	.input-submit {
-	   visibility: hidden;
-	   position: absolute;
-	   top: 0;
-	}
-	#loading {
-	   display: none;
-	   margin-top: 15px;
-	}
-	.download-section {
-	   position: absolute;
-	   top: 200px;
-	   left: 35px;
-	   height: 300px;
-	   width: 310px;
-	   text-align: center;
-	}
-	.download-buttons {
-	   position: absolute;
-	   top: 270px;
-	   left: 35px;
-	   height: 300px;
-	   width: 310px;
-	   text-align: center;
-	}
-	.discord {
-	   position: absolute;
-	   top: 300px;
-	   left: 35px;
-	   height: 300px;
-	   width: 310px;
-	   text-align: center;
-	}
-	h1 {
-	 font-size: 18px;
-	 font-family: Burbank Small Bold;
-	 color: #00528c;
-	}
-	h2 {
-	 margin-top: -25px;
-	 font-size: 18px;
-	 font-family: Burbank Small Bold;
-	 color: #00528c;
-	}
-	.button {
-	 font-family: Burbank Small Bold;
-	}
-	.fa-windows {
-	 margin-right: 10px;
-	 margin-bottom: 5px;
-	}
-	.fa-apple {
-	 margin-right: 10px;
-	 margin-bottom: 5px;
-	}
-	.box.cta {
-	 margin-top: 50px;
-	}
-	.img-align-center {
-	   margin: 0 auto;
-	   display: block;
-	}
-	</style>
-</body>
-</html>
-		<script type="text/javascript">
 <?php
-if(!empty($err)) {
-	echo 'Swal.fire(
-		\'Uh Oh!\',
-		\'' . $err . '\',
-		\'error\'
-	);';
+include('site/bootstrap.php');
+
+$sitePageTitle = 'Home';
+$siteActive = 'home';
+$errMessage = '';
+
+if(isset($_GET['err']) && $_GET['err'] !== '') {
+    $rawError = (string)$_GET['err'];
+    $aes = new AES256();
+    $decodedError = $aes->decrypt($rawError, 'hdjjsdarkkarecool');
+    $errMessage = !empty($decodedError) ? $decodedError : $rawError;
 }
+
+include('site/header.php');
 ?>
-</script>
+
+<?php if(!empty($siteConfig['announcements'])): ?>
+<section class="bw-announcement" aria-label="Announcements">
+    <div class="bw-announcement-label">Bin Bulletin</div>
+    <div class="bw-marquee">
+        <div class="bw-marquee-track">
+            <?php foreach($siteConfig['announcements'] as $i => $announcement): ?>
+                <?php if($i > 0): ?><span class="bw-marquee-separator">★</span><?php endif; ?>
+                <?php if(!empty($announcement['href'])): ?>
+                    <a href="<?php echo site_e($announcement['href']); ?>"><?php echo site_e($announcement['text']); ?></a>
+                <?php else: ?>
+                    <span><?php echo site_e($announcement['text']); ?></span>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
+<?php if($errMessage !== ''): ?>
+    <div class="bw-alert" role="alert"><?php echo site_e(strip_tags($errMessage)); ?></div>
+<?php endif; ?>
+
+<section class="bw-hero">
+    <div class="bw-panel bw-panel--green bw-hero-copy">
+        <p class="bw-eyebrow">The Bin is back</p>
+        <?php if($siteLoggedIn && is_array($siteUser)): ?>
+            <h1>Welcome back, <?php echo site_e($siteUser['username']); ?>!</h1>
+            <p class="bw-hero-lead">Your Weevil is ready. Jump back into the Bin, visit the community chat, or tweak your account and cosmetics from My Weevil.</p>
+            <div class="bw-button-row">
+                <a class="bw-button bw-button--green" href="/game.php">Play Bin Weevils</a>
+                <a class="bw-button bw-button--blue" href="/settings/">My Weevil</a>
+            </div>
+            <div class="bw-stat-grid" aria-label="Weevil stats">
+                <div class="bw-stat"><span>Level</span><strong><?php echo (int)$siteUser['level']; ?></strong></div>
+                <div class="bw-stat"><span>Prestige</span><strong><?php echo (int)$siteUser['prestige_count']; ?></strong></div>
+                <div class="bw-stat"><span>Lifetime XP</span><strong><?php echo site_int($siteUser['xp']); ?></strong></div>
+                <div class="bw-stat"><span>Banked XP</span><strong><?php echo site_int($siteUser['xp1']); ?></strong></div>
+            </div>
+        <?php else: ?>
+            <h1>Welcome back to the Bin!</h1>
+            <p class="bw-hero-lead">The classic Bin Weevils world, restored for the community. Log in with your Weevil or create a new one and start exploring.</p>
+            <div class="bw-button-row">
+                <a class="bw-button bw-button--green" href="#login">Log in &amp; play</a>
+                <a class="bw-button bw-button--blue" href="/register/">Create a Weevil</a>
+            </div>
+        <?php endif; ?>
+        <img class="bw-characters" src="/assets/images/login/Tink_Clott.png" alt="" aria-hidden="true">
+    </div>
+
+    <?php if($siteLoggedIn && is_array($siteUser)): ?>
+        <aside class="bw-panel bw-login-card">
+            <p class="bw-eyebrow">Your account</p>
+            <h2 class="bw-card-title"><?php echo site_e($siteUser['username']); ?></h2>
+            <div class="bw-stat-grid">
+                <div class="bw-stat"><span>Mulch</span><strong><?php echo site_int($siteUser['mulch']); ?></strong></div>
+                <div class="bw-stat"><span>Dosh</span><strong><?php echo site_int($siteUser['dosh']); ?></strong></div>
+                <div class="bw-stat"><span>Next level</span><strong><?php echo site_int($siteUser['xp2']); ?> XP</strong></div>
+                <div class="bw-stat"><span>Status</span><strong>Ready</strong></div>
+            </div>
+            <div class="bw-button-row">
+                <a class="bw-button bw-button--small" href="/game.php">Enter the Bin</a>
+                <a class="bw-button bw-button--blue bw-button--small" href="/settings/">Settings</a>
+            </div>
+            <p class="bw-form-note">Nest News remains the place for proper in-game news. Website notices will stay short and appear in the Bin Bulletin above.</p>
+        </aside>
+    <?php else: ?>
+        <aside class="bw-panel bw-login-card" id="login">
+            <p class="bw-eyebrow">Returning player</p>
+            <h2 class="bw-card-title">Log in to your Weevil</h2>
+            <form action="/login/login.php" method="post">
+                <div class="bw-field">
+                    <label for="userID">Bin Weevil Name</label>
+                    <input class="bw-input" id="userID" name="userID" type="text" maxlength="16" autocomplete="username" required>
+                </div>
+                <div class="bw-field">
+                    <label for="password">Password</label>
+                    <input class="bw-input" id="password" name="password" type="password" autocomplete="current-password" required>
+                </div>
+                <button class="bw-button bw-button--green" type="submit">Log in &amp; play</button>
+            </form>
+            <p class="bw-form-note">New to the Bin? <a href="/register/">Create your Weevil here.</a></p>
+        </aside>
+    <?php endif; ?>
+</section>
+
+<section class="bw-home-grid" aria-label="Explore the site">
+    <article class="bw-panel bw-feature-card">
+        <p class="bw-eyebrow">Play</p>
+        <h2>Enter the Bin</h2>
+        <p>Launch the restored classic client and pick up exactly where your Weevil left off.</p>
+        <a class="bw-button bw-button--green bw-button--small" href="<?php echo $siteLoggedIn ? '/game.php' : '/#login'; ?>"><?php echo $siteLoggedIn ? 'Play now' : 'Log in'; ?></a>
+    </article>
+
+    <article class="bw-panel bw-panel--orange bw-feature-card">
+        <p class="bw-eyebrow">Community</p>
+        <h2>xat Chat</h2>
+        <p>The website community room uses xat for a proper old-school Bin-era chat experience.</p>
+        <a class="bw-button bw-button--small" href="/community/">Open community</a>
+    </article>
+
+    <article class="bw-panel bw-panel--green bw-feature-card">
+        <p class="bw-eyebrow"><?php echo $siteLoggedIn ? 'Account' : 'New player'; ?></p>
+        <h2><?php echo $siteLoggedIn ? 'My Weevil' : 'Create a Weevil'; ?></h2>
+        <p><?php echo $siteLoggedIn ? 'View your progression, account options and unlocked customisation in one place.' : 'Make a new Weevil using the existing account system and head straight into the game.'; ?></p>
+        <a class="bw-button bw-button--blue bw-button--small" href="<?php echo $siteLoggedIn ? '/settings/' : '/register/'; ?>"><?php echo $siteLoggedIn ? 'Open settings' : 'Get started'; ?></a>
+    </article>
+</section>
+
+<?php include('site/footer.php'); ?>
