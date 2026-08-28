@@ -42,16 +42,21 @@ return [
     // Artwork: genuine Bin Weevils self-promo banners under /assets/ads/.
     // Additional user-supplied advert artwork was not located in either the repo
     // or the external recovered CDN tree during the audit; add it here when supplied.
-    // Authentic recovered Bin Weevils advert creatives (rendered via site_ad_slot).
-    // The Weevil World 'membership' banner was removed as off-topic; only genuine
-    // Bin Weevils self-promo art is shown. User-supplied advert artwork was not
-    // located in the repo or external recovered CDN tree during the audit.
+    // Recovered Bin Weevils advert creatives (rendered via site_ad_slot).
+    // Source: user-supplied advert pack (4 promo videos + 2 empty slot frames).
+    // The empty 'advertisement_frame' PNGs are solid-gray slot chrome with no
+    // transparent cutout, so the videos are shown directly inside the authentic
+    // wood/gold slot frame instead. Videos autoplay muted/loop via site-ads.js.
     'ad_creatives' => [
         'site-top' => [
-            ['type' => 'image', 'src' => '/assets/ads/binweevils-banner-temp.png', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
+            ['type' => 'video', 'src' => '/assets/ads/bw-ad-1.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
+            ['type' => 'video', 'src' => '/assets/ads/bw-ad-2.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
+            ['type' => 'video', 'src' => '/assets/ads/bw-ad-3.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
+            ['type' => 'video', 'src' => '/assets/ads/bw-ad-4.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
         ],
         'home-rectangle' => [
-            ['type' => 'image', 'src' => '/assets/ads/binweevils-banner-temp.png', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
+            ['type' => 'video', 'src' => '/assets/ads/bw-ad-1.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
+            ['type' => 'video', 'src' => '/assets/ads/bw-ad-3.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
         ],
     ],
 
