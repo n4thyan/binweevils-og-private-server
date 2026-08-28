@@ -11,6 +11,49 @@ later changes that broke the working project.
 **Do not merge later broken project files into this baseline wholesale.** Apply future
 fixes incrementally and test each one against this baseline.
 
+## Current state — 2026-08-28 (read this before touching anything)
+
+### Branches
+- **`main`** (tip `a7c792f2`) — immutable recovery baseline + 3 verified backend fixes:
+  - `83068432` fix(shop): restore proper `getShopItems` hash validation
+  - `71c77f6c` fix(xp): preserve progression overflow across the Prestige boundary
+  - `a7c792f2` docs: record the shop + XP fixes
+- **`website-redesign`** (tip `42bdbd0f`) — **75 commits ahead of `main`, 0 behind**. Active
+  rebuild of the public website around **authentic recovered Bin Weevils assets**. This is
+  the branch under active visual development. **Do NOT merge to `main` and do NOT deploy to
+  the VPS** until the owner accepts the visual design and a full test pass completes.
+
+### What is done on `website-redesign`
+- Homepage + shared shell recomposed from official assets: original `Bin Weevils` wordmark
+  (`logo2.png`, replacing the old "Rewritten" logo), garden/Dump background (`background.png`),
+  Weevil World hero scene (`banner.png`), Rigg mascot (`rigg.png`), authentic `PLAY NOW`
+  button (`play-now.png`), section art (`racing.png`/`nest.png`/`garden.png`).
+- Authentic **Burbank Small** brand font wired via `@font-face` (`game-full/assets/fonts/`).
+- Recovered **Bin Weevils video adverts** (user-supplied) wired through the existing ad system
+  (`site_ad_slot`): top leaderboard + a right-rail sidebar slot. The off-topic Weevil World
+  membership banner was removed.
+- All existing website functionality preserved (login, register, account state, XP rewards,
+  server status, body-only Weevil preview, logout). No game systems touched.
+- `game-full/weevil-creator/` runtime is gitignored (localhost-only preview renderer) and is
+  NOT committed.
+
+### Open / not-yet-done on `website-redesign`
+- Visual design **not yet accepted** by the owner — further homepage polish + propagation of
+  the shared shell to secondary routes (Register, Settings, XP Rewards, Download, Community,
+  Help/About/Rules/Privacy/Credits, Play wrapper) is pending approval.
+- In-client visual confirm of room events / mushroom DB still pending (needs eyes in the client).
+
+### Local stack (for manual testing)
+Apache + MariaDB (XAMPP) · Node game server `server/Main.js` (TCP 9339 + WS 2087) ·
+Electron client `electron/` loads `http://localhost`. Deploy the site to htdocs with:
+`git archive origin/website-redesign game-full | tar -C /c/xampp/htdocs --strip-components=1 -xf -`
+then copy the gitignored `game-full/weevil-creator/` runtime.
+
+### Source of truth
+GitHub is the source of truth. Hermes does local runtime testing/deployment and verifies the
+**actually-served** artifact (curl localhost + marker bytes), not just the edited file. Binary
+SWF editing / decompile / recompile remains a local Hermes task when needed.
+
 ## Source folder (physical origin of this backup)
 ```
 C:\Users\pc\Desktop\binweevils-backup-20260818-1330
@@ -346,33 +389,3 @@ L80 badge + prestige-pip rendering is a client item to eyeball later.
 - Remaining shop bugs: Nestco catalogue (SWF), Bundles/Showroom UI lock (SWF),
   loungue tag (data fix).
 - Post-release per §9.13 order: website redesign → LAST XP reward shop + leaderboard.
-
-
----
-
-## 2026-08-28 morning harden (verified against live served stack)
-
-Repository tip is now `main` (push of two commits on top of `929b4eeb`/`1e6469b1`):
-
-1. `fix(shop): restore proper getShopItems hash validation` — removed the
-   `tag`+`storeName` presence bypass in `departmentStore/getShopItems.php`.
-   Root cause was a parameter-KEY mismatch (OG code signed under `shopType`;
-   the served 2015 Nestco SWF posts and signs `storeName`, and carries the SAME
-   secret `P07aJK8soogA815CxjkTcA==` as `calcHash()`), NOT a secret mismatch.
-   Validation restores the legacy `checkHash((hash,storeName,tag,timer))`
-   contract used by the working `buyDoshShopItem.php`. Verified: valid request
-   accepted (responseCode:1), missing/wrong/tampered hash rejected (res=999),
-   empty storeName rejected. BinMart=dosh-only, Nestco=mulch-only preserved
-   (no cross-currency leakage). `php -l` clean.
-
-2. `fix(xp): preserve progression overflow across prestige boundary` —
-   `levelWeevil()` previously set `xp1 = 0` on Prestige advance, destroying
-   banked overflow above the L80 threshold. Now pays only the L80 threshold
-   (`xp1 - xp2`) and keeps overflow to continue the new Prestige in one call;
-   P13 cap clamps without advancing/re-awarding. Verified Cases A–F on live
-   DB with throwaway weevils (all removed). `prestige_trophies` UNIQUE
-   (user,prestige,level) enforces per-Prestige idempotency; a new Prestige
-   earns a fresh physical level-trophy set. `php -l` clean.
-
-Both commits pushed to `origin/main`. No temporary bypasses, debug scripts, or
-test accounts remain in the repo or DB.
