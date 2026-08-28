@@ -1,5 +1,6 @@
 # --- Runtime / build artifacts (excluded, not source) ---
 node_modules/
+game-full/site/runtime-status.json
 
 # --- OS / editor junk ---
 .DS_Store
