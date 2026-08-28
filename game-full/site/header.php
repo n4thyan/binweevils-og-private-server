@@ -1,6 +1,7 @@
 <?php
 if(!isset($sitePageTitle)) $sitePageTitle = 'Bin Weevils';
 if(!isset($siteActive)) $siteActive = '';
+if(!isset($siteShowTopAd)) $siteShowTopAd = true;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +12,7 @@ if(!isset($siteActive)) $siteActive = '';
     <title><?php echo site_e($sitePageTitle); ?> · Bin Weevils</title>
     <link rel="icon" href="/assets/images/weevil.png" type="image/png">
     <link rel="stylesheet" href="/assets/css/site-redesign.css?v=1">
+    <link rel="stylesheet" href="/assets/css/site-ads.css?v=1">
 </head>
 <body>
 <div class="bw-page-shell">
@@ -49,6 +51,12 @@ if(!isset($siteActive)) $siteActive = '';
             <a class="bw-header-login" href="/#login">Log in</a>
         <?php endif; ?>
     </header>
+
+    <?php if($siteShowTopAd): ?>
+        <div class="bw-ad-wrap">
+            <?php site_ad_slot('site-top', 'leaderboard'); ?>
+        </div>
+    <?php endif; ?>
 
     <main class="bw-main">
 <script>
