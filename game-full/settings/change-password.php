@@ -46,7 +46,7 @@ if(!checkPassword($username, $current)) {
     password_response(false, 'Your current password is incorrect.', 403);
 }
 
-if(password_verify($new, password_hash($current, PASSWORD_DEFAULT)) && hash_equals($current, $new)) {
+if(hash_equals($current, $new)) {
     password_response(false, 'Choose a different password from your current one.', 400);
 }
 
@@ -71,7 +71,6 @@ if($q->affected_rows !== 1) {
 setcookie('sessionId', $newSessionKey, time() + 86400, '/', '', false, true);
 setcookie('weevil_name', $username, time() + 86400, '/', '', false, true);
 
-// Rotate the website CSRF token after a credential change as well.
 try {
     $_SESSION['site_csrf'] = bin2hex(random_bytes(32));
 }
