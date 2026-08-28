@@ -62,9 +62,56 @@ function site_csrf_valid($token) {
     return $known !== '' && is_string($token) && hash_equals($known, $token);
 }
 
+function site_ad_creatives($placement) {
+    global $siteConfig;
+    $all = isset($siteConfig['ad_creatives']) && is_array($siteConfig['ad_creatives']) ? $siteConfig['ad_creatives'] : [];
+    if(empty($all[$placement]) || !is_array($all[$placement])) return [];
+
+    $valid = [];
+    foreach($all[$placement] as $creative) {
+        if(!is_array($creative)) continue;
+        $type = isset($creative['type']) ? strtolower((string)$creative['type']) : '';
+        $src = isset($creative['src']) ? trim((string)$creative['src']) : '';
+        if(($type !== 'video' && $type !== 'image') || $src === '') continue;
+        $valid[] = $creative;
+    }
+    return $valid;
+}
+
+function site_has_ads($placement) {
+    return count(site_ad_creatives($placement)) > 0;
+}
+
 function site_ad_slot($placement, $format = 'leaderboard') {
+    $creatives = site_ad_creatives($placement);
+    if(empty($creatives)) return;
+
     $safePlacement = site_e($placement);
     $safeFormat = preg_replace('/[^a-z0-9_-]/i', '', (string)$format);
-    echo '<aside class="bw-ad-slot bw-ad-slot--' . $safeFormat . '" data-ad-slot="' . $safePlacement . '" aria-label="Reserved advert space"></aside>';
+    echo '<aside class="bw-ad-slot bw-ad-slot--' . $safeFormat . '" data-ad-slot="' . $safePlacement . '" data-ad-rotation aria-label="Advertisement">';
+
+    foreach($creatives as $index => $creative) {
+        $type = strtolower((string)$creative['type']);
+        $src = site_e($creative['src']);
+        $href = !empty($creative['href']) ? site_e($creative['href']) : '';
+        $label = !empty($creative['label']) ? site_e($creative['label']) : 'Advertisement';
+        $active = $index === 0 ? ' is-active' : '';
+        $duration = isset($creative['duration']) ? max(4, (int)$creative['duration']) : 12;
+
+        echo '<div class="bw-ad-creative' . $active . '" data-ad-creative data-ad-duration="' . $duration . '">';
+        if($href !== '') echo '<a href="' . $href . '" target="_blank" rel="noopener sponsored" aria-label="' . $label . '">';
+
+        if($type === 'video') {
+            echo '<video muted playsinline preload="metadata" data-ad-video aria-label="' . $label . '"><source src="' . $src . '"></video>';
+        }
+        else {
+            echo '<img src="' . $src . '" alt="' . $label . '" loading="lazy">';
+        }
+
+        if($href !== '') echo '</a>';
+        echo '</div>';
+    }
+
+    echo '</aside>';
 }
 ?>
