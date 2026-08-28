@@ -16,7 +16,7 @@ if(!isset($siteShowTopAd)) $siteShowTopAd = true;
     <link rel="stylesheet" href="/assets/css/site-ads.css?v=1">
 </head>
 <body>
-<div class="bw-page-shell">
+<div class="bw-page-shell"<?php echo $siteLoggedIn ? ' data-account-live' : ''; ?>>
     <header class="bw-header">
         <a class="bw-brand" href="/" aria-label="Bin Weevils home">
             <img src="/assets/images/logo.png" alt="Bin Weevils">
@@ -43,8 +43,8 @@ if(!isset($siteShowTopAd)) $siteShowTopAd = true;
                     <span class="bw-render-pending">Weevil</span>
                 </a>
                 <div class="bw-account-copy">
-                    <strong><?php echo site_e($siteUser['username']); ?></strong>
-                    <span>Lv <?php echo (int)$siteUser['level']; ?> · P<?php echo (int)$siteUser['prestige_count']; ?></span>
+                    <strong data-account-stat="username"><?php echo site_e($siteUser['username']); ?></strong>
+                    <span>Lv <b data-account-stat="level"><?php echo (int)$siteUser['level']; ?></b> · P<b data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></b></span>
                     <small><a href="/settings/">Settings</a> · <a href="/login/login.php">Logout</a></small>
                 </div>
             </aside>
