@@ -16,5 +16,6 @@
     </footer>
 </div>
 <script src="/assets/js/site-redesign.js?v=1"></script>
+<script src="/assets/js/site-ads.js?v=1"></script>
 </body>
 </html>
