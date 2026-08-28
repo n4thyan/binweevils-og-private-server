@@ -65,6 +65,22 @@ include('../site/header.php');
             <button class="bw-button bw-button--blue bw-button--small" type="button" data-copy-definition>Copy definition</button>
         </section>
 
+        <section class="bw-panel bw-content-panel" id="site-preferences">
+            <p class="bw-eyebrow">Quality of life</p>
+            <h2 class="bw-card-title">Website preferences</h2>
+            <p class="bw-muted">These settings are stored only in this browser and do not alter your game account.</p>
+            <div class="bw-pref-list">
+                <label class="bw-pref-row">
+                    <input type="checkbox" data-site-pref="reduce-motion">
+                    <span><strong>Reduce website animations</strong><span>Stops the scrolling bulletin and reduces interface motion and transitions.</span></span>
+                </label>
+                <label class="bw-pref-row">
+                    <input type="checkbox" data-site-pref="compact-layout">
+                    <span><strong>Compact website layout</strong><span>Tightens spacing while keeping the same Bin Weevils panels and artwork.</span></span>
+                </label>
+            </div>
+        </section>
+
         <section class="bw-panel bw-panel--green bw-content-panel" id="security">
             <p class="bw-eyebrow">Security</p>
             <h2 class="bw-card-title">Change password</h2>
