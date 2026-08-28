@@ -6,6 +6,10 @@ if(!$siteLoggedIn || !is_array($siteUser)) {
     exit;
 }
 
+$profileNameColor = site_cosmetic_equipped_value($siteCosmetics, 'username_color', '#075984');
+$profileTitle = site_cosmetic_equipped_value($siteCosmetics, 'title', '');
+$profileBackground = site_cosmetic_equipped_value($siteCosmetics, 'profile_background', '');
+
 $sitePageTitle = 'My Weevil';
 $siteActive = 'settings';
 include('../site/header.php');
@@ -14,15 +18,16 @@ include('../site/header.php');
 <section>
     <p class="bw-eyebrow">Account</p>
     <h1 class="bw-section-title">My Weevil</h1>
-    <p class="bw-section-intro">Your progression, customisation and account settings in one place. Lifetime XP is permanent; Banked XP is the spendable/progression value reserved for XP rewards.</p>
+    <p class="bw-section-intro">Your progression, customisation and account settings in one place. Lifetime XP is permanent; Banked XP is the spendable/progression value used by XP Rewards.</p>
 </section>
 
 <div class="bw-settings-grid">
     <aside class="bw-panel bw-panel--green bw-profile-card">
-        <div class="bw-profile-render-large" data-weevil-render data-weevil-definition="<?php echo site_e($siteUser['def']); ?>" data-weevil-name="<?php echo site_e($siteUser['username']); ?>">
-            <div class="bw-render-pending">Official Weevil renderer mount</div>
+        <div class="bw-profile-render-large" data-weevil-render data-weevil-definition="<?php echo site_e($siteUser['def']); ?>" data-weevil-name="<?php echo site_e($siteUser['username']); ?>"<?php echo $profileBackground !== '' ? ' style="background-image:url(\'' . site_e($profileBackground) . '\');background-size:cover;background-position:center;"' : ''; ?>>
+            <div class="bw-render-pending">Weevil</div>
         </div>
-        <h2 class="bw-card-title" data-account-stat="username"><?php echo site_e($siteUser['username']); ?></h2>
+        <h2 class="bw-card-title" data-account-stat="username" style="color:<?php echo site_e($profileNameColor); ?>"><?php echo site_e($siteUser['username']); ?></h2>
+        <?php if($profileTitle !== ''): ?><span class="bw-badge" style="margin-right:6px;"><?php echo site_e($profileTitle); ?></span><?php endif; ?>
         <span class="bw-badge">Prestige <span data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></span></span>
         <div class="bw-stat-grid">
             <div class="bw-stat"><span>Level</span><strong data-account-stat="level"><?php echo (int)$siteUser['level']; ?></strong></div>
@@ -32,7 +37,10 @@ include('../site/header.php');
             <div class="bw-stat"><span>Mulch</span><strong data-account-stat="mulch"><?php echo site_int($siteUser['mulch']); ?></strong></div>
             <div class="bw-stat"><span>Dosh</span><strong data-account-stat="dosh"><?php echo site_int($siteUser['dosh']); ?></strong></div>
         </div>
-        <a class="bw-button bw-button--green bw-button--small" href="/game.php">Play now</a>
+        <div class="bw-button-row">
+            <a class="bw-button bw-button--green bw-button--small" href="/game.php">Play now</a>
+            <a class="bw-button bw-button--blue bw-button--small" href="/settings/xp-rewards.php">XP Rewards</a>
+        </div>
     </aside>
 
     <div class="bw-settings-stack">
@@ -43,21 +51,20 @@ include('../site/header.php');
                 <div class="bw-stat"><span>Banked XP</span><strong data-account-stat="banked-xp"><?php echo site_int($siteUser['xp1']); ?></strong></div>
                 <div class="bw-stat"><span>Next threshold</span><strong data-account-stat="next-xp"><?php echo site_int($siteUser['xp2']); ?></strong></div>
             </div>
-            <p class="bw-muted">Lifetime XP never decreases. XP reward purchases use Banked XP only, so lifetime progress and the future leaderboard remain intact.</p>
+            <p class="bw-muted">Lifetime XP never decreases. XP reward purchases use Banked XP only, so permanent progress and the future lifetime-XP leaderboard stay intact.</p>
         </section>
 
         <section class="bw-panel bw-panel--orange bw-content-panel" id="xp-rewards">
             <p class="bw-eyebrow">Customisation</p>
             <h2 class="bw-card-title">XP Rewards</h2>
-            <p class="bw-muted">Permanent cosmetic unlocks are being kept to stable presentation systems: username colours, chat colours, level-star colours, titles, badges, official backgrounds and saved presets. Hat rendering/colouring is deliberately out of scope for this website pass.</p>
-            <p class="bw-muted"><strong>Rule:</strong> unlock once with Banked XP, then equip or swap freely without paying again.</p>
+            <p class="bw-muted">Unlock permanent website cosmetics with Banked XP, then equip or swap anything you own for free. The current catalogue includes name colours, titles and recovered official profile backgrounds.</p>
             <a class="bw-button bw-button--small" href="/settings/xp-rewards.php">Open XP Rewards</a>
         </section>
 
         <section class="bw-panel bw-content-panel">
             <p class="bw-eyebrow">Your look</p>
             <h2 class="bw-card-title">Weevil Definition</h2>
-            <p class="bw-muted">The saved 18-digit definition is read directly from your OG account and the website renderer mount follows changes automatically. Editing remains disabled until the same official renderer assets are present on this repo.</p>
+            <p class="bw-muted">This is read directly from your OG account. Website renderer mounts follow the saved definition whenever the account state changes.</p>
             <div class="bw-field">
                 <label for="current-weevil-def">Current definition</label>
                 <input class="bw-input" id="current-weevil-def" type="text" value="<?php echo site_e($siteUser['def']); ?>" readonly>
@@ -100,10 +107,7 @@ include('../site/header.php');
                     <label for="confirm-password">Confirm new password</label>
                     <input class="bw-input" id="confirm-password" name="confirm_password" type="password" minlength="8" maxlength="72" autocomplete="new-password" required>
                 </div>
-                <div class="bw-button-row">
-                    <button class="bw-button bw-button--green bw-button--small" type="submit">Change password</button>
-                    <span class="bw-badge">Username change stays locked pending DB-reference audit</span>
-                </div>
+                <button class="bw-button bw-button--green bw-button--small" type="submit">Change password</button>
                 <p class="bw-form-note" id="password-change-status" role="status" aria-live="polite"></p>
             </form>
         </section>
