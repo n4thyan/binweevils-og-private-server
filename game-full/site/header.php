@@ -1,0 +1,64 @@
+<?php
+if(!isset($sitePageTitle)) $sitePageTitle = 'Bin Weevils';
+if(!isset($siteActive)) $siteActive = '';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#70b52d">
+    <title><?php echo site_e($sitePageTitle); ?> · Bin Weevils</title>
+    <link rel="icon" href="/assets/images/weevil.png" type="image/png">
+    <link rel="stylesheet" href="/assets/css/site-redesign.css?v=1">
+</head>
+<body>
+<div class="bw-page-shell">
+    <header class="bw-header">
+        <a class="bw-brand" href="/" aria-label="Bin Weevils home">
+            <img src="/assets/images/logo.png" alt="Bin Weevils">
+        </a>
+
+        <button class="bw-nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav class="bw-nav" data-nav>
+            <a class="bw-nav-link<?php echo site_active('home', $siteActive); ?>" href="/">Home</a>
+            <a class="bw-nav-link<?php echo site_active('play', $siteActive); ?>" href="<?php echo $siteLoggedIn ? '/game.php' : '/#login'; ?>">Play</a>
+            <a class="bw-nav-link<?php echo site_active('community', $siteActive); ?>" href="/community/">Community</a>
+            <?php if($siteLoggedIn): ?>
+                <a class="bw-nav-link<?php echo site_active('settings', $siteActive); ?>" href="/settings/">My Weevil</a>
+            <?php else: ?>
+                <a class="bw-nav-link<?php echo site_active('register', $siteActive); ?>" href="/register/">Create a Weevil</a>
+            <?php endif; ?>
+        </nav>
+
+        <?php if($siteLoggedIn && is_array($siteUser)): ?>
+            <aside class="bw-account-chip" aria-label="Signed-in Weevil">
+                <a class="bw-account-render" href="/settings/" data-weevil-render data-weevil-definition="<?php echo site_e($siteUser['def']); ?>" data-weevil-name="<?php echo site_e($siteUser['username']); ?>">
+                    <span class="bw-render-pending">Weevil</span>
+                </a>
+                <div class="bw-account-copy">
+                    <strong><?php echo site_e($siteUser['username']); ?></strong>
+                    <span>Lv <?php echo (int)$siteUser['level']; ?> · P<?php echo (int)$siteUser['prestige_count']; ?></span>
+                    <small><a href="/settings/">Settings</a> · <a href="/login/login.php">Logout</a></small>
+                </div>
+            </aside>
+        <?php else: ?>
+            <a class="bw-header-login" href="/#login">Log in</a>
+        <?php endif; ?>
+    </header>
+
+    <main class="bw-main">
+<script>
+(function () {
+    var toggle = document.querySelector('[data-nav-toggle]');
+    var nav = document.querySelector('[data-nav]');
+    if (!toggle || !nav) return;
+    toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+}());
+</script>
