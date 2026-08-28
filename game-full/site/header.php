@@ -23,7 +23,7 @@ $siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 
 <div class="bw-page-shell"<?php echo $siteLoggedIn ? ' data-account-live' : ''; ?>>
     <header class="bw-header">
         <a class="bw-brand" href="/" aria-label="Bin Weevils home">
-            <img src="/assets/images/logo.png" alt="Bin Weevils">
+            <img src="/assets/images/logo2.png" alt="Bin Weevils">
         </a>
 
         <button class="bw-nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>

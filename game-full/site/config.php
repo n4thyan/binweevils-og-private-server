@@ -38,8 +38,18 @@ return [
     // until its local media files exist under /assets/ads/. Example creative:
     // ['type' => 'video', 'src' => '/assets/ads/example.mp4', 'label' => 'Advertisement']
     // Static images use type=image and may also set duration (seconds) and href.
+    // Authentic recovered Bin Weevils advert creatives (rendered via site_ad_slot).
+    // Artwork: genuine Bin Weevils self-promo banners under /assets/ads/.
+    // Additional user-supplied advert artwork was not located in either the repo
+    // or the external recovered CDN tree during the audit; add it here when supplied.
     'ad_creatives' => [
-        'site-top' => [],
+        'site-top' => [
+            ['type' => 'image', 'src' => '/assets/ads/membership-banner-1080x250.png', 'href' => '', 'label' => 'Weevil World membership', 'duration' => 12],
+            ['type' => 'image', 'src' => '/assets/ads/binweevils-banner-temp.png', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 12],
+        ],
+        'home-rectangle' => [
+            ['type' => 'image', 'src' => '/assets/ads/binweevils-banner-temp.png', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 12],
+        ],
     ],
 
     // Local-first play defaults. VPS deployment changes these in one place rather
