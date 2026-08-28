@@ -1,7 +1,7 @@
 <?php
 if(!isset($sitePageTitle)) $sitePageTitle = 'Bin Weevils';
 if(!isset($siteActive)) $siteActive = '';
-if(!isset($siteShowTopAd)) $siteShowTopAd = true;
+if(!isset($siteShowTopAd)) $siteShowTopAd = false;
 $siteHeaderNameColor = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 'username_color', '#075d86') : '#075d86';
 $siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 'title', '') : '';
 ?>
