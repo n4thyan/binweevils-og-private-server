@@ -22,15 +22,15 @@ include('../site/header.php');
         <div class="bw-profile-render-large" data-weevil-render data-weevil-definition="<?php echo site_e($siteUser['def']); ?>" data-weevil-name="<?php echo site_e($siteUser['username']); ?>">
             <div class="bw-render-pending">Official Weevil renderer mount</div>
         </div>
-        <h2 class="bw-card-title"><?php echo site_e($siteUser['username']); ?></h2>
-        <span class="bw-badge">Prestige <?php echo (int)$siteUser['prestige_count']; ?></span>
+        <h2 class="bw-card-title" data-account-stat="username"><?php echo site_e($siteUser['username']); ?></h2>
+        <span class="bw-badge">Prestige <span data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></span></span>
         <div class="bw-stat-grid">
-            <div class="bw-stat"><span>Level</span><strong><?php echo (int)$siteUser['level']; ?></strong></div>
-            <div class="bw-stat"><span>Prestige</span><strong><?php echo (int)$siteUser['prestige_count']; ?></strong></div>
-            <div class="bw-stat"><span>Lifetime XP</span><strong><?php echo site_int($siteUser['xp']); ?></strong></div>
-            <div class="bw-stat"><span>Banked XP</span><strong><?php echo site_int($siteUser['xp1']); ?></strong></div>
-            <div class="bw-stat"><span>Mulch</span><strong><?php echo site_int($siteUser['mulch']); ?></strong></div>
-            <div class="bw-stat"><span>Dosh</span><strong><?php echo site_int($siteUser['dosh']); ?></strong></div>
+            <div class="bw-stat"><span>Level</span><strong data-account-stat="level"><?php echo (int)$siteUser['level']; ?></strong></div>
+            <div class="bw-stat"><span>Prestige</span><strong data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></strong></div>
+            <div class="bw-stat"><span>Lifetime XP</span><strong data-account-stat="lifetime-xp"><?php echo site_int($siteUser['xp']); ?></strong></div>
+            <div class="bw-stat"><span>Banked XP</span><strong data-account-stat="banked-xp"><?php echo site_int($siteUser['xp1']); ?></strong></div>
+            <div class="bw-stat"><span>Mulch</span><strong data-account-stat="mulch"><?php echo site_int($siteUser['mulch']); ?></strong></div>
+            <div class="bw-stat"><span>Dosh</span><strong data-account-stat="dosh"><?php echo site_int($siteUser['dosh']); ?></strong></div>
         </div>
         <a class="bw-button bw-button--green bw-button--small" href="/game.php">Play now</a>
     </aside>
@@ -40,24 +40,24 @@ include('../site/header.php');
             <p class="bw-eyebrow">Progression</p>
             <h2 class="bw-card-title">XP &amp; Prestige</h2>
             <div class="bw-stat-grid">
-                <div class="bw-stat"><span>Banked XP</span><strong><?php echo site_int($siteUser['xp1']); ?></strong></div>
-                <div class="bw-stat"><span>Next threshold</span><strong><?php echo site_int($siteUser['xp2']); ?></strong></div>
+                <div class="bw-stat"><span>Banked XP</span><strong data-account-stat="banked-xp"><?php echo site_int($siteUser['xp1']); ?></strong></div>
+                <div class="bw-stat"><span>Next threshold</span><strong data-account-stat="next-xp"><?php echo site_int($siteUser['xp2']); ?></strong></div>
             </div>
-            <p class="bw-muted">Lifetime XP never decreases. XP reward purchases will use Banked XP only, so lifetime progress and the future leaderboard remain intact.</p>
+            <p class="bw-muted">Lifetime XP never decreases. XP reward purchases use Banked XP only, so lifetime progress and the future leaderboard remain intact.</p>
         </section>
 
         <section class="bw-panel bw-panel--orange bw-content-panel" id="xp-rewards">
             <p class="bw-eyebrow">Customisation</p>
             <h2 class="bw-card-title">XP Rewards</h2>
-            <p class="bw-muted">Reserved for permanent cosmetic unlocks: username colours, chat colours, level-star colours, titles, badges, backgrounds, saved presets and — only if the existing hat palette proves isolated — hat colours.</p>
+            <p class="bw-muted">Permanent cosmetic unlocks are being kept to stable presentation systems: username colours, chat colours, level-star colours, titles, badges, official backgrounds and saved presets. Hat rendering/colouring is deliberately out of scope for this website pass.</p>
             <p class="bw-muted"><strong>Rule:</strong> unlock once with Banked XP, then equip or swap freely without paying again.</p>
-            <span class="bw-badge">Catalogue implementation follows the website redesign</span>
+            <a class="bw-button bw-button--small" href="/settings/xp-rewards.php">Open XP Rewards</a>
         </section>
 
         <section class="bw-panel bw-content-panel">
             <p class="bw-eyebrow">Your look</p>
             <h2 class="bw-card-title">Weevil Definition</h2>
-            <p class="bw-muted">The saved 18-digit definition is read directly from your account. Editing stays disabled until the website preview uses the same official rendering rules as the game.</p>
+            <p class="bw-muted">The saved 18-digit definition is read directly from your OG account and the website renderer mount follows changes automatically. Editing remains disabled until the same official renderer assets are present on this repo.</p>
             <div class="bw-field">
                 <label for="current-weevil-def">Current definition</label>
                 <input class="bw-input" id="current-weevil-def" type="text" value="<?php echo site_e($siteUser['def']); ?>" readonly>
