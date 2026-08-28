@@ -61,6 +61,8 @@ include('site/header.php');
     <div class="bw-alert" role="alert"><?php echo site_e(strip_tags($errMessage)); ?></div>
 <?php endif; ?>
 
+<div class="bw-hero-scene" role="img" aria-label="The Bin Weevils world"></div>
+
 <section class="bw-hero">
     <div class="bw-hero-copy">
         <p class="bw-eyebrow">The Bin is back</p>
