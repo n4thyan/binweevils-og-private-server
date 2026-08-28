@@ -5,10 +5,10 @@
             <img src="/assets/images/weevil.png" alt="" aria-hidden="true">
         </div>
         <nav aria-label="Footer links">
-            <a href="/about/">About</a>
+            <a href="/rules/">Rules</a>
             <a href="/help/">Help</a>
             <a href="/community/">Community</a>
-            <a href="/legal/">Legal</a>
+            <a href="/credits/">Credits</a>
             <a href="/privacy/">Privacy</a>
         </nav>
         <p>Fan-made Bin Weevils preservation project. Not affiliated with the original rights holders.</p>
