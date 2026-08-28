@@ -1424,19 +1424,31 @@
                         }
 
                         if(intval($currentData['prestige_count']) < 13) {
-                            // Begin the next prestige cycle.
+                            // Begin the next prestige cycle. CRITICAL: the previous
+                            // code set xp1 = 0 here, which DESTROYED legitimate banked
+                            // overflow earned above the Level-80 threshold. Instead we
+                            // pay only the Level-80 threshold (xp1 - xp2) and KEEP the
+                            // remaining banked XP so the loop below continues earning
+                            // the fresh Prestige's levels in the same call (ROADMAP
+                            // §9.2: "Do not reset legitimate overflow to zero simply
+                            // because Prestige changed"). The new cycle starts at
+                            // level 1 with its own (higher, multiplier-scaled) xp2.
                             $newMult = 1 + (intval($currentData['prestige_count']) + 1) * 0.5;
                             $next = getXPDataByLevel(2);
                             $newXP2 = $next ? intval($next['xpRequired']) * $newMult : 30 * $newMult;
-                            $q = $db->prepare("UPDATE `users` SET `prestige_count` = `prestige_count` + 1, `prestige_xp_base` = `xp`, `level` = 1, `xp1` = 0, `xp2` = ? WHERE `users`.`username` = ?;");
-                            $q->bind_param('ss', $newXP2, $weevil);
+                            $spend = $currentData['xp2'];
+                            $q = $db->prepare("UPDATE `users` SET `prestige_count` = `prestige_count` + 1, `prestige_xp_base` = `xp`, `level` = 1, `xp1` = `xp1` - ?, `xp2` = ? WHERE `users`.`username` = ?;");
+                            $q->bind_param('sss', $spend, $newXP2, $weevil);
                             $q->execute();
-                            // loop continues; next iteration xp1=0 < xp2 so it breaks
+                            // Loop continues: remaining banked xp1 now earns new
+                            // Prestige levels via the else branch below.
                         }
                         else {
-                            // Max prestige reached: clamp at 80.
-                            $q = $db->prepare("UPDATE `users` SET `level` = 80, `xp1` = `xp2` WHERE `users`.`username` = ?;");
-                            $q->bind_param('s', $weevil);
+                            // Max prestige reached: clamp at 80, consume the L80
+                            // threshold, preserve any overflow above it.
+                            $spend = $currentData['xp2'];
+                            $q = $db->prepare("UPDATE `users` SET `level` = 80, `xp1` = `xp1` - ? WHERE `users`.`username` = ?;");
+                            $q->bind_param('ss', $spend, $weevil);
                             $q->execute();
                             break;
                         }
