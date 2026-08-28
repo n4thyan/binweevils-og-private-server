@@ -43,7 +43,6 @@ import { WeevilCanvasRenderer } from '/weevil-creator/src/runtime/WeevilCanvasRe
                 definition.hat = 0;
                 definition.hatc = 0;
                 definition.htc = 0;
-                definition.et = 0;
                 definition.ht = 0;
                 var width = Math.max(64, Math.round(mount.clientWidth || 220));
                 var height = Math.max(68, Math.round(mount.clientHeight || 220));
