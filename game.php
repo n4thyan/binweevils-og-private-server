@@ -24,17 +24,17 @@ include('site/header.php');
         <div class="bw-button-row">
             <a class="bw-button bw-button--green bw-button--small" href="/download/">Desktop client</a>
             <a class="bw-button bw-button--blue bw-button--small" href="/settings/">My Weevil</a>
+            <button type="button" class="bw-button bw-button--small bw-button--ghost" id="bw-game-fullscreen">Fullscreen</button>
         </div>
     </div>
 
-    <div class="bw-game-frame">
-        <span class="bw-game-frame-trim" aria-hidden="true"></span>
+    <div class="bw-game-wrap" id="bw-game-wrap">
         <div class="bw-game-viewport">
             <object
                 type="application/x-shockwave-flash"
                 id="flashContentObject"
                 data="<?php echo site_e($flashMovie); ?>"
-                style="display:block;width:100%;height:100%;border:0;background:#dff4fb;">
+                style="display:block;width:100%;height:100%;border:0;background:#0b2233;">
                 <param name="movie" value="<?php echo site_e($flashMovie); ?>">
                 <param name="FlashVars" value="cluster=uk&amp;loginPath=<?php echo site_e($flashLoginPath); ?>&amp;autoBin=false&amp;zone=">
                 <param name="allowFullScreen" value="true">
@@ -93,6 +93,19 @@ include('site/header.php');
     };
 
     window.addEventListener('load', startWs);
+
+    var fsBtn = document.getElementById('bw-game-fullscreen');
+    var fsWrap = document.getElementById('bw-game-wrap');
+    if (fsBtn && fsWrap) {
+        fsBtn.addEventListener('click', function () {
+            var req = fsWrap.requestFullscreen || fsWrap.webkitRequestFullscreen || fsWrap.mozRequestFullScreen || fsWrap.msRequestFullscreen;
+            if (req) { try { req.call(fsWrap); } catch (e) {} }
+        });
+        document.addEventListener('fullscreenchange', function () {
+            var on = !!(document.fullscreenElement || document.webkitFullscreenElement);
+            fsWrap.classList.toggle('bw-game-wrap--full', on);
+        });
+    }
 }());
 </script>
 

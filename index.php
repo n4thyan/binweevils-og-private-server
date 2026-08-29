@@ -70,18 +70,19 @@ include('site/header.php');
 <section class="bw-hero">
     <div class="bw-panel bw-panel--container bw-hero-copy">
         <p class="bw-eyebrow">The Bin is back</p>
-        <?php if($siteLoggedIn && is_array($siteUser)): ?>
+        <?php if($siteLoggedIn && is_array($siteUser)):
+            $homeNameColor = site_cosmetic_equipped_value($siteCosmetics, 'username_color', '#075d86');
+            $homeTitle = site_cosmetic_equipped_value($siteCosmetics, 'title', '');
+        ?>
             <h1>Welcome back, <span data-account-stat="username"><?php echo site_e($siteUser['username']); ?></span>!</h1>
-            <p class="bw-hero-lead">Your Weevil is ready. Jump back into the Bin, visit the community chat, or tweak your account and cosmetics from My Weevil.</p>
+            <div class="bw-hero-weevil" data-weevil-render data-weevil-definition="<?php echo site_e($siteUser['def']); ?>" data-weevil-name="<?php echo site_e($siteUser['username']); ?>">
+                <div class="bw-render-pending">Weevil</div>
+            </div>
+            <p class="bw-hero-meta"><span data-account-stat="username"><?php echo site_e($siteUser['username']); ?></span> · Level <span data-account-stat="level"><?php echo (int)$siteUser['level']; ?></span> · Prestige <span data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></span></p>
+            <p class="bw-hero-xp"><span data-account-stat="next-xp"><?php echo site_int($siteUser['xp2']); ?></span> XP to next level</p>
             <div class="bw-button-row">
                 <a class="bw-button bw-button--green" href="/game.php">Play Bin Weevils</a>
                 <a class="bw-button bw-button--blue" href="/settings/">My Weevil</a>
-            </div>
-            <div class="bw-stat-grid" aria-label="Weevil stats">
-                <div class="bw-stat"><span>Level</span><strong data-account-stat="level"><?php echo (int)$siteUser['level']; ?></strong></div>
-                <div class="bw-stat"><span>Prestige</span><strong data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></strong></div>
-                <div class="bw-stat"><span>Lifetime XP</span><strong data-account-stat="lifetime-xp"><?php echo site_int($siteUser['xp']); ?></strong></div>
-                <div class="bw-stat"><span>Banked XP</span><strong data-account-stat="banked-xp"><?php echo site_int($siteUser['xp1']); ?></strong></div>
             </div>
         <?php else: ?>
             <h1>Welcome back to the Bin!</h1>
@@ -95,20 +96,23 @@ include('site/header.php');
     </div>
 
     <?php if($siteLoggedIn && is_array($siteUser)): ?>
-        <aside class="bw-panel bw-panel--container bw-login-card">
-            <p class="bw-eyebrow">Your account</p>
-            <h2 class="bw-card-title" data-account-stat="username"><?php echo site_e($siteUser['username']); ?></h2>
+        <aside class="bw-panel bw-panel--container bw-login-card bw-account-weevil-card">
+            <p class="bw-eyebrow">Your Weevil</p>
+            <div class="bw-account-weevil" data-weevil-render data-weevil-definition="<?php echo site_e($siteUser['def']); ?>" data-weevil-name="<?php echo site_e($siteUser['username']); ?>">
+                <div class="bw-render-pending">Weevil</div>
+            </div>
+            <h2 class="bw-card-title" data-account-stat="username" style="color:<?php echo site_e($homeNameColor); ?>"><?php echo site_e($siteUser['username']); ?></h2>
+            <?php if($homeTitle !== ''): ?><span class="bw-badge"><?php echo site_e($homeTitle); ?></span><?php endif; ?>
             <div class="bw-stat-grid">
                 <div class="bw-stat"><span>Mulch</span><strong data-account-stat="mulch"><?php echo site_int($siteUser['mulch']); ?></strong></div>
                 <div class="bw-stat"><span>Dosh</span><strong data-account-stat="dosh"><?php echo site_int($siteUser['dosh']); ?></strong></div>
+                <div class="bw-stat"><span>Prestige</span><strong data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></strong></div>
                 <div class="bw-stat"><span>Next level</span><strong><span data-account-stat="next-xp"><?php echo site_int($siteUser['xp2']); ?></span> XP</strong></div>
-                <div class="bw-stat"><span>Server</span><strong data-server-online>Checking…</strong></div>
             </div>
             <div class="bw-button-row">
-                <a class="bw-button bw-button--small" href="/game.php">Enter the Bin</a>
-                <a class="bw-button bw-button--blue bw-button--small" href="/settings/">Settings</a>
+                <a class="bw-button bw-button--small" href="/game.php">Play now</a>
+                <a class="bw-button bw-button--blue bw-button--small" href="/settings/">My Weevil</a>
             </div>
-            <p class="bw-form-note">Nest News remains the place for proper in-game news. Website notices stay short and appear in the Bin Bulletin above.</p>
         </aside>
     <?php else: ?>
         <aside class="bw-panel bw-panel--container bw-login-card" id="login">

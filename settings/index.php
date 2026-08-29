@@ -30,17 +30,13 @@ include('../site/header.php');
         <h2 class="bw-card-title" data-account-stat="username" style="color:<?php echo site_e($profileNameColor); ?>"><?php echo site_e($siteUser['username']); ?></h2>
         <?php if($profileTitle !== ''): ?><span class="bw-badge" style="margin-right:6px;"><?php echo site_e($profileTitle); ?></span><?php endif; ?>
         <span class="bw-badge">Prestige <span data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></span></span>
-        <div class="bw-stat-grid">
-            <div class="bw-stat"><span>Level</span><strong data-account-stat="level"><?php echo (int)$siteUser['level']; ?></strong></div>
-            <div class="bw-stat"><span>Prestige</span><strong data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></strong></div>
-            <div class="bw-stat"><span>Lifetime XP</span><strong data-account-stat="lifetime-xp"><?php echo site_int($siteUser['xp']); ?></strong></div>
-            <div class="bw-stat"><span>Banked XP</span><strong data-account-stat="banked-xp"><?php echo site_int($siteUser['xp1']); ?></strong></div>
-            <div class="bw-stat"><span>Mulch</span><strong data-account-stat="mulch"><?php echo site_int($siteUser['mulch']); ?></strong></div>
-            <div class="bw-stat"><span>Dosh</span><strong data-account-stat="dosh"><?php echo site_int($siteUser['dosh']); ?></strong></div>
+        <div class="bw-profile-currency">
+            <span class="bw-cur"><img src="/assets/images/mulch.png" alt="Mulch"> <strong data-account-stat="mulch"><?php echo site_int($siteUser['mulch']); ?></strong></span>
+            <span class="bw-cur"><img src="/assets/images/dosh.png" alt="Dosh"> <strong data-account-stat="dosh"><?php echo site_int($siteUser['dosh']); ?></strong></span>
         </div>
         <div class="bw-button-row">
             <a class="bw-button bw-button--green bw-button--small" href="/game.php">Play now</a>
-            <a class="bw-button bw-button--blue bw-button--small" href="/settings/xp-rewards.php">XP Rewards</a>
+            <a class="bw-button bw-button--blue bw-button--small" href="/settings/#site-preferences">Settings</a>
         </div>
     </aside>
 
@@ -68,13 +64,18 @@ include('../site/header.php');
             <div>
                 <p class="bw-eyebrow">Customisation</p>
                 <h2 class="bw-card-title">XP Rewards</h2>
-                <p class="bw-muted">Spend earned Banked XP on permanent website cosmetics — name colours, titles and recovered official profile backgrounds. Equip or swap anything you own for free.</p>
-                <a class="bw-button bw-button--small" href="/settings/xp-rewards.php">Open XP Rewards</a>
+                <div class="bw-reward-chips">
+                    <span class="bw-chip">Name colour</span>
+                    <span class="bw-chip">Title</span>
+                    <span class="bw-chip">Profile background</span>
+                </div>
+                <p class="bw-muted">Spend Banked XP on permanent cosmetics — equip or swap anything you own for free.</p>
+                <a class="bw-button bw-button--small" href="/settings/xp-rewards.php">Browse XP Rewards</a>
             </div>
         </section>
 
-        <section class="bw-panel bw-content-panel">
-            <p class="bw-eyebrow">Your look</p>
+        <details class="bw-panel bw-content-panel bw-disclosure">
+            <summary><p class="bw-eyebrow">Your look</p><span>Advanced / Appearance data</span></summary>
             <h2 class="bw-card-title">Weevil Definition</h2>
             <p class="bw-muted">This is read directly from your OG account. Website renderer mounts follow the saved definition whenever the account state changes.</p>
             <div class="bw-field">
@@ -82,7 +83,7 @@ include('../site/header.php');
                 <input class="bw-input" id="current-weevil-def" type="text" value="<?php echo site_e($siteUser['def']); ?>" readonly>
             </div>
             <button class="bw-button bw-button--blue bw-button--small" type="button" data-copy-definition>Copy definition</button>
-        </section>
+        </details>
 
         <section class="bw-panel bw-content-panel" id="site-preferences">
             <p class="bw-eyebrow">Quality of life</p>
