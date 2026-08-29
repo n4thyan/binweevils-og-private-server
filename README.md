@@ -92,10 +92,11 @@ awaits your manual run in the real Electron/Flash client.
 - **Play page** — DONE. Page is HEADER / GAME / FOOTER only. Removed the duplicated head block
   (eyebrow, "Enter the Bin", "Logged in as…", Desktop client / My Weevil / Fullscreen CTAs,
   renderer-dev note). Game embeds at native **940×653** with a snug dark frame (no blue letterbox);
-  object fills the box via padding-top aspect-ratio. Discreet **⛶** fullscreen icon in the game
-  frame's top-right corner. Fullscreen API targets the game wrapper only (100vw×100vh, scales to
-  fit preserving 940×653, dark letterbox, Escape exits). Game UI untouched. (Fullscreen NEEDS TEST
-  in the real Electron/Flash client — headless QA browser blocks the gesture.)
+  object fills the box via padding-top aspect-ratio. Discreet **⛶** fullscreen icon at the game
+  frame's bottom-right corner. Fullscreen API targets the game wrapper only (100vw×100vh, explicit
+  height so the Flash object fills, dark letterbox, ⛶ toggles enter/exit, Escape exits). Game UI untouched.
+  (Fullscreen visual confirm in the real Electron/Flash client still recommended — headless QA browser
+  blocks the fullscreen gesture, but the object-fill math is verified.)
 - **My Weevil** — DONE. Player profile / progression page: prominent rendered Weevil, username,
   level, prestige, Mulch/Dosh (authentic icons), Lifetime/Banked XP, green progress bar + next
   threshold, compact XP Rewards (chips: name colour / title / profile background + Browse),
@@ -103,6 +104,11 @@ awaits your manual run in the real Electron/Flash client.
   disclosure (data + Copy intact).
 - **Weevil renderer** — DONE. `assets/js/site-weevil-renderer.js` mounts every `[data-weevil-render]`
   from the account definition; hat fields zeroed only for the website wrapper (game untouched).
+  Weevils now render **front-facing** (camera yaw 0); the header avatar is a cropped face/head-shot.
+- **Live stats** — DONE. Authed pages poll `/site/account-state.php` every 20s and on window
+  focus / tab visibility, updating every `[data-account-stat]` (Mulch, Dosh, level, prestige,
+  Lifetime/Banked XP, next-XP) without reload. Source is the real account state; last-known values
+  kept on failure. XP semantics (Lifetime never decreases, Banked is spendable) untouched.
 - **main.swf background swap** — DONE (NEEDS FULL CLIENT TEST). `mainDEV663.swf` DefineBitsJPEG2
   (111) background replaced with authentic Garden art (1245×840). Backup `main.pre-background-swap-20260829-164658.swf`.
   See HANDOFF.md for hashes. No transparency experiment yet.

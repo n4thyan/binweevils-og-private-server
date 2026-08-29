@@ -493,10 +493,14 @@ owner's manual run in the real Electron/PepperFlash client.
 - **Play page (DONE)** — page is HEADER / GAME / FOOTER only. Removed the duplicated head block
   (eyebrow, "Enter the Bin", "Logged in as…", Desktop client / My Weevil / Fullscreen CTAs,
   renderer-dev note). Game embeds at native **940×653** in a snug dark frame, no blue letterbox.
-  Discreet **⛶** fullscreen icon in the game frame's top-right corner (no giant CTA).
-- **Fullscreen (DONE)** — wrapper is 100vw×100vh; game scales to fit preserving native 940×653
-  (`min(100vw, 100vh*940/653)`), centred, dark letterbox, never stretched/squashed. Fullscreen
-  API targets the game wrapper only; Escape exits; returning restores the embedded layout. No SWF change.
+  Discreet **⛶** fullscreen icon at the game frame's **bottom-right** corner (no giant CTA).
+- **Fullscreen (DONE, real-client visual confirm still recommended)** — ROOT CAUSE of the earlier
+  break: the fullscreen viewport had `height:auto` from `aspect-ratio` only, so the Flash `<object>`
+  (`height:100%`) collapsed to a postage-stamp inside the black wrapper. FIX: the viewport now gets an
+  EXPLICIT `height: min(100vh, 100vw*653/940)` plus `width: min(100vw, 100vh*940/653)` and the object
+  stays `position:absolute; inset:0`, so it fills the box. Wrapper 100vw×100vh, centred, dark letterbox,
+  never stretched/squashed. The ⛶ control toggles (click to enter AND exit); Escape also exits; returning
+  restores the embedded layout. No SWF change.
 - **My Weevil (DONE)** — player profile / progression page: large rendered Weevil, username, level,
   prestige, Mulch/Dosh (authentic `mulch.png`/`dosh.png` icons), Lifetime/Banked XP, green progress
   bar + next threshold, compact XP Rewards (chips: name colour / title / profile background + Browse),
@@ -504,11 +508,16 @@ owner's manual run in the real Electron/PepperFlash client.
   "Advanced / Appearance data" `<details>` disclosure (data + Copy intact).
 - **Weevil renderer (DONE)** — `assets/js/site-weevil-renderer.js` mounts every `[data-weevil-render]`
   from the saved definition; hat fields zeroed only for the website wrapper (game/Flash untouched).
-- **Advert system (DONE, headless-verified render+rotation)** — creatives grouped by compatible
-  format: leaderboard/banner (top + page banners on Create a Weevil & Download), MPU/rectangle (home
-  rectangle), portrait/skyscraper (desktop side ads). Fixed slot dims + `object-fit: contain`, no layout
-  shift, empty slots hidden, side ads hidden when viewport < 1723px. Game width beats ads on Play.
-  The Download page's old orange "Important" panel was replaced with a Sponsor banner slot.
+  **Poses fixed this pass:** camera yaw was `302` (side/back) for every render → changed to `0` (front-facing)
+  for the hero, account panel and My Weevil. The header avatar uses `data-weevil-crop="head"` + a CSS zoom
+  into the head region, giving a face/head-shot instead of a squeezed full body.
+- **Advert system (DONE, verified)** — creatives grouped by compatible format: leaderboard/banner
+  (top of homepage + page banners on Create a Weevil & Download), MPU/rectangle (home rectangle),
+  portrait/skyscraper (desktop side gutters, 300×600, exact creative match). Fixed slot dims +
+  `object-fit: contain`, no layout shift, empty slots hidden. **Side rails are hidden below 1723px by design**
+  (visible at ≥1724px, e.g. 1920) so they never overlap the 1100px shell. All creative assets serve HTTP 200
+  at the slot's native dimensions. The Download page's old orange "Important" panel was replaced with a
+  Sponsor banner slot.
 - **Homepage dev-status strip (DONE)** — the "Game server / Weevils online / Build" diagnostic strip was
   removed. Bin Bulletin kept. The online count ("● N Weevils online") is now a small header element
   (logged-in and logged-out) fed by the existing `/site/server-status.php` poller. No fabricated counts.

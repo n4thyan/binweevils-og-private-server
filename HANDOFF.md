@@ -5,15 +5,13 @@ End-of-day checkpoint. Written so tomorrow's session can resume from the **repos
 
 ## GIT
 - **Active website branch:** `website-redesign`
-- **Final polish commit:** `9c507690998f36ec9677685eee3a98b75e5d9966`
-  - message: `feat(web): final polish pass — Play/fullscreen/settings, copy cleanup, ad slots, online count`
-- **Pushed:** yes — `origin/website-redesign` == local (`9c507690`).
-- **Prior commits this evening:** `082d329d` (authenticated homepage/polish), `008748f7` (docs checkpoint), `6fb021e8` (main.swf swap), `b56740e1` (weevil-creator), `4873b1b9`, `d3a91a48`, `5056e564`, `fb2324b4`, `6725384d`.
+- **Final polish commit:** `3fd5cc5fc7c405478da419fc418c1cedce929eec`
+  - message: `fix(web): fullscreen scaling, front-facing Weevil poses, live stat refresh, CTA/online-count cleanup`
+- **Pushed:** yes — `origin/website-redesign` == local (`3fd5cc5f`).
+- **Prior commits this evening:** `06311be0` (polish docs), `9c507690` (final polish pass), `082d329d`, `008748f7`, `6fb021e8` (main.swf swap), `b56740e1` (weevil-creator), `4873b1b9`, `d3a91a48`, `5056e564`, `fb2324b4`, `6725384d`.
 - **Subtrees intact:** `game-full/` 22675, `server/` 35, `electron/` 10.
-- **`main`:** untouched (recovery baseline + 3 verified backend fixes).
-- **`feature/room-events-mushrooms`:** deliberately left alone. Its staged/uncommitted work
-  (.gitignore, GITHUB-HANDOFF.md, README.md, game-full/about, game-full ads) was NOT reset,
-  merged, or overwritten. Only the `website-redesign` ref was moved by the overlay commits.
+- **`main`:** untouched.
+- **`feature/room-events-mushrooms`:** deliberately left alone (staged/uncommitted work not touched). Only the `website-redesign` ref was moved by overlay commits.
 
 ## WHERE THINGS LIVE
 - Repo website source is tracked at the **repo root** on `website-redesign`: `index.php`,
@@ -31,14 +29,14 @@ End-of-day checkpoint. Written so tomorrow's session can resume from the **repos
 | Public homepage | DONE |
 | Advert system (leaderboard/rectangle/skyscraper, no layout shift, side ads <1723px) | DONE (headless-verified) |
 | Logged-in homepage (rendered Weevil, "Your Weevil" panel, no server dup) | DONE |
-| Play page (HEADER/GAME/FOOTER, native 940×653, snug dark frame, ⛶ fullscreen icon) | DONE — NEEDS real Flash-client test |
-| Fullscreen (100vw×100vh, scales to fit 940×653, dark letterbox, wrapper-only, Escape exits) | DONE — NEEDS real-client test |
-| My Weevil (profile, rendered Weevil, XP bar, compact XP Rewards, GAME section, raw def hidden) | DONE |
-| Settings copy cleanup (redundant Settings btn removed; GAME section added) | DONE |
-| Homepage dev-status strip removed; online count moved to header (both states) | DONE |
-| Public copy audit (no dev wording; footer disclaimer kept) | DONE |
-| Advert system (top/rectangle/side rails + page banners on Create a Weevil & Download) | DONE (headless-verified) |
-| Download page (orange panel → safety note + Sponsor banner) | DONE |
+| Play page (HEADER/GAME/FOOTER, native 940×653, snug dark frame, ⛶ fullscreen icon bottom-right) | DONE |
+| Fullscreen (100vw×100vh, explicit height so Flash object fills, dark letterbox, wrapper-only, ⛶ toggles enter/exit) | DONE (code) — NEEDS real-client visual confirm |
+| Weevil renderer — front-facing pose (yaw 0) for hero/panel/My Weevil; header avatar = head-shot crop | DONE (verified headless) |
+| Dynamic stats (poll /site/account-state.php 20s + focus + visibilitychange; updates all [data-account-stat]) | DONE (endpoint verified) — NEEDS real gameplay delta test |
+| CTA cleanup (homepage 'Your Weevil' panel dup buttons removed; single 'View My Weevil' link) | DONE |
+| Online count (header right cluster, real /site/server-status.php source) | DONE |
+| Public copy audit (no dev wording; 'private server' removed from Bin Bulletin) | DONE |
+| Advert system (top leaderboard, home rectangle, side skyscrapers 300×600; page banners on Create a Weevil + Download) | DONE (creatives serve 200; side rails visible >=1724px) |
 | Weevil renderer (reused `weevil-creator`, account def authoritative) | DONE |
 | main.swf background bitmap swap (DefineBitsJPEG2 111 → Garden art) | DONE — NEEDS full client test |
 | xat / Community | NEXT / NOT IMPLEMENTED (shell only) |
