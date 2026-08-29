@@ -342,21 +342,6 @@ Use two linked XP concepts:
 - Verified against the live DB (throwaway test weevil, cleaned up): +5M banked XP leveled 1→65 in one call carrying overflow; a larger grant drove to L80, awarded the prestige reward, and incremented `prestige_count` to 1 with a fresh L1 cycle (xp2 = 30×1.5 = 45).
 - **Deferred per roadmap: §9.3 (XP reward shop + lifetime-XP leaderboard) remains POST-RELEASE, after the website redesign.** No code for it was written.
 
-**2026-08-28 morning harden (verified):** The Prestige-boundary catch-up was
-audited end-to-end against the live DB. A regression was found: `levelWeevil()`
-zeroed `xp1` on the Prestige transition, destroying banked overflow above the
-consumed Level-80 threshold. Fixed in `fix(xp)` commit: prestige advance now
-pays only the L80 threshold (`xp1 = xp1 - xp2`) and keeps remaining banked XP
-to continue the new Prestige's cycle in the same call; the P13 L80 cap clamps
-(`xp1 = xp1 - xp2`) without advancing or re-awarding. Verified Cases A–F on
-throwaway weevils (cleaned up): ordinary catch-up, exact P-boundary, overflow-
-across-boundary (overflow preserved), full duplicate-trophy set per Prestige
-(L10 physical copies = 2 across P0/P1, idempotent on re-run), large cross-
-boundary grant, and P13 cap stability. `prestige_trophies` UNIQUE(user,prestige,level)
-enforces per-Prestige idempotency while allowing a fresh physical set each
-Prestige.
-
-
 ### 9.3 POST-RELEASE: XP reward shop + lifetime-XP leaderboard — after website redesign
 
 This entire feature is deliberately deferred until **after the initial game release and after the website redesign is complete**. It should be treated as one of the final roadmap additions, not a pre-release blocker.
@@ -482,3 +467,85 @@ Requirements:
 11. Finish release-critical stability/security work and ship the initial release.
 12. **POST-RELEASE:** complete the website redesign.
 13. **LAST:** after the website redesign, implement the XP reward shop and lifetime-XP leaderboard.
+
+---
+
+## 10. Website redesign — current state (2026-08-29)
+
+Branch: **`website-redesign`** (tip `082d329d`, pushed to origin). Live copy: `C:\xampp\htdocs`
+(root tree; `game-full/` in-repo is legacy and not served). Not merged to `main`, not on VPS.
+
+Status legend: **DONE** = built + headless-QA-verified · **NEEDS TEST** = built, awaiting the
+owner's manual run in the real Electron/PepperFlash client.
+
+### 10.1 What is built
+- **Design system (DONE)** — centred Bin Weevils shell, outdoor garden background, green
+  nav/header, Burbank Small brand font, authentic/recovered artwork only (no AI/fabricated
+  graphics). Page-specific compositions rather than identical cards everywhere.
+- **Public homepage (DONE)** — Bin Bulletin + live server status, Welcome area, Returning Player
+  login, Create a Weevil, feature CTAs (Enter the Bin / xat Chat / My Weevil), advert placements,
+  authentic character art (`rigg.png`).
+- **Logged-in homepage (DONE)** — personal "Welcome back, <user>!" hero with the account's
+  **rendered Weevil** (reused `weevil-creator` runtime; account `def` authoritative) + level/prestige
+  + "XP to next level" + Play/My Weevil. Right "Your Weevil" panel: rendered Weevil, name (equipped
+  colour), title badge, Mulch/Dosh/Prestige/Next-level. Server status intentionally NOT duplicated
+  (the status strip owns it). Deep XP stats live on My Weevil.
+- **Play page (DONE, NEEDS TEST in real Flash client)** — embeds the game at native **940×653**
+  (read from `mainDEV663.swf` header) with a snug dark frame; no huge blue letterbox. Object fills
+  the box via `padding-top` aspect-ratio so it is never a postage-stamp. Controls: Desktop Client,
+  My Weevil, **Fullscreen**. Fullscreen uses the browser Fullscreen API on the **game wrapper only**
+  (dark centred backing; Escape exits); no Flash/timeline/wmode/SmartFox changes.
+- **My Weevil (DONE)** — player profile / progression page: large rendered Weevil, username, level,
+  prestige, Mulch/Dosh (authentic `mulch.png`/`dosh.png` icons), Lifetime/Banked XP, green progress
+  bar + next threshold, compact XP Rewards (chips: name colour / title / profile background + Browse),
+  preferences (reduce-motion / compact-layout), change password. Raw definition hidden behind an
+  "Advanced / Appearance data" `<details>` disclosure (data + Copy intact).
+- **Weevil renderer (DONE)** — `assets/js/site-weevil-renderer.js` mounts every `[data-weevil-render]`
+  from the saved definition; hat fields zeroed only for the website wrapper (game/Flash untouched).
+- **Advert system (DONE, headless-verified render+rotation)** — creatives grouped by compatible
+  format: leaderboard/banner (top), MPU/rectangle (home rectangle), portrait/skyscraper (desktop side
+  ads). Fixed slot dims + `object-fit: contain`, no layout shift, empty slots hidden, side ads hidden
+  when viewport < 1723px. Game width beats ads on Play.
+
+### 10.2 main.swf background bitmap swap (DONE, NEEDS FULL CLIENT TEST)
+- **Live SWF:** `mainDEV663.swf` (htdocs root; `site/config.php['flash_movie']`).
+- **JPEXS/FFDec target:** `DefineBitsJPEG2 (characterId 111)`, native bitmap **1245×840**.
+- **Replacement:** authentic recovered Bin Weevils Garden background (`assets/images/background.png`,
+  resized to 1245×840 so no movie-clip transforms change). Method: `ffdec -replace` on tag 111.
+- **Backup (untouched):** `C:\xampp\htdocs\main.pre-background-swap-20260829-164658.swf`
+  (SHA-256 `62fe3ac2001f60ca1c2b02492a578eb24f0f8df9904cccaf3c9aea0a7263069f`, 775,949 bytes).
+- **Edited SWF SHA-256:** `33176e9fe9e497f2b7546f7e0a2c4b57dd9eb4f46bad64878821c6330a5b84b8`
+  (649,017 bytes). Tag count unchanged (1696); only the bitmap payload differs.
+- **Commit:** `6fb021e8` on `website-redesign`.
+- **Transparency:** NOT done. Future optional experiment only (see §10.4).
+
+### 10.3 xat / Community Chat — NEXT / NOT IMPLEMENTED
+- `/community/` has the prepared website design shell; the actual xat room is **not** embedded yet.
+- Next phase: configure/embed the intended xat room, fit it to the website design, preserve
+  login/account nav, test responsive behaviour.
+
+### 10.4 Flash transparency — OPTIONAL EXPERIMENT / NOT IMPLEMENTED
+- Possible future: blend the Flash game into the site background (alpha-capable bitmap/tag,
+  transparent stage, `wmode="transparent"`, check extra opaque layers, PepperFlash compositing).
+- Must be done on a **COPY** of the known-good `mainDEV663.swf`; the safe bitmap swap above stays
+  the baseline. Not a pre-release requirement.
+
+### 10.5 Account ↔ xat cosmetic identity — ROADMAP / FUTURE
+The Bin Weevils **account stays authoritative** for equipped public identity. xat/community should
+later reflect account cosmetics where technically possible (equipped name colour, title, level,
+prestige badge). Do **not** build a separate xat cosmetics economy. Flow:
+`Bin Weevils account → equipped identity → website → My Weevil → community/xat → other public surfaces`.
+
+### 10.6 Tomorrow's manual test checklist (start from current committed build)
+1. Homepage (logged out) · 2. adverts render · 3. adverts rotate w/o layout shift · 4. Create a
+Weevil · 5. account registration · 6. existing-account login · 7. Remember Weevil Name · 8. auth
+header · 9. logged-in homepage · 10. account Weevil renders · 11. My Weevil · 12. XP/currencies
+correct · 13. Settings · 14. Play page · 15. game viewport sizing · 16. Fullscreen button · 17. exit
+fullscreen · 18. server selector · 19. Mulch server · 20. enter game · 21. nest/home room · 22. game
+controls · 23. logout · 24. login again · 25. responsive/narrow check.
+
+### 10.7 Next development order
+A. Manual end-to-end website/game test → B. fix only genuine failures → C. final Play/embed
+adjust if real testing requires → D. xat Community Chat → E. test xat → F. account↔xat cosmetic
+identity → G. optional Flash transparency on a COPY only. Transparency stays after stable
+functionality.
