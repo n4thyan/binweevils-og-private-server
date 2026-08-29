@@ -1,0 +1,116 @@
+{
+  "frames": {
+    "ABall_mc.png": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 28,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 28,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 28,
+        "h": 28
+      }
+    },
+    "lower_leg.png": {
+      "frame": {
+        "x": 289,
+        "y": 2,
+        "w": 285,
+        "h": 25
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 285,
+        "h": 25
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 25
+      }
+    },
+    "lower_leg_stripy.png": {
+      "frame": {
+        "x": 576,
+        "y": 2,
+        "w": 285,
+        "h": 25
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 285,
+        "h": 25
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 25
+      }
+    },
+    "shadow.png": {
+      "frame": {
+        "x": 2,
+        "y": 115,
+        "w": 111,
+        "h": 111
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 111,
+        "h": 111
+      },
+      "sourceSize": {
+        "w": 111,
+        "h": 111
+      }
+    },
+    "upper_leg.png": {
+      "frame": {
+        "x": 289,
+        "y": 115,
+        "w": 169,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 169,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 169,
+        "h": 31
+      }
+    }
+  },
+  "meta": {
+    "app": "OpenAI Weevil atlas packer",
+    "version": "1.0",
+    "image": "misc.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 863,
+      "h": 228
+    },
+    "scale": "1",
+    "related_multi_packs": []
+  }
+}

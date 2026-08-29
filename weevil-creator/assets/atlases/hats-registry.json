@@ -1,0 +1,1307 @@
+{
+  "version": 1,
+  "generatedBy": "tools/hat-import/hat_pipeline.py --register-disk",
+  "reserved": {
+    "1": {
+      "name": "Top hat",
+      "atlas": "apparel_tophat",
+      "file": "apparel_topHat.swf",
+      "source": "donor"
+    },
+    "4": {
+      "name": "Horned helmet",
+      "atlas": "apparel_4",
+      "file": "apparel_4.swf",
+      "source": "donor"
+    }
+  },
+  "bulk": [
+    {
+      "name": "Hat 101",
+      "atlas": "apparel_101",
+      "file": "apparel_1.swf",
+      "frames": 209,
+      "canvas": [
+        117,
+        93
+      ],
+      "hatId": 101
+    },
+    {
+      "name": "Hat 102",
+      "atlas": "apparel_102",
+      "file": "apparel_2.swf",
+      "frames": 110,
+      "canvas": [
+        80,
+        63
+      ],
+      "hatId": 102
+    },
+    {
+      "name": "Hat 103",
+      "atlas": "apparel_103",
+      "file": "apparel_3.swf",
+      "frames": 33,
+      "canvas": [
+        113,
+        96
+      ],
+      "hatId": 103
+    },
+    {
+      "name": "Hat 105",
+      "atlas": "apparel_105",
+      "file": "apparel_5.swf",
+      "frames": 209,
+      "canvas": [
+        160,
+        89
+      ],
+      "hatId": 105
+    },
+    {
+      "name": "Hat 106",
+      "atlas": "apparel_106",
+      "file": "apparel_6.swf",
+      "frames": 209,
+      "canvas": [
+        103,
+        81
+      ],
+      "hatId": 106
+    },
+    {
+      "name": "Hat 107",
+      "atlas": "apparel_107",
+      "file": "apparel_7.swf",
+      "frames": 209,
+      "canvas": [
+        122,
+        98
+      ],
+      "hatId": 107
+    },
+    {
+      "name": "Hat 108",
+      "atlas": "apparel_108",
+      "file": "apparel_8.swf",
+      "frames": 143,
+      "canvas": [
+        203,
+        149
+      ],
+      "hatId": 108
+    },
+    {
+      "name": "Hat 109",
+      "atlas": "apparel_109",
+      "file": "apparel_9.swf",
+      "frames": 143,
+      "canvas": [
+        203,
+        149
+      ],
+      "hatId": 109
+    },
+    {
+      "name": "Hat 110",
+      "atlas": "apparel_110",
+      "file": "apparel_10.swf",
+      "frames": 77,
+      "canvas": [
+        112,
+        90
+      ],
+      "hatId": 110
+    },
+    {
+      "name": "Hat 111",
+      "atlas": "apparel_111",
+      "file": "apparel_11.swf",
+      "frames": 209,
+      "canvas": [
+        112,
+        89
+      ],
+      "hatId": 111
+    },
+    {
+      "name": "Hat 112",
+      "atlas": "apparel_112",
+      "file": "apparel_12.swf",
+      "frames": 209,
+      "canvas": [
+        133,
+        111
+      ],
+      "hatId": 112
+    },
+    {
+      "name": "Hat 113",
+      "atlas": "apparel_113",
+      "file": "apparel_13.swf",
+      "frames": 110,
+      "canvas": [
+        95,
+        70
+      ],
+      "hatId": 113
+    },
+    {
+      "name": "Hat 114",
+      "atlas": "apparel_114",
+      "file": "apparel_14.swf",
+      "frames": 99,
+      "canvas": [
+        87,
+        72
+      ],
+      "hatId": 114
+    },
+    {
+      "name": "Hat 115",
+      "atlas": "apparel_115",
+      "file": "apparel_15.swf",
+      "frames": 55,
+      "canvas": [
+        125,
+        92
+      ],
+      "hatId": 115
+    },
+    {
+      "name": "Hat 116",
+      "atlas": "apparel_116",
+      "file": "apparel_16.swf",
+      "frames": 55,
+      "canvas": [
+        128,
+        91
+      ],
+      "hatId": 116
+    },
+    {
+      "name": "Hat 117",
+      "atlas": "apparel_117",
+      "file": "apparel_17.swf",
+      "frames": 55,
+      "canvas": [
+        125,
+        90
+      ],
+      "hatId": 117
+    },
+    {
+      "name": "Hat 118",
+      "atlas": "apparel_118",
+      "file": "apparel_18.swf",
+      "frames": 209,
+      "canvas": [
+        117,
+        101
+      ],
+      "hatId": 118
+    },
+    {
+      "name": "Hat 119",
+      "atlas": "apparel_119",
+      "file": "apparel_19.swf",
+      "frames": 77,
+      "canvas": [
+        110,
+        88
+      ],
+      "hatId": 119
+    },
+    {
+      "name": "Hat 120",
+      "atlas": "apparel_120",
+      "file": "apparel_20.swf",
+      "frames": 77,
+      "canvas": [
+        110,
+        88
+      ],
+      "hatId": 120
+    },
+    {
+      "name": "Hat 121",
+      "atlas": "apparel_121",
+      "file": "apparel_21.swf",
+      "frames": 77,
+      "canvas": [
+        110,
+        88
+      ],
+      "hatId": 121
+    },
+    {
+      "name": "Hat 122",
+      "atlas": "apparel_122",
+      "file": "apparel_22.swf",
+      "frames": 77,
+      "canvas": [
+        110,
+        88
+      ],
+      "hatId": 122
+    },
+    {
+      "name": "Hat 123",
+      "atlas": "apparel_123",
+      "file": "apparel_23.swf",
+      "frames": 77,
+      "canvas": [
+        116,
+        93
+      ],
+      "hatId": 123
+    },
+    {
+      "name": "Hat 124",
+      "atlas": "apparel_124",
+      "file": "apparel_24.swf",
+      "frames": 77,
+      "canvas": [
+        116,
+        93
+      ],
+      "hatId": 124
+    },
+    {
+      "name": "Hat 125",
+      "atlas": "apparel_125",
+      "file": "apparel_25.swf",
+      "frames": 77,
+      "canvas": [
+        113,
+        91
+      ],
+      "hatId": 125
+    },
+    {
+      "name": "Hat 126",
+      "atlas": "apparel_126",
+      "file": "apparel_26.swf",
+      "frames": 143,
+      "canvas": [
+        190,
+        170
+      ],
+      "hatId": 126
+    },
+    {
+      "name": "Hat 127",
+      "atlas": "apparel_127",
+      "file": "apparel_27.swf",
+      "frames": 110,
+      "canvas": [
+        109,
+        87
+      ],
+      "hatId": 127
+    },
+    {
+      "name": "Hat 128",
+      "atlas": "apparel_128",
+      "file": "apparel_28.swf",
+      "frames": 77,
+      "canvas": [
+        172,
+        100
+      ],
+      "hatId": 128
+    },
+    {
+      "name": "Hat 129",
+      "atlas": "apparel_129",
+      "file": "apparel_29.swf",
+      "frames": 143,
+      "canvas": [
+        85,
+        67
+      ],
+      "hatId": 129
+    },
+    {
+      "name": "Hat 130",
+      "atlas": "apparel_130",
+      "file": "apparel_30.swf",
+      "frames": 143,
+      "canvas": [
+        85,
+        66
+      ],
+      "hatId": 130
+    },
+    {
+      "name": "Hat 131",
+      "atlas": "apparel_131",
+      "file": "apparel_31.swf",
+      "frames": 77,
+      "canvas": [
+        208,
+        138
+      ],
+      "hatId": 131
+    },
+    {
+      "name": "Hat 132",
+      "atlas": "apparel_132",
+      "file": "apparel_32.swf",
+      "frames": 44,
+      "canvas": [
+        232,
+        159
+      ],
+      "hatId": 132
+    },
+    {
+      "name": "Hat 133",
+      "atlas": "apparel_133",
+      "file": "apparel_33.swf",
+      "frames": 143,
+      "canvas": [
+        234,
+        160
+      ],
+      "hatId": 133
+    },
+    {
+      "name": "Hat 134",
+      "atlas": "apparel_134",
+      "file": "apparel_34.swf",
+      "frames": 209,
+      "canvas": [
+        235,
+        148
+      ],
+      "hatId": 134
+    },
+    {
+      "name": "Hat 135",
+      "atlas": "apparel_135",
+      "file": "apparel_35.swf",
+      "frames": 209,
+      "canvas": [
+        103,
+        80
+      ],
+      "hatId": 135
+    },
+    {
+      "name": "Hat 136",
+      "atlas": "apparel_136",
+      "file": "apparel_36.swf",
+      "frames": 209,
+      "canvas": [
+        103,
+        76
+      ],
+      "hatId": 136
+    },
+    {
+      "name": "Hat 137",
+      "atlas": "apparel_137",
+      "file": "apparel_37.swf",
+      "frames": 209,
+      "canvas": [
+        103,
+        93
+      ],
+      "hatId": 137
+    },
+    {
+      "name": "Hat 138",
+      "atlas": "apparel_138",
+      "file": "apparel_38.swf",
+      "frames": 209,
+      "canvas": [
+        127,
+        101
+      ],
+      "hatId": 138
+    },
+    {
+      "name": "Hat 139",
+      "atlas": "apparel_139",
+      "file": "apparel_39.swf",
+      "frames": 407,
+      "canvas": [
+        98,
+        132
+      ],
+      "hatId": 139
+    },
+    {
+      "name": "Hat 140",
+      "atlas": "apparel_140",
+      "file": "apparel_40.swf",
+      "frames": 407,
+      "canvas": [
+        115,
+        123
+      ],
+      "hatId": 140
+    },
+    {
+      "name": "Hat 141",
+      "atlas": "apparel_141",
+      "file": "apparel_41.swf",
+      "frames": 407,
+      "canvas": [
+        115,
+        100
+      ],
+      "hatId": 141
+    },
+    {
+      "name": "Hat 142",
+      "atlas": "apparel_142",
+      "file": "apparel_42.swf",
+      "frames": 407,
+      "canvas": [
+        211,
+        165
+      ],
+      "hatId": 142
+    },
+    {
+      "name": "Hat 143",
+      "atlas": "apparel_143",
+      "file": "apparel_43.swf",
+      "frames": 407,
+      "canvas": [
+        117,
+        102
+      ],
+      "hatId": 143
+    },
+    {
+      "name": "Hat 144",
+      "atlas": "apparel_144",
+      "file": "apparel_44.swf",
+      "frames": 407,
+      "canvas": [
+        117,
+        102
+      ],
+      "hatId": 144
+    },
+    {
+      "name": "Hat 145",
+      "atlas": "apparel_145",
+      "file": "apparel_45.swf",
+      "frames": 209,
+      "canvas": [
+        114,
+        91
+      ],
+      "hatId": 145
+    },
+    {
+      "name": "Hat 146",
+      "atlas": "apparel_146",
+      "file": "apparel_46.swf",
+      "frames": 110,
+      "canvas": [
+        114,
+        97
+      ],
+      "hatId": 146
+    },
+    {
+      "name": "Hat 147",
+      "atlas": "apparel_147",
+      "file": "apparel_47.swf",
+      "frames": 77,
+      "canvas": [
+        88,
+        74
+      ],
+      "hatId": 147
+    },
+    {
+      "name": "Hat 148",
+      "atlas": "apparel_148",
+      "file": "apparel_48.swf",
+      "frames": 77,
+      "canvas": [
+        88,
+        74
+      ],
+      "hatId": 148
+    },
+    {
+      "name": "Hat 149",
+      "atlas": "apparel_149",
+      "file": "apparel_49.swf",
+      "frames": 77,
+      "canvas": [
+        79,
+        63
+      ],
+      "hatId": 149
+    },
+    {
+      "name": "Hat 150",
+      "atlas": "apparel_150",
+      "file": "apparel_50.swf",
+      "frames": 77,
+      "canvas": [
+        78,
+        63
+      ],
+      "hatId": 150
+    },
+    {
+      "name": "Hat 151",
+      "atlas": "apparel_151",
+      "file": "apparel_51.swf",
+      "frames": 77,
+      "canvas": [
+        77,
+        60
+      ],
+      "hatId": 151
+    },
+    {
+      "name": "Hat 152",
+      "atlas": "apparel_152",
+      "file": "apparel_52.swf",
+      "frames": 110,
+      "canvas": [
+        98,
+        80
+      ],
+      "hatId": 152
+    },
+    {
+      "name": "Hat 153",
+      "atlas": "apparel_153",
+      "file": "apparel_53.swf",
+      "frames": 110,
+      "canvas": [
+        115,
+        81
+      ],
+      "hatId": 153
+    },
+    {
+      "name": "Hat 154",
+      "atlas": "apparel_154",
+      "file": "apparel_54.swf",
+      "frames": 792,
+      "canvas": [
+        135,
+        104
+      ],
+      "hatId": 154
+    },
+    {
+      "name": "Hat 155",
+      "atlas": "apparel_155",
+      "file": "apparel_55.swf",
+      "frames": 44,
+      "canvas": [
+        106,
+        80
+      ],
+      "hatId": 155
+    },
+    {
+      "name": "Hat 156",
+      "atlas": "apparel_156",
+      "file": "apparel_56.swf",
+      "frames": 407,
+      "canvas": [
+        98,
+        84
+      ],
+      "hatId": 156
+    },
+    {
+      "name": "Hat 157",
+      "atlas": "apparel_157",
+      "file": "apparel_57.swf",
+      "frames": 407,
+      "canvas": [
+        98,
+        84
+      ],
+      "hatId": 157
+    },
+    {
+      "name": "Hat 158",
+      "atlas": "apparel_158",
+      "file": "apparel_58.swf",
+      "frames": 407,
+      "canvas": [
+        104,
+        84
+      ],
+      "hatId": 158
+    },
+    {
+      "name": "Hat 159",
+      "atlas": "apparel_159",
+      "file": "apparel_59.swf",
+      "frames": 407,
+      "canvas": [
+        104,
+        84
+      ],
+      "hatId": 159
+    },
+    {
+      "name": "Hat 160",
+      "atlas": "apparel_160",
+      "file": "apparel_60.swf",
+      "frames": 55,
+      "canvas": [
+        105,
+        92
+      ],
+      "hatId": 160
+    },
+    {
+      "name": "Hat 161",
+      "atlas": "apparel_161",
+      "file": "apparel_61.swf",
+      "frames": 55,
+      "canvas": [
+        107,
+        93
+      ],
+      "hatId": 161
+    },
+    {
+      "name": "Hat 162",
+      "atlas": "apparel_162",
+      "file": "apparel_62.swf",
+      "frames": 55,
+      "canvas": [
+        107,
+        93
+      ],
+      "hatId": 162
+    },
+    {
+      "name": "Hat 163",
+      "atlas": "apparel_163",
+      "file": "apparel_63.swf",
+      "frames": 110,
+      "canvas": [
+        107,
+        93
+      ],
+      "hatId": 163
+    },
+    {
+      "name": "Hat 164",
+      "atlas": "apparel_164",
+      "file": "apparel_64.swf",
+      "frames": 407,
+      "canvas": [
+        131,
+        120
+      ],
+      "hatId": 164
+    },
+    {
+      "name": "Hat 165",
+      "atlas": "apparel_165",
+      "file": "apparel_65.swf",
+      "frames": 407,
+      "canvas": [
+        98,
+        81
+      ],
+      "hatId": 165
+    },
+    {
+      "name": "Hat 166",
+      "atlas": "apparel_166",
+      "file": "apparel_66.swf",
+      "frames": 407,
+      "canvas": [
+        98,
+        81
+      ],
+      "hatId": 166
+    },
+    {
+      "name": "Hat 167",
+      "atlas": "apparel_167",
+      "file": "apparel_67.swf",
+      "frames": 407,
+      "canvas": [
+        98,
+        81
+      ],
+      "hatId": 167
+    },
+    {
+      "name": "Hat 168",
+      "atlas": "apparel_168",
+      "file": "apparel_68.swf",
+      "frames": 407,
+      "canvas": [
+        244,
+        114
+      ],
+      "hatId": 168
+    },
+    {
+      "name": "Hat 169",
+      "atlas": "apparel_169",
+      "file": "apparel_69.swf",
+      "frames": 407,
+      "canvas": [
+        280,
+        198
+      ],
+      "hatId": 169
+    },
+    {
+      "name": "Hat 170",
+      "atlas": "apparel_170",
+      "file": "apparel_70.swf",
+      "frames": 209,
+      "canvas": [
+        129,
+        119
+      ],
+      "hatId": 170
+    },
+    {
+      "name": "Hat 171",
+      "atlas": "apparel_171",
+      "file": "apparel_71.swf",
+      "frames": 110,
+      "canvas": [
+        129,
+        120
+      ],
+      "hatId": 171
+    },
+    {
+      "name": "Hat 172",
+      "atlas": "apparel_172",
+      "file": "apparel_72.swf",
+      "frames": 209,
+      "canvas": [
+        112,
+        90
+      ],
+      "hatId": 172
+    },
+    {
+      "name": "Hat 173",
+      "atlas": "apparel_173",
+      "file": "apparel_73.swf",
+      "frames": 110,
+      "canvas": [
+        172,
+        81
+      ],
+      "hatId": 173
+    },
+    {
+      "name": "Hat 174",
+      "atlas": "apparel_174",
+      "file": "apparel_74.swf",
+      "frames": 209,
+      "canvas": [
+        103,
+        81
+      ],
+      "hatId": 174
+    },
+    {
+      "name": "Hat 175",
+      "atlas": "apparel_175",
+      "file": "apparel_75.swf",
+      "frames": 110,
+      "canvas": [
+        108,
+        88
+      ],
+      "hatId": 175
+    },
+    {
+      "name": "Hat 176",
+      "atlas": "apparel_176",
+      "file": "apparel_76.swf",
+      "frames": 209,
+      "canvas": [
+        127,
+        101
+      ],
+      "hatId": 176
+    },
+    {
+      "name": "Hat 177",
+      "atlas": "apparel_177",
+      "file": "apparel_77.swf",
+      "frames": 99,
+      "canvas": [
+        95,
+        75
+      ],
+      "hatId": 177
+    },
+    {
+      "name": "Hat 178",
+      "atlas": "apparel_178",
+      "file": "apparel_78.swf",
+      "frames": 209,
+      "canvas": [
+        113,
+        95
+      ],
+      "hatId": 178
+    },
+    {
+      "name": "Hat 179",
+      "atlas": "apparel_179",
+      "file": "apparel_79.swf",
+      "frames": 209,
+      "canvas": [
+        96,
+        68
+      ],
+      "hatId": 179
+    },
+    {
+      "name": "Hat 180",
+      "atlas": "apparel_180",
+      "file": "apparel_80.swf",
+      "frames": 220,
+      "canvas": [
+        117,
+        83
+      ],
+      "hatId": 180
+    },
+    {
+      "name": "Hat 181",
+      "atlas": "apparel_181",
+      "file": "apparel_81.swf",
+      "frames": 407,
+      "canvas": [
+        133,
+        104
+      ],
+      "hatId": 181
+    },
+    {
+      "name": "Hat 182",
+      "atlas": "apparel_182",
+      "file": "apparel_82.swf",
+      "frames": 209,
+      "canvas": [
+        80,
+        69
+      ],
+      "hatId": 182
+    },
+    {
+      "name": "Hat 183",
+      "atlas": "apparel_183",
+      "file": "apparel_83.swf",
+      "frames": 407,
+      "canvas": [
+        125,
+        80
+      ],
+      "hatId": 183
+    },
+    {
+      "name": "Hat 184",
+      "atlas": "apparel_184",
+      "file": "apparel_84.swf",
+      "frames": 77,
+      "canvas": [
+        144,
+        109
+      ],
+      "hatId": 184
+    },
+    {
+      "name": "Hat 185",
+      "atlas": "apparel_185",
+      "file": "apparel_85.swf",
+      "frames": 209,
+      "canvas": [
+        107,
+        85
+      ],
+      "hatId": 185
+    },
+    {
+      "name": "Hat 186",
+      "atlas": "apparel_186",
+      "file": "apparel_86.swf",
+      "frames": 209,
+      "canvas": [
+        102,
+        68
+      ],
+      "hatId": 186
+    },
+    {
+      "name": "Hat 187",
+      "atlas": "apparel_187",
+      "file": "apparel_87.swf",
+      "frames": 209,
+      "canvas": [
+        101,
+        68
+      ],
+      "hatId": 187
+    },
+    {
+      "name": "Hat 188",
+      "atlas": "apparel_188",
+      "file": "apparel_88.swf",
+      "frames": 165,
+      "canvas": [
+        85,
+        70
+      ],
+      "hatId": 188
+    },
+    {
+      "name": "Hat 189",
+      "atlas": "apparel_189",
+      "file": "apparel_89.swf",
+      "frames": 407,
+      "canvas": [
+        92,
+        118
+      ],
+      "hatId": 189
+    },
+    {
+      "name": "Hat 190",
+      "atlas": "apparel_190",
+      "file": "apparel_90.swf",
+      "frames": 209,
+      "canvas": [
+        106,
+        83
+      ],
+      "hatId": 190
+    },
+    {
+      "name": "Hat 191",
+      "atlas": "apparel_191",
+      "file": "apparel_91.swf",
+      "frames": 209,
+      "canvas": [
+        99,
+        79
+      ],
+      "hatId": 191
+    },
+    {
+      "name": "Hat 192",
+      "atlas": "apparel_192",
+      "file": "apparel_92.swf",
+      "frames": 407,
+      "canvas": [
+        156,
+        100
+      ],
+      "hatId": 192
+    },
+    {
+      "name": "Hat 193",
+      "atlas": "apparel_193",
+      "file": "apparel_93.swf",
+      "frames": 407,
+      "canvas": [
+        146,
+        117
+      ],
+      "hatId": 193
+    },
+    {
+      "name": "Hat 194",
+      "atlas": "apparel_194",
+      "file": "apparel_94.swf",
+      "frames": 165,
+      "canvas": [
+        89,
+        75
+      ],
+      "hatId": 194
+    },
+    {
+      "name": "Hat 195",
+      "atlas": "apparel_195",
+      "file": "apparel_95.swf",
+      "frames": 407,
+      "canvas": [
+        131,
+        144
+      ],
+      "hatId": 195
+    },
+    {
+      "name": "Hat 196",
+      "atlas": "apparel_196",
+      "file": "apparel_96.swf",
+      "frames": 33,
+      "canvas": [
+        130,
+        98
+      ],
+      "hatId": 196
+    },
+    {
+      "name": "Hat 197",
+      "atlas": "apparel_197",
+      "file": "apparel_97.swf",
+      "frames": 33,
+      "canvas": [
+        130,
+        98
+      ],
+      "hatId": 197
+    },
+    {
+      "name": "Hat 198",
+      "atlas": "apparel_198",
+      "file": "apparel_98.swf",
+      "frames": 33,
+      "canvas": [
+        130,
+        98
+      ],
+      "hatId": 198
+    },
+    {
+      "name": "Hat 199",
+      "atlas": "apparel_199",
+      "file": "apparel_99.swf",
+      "frames": 33,
+      "canvas": [
+        130,
+        98
+      ],
+      "hatId": 199
+    },
+    {
+      "name": "Hat 200",
+      "atlas": "apparel_200",
+      "file": "apparel_100.swf",
+      "frames": 407,
+      "canvas": [
+        146,
+        131
+      ],
+      "hatId": 200
+    },
+    {
+      "name": "Hat 201",
+      "atlas": "apparel_201",
+      "file": "apparel_101.swf",
+      "frames": 814,
+      "canvas": [
+        127,
+        107
+      ],
+      "hatId": 201
+    },
+    {
+      "name": "Hat 202",
+      "atlas": "apparel_202",
+      "file": "apparel_102.swf",
+      "frames": 407,
+      "canvas": [
+        168,
+        143
+      ],
+      "hatId": 202
+    },
+    {
+      "name": "Hat 203",
+      "atlas": "apparel_203",
+      "file": "apparel_103.swf",
+      "frames": 209,
+      "canvas": [
+        102,
+        85
+      ],
+      "hatId": 203
+    },
+    {
+      "name": "Hat 204",
+      "atlas": "apparel_204",
+      "file": "apparel_104.swf",
+      "frames": 792,
+      "canvas": [
+        191,
+        160
+      ],
+      "hatId": 204
+    },
+    {
+      "name": "Hat 205",
+      "atlas": "apparel_205",
+      "file": "apparel_105.swf",
+      "frames": 407,
+      "canvas": [
+        97,
+        80
+      ],
+      "hatId": 205
+    },
+    {
+      "name": "Hat 206",
+      "atlas": "apparel_206",
+      "file": "apparel_106.swf",
+      "frames": 407,
+      "canvas": [
+        97,
+        80
+      ],
+      "hatId": 206
+    },
+    {
+      "name": "Hat 207",
+      "atlas": "apparel_207",
+      "file": "apparel_107.swf",
+      "frames": 407,
+      "canvas": [
+        97,
+        80
+      ],
+      "hatId": 207
+    },
+    {
+      "name": "Hat 208",
+      "atlas": "apparel_208",
+      "file": "apparel_108.swf",
+      "frames": 407,
+      "canvas": [
+        158,
+        143
+      ],
+      "hatId": 208
+    },
+    {
+      "name": "Hat 209",
+      "atlas": "apparel_209",
+      "file": "apparel_109.swf",
+      "frames": 407,
+      "canvas": [
+        89,
+        73
+      ],
+      "hatId": 209
+    },
+    {
+      "name": "Hat 210",
+      "atlas": "apparel_210",
+      "file": "apparel_110.swf",
+      "frames": 792,
+      "canvas": [
+        80,
+        39
+      ],
+      "hatId": 210
+    },
+    {
+      "name": "Hat 211",
+      "atlas": "apparel_211",
+      "file": "apparel_111.swf",
+      "frames": 407,
+      "canvas": [
+        116,
+        100
+      ],
+      "hatId": 211
+    },
+    {
+      "name": "Hat 212",
+      "atlas": "apparel_212",
+      "file": "apparel_112.swf",
+      "frames": 407,
+      "canvas": [
+        113,
+        91
+      ],
+      "hatId": 212
+    },
+    {
+      "name": "Hat 213",
+      "atlas": "apparel_213",
+      "file": "apparel_113.swf",
+      "frames": 407,
+      "canvas": [
+        160,
+        142
+      ],
+      "hatId": 213
+    },
+    {
+      "name": "Hat 214",
+      "atlas": "apparel_214",
+      "file": "apparel_114.swf",
+      "frames": 407,
+      "canvas": [
+        133,
+        94
+      ],
+      "hatId": 214
+    },
+    {
+      "name": "Hat 215",
+      "atlas": "apparel_215",
+      "file": "apparel_115.swf",
+      "frames": 407,
+      "canvas": [
+        130,
+        98
+      ],
+      "hatId": 215
+    },
+    {
+      "name": "Hat 216",
+      "atlas": "apparel_216",
+      "file": "apparel_116.swf",
+      "frames": 407,
+      "canvas": [
+        158,
+        143
+      ],
+      "hatId": 216
+    },
+    {
+      "name": "Hat 217",
+      "atlas": "apparel_217",
+      "file": "apparel_117.swf",
+      "frames": 407,
+      "canvas": [
+        97,
+        80
+      ],
+      "hatId": 217
+    },
+    {
+      "name": "Hat 250",
+      "atlas": "apparel_250",
+      "file": "apparel_crownKOTB.swf",
+      "frames": 407,
+      "canvas": [
+        65,
+        58
+      ],
+      "hatId": 250
+    }
+  ]
+}

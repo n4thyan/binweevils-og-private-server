@@ -1,0 +1,574 @@
+{
+  "body/cone": {
+    "png": "body_cone.png",
+    "json": "body_cone.json"
+  },
+  "body/cone_narrow_inv": {
+    "png": "body_cone_narrow_inv.png",
+    "json": "body_cone_narrow_inv.json"
+  },
+  "body/cuboid": {
+    "png": "body_cuboid.png",
+    "json": "body_cuboid.json"
+  },
+  "body/spheroid": {
+    "png": "body_spheroid.png",
+    "json": "body_spheroid.json"
+  },
+  "eyes": {
+    "png": "eyes.png",
+    "json": "eyes.json"
+  },
+  "eyes/Eye_iris1_mc": {
+    "png": "eyes_Eye_iris1_mc.png",
+    "json": "eyes_Eye_iris1_mc.json"
+  },
+  "eyes/Eye_iris2_mc": {
+    "png": "eyes_Eye_iris2_mc.png",
+    "json": "eyes_Eye_iris2_mc.json"
+  },
+  "eyes/Eye_lid1_mc": {
+    "png": "eyes_Eye_lid1_mc.png",
+    "json": "eyes_Eye_lid1_mc.json"
+  },
+  "eyes/Eye_lid2_mc": {
+    "png": "eyes_Eye_lid2_mc.png",
+    "json": "eyes_Eye_lid2_mc.json"
+  },
+  "eyes/Eye_white1_mc": {
+    "png": "eyes_Eye_white1_mc.png",
+    "json": "eyes_Eye_white1_mc.json"
+  },
+  "head/cone": {
+    "png": "head_cone.png",
+    "json": "head_cone.json"
+  },
+  "head/cone_inv": {
+    "png": "head_cone_inv.png",
+    "json": "head_cone_inv.json"
+  },
+  "head/cuboid": {
+    "png": "head_cuboid.png",
+    "json": "head_cuboid.json"
+  },
+  "head/spheroid": {
+    "png": "head_spheroid.png",
+    "json": "head_spheroid.json"
+  },
+  "head/spheroid_mask": {
+    "png": "head_spheroid_mask.png",
+    "json": "head_spheroid_mask.json"
+  },
+  "misc": {
+    "png": "misc.png",
+    "json": "misc.json"
+  },
+  "misc/Prob1_mc": {
+    "png": "misc_Prob1_mc.png",
+    "json": "misc_Prob1_mc.json"
+  },
+  "mouth/Mouth1_mc": {
+    "png": "mouth_Mouth1_mc.png",
+    "json": "mouth_Mouth1_mc.json"
+  },
+  "mouth/Mouth2_mc": {
+    "png": "mouth_Mouth2_mc.png",
+    "json": "mouth_Mouth2_mc.json"
+  },
+  "mouth/Mouth3_mc": {
+    "png": "mouth_Mouth3_mc.png",
+    "json": "mouth_Mouth3_mc.json"
+  },
+  "mouth/Mouth4_mc": {
+    "png": "mouth_Mouth4_mc.png",
+    "json": "mouth_Mouth4_mc.json"
+  },
+  "mouth/Mouth5_mc": {
+    "png": "mouth_Mouth5_mc.png",
+    "json": "mouth_Mouth5_mc.json"
+  },
+  "mouth/Mouth6_mc": {
+    "png": "mouth_Mouth6_mc.png",
+    "json": "mouth_Mouth6_mc.json"
+  },
+  "mouth/Mouth7_mc": {
+    "png": "mouth_Mouth7_mc.png",
+    "json": "mouth_Mouth7_mc.json"
+  },
+  "apparel/tophat": {
+    "png": "apparel_tophat.png",
+    "json": "apparel_tophat.json"
+  },
+  "apparel/4": {
+    "png": "apparel_4.png",
+    "json": "apparel_4.json"
+  },
+  "apparel/102": {
+    "png": "apparel_102.png",
+    "json": "apparel_102.json"
+  },
+  "apparel/103": {
+    "png": "apparel_103.png",
+    "json": "apparel_103.json"
+  },
+  "apparel/105": {
+    "png": "apparel_105.png",
+    "json": "apparel_105.json"
+  },
+  "apparel/101": {
+    "png": "apparel_101.png",
+    "json": "apparel_101.json"
+  },
+  "apparel/106": {
+    "png": "apparel_106.png",
+    "json": "apparel_106.json"
+  },
+  "apparel/107": {
+    "png": "apparel_107.png",
+    "json": "apparel_107.json"
+  },
+  "apparel/108": {
+    "png": "apparel_108.png",
+    "json": "apparel_108.json"
+  },
+  "apparel/109": {
+    "png": "apparel_109.png",
+    "json": "apparel_109.json"
+  },
+  "apparel/110": {
+    "png": "apparel_110.png",
+    "json": "apparel_110.json"
+  },
+  "apparel/111": {
+    "png": "apparel_111.png",
+    "json": "apparel_111.json"
+  },
+  "apparel/112": {
+    "png": "apparel_112.png",
+    "json": "apparel_112.json"
+  },
+  "apparel/113": {
+    "png": "apparel_113.png",
+    "json": "apparel_113.json"
+  },
+  "apparel/114": {
+    "png": "apparel_114.png",
+    "json": "apparel_114.json"
+  },
+  "apparel/115": {
+    "png": "apparel_115.png",
+    "json": "apparel_115.json"
+  },
+  "apparel/116": {
+    "png": "apparel_116.png",
+    "json": "apparel_116.json"
+  },
+  "apparel/117": {
+    "png": "apparel_117.png",
+    "json": "apparel_117.json"
+  },
+  "apparel/118": {
+    "png": "apparel_118.png",
+    "json": "apparel_118.json"
+  },
+  "apparel/119": {
+    "png": "apparel_119.png",
+    "json": "apparel_119.json"
+  },
+  "apparel/120": {
+    "png": "apparel_120.png",
+    "json": "apparel_120.json"
+  },
+  "apparel/121": {
+    "png": "apparel_121.png",
+    "json": "apparel_121.json"
+  },
+  "apparel/122": {
+    "png": "apparel_122.png",
+    "json": "apparel_122.json"
+  },
+  "apparel/123": {
+    "png": "apparel_123.png",
+    "json": "apparel_123.json"
+  },
+  "apparel/124": {
+    "png": "apparel_124.png",
+    "json": "apparel_124.json"
+  },
+  "apparel/125": {
+    "png": "apparel_125.png",
+    "json": "apparel_125.json"
+  },
+  "apparel/126": {
+    "png": "apparel_126.png",
+    "json": "apparel_126.json"
+  },
+  "apparel/127": {
+    "png": "apparel_127.png",
+    "json": "apparel_127.json"
+  },
+  "apparel/128": {
+    "png": "apparel_128.png",
+    "json": "apparel_128.json"
+  },
+  "apparel/129": {
+    "png": "apparel_129.png",
+    "json": "apparel_129.json"
+  },
+  "apparel/130": {
+    "png": "apparel_130.png",
+    "json": "apparel_130.json"
+  },
+  "apparel/131": {
+    "png": "apparel_131.png",
+    "json": "apparel_131.json"
+  },
+  "apparel/132": {
+    "png": "apparel_132.png",
+    "json": "apparel_132.json"
+  },
+  "apparel/133": {
+    "png": "apparel_133.png",
+    "json": "apparel_133.json"
+  },
+  "apparel/134": {
+    "png": "apparel_134.png",
+    "json": "apparel_134.json"
+  },
+  "apparel/135": {
+    "png": "apparel_135.png",
+    "json": "apparel_135.json"
+  },
+  "apparel/136": {
+    "png": "apparel_136.png",
+    "json": "apparel_136.json"
+  },
+  "apparel/137": {
+    "png": "apparel_137.png",
+    "json": "apparel_137.json"
+  },
+  "apparel/138": {
+    "png": "apparel_138.png",
+    "json": "apparel_138.json"
+  },
+  "apparel/139": {
+    "png": "apparel_139.png",
+    "json": "apparel_139.json"
+  },
+  "apparel/140": {
+    "png": "apparel_140.png",
+    "json": "apparel_140.json"
+  },
+  "apparel/141": {
+    "png": "apparel_141.png",
+    "json": "apparel_141.json"
+  },
+  "apparel/142": {
+    "png": "apparel_142.png",
+    "json": "apparel_142.json"
+  },
+  "apparel/143": {
+    "png": "apparel_143.png",
+    "json": "apparel_143.json"
+  },
+  "apparel/144": {
+    "png": "apparel_144.png",
+    "json": "apparel_144.json"
+  },
+  "apparel/145": {
+    "png": "apparel_145.png",
+    "json": "apparel_145.json"
+  },
+  "apparel/146": {
+    "png": "apparel_146.png",
+    "json": "apparel_146.json"
+  },
+  "apparel/147": {
+    "png": "apparel_147.png",
+    "json": "apparel_147.json"
+  },
+  "apparel/148": {
+    "png": "apparel_148.png",
+    "json": "apparel_148.json"
+  },
+  "apparel/149": {
+    "png": "apparel_149.png",
+    "json": "apparel_149.json"
+  },
+  "apparel/150": {
+    "png": "apparel_150.png",
+    "json": "apparel_150.json"
+  },
+  "apparel/151": {
+    "png": "apparel_151.png",
+    "json": "apparel_151.json"
+  },
+  "apparel/152": {
+    "png": "apparel_152.png",
+    "json": "apparel_152.json"
+  },
+  "apparel/153": {
+    "png": "apparel_153.png",
+    "json": "apparel_153.json"
+  },
+  "apparel/154": {
+    "png": "apparel_154.png",
+    "json": "apparel_154.json"
+  },
+  "apparel/155": {
+    "png": "apparel_155.png",
+    "json": "apparel_155.json"
+  },
+  "apparel/156": {
+    "png": "apparel_156.png",
+    "json": "apparel_156.json"
+  },
+  "apparel/157": {
+    "png": "apparel_157.png",
+    "json": "apparel_157.json"
+  },
+  "apparel/158": {
+    "png": "apparel_158.png",
+    "json": "apparel_158.json"
+  },
+  "apparel/159": {
+    "png": "apparel_159.png",
+    "json": "apparel_159.json"
+  },
+  "apparel/160": {
+    "png": "apparel_160.png",
+    "json": "apparel_160.json"
+  },
+  "apparel/161": {
+    "png": "apparel_161.png",
+    "json": "apparel_161.json"
+  },
+  "apparel/162": {
+    "png": "apparel_162.png",
+    "json": "apparel_162.json"
+  },
+  "apparel/163": {
+    "png": "apparel_163.png",
+    "json": "apparel_163.json"
+  },
+  "apparel/164": {
+    "png": "apparel_164.png",
+    "json": "apparel_164.json"
+  },
+  "apparel/165": {
+    "png": "apparel_165.png",
+    "json": "apparel_165.json"
+  },
+  "apparel/166": {
+    "png": "apparel_166.png",
+    "json": "apparel_166.json"
+  },
+  "apparel/167": {
+    "png": "apparel_167.png",
+    "json": "apparel_167.json"
+  },
+  "apparel/168": {
+    "png": "apparel_168.png",
+    "json": "apparel_168.json"
+  },
+  "apparel/169": {
+    "png": "apparel_169.png",
+    "json": "apparel_169.json"
+  },
+  "apparel/170": {
+    "png": "apparel_170.png",
+    "json": "apparel_170.json"
+  },
+  "apparel/171": {
+    "png": "apparel_171.png",
+    "json": "apparel_171.json"
+  },
+  "apparel/172": {
+    "png": "apparel_172.png",
+    "json": "apparel_172.json"
+  },
+  "apparel/173": {
+    "png": "apparel_173.png",
+    "json": "apparel_173.json"
+  },
+  "apparel/174": {
+    "png": "apparel_174.png",
+    "json": "apparel_174.json"
+  },
+  "apparel/175": {
+    "png": "apparel_175.png",
+    "json": "apparel_175.json"
+  },
+  "apparel/176": {
+    "png": "apparel_176.png",
+    "json": "apparel_176.json"
+  },
+  "apparel/177": {
+    "png": "apparel_177.png",
+    "json": "apparel_177.json"
+  },
+  "apparel/178": {
+    "png": "apparel_178.png",
+    "json": "apparel_178.json"
+  },
+  "apparel/179": {
+    "png": "apparel_179.png",
+    "json": "apparel_179.json"
+  },
+  "apparel/180": {
+    "png": "apparel_180.png",
+    "json": "apparel_180.json"
+  },
+  "apparel/181": {
+    "png": "apparel_181.png",
+    "json": "apparel_181.json"
+  },
+  "apparel/182": {
+    "png": "apparel_182.png",
+    "json": "apparel_182.json"
+  },
+  "apparel/183": {
+    "png": "apparel_183.png",
+    "json": "apparel_183.json"
+  },
+  "apparel/184": {
+    "png": "apparel_184.png",
+    "json": "apparel_184.json"
+  },
+  "apparel/185": {
+    "png": "apparel_185.png",
+    "json": "apparel_185.json"
+  },
+  "apparel/186": {
+    "png": "apparel_186.png",
+    "json": "apparel_186.json"
+  },
+  "apparel/187": {
+    "png": "apparel_187.png",
+    "json": "apparel_187.json"
+  },
+  "apparel/188": {
+    "png": "apparel_188.png",
+    "json": "apparel_188.json"
+  },
+  "apparel/189": {
+    "png": "apparel_189.png",
+    "json": "apparel_189.json"
+  },
+  "apparel/190": {
+    "png": "apparel_190.png",
+    "json": "apparel_190.json"
+  },
+  "apparel/191": {
+    "png": "apparel_191.png",
+    "json": "apparel_191.json"
+  },
+  "apparel/192": {
+    "png": "apparel_192.png",
+    "json": "apparel_192.json"
+  },
+  "apparel/193": {
+    "png": "apparel_193.png",
+    "json": "apparel_193.json"
+  },
+  "apparel/194": {
+    "png": "apparel_194.png",
+    "json": "apparel_194.json"
+  },
+  "apparel/195": {
+    "png": "apparel_195.png",
+    "json": "apparel_195.json"
+  },
+  "apparel/196": {
+    "png": "apparel_196.png",
+    "json": "apparel_196.json"
+  },
+  "apparel/197": {
+    "png": "apparel_197.png",
+    "json": "apparel_197.json"
+  },
+  "apparel/198": {
+    "png": "apparel_198.png",
+    "json": "apparel_198.json"
+  },
+  "apparel/199": {
+    "png": "apparel_199.png",
+    "json": "apparel_199.json"
+  },
+  "apparel/200": {
+    "png": "apparel_200.png",
+    "json": "apparel_200.json"
+  },
+  "apparel/201": {
+    "png": "apparel_201.png",
+    "json": "apparel_201.json"
+  },
+  "apparel/202": {
+    "png": "apparel_202.png",
+    "json": "apparel_202.json"
+  },
+  "apparel/203": {
+    "png": "apparel_203.png",
+    "json": "apparel_203.json"
+  },
+  "apparel/204": {
+    "png": "apparel_204.png",
+    "json": "apparel_204.json"
+  },
+  "apparel/205": {
+    "png": "apparel_205.png",
+    "json": "apparel_205.json"
+  },
+  "apparel/206": {
+    "png": "apparel_206.png",
+    "json": "apparel_206.json"
+  },
+  "apparel/207": {
+    "png": "apparel_207.png",
+    "json": "apparel_207.json"
+  },
+  "apparel/208": {
+    "png": "apparel_208.png",
+    "json": "apparel_208.json"
+  },
+  "apparel/209": {
+    "png": "apparel_209.png",
+    "json": "apparel_209.json"
+  },
+  "apparel/210": {
+    "png": "apparel_210.png",
+    "json": "apparel_210.json"
+  },
+  "apparel/211": {
+    "png": "apparel_211.png",
+    "json": "apparel_211.json"
+  },
+  "apparel/212": {
+    "png": "apparel_212.png",
+    "json": "apparel_212.json"
+  },
+  "apparel/213": {
+    "png": "apparel_213.png",
+    "json": "apparel_213.json"
+  },
+  "apparel/214": {
+    "png": "apparel_214.png",
+    "json": "apparel_214.json"
+  },
+  "apparel/215": {
+    "png": "apparel_215.png",
+    "json": "apparel_215.json"
+  },
+  "apparel/216": {
+    "png": "apparel_216.png",
+    "json": "apparel_216.json"
+  },
+  "apparel/217": {
+    "png": "apparel_217.png",
+    "json": "apparel_217.json"
+  },
+  "apparel/250": {
+    "png": "apparel_250.png",
+    "json": "apparel_250.json"
+  }
+}

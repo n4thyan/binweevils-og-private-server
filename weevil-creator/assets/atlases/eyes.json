@@ -1,0 +1,36 @@
+{
+  "frames": {
+    "Eye_white2_mc.png": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 55,
+        "h": 55
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 55,
+        "h": 55
+      },
+      "sourceSize": {
+        "w": 55,
+        "h": 55
+      }
+    }
+  },
+  "meta": {
+    "app": "OpenAI Weevil atlas packer",
+    "version": "1.0",
+    "image": "eyes.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 59,
+      "h": 59
+    },
+    "scale": "1",
+    "related_multi_packs": []
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "frames": {
+    "1.png": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 202,
+        "h": 224
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 202,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 202,
+        "h": 224
+      }
+    },
+    "2.png": {
+      "frame": {
+        "x": 206,
+        "y": 2,
+        "w": 202,
+        "h": 224
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 202,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 202,
+        "h": 224
+      }
+    },
+    "3.png": {
+      "frame": {
+        "x": 410,
+        "y": 2,
+        "w": 202,
+        "h": 224
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 202,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 202,
+        "h": 224
+      }
+    },
+    "4.png": {
+      "frame": {
+        "x": 614,
+        "y": 2,
+        "w": 202,
+        "h": 224
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 202,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 202,
+        "h": 224
+      }
+    },
+    "5.png": {
+      "frame": {
+        "x": 2,
+        "y": 228,
+        "w": 202,
+        "h": 224
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 202,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 202,
+        "h": 224
+      }
+    },
+    "6.png": {
+      "frame": {
+        "x": 206,
+        "y": 228,
+        "w": 202,
+        "h": 224
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 202,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 202,
+        "h": 224
+      }
+    },
+    "7.png": {
+      "frame": {
+        "x": 410,
+        "y": 228,
+        "w": 202,
+        "h": 224
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 202,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 202,
+        "h": 224
+      }
+    },
+    "8.png": {
+      "frame": {
+        "x": 614,
+        "y": 228,
+        "w": 202,
+        "h": 224
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 202,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 202,
+        "h": 224
+      }
+    },
+    "9.png": {
+      "frame": {
+        "x": 2,
+        "y": 454,
+        "w": 202,
+        "h": 224
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 202,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 202,
+        "h": 224
+      }
+    },
+    "10.png": {
+      "frame": {
+        "x": 206,
+        "y": 454,
+        "w": 202,
+        "h": 224
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 202,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 202,
+        "h": 224
+      }
+    },
+    "11.png": {
+      "frame": {
+        "x": 410,
+        "y": 454,
+        "w": 202,
+        "h": 224
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 202,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 202,
+        "h": 224
+      }
+    }
+  },
+  "meta": {
+    "app": "OpenAI Weevil atlas packer",
+    "version": "1.0",
+    "image": "body_cone.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 818,
+      "h": 680
+    },
+    "scale": "1",
+    "related_multi_packs": []
+  }
+}
