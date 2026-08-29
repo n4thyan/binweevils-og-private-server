@@ -409,13 +409,30 @@ img { max-width: 100%; }
   max-width: 320px;
   height: auto;
   margin: 0 auto 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.bw-login-title:hover { transform: translateY(-2px); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25)); }
+.bw-login-title:focus-visible {
+  outline: 3px solid #ffd54a;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bw-login-title { transition: none; }
+  .bw-login-title:hover { transform: none; }
 }
 .bw-login-mascot {
   position: absolute;
-  right: -10px; bottom: 40px;
-  width: 120px;
+  right: -18px; bottom: -26px;
+  width: 150px;
+  max-width: 42%;
   pointer-events: none;
   filter: drop-shadow(0 4px 4px rgba(0,0,0,0.3));
+  z-index: 1;
 }
 .bw-field { margin-bottom: 10px; }
 .bw-field label { display: block; font-weight: 700; margin-bottom: 4px; color: var(--bw-green-dark); }
@@ -498,7 +515,34 @@ img { max-width: 100%; }
   height: 100%;
   object-fit: contain;
   object-position: center bottom;
+  transform: scale(0.9);
+  transition: transform 0.18s ease;
 }
+.bw-feature-card:hover .bw-feature-art img { transform: scale(1); }
+
+/* Register / Create a Weevil — light info callouts (no full blue boxes) */
+.bw-tips-strip {
+  margin: 18px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.bw-tip {
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.55);
+  border-left: 4px solid var(--bw-green);
+}
+.bw-tip--accent {
+  background: #fff3e2;
+  border-left-color: var(--bw-orange);
+}
+.bw-tip .bw-card-title { margin: 0 0 4px; font-size: 1.1rem; color: var(--bw-green-dark); }
+.bw-tip p { margin: 0; font-size: 0.92rem; line-height: 1.45; }
+.bw-ad-row--page { margin-top: 22px; }
+@media (max-width: 680px) { .bw-tips-strip { grid-template-columns: 1fr; } }
+.bw-steps { margin: 12px 0 0; padding-left: 22px; line-height: 1.7; }
+.bw-steps li { margin: 6px 0; }
 
 /* ---------- Promo bands (membership banner + Three_Image lower promo) ----------
    Full-width contained images. They must never dictate the page structure: they

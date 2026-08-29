@@ -112,9 +112,11 @@ include('site/header.php');
         </aside>
     <?php else: ?>
         <aside class="bw-panel bw-panel--container bw-login-card" id="login">
-            <img class="bw-login-title" src="/assets/images/returning-player.png" alt="Returning player">
+            <button type="button" class="bw-login-title" id="returning-player-activate" aria-label="Returning player — focus the login form">
+                <img src="/assets/images/returning-player.png" alt="Returning player">
+            </button>
             <h2 class="bw-card-title bw-visually-hidden">Log in to your Weevil</h2>
-            <form action="/login/login.php" method="post">
+            <form action="/login/login.php" method="post" id="login-form">
                 <div class="bw-field">
                     <label for="userID">Bin Weevil Name</label>
                     <input class="bw-input" id="userID" name="userID" type="text" maxlength="16" autocomplete="username" required>
@@ -127,7 +129,7 @@ include('site/header.php');
                 <button class="bw-button bw-button--green" type="submit">Log in &amp; play</button>
             </form>
             <p class="bw-form-note">New to the Bin? <a href="/register/">Create your Weevil here.</a></p>
-            <img class="bw-login-mascot" src="/assets/images/tink_clott.png" alt="" aria-hidden="true">
+            <img class="bw-login-mascot" src="/assets/images/weevil-tophat.png" alt="" aria-hidden="true">
         </aside>
     <?php endif; ?>
 </section>
@@ -140,7 +142,7 @@ include('site/header.php');
 
 <section class="bw-home-grid" aria-label="Explore the site">
     <article class="bw-panel bw-panel--container bw-feature-card">
-        <span class="bw-feature-art"><img src="/assets/images/racing.png" alt=""></span>
+        <span class="bw-feature-art"><img src="/assets/images/new-player-graphic.png" alt=""></span>
         <p class="bw-eyebrow">Play</p>
         <h2>Enter the Bin</h2>
         <p>Launch the restored classic client and pick up exactly where your Weevil left off.</p>
@@ -148,7 +150,7 @@ include('site/header.php');
     </article>
 
     <article class="bw-panel bw-panel--container bw-feature-card">
-        <span class="bw-feature-art"><img src="/assets/images/nest.png" alt=""></span>
+        <span class="bw-feature-art"><img src="/assets/images/play-tv-graphic.png" alt=""></span>
         <p class="bw-eyebrow">Community</p>
         <h2>xat Chat</h2>
         <p>The website community room uses xat for a proper old-school Bin-era chat experience.</p>
@@ -156,7 +158,7 @@ include('site/header.php');
     </article>
 
     <article class="bw-panel bw-panel--container bw-feature-card">
-        <span class="bw-feature-art"><img src="/assets/images/garden.png" alt=""></span>
+        <span class="bw-feature-art"><img src="/assets/images/shop-whatsnew-bg.png" alt=""></span>
         <p class="bw-eyebrow"><?php echo $siteLoggedIn ? 'Account' : 'New player'; ?></p>
         <h2><?php echo $siteLoggedIn ? 'My Weevil' : 'Create a Weevil'; ?></h2>
         <p><?php echo $siteLoggedIn ? 'View your progression, account options and unlocked customisation in one place.' : 'Make a new Weevil using the existing account system and head straight into the game.'; ?></p>
@@ -169,3 +171,15 @@ include('site/header.php');
 </section>
 
 <?php include('site/footer.php'); ?>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var title = document.getElementById('returning-player-activate');
+  var form = document.getElementById('login-form');
+  if (title && form) {
+    title.addEventListener('click', function () {
+      var name = form.querySelector('#userID');
+      if (name) { name.focus(); name.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    });
+  }
+});
+</script>
