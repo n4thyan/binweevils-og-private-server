@@ -42,9 +42,15 @@ $siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 
             <?php endif; ?>
         </nav>
 
+        <span class="bw-online-count" data-server-status aria-label="Weevils online">
+            <span class="bw-status-dot" aria-hidden="true"></span>
+            <strong data-server-players>—</strong>
+            <span class="bw-online-label">Weevils online</span>
+        </span>
+
         <?php if($siteLoggedIn && is_array($siteUser)): ?>
             <aside class="bw-account-chip" aria-label="Signed-in Weevil">
-                <a class="bw-account-render" href="/settings/" data-weevil-render data-weevil-definition="<?php echo site_e($siteUser['def']); ?>" data-weevil-name="<?php echo site_e($siteUser['username']); ?>">
+                <a class="bw-account-render" href="/settings/" data-weevil-render data-weevil-crop="head" data-weevil-definition="<?php echo site_e($siteUser['def']); ?>" data-weevil-name="<?php echo site_e($siteUser['username']); ?>">
                     <span class="bw-render-pending">Weevil</span>
                 </a>
                 <div class="bw-account-copy">
@@ -58,11 +64,6 @@ $siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 
             <a class="bw-header-login" href="/#login">Log in</a>
         <?php endif; ?>
 
-        <span class="bw-online-count" data-server-status aria-label="Weevils online">
-            <span class="bw-status-dot" aria-hidden="true"></span>
-            <strong data-server-players>—</strong>
-            <span class="bw-online-label">Weevils online</span>
-        </span>
     </header>
 
     <main class="bw-main">

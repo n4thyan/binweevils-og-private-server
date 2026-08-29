@@ -2,7 +2,7 @@
 return [
     'announcements' => [
         [
-            'text' => 'Welcome to the Bin Weevils private server!',
+            'text' => 'Welcome back to the Bin — the classic world is open again!',
             'href' => null,
             'urgent' => false,
         ],

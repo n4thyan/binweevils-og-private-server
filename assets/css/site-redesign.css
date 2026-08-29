@@ -157,7 +157,7 @@ img { max-width: 100%; }
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  margin-left: 4px;
+  margin-left: auto;
   padding: 6px 12px;
   font-size: 0.8rem;
   font-weight: 800;
@@ -210,6 +210,15 @@ img { max-width: 100%; }
 }
 .bw-account-render .bw-render-pending { font-size: 0.7rem; color: #6a8a3a; }
 .bw-account-render canvas { display: block; }
+/* Header avatar is a FACE/HEAD shot: zoom into the upper (head) region of the
+   rendered Weevil and crop the body/legs out via the square's overflow. */
+.bw-account-render[data-weevil-crop="head"] {
+  background: #eaf7d6;
+}
+.bw-account-render[data-weevil-crop="head"] canvas {
+  transform: scale(1.9) translateY(-9%);
+  transform-origin: center 38%;
+}
 .bw-account-copy { font-size: 0.82rem; line-height: 1.25; }
 .bw-account-copy strong { font-size: 1rem; }
 .bw-account-title { display: block; color: var(--bw-orange); font-style: normal; font-weight: 700; }
@@ -281,7 +290,10 @@ img { max-width: 100%; }
   text-align: center;
 }
 /* Fullscreen: wrapper fills the viewport, game scales to fit preserving native
-   940x653 aspect ratio, centred, dark letterbox (never stretched/squashed). */
+   940x653 aspect ratio, centred, dark letterbox (never stretched/squashed).
+   The viewport gets an EXPLICIT height (not just aspect-ratio) so the Flash
+   <object> (height:100%) resolves against a definite height and fills the box
+   instead of collapsing to a postage-stamp. */
 .bw-game-wrap--full {
   width: 100vw;
   height: 100vh;
@@ -295,36 +307,38 @@ img { max-width: 100%; }
 }
 .bw-game-wrap--full .bw-game-viewport {
   width: min(100vw, calc(100vh * 940 / 653));
-  height: auto;
+  height: min(100vh, calc(100vw * 653 / 940));
   max-width: 100vw;
   max-height: 100vh;
   padding-top: 0;
   aspect-ratio: 940 / 653;
 }
-.bw-game-wrap--full .bw-game-viewport object { position: static; }
-.bw-game-wrap--full .bw-game-fs { display: none; }
-/* Discreet fullscreen icon in the top-right corner of the game frame. */
+.bw-game-wrap--full .bw-game-viewport object { position: absolute; inset: 0; }
+/* Discreet fullscreen control over the game's bottom-right frame. Stays visible
+   in fullscreen so it can also toggle back out. */
 .bw-game-fs {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  z-index: 3;
-  width: 34px;
-  height: 34px;
+  bottom: 10px;
+  right: 10px;
+  top: auto;
+  z-index: 4;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
   line-height: 1;
   color: #eafff0;
-  background: rgba(7,34,51,0.72);
-  border: 2px solid rgba(255,255,255,0.35);
-  border-radius: 8px;
+  background: rgba(7,34,51,0.55);
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 9px;
   cursor: pointer;
   transition: background 0.15s ease, transform 0.15s ease;
 }
-.bw-game-fs:hover { background: rgba(7,34,51,0.95); transform: translateY(-1px); }
+.bw-game-fs:hover { background: rgba(7,34,51,0.85); transform: translateY(-1px); }
 .bw-game-fs:focus-visible { outline: 3px solid #ffd54a; outline-offset: 2px; }
+.bw-game-wrap--full .bw-game-fs { background: rgba(7,34,51,0.45); }
 
 /* ---------- My Weevil: profile card + XP presentation ---------- */
 .bw-profile-trim {
@@ -712,6 +726,15 @@ img { max-width: 100%; }
 
 /* ---------- Stat grids ---------- */
 .bw-stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 14px; }
+.bw-account-weevil-meta { margin-top: 10px; }
+.bw-text-link {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--bw-sky-deep);
+  text-decoration: none;
+}
+.bw-text-link:hover { text-decoration: underline; }
 .bw-stat {
   background: linear-gradient(180deg, #eaf7d6, #d2ecb0);
   border: 3px solid var(--bw-green);

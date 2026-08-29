@@ -84,10 +84,20 @@ include('site/header.php');
 
     var fsBtn = document.getElementById('bw-game-fullscreen');
     var fsWrap = document.getElementById('bw-game-wrap');
+    function requestFs() {
+        var req = fsWrap.requestFullscreen || fsWrap.webkitRequestFullscreen || fsWrap.mozRequestFullScreen || fsWrap.msRequestFullscreen;
+        if (req) { try { req.call(fsWrap); } catch (e) {} }
+    }
     if (fsBtn && fsWrap) {
         fsBtn.addEventListener('click', function () {
-            var req = fsWrap.requestFullscreen || fsWrap.webkitRequestFullscreen || fsWrap.mozRequestFullScreen || fsWrap.msRequestFullscreen;
-            if (req) { try { req.call(fsWrap); } catch (e) {} }
+            // Toggle: if already fullscreen, the same control exits it.
+            var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+            if (fsEl) {
+                var exit = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+                if (exit) { try { exit.call(document); } catch (e) {} }
+            } else {
+                requestFs();
+            }
         });
         document.addEventListener('fullscreenchange', function () {
             var on = !!(document.fullscreenElement || document.webkitFullscreenElement);

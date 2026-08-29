@@ -93,9 +93,8 @@ include('site/header.php');
                 <div class="bw-stat"><span>Prestige</span><strong data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></strong></div>
                 <div class="bw-stat"><span>Next level</span><strong><span data-account-stat="next-xp"><?php echo site_int($siteUser['xp2']); ?></span> XP</strong></div>
             </div>
-            <div class="bw-button-row">
-                <a class="bw-button bw-button--small" href="/game.php">Play now</a>
-                <a class="bw-button bw-button--blue bw-button--small" href="/settings/">My Weevil</a>
+            <div class="bw-account-weevil-meta">
+                <a class="bw-text-link" href="/settings/">View My Weevil →</a>
             </div>
         </aside>
     <?php else: ?>
