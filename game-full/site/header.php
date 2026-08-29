@@ -59,12 +59,6 @@ $siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 
         <?php endif; ?>
     </header>
 
-    <?php if($siteShowTopAd): ?>
-        <div class="bw-ad-wrap">
-            <?php site_ad_slot('site-top', 'leaderboard'); ?>
-        </div>
-    <?php endif; ?>
-
     <main class="bw-main">
 <script>
 (function () {

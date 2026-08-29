@@ -22,6 +22,14 @@ if(isset($_GET['err']) && $_GET['err'] !== '') {
 include('site/header.php');
 ?>
 
+<?php if($errMessage !== ''): ?>
+    <div class="bw-alert" role="alert"><?php echo site_e(strip_tags($errMessage)); ?></div>
+<?php endif; ?>
+
+<section class="bw-promo-band" aria-label="Membership">
+    <img class="bw-promo-img" src="/assets/ads/membership-banner-1080x250.png" alt="Weevil World membership included with every purchase">
+</section>
+
 <?php if(!empty($announcements)): ?>
 <section class="bw-announcement" aria-label="Announcements">
     <div class="bw-announcement-label">Bin Bulletin</div>
@@ -57,14 +65,8 @@ include('site/header.php');
     </div>
 </section>
 
-<?php if($errMessage !== ''): ?>
-    <div class="bw-alert" role="alert"><?php echo site_e(strip_tags($errMessage)); ?></div>
-<?php endif; ?>
-
-<div class="bw-hero-scene" role="img" aria-label="The Bin Weevils world"></div>
-
 <section class="bw-hero">
-    <div class="bw-hero-copy">
+    <div class="bw-panel bw-panel--container bw-hero-copy">
         <p class="bw-eyebrow">The Bin is back</p>
         <?php if($siteLoggedIn && is_array($siteUser)): ?>
             <h1>Welcome back, <span data-account-stat="username"><?php echo site_e($siteUser['username']); ?></span>!</h1>
@@ -86,13 +88,12 @@ include('site/header.php');
                 <a class="bw-button bw-button--green" href="#login">Log in &amp; play</a>
                 <a class="bw-button bw-button--blue" href="/register/">Create a Weevil</a>
             </div>
-            <a class="bw-play-now" href="#login" aria-label="Play Bin Weevils"><img src="/assets/images/play-now.png" alt="Play Now!"></a>
+            <img class="bw-characters" src="/assets/images/rigg.png" alt="" aria-hidden="true">
         <?php endif; ?>
-        <img class="bw-characters" src="/assets/images/rigg.png" alt="" aria-hidden="true">
     </div>
 
     <?php if($siteLoggedIn && is_array($siteUser)): ?>
-        <aside class="bw-login-card">
+        <aside class="bw-panel bw-panel--container bw-login-card">
             <p class="bw-eyebrow">Your account</p>
             <h2 class="bw-card-title" data-account-stat="username"><?php echo site_e($siteUser['username']); ?></h2>
             <div class="bw-stat-grid">
@@ -108,9 +109,9 @@ include('site/header.php');
             <p class="bw-form-note">Nest News remains the place for proper in-game news. Website notices stay short and appear in the Bin Bulletin above.</p>
         </aside>
     <?php else: ?>
-        <aside class="bw-login-card" id="login">
-            <p class="bw-eyebrow">Returning player</p>
-            <h2 class="bw-card-title">Log in to your Weevil</h2>
+        <aside class="bw-panel bw-panel--container bw-login-card" id="login">
+            <img class="bw-login-title" src="/assets/images/returning-player.png" alt="Returning player">
+            <h2 class="bw-card-title bw-visually-hidden">Log in to your Weevil</h2>
             <form action="/login/login.php" method="post">
                 <div class="bw-field">
                     <label for="userID">Bin Weevil Name</label>
@@ -124,42 +125,45 @@ include('site/header.php');
                 <button class="bw-button bw-button--green" type="submit">Log in &amp; play</button>
             </form>
             <p class="bw-form-note">New to the Bin? <a href="/register/">Create your Weevil here.</a></p>
+            <img class="bw-login-mascot" src="/assets/images/tink_clott.png" alt="" aria-hidden="true">
         </aside>
     <?php endif; ?>
 </section>
 
-<div class="bw-home-layout">
-    <section class="bw-home-grid" aria-label="Explore the site">
-        <article class="bw-panel bw-feature-card">
-            <img src="/assets/images/racing.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
-            <p class="bw-eyebrow">Play</p>
-            <h2>Enter the Bin</h2>
-            <p>Launch the restored classic client and pick up exactly where your Weevil left off.</p>
-            <a class="bw-button bw-button--green bw-button--small" href="<?php echo $siteLoggedIn ? '/game.php' : '/#login'; ?>"><?php echo $siteLoggedIn ? 'Play now' : 'Log in'; ?></a>
-        </article>
+<?php if(site_has_ads('home-rectangle')): ?>
+<section class="bw-ad-row" aria-label="Sponsor">
+    <?php site_ad_slot('home-rectangle', 'rectangle'); ?>
+</section>
+<?php endif; ?>
 
-        <article class="bw-panel bw-panel--orange bw-feature-card">
-            <img src="/assets/images/nest.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
-            <p class="bw-eyebrow">Community</p>
-            <h2>xat Chat</h2>
-            <p>The website community room uses xat for a proper old-school Bin-era chat experience.</p>
-            <a class="bw-button bw-button--small" href="/community/">Open community</a>
-        </article>
+<section class="bw-home-grid" aria-label="Explore the site">
+    <article class="bw-panel bw-panel--container bw-feature-card">
+        <img src="/assets/images/racing.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
+        <p class="bw-eyebrow">Play</p>
+        <h2>Enter the Bin</h2>
+        <p>Launch the restored classic client and pick up exactly where your Weevil left off.</p>
+        <a class="bw-button bw-button--green bw-button--small" href="<?php echo $siteLoggedIn ? '/game.php' : '/#login'; ?>"><?php echo $siteLoggedIn ? 'Play now' : 'Log in'; ?></a>
+    </article>
 
-        <article class="bw-panel bw-feature-card">
-            <img src="/assets/images/garden.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
-            <p class="bw-eyebrow"><?php echo $siteLoggedIn ? 'Account' : 'New player'; ?></p>
-            <h2><?php echo $siteLoggedIn ? 'My Weevil' : 'Create a Weevil'; ?></h2>
-            <p><?php echo $siteLoggedIn ? 'View your progression, account options and unlocked customisation in one place.' : 'Make a new Weevil using the existing account system and head straight into the game.'; ?></p>
-            <a class="bw-button bw-button--blue bw-button--small" href="<?php echo $siteLoggedIn ? '/settings/' : '/register/'; ?>"><?php echo $siteLoggedIn ? 'Open settings' : 'Get started'; ?></a>
-        </article>
-    </section>
+    <article class="bw-panel bw-panel--container bw-feature-card">
+        <img src="/assets/images/nest.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
+        <p class="bw-eyebrow">Community</p>
+        <h2>xat Chat</h2>
+        <p>The website community room uses xat for a proper old-school Bin-era chat experience.</p>
+        <a class="bw-button bw-button--small" href="/community/">Open community</a>
+    </article>
 
-    <?php if(site_has_ads('home-rectangle')): ?>
-    <aside class="bw-home-rail" aria-label="Sponsor">
-        <?php site_ad_slot('home-rectangle', 'rectangle'); ?>
-    </aside>
-    <?php endif; ?>
-</div>
+    <article class="bw-panel bw-panel--container bw-feature-card">
+        <img src="/assets/images/garden.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
+        <p class="bw-eyebrow"><?php echo $siteLoggedIn ? 'Account' : 'New player'; ?></p>
+        <h2><?php echo $siteLoggedIn ? 'My Weevil' : 'Create a Weevil'; ?></h2>
+        <p><?php echo $siteLoggedIn ? 'View your progression, account options and unlocked customisation in one place.' : 'Make a new Weevil using the existing account system and head straight into the game.'; ?></p>
+        <a class="bw-button bw-button--blue bw-button--small" href="<?php echo $siteLoggedIn ? '/settings/' : '/register/'; ?>"><?php echo $siteLoggedIn ? 'Open settings' : 'Get started'; ?></a>
+    </article>
+</section>
+
+<section class="bw-promo-band bw-promo-band--lower" aria-label="What you can do in the Bin">
+    <img class="bw-promo-img" src="/assets/images/three-image-panel.png" alt="Grow a garden, play games, and decorate your nest in Bin Weevils">
+</section>
 
 <?php include('site/footer.php'); ?>
