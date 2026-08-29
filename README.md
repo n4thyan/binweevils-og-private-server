@@ -75,8 +75,11 @@ awaits your manual run in the real Electron/Flash client.
 - **Design system** — DONE. Centred Bin Weevils shell, outdoor garden background, green nav/
   header, Burbank Small font, authentic/recovered artwork (logo `logo2.png`, `background.png`,
   `banner.png`, `rigg.png`). Page-specific compositions, not identical cards everywhere.
-- **Public homepage** — DONE. Bin Bulletin/status, Welcome area, Returning Player login,
-  Create a Weevil, feature CTAs, advert placements, authentic character art.
+- **Public homepage** — DONE. Bin Bulletin, Welcome area, Returning Player login,
+  Create a Weevil, feature CTAs, advert placements, authentic character art. The old
+  "Game server / Weevils online / Build" diagnostic strip was removed; the online count
+  ("● N Weevils online") now lives in the header (logged-in + logged-out), fed by the
+  existing server-status poller.
 - **Advert system** — DONE (headless-verified render/rotation). Creatives grouped by format:
   leaderboard/banner (top), MPU/rectangle (home rectangle), portrait/skyscraper (side desktop
   ads). Fixed slot dims, `object-fit: contain`, no layout shift, empty slots hidden, side ads
@@ -86,10 +89,13 @@ awaits your manual run in the real Electron/Flash client.
   "XP to next level" + Play/My Weevil. Right "Your Weevil" panel: rendered Weevil, name (equipped
   colour), title badge, Mulch/Dosh/Prestige/Next-level. Server status NOT duplicated (owned by
   the status strip).
-- **Play page** — DONE (NEEDS TEST in real Flash client). Embeds the game at native **940×653**
-  with a snug dark frame (no huge blue letterbox); object fills the box via padding-top
-  aspect-ratio. Controls: Desktop Client, My Weevil, **Fullscreen** (Fullscreen API targets the
-  game wrapper only; dark centred backing; Escape exits). Game UI itself untouched.
+- **Play page** — DONE. Page is HEADER / GAME / FOOTER only. Removed the duplicated head block
+  (eyebrow, "Enter the Bin", "Logged in as…", Desktop client / My Weevil / Fullscreen CTAs,
+  renderer-dev note). Game embeds at native **940×653** with a snug dark frame (no blue letterbox);
+  object fills the box via padding-top aspect-ratio. Discreet **⛶** fullscreen icon in the game
+  frame's top-right corner. Fullscreen API targets the game wrapper only (100vw×100vh, scales to
+  fit preserving 940×653, dark letterbox, Escape exits). Game UI untouched. (Fullscreen NEEDS TEST
+  in the real Electron/Flash client — headless QA browser blocks the gesture.)
 - **My Weevil** — DONE. Player profile / progression page: prominent rendered Weevil, username,
   level, prestige, Mulch/Dosh (authentic icons), Lifetime/Banked XP, green progress bar + next
   threshold, compact XP Rewards (chips: name colour / title / profile background + Browse),

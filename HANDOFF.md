@@ -5,14 +5,15 @@ End-of-day checkpoint. Written so tomorrow's session can resume from the **repos
 
 ## GIT
 - **Active website branch:** `website-redesign`
-- **Final commit:** `082d329d136e6649e0e10d905b35451756cba8c7`
-  - message: `feat(web): polish authenticated experience (homepage, Play, My Weevil)`
-- **Pushed:** yes — `origin/website-redesign` == local (`082d329d`).
+- **Final polish commit:** `9c507690998f36ec9677685eee3a98b75e5d9966`
+  - message: `feat(web): final polish pass — Play/fullscreen/settings, copy cleanup, ad slots, online count`
+- **Pushed:** yes — `origin/website-redesign` == local (`9c507690`).
+- **Prior commits this evening:** `082d329d` (authenticated homepage/polish), `008748f7` (docs checkpoint), `6fb021e8` (main.swf swap), `b56740e1` (weevil-creator), `4873b1b9`, `d3a91a48`, `5056e564`, `fb2324b4`, `6725384d`.
 - **Subtrees intact:** `game-full/` 22675, `server/` 35, `electron/` 10.
 - **`main`:** untouched (recovery baseline + 3 verified backend fixes).
 - **`feature/room-events-mushrooms`:** deliberately left alone. Its staged/uncommitted work
-  (.gitignore, GITHUB-HANDOFF.md, README.md) was NOT reset, merged, or overwritten. Only the
-  `website-redesign` ref was moved by the overlay commits today.
+  (.gitignore, GITHUB-HANDOFF.md, README.md, game-full/about, game-full ads) was NOT reset,
+  merged, or overwritten. Only the `website-redesign` ref was moved by the overlay commits.
 
 ## WHERE THINGS LIVE
 - Repo website source is tracked at the **repo root** on `website-redesign`: `index.php`,
@@ -30,9 +31,14 @@ End-of-day checkpoint. Written so tomorrow's session can resume from the **repos
 | Public homepage | DONE |
 | Advert system (leaderboard/rectangle/skyscraper, no layout shift, side ads <1723px) | DONE (headless-verified) |
 | Logged-in homepage (rendered Weevil, "Your Weevil" panel, no server dup) | DONE |
-| Play page (native 940×653 embed, snug dark frame, no blue letterbox) | DONE — NEEDS real Flash-client test |
-| Fullscreen button (wrapper-only Fullscreen API, Escape exits) | DONE — NEEDS real-client test |
-| My Weevil (profile, rendered Weevil, XP bar, compact XP Rewards, raw def hidden) | DONE |
+| Play page (HEADER/GAME/FOOTER, native 940×653, snug dark frame, ⛶ fullscreen icon) | DONE — NEEDS real Flash-client test |
+| Fullscreen (100vw×100vh, scales to fit 940×653, dark letterbox, wrapper-only, Escape exits) | DONE — NEEDS real-client test |
+| My Weevil (profile, rendered Weevil, XP bar, compact XP Rewards, GAME section, raw def hidden) | DONE |
+| Settings copy cleanup (redundant Settings btn removed; GAME section added) | DONE |
+| Homepage dev-status strip removed; online count moved to header (both states) | DONE |
+| Public copy audit (no dev wording; footer disclaimer kept) | DONE |
+| Advert system (top/rectangle/side rails + page banners on Create a Weevil & Download) | DONE (headless-verified) |
+| Download page (orange panel → safety note + Sponsor banner) | DONE |
 | Weevil renderer (reused `weevil-creator`, account def authoritative) | DONE |
 | main.swf background bitmap swap (DefineBitsJPEG2 111 → Garden art) | DONE — NEEDS full client test |
 | xat / Community | NEXT / NOT IMPLEMENTED (shell only) |

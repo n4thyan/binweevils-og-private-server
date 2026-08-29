@@ -490,11 +490,13 @@ owner's manual run in the real Electron/PepperFlash client.
   + "XP to next level" + Play/My Weevil. Right "Your Weevil" panel: rendered Weevil, name (equipped
   colour), title badge, Mulch/Dosh/Prestige/Next-level. Server status intentionally NOT duplicated
   (the status strip owns it). Deep XP stats live on My Weevil.
-- **Play page (DONE, NEEDS TEST in real Flash client)** — embeds the game at native **940×653**
-  (read from `mainDEV663.swf` header) with a snug dark frame; no huge blue letterbox. Object fills
-  the box via `padding-top` aspect-ratio so it is never a postage-stamp. Controls: Desktop Client,
-  My Weevil, **Fullscreen**. Fullscreen uses the browser Fullscreen API on the **game wrapper only**
-  (dark centred backing; Escape exits); no Flash/timeline/wmode/SmartFox changes.
+- **Play page (DONE)** — page is HEADER / GAME / FOOTER only. Removed the duplicated head block
+  (eyebrow, "Enter the Bin", "Logged in as…", Desktop client / My Weevil / Fullscreen CTAs,
+  renderer-dev note). Game embeds at native **940×653** in a snug dark frame, no blue letterbox.
+  Discreet **⛶** fullscreen icon in the game frame's top-right corner (no giant CTA).
+- **Fullscreen (DONE)** — wrapper is 100vw×100vh; game scales to fit preserving native 940×653
+  (`min(100vw, 100vh*940/653)`), centred, dark letterbox, never stretched/squashed. Fullscreen
+  API targets the game wrapper only; Escape exits; returning restores the embedded layout. No SWF change.
 - **My Weevil (DONE)** — player profile / progression page: large rendered Weevil, username, level,
   prestige, Mulch/Dosh (authentic `mulch.png`/`dosh.png` icons), Lifetime/Banked XP, green progress
   bar + next threshold, compact XP Rewards (chips: name colour / title / profile background + Browse),
@@ -503,9 +505,16 @@ owner's manual run in the real Electron/PepperFlash client.
 - **Weevil renderer (DONE)** — `assets/js/site-weevil-renderer.js` mounts every `[data-weevil-render]`
   from the saved definition; hat fields zeroed only for the website wrapper (game/Flash untouched).
 - **Advert system (DONE, headless-verified render+rotation)** — creatives grouped by compatible
-  format: leaderboard/banner (top), MPU/rectangle (home rectangle), portrait/skyscraper (desktop side
-  ads). Fixed slot dims + `object-fit: contain`, no layout shift, empty slots hidden, side ads hidden
-  when viewport < 1723px. Game width beats ads on Play.
+  format: leaderboard/banner (top + page banners on Create a Weevil & Download), MPU/rectangle (home
+  rectangle), portrait/skyscraper (desktop side ads). Fixed slot dims + `object-fit: contain`, no layout
+  shift, empty slots hidden, side ads hidden when viewport < 1723px. Game width beats ads on Play.
+  The Download page's old orange "Important" panel was replaced with a Sponsor banner slot.
+- **Homepage dev-status strip (DONE)** — the "Game server / Weevils online / Build" diagnostic strip was
+  removed. Bin Bulletin kept. The online count ("● N Weevils online") is now a small header element
+  (logged-in and logged-out) fed by the existing `/site/server-status.php` poller. No fabricated counts.
+- **Public copy audit (DONE)** — developer-facing text removed across all public pages (no "Development
+  build", "restored classic client", "canonical download location", "OG private-server client", internal
+  rate-limiting/architecture notes). Footer keeps the intentional "Fan-made preservation project" disclaimer.
 
 ### 10.2 main.swf background bitmap swap (DONE, NEEDS FULL CLIENT TEST)
 - **Live SWF:** `mainDEV663.swf` (htdocs root; `site/config.php['flash_movie']`).
