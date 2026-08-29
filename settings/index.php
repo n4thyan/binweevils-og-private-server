@@ -36,7 +36,6 @@ include('../site/header.php');
         </div>
         <div class="bw-button-row">
             <a class="bw-button bw-button--green bw-button--small" href="/game.php">Play now</a>
-            <a class="bw-button bw-button--blue bw-button--small" href="/settings/#site-preferences">Settings</a>
         </div>
     </aside>
 
@@ -77,13 +76,23 @@ include('../site/header.php');
         <details class="bw-panel bw-content-panel bw-disclosure">
             <summary><p class="bw-eyebrow">Your look</p><span>Advanced / Appearance data</span></summary>
             <h2 class="bw-card-title">Weevil Definition</h2>
-            <p class="bw-muted">This is read directly from your OG account. Website renderer mounts follow the saved definition whenever the account state changes.</p>
+            <p class="bw-muted">This is read directly from your Bin Weevils account. The website renderer follows your saved appearance whenever your account changes.</p>
             <div class="bw-field">
                 <label for="current-weevil-def">Current definition</label>
                 <input class="bw-input" id="current-weevil-def" type="text" value="<?php echo site_e($siteUser['def']); ?>" readonly>
             </div>
             <button class="bw-button bw-button--blue bw-button--small" type="button" data-copy-definition>Copy definition</button>
         </details>
+
+        <section class="bw-panel bw-content-panel" id="game-settings">
+            <p class="bw-eyebrow">Game</p>
+            <h2 class="bw-card-title">Playing the game</h2>
+            <p class="bw-muted">The Bin Weevils client runs inside your browser at its original proportions. Open the game and use the ⛶ icon in the top-right corner of the game frame to play in fullscreen.</p>
+            <div class="bw-button-row">
+                <a class="bw-button bw-button--green bw-button--small" href="/game.php">Play now</a>
+                <a class="bw-button bw-button--blue bw-button--small" href="/download/">Desktop client</a>
+            </div>
+        </section>
 
         <section class="bw-panel bw-content-panel" id="site-preferences">
             <p class="bw-eyebrow">Quality of life</p>

@@ -15,20 +15,8 @@ include('site/header.php');
 ?>
 
 <section class="bw-game-page">
-    <div class="bw-game-head">
-        <div>
-            <p class="bw-eyebrow">Play</p>
-            <h1 class="bw-section-title" style="margin-bottom:4px;">Enter the Bin</h1>
-            <p class="bw-section-intro" style="margin:0;">Logged in as <span data-account-stat="username"><?php echo site_e($siteUser['username']); ?></span> · Level <span data-account-stat="level"><?php echo (int)$siteUser['level']; ?></span> · Prestige <span data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></span></p>
-        </div>
-        <div class="bw-button-row">
-            <a class="bw-button bw-button--green bw-button--small" href="/download/">Desktop client</a>
-            <a class="bw-button bw-button--blue bw-button--small" href="/settings/">My Weevil</a>
-            <button type="button" class="bw-button bw-button--small bw-button--ghost" id="bw-game-fullscreen">Fullscreen</button>
-        </div>
-    </div>
-
     <div class="bw-game-wrap" id="bw-game-wrap">
+        <button type="button" class="bw-game-fs" id="bw-game-fullscreen" aria-label="Fullscreen game" title="Fullscreen">⛶</button>
         <div class="bw-game-viewport">
             <object
                 type="application/x-shockwave-flash"
@@ -44,7 +32,7 @@ include('site/header.php');
         </div>
     </div>
 
-    <p class="bw-game-note">The game renderer keeps its original proportions. Use the in-game controls for play; the website only frames the client.</p>
+    <p class="bw-game-note">Tip: use the ⛶ icon in the corner of the game for fullscreen. Your account, Weevil and progression all live on the Bin Weevils servers.</p>
 </section>
 
 <script>

@@ -51,22 +51,6 @@ include('site/header.php');
 </section>
 <?php endif; ?>
 
-<section class="bw-live-status" data-server-status aria-label="Live server status">
-    <div class="bw-live-status-item">
-        <span class="bw-status-dot" aria-hidden="true"></span>
-        <span>Game server</span>
-        <strong data-server-online>Checking…</strong>
-    </div>
-    <div class="bw-live-status-item">
-        <span>Weevils online</span>
-        <strong data-server-players>—</strong>
-    </div>
-    <div class="bw-live-status-item bw-live-status-build">
-        <span>Build</span>
-        <strong><?php echo site_e(isset($siteConfig['build_label']) ? $siteConfig['build_label'] : ''); ?></strong>
-    </div>
-</section>
-
 <section class="bw-hero">
     <div class="bw-panel bw-panel--container bw-hero-copy">
         <p class="bw-eyebrow">The Bin is back</p>
@@ -148,7 +132,7 @@ include('site/header.php');
     <article class="bw-panel bw-panel--container bw-feature-card">
         <p class="bw-eyebrow">Play</p>
         <h2>Enter the Bin</h2>
-        <p>Launch the restored classic client and pick up exactly where your Weevil left off.</p>
+        <p>Launch the Bin Weevils client and pick up exactly where your Weevil left off.</p>
         <a class="bw-button bw-button--green bw-button--small" href="<?php echo $siteLoggedIn ? '/game.php' : '/#login'; ?>"><?php echo $siteLoggedIn ? 'Play now' : 'Log in'; ?></a>
     </article>
 

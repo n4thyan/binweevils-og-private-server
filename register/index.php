@@ -15,7 +15,7 @@ include('../site/header.php');
     <div class="bw-panel bw-panel--green bw-hero-copy">
         <p class="bw-eyebrow">New player</p>
         <h1>Create your Weevil</h1>
-        <p class="bw-hero-lead">Choose a Bin Weevil name and password, then jump straight into the restored game. The existing account rules, reserved-name checks, profanity filtering and rate limiting are all preserved behind this new page.</p>
+        <p class="bw-hero-lead">Pick a Bin Weevil name and a password, then drop straight into the game. Your Weevil, garden and progression are all kept safe on the Bin Weevils servers.</p>
         <img class="bw-characters" src="/assets/images/login/Tink_Clott.png" alt="" aria-hidden="true">
     </div>
 
