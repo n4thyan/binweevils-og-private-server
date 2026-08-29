@@ -212,6 +212,117 @@ img { max-width: 100%; }
 .bw-side-ad--right { right: max(12px, calc((100vw - 1100px) / 2 - 312px)); }
 @media (max-width: 1723px) { .bw-side-ad { display: none; } }
 
+/* ---------- Play page: embedded game viewport (authentic frame) ---------- */
+.bw-game-page { margin: 4px 0 18px; }
+.bw-game-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+/* Authentic Bin Weevils game frame: a contained holder around the client.
+   The Flash renderer is the focal point; the frame just trims it. */
+.bw-game-frame {
+  max-width: 940px;
+  margin: 0 auto;
+  border: 10px solid transparent;
+  border-image: url("/assets/images/container-bg-panel.png") 12 / 10px / 0 stretch;
+  border-radius: 16px;
+  background: #eaf7ff;
+  box-shadow: 0 8px 0 rgba(21,92,112,0.22);
+  overflow: hidden;
+}
+.bw-game-frame-trim {
+  display: block;
+  height: 20px;
+  background: url("/assets/images/green-bar.png") center / cover no-repeat;
+  border-bottom: 3px solid var(--bw-wood);
+}
+/* The viewport keeps the client's native 940x650 ratio and scales DOWN only.
+   It never dictates page width and never upscales the artwork. */
+.bw-game-viewport {
+  width: 100%;
+  aspect-ratio: 940 / 650;
+  background: #dff4fb;
+}
+.bw-game-viewport object { display: block; width: 100%; height: 100%; }
+.bw-game-note {
+  max-width: 940px;
+  margin: 10px auto 0;
+  font-size: 0.85rem;
+  color: #5c6a3a;
+  text-align: center;
+}
+
+/* ---------- My Weevil: profile card + XP presentation ---------- */
+.bw-profile-trim {
+  display: block;
+  height: 16px;
+  margin: -14px -14px 12px;
+  border-radius: 10px 10px 0 0;
+  background: url("/assets/images/green-bar.png") center / cover no-repeat;
+}
+.bw-profile-render-large {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 260px;
+  border-radius: 14px;
+  background: #eaf7d6;
+  border: 3px solid var(--bw-green);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.bw-xp-block { margin-top: 12px; }
+.bw-xp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.9rem;
+  padding: 3px 0;
+  border-bottom: 1px dashed rgba(124,74,30,0.25);
+}
+.bw-xp-row span { color: var(--bw-green-dark); font-weight: 700; text-transform: uppercase; font-size: 0.72rem; }
+.bw-xp-bar {
+  display: block;
+  height: 18px;
+  margin: 10px 0 4px;
+  border: 2px solid var(--bw-wood);
+  border-radius: 999px;
+  background: #dff0d2;
+  overflow: hidden;
+  box-shadow: inset 0 2px 0 rgba(0,0,0,0.12);
+}
+.bw-xp-bar-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(180deg, #b6f25a, var(--bw-green));
+  box-shadow: inset 0 -3px 0 rgba(60,111,18,0.4);
+  border-radius: 999px 0 0 999px;
+}
+.bw-xp-threshold { margin: 2px 0 0; font-size: 0.85rem; color: #5c6a3a; }
+.bw-reward-module {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.bw-reward-badge {
+  flex: 0 0 auto;
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  border: 3px solid var(--bw-gold);
+  background: #fff7df;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  box-shadow: 0 3px 0 var(--bw-wood);
+}
+.bw-reward-badge img { width: 40px; height: 40px; object-fit: contain; }
+
 /* ---------- Bin Bulletin ---------- */
 .bw-announcement {
   margin: 16px 0 10px;
