@@ -142,7 +142,7 @@ include('site/header.php');
 
 <section class="bw-home-grid" aria-label="Explore the site">
     <article class="bw-panel bw-panel--container bw-feature-card">
-        <span class="bw-feature-art"><img src="/assets/images/new-player-graphic.png" alt=""></span>
+        <span class="bw-feature-art"><img src="/assets/images/play-hero.png" alt=""></span>
         <p class="bw-eyebrow">Play</p>
         <h2>Enter the Bin</h2>
         <p>Launch the restored classic client and pick up exactly where your Weevil left off.</p>
@@ -150,7 +150,7 @@ include('site/header.php');
     </article>
 
     <article class="bw-panel bw-panel--container bw-feature-card">
-        <span class="bw-feature-art"><img src="/assets/images/play-tv-graphic.png" alt=""></span>
+        <span class="bw-feature-art"><img src="/assets/images/community-group.png" alt=""></span>
         <p class="bw-eyebrow">Community</p>
         <h2>xat Chat</h2>
         <p>The website community room uses xat for a proper old-school Bin-era chat experience.</p>
@@ -158,7 +158,7 @@ include('site/header.php');
     </article>
 
     <article class="bw-panel bw-panel--container bw-feature-card">
-        <span class="bw-feature-art"><img src="/assets/images/shop-whatsnew-bg.png" alt=""></span>
+        <span class="bw-feature-art"><img src="/assets/images/new-player-graphic.png" alt=""></span>
         <p class="bw-eyebrow"><?php echo $siteLoggedIn ? 'Account' : 'New player'; ?></p>
         <h2><?php echo $siteLoggedIn ? 'My Weevil' : 'Create a Weevil'; ?></h2>
         <p><?php echo $siteLoggedIn ? 'View your progression, account options and unlocked customisation in one place.' : 'Make a new Weevil using the existing account system and head straight into the game.'; ?></p>

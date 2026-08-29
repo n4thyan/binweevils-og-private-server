@@ -53,10 +53,12 @@
   aspect-ratio: 300 / 250;
 }
 
-/* Format: PORTRAIT (tall). Only used where a deliberate portrait slot exists. */
-.bw-ad-slot--portrait {
+/* Format: PORTRAIT / SKYSCRAPER (tall). Desktop side gutters only. */
+.bw-ad-slot--skyscraper {
   width: min(300px, 100%);
   aspect-ratio: 300 / 600;
+  background: #46bdee;                 /* Bin Weevils sky — letterbox reads as branded, not empty */
+  border-color: #2f9fd1;
 }
 
 /* Creatives are stacked and revealed by rotation. Each fills the SLOT box

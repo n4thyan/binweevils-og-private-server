@@ -59,6 +59,12 @@ return [
             ['type' => 'video', 'src' => '/assets/ads/bw-ad-1.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
             ['type' => 'video', 'src' => '/assets/ads/bw-ad-2.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
         ],
+        // Skyscraper / portrait slot (desktop side gutters, outside the shell).
+        // Tall creatives only — never a stretched banner/rectangle.
+        'site-side' => [
+            ['type' => 'image', 'src' => '/assets/ads/bw-side-play.png', 'href' => '', 'label' => 'Bin Weevils'],
+            ['type' => 'image', 'src' => '/assets/ads/bw-side-community.png', 'href' => '', 'label' => 'Bin Weevils'],
+        ],
     ],
 
     // Local-first play defaults. VPS deployment changes these in one place rather

@@ -197,20 +197,20 @@ img { max-width: 100%; }
   padding: 8px 18px 0;
   background: rgba(255,255,255,0.6);
 }
-.bw-ad-slot {
-  display: block;
-  margin: 0 auto;
-  border: 3px solid var(--bw-wood);
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: inset 0 0 0 2px var(--bw-gold);
-  max-width: 100%;
+/* Desktop side adverts: sit in the gutters OUTSIDE the centred 1100px shell.
+   Fixed positioning keeps them clear of the content; they never push, shrink,
+   or overlap the site. Hidden below a breakpoint where gutters are too small. */
+.bw-side-ads { pointer-events: none; }
+.bw-side-ad {
+  position: fixed;
+  top: 150px;
+  width: 300px;
+  z-index: 2;
+  pointer-events: auto;
 }
-.bw-ad-slot--leaderboard { max-width: 728px; }
-.bw-ad-slot--rectangle { max-width: 300px; }
-.bw-ad-slot img,
-.bw-ad-slot video { display: block; width: 100%; height: auto; }
+.bw-side-ad--left { left: max(12px, calc((100vw - 1100px) / 2 - 312px)); }
+.bw-side-ad--right { right: max(12px, calc((100vw - 1100px) / 2 - 312px)); }
+@media (max-width: 1723px) { .bw-side-ad { display: none; } }
 
 /* ---------- Bin Bulletin ---------- */
 .bw-announcement {
