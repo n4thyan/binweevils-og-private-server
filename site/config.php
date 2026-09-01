@@ -56,14 +56,17 @@ return [
         ],
         // Rectangle / MPU slot (content area). Square-ish creatives only.
         'home-rectangle' => [
-            ['type' => 'video', 'src' => '/assets/ads/bw-ad-1.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
-            ['type' => 'video', 'src' => '/assets/ads/bw-ad-2.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
+            ['type' => 'image', 'src' => '/assets/ads/bw-ad-rectangle-static.png', 'href' => '', 'label' => 'Play games in Bin Weevils', 'duration' => 12],
+            ['type' => 'video', 'src' => '/assets/ads/bw-ad-1.mp4', 'poster' => '/assets/ads/bw-ad-rectangle-static.png', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
+            ['type' => 'video', 'src' => '/assets/ads/bw-ad-2.mp4', 'poster' => '/assets/ads/bw-ad-2-poster.png', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
         ],
         // Skyscraper / portrait slot (desktop side gutters, outside the shell).
         // Tall creatives only — never a stretched banner/rectangle.
-        'site-side' => [
-            ['type' => 'image', 'src' => '/assets/ads/bw-side-play.png', 'href' => '', 'label' => 'Bin Weevils'],
-            ['type' => 'image', 'src' => '/assets/ads/bw-side-community.png', 'href' => '', 'label' => 'Bin Weevils'],
+        'site-side-left' => [
+            ['type' => 'image', 'src' => '/assets/ads/bw-side-play.png', 'href' => '/game.php', 'label' => 'Play Bin Weevils'],
+        ],
+        'site-side-right' => [
+            ['type' => 'image', 'src' => '/assets/ads/bw-side-community.png', 'href' => '/community/', 'label' => 'Visit the Bin Weevils community'],
         ],
     ],
 

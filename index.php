@@ -1,10 +1,22 @@
 ﻿<?php
 include('site/bootstrap.php');
+include_once('site/news.php');
 
 $sitePageTitle = 'Home';
 $siteActive = 'home';
 $errMessage = '';
-$announcements = !empty($siteConfig['announcements']) && is_array($siteConfig['announcements']) ? $siteConfig['announcements'] : [];
+$newsArticles = site_news_articles(6);
+$announcements = [];
+foreach($newsArticles as $article) {
+    $links = site_news_links((int)$article['id']);
+    $href = '/bulletin/';
+    if(!empty($links) && (int)$links[0]['link_type'] === 1) $href = $links[0]['link_target'];
+    $announcements[] = [
+        'text' => $article['title'],
+        'href' => $href,
+        'urgent' => !empty($article['is_top_story']),
+    ];
+}
 
 usort($announcements, function($a, $b) {
     $aUrgent = !empty($a['urgent']) ? 1 : 0;
@@ -26,15 +38,9 @@ include('site/header.php');
     <div class="bw-alert" role="alert"><?php echo site_e(strip_tags($errMessage)); ?></div>
 <?php endif; ?>
 
-<?php if(site_has_ads('site-top')): ?>
-<section class="bw-ad-row bw-ad-row--top" aria-label="Sponsor">
-    <?php site_ad_slot('site-top', 'leaderboard'); ?>
-</section>
-<?php endif; ?>
-
 <?php if(!empty($announcements)): ?>
 <section class="bw-announcement" aria-label="Announcements">
-    <div class="bw-announcement-label">Bin Bulletin</div>
+    <a class="bw-announcement-label" href="/bulletin/">Bin Bulletin</a>
     <div class="bw-marquee">
         <div class="bw-marquee-track">
             <?php foreach($announcements as $i => $announcement): ?>
@@ -121,12 +127,6 @@ include('site/header.php');
     <?php endif; ?>
 </section>
 
-<?php if(site_has_ads('home-rectangle')): ?>
-<section class="bw-ad-row" aria-label="Sponsor">
-    <?php site_ad_slot('home-rectangle', 'rectangle'); ?>
-</section>
-<?php endif; ?>
-
 <section class="bw-home-grid" aria-label="Explore the site">
     <article class="bw-panel bw-panel--container bw-feature-card">
         <p class="bw-eyebrow">Play</p>
@@ -149,6 +149,12 @@ include('site/header.php');
         <a class="bw-button bw-button--blue bw-button--small" href="<?php echo $siteLoggedIn ? '/settings/' : '/register/'; ?>"><?php echo $siteLoggedIn ? 'Open settings' : 'Get started'; ?></a>
     </article>
 </section>
+
+<?php if(site_has_ads('home-rectangle')): ?>
+<section class="bw-ad-row bw-ad-row--home" aria-label="Sponsor">
+    <?php site_ad_slot('home-rectangle', 'rectangle'); ?>
+</section>
+<?php endif; ?>
 
 <section class="bw-promo-band bw-promo-band--lower" aria-label="What you can do in the Bin">
     <img class="bw-promo-img" src="/assets/images/three_image.png" alt="Grow a garden, play games, and decorate your nest in Bin Weevils">

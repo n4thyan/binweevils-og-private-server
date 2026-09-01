@@ -12,7 +12,12 @@ x.runServer();
 // Website status bridge. Keep this deliberately one-way and data-minimal:
 // the game process writes only freshness + authenticated player count, while
 // PHP reads the file. No game/admin action is exposed over HTTP.
-var statusPath = path.resolve(__dirname, "../game-full/site/runtime-status.json");
+// PHP reads from Apache's actual served tree during local XAMPP testing. Keep an
+// environment override so deployments can choose a different DocumentRoot.
+var defaultStatusPath = process.platform === "win32"
+    ? "C:/xampp/htdocs/site/runtime-status.json"
+    : path.resolve(__dirname, "../game-full/site/runtime-status.json");
+var statusPath = path.resolve(process.env.BW_WEBSITE_STATUS_PATH || defaultStatusPath);
 var statusTmpPath = statusPath + ".tmp";
 
 function writeWebsiteStatus() {

@@ -2,7 +2,7 @@
 return [
     'announcements' => [
         [
-            'text' => 'Welcome to the Bin Weevils private server!',
+            'text' => 'Welcome back to the Bin — the classic world is open again!',
             'href' => null,
             'urgent' => false,
         ],
@@ -34,29 +34,39 @@ return [
         'source_url' => 'https://github.com/n4thyan/binweevils-og-private-server/tree/main/electron',
     ],
 
-    // Video and static creatives use the same rotation. Leave a placement empty
-    // until its local media files exist under /assets/ads/. Example creative:
-    // ['type' => 'video', 'src' => '/assets/ads/example.mp4', 'label' => 'Advertisement']
-    // Static images use type=image and may also set duration (seconds) and href.
-    // Authentic recovered Bin Weevils advert creatives (rendered via site_ad_slot).
-    // Artwork: genuine Bin Weevils self-promo banners under /assets/ads/.
-    // Additional user-supplied advert artwork was not located in either the repo
-    // or the external recovered CDN tree during the audit; add it here when supplied.
-    // Recovered Bin Weevils advert creatives (rendered via site_ad_slot).
-    // Source: user-supplied advert pack (4 promo videos + 2 empty slot frames).
-    // The empty 'advertisement_frame' PNGs are solid-gray slot chrome with no
-    // transparent cutout, so the videos are shown directly inside the authentic
-    // wood/gold slot frame instead. Videos autoplay muted/loop via site-ads.js.
+    // Advert creatives, classified by FORMAT so incompatible aspect ratios are
+    // NEVER rotated through the same slot. Each placement below draws ONLY from a
+    // pool of the same shape as its slot:
+    //   site-top      -> LEADERBOARD (wide/highizontal: ~728x90, 970x90, 970x250)
+    //   home-rectangle-> MPU/RECTANGLE (approximately 300x250 / square)
+    //   site-portrait -> PORTRAIT (tall) — only used where a portrait slot exists
+    // Measured source dimensions (ffmpeg probe):
+    //   bw-ad-1/2.mp4 = 1296x1080  (1.2:1  -> MPU/rectangle pool)
+    //   bw-ad-3/4.mp4 = 1920x236   (8.1:1  -> leaderboard/banner pool)
+    //   binweevils-banner-temp.png = 1280x270 (4.7:1 -> leaderboard pool)
+    // The slot's CSS fixes the aspect ratio and uses object-fit:contain, so the
+    // advert is letterboxed inside the slot and the SLOT NEVER resizes to fit the
+    // creative. Rotating within a placement is therefore always safe.
     'ad_creatives' => [
+        // Wide banner / leaderboard slot (top of homepage). Wide creatives only.
         'site-top' => [
-            ['type' => 'video', 'src' => '/assets/ads/bw-ad-1.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
-            ['type' => 'video', 'src' => '/assets/ads/bw-ad-2.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
+            ['type' => 'image', 'src' => '/assets/ads/binweevils-banner-temp.png', 'href' => '', 'label' => 'Bin Weevils'],
             ['type' => 'video', 'src' => '/assets/ads/bw-ad-3.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
             ['type' => 'video', 'src' => '/assets/ads/bw-ad-4.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
         ],
+        // Rectangle / MPU slot (content area). Square-ish creatives only.
         'home-rectangle' => [
-            ['type' => 'video', 'src' => '/assets/ads/bw-ad-1.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
-            ['type' => 'video', 'src' => '/assets/ads/bw-ad-3.mp4', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
+            ['type' => 'image', 'src' => '/assets/ads/bw-ad-rectangle-static.png', 'href' => '', 'label' => 'Play games in Bin Weevils', 'duration' => 12],
+            ['type' => 'video', 'src' => '/assets/ads/bw-ad-1.mp4', 'poster' => '/assets/ads/bw-ad-rectangle-static.png', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
+            ['type' => 'video', 'src' => '/assets/ads/bw-ad-2.mp4', 'poster' => '/assets/ads/bw-ad-2-poster.png', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
+        ],
+        // Skyscraper / portrait slot (desktop side gutters, outside the shell).
+        // Tall creatives only — never a stretched banner/rectangle.
+        'site-side-left' => [
+            ['type' => 'image', 'src' => '/assets/ads/bw-side-play.png', 'href' => '/game.php', 'label' => 'Play Bin Weevils'],
+        ],
+        'site-side-right' => [
+            ['type' => 'image', 'src' => '/assets/ads/bw-side-community.png', 'href' => '/community/', 'label' => 'Visit the Bin Weevils community'],
         ],
     ],
 

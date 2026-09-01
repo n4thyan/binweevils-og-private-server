@@ -104,6 +104,16 @@ if($action === 'equip') {
     $reward = $catalog[$rewardKey];
     $rewardSlot = (string)$reward['slot'];
 
+    // A custom username colour is stored only as a strict six-digit hex value.
+    $colourHex = null;
+    if($rewardSlot === 'username_color' && $rewardKey === 'custom-name-colour') {
+        $raw = isset($_POST['colour_hex']) ? trim((string)$_POST['colour_hex']) : '';
+        if(!preg_match('/^#[0-9a-fA-F]{6}$/', $raw)) {
+            reward_response(false, 'Enter a valid colour in the form #RRGGBB.', [], 400);
+        }
+        $colourHex = strtolower($raw);
+    }
+
     $q = $db->prepare('SELECT reward_key FROM site_cosmetic_unlocks WHERE user_id = ? AND reward_key = ? LIMIT 1');
     $q->bind_param('is', $userId, $rewardKey);
     $q->execute();
@@ -111,8 +121,14 @@ if($action === 'equip') {
         reward_response(false, 'Unlock this reward before equipping it.', [], 403);
     }
 
-    $q = $db->prepare('INSERT INTO site_cosmetic_equipped (user_id, slot, reward_key) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE reward_key = VALUES(reward_key), updated_at = CURRENT_TIMESTAMP');
-    $q->bind_param('iss', $userId, $rewardSlot, $rewardKey);
+    if($colourHex !== null) {
+        $meta = json_encode(['colour_hex' => $colourHex]);
+        $q = $db->prepare('INSERT INTO site_cosmetic_equipped (user_id, slot, reward_key, meta) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE reward_key = VALUES(reward_key), meta = VALUES(meta), updated_at = CURRENT_TIMESTAMP');
+        $q->bind_param('isss', $userId, $rewardSlot, $rewardKey, $meta);
+    } else {
+        $q = $db->prepare('INSERT INTO site_cosmetic_equipped (user_id, slot, reward_key) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE reward_key = VALUES(reward_key), updated_at = CURRENT_TIMESTAMP');
+        $q->bind_param('iss', $userId, $rewardSlot, $rewardKey);
+    }
     $q->execute();
 
     reward_response(true, 'Reward equipped.', [
@@ -122,7 +138,7 @@ if($action === 'equip') {
 }
 
 if($action === 'unequip') {
-    $allowedSlots = ['username_color', 'title', 'profile_background'];
+    $allowedSlots = ['username_color', 'title'];
     if(!in_array($slot, $allowedSlots, true)) {
         reward_response(false, 'That cosmetic slot is invalid.', [], 400);
     }

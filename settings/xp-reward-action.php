@@ -104,14 +104,14 @@ if($action === 'equip') {
     $reward = $catalog[$rewardKey];
     $rewardSlot = (string)$reward['slot'];
 
-    // Validate colour_hex for custom-name-colour
+    // A custom username colour is stored only as a strict six-digit hex value.
     $colourHex = null;
-    if($rewardSlot === 'username_color' && $rewardKey === 'custom-name-colour' && isset($_POST['colour_hex'])) {
-        $raw = (string)$_POST['colour_hex'];
-        $raw = ltrim($raw, '#');
-        if(preg_match('/^[0-9a-fA-F]{6}$/', $raw)) {
-            $colourHex = '#' . strtolower($raw);
+    if($rewardSlot === 'username_color' && $rewardKey === 'custom-name-colour') {
+        $raw = isset($_POST['colour_hex']) ? trim((string)$_POST['colour_hex']) : '';
+        if(!preg_match('/^#[0-9a-fA-F]{6}$/', $raw)) {
+            reward_response(false, 'Enter a valid colour in the form #RRGGBB.', [], 400);
         }
+        $colourHex = strtolower($raw);
     }
 
     $q = $db->prepare('SELECT reward_key FROM site_cosmetic_unlocks WHERE user_id = ? AND reward_key = ? LIMIT 1');

@@ -299,6 +299,15 @@ class Weevil {
                 this.leaveGame(this.nickname, this.reverseMulchData["slot"], this.reverseMulchData["gameTypeID"], weevilList, socketIdList);
             }
 
+            if(this.currentRoomId === 287 && this.isWaiter()) {
+                for(var tray in this.server.figgsTrays) {
+                    if(this.server.figgsTrays[tray] === this.nickname) {
+                        this.retireWaiter(287, parseInt(tray), weevilList, socketIdList);
+                        break;
+                    }
+                }
+            }
+
             if(this.currentRoomId != 0 && this.currentRoomId != 260) {
                 this.removeWeevil(this.currentRoomId, this.userID, weevilList, socketIdList);
             }
@@ -366,11 +375,13 @@ class Weevil {
         if(this.loggedIn) {
             var joinok = "<msg t='sys'><body action='joinOK' r='" + roomId + "'><pid id='0'/>";
 
-            if(parseInt(roomId) == 282 && this.server.flumMushroomsData.length != 0) { // flums fountain mushrooms
+            if(parseInt(roomId) == 282 && this.server.flumsMushrooms.length != 0) { // Flum's Fountain mushrooms
                 joinok += "<vars>";
 
-                for(var md in this.server.flumMushroomsData) {
-                    joinok += "<var n='" + this.server.flumMushroomsData[parseInt(md)]["m"] + "' t='s'><![CDATA[" + this.server.flumMushroomsData[parseInt(md)]["data"] + "]]></var>";
+                for(var md in this.server.flumsMushrooms) {
+                    const mushroom = this.server.flumsMushrooms[parseInt(md)];
+                    const mushroomValue = mushroom.mushroomType + ";" + mushroom.growthStage + ";" + mushroom.X + ";" + mushroom.Z;
+                    joinok += "<var n='m" + mushroom.m + "' t='s'><![CDATA[" + mushroomValue + "]]></var>";
                 }
 
                 joinok += "</vars><uLs r='" + roomId + "'>";
@@ -387,7 +398,7 @@ class Weevil {
                     joinok += "<var n='p" + plate + "' t='s'><![CDATA[" + this.server.figgsPlates[plate] + "]]></var>";
                 }
 
-                joinok += "</vars><vars/><uLs r='" + roomId + "'>";
+                joinok += "</vars><uLs r='" + roomId + "'>";
             }
             else if(parseInt(roomId) == 291) {
                 var p = 1;
@@ -940,7 +951,13 @@ class Weevil {
 
     retireWaiter(roomId, trayId, weevilList = undefined, socketIdList = undefined) {
         if(this.loggedIn) {
+            roomId = parseInt(roomId);
+            trayId = parseInt(trayId);
+            if(roomId !== 287 || this.currentRoomId !== 287 || trayId < 1 || trayId > 3) return;
+            if(this.server.figgsTrays[trayId] !== this.nickname) return;
+
             var packet = "%xt%2#5%" + roomId + "%3;" + trayId + ";0%";
+            this.server.figgsTrays[trayId] = null;
 
             for(var id in socketIdList) {
                 if(weevilList[parseInt(id)].currentRoomId == parseInt(roomId)) {

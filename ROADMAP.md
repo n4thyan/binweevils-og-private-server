@@ -1,46 +1,187 @@
 # ROADMAP.md — Bin Weevils Private Server
 
-Generated after all four checkpoints (A/B/C/D) were implemented and manually
-confirmed by the developer. This is a FUTURE-WORK LIST. Nothing here has been
-started. Each item carries the reason it was deferred during the backend
-bring-up pass.
+## Authoritative status: end of 1 September 2026
 
-> **STATUS UPDATE (2026-08-27, night) — read this first.**
-> The project is preserved on GitHub on **`main`** (tip `929b4eeb`). The earlier
-> `feature/room-events-mushrooms` branch, plus `feature/nestco-catalogue-population`
-> and `fix/live-server-drift-sync`, have all been **folded into `main` and the
-> redundant branches deleted** for tidiness — `main` is now the single source of
-> truth and already contains every file those branches contributed. The broken
-> `Project Binweevils\Binweevils-main (1)` working copy referenced below is DEAD —
-> do not use it. See `GITHUB-HANDOFF.md`.
->
-> Completed since the 2026-08-26 baseline:
-> - **Room events (§2): DONE** — Flum's Fountain (282), Figg's Cafe (287),
->   Dosh's Palace (265) re-added and **server-side deployment/dispatch/DB verified
->   at runtime** (live Node on :9339 loads from `server/`, `roomids.txt` loads the
->   three rooms, handlers wire to the `2#5` packet, mushroom DB provisioned).
->   Final in-client visual/gameplay test still PENDING (needs eyes in the client).
-> - **Garden seed shop (§9.4): FIXED on `main`** (commit `1b948caa`) — restored the
->   two missing `usort` comparator classes; `/gardenshop/fetch` now returns valid
->   XML (24 items + 75 seeds). Visual client confirm still PENDING.
-> - **XP accounting (§9.1/§9.2): DONE on `main`** (commit `8c2958f4`) — multi-level
->   catch-up, Prestige 0–13 cycle, prestige-aware trophies. §9.3 reward shop +
->   leaderboard deliberately DEFERRED (post-release, after website redesign).
-> - Shop currency split (§8) and Nestco/BinMart catalogue work shipped on `main`.
->
-> Still OPEN (not done): §9.3 XP reward shop + leaderboard, §9.8 login-key/hash
-> design (blocked — needs the auth design chat), Nestco catalogue SWF, Bundles/
-> Showroom UI lock SWF, `loungue` tag data fix, Bin Pets species-name placeholders,
-> referral system, structural refactors (§1), and client visual confirms above.
->
-> NOTE: the working tree is checked out on the old local `feature/room-events-
-> mushrooms` label, but its content is fully on `main`; `git status` appears dirty
-> because of that — it is not unsaved work. Edit against `game-full/` and commit to
-> `main` via plumbing (LFS checkout hangs on this clone).
+This section supersedes older status notes later in this historical roadmap.
 
-Working copy: `C:\Users\pc\Desktop\Project Binweevils\Binweevils-main (1)\Binweevils-main\`
-Source baseline: KnowYourKnot/Binweevilsworks, used 1:1 (architecture preserved).
-Two pristine reference copies + three ZIP archives remain UNTOUCHED.
+- Active checkpoint branch: `website-redesign`
+- Repository: `C:\repos\binweevils-og-private-server`
+- Served local site: `C:\xampp\htdocs`
+- Localhost remains the source of truth before any VPS deployment.
+- `main` remains untouched at `a7c792f2970c9a6937ff22a8c270c90d4444e24c`.
+- The separate HTML5 project is outside this work and must not be modified.
+- The project is **not release-candidate clean**.
+
+The 1 September checkpoint preserves the repaired website, Weevil renderer, XP
+Rewards and Custom Username Colour, Bulletin/Nest News, advertisements, local
+stack recovery, Nestco catalogue work, room-event corrections, referrals,
+network bridges and additive migrations. Do not roll these changes back merely
+because further manual gameplay testing is required.
+
+## Priority 0: FINAL LOCAL STABILISATION PASS
+
+Start the next session here. Do not begin another feature pass first.
+
+Manual gameplay testing exposed an unresolved XP, level and progression
+integration concern. Synthetic verification proved individual contracts, but it
+did not prove the full Flash gameplay path. The working rule is:
+
+**MANUAL FAILURE FIRST -> reproduce -> trace the actual request, packet and data
+path -> fix the root cause -> verify manually again.**
+
+### A. XP, level and prestige
+
+- Reproduce XP earning in the real Electron/PepperFlash client.
+- Confirm `users.xp` is lifetime XP and `users.xp1` is banked/spendable XP.
+- Confirm earning XP updates both values appropriately.
+- Confirm XP Rewards purchases subtract only from `xp1`.
+- Audit level thresholds, multi-level catch-up and level-up triggering.
+- Audit the Nest level-up flow and trophy state.
+- Trace level/prestige packets from Node to Flash.
+- Compare the database, Flash HUD and website account values after every step.
+- Test Prestige 0 through 13 interactions without rebalancing them speculatively.
+- Exercise every active XP reward source and XP Shop deduction.
+
+Required trace:
+
+`game event -> server award -> database xp/xp1 -> level calculation -> prestige calculation -> Flash packet -> HUD display -> website account display`
+
+**Warning:** lifetime `xp` must never decrease because of an XP Rewards purchase.
+
+### B. Currencies
+
+- Mulch earnings and deductions
+- Dosh earnings and deductions
+- Shop purchases
+- Room-event rewards
+- Referral rewards
+- Confirm rewards never become accidental deductions or duplicate grants
+
+### C. Stores
+
+- Nestco Featured
+- Nest Items
+- Nestige
+- Bundles
+- Showroom
+- Nestco remains Mulch-only
+- BinMart remains Dosh-only
+- Level, prestige and category filtering
+- Do not fabricate missing Bundles or Showroom records
+
+### D. Room events
+
+- Flum mushrooms
+- Figg waiter and tray state
+- Dosh room event
+- Join and rejoin state
+- Claim replay and cooldown protection
+- Reward persistence after reconnect
+
+### E. Referrals and invites
+
+- Registration referral code and prefilled link
+- Inviter/referred relationship
+- Nest Hall popup only when a persisted reward is pending
+- One-time reward grant with no replay farming
+- Mulch, Dosh and XP reward values
+- No accidental deduction
+- Website referral status and history
+
+### F. Nest News
+
+- Bulletin database records
+- Website article rendering
+- Flash-compatible XML
+- Real Nest News SWF rendering
+- Links and content formatting
+
+### G. Website
+
+- Stored-definition Weevil renderer
+- Logged-out and logged-in homepage
+- Play page
+- Settings
+- XP Rewards and Custom Username Colour
+- Advertisements at desktop, 1920x1080 and Electron 800x600 widths
+- Online count from the runtime status bridge
+- Responsive layouts and horizontal overflow
+
+### H. Network and local client
+
+- SmartFox TCP 9339
+- websockify 3993 to 9339
+- Authenticated local WebSocket 2087
+- Electron/PepperFlash client
+- Local CDN routing
+- Required hosts entry
+
+## Homepage follow-up: Progress & Rewards
+
+Do not implement until the stabilisation pass is green.
+
+The logged-in homepage currently duplicates the account Weevil and basic stats in
+both the left welcome panel and the right "Your Weevil" panel. Keep the left panel
+as the main identity/progression surface. Replace the right panel with a concise
+**Progress & Rewards** panel that does not repeat the same Weevil, username, level
+or currencies.
+
+Candidate contents:
+
+- Banked XP
+- Equipped title
+- XP Rewards shortcut
+- Latest achievement
+- Achievement completion summary
+- Referral count
+- Next meaningful progression milestone
+
+## Future audit: original achievement system
+
+Do not implement achievements before auditing what already exists in the Flash
+client, SmartFox/Node server, PHP and database. Inventory original achievement
+IDs, tables, packets and UI behavior. Reuse the original framework if viable.
+Create a new server-authoritative framework only if the recovered system cannot
+support the private server safely.
+
+Potential later achievements include:
+
+- First XP Shop Purchase
+- Custom Username Colour unlocked
+- First title unlocked
+- Referral milestones
+- First Prestige and later Prestige milestones
+- Room-event and mushroom milestones
+- Future Bin Pet adoption/training milestones
+- Restored-content milestones
+
+Achievement summaries may later feed the homepage Progress & Rewards panel.
+
+## Bin Pets integration note
+
+Additional Bin Pet assets, code and work are available from another contributor.
+Do not rebuild or integrate them before the final stabilisation pass. Treat the
+supplied work as an integration and verification task: inspect provenance and
+contracts, compare it with the current client/server/database model, merge it
+carefully, then test it manually.
+
+## VPS deployment: DEFERRED
+
+Do not deploy the current checkpoint. The required order is:
+
+1. Final local stabilisation
+2. Real-client manual regression pass
+3. Clean checkpoint review
+4. Schema and migration review
+5. VPS deployment
+6. Live smoke test
+7. Minor production polish only
+
+## Historical roadmap below
+
+The following sections preserve earlier planning and investigation context. Any
+old branch, path, completion or deployment statement that conflicts with the
+authoritative status above is superseded.
 
 ---
 

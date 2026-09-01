@@ -13,11 +13,11 @@ $siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 
     <meta name="theme-color" content="#70b52d">
     <title><?php echo site_e($sitePageTitle); ?> · Bin Weevils</title>
     <link rel="icon" href="/assets/images/weevil.png" type="image/png">
-    <link rel="stylesheet" href="/assets/css/site-redesign.css?v=6">
+    <link rel="stylesheet" href="/assets/css/site-redesign.css?v=9">
     <link rel="stylesheet" href="/assets/css/site-preferences.css?v=1">
     <link rel="stylesheet" href="/assets/css/site-live.css?v=1">
     <link rel="stylesheet" href="/assets/css/site-rewards.css?v=1">
-    <link rel="stylesheet" href="/assets/css/site-ads.css?v=3">
+    <link rel="stylesheet" href="/assets/css/site-ads.css?v=5">
 </head>
 <body>
 <div class="bw-page-shell"<?php echo $siteLoggedIn ? ' data-account-live' : ''; ?>>
@@ -67,6 +67,11 @@ $siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 
     </header>
 
     <main class="bw-main">
+    <?php if($siteShowTopAd): ?>
+    <section class="bw-ad-row bw-ad-row--site" aria-label="Sponsor">
+        <?php site_ad_slot('site-top', 'leaderboard'); ?>
+    </section>
+    <?php endif; ?>
 <script>
 (function () {
     var toggle = document.querySelector('[data-nav-toggle]');

@@ -13,11 +13,11 @@ $siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 
     <meta name="theme-color" content="#70b52d">
     <title><?php echo site_e($sitePageTitle); ?> · Bin Weevils</title>
     <link rel="icon" href="/assets/images/weevil.png" type="image/png">
-    <link rel="stylesheet" href="/assets/css/site-redesign.css?v=1">
+    <link rel="stylesheet" href="/assets/css/site-redesign.css?v=9">
     <link rel="stylesheet" href="/assets/css/site-preferences.css?v=1">
     <link rel="stylesheet" href="/assets/css/site-live.css?v=1">
     <link rel="stylesheet" href="/assets/css/site-rewards.css?v=1">
-    <link rel="stylesheet" href="/assets/css/site-ads.css?v=2">
+    <link rel="stylesheet" href="/assets/css/site-ads.css?v=5">
 </head>
 <body>
 <div class="bw-page-shell"<?php echo $siteLoggedIn ? ' data-account-live' : ''; ?>>
@@ -42,9 +42,15 @@ $siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 
             <?php endif; ?>
         </nav>
 
+        <span class="bw-online-count" data-server-status aria-label="Weevils online">
+            <span class="bw-status-dot" aria-hidden="true"></span>
+            <strong data-server-players>—</strong>
+            <span class="bw-online-label">Weevils online</span>
+        </span>
+
         <?php if($siteLoggedIn && is_array($siteUser)): ?>
             <aside class="bw-account-chip" aria-label="Signed-in Weevil">
-                <a class="bw-account-render" href="/settings/" data-weevil-render data-weevil-definition="<?php echo site_e($siteUser['def']); ?>" data-weevil-name="<?php echo site_e($siteUser['username']); ?>">
+                <a class="bw-account-render" href="/settings/" data-weevil-render data-weevil-crop="head" data-weevil-definition="<?php echo site_e($siteUser['def']); ?>" data-weevil-name="<?php echo site_e($siteUser['username']); ?>">
                     <span class="bw-render-pending">Weevil</span>
                 </a>
                 <div class="bw-account-copy">
@@ -57,9 +63,15 @@ $siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 
         <?php else: ?>
             <a class="bw-header-login" href="/#login">Log in</a>
         <?php endif; ?>
+
     </header>
 
     <main class="bw-main">
+    <?php if($siteShowTopAd): ?>
+    <section class="bw-ad-row bw-ad-row--site" aria-label="Sponsor">
+        <?php site_ad_slot('site-top', 'leaderboard'); ?>
+    </section>
+    <?php endif; ?>
 <script>
 (function () {
     var toggle = document.querySelector('[data-nav-toggle]');

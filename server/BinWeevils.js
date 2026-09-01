@@ -32,6 +32,12 @@ class BinWeevils {
         // Flum's Fountain (modern mushroom event state)
         this.flumsMushrooms = [];
         this.flumsMushroomsGrowthSteps = {0: true, 4: false, 8: false, 12: false, 16: false, 20: false, 24: false, 28: false, 32: false, 36: false, 40: false, 44: false, 48: false};
+        // Recovered from fountain_logic_04_05_16.swf. The client may suggest a
+        // type, but the server selects from the original weighted catalogue.
+        this.flumsMushroomTypesWeighted = [
+            1,1,1,1,1, 2,2,2,2,2, 3,3,3,3,3, 4,4,4,4, 5,5,5, 6,
+            7,7,7,7,7, 8,8,8,8,8, 9,9,9,9, 10,10, 11, 12,12,12, 13,13,13
+        ];
         this.mushroomCap = 10;
         this.currentPadID = undefined;
         this.padIDTimer = undefined;
@@ -121,14 +127,16 @@ class BinWeevils {
     // ---- Flum's Fountain (room 282) ----
     isMushroomCoordsValid(mushroomX, mushroomZ) {
         const fountainCenter = { x: 0, z: 1000 };
-        const fountainRadius = 170;
+        const roomRadius = 170;
+        const centralNoGoRadius = 28;
+
+        if (!Number.isFinite(mushroomX) || !Number.isFinite(mushroomZ)) return false;
 
         const dx = mushroomX - fountainCenter.x;
         const dz = mushroomZ - fountainCenter.z;
         const distance = Math.sqrt(dx * dx + dz * dz);
 
-        if (distance <= fountainRadius) return false;
-        else return true;
+        return distance >= centralNoGoRadius && distance <= roomRadius;
     }
 
     hasMushroomFinishedGrowing(mushroom, data, growthStage) {
@@ -137,7 +145,10 @@ class BinWeevils {
     }
 
     setNewMushroomUnix(mushroomType) {
-        const validUntil = Math.floor(Date.now() / 1000) + 7;
+        // The reward bubble lives for six seconds. Leave enough time for the
+        // authenticated HTTP claim to complete without creating a replayable
+        // long-lived reward window.
+        const validUntil = Math.floor(Date.now() / 1000) + 15;
 
         db.query("UPDATE mushrooms SET validUntil = ? WHERE mushroomType = ?", [validUntil, mushroomType], function(err, result) {
             if(err) {
@@ -156,7 +167,7 @@ class BinWeevils {
             const roomID = parseInt(data[4]);
             let flumsData = data[5].toString();
 
-            if (roomID == 282 && weevil.currentRoomID == 282 && flumsData != null) {
+            if (roomID == 282 && weevil.currentRoomId == 282 && flumsData != null) {
                 let splitFlumsData = flumsData.split(";");
                 const action = parseInt(splitFlumsData[0]);
 
@@ -175,7 +186,7 @@ class BinWeevils {
                         this.padIDTimer = setInterval(this.onPadTimerFinish, 4000, this);
                     }
 
-                    weevil.roomEvent(roomID, flumsData, this.weevils);
+                    weevil.roomEvent(roomID, flumsData, this.weevils, this.socketIdList);
                     return;
                 }
                 else if (action == 2) {
@@ -190,27 +201,34 @@ class BinWeevils {
                         this.padIDTimer = undefined;
                     }
 
-                    weevil.roomEvent(roomID, flumsData, this.weevils);
+                    weevil.roomEvent(roomID, flumsData, this.weevils, this.socketIdList);
                     return;
                 }
                 else if (action == 3) {
                     // Spawn Mushroom
                     const m = parseInt(splitFlumsData[1]);
-                    const mushroomType = parseInt(splitFlumsData[2]);
+                    const requestedMushroomType = parseInt(splitFlumsData[2]);
                     const mushroomX = parseInt(splitFlumsData[3]);
                     const mushroomZ = parseInt(splitFlumsData[4]);
 
-                    if(this.flumsMushrooms.length >= this.mushroomCap || mushroomType < 1 || mushroomType > 13) return;
+                    if(this.flumsMushrooms.length >= this.mushroomCap || requestedMushroomType < 1 || requestedMushroomType > 13) return;
+                    if(!Number.isInteger(m) || m < 1 || m > 27 || this.flumsMushrooms.some(existing => existing.m === m)) return;
 
                     if(!this.isMushroomCoordsValid(mushroomX, mushroomZ)) {
                         console.log(weevil.nickname + " tried to spawn an invalid mushroom at X: " + mushroomX.toString() + ", Z: " + mushroomZ.toString());
                         return;
                     }
 
+                    const mushroomType = this.flumsMushroomTypesWeighted[
+                        Math.floor(Math.random() * this.flumsMushroomTypesWeighted.length)
+                    ];
+                    splitFlumsData[2] = mushroomType.toString();
+                    flumsData = splitFlumsData.join(";");
+
                     let mushroomData = JSON.parse(JSON.stringify({"m": m, "mushroomType": mushroomType, "growthStage": 0, "X": mushroomX, "Z": mushroomZ, "growthSteps": this.flumsMushroomsGrowthSteps}));
                     this.flumsMushrooms.push(mushroomData);
 
-                    weevil.roomEvent(roomID, flumsData, this.weevils);
+                    weevil.roomEvent(roomID, flumsData, this.weevils, this.socketIdList);
                     return;
                 }
                 else if (action == 4) {
@@ -257,7 +275,7 @@ class BinWeevils {
                         }
                     }
 
-                    if (success) weevil.roomEvent(roomID, flumsData, this.weevils);
+                    if (success) weevil.roomEvent(roomID, flumsData, this.weevils, this.socketIdList);
                     return;
                 }
                 else {
@@ -279,7 +297,7 @@ class BinWeevils {
             const roomID = parseInt(data[4]);
             const figgsData = data[5].toString();
 
-            if (roomID == 287 && weevil.currentRoomID == 287 && figgsData != null) {
+            if (roomID == 287 && weevil.currentRoomId == 287 && figgsData != null) {
                 const splitFiggsData = figgsData.split(";");
                 const action = parseInt(splitFiggsData[0]);
 
@@ -293,7 +311,7 @@ class BinWeevils {
                         this.figgsPlates[p] = value;
                     }
 
-                    weevil.roomEvent(roomID, figgsData, this.weevils);
+                    weevil.roomEvent(roomID, figgsData, this.weevils, this.socketIdList);
                     return;
                 }
                 else if (action == 2) {
@@ -305,7 +323,7 @@ class BinWeevils {
                         this.figgsPlates[p] = 1; // 1 => empty plate
                     }
 
-                    weevil.roomEvent(roomID, figgsData, this.weevils);
+                    weevil.roomEvent(roomID, figgsData, this.weevils, this.socketIdList);
                     return;
                 }
                 else {
@@ -326,7 +344,7 @@ class BinWeevils {
             const roomID = parseInt(data[4]);
             const count = parseInt(data[5]);
 
-            if (roomID == 265 && weevil.currentRoomID == 265 && count != null) {
+            if (roomID == 265 && weevil.currentRoomId == 265 && count != null) {
                 if(count - this.doshCount != 1 || this.doshCountTimer != undefined || this.doshTimer != undefined) return;
                 else {
                     this.doshCount = count;
@@ -339,7 +357,7 @@ class BinWeevils {
                         this.doshCountTimer = setInterval(this.onDoshCountTimerFinish, 5950, this);
                     }
 
-                    weevil.roomEvent(roomID, count, this.weevils);
+                    weevil.roomEvent(roomID, count, this.weevils, this.socketIdList);
                     return;
                 }
             }
@@ -362,6 +380,12 @@ class BinWeevils {
     removeWeevil(weevil) {
         if (this.weevils[weevil.socketID]) {
             weevil = this.weevils[weevil.socketID];
+            for(var tray in this.figgsTrays) {
+                if(this.figgsTrays[tray] === weevil.nickname) {
+                    this.figgsTrays[tray] = null;
+                    weevil.roomEvent(287, "3;" + tray + ";0", this.weevils, this.socketIdList);
+                }
+            }
             delete this.weevils[weevil.socketID];
             delete this.socketIdList[weevil.socketID];
         
@@ -785,8 +809,7 @@ class BinWeevils {
                     }
                     else if(data[3] == "9#1") {
                         // waiter event
-                        //console.log("waiter function: " + data.toString());
-                        weevil.doWaiter(data[4], data[5], this.weevils, this.socketIdList);
+                        weevil.becomeWaiter(data[4], data[5], this.weevils, this.socketIdList);
                     }
                     else if(data[3] == "9#2") {
                         // retire waiter event

@@ -4,12 +4,6 @@ $sitePageTitle = 'Legal & Terms';
 $siteActive = '';
 include('../site/header.php');
 ?>
-<?php if(site_has_ads('site-top')): ?>
-<section class="bw-ad-row bw-ad-row--top" aria-label="Sponsor">
-    <?php site_ad_slot('site-top', 'leaderboard'); ?>
-</section>
-<?php endif; ?>
-
 <section class="bw-panel bw-panel--green bw-content-panel">
     <p class="bw-eyebrow">Legal</p>
     <h1 class="bw-section-title">Terms of use</h1>

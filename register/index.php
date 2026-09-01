@@ -6,6 +6,9 @@ if($siteLoggedIn) {
     exit;
 }
 
+$referralCode = strtoupper(trim((string)($_GET['ref'] ?? '')));
+if(!preg_match('/^BW[A-Z0-9]{8,22}$/', $referralCode)) $referralCode = '';
+
 $sitePageTitle = 'Create a Weevil';
 $siteActive = 'register';
 include('../site/header.php');
@@ -32,6 +35,10 @@ include('../site/header.php');
                 <label for="password">Password</label>
                 <input class="bw-input" id="password" name="password" type="password" autocomplete="new-password" required>
             </div>
+            <div class="bw-field">
+                <label for="referral-code">Referral code <span class="bw-muted">(optional)</span></label>
+                <input class="bw-input" id="referral-code" name="referral_code" type="text" value="<?php echo site_e($referralCode); ?>" maxlength="24" autocomplete="off" spellcheck="false">
+            </div>
             <button class="bw-button bw-button--green" id="register-submit" type="submit">Create my Weevil</button>
         </form>
         <p class="bw-form-note">Already have a Weevil? <a href="/#login">Log in here.</a></p>
@@ -52,12 +59,6 @@ include('../site/header.php');
         <p>A successful signup creates your existing game session and takes you directly to the game, just like the original flow.</p>
     </div>
 </section>
-
-<?php if(site_has_ads('site-top')): ?>
-<section class="bw-ad-row bw-ad-row--page" aria-label="Sponsor">
-    <?php site_ad_slot('site-top', 'leaderboard'); ?>
-</section>
-<?php endif; ?>
 
 <script>
 (function () {
@@ -80,6 +81,7 @@ include('../site/header.php');
         var data = new URLSearchParams();
         data.set('userID', document.getElementById('userID').value);
         data.set('password', document.getElementById('password').value);
+        data.set('referral_code', document.getElementById('referral-code').value.trim());
         data.set('recap', '1');
 
         fetch('/register/create-new-weevil.php', {
@@ -97,6 +99,8 @@ include('../site/header.php');
             if (text === null) return;
             if (text.indexOf('responseCode=3') !== -1) {
                 showError('That Weevil name is unavailable or does not meet the name rules.');
+            } else if (text.indexOf('responseCode=4') !== -1) {
+                showError('That referral code is not valid. Check the link or leave the field blank.');
             } else if (text.indexOf('responseCode=429') !== -1) {
                 showError('Too many accounts have been created from this connection. Try again later.');
             } else if (text.indexOf('responseCode=2') !== -1) {

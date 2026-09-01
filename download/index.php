@@ -73,10 +73,4 @@ include('../site/header.php');
     <p class="bw-muted">Always get the client from this official site. Windows may warn you about an unsigned community build — only run it once you have downloaded it from here, and never enter your Bin Weevils password into any other launcher.</p>
 </section>
 
-<?php if(site_has_ads('site-top')): ?>
-<section class="bw-ad-row bw-ad-row--page" aria-label="Sponsor">
-    <?php site_ad_slot('site-top', 'leaderboard'); ?>
-</section>
-<?php endif; ?>
-
 <?php include('../site/footer.php'); ?>

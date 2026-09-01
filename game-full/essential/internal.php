@@ -855,8 +855,8 @@
 				}
 
 				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-				$q = $db->prepare("UPDATE users SET xp = xp + ? WHERE username = ?;");
-				$q->bind_param('ss', $ntotal, $_COOKIE['weevil_name']);
+				$q = $db->prepare("UPDATE users SET xp = xp + ?, xp1 = xp1 + ? WHERE username = ?;");
+				$q->bind_param('iis', $ntotal, $ntotal, $_COOKIE['weevil_name']);
 				$q->execute();
 
 				if($q->affected_rows == 1) {

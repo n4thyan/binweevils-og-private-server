@@ -31,6 +31,57 @@
   font-display: swap;
 }
 
+/* Display faces recovered/selected for restrained use in the redesign. */
+@font-face {
+  font-family: "Impact BW";
+  src: url("/assets/fonts/Impact.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BigBloke";
+  src: url("/assets/fonts/BigBloke.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Yikes";
+  src: url("/assets/fonts/Yikes.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gosmick Sans";
+  src: url("/assets/fonts/GosmickSans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gosmick Sans";
+  src: url("/assets/fonts/GosmickSansBold.ttf") format("truetype");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Built Titling";
+  src: url("/assets/fonts/BuiltTitling-Regular.otf") format("opentype");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Built Titling";
+  src: url("/assets/fonts/BuiltTitling-Bold.otf") format("opentype");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bw-lime: #8ed81b;
   --bw-green: #5aa01a;
@@ -55,7 +106,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: "Burbank Small", "Trebuchet MS", Verdana, Tahoma, sans-serif;
+  font-family: "Gosmick Sans", "Burbank Small", "Trebuchet MS", Verdana, Tahoma, sans-serif;
   color: var(--bw-ink);
   background-color: #bfe3f3;
   background-image:
@@ -65,6 +116,29 @@ html, body {
   background-position: center top;
   background-attachment: fixed;
   min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* Typography hierarchy: readable supporting copy, crisp UI headings, and
+   authentic Burbank/Impact accents for major game-style controls. */
+h1, h2, h3, h4, h5, h6,
+.bw-card-title,
+.bw-section-title,
+.bw-eyebrow {
+  font-family: "Built Titling", "Burbank Small", sans-serif;
+}
+.bw-nav-link,
+.bw-header-login,
+.bw-button,
+.bw-play-now,
+.bw-account-copy strong {
+  font-family: "Burbank Small", "Gosmick Sans", sans-serif;
+}
+.bw-hero-copy h1 {
+  font-family: "Burbank Small", "Built Titling", sans-serif;
+}
+.bw-announcement-label {
+  font-family: "Impact BW", "Burbank Small", sans-serif;
 }
 
 a { color: var(--bw-sky-deep); text-decoration: none; }
@@ -85,7 +159,7 @@ img { max-width: 100%; }
 
 .bw-main {
   flex: 1 0 auto;
-  padding: 0 18px 28px;
+  padding: 0 18px 22px;
 }
 
 /* ---------- Header / masthead ---------- */
@@ -152,6 +226,29 @@ img { max-width: 100%; }
 }
 .bw-header-login:hover { filter: brightness(1.07); text-decoration: none; }
 
+/* Online count: small, integrated, sits next to the login/account controls. */
+.bw-online-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-left: auto;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #eafcff;
+  background: rgba(7,34,51,0.28);
+  border: 2px solid rgba(255,255,255,0.45);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.bw-online-count .bw-status-dot { width: 9px; height: 9px; border-radius: 50%; background: #bd483b; box-shadow: 0 0 0 3px rgba(243,199,193,0.6); }
+.bw-online-count.is-online .bw-status-dot { background: #7be23a; box-shadow: 0 0 0 3px rgba(216,239,184,0.6); }
+.bw-online-count strong { color: #fff; }
+.bw-online-label { opacity: 0.92; }
+@media (max-width: 680px) {
+  .bw-online-count { margin-left: 0; order: 5; }
+}
+
 .bw-nav-toggle {
   display: none;
   margin-left: auto;
@@ -187,6 +284,16 @@ img { max-width: 100%; }
 }
 .bw-account-render .bw-render-pending { font-size: 0.7rem; color: #6a8a3a; }
 .bw-account-render canvas { display: block; }
+/* Header avatar is a FACE/HEAD shot: zoom into the upper (head) region of the
+   rendered Weevil and crop the body/legs out via the square's overflow. */
+.bw-account-render[data-weevil-crop="head"] {
+  background: #eaf7d6;
+}
+.bw-account-render[data-weevil-crop="head"] canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 .bw-account-copy { font-size: 0.82rem; line-height: 1.25; }
 .bw-account-copy strong { font-size: 1rem; }
 .bw-account-title { display: block; color: var(--bw-orange); font-style: normal; font-weight: 700; }
@@ -197,20 +304,233 @@ img { max-width: 100%; }
   padding: 8px 18px 0;
   background: rgba(255,255,255,0.6);
 }
-.bw-ad-slot {
-  display: block;
-  margin: 0 auto;
-  border: 3px solid var(--bw-wood);
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: inset 0 0 0 2px var(--bw-gold);
-  max-width: 100%;
+/* Desktop side adverts: sit in the gutters OUTSIDE the centred 1100px shell.
+   Fixed positioning keeps them clear of the content; they never push, shrink,
+   or overlap the site. Hidden below a breakpoint where gutters are too small. */
+.bw-side-ads { pointer-events: none; }
+.bw-side-ad {
+  position: fixed;
+  top: 166px;
+  width: 300px;
+  z-index: 2;
+  pointer-events: auto;
 }
-.bw-ad-slot--leaderboard { max-width: 728px; }
-.bw-ad-slot--rectangle { max-width: 300px; }
-.bw-ad-slot img,
-.bw-ad-slot video { display: block; width: 100%; height: auto; }
+.bw-side-ad::before {
+  content: "ADVERTISEMENT";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(44, 58, 22, 0.72);
+  font: 700 9px/12px Arial, sans-serif;
+  letter-spacing: 1.3px;
+}
+.bw-side-ad--left { left: max(12px, calc((100vw - 1100px) / 2 - 312px)); }
+.bw-side-ad--right { right: max(12px, calc((100vw - 1100px) / 2 - 312px)); }
+@media (max-width: 1723px) { .bw-side-ad { display: none; } }
+
+/* ---------- Play page: embedded game viewport (native 940x653) ---------- */
+.bw-game-page { margin: 4px 0 18px; }
+.bw-game-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+/* The game wrap is a snug neutral holder. The Flash client (native 940x653)
+   is the focal point and should dominate — no wide blue letterboxing. */
+.bw-game-wrap {
+  position: relative;
+  max-width: 940px;
+  margin: 0 auto;
+  border: 4px solid #0b2233;
+  border-radius: 10px;
+  background: #0b2233;
+  box-shadow: 0 6px 0 rgba(21,92,112,0.22);
+  overflow: hidden;
+}
+/* Padding-top aspect-ratio so the object ALWAYS fills the native box,
+   even when aspect-ratio CSS is unavailable. 653/940 = 69.468%. */
+.bw-game-viewport {
+  position: relative;
+  width: 100%;
+  padding-top: 69.468%;
+  background: #0b2233;
+}
+.bw-game-viewport object {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+.bw-game-note {
+  max-width: 940px;
+  margin: 10px auto 0;
+  font-size: 0.85rem;
+  color: #5c6a3a;
+  text-align: center;
+}
+/* Fullscreen: wrapper fills the viewport, game scales to fit preserving native
+   940x653 aspect ratio, centred, dark letterbox (never stretched/squashed).
+   The viewport gets an EXPLICIT height (not just aspect-ratio) so the Flash
+   <object> (height:100%) resolves against a definite height and fills the box
+   instead of collapsing to a postage-stamp. */
+.bw-game-wrap--full {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  border-radius: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.bw-game-wrap--full .bw-game-viewport {
+  width: min(100vw, calc(100vh * 940 / 653));
+  height: min(100vh, calc(100vw * 653 / 940));
+  max-width: 100vw;
+  max-height: 100vh;
+  padding-top: 0;
+  aspect-ratio: 940 / 653;
+}
+.bw-game-wrap--full .bw-game-viewport object { position: absolute; inset: 0; }
+/* Discreet fullscreen control over the game's bottom-right frame. Stays visible
+   in fullscreen so it can also toggle back out. */
+.bw-game-fs {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  top: auto;
+  z-index: 4;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+  color: #eafff0;
+  background: rgba(7,34,51,0.55);
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.bw-game-fs:hover { background: rgba(7,34,51,0.85); transform: translateY(-1px); }
+.bw-game-fs:focus-visible { outline: 3px solid #ffd54a; outline-offset: 2px; }
+.bw-game-wrap--full .bw-game-fs { background: rgba(7,34,51,0.45); }
+
+/* ---------- My Weevil: profile card + XP presentation ---------- */
+.bw-profile-trim {
+  display: block;
+  height: 16px;
+  margin: -14px -14px 12px;
+  border-radius: 10px 10px 0 0;
+  background: url("/assets/images/green-bar.png") center / cover no-repeat;
+}
+.bw-profile-render-large {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 260px;
+  border-radius: 14px;
+  background: #eaf7d6;
+  border: 3px solid var(--bw-green);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.bw-xp-block { margin-top: 12px; }
+.bw-xp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.9rem;
+  padding: 3px 0;
+  border-bottom: 1px dashed rgba(124,74,30,0.25);
+}
+.bw-xp-row span { color: var(--bw-green-dark); font-weight: 700; text-transform: uppercase; font-size: 0.72rem; }
+.bw-xp-bar {
+  display: block;
+  height: 18px;
+  margin: 10px 0 4px;
+  border: 2px solid var(--bw-wood);
+  border-radius: 999px;
+  background: #dff0d2;
+  overflow: hidden;
+  box-shadow: inset 0 2px 0 rgba(0,0,0,0.12);
+}
+.bw-xp-bar-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(180deg, #b6f25a, var(--bw-green));
+  box-shadow: inset 0 -3px 0 rgba(60,111,18,0.4);
+  border-radius: 999px 0 0 999px;
+}
+.bw-xp-threshold { margin: 2px 0 0; font-size: 0.85rem; color: #5c6a3a; }
+.bw-reward-module {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.bw-reward-badge {
+  flex: 0 0 auto;
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  border: 3px solid var(--bw-gold);
+  background: #fff7df;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  box-shadow: 0 3px 0 var(--bw-wood);
+}
+.bw-reward-badge img { width: 40px; height: 40px; object-fit: contain; }
+
+/* Custom Username Colour controls appear in Settings only after the unlock. */
+.bw-colour-settings {
+  display: grid;
+  grid-template-columns: auto minmax(170px, 1fr) minmax(150px, 1fr);
+  gap: 14px;
+  align-items: end;
+  margin-top: 14px;
+}
+.bw-colour-picker-label,
+.bw-colour-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: 700;
+  color: var(--bw-green-dark);
+}
+.bw-colour-picker-label input[type="color"] {
+  width: 70px;
+  height: 46px;
+  padding: 3px;
+  border: 3px solid var(--bw-green);
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+}
+.bw-colour-hex-field { margin: 0; }
+.bw-colour-preview {
+  min-height: 46px;
+  justify-content: center;
+  padding: 7px 12px;
+  border: 3px solid var(--bw-sky-deep);
+  border-radius: 10px;
+  background: #fff;
+}
+.bw-colour-preview span { font-size: 0.72rem; text-transform: uppercase; }
+.bw-colour-preview strong { font: 700 1.15rem "Burbank Small", sans-serif; }
+@media (max-width: 680px) {
+  .bw-colour-settings { grid-template-columns: 1fr; align-items: stretch; }
+}
 
 /* ---------- Bin Bulletin ---------- */
 .bw-announcement {
@@ -235,6 +555,8 @@ img { max-width: 100%; }
   text-shadow: 0 1px 0 rgba(0,0,0,0.3);
   writing-mode: horizontal-tb;
 }
+.bw-announcement-label:hover,
+.bw-announcement-label:focus-visible { color: #fff; text-decoration: none; filter: brightness(1.06); }
 .bw-marquee {
   flex: 1 1 auto;
   overflow: hidden;
@@ -300,6 +622,15 @@ img { max-width: 100%; }
   border-radius: var(--bw-radius);
   box-shadow: 0 6px 0 rgba(200,90,0,0.5), inset 0 0 0 3px #ffd9a8;
 }
+/* Green variant: lime-tinted container so pages can alternate panel colour
+   without distorting the authentic stepped border. */
+.bw-panel--green {
+  background-color: #f1fbe0;
+  border-image: none;
+  border: 4px solid var(--bw-green);
+  border-radius: var(--bw-radius);
+  box-shadow: 0 6px 0 rgba(60,111,18,0.5), inset 0 0 0 3px #c8ef8f;
+}
 .bw-panel--container { box-shadow: 0 6px 0 rgba(21,92,112,0.35); }
 .bw-eyebrow {
   margin: 0 0 4px;
@@ -353,7 +684,7 @@ img { max-width: 100%; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
-  margin: 14px 0;
+  margin: 12px 0 14px;
   align-items: stretch;
 }
 .bw-hero-copy {
@@ -375,6 +706,25 @@ img { max-width: 100%; }
   text-shadow: 0 2px 0 #fff;
 }
 .bw-hero-lead { font-size: 1.02rem; line-height: 1.5; }
+
+/* Logged-in hero: personal return-to-game panel with the player's Weevil. */
+.bw-hero-weevil {
+  width: 180px;
+  height: 180px;
+  margin: 6px 0 10px;
+  border-radius: 14px;
+  background: radial-gradient(circle at 50% 40%, #d8f3c4, #b9e3a0);
+  border: 3px solid var(--bw-green-dark);
+  box-shadow: inset 0 0 0 3px rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.bw-hero-weevil canvas { width: 100%; height: 100%; display: block; }
+.bw-hero-meta { margin: 0 0 4px; font-size: 1.02rem; font-weight: 600; color: var(--bw-green-dark); }
+.bw-hero-xp { margin: 0 0 10px; font-size: 0.95rem; color: #5c6a3a; }
+.bw-hero-xp strong { color: var(--bw-green-dark); }
 
 .bw-characters {
   position: absolute;
@@ -400,13 +750,92 @@ img { max-width: 100%; }
   max-width: 320px;
   height: auto;
   margin: 0 auto 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.15s ease, filter 0.15s ease;
 }
+.bw-login-title:hover { transform: translateY(-2px); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25)); }
+.bw-login-title:focus-visible {
+  outline: 3px solid #ffd54a;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bw-login-title { transition: none; }
+  .bw-login-title:hover { transform: none; }
+}
+
+/* Logged-in "Your Weevil" aside: identity + currency, not a stat dashboard. */
+.bw-account-weevil-card { align-items: flex-start; }
+.bw-account-weevil {
+  width: 120px;
+  height: 120px;
+  margin: 4px 0 10px;
+  border-radius: 12px;
+  background: radial-gradient(circle at 50% 40%, #d8f3c4, #b9e3a0);
+  border: 3px solid var(--bw-green-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.bw-account-weevil canvas { width: 100%; height: 100%; display: block; }
+.bw-account-weevil-card .bw-card-title { color: var(--bw-green-dark); }
+.bw-badge {
+  display: inline-block;
+  margin: 0 6px 10px 0;
+  padding: 3px 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #075d86;
+  background: #e7f6ff;
+  border: 2px solid var(--bw-green);
+  border-radius: 999px;
+}
+.bw-profile-currency {
+  display: flex;
+  gap: 18px;
+  margin: 10px 0 4px;
+}
+.bw-profile-currency .bw-cur {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1rem;
+}
+.bw-profile-currency .bw-cur img { width: 26px; height: 26px; object-fit: contain; }
+.bw-profile-currency strong { color: var(--bw-green-dark); font-weight: 700; }
+.bw-reward-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 10px; }
+.bw-chip {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #075d86;
+  background: #eef7ff;
+  border: 2px solid var(--bw-green);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+.bw-disclosure > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+.bw-disclosure > summary::-webkit-details-marker { display: none; }
+.bw-disclosure > summary span { font-size: 0.85rem; color: var(--bw-green-dark); font-weight: 600; }
+.bw-disclosure[open] > summary { margin-bottom: 8px; }
 .bw-login-mascot {
   position: absolute;
-  right: -10px; bottom: 40px;
-  width: 120px;
+  right: -18px; bottom: -26px;
+  width: 150px;
+  max-width: 42%;
   pointer-events: none;
   filter: drop-shadow(0 4px 4px rgba(0,0,0,0.3));
+  z-index: 1;
 }
 .bw-field { margin-bottom: 10px; }
 .bw-field label { display: block; font-weight: 700; margin-bottom: 4px; color: var(--bw-green-dark); }
@@ -424,6 +853,15 @@ img { max-width: 100%; }
 
 /* ---------- Stat grids ---------- */
 .bw-stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 14px; }
+.bw-account-weevil-meta { margin-top: 10px; }
+.bw-text-link {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--bw-sky-deep);
+  text-decoration: none;
+}
+.bw-text-link:hover { text-decoration: underline; }
 .bw-stat {
   background: linear-gradient(180deg, #eaf7d6, #d2ecb0);
   border: 3px solid var(--bw-green);
@@ -453,21 +891,76 @@ img { max-width: 100%; }
 /* ---------- Home feature grid + promo bands (contained modules) ---------- */
 .bw-home-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
-  margin: 18px 0;
+  margin: 14px 0;
+  align-items: stretch;
 }
 .bw-feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   background-color: #eaf7ff;
   border: 14px solid transparent;
   border-image: url("/assets/images/container-bg-panel.png") 12 / 14px / 0 stretch;
   border-radius: 14px;
-  padding: 18px 18px;
+  padding: 16px 18px 18px;
   box-shadow: 0 6px 0 rgba(21,92,112,0.35);
+  min-width: 0;
 }
-.bw-feature-card h2 { margin: 6px 0; color: var(--bw-green-dark); }
-.bw-feature-card p { font-size: 0.92rem; line-height: 1.45; }
+.bw-feature-card h2 { margin: 4px 0; color: var(--bw-green-dark); }
+.bw-feature-card p { font-size: 0.92rem; line-height: 1.45; margin: 0 0 12px; }
+.bw-feature-card .bw-button { margin-top: auto; }
+/* Feature art: a proportionate contained badge so the sprite fills its area
+   instead of sitting as a tiny image lost in empty space. */
+.bw-feature-art {
+  display: block;
+  width: 100%;
+  aspect-ratio: 306 / 280;
+  max-height: 150px;
+  margin: 0 auto 8px;
+  border-radius: 12px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(255,255,255,0.55), rgba(234,247,255,0.2) 60%),
+    linear-gradient(180deg, #eaf7ff, #c4e6f7);
+  box-shadow: inset 0 0 0 2px rgba(87,182,230,0.5);
+}
+.bw-feature-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: scale(0.9);
+  transition: transform 0.18s ease;
+}
+.bw-feature-card:hover .bw-feature-art img { transform: scale(1); }
+
+/* Register / Create a Weevil — light info callouts (no full blue boxes) */
+.bw-tips-strip {
+  margin: 18px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.bw-tip {
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.55);
+  border-left: 4px solid var(--bw-green);
+}
+.bw-tip--accent {
+  background: #fff3e2;
+  border-left-color: var(--bw-orange);
+}
+.bw-tip .bw-card-title { margin: 0 0 4px; font-size: 1.1rem; color: var(--bw-green-dark); }
+.bw-tip p { margin: 0; font-size: 0.92rem; line-height: 1.45; }
+.bw-ad-row--page { margin-top: 22px; }
+@media (max-width: 680px) { .bw-tips-strip { grid-template-columns: 1fr; } }
+.bw-steps { margin: 12px 0 0; padding-left: 22px; line-height: 1.7; }
+.bw-steps li { margin: 6px 0; }
 
 /* ---------- Promo bands (membership banner + Three_Image lower promo) ----------
    Full-width contained images. They must never dictate the page structure: they
@@ -480,7 +973,7 @@ img { max-width: 100%; }
   background: #eaf7ff;
   box-shadow: 0 6px 0 rgba(60,111,18,0.5), inset 0 0 0 3px var(--bw-lime);
 }
-.bw-promo-band--lower { margin-top: 18px; }
+.bw-promo-band--lower { margin-top: 14px; }
 .bw-promo-img {
   display: block;
   width: 100%;
@@ -488,19 +981,135 @@ img { max-width: 100%; }
   object-fit: contain;
 }
 
-/* ---------- Contained ad rows (optional modules) ---------- */
+/* ---------- Contained ad rows (optional modules) ----------
+   Each row is a centred, single-format slot. The slot keeps its own
+   format width/aspect (set in site-ads.css); the row never widens or
+   resizes it. */
 .bw-ad-row {
-  margin: 18px 0 0;
+  margin: 14px 0 0;
   display: flex;
   justify-content: center;
 }
-.bw-ad-row .bw-ad-slot { width: min(728px, 100%); }
+.bw-ad-row--home { margin: 14px 0 2px; }
+.bw-ad-row .bw-ad-slot--leaderboard { width: min(728px, 100%); }
+.bw-ad-row .bw-ad-slot--rectangle { width: min(300px, 100%); }
+
+/* ---------- Shared page components (used across all site pages) ---------- */
+.bw-content-panel { margin: 16px 0; }
+.bw-section-title {
+  margin: 0 0 10px;
+  font-size: 1.9rem;
+  color: var(--bw-green-dark);
+  text-shadow: 0 2px 0 #fff;
+}
+.bw-section-intro {
+  font-size: 1.02rem;
+  line-height: 1.55;
+  max-width: 60ch;
+}
+.bw-muted { color: #5c6a3a; font-size: 0.92rem; line-height: 1.5; }
+.bw-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #a6e83a, var(--bw-green));
+  border: 2px solid #fff;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 0 var(--bw-green-dark);
+  margin: 4px 0;
+}
+
+/* Legal / long-form text */
+.bw-legal-body {
+  max-width: 78ch;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+.bw-legal-body h2 { margin: 22px 0 8px; color: var(--bw-green-dark); font-size: 1.35rem; }
+.bw-legal-body p { margin: 0 0 12px; }
+.bw-legal-body ul { margin: 0 0 12px; padding-left: 22px; }
+.bw-legal-body li { margin: 6px 0; }
+
+/* Settings layout (My Weevil) */
+.bw-settings-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 18px;
+  margin-top: 18px;
+  align-items: start;
+}
+.bw-profile-card { text-align: center; }
+.bw-profile-render-large {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 240px;
+  border-radius: 14px;
+  background: #eaf7d6;
+  border: 3px solid var(--bw-green);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.bw-profile-render-large .bw-render-pending { font-size: 0.85rem; color: #6a8a3a; }
+.bw-settings-stack { display: grid; gap: 16px; }
+
+/* ---------- Shared DB-backed Bin Bulletin ---------- */
+.bw-bulletin-head {
+  position: relative;
+  min-height: 220px;
+  margin: 14px 0;
+  padding: 28px 290px 28px 30px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.98), rgba(234,247,255,0.86)),
+    url("/assets/images/banner.png") center / cover;
+}
+.bw-bulletin-head-copy { position: relative; z-index: 1; }
+.bw-bulletin-character {
+  position: absolute;
+  right: 24px;
+  bottom: -10px;
+  width: 245px;
+  height: 225px;
+  object-fit: contain;
+  object-position: center bottom;
+  pointer-events: none;
+  filter: drop-shadow(0 5px 4px rgba(0,0,0,0.24));
+}
+.bw-news-list { display: grid; gap: 14px; margin: 14px 0 0; }
+.bw-news-article { padding: 24px 28px; text-align: left; }
+.bw-news-article.is-top-story { box-shadow: 0 6px 0 rgba(60,111,18,0.48), inset 0 0 0 3px var(--bw-lime); }
+.bw-news-article h2 { margin: 2px 0 10px; color: var(--bw-green-dark); }
+.bw-news-body { max-width: 74ch; line-height: 1.6; }
+
+/* Community chat embed */
+.bw-community-frame {
+  width: 100%;
+  height: 70vh;
+  min-height: 420px;
+  border: 4px solid var(--bw-wood);
+  border-radius: var(--bw-radius);
+  background: #eaf7ff;
+  margin-top: 14px;
+}
+.bw-empty-chat {
+  margin-top: 14px;
+  border: 4px dashed var(--bw-sky-deep);
+  border-radius: var(--bw-radius);
+  background: #eaf7ff;
+  padding: 28px;
+  text-align: center;
+}
+.bw-empty-chat strong { display: block; color: var(--bw-green-dark); font-size: 1.2rem; margin-bottom: 6px; }
 
 /* ---------- Footer ---------- */
 .bw-footer {
   flex-shrink: 0;
   margin-top: auto;
-  padding: 18px;
+  padding: 14px 18px;
   text-align: center;
   color: #fff;
   background:
@@ -524,16 +1133,24 @@ img { max-width: 100%; }
   .bw-nav { display: none; }
   .bw-nav.is-open { display: flex; }
   .bw-hero { grid-template-columns: 1fr; }
-  .bw-home-grid { grid-template-columns: 1fr 1fr; }
+  .bw-home-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .bw-settings-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 820px) {
+  .bw-home-grid { grid-template-columns: 1fr; }
+  .bw-bulletin-head { padding-right: 220px; }
+  .bw-bulletin-character { right: -16px; width: 220px; opacity: 0.82; }
 }
 @media (max-width: 680px) {
   .bw-brand img { height: 48px; }
   .bw-hero-copy h1 { font-size: 1.5rem; }
-  .bw-home-grid { grid-template-columns: 1fr; }
   .bw-account-chip { margin-left: 0; width: 100%; }
   .bw-panel { border-width: 10px; border-image-width: 10px; padding: 16px; }
   .bw-login-card { border-width: 10px; border-image-width: 10px; }
   .bw-login-mascot { display: none; }
+  .bw-main { padding: 0 10px 18px; }
+  .bw-bulletin-head { min-height: 0; padding: 22px 20px; }
+  .bw-bulletin-character { display: none; }
 }
 
 /* Screen-reader-only helper (used for the visually-hidden login heading) */

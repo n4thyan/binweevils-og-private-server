@@ -10,6 +10,7 @@ $siteCosmetics = [
     'ready' => false,
     'unlocked' => [],
     'equipped' => [],
+    'meta' => [],
 ];
 
 if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
@@ -94,6 +95,7 @@ function site_ad_slot($placement, $format = 'leaderboard') {
         $type = strtolower((string)$creative['type']);
         $src = site_e($creative['src']);
         $href = !empty($creative['href']) ? site_e($creative['href']) : '';
+        $poster = !empty($creative['poster']) ? site_e($creative['poster']) : '';
         $label = !empty($creative['label']) ? site_e($creative['label']) : 'Advertisement';
         $active = $index === 0 ? ' is-active' : '';
         $duration = isset($creative['duration']) ? max(4, (int)$creative['duration']) : 12;
@@ -102,7 +104,8 @@ function site_ad_slot($placement, $format = 'leaderboard') {
         if($href !== '') echo '<a href="' . $href . '" target="_blank" rel="noopener sponsored" aria-label="' . $label . '">';
 
         if($type === 'video') {
-            echo '<video muted playsinline preload="metadata" data-ad-video aria-label="' . $label . '"><source src="' . $src . '"></video>';
+            $posterAttr = $poster !== '' ? ' poster="' . $poster . '"' : '';
+            echo '<video muted playsinline preload="metadata"' . $posterAttr . ' data-ad-video aria-label="' . $label . '"><source src="' . $src . '"></video>';
         }
         else {
             echo '<img src="' . $src . '" alt="' . $label . '" loading="lazy">';

@@ -3,6 +3,7 @@ error_reporting(0);
 include('../essential/backbone.php');
 include('../essential/BanBuilder/CensorWords.php');
 include('../essential/ProfanityFilter/Check.php');
+include('../site/referrals.php');
 
 $bbcensor = new CensorWords();
 $pfcensor = new Check();
@@ -58,7 +59,7 @@ function isValidUsername($newName) {
     return true;
 }
 
-function createWeevil($username, $password) {
+function createWeevil($username, $password, $referralCode = '') {
     $sessKey = generateSessionKey();
     $logKey = generateLogKey();
     $timestamp = time();
@@ -67,11 +68,31 @@ function createWeevil($username, $password) {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-	$q = $db->prepare("INSERT INTO `users` (`username`, `password`, `sessionKey`, `loginKey`, `lastLogin`, `createdAt`, `regIP`) VALUES (?, ?, ?, ?, ?, ?, ?)");
-	$q->bind_param('sssssss', $username, $hashedPassword, $sessKey, $logKey, $timestamp, $timestamp, $regIP);
-	$q->execute();
+    $db->begin_transaction();
+    try {
+        $referralCode = referral_normalize_code($referralCode);
+        $inviter = null;
+        if($referralCode !== '') {
+            $inviter = referral_find_inviter($db, $referralCode, true);
+            if(!$inviter) {
+                $db->rollback();
+                return "responseCode=4";
+            }
+        }
 
-    if($q->affected_rows == 1) {
+        $invitedBy = $inviter ? $inviter['username'] : null;
+        $q = $db->prepare("INSERT INTO `users` (`username`, `password`, `sessionKey`, `loginKey`, `lastLogin`, `createdAt`, `regIP`, `invitedBy`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $q->bind_param('ssssssss', $username, $hashedPassword, $sessKey, $logKey, $timestamp, $timestamp, $regIP, $invitedBy);
+        $q->execute();
+        if($q->affected_rows !== 1) throw new RuntimeException('Account insert failed.');
+
+        $newUserId = (int)$db->insert_id;
+        referral_get_or_create_code($db, $newUserId, $username);
+        if($inviter && !referral_record_registration($db, (int)$inviter['user_id'], $newUserId, $referralCode, $timestamp)) {
+            throw new RuntimeException('Referral insert failed.');
+        }
+        $db->commit();
+
         createBuddyListForWeevil($username);
 
         setcookie("sessionId", $sessKey, time() + 86400, '/');
@@ -80,6 +101,9 @@ function createWeevil($username, $password) {
         header('Location: ../game.php');
 
         return "responseCode=1";
+    } catch(Throwable $e) {
+        $db->rollback();
+        error_log('Registration transaction failed: ' . $e->getMessage());
     }
 
     return "responseCode=2";
@@ -120,7 +144,7 @@ if(isset($_POST['userID']) && isset($_POST['password']) && isset($_POST['recap']
             }
         }
 
-        echo createWeevil($username, $password);
+        echo createWeevil($username, $password, $_POST['referral_code'] ?? '');
     }
     else
     echo 'responseCode=999';

@@ -1,9 +1,12 @@
-export async function loadAtlasMap(basePath, manifestPath = "assets/atlases/manifest.json") {
+export async function loadAtlasMap(basePath, manifestPath = "assets/atlases/manifest.json", onlyKeys = null) {
   const manifestUrl = `${basePath.replace(/\/$/, "")}/${manifestPath}`;
   const manifest = await fetch(manifestUrl).then((r) => r.json());
   const atlasMap = new Map();
+  const requested = onlyKeys ? new Set(onlyKeys) : null;
 
   for (const [folder, entry] of Object.entries(manifest)) {
+    const alias = folder.replaceAll("/", "_");
+    if (requested && !requested.has(folder) && !requested.has(alias)) continue;
     const jsonUrl = `${basePath.replace(/\/$/, "")}/assets/atlases/${entry.json}`;
     const pngUrl = `${basePath.replace(/\/$/, "")}/assets/atlases/${entry.png}`;
 
@@ -16,7 +19,7 @@ export async function loadAtlasMap(basePath, manifestPath = "assets/atlases/mani
       meta: data.meta,
     };
     atlasMap.set(folder, entryObject);
-    atlasMap.set(folder.replaceAll("/", "_"), entryObject);
+    atlasMap.set(alias, entryObject);
   }
 
   return atlasMap;

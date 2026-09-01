@@ -4,8 +4,8 @@ const WebSocket = require('ws');
 var wss;
 var Weevil = require("./Weevil");
 var cookie = require('cookie');
-const https = require('https');
-const fs = require('fs');
+var parseCookies = cookie.parse || cookie.parseCookie;
+const http = require('http');
 var express = require('express');
 var app = express();
 
@@ -14,12 +14,10 @@ class BinWeevilsWeb {
     constructor(addr, serverPort) {
         this.address = addr;
         this.port = parseInt(serverPort);
-        //this.privateKey  = fs.readFileSync('../../etc/ssl/private/key.pem', 'utf8');
-        //this.certificate = fs.readFileSync('../../etc/ssl/certs/cert.pem', 'utf8');
-        //this.credentials = {key: this.privateKey, cert: this.certificate};
-        //this.httpsServer = https.createServer(this.credentials, app);
-	this.httpsServer = https.createServer(app);
-        wss = new WebSocket.Server({server:this.httpsServer});
+        // Local development and site/config.php both use ws://localhost:2087.
+        // Public TLS should terminate at a reverse proxy and forward here.
+        this.httpServer = http.createServer(app);
+        wss = new WebSocket.Server({server:this.httpServer});
         this.weevils = {};
         this.socketIdList = {};
         this.sockets = 0;
@@ -196,13 +194,14 @@ class BinWeevilsWeb {
     }
 
     async runServer() {
-        this.httpsServer.listen(this.port);
+        if(this.address) this.httpServer.listen(this.port, this.address);
+        else this.httpServer.listen(this.port);
 
         wss.on('connection', async (ws, req) => {
             if(req.headers.hasOwnProperty('cookie')) {
-                var cookies = cookie.parse(req.headers["cookie"]);
+                var cookies = parseCookies(req.headers["cookie"]);
 
-                if(cookies.hasOwnProperty('weevil_name') && cookies.hasOwnProperty('sessionId')) {
+                if(Object.prototype.hasOwnProperty.call(cookies, 'weevil_name') && Object.prototype.hasOwnProperty.call(cookies, 'sessionId')) {
                     var client = new Weevil(ws);
                     var socketID = this.sockets++;
                     client.server = this;

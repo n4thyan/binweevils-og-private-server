@@ -1,10 +1,22 @@
 ﻿<?php
 include('site/bootstrap.php');
+include_once('site/news.php');
 
 $sitePageTitle = 'Home';
 $siteActive = 'home';
 $errMessage = '';
-$announcements = !empty($siteConfig['announcements']) && is_array($siteConfig['announcements']) ? $siteConfig['announcements'] : [];
+$newsArticles = site_news_articles(6);
+$announcements = [];
+foreach($newsArticles as $article) {
+    $links = site_news_links((int)$article['id']);
+    $href = '/bulletin/';
+    if(!empty($links) && (int)$links[0]['link_type'] === 1) $href = $links[0]['link_target'];
+    $announcements[] = [
+        'text' => $article['title'],
+        'href' => $href,
+        'urgent' => !empty($article['is_top_story']),
+    ];
+}
 
 usort($announcements, function($a, $b) {
     $aUrgent = !empty($a['urgent']) ? 1 : 0;
@@ -26,13 +38,9 @@ include('site/header.php');
     <div class="bw-alert" role="alert"><?php echo site_e(strip_tags($errMessage)); ?></div>
 <?php endif; ?>
 
-<section class="bw-promo-band" aria-label="Membership">
-    <img class="bw-promo-img" src="/assets/ads/membership-banner-1080x250.png" alt="Weevil World membership included with every purchase">
-</section>
-
 <?php if(!empty($announcements)): ?>
 <section class="bw-announcement" aria-label="Announcements">
-    <div class="bw-announcement-label">Bin Bulletin</div>
+    <a class="bw-announcement-label" href="/bulletin/">Bin Bulletin</a>
     <div class="bw-marquee">
         <div class="bw-marquee-track">
             <?php foreach($announcements as $i => $announcement): ?>
@@ -49,37 +57,22 @@ include('site/header.php');
 </section>
 <?php endif; ?>
 
-<section class="bw-live-status" data-server-status aria-label="Live server status">
-    <div class="bw-live-status-item">
-        <span class="bw-status-dot" aria-hidden="true"></span>
-        <span>Game server</span>
-        <strong data-server-online>Checking…</strong>
-    </div>
-    <div class="bw-live-status-item">
-        <span>Weevils online</span>
-        <strong data-server-players>—</strong>
-    </div>
-    <div class="bw-live-status-item bw-live-status-build">
-        <span>Build</span>
-        <strong><?php echo site_e(isset($siteConfig['build_label']) ? $siteConfig['build_label'] : ''); ?></strong>
-    </div>
-</section>
-
 <section class="bw-hero">
     <div class="bw-panel bw-panel--container bw-hero-copy">
         <p class="bw-eyebrow">The Bin is back</p>
-        <?php if($siteLoggedIn && is_array($siteUser)): ?>
+        <?php if($siteLoggedIn && is_array($siteUser)):
+            $homeNameColor = site_cosmetic_equipped_value($siteCosmetics, 'username_color', '#075d86');
+            $homeTitle = site_cosmetic_equipped_value($siteCosmetics, 'title', '');
+        ?>
             <h1>Welcome back, <span data-account-stat="username"><?php echo site_e($siteUser['username']); ?></span>!</h1>
-            <p class="bw-hero-lead">Your Weevil is ready. Jump back into the Bin, visit the community chat, or tweak your account and cosmetics from My Weevil.</p>
+            <div class="bw-hero-weevil" data-weevil-render data-weevil-definition="<?php echo site_e($siteUser['def']); ?>" data-weevil-name="<?php echo site_e($siteUser['username']); ?>">
+                <div class="bw-render-pending">Weevil</div>
+            </div>
+            <p class="bw-hero-meta"><span data-account-stat="username"><?php echo site_e($siteUser['username']); ?></span> · Level <span data-account-stat="level"><?php echo (int)$siteUser['level']; ?></span> · Prestige <span data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></span></p>
+            <p class="bw-hero-xp"><span data-account-stat="next-xp"><?php echo site_int($siteUser['xp2']); ?></span> XP to next level</p>
             <div class="bw-button-row">
                 <a class="bw-button bw-button--green" href="/game.php">Play Bin Weevils</a>
                 <a class="bw-button bw-button--blue" href="/settings/">My Weevil</a>
-            </div>
-            <div class="bw-stat-grid" aria-label="Weevil stats">
-                <div class="bw-stat"><span>Level</span><strong data-account-stat="level"><?php echo (int)$siteUser['level']; ?></strong></div>
-                <div class="bw-stat"><span>Prestige</span><strong data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></strong></div>
-                <div class="bw-stat"><span>Lifetime XP</span><strong data-account-stat="lifetime-xp"><?php echo site_int($siteUser['xp']); ?></strong></div>
-                <div class="bw-stat"><span>Banked XP</span><strong data-account-stat="banked-xp"><?php echo site_int($siteUser['xp1']); ?></strong></div>
             </div>
         <?php else: ?>
             <h1>Welcome back to the Bin!</h1>
@@ -93,26 +86,30 @@ include('site/header.php');
     </div>
 
     <?php if($siteLoggedIn && is_array($siteUser)): ?>
-        <aside class="bw-panel bw-panel--container bw-login-card">
-            <p class="bw-eyebrow">Your account</p>
-            <h2 class="bw-card-title" data-account-stat="username"><?php echo site_e($siteUser['username']); ?></h2>
+        <aside class="bw-panel bw-panel--container bw-login-card bw-account-weevil-card">
+            <p class="bw-eyebrow">Your Weevil</p>
+            <div class="bw-account-weevil" data-weevil-render data-weevil-definition="<?php echo site_e($siteUser['def']); ?>" data-weevil-name="<?php echo site_e($siteUser['username']); ?>">
+                <div class="bw-render-pending">Weevil</div>
+            </div>
+            <h2 class="bw-card-title" data-account-stat="username" style="color:<?php echo site_e($homeNameColor); ?>"><?php echo site_e($siteUser['username']); ?></h2>
+            <?php if($homeTitle !== ''): ?><span class="bw-badge"><?php echo site_e($homeTitle); ?></span><?php endif; ?>
             <div class="bw-stat-grid">
                 <div class="bw-stat"><span>Mulch</span><strong data-account-stat="mulch"><?php echo site_int($siteUser['mulch']); ?></strong></div>
                 <div class="bw-stat"><span>Dosh</span><strong data-account-stat="dosh"><?php echo site_int($siteUser['dosh']); ?></strong></div>
+                <div class="bw-stat"><span>Prestige</span><strong data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></strong></div>
                 <div class="bw-stat"><span>Next level</span><strong><span data-account-stat="next-xp"><?php echo site_int($siteUser['xp2']); ?></span> XP</strong></div>
-                <div class="bw-stat"><span>Server</span><strong data-server-online>Checking…</strong></div>
             </div>
-            <div class="bw-button-row">
-                <a class="bw-button bw-button--small" href="/game.php">Enter the Bin</a>
-                <a class="bw-button bw-button--blue bw-button--small" href="/settings/">Settings</a>
+            <div class="bw-account-weevil-meta">
+                <a class="bw-text-link" href="/settings/">View My Weevil →</a>
             </div>
-            <p class="bw-form-note">Nest News remains the place for proper in-game news. Website notices stay short and appear in the Bin Bulletin above.</p>
         </aside>
     <?php else: ?>
         <aside class="bw-panel bw-panel--container bw-login-card" id="login">
-            <img class="bw-login-title" src="/assets/images/returning-player.png" alt="Returning player">
+            <button type="button" class="bw-login-title" id="returning-player-activate" aria-label="Returning player — focus the login form">
+                <img src="/assets/images/returning-player.png" alt="Returning player">
+            </button>
             <h2 class="bw-card-title bw-visually-hidden">Log in to your Weevil</h2>
-            <form action="/login/login.php" method="post">
+            <form action="/login/login.php" method="post" id="login-form">
                 <div class="bw-field">
                     <label for="userID">Bin Weevil Name</label>
                     <input class="bw-input" id="userID" name="userID" type="text" maxlength="16" autocomplete="username" required>
@@ -125,28 +122,20 @@ include('site/header.php');
                 <button class="bw-button bw-button--green" type="submit">Log in &amp; play</button>
             </form>
             <p class="bw-form-note">New to the Bin? <a href="/register/">Create your Weevil here.</a></p>
-            <img class="bw-login-mascot" src="/assets/images/tink_clott.png" alt="" aria-hidden="true">
+            <img class="bw-login-mascot" src="/assets/images/weevil-tophat.png" alt="" aria-hidden="true">
         </aside>
     <?php endif; ?>
 </section>
 
-<?php if(site_has_ads('home-rectangle')): ?>
-<section class="bw-ad-row" aria-label="Sponsor">
-    <?php site_ad_slot('home-rectangle', 'rectangle'); ?>
-</section>
-<?php endif; ?>
-
 <section class="bw-home-grid" aria-label="Explore the site">
     <article class="bw-panel bw-panel--container bw-feature-card">
-        <img src="/assets/images/racing.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
         <p class="bw-eyebrow">Play</p>
         <h2>Enter the Bin</h2>
-        <p>Launch the restored classic client and pick up exactly where your Weevil left off.</p>
+        <p>Launch the Bin Weevils client and pick up exactly where your Weevil left off.</p>
         <a class="bw-button bw-button--green bw-button--small" href="<?php echo $siteLoggedIn ? '/game.php' : '/#login'; ?>"><?php echo $siteLoggedIn ? 'Play now' : 'Log in'; ?></a>
     </article>
 
     <article class="bw-panel bw-panel--container bw-feature-card">
-        <img src="/assets/images/nest.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
         <p class="bw-eyebrow">Community</p>
         <h2>xat Chat</h2>
         <p>The website community room uses xat for a proper old-school Bin-era chat experience.</p>
@@ -154,7 +143,6 @@ include('site/header.php');
     </article>
 
     <article class="bw-panel bw-panel--container bw-feature-card">
-        <img src="/assets/images/garden.png" alt="" aria-hidden="true" style="height:90px;margin:0 auto 6px;display:block;">
         <p class="bw-eyebrow"><?php echo $siteLoggedIn ? 'Account' : 'New player'; ?></p>
         <h2><?php echo $siteLoggedIn ? 'My Weevil' : 'Create a Weevil'; ?></h2>
         <p><?php echo $siteLoggedIn ? 'View your progression, account options and unlocked customisation in one place.' : 'Make a new Weevil using the existing account system and head straight into the game.'; ?></p>
@@ -162,8 +150,26 @@ include('site/header.php');
     </article>
 </section>
 
+<?php if(site_has_ads('home-rectangle')): ?>
+<section class="bw-ad-row bw-ad-row--home" aria-label="Sponsor">
+    <?php site_ad_slot('home-rectangle', 'rectangle'); ?>
+</section>
+<?php endif; ?>
+
 <section class="bw-promo-band bw-promo-band--lower" aria-label="What you can do in the Bin">
-    <img class="bw-promo-img" src="/assets/images/three-image-panel.png" alt="Grow a garden, play games, and decorate your nest in Bin Weevils">
+    <img class="bw-promo-img" src="/assets/images/three_image.png" alt="Grow a garden, play games, and decorate your nest in Bin Weevils">
 </section>
 
 <?php include('site/footer.php'); ?>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var title = document.getElementById('returning-player-activate');
+  var form = document.getElementById('login-form');
+  if (title && form) {
+    title.addEventListener('click', function () {
+      var name = form.querySelector('#userID');
+      if (name) { name.focus(); name.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    });
+  }
+});
+</script>

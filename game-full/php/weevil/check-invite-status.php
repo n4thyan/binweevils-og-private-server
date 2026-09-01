@@ -1,10 +1,23 @@
 <?php
 error_reporting(0);
 include('../../essential/backbone.php');
-// Stub: check-invite-status. The SWF polls this during onboarding; the legacy invite
-// system is inactive on this private server, so report "no pending invite" cleanly.
-if(isset($_POST)) {
-    echo 'responseCode=1&hasInvite=0';
+include('../../site/referrals.php');
+
+header('Content-Type: application/x-www-form-urlencoded; charset=UTF-8');
+
+if($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_COOKIE['weevil_name'], $_COOKIE['sessionId'])) {
+    echo 'responseCode=999';
+    exit;
 }
-else echo 'responseCode=999';
+
+$username = (string)$_COOKIE['weevil_name'];
+if(!confirmSessionKey($username, (string)$_COOKIE['sessionId'])) {
+    echo 'responseCode=999';
+    exit;
+}
+
+// The 2021 Nest Hall client shows its reward popup solely for responseCode=1.
+// Return 2 when there is no pending persisted referral; never return a fake 1.
+$result = referral_claim_pending_reward($username);
+echo http_build_query($result, '', '&', PHP_QUERY_RFC3986);
 ?>

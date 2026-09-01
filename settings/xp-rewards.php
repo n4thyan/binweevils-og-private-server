@@ -10,14 +10,12 @@ $sitePageTitle = 'XP Rewards';
 $siteActive = 'settings';
 $catalog = site_reward_catalog();
 $groups = [
-    'username_color' => ['label' => 'Name Colours', 'description' => 'Permanent website username colours.'],
+    'username_color' => ['label' => 'Username Colour', 'description' => 'One permanent unlock for a custom website username colour.'],
     'title' => ['label' => 'Titles', 'description' => 'Permanent titles shown with your website profile.'],
-    'profile_background' => ['label' => 'Profile Backgrounds', 'description' => 'Recovered Bin Weevils artwork for your profile card.'],
 ];
 
 $equippedName = site_cosmetic_equipped_value($siteCosmetics, 'username_color', '#075984');
 $equippedTitle = site_cosmetic_equipped_value($siteCosmetics, 'title', '');
-$equippedBackground = site_cosmetic_equipped_value($siteCosmetics, 'profile_background', '');
 
 include('../site/header.php');
 ?>
@@ -34,7 +32,7 @@ include('../site/header.php');
     </div>
 </section>
 
-<section class="bw-cosmetic-preview" data-reward-preview<?php echo $equippedBackground !== '' ? ' style="background-image:url(\'' . site_e($equippedBackground) . '\')"' : ''; ?>>
+<section class="bw-cosmetic-preview" data-reward-preview>
     <div class="bw-profile-render-large bw-profile-render-large--preview" data-weevil-render data-weevil-definition="<?php echo site_e($siteUser['def']); ?>" data-weevil-name="<?php echo site_e($siteUser['username']); ?>">
         <span class="bw-render-pending">Weevil</span>
     </div>
@@ -78,7 +76,9 @@ include('../site/header.php');
                     <?php if($owned): ?><span class="bw-reward-owned">Owned</span><?php endif; ?>
                 </div>
 
-                <?php if($equipped): ?>
+                <?php if($key === 'custom-name-colour' && $owned): ?>
+                    <a class="bw-button bw-button--blue bw-button--small bw-reward-action" href="/settings/#username-colour-settings">Choose colour</a>
+                <?php elseif($equipped): ?>
                     <button class="bw-button bw-button--green bw-button--small bw-reward-action" type="button" disabled>Equipped</button>
                 <?php elseif($owned): ?>
                     <button class="bw-button bw-button--blue bw-button--small bw-reward-action" type="button" data-reward-action="equip" data-reward-key="<?php echo site_e($key); ?>">Equip</button>
