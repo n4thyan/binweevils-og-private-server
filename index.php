@@ -151,7 +151,7 @@ include('site/header.php');
 </section>
 
 <section class="bw-promo-band bw-promo-band--lower" aria-label="What you can do in the Bin">
-    <img class="bw-promo-img" src="/assets/images/three-image-panel.png" alt="Grow a garden, play games, and decorate your nest in Bin Weevils">
+    <img class="bw-promo-img" src="/assets/images/three_image.png" alt="Grow a garden, play games, and decorate your nest in Bin Weevils">
 </section>
 
 <?php include('site/footer.php'); ?>
