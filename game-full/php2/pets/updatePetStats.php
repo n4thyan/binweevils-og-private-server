@@ -32,17 +32,17 @@ if(isset($_POST)) {
             if(!$pet) { echo 'res=998'; exit; }
 
             // Accept posted values if present, clamped to sane bounds.
-            $fuel    = isset($_POST['fuel'])    ? max(0, min(100, intval($_POST['fuel'])))    : intval($pet['fuel']);
-            $health  = isset($_POST['health'])  ? max(0, min(100, intval($_POST['health'])))  : intval($pet['health']);
-            $fitness = isset($_POST['fitness']) ? max(0, min(100, intval($_POST['fitness']))) : intval($pet['fitness']);
-            $xp      = isset($_POST['experience']) ? intval($_POST['experience'])             : intval($pet['experience']);
+            $fuel     = isset($_POST['fuel'])         ? max(0, min(100, intval($_POST['fuel'])))         : intval($pet['fuel']);
+            $energy   = isset($_POST['mentalEnergy'])  ? max(0, min(100, intval($_POST['mentalEnergy']))) : intval($pet['mentalEnergy']);
+            $fitness  = isset($_POST['fitness'])       ? max(0, min(100, intval($_POST['fitness'])))      : intval($pet['fitness']);
+            $xp       = isset($_POST['experience'])    ? intval($_POST['experience'])                      : intval($pet['experience']);
 
-            $upd = $db->prepare('UPDATE pets SET fuel = ?, health = ?, fitness = ?, experience = ? WHERE id = ? AND ownerID = ?');
-            $upd->bind_param('iiiiis', $fuel, $health, $fitness, $xp, $petID, $weevilData['username']);
+            $upd = $db->prepare('UPDATE pets SET fuel = ?, mentalEnergy = ?, fitness = ?, experience = ? WHERE id = ? AND ownerID = ?');
+            $upd->bind_param('iiiiis', $fuel, $energy, $fitness, $xp, $petID, $weevilData['username']);
             $upd->execute();
 
             if($upd->affected_rows >= 0)
-                echo 'responseCode=1&fuel=' . $fuel . '&health=' . $health . '&fitness=' . $fitness . '&experience=' . $xp;
+                echo 'responseCode=1&fuel=' . $fuel . '&mentalEnergy=' . $energy . '&fitness=' . $fitness . '&experience=' . $xp;
             else
                 echo 'res=999';
         }
