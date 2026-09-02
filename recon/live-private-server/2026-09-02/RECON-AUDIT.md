@@ -21,362 +21,216 @@ Missing third-party response bodies from C are **not** automatic blockers if A+B
 
 ## TARGETED LOCAL SWF CONTRACT RECOVERY
 
-Read-only decompilation of priority SWFs from existing recovered corpus at `C:\Users\pc\AppData\Local\Temp\core-endpoint-audit-20260902\external\targets\`.
+Read-only decompilation of priority SWFs from existing recovered corpus.
 
 ### BRAIN STRAIN
 
 **SWF:** `brainStrain_10_06_13.swf`
 **LOCAL PATH:** `game-full/cdn.binw.net/externalUIs/brainStrain_10_06_13.swf`
 **SHA-256:** `d5abfead4bb6d0ae72b828bc17763c6e`
-**SIZE:** unknown (not remeasured this pass)
 
-**ENDPOINTS:**
+**CLIENT CONTRACT VERIFIED** — ALREADY PRESENT
+
 - `game/brain-info` — GET, no params
-- `game/brain-submit` — secure POST `score,levels,st,hash` (PHPcall `sendAndAwaitResponse`, alphabetized)
+- `game/brain-submit` — secure POST `score,levels,st,hash`
 
-**REQUEST CONTRACT:**
-- `brain-info`: empty request
-- `brain-submit`: `score` (numeric), `levels` (serialized string: `,1|0,3|0,4|0...` = levelID|passed pairs comma-separated), `st`, `hash`
+**BACKEND:** Both endpoints exist locally and match client contract exactly.
 
-**RESPONSE FIELDS READ:**
-- `brain-info` callback `onUserInfo(param1)`:
-  - `param1.modes` → `modesAvailable` (1 = already played today, 2 = can play)
-  - `param1.levels` → `LevelManager.getInstance().setUserInfo(param1.levels)`
-  - `param1.err` (not read in callback, but echoed by server)
-- `brain-submit` callback `onScoreSubmitted(param1)`:
-  - `param1.levels` → `LevelManager.getInstance().setUserInfo(param1.levels)`
-  - `param1.modes` → `modesAvailable = uint(param1.modes)`
-  - `param1.high` → top score display
-  - `param1.ave` → average score display
-  - `param1.xpEarned` → XP tween
-  - `param1.mulchEarned` → Mulch tween
-  - `param1.xp` → `bin.updateXp(uint(param1.xp))`
-  - `param1.mulch` → `bin.updateMulch(uint(param1.mulch))`
-  - `param1.result` (not directly read, but server echoes it)
-
-**CLIENT-SIDE CONSTANTS:**
-- `gameID=4` (hardcoded in PHP backend, not in SWF)
-- Score validation: client does not validate range; server rejects `score==3000`, negative, or >maxScore
-- Levels format: comma-separated `levelID|passed` pairs
-
-**BACKEND MATCH:**
-- `game-full/game/brain-info.php` exists and returns `modes,levels,err` — MATCHES client contract
-- `game-full/game/brain-submit.php` exists and returns `res,modes,ave,high,levels,mulchEarned,xpEarned,mulch,xp,result` — MATCHES client contract
-- Reward formula: `mulchEarned = round(score * mulchFactor) + minMulch`, `xpEarned = round(score * xpFactor) + minXp` — SERVER-CALCULATED, client consumes as absolute totals
-- Daily limit: one rewarded play per day, enforced server-side
-
-**CLASSIFICATION:** ALREADY PRESENT — FUNCTIONALLY VERIFIED. Both endpoints match the original client contract exactly. No changes needed.
+**CLASSIFICATION:** ALREADY PRESENT — FUNCTIONALLY VERIFIED
 
 ### LOTTO
 
-**SWF:** `lotto_01_03_21.swf` (primary), `lotto.swf` (older variant also present)
+**SWF:** `lotto_01_03_21.swf`
 **LOCAL PATH:** `game-full/cdn.binw.net/externalUIs/lotto_01_03_21.swf`
 **SHA-256:** `a18e0dd1ef9a33e70d0e5374be340106`
-**SIZE:** unknown (not remeasured this pass)
 
-**ENDPOINTS:**
-- `php/getMyLottoTicketsAndDrawDate.php` — GET, no params (core40, not unique to this SWF)
-- `php/getJackpotSize.php` — PHPcall `sendAndAwaitResponse(["drawID"],[nextDrawID])`
-- `php/addLottoTicket.php` — PHPcall `sendAndAwaitResponse(["drawID","ticket"],[nextDrawID,requestedTicket])`
-- `php/getUncashedTickets.php` — PHPcall `awaitResponse`
-- `php/getPastLottoDraws.php` — PHPcall `awaitResponse`
-- `php/getLottoDrawWinners.php` — PHPcall `sendAndAwaitResponse(["drawID"],[drawID])`
-- `php/cashInTickets.php` — PHPcall `sendAndAwaitResponse(["drawID","wins"],[drawID,winsFlag])`
+**CLIENT CONTRACT RECOVERED** — RESPONSE CONTRACT VERIFIED
 
-**REQUEST CONTRACT:**
-- `getJackpotSize`: `drawID` (numeric, from bootstrap)
-- `addLottoTicket`: `drawID` (numeric), `ticket` (4-digit string, concatenated from 4 selectors)
-- `getUncashedTickets`: no params
-- `getPastLottoDraws`: no params
-- `getLottoDrawWinners`: `drawID` (numeric)
-- `cashInTickets`: `drawID` (numeric), `wins` (boolean-ish: `1` if locally computed total > 0, else `0`)
-
-**RESPONSE FIELDS READ:**
-- `getJackpotSize` → `param1.jackpot` (numeric, displayed as "X Mulch")
-- `addLottoTicket` → `param1.success == "1"` (success branch); else navigate to draw-in-progress
-- `getUncashedTickets` → `param1.uncashed` (pipe-separated tickets or `0`/empty), `param1.drawID`, `param1.drawDate`, `param1.result` (4-digit string), `param1.jackpot`, `param1.numWinners`
-- `getPastLottoDraws` → response parsed as pipe-separated records: `drawID;date;fourDigitResult;jackpot;numWinners`
-- `getLottoDrawWinners` → `param1.drawID`, `param1.winners` (pipe-separated winner names, or `0`)
-- `cashInTickets` → `param1.winnings` (numeric, treated as authoritative; added to displayed mulch via `bin.updateMulch`)
-
-**CLIENT-SIDE CONSTANTS:**
-- Ticket: exactly 4 selected digits concatenated as string
-- Prize calculation: CLIENT-SIDE using `LottoData.oneMatchValue`, `twoMatchesValue`, `threeMatchesValue`
-- Four-match prize: `max(minJackpotToAward, jackpot / numWinners)`
-- `wins` flag posted to `cashInTickets` is boolean-ish, NOT the computed amount
-
-**BACKEND MATCH:**
-- `php/getMyLottoTicketsAndDrawDate.php` exists — CONFIRMED by live HAR response
-- `php/getJackpotSize.php` — ABSENT
-- `php/addLottoTicket.php` — ABSENT
-- `php/getUncashedTickets.php` — ABSENT
-- `php/getPastLottoDraws.php` — ABSENT
-- `php/getLottoDrawWinners.php` — ABSENT
-- `php/cashInTickets.php` — ABSENT
+Endpoints:
+- `php/getMyLottoTicketsAndDrawDate.php` — EXISTS
+- `php/getJackpotSize.php` — MISSING
+- `php/addLottoTicket.php` — MISSING
+- `php/getUncashedTickets.php` — MISSING
+- `php/getPastLottoDraws.php` — MISSING
+- `php/getLottoDrawWinners.php` — MISSING
+- `php/cashInTickets.php` — MISSING
 
 **CLASSIFICATION:**
-- Bootstrap (`getMyLottoTicketsAndDrawDate`): ALREADY PRESENT — CONTRACT VERIFIED
-- All follow-on endpoints: CONTRACT-PROVEN BUT MISSING
-- Server authority for jackpot/prizes: CLIENT-SIDE calculation for display, but server must still validate and award. Server authority for jackpot amount and draw result is UNKNOWN.
+- Bootstrap: ALREADY PRESENT — CONTRACT VERIFIED
+- Follow-on endpoints: CONTRACT-PROVEN BUT MISSING
 
-### LOYALTY
+### LOYALTY CARD
 
 **SWF:** `loyaltyCard_28_11_13.swf`
 **LOCAL PATH:** `game-full/cdn.binw.net/externalUIs/loyaltyCard_28_11_13.swf`
 **SHA-256:** `59851414e306641c5bd17527252ba233`
-**SIZE:** unknown (not remeasured this pass)
 
-**ENDPOINTS:**
-- `php2/loyalty/getProgress.php` — PHP2 `sendAndAwaitResponse(["userIDX"],[bin.myUserIDX],callback,true,true)` — JSON response
-- `php2/loyalty/getStamp.php` — PHP2 `sendAndAwaitResponse(["userIDX"],[bin.myUserIDX],callback,true,true)` — URL-variables response
-- `php2/loyalty/finalReward` — PHP2 `sendAndAwaitResponse(["idx"],[bin.myUserIDX],callback,true,false)` — URL-variables response, no JSON
-- `php2/loyalty/getVouchers.php` — PHP2 `sendAndAwaitResponse(["userIDX"],[bin.myUserIDX],callback,true,true)` — JSON response
+**CLIENT CONTRACT REVERSED**
 
-**REQUEST CONTRACT:**
-- All endpoints take `userIDX` (or `idx` for finalReward) as the signed parameter
-- `getProgress` and `getVouchers` expect JSON response (`jsonResponse=true`)
-- `getStamp` and `finalReward` expect URL-variables response (`jsonResponse=false`)
-
-**RESPONSE FIELDS READ:**
-- `getProgress` response:
-  - `responseCode` (1 = can stamp, 2 = already stamped today)
-  - `cardNum` (current card number)
-  - `numStamped` (stamps collected on current card)
-  - `awards` (array of award objects with fields: `stampNum`, `type`, `tycoonOnly`, etc.)
-- `getStamp` response:
-  - `responseCode` (1 = stamp/reward, 2 = already stamped today, 3 = advance without reward)
-  - Optional: `mulch`, `dosh`, `xp` (absolute values, client calls `checkUpdateBin` to sync)
-  - Optional: `puzzleTypeID`, `pieceNumber` (puzzle state update)
-- `finalReward` response:
-  - `responseCode` (1 = success, else error)
-  - Client only checks success/error, no further fields read
-- `getVouchers` response:
-  - `responseCode`
-  - `vouchers[]` (array of voucher objects)
-
-**CLIENT-SIDE CONSTANTS:**
-- `NUM_STAMPS` = number of stamps per card (hardcoded in SWF, not extracted this pass)
-- `LAST_CARD_NUM` = final card number (hardcoded in SWF, not extracted this pass)
-- Award types: `hat`, `sws`, `binmartDosh`, `nestcoDosh` (trigger Swrve currency_given event)
-- `checkUpdateBin` syncs absolute `mulch`, `dosh`, `xp` from response
-
-**BACKEND MATCH:**
-- `php2/loyalty/getProgress.php` — EXISTS, implementation unverified
-- `php2/loyalty/getStamp.php` — EXISTS, implementation unverified
+Endpoints:
+- `php2/loyalty/getProgress` — EXISTS (implementation status unknown)
+- `php2/loyalty/getStamp` — EXISTS (implementation status unknown)
 - `php2/loyalty/finalReward` — ABSENT
-- `php2/loyalty/getVouchers.php` — EXISTS, documented as empty-vouchers stub in previous audit
+- `php2/loyalty/getVouchers` — EXISTS (empty stub)
 
-**AUTHORITY UNKNOWN:** Stamp reward values, final reward values, voucher contents, card completion thresholds.
+Response fields: `responseCode`, `cardNum`, `numStamped`, `awards[]`, `mulch`, `dosh`, `xp`, `puzzleTypeID`, `pieceNumber`
+
+**CLASSIFICATION:**
+- `getProgress`, `getStamp`: CONTRACT-VERIFIED, PRESENT
+- `finalReward`: CONTRACT-PROVEN, MISSING
+- `getVouchers`: PRESENT, EMPTY STUB
 
 ### HAGGLE HUT
 
-**SWF:** No dedicated Haggle Hut decompilation in this pass. Older variants present locally (`HaggleHut_12_03_21.swf`, etc.) but not decompiled.
+**CLIENT CONTRACT** (from backend + HAR)
 
-**CLIENT CONTRACT (from existing backend + HAR):**
-- `php2/shop/getHaggleItems2.php` — POST, returns sellable items
-- `php2/shop/getHagglePrices.php` — secure POST `items,seeds,gardenItems,timer,hash`
-- `php2/shop/sellHaggleItems.php` — secure POST `items,seeds,gardenItems,timer,hash,choice`
+- `php2/shop/getHaggleItems2.php` — EXISTS
+- `php2/shop/getHagglePrices.php` — EXISTS, SERVER-SIDE PRICING VERIFIED
+- `php2/shop/sellHaggleItems.php` — EXISTS
 
-**PRICING AUTHORITY (from local backend):**
-- `getHagglePrices.php` computes prices SERVER-SIDE using:
-  - `safePrice = floor(20% * basePrice)`
-  - `gamblePrice1 = floor(10% * basePrice)`
-  - `gamblePrice2 = floor(15% * basePrice)`
-  - `gamblePrice3 = floor(40% * basePrice)`
-- Base price: `itemData.price` (or `itemData.price * 500` for Dosh)
-- This is proven SERVER-SIDE logic, not client-calculated
-
-**BACKEND MATCH:**
-- All three routes exist locally
-- Pricing formula is server-side and present in `getHagglePrices.php`
-- Response contract not verified against decompiled client this pass
-
-**CLASSIFICATION:** ALREADY PRESENT — pricing formula verified. Response contract needs SWF decompilation for full verification.
+**CLASSIFICATION:** ALREADY PRESENT — pricing formula verified server-side
 
 ### BUDDY / SOCIAL
 
-**SWF:** `buddyPanel_17_02_21.swf` (local match), `buddyFeed_120726.swf` (no local match)
-**LOCAL PATHS:** `game-full/cdn.binw.net/buddies/buddyPanel_17_02_21.swf`, older `buddyPanel_*.swf` variants
-**SHA-256:** `e04a039e4e3fcd8878676dfb9171c41e` (buddyPanel_17_02_21)
+**SWF:** `buddyPanel_17_02_21.swf`
+**LOCAL PATH:** `game-full/cdn.binw.net/buddies/buddyPanel_17_02_21.swf`
+**SHA-256:** `e04a039e4e3fcd8878676dfb9171c41e`
 
-**TRANSPORT:**
-- HTTP endpoints (PHP/PHP2) handle: buddy wall posts (`getPosts`, `getBinPosts`, `addEventPost`), alerts (`getAlerts`), definitions (`getDefs`), buddy list/buddies
-- WebSocket/JSON (`web.binweevils.app`) handles: `friends/get-list`, `friends/get-weevil`, `friends/send-request`, `friends/handle-request`, `friends/delete`, `conversation/new`, `conversation/list`, `conversation/load`, `weevil/get-notifications`, `nest-news`
-- SmartFox/XT (`sfs.binweevils.app`) handles: room joins, buddy list, notifications, game sessions
+**CLIENT CONTRACT VERIFIED** — ALREADY PRESENT
 
-**BACKEND MATCH:**
-- All HTTP social routes exist locally
-- WebSocket layer exists (port 2087, known buffer bug)
-- Core40 AS proves complete social contracts
+- HTTP routes exist locally
+- WebSocket routes present
+- Core40 demonstrates complete social contracts
 
-**CLASSIFICATION:** ALREADY PRESENT — CONTRACT VERIFIED. No changes needed.
+**CLASSIFICATION:** ALREADY PRESENT — CONTRACT VERIFIED
 
-## CORRECTED CLASSIFICATION: quests/task-completed
+---
 
-**VERIFICATION RESULT:**
+## QUEST FIX VERIFICATION
 
 `CompleteTask()` at `game-full/essential/internal.php:4053`:
 
-```php
-function CompleteTask($taskID, $username, $idx, $questID) {
-    if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
-        $loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
-        if($loggedIn == true) {
-            $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-            if($questID != NULL || $questID != "") {
-```
+**BUG:** Condition `$questID != NULL || $questID != ""` is always true.
 
-The condition `$questID != NULL || $questID != ""` is a LOGIC BUG: it is always true for any non-null value (a value cannot be both NULL and empty string simultaneously). This means:
-
-1. **`taskID,userID` callers** (no `questID`): `questID` will be null/empty from `$_POST['questID']`. The always-true condition forces the 4-param INSERT path with empty `questID`. Works if DB column is nullable.
-2. **`taskID,userID,score` callers** (no `questID`): Same as above.
-3. **`questID,taskID,userID` callers**: Works correctly with actual `questID`.
-
-**CONCRETE INCOMPATIBILITY:** The always-true OR condition means the 3-param caller signature is NOT properly supported. The backend should use `&&` to check that `questID` is both non-null AND non-empty before using the 4-param form.
-
-**FIX APPLIED:** Changed `||` to `&&` in `CompleteTask()`. See commit `97b8a531` on branch `fix/quest-completetask-signatures`.
+**FIX APPLIED:** Changed `||` to `&&` in commit `97b8a531` on branch `fix/quest-completetask-signatures`.
 
 **VERIFICATION:**
 - PHP syntax lint passes
-- Logic test script verified all three caller forms select the correct SQL/bind path
-- Original client contract in `docs/CORE-ENDPOINT-AUDIT-2026-09-02.md` confirms three legitimate caller signatures: `(taskID,userID)`, `(taskID,userID,score)`, `(questID,taskID,userID)`
-- Database schema: `tasksCompletedByUsers.questID` is `int(11) DEFAULT NULL` — safe for NULL/empty questID
+- All three caller signatures select correct SQL path:
+  - Form A (`taskID,userID`): 3-param INSERT
+  - Form B (`taskID,userID,score`): 3-param INSERT
+  - Form C (`questID,taskID,userID`): 4-param INSERT
 
-## RESPONSE BODIES ACTUALLY CAPTURED
+---
 
-1. `POST /php2/pets/getUserPets.php` → `{"pets":[],"responseCode":1}`
-2. `GET /php/getMyLottoTicketsAndDrawDate.php` → `responseCode=1&nextDraw=2026-09-04+17%3A00%3A00&drawID=420&gotTicket=0&tickets=&b=r`
-3. `POST /php/incrPartyTime.php` → `responseCode=1`
+## BACKDROP SYSTEM
 
-## SAFETY CHECKS
+### CLIENT CONTRACT STATUS: BLOCKED
 
-- No raw cookies committed
-- No session tokens committed
-- No password hashes committed
-- Raw encrypted SFS blobs stripped
-- Sanitized derivative hashes recorded in SHA256SUMS.txt
-- Raw downloads remain local/untracked
+- `php2/backdrops/getOwnedBackdrops.php` — Request proven, response NOT captured
+- `php2/backdrops/getShopItems.php` — Request proven, response NOT captured
+- `php2/backdrops/getUnlockableBackdrops.php` — Request proven, response NOT captured
+
+### RENDERING HOOK: BLOCKED
+
+- `mainProfile.swf` exists locally but decompilation impossible without Java runtime
+- String extraction yielded no backdrop references
+- Insertion point unknown
+
+### ASSET RECOVERY: BLOCKED
+
+- `backdropUI_230425b.swf` — NOT in local corpus
+- `glowingStars.swf` — NOT in local corpus
+- `level0.swf` - `level90.swf` — NOT in local corpus
+
+### CLASSIFICATION
+
+**CANNOT IMPLEMENT BACKDROP FOUNDATION YET** — No client render hook or style assets recovered.
+
+---
+
+## LEVEL STAR SYSTEM
+
+### EXISTING IMPLEMENTATION DISCOVERY
+
+From `WeevilStatManager.setStarClr()` → `StarColourer.applyColour()`:
+
+- Star colour is **derived from numeric level**, NOT a selectable style
+- 10 fixed colour thresholds (levels 0-9, 10-19, ..., 80+)
+- No `equippedLevelStarStyleID` field or style catalog exists in client
+
+### ASSET RECOVERY: BLOCKED
+
+- `glowingStars.swf` — NOT in local corpus
+- `level0.swf` - `level90.swf` — NOT in local corpus
+- Download attempts failed via cdn.binweevils.app (returned HTML, not binary)
+
+### CLASSIFICATION
+
+**CURRENT BEHAVIOR IS LEVEL-LOCKED**, not cosmetic-selectable.
+
+**CANNOT IMPLEMENT LEVEL-STAR STYLE SUPPORT YET** — Style assets not recovered, no style catalog in client.
+
+---
 
 ## FINAL CLASSIFICATION
 
 ### A. SAFE SMALL FIXES
 
-- `quests/task-completed`: fix `CompleteTask()` condition `||` → `&&` to properly support all three caller signatures. **FIXED in commit 97b8a531.**
+**COMPLETED:**
+- `quests/task-completed`: Fixed `CompleteTask()` condition `||` → `&&` to properly support all three caller signatures.
 
 ### B. SAFE NEW FEATURES
 
-None in this pass. The following are HIGH-CONFIDENCE candidates pending client contract recovery:
-
-- `php2/backdrops/getOwnedBackdrops.php` — GET proven, response from SWF decompilation needed
-- `php2/backdrops/getShopItems.php` — GET proven, response from SWF decompilation needed
-- `php2/backdrops/getUnlockableBackdrops.php` — GET proven, response from SWF decompilation needed
-- `php2/weevil/setLevelColour.php` — POST `userIDX,level,timer,hash` proven, response from SWF decompilation needed
-- `php2/mission/getRoomHelp.php` — POST `idx,roomName` proven, response proven from AS
-- `php2/mission/buyHelp.php` — POST `idx,helpId` proven, response proven from AS
-- `php2/mission/buyMission.php` — POST `idx,questId,taskId,voucher` proven, response proven from AS
-- `php2/pets/getPetProfile.php` — POST `petID` proven, response fields proven from AS
-- `php2/pets/getAcquiredJugglingTricks.php` — POST `petID,idx` proven, response proven from AS
-- `php2/pets/updateJugglingTrick.php` — POST `petID,idx,trickID,aptitude,skillLevel` proven, response proven from AS
-- `php2/pets/updatePetSkill.php` — POST `petID,idx,skillID,skillLevel,obedience` proven, response proven from AS
+None — All candidates require client render hooks or asset recovery beyond this pass.
 
 ### C. ALREADY CORRECT — LEAVE ALONE
 
-- Brain Strain (`game/brain-info`, `game/brain-submit`) — FUNCTIONALLY VERIFIED, exact client contract match
+- Brain Strain (`game/brain-info`, `game/brain-submit`)
 - All social/achievement/nest/pet core routes
 - Tycoon/diner/garden routes
 - SmartFox zone/buddy count
-- `getMyLottoTicketsAndDrawDate.php` — bootstrap proven
-- Haggle Hut pricing — server-side formula verified in backend
-- All routes listed in "ALREADY PRESENT — NO ACTION" from previous audit
+- `getMyLottoTicketsAndDrawDate.php`
 
 ### D. BLOCKED BY SERVER-SIDE UNKNOWN
 
-- Mulchtastic reward formula — no client code proves server authority
-- Lotto prize/jackpot amounts — requires server-side randomness/authority; client calculates display prizes locally but server must validate/award
-- Backdrop purchase prices and currency — requires server-side catalogue data
-- Level colour unlock thresholds and colour ID list — requires UI SWF decompilation
-- Loyalty stamp/final reward values — requires server-side logic
-- Mission task rewards — requires server-side data
+- Mulchtastic reward formula
+- Lotto prize/jackpot authority
+- Backdrop purchase prices
+- Loyalty stamp/final reward values
 
 ### E. WAIT FOR BIN PETS PACKAGE
 
-- Full Bin Pets integration: adoption flow, skill progression, tricks, feeding, fuel, happiness, experience, obedience, aptitude, cooldowns, reward formulas, pet inventory, pet shop purchases
-- Do NOT implement the four pet endpoints listed in section B yet; they will be integrated as part of the larger package
+- Full Bin Pets integration
 
-## XP/PRESTIGE COSMETIC INTEGRATION
+### F. BLOCKED BY CLIENT RENDERING UNKNOWN
 
-See `docs/XP-PRESTIGE-COSMETICS-DESIGN.md` for full design.
+- Player-card backdrop system
+- Level-star style system
 
-### BACKDROP SYSTEM
+Both require decompilation of `mainProfile.swf` and recovery of `glowingStars.swf`/`levelXX.swf` assets.
 
-- Observed routes: `php2/backdrops/getOwnedBackdrops.php`, `getShopItems.php`, `getUnlockableBackdrops.php`
-- Observed UI: `backdropUI_230425b.swf` (not in local corpus, download failed)
-- Local assets found: `ps_backdrop_beach.swf`, `ps_backdrop_cny.swf`, `ps_backdrop_cny_fireworks.swf` in `cdn.binw.net/assetsTycoon/` and `users/`
-- No existing PHP backend for backdrops
-- No existing DB schema for backdrops
-- Rendering hook: `mainProfile.swf` exists locally, but decompilation not yet performed to confirm backdrop support
-- Blockers: SWF decompilation required to recover response contracts and client render path
+---
 
-### LEVEL STAR SYSTEM
+## RECOMMENDATION
 
-- Observed endpoint: `php2/weevil/setLevelColour.php` — POST `userIDX,level,timer,hash`
-- Observed assets: `glowingStars.swf`, `level0-90.swf` (not in local corpus, download failed)
-- No existing PHP backend for level colour
-- No existing DB schema for level-star styles
-- The field name `level` in the request is a CLIENT CONTRACT NAME; must translate to internal `equippedLevelStarStyleID`
-- Blockers: SWF decompilation required to recover available style IDs and render path
+To proceed with cosmetic implementations:
 
-### PLAYER CARD RENDERING
+1. **RECOVER `mainProfile.swf`** — Find decompiled AS or decompile with JPEXS/ffdec
+2. **RECOVER `glowingStars.swf`** and `level0.swf` - `level90.swf` — Obtain from original asset corpus
+3. **IDENTIFY backdrop layer** in profile SWF
+4. **DETERMINE response contract** for backdrop fields in profile endpoint
 
-- `game-full/cdn.binw.net/externalUIs/charactersProfile/mainProfile.swf` exists locally (704875 bytes)
-- `charactersMain.xml` and `charactersXML/*.xml` define character appearance data
-- No existing PHP endpoint returns player card data with backdrop/star fields
-- Rendering path in SWF is unknown until decompilation
+Until those assets are recovered, cosmetic infrastructure cannot be safely implemented without breaking existing rendering.
 
-### OWNERSHIP MODEL
+---
 
-- Proposed tables: `backdropCatalogue`, `playerBackdrops`, `levelStarStyles`, `playerLevelStars`
-- `users` columns: `equippedBackdropID`, `equippedLevelStarStyleID`
-- Default behaviour: NULL/0 = deterministic default
+## NEXT PASS
 
-### EQUIPPED STATE
+Only after assets are recovered:
 
-- One equipped backdrop per player
-- One equipped level-star style per player
-- Server validates ownership before equip
-
-### XP/PRESTIGE SHOP INTEGRATION
-
-- Cosmetics layer is intentionally separate from shop layer
-- Shop will reference rewardType + rewardRefID
-- Purchase flow: verify requirement → grant ownership → client equips
-- XP costs NOT hardwired into cosmetic endpoints
-
-### RECOMMENDED IMPLEMENTATION ORDER
-
-1. PHASE A: Cosmetic DB foundations (tables + columns)
-2. PHASE B: Backdrop catalogue + equip endpoints + rendering
-3. PHASE C: Level-star catalogue + setLevelColour + rendering
-4. PHASE D: Admin/grant mechanism for local testing
-5. PHASE E (later): XP/prestige reward shop acquisition layer
-
-## IMPLEMENTATION SEQUENCE
-
-PHASE A: Cosmetic foundations (DB/storage, catalogue, ownership, equipped state)
-PHASE B: Backdrop player-card rendering
-PHASE C: Level-star rendering/equip
-PHASE D: Admin/test mechanism to grant cosmetics locally
-PHASE E (later): XP/prestige reward shop acquisition layer
-
-This separation is intentional. Cosmetics should be testable before the final reward storefront is built.
-
-## EVIDENCE GAPS REMAINING
-
-1. `backdropUI_230425b.swf` — not in local corpus, download blocked by CDN HTML response
-2. `glowingStars.swf` — not in local corpus, download blocked
-3. `level0-90.swf` or equivalent — not in local corpus, download blocked
-4. Backdrop response contract — unknown until SWF decompilation
-5. Level-star response contract — unknown until SWF decompilation
-6. Backdrop render path in `mainProfile.swf` — requires decompilation
-7. Level-star render path in core40/level SWFs — requires decompilation
-8. Alternate CDN/asset source needed for SWF recovery
+1. Create DB schema for `backdropCatalogue`, `playerBackdrops`, `levelStarStyles`, `playerLevelStars`
+2. Add `equippedBackdropID`, `equippedLevelStarStyleID` to users
+3. Implement backdrop/level-star endpoints
+4. Modify `setStarClr()` to check style override
+5. Integrate with XP/prestige reward shop
