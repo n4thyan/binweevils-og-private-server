@@ -62,7 +62,7 @@ Status legend: `IMPLEMENTED`, `MISSING`, `STUB`, `PARTIAL`, `SUSPICIOUS`, `CLIEN
 | `nest/get-nest-state` | POST `id`; `lastUpdate,fuel,score,xp` | `IMPLEMENTED` |
 | `nest/getconfig` | POST `id,st,hash`; XML nest config | `IMPLEMENTED` |
 | `php2/nest/getStoredItems.php` | POST `idx`; JSON `items[]` | `IMPLEMENTED` |
-| `php2/nest/removeItemFromNest.php` | POST `itemID,nestID,userID`; JSON `responseCode` | `IMPLEMENTED` (fixed: ownership-checked mutation with clean JSON contract) |
+| `php2/nest/removeItemFromNest.php` | POST `itemID,nestID,userID`; JSON `responseCode,items` | `CLIENT/BACKEND MISMATCH`: success path references undefined `$userItem`/`$tagCache`, so callback contract is unreliable under PHP 8 |
 | `php/addItemToNest.php` | POST item/location/frame fields; no response handler | `IMPLEMENTED` |
 | `php/updateItemPosition.php` | POST position/frame/spot fields; no response handler | `IMPLEMENTED` |
 | `php/setLocColour.php` | POST `nestID,locID,col`; no response handler | `IMPLEMENTED` |
@@ -82,8 +82,8 @@ Status legend: `IMPLEMENTED`, `MISSING`, `STUB`, `PARTIAL`, `SUSPICIOUS`, `CLIEN
 | Endpoint | Contract | Status |
 |---|---|---|
 | `php2/achievements/getAllAchievements.php` | GET JSON nested badge types/achievement metadata | `PARTIAL`; static catalogue, contract-shaped |
-| `php2/achievements/getCompletedAchievements.php` | POST `idx`, secure; `responseCode,userCompletedAchievements,lastCompletedAchivement` | `IMPLEMENTED` (tests passed) |
-| `php2/achievements/getNewAchievements.php` | POST own `idx`, secure; `responseCode,newAchievements` | `IMPLEMENTED` (tests passed) |
+| `php2/achievements/getCompletedAchievements.php` | POST `idx`, secure; `responseCode,userCompletedAchievements,lastCompletedAchivement` | `IMPLEMENTED THIS PASS` |
+| `php2/achievements/getNewAchievements.php` | POST own `idx`, secure; `responseCode,newAchievements` | `IMPLEMENTED THIS PASS` |
 
 The misspelled `lastCompletedAchivement` field is intentional: that is what `binBadgesDisplay2.swf` reads.
 
@@ -110,9 +110,9 @@ The local `quests` table is empty while `questtasks` has 3,694 rows. Mission-hel
 | Endpoint/route | Contract | Status |
 |---|---|---|
 | `php2/social/getDefs.php` | POST `weevils`, secure JSON; `weevils[]` definitions | `IMPLEMENTED` |
-| `php2/social/getPosts.php` | POST `idx,period`, secure JSON; `period,responseCode,posts` | `IMPLEMENTED` (fixed: proper JSON field names, period calculation) |
+| `php2/social/getPosts.php` | POST `idx,period`, secure JSON; `period,responseCode,posts` | `PARTIAL` |
 | `php2/social/getBinPosts.php` | Weevil Post news JSON | `STUB` (single static post) |
-| `php2/social/addEventPost.php` | game/social event post | `IMPLEMENTED` (fixed: variable initialization, undefined vars resolved) |
+| `php2/social/addEventPost.php` | game/social event post | `SUSPICIOUS`; source has variable-order/undefined-name defects |
 | `buddy-messages/send-buddy-message` | POST `msg,recipIDX,hash` | `MISSING` |
 | `buddy-messages/delete-no-from-buddy` | POST `ids`; expects message list shape | `MISSING` |
 | `buddy-messages/delete` | POST conversation `id`, fire-and-forget | `MISSING` |
@@ -142,12 +142,12 @@ The garden endpoint shapes match core40, but reward/harvest authority deserves a
 
 | Endpoint | Contract | Status |
 |---|---|---|
-| `php2/pets/getUserPets.php` | POST `idx`, secure JSON; `responseCode,pets[]` | `IMPLEMENTED` (tests passed) |
+| `php2/pets/getUserPets.php` | POST `idx`, secure JSON; `responseCode,pets[]` | `IMPLEMENTED THIS PASS` |
 | `php2/pets/getPetSkills.php` | POST `petID,idx`, secure JSON; `skills[]` | `IMPLEMENTED` for existing seeded pet |
 | `php2/pets/getAcquiredJugglingTricks.php` | POST `petID,idx`, secure JSON; `tricks[]` | `MISSING`; no proved juggling schema |
 | `php2/pets/updateJugglingTrick.php` | POST trick aptitude/skill level, secure JSON | `MISSING`; no proved juggling schema |
 | `php2/pets/updatePetSkill.php` | POST skill level/obedience, secure JSON | `MISSING` |
-| `php2/pets/updatePetStats.php` | POST `petID,idx,fuel,mentalEnergy,fitness,experience`; expects `responseCode,fuel,mentalEnergy,fitness,experience` | `IMPLEMENTED` (tests passed) |
+| `php2/pets/updatePetStats.php` | POST `petID,idx,fuel,mentalEnergy,fitness,experience`; expects `responseCode,fuel,mentalEnergy,fitness,experience` | `IMPLEMENTED THIS PASS` |
 | `php2/pets/getPetProfile.php` | POST `petID`, secure JSON; `profile.id,rented,name,ownerId,adoptedDate,skills,bc,pp` | `MISSING` |
 
 These were documented only. No Bin Pets implementation was started or modified.
@@ -272,33 +272,25 @@ Both source files were copied to the actual XAMPP DocumentRoot, linted with XAMP
 - Behavior: ownership check via prepared statement; clamps values to 0-100 where appropriate; persists `fuel,mentalEnergy,fitness,experience`; returns exact expected fields.
 - Local result: POST for owned pet returned `responseCode=1&fuel=...&mentalEnergy=...&fitness=...&experience=...`; unauthorized/missing returned `responseCode=999`.
 
-### Additional fixes during this pass
+## High-confidence missing / next work
 
-#### `php2/nest/removeItemFromNest.php`
+Ranked by contract confidence and gameplay value, not by Mulchtastic mention:
 
-- Fixed: removed undefined `$userItem`/`$tagCache` variable references that caused PHP 8 JSON failures.
-- Simplified response to just `responseCode` as the client only checks for success/failure.
-- Verified working: returns `responseCode=1` on success, `responseCode=999` on failure.
+1. `php/getWeevilDefinition.php` — likely a small read alias over existing user definition data, but first locate/decompile a concrete callback consumer to prove exact fields.
+2. `nest/get-rooms-rated-today` + `nest/rate-nest-room` — exact request/UI contracts are known, but blocked until an original rating table/model is recovered.
+3. `php2/pets/getPetProfile.php` — response contract is exact and current pet tables exist, but defer to the separate approved Bin Pets integration/review.
+4. `php2/mission/getRoomHelp.php` — read-only and contract-simple, but mission/help data is not present/proved.
+5. `buddy-messages/*` — meaningful social restoration, but current core also contains newer WebSocket conversation routes; choose one authoritative transport before implementing duplicates.
+6. `game/submit-trial` — concrete caller exists, but reward/time authority must be traced before accepting client timing.
 
-#### `php2/social/getPosts.php`
-
-- Fixed: hardcoded `idx` field replaced with actual post ID (`userWeevilID`).
-- Added proper `period` calculation based on page offset.
-- Added empty posts handling: returns `responseCode=3` when no posts exist.
-- Verified working: returns correct JSON structure with dynamic post data.
-
-#### `php2/social/addEventPost.php`
-
-- Fixed: variable initialization (`$weevilName` used before assignment).
-- Fixed: undefined `$curTime`/`$nscore` variables in case 417.
-- Fixed: `sendAlert()` only called when message/icon are set.
-- Verified working: returns `responseCode=1` on valid input.
+No remaining missing endpoint met every implementation gate (exact response + existing schema/data + clear authority + low risk) during this pass.
 
 ## Client/backend mismatches and important partials
 
 - `php2/pets/getUserPets.php`: identity check uses assignment instead of comparison.
 - `php2/pets/updatePetStats.php`: core40 sends unsigned JSON while backend follows a hash-dependent path.
 - `quests/task-completed`: one PHP file receives three different client parameter signatures.
+- `php2/social/addEventPost.php`: source references the username before assignment and mixes event/value conventions.
 - `php2/weevil/getScaledWeevils.php`, Lotto bootstrap, Tycoon ratings/session, VOD, Weevil Post and loyalty vouchers are static/no-op stubs rather than live data implementations.
 - `getAllAchievements.php` has the expected nested response contract but is a static catalogue disconnected from the otherwise existing achievement metadata tables.
 - Several existing score/race/harvest/shop write endpoints accept client-supplied values. They require focused authority audits; they were not rewritten speculatively.
