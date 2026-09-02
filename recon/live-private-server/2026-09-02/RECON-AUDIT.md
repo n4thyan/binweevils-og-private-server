@@ -224,10 +224,6 @@ function CompleteTask($taskID, $username, $idx, $questID) {
         if($loggedIn == true) {
             $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
             if($questID != NULL || $questID != "") {
-                // 4-param INSERT with questID
-            } else {
-                // 3-param INSERT without questID
-            }
 ```
 
 The condition `$questID != NULL || $questID != ""` is a LOGIC BUG: it is always true for any non-null value (a value cannot be both NULL and empty string simultaneously). This means:
@@ -238,9 +234,13 @@ The condition `$questID != NULL || $questID != ""` is a LOGIC BUG: it is always 
 
 **CONCRETE INCOMPATIBILITY:** The always-true OR condition means the 3-param caller signature is NOT properly supported. The backend should use `&&` to check that `questID` is both non-null AND non-empty before using the 4-param form.
 
-**ACTION REQUIRED:** Fix `CompleteTask()` condition from `||` to `&&`. This is a confirmed bug, not a design choice. The three caller signatures are legitimate, but the current code does not correctly distinguish them.
+**FIX APPLIED:** Changed `||` to `&&` in `CompleteTask()`. See commit `97b8a531` on branch `fix/quest-completetask-signatures`.
 
-**DO NOT CHANGE CODE IN THIS PASS.** Document only.
+**VERIFICATION:**
+- PHP syntax lint passes
+- Logic test script verified all three caller forms select the correct SQL/bind path
+- Original client contract in `docs/CORE-ENDPOINT-AUDIT-2026-09-02.md` confirms three legitimate caller signatures: `(taskID,userID)`, `(taskID,userID,score)`, `(questID,taskID,userID)`
+- Database schema: `tasksCompletedByUsers.questID` is `int(11) DEFAULT NULL` — safe for NULL/empty questID
 
 ## RESPONSE BODIES ACTUALLY CAPTURED
 
@@ -261,7 +261,7 @@ The condition `$questID != NULL || $questID != ""` is a LOGIC BUG: it is always 
 
 ### A. SAFE SMALL FIXES
 
-- `quests/task-completed`: fix `CompleteTask()` condition `||` → `&&` to properly support all three caller signatures. This is a confirmed logic bug, not a design ambiguity.
+- `quests/task-completed`: fix `CompleteTask()` condition `||` → `&&` to properly support all three caller signatures. **FIXED in commit 97b8a531.**
 
 ### B. SAFE NEW FEATURES
 
@@ -303,13 +303,80 @@ None in this pass. The following are HIGH-CONFIDENCE candidates pending client c
 - Full Bin Pets integration: adoption flow, skill progression, tricks, feeding, fuel, happiness, experience, obedience, aptitude, cooldowns, reward formulas, pet inventory, pet shop purchases
 - Do NOT implement the four pet endpoints listed in section B yet; they will be integrated as part of the larger package
 
-## IMPLEMENTATION ORDER
+## XP/PRESTIGE COSMETIC INTEGRATION
 
-1. Fix `CompleteTask()` condition `||` → `&&` (safe, proven bug)
-2. Decompile `backdropUI_230425b.swf` or equivalent → level colour + backdrop catalogue response contracts
-3. Implement mission stubs (`getRoomHelp`, `buyHelp`, `buyMission`) — request/response proven from AS
-4. Implement pet profile/skill stubs (`getPetProfile`, `getAcquiredJugglingTricks`, `updateJugglingTrick`, `updatePetSkill`) — deferred to Bin Pets package
-5. Implement `php2/backdrops/*` catalogue stubs — after SWF decompilation
-6. Implement `php2/weevil/setLevelColour.php` — after SWF decompilation
-7. Download/decompile newer live-server SWFs if alternate path becomes available
-8. Await Bin Pets package for full integration
+See `docs/XP-PRESTIGE-COSMETICS-DESIGN.md` for full design.
+
+### BACKDROP SYSTEM
+
+- Observed routes: `php2/backdrops/getOwnedBackdrops.php`, `getShopItems.php`, `getUnlockableBackdrops.php`
+- Observed UI: `backdropUI_230425b.swf` (not in local corpus, download failed)
+- Local assets found: `ps_backdrop_beach.swf`, `ps_backdrop_cny.swf`, `ps_backdrop_cny_fireworks.swf` in `cdn.binw.net/assetsTycoon/` and `users/`
+- No existing PHP backend for backdrops
+- No existing DB schema for backdrops
+- Rendering hook: `mainProfile.swf` exists locally, but decompilation not yet performed to confirm backdrop support
+- Blockers: SWF decompilation required to recover response contracts and client render path
+
+### LEVEL STAR SYSTEM
+
+- Observed endpoint: `php2/weevil/setLevelColour.php` — POST `userIDX,level,timer,hash`
+- Observed assets: `glowingStars.swf`, `level0-90.swf` (not in local corpus, download failed)
+- No existing PHP backend for level colour
+- No existing DB schema for level-star styles
+- The field name `level` in the request is a CLIENT CONTRACT NAME; must translate to internal `equippedLevelStarStyleID`
+- Blockers: SWF decompilation required to recover available style IDs and render path
+
+### PLAYER CARD RENDERING
+
+- `game-full/cdn.binw.net/externalUIs/charactersProfile/mainProfile.swf` exists locally (704875 bytes)
+- `charactersMain.xml` and `charactersXML/*.xml` define character appearance data
+- No existing PHP endpoint returns player card data with backdrop/star fields
+- Rendering path in SWF is unknown until decompilation
+
+### OWNERSHIP MODEL
+
+- Proposed tables: `backdropCatalogue`, `playerBackdrops`, `levelStarStyles`, `playerLevelStars`
+- `users` columns: `equippedBackdropID`, `equippedLevelStarStyleID`
+- Default behaviour: NULL/0 = deterministic default
+
+### EQUIPPED STATE
+
+- One equipped backdrop per player
+- One equipped level-star style per player
+- Server validates ownership before equip
+
+### XP/PRESTIGE SHOP INTEGRATION
+
+- Cosmetics layer is intentionally separate from shop layer
+- Shop will reference rewardType + rewardRefID
+- Purchase flow: verify requirement → grant ownership → client equips
+- XP costs NOT hardwired into cosmetic endpoints
+
+### RECOMMENDED IMPLEMENTATION ORDER
+
+1. PHASE A: Cosmetic DB foundations (tables + columns)
+2. PHASE B: Backdrop catalogue + equip endpoints + rendering
+3. PHASE C: Level-star catalogue + setLevelColour + rendering
+4. PHASE D: Admin/grant mechanism for local testing
+5. PHASE E (later): XP/prestige reward shop acquisition layer
+
+## IMPLEMENTATION SEQUENCE
+
+PHASE A: Cosmetic foundations (DB/storage, catalogue, ownership, equipped state)
+PHASE B: Backdrop player-card rendering
+PHASE C: Level-star rendering/equip
+PHASE D: Admin/test mechanism to grant cosmetics locally
+PHASE E (later): XP/prestige reward shop acquisition layer
+
+This separation is intentional. Cosmetics should be testable before the final reward storefront is built.
+
+## EVIDENCE GAPS REMAINING
+
+1. `backdropUI_230425b.swf` — not in local corpus, download blocked by CDN HTML response
+2. `glowingStars.swf` — not in local corpus, download blocked
+3. `level0-90.swf` or equivalent — not in local corpus, download blocked
+4. Backdrop response contract — unknown until SWF decompilation
+5. Level-star response contract — unknown until SWF decompilation
+6. Backdrop render path in `mainProfile.swf` — requires decompilation
+7. Level-star render path in core40/level SWFs — requires decompilation
+8. Alternate CDN/asset source needed for SWF recovery
