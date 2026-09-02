@@ -5,60 +5,60 @@ function site_reward_catalog() {
 
     $catalog = [
         'custom-name-colour' => [
-            'name' => 'Custom Name Colour',
+            'name' => 'Custom Username Colour',
             'slot' => 'username_color',
-            'cost' => 100000,
+            'cost' => 100,
             'prestige' => 0,
-            'description' => 'Unlock a hex colour picker in Settings and choose any colour for your website username.',
+            'description' => 'Unlock the Settings colour picker and choose any safe six-digit hex colour for your website username.',
             'value' => '#075984',
         ],
         'title-resident' => [
             'name' => 'Bin Resident',
             'slot' => 'title',
-            'cost' => 75000,
+            'cost' => 25,
             'prestige' => 0,
             'description' => 'Show "Bin Resident" beneath your name on the website.',
             'value' => 'Bin Resident',
         ],
+        'title-nest-dweller' => [
+            'name' => 'Nest Dweller',
+            'slot' => 'title',
+            'cost' => 50,
+            'prestige' => 0,
+            'description' => 'A friendly early-game title for players making the Binscape their home.',
+            'value' => 'Nest Dweller',
+        ],
+        'title-bin-explorer' => [
+            'name' => 'Bin Explorer',
+            'slot' => 'title',
+            'cost' => 75,
+            'prestige' => 0,
+            'description' => 'For Weevils who like discovering rooms, shops and secrets.',
+            'value' => 'Bin Explorer',
+        ],
         'title-mulch-master' => [
             'name' => 'Mulch Master',
             'slot' => 'title',
-            'cost' => 350000,
+            'cost' => 150,
             'prestige' => 1,
-            'description' => 'A classic Bin-flavoured title for experienced Weevils.',
+            'description' => 'A classic Bin-flavoured title unlocked from Prestige 1.',
             'value' => 'Mulch Master',
+        ],
+        'title-bintastic' => [
+            'name' => 'Bintastic',
+            'slot' => 'title',
+            'cost' => 200,
+            'prestige' => 1,
+            'description' => 'A restrained celebratory title for Prestige 1 players.',
+            'value' => 'Bintastic',
         ],
         'title-bin-tycoon' => [
             'name' => 'Bin Tycoon',
             'slot' => 'title',
-            'cost' => 1500000,
-            'prestige' => 4,
-            'description' => 'Show your long-term progression with the Bin Tycoon title.',
+            'cost' => 250,
+            'prestige' => 1,
+            'description' => 'A launch-era Prestige 1 title for established private-server players.',
             'value' => 'Bin Tycoon',
-        ],
-        'title-prestige-veteran' => [
-            'name' => 'Prestige Veteran',
-            'slot' => 'title',
-            'cost' => 5000000,
-            'prestige' => 8,
-            'description' => 'A high-Prestige title for veteran players.',
-            'value' => 'Prestige Veteran',
-        ],
-        'title-bin-legend' => [
-            'name' => 'Bin Legend',
-            'slot' => 'title',
-            'cost' => 15000000,
-            'prestige' => 11,
-            'description' => 'An endgame title reserved for very high Prestige.',
-            'value' => 'Bin Legend',
-        ],
-        'title-prestige-xiii' => [
-            'name' => 'Prestige XIII',
-            'slot' => 'title',
-            'cost' => 30000000,
-            'prestige' => 13,
-            'description' => 'A capstone title for reaching Prestige 13.',
-            'value' => 'Prestige XIII',
         ],
     ];
 
@@ -103,6 +103,46 @@ function site_cosmetics_ensure_schema($db) {
 
     $done = true;
     return true;
+}
+
+function site_cosmetics_state($db, $userId) {
+    $state = [
+        'ready' => false,
+        'unlocked' => [],
+        'equipped' => [],
+        'meta' => [],
+    ];
+
+    if(!site_cosmetics_ensure_schema($db)) return $state;
+    $state['ready'] = true;
+    $userId = (int)$userId;
+
+    $q = $db->prepare('SELECT reward_key FROM site_cosmetic_unlocks WHERE user_id = ?');
+    if($q) {
+        $q->bind_param('i', $userId);
+        $q->execute();
+        $res = $q->get_result();
+        while($row = $res->fetch_array(MYSQLI_ASSOC)) {
+            $state['unlocked'][(string)$row['reward_key']] = true;
+        }
+    }
+
+    $q = $db->prepare('SELECT slot, reward_key, meta FROM site_cosmetic_equipped WHERE user_id = ?');
+    if($q) {
+        $q->bind_param('i', $userId);
+        $q->execute();
+        $res = $q->get_result();
+        while($row = $res->fetch_array(MYSQLI_ASSOC)) {
+            $slot = (string)$row['slot'];
+            $state['equipped'][$slot] = (string)$row['reward_key'];
+            if(isset($row['meta']) && is_string($row['meta']) && $row['meta'] !== '') {
+                $meta = json_decode($row['meta'], true);
+                if(is_array($meta)) $state['meta'][$slot] = $meta;
+            }
+        }
+    }
+
+    return $state;
 }
 
 function site_cosmetic_equipped_value($state, $slot, $fallback = '') {
