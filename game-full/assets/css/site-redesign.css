@@ -304,31 +304,6 @@ img { max-width: 100%; }
   padding: 8px 18px 0;
   background: rgba(255,255,255,0.6);
 }
-/* Desktop side adverts: sit in the gutters OUTSIDE the centred 1100px shell.
-   Fixed positioning keeps them clear of the content; they never push, shrink,
-   or overlap the site. Hidden below a breakpoint where gutters are too small. */
-.bw-side-ads { pointer-events: none; }
-.bw-side-ad {
-  position: fixed;
-  top: 166px;
-  width: 300px;
-  z-index: 2;
-  pointer-events: auto;
-}
-.bw-side-ad::before {
-  content: "ADVERTISEMENT";
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(44, 58, 22, 0.72);
-  font: 700 9px/12px Arial, sans-serif;
-  letter-spacing: 1.3px;
-}
-.bw-side-ad--left { left: max(12px, calc((100vw - 1100px) / 2 - 312px)); }
-.bw-side-ad--right { right: max(12px, calc((100vw - 1100px) / 2 - 312px)); }
-@media (max-width: 1723px) { .bw-side-ad { display: none; } }
-
 /* ---------- Play page: embedded game viewport (native 940x653) ---------- */
 .bw-game-page { margin: 4px 0 18px; }
 .bw-game-head {

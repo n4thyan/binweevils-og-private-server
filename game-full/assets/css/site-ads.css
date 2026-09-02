@@ -9,8 +9,6 @@
    Rules (per finishing-pass spec):
    - BANNER / LEADERBOARD  -> wide horizontal creatives only (728x90, 970x90, 970x250)
    - RECTANGLE / MPU       -> ~300x250 / square creatives only
-   - PORTRAIT              -> tall creatives only (used only where a deliberate
-                             portrait slot exists; none on the homepage)
    - Each placement draws ONLY from a same-format creative pool (site/config.php).
    ============================================================ */
 .bw-ad-wrap {
@@ -71,15 +69,6 @@
   width: min(300px, 100%);
   height: 250px;
   aspect-ratio: 300 / 250;
-}
-
-/* Format: PORTRAIT / SKYSCRAPER (tall). Desktop side gutters only. */
-.bw-ad-slot--skyscraper {
-  width: min(300px, 100%);
-  height: 600px;
-  aspect-ratio: 300 / 600;
-  background: #46bdee;                 /* Bin Weevils sky — letterbox reads as branded, not empty */
-  border-color: #2f9fd1;
 }
 
 /* Creatives are stacked and revealed by rotation. Each fills the SLOT box

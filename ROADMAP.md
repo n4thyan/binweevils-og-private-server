@@ -653,12 +653,12 @@ owner's manual run in the real Electron/PepperFlash client.
   for the hero, account panel and My Weevil. The header avatar uses `data-weevil-crop="head"` + a CSS zoom
   into the head region, giving a face/head-shot instead of a squeezed full body.
 - **Advert system (DONE, verified)** — creatives grouped by compatible format: leaderboard/banner
-  (top of homepage + page banners on Create a Weevil & Download), MPU/rectangle (home rectangle),
-  portrait/skyscraper (desktop side gutters, 300×600, exact creative match). Fixed slot dims +
-  `object-fit: contain`, no layout shift, empty slots hidden. **Side rails are hidden below 1723px by design**
-  (visible at ≥1724px, e.g. 1920) so they never overlap the 1100px shell. All creative assets serve HTTP 200
-  at the slot's native dimensions. The Download page's old orange "Important" panel was replaced with a
-  Sponsor banner slot.
+  (top of homepage + page banners on Create a Weevil & Download) and MPU/rectangle (home rectangle).
+  Fixed slot dimensions + `object-fit: contain` prevent layout shift, and empty slots stay hidden.
+  The external 300×600 left/right desktop rails were cleanly removed on 2026-09-02; the centred 1100px
+  shell and outdoor background now occupy the layout without gutter placeholders. All remaining creative
+  assets serve HTTP 200 at the slot's native dimensions. The Download page's old orange "Important" panel
+  was replaced with a Sponsor banner slot.
 - **Homepage dev-status strip (DONE)** — the "Game server / Weevils online / Build" diagnostic strip was
   removed. Bin Bulletin kept. The online count ("● N Weevils online") is now a small header element
   (logged-in and logged-out) fed by the existing `/site/server-status.php` poller. No fabricated counts.

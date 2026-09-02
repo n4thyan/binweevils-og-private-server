@@ -1,12 +1,5 @@
     </main>
 
-    <?php if(site_has_ads('site-side-left') || site_has_ads('site-side-right')): ?>
-    <div class="bw-side-ads" aria-hidden="true">
-        <aside class="bw-side-ad bw-side-ad--left"><?php site_ad_slot('site-side-left', 'skyscraper'); ?></aside>
-        <aside class="bw-side-ad bw-side-ad--right"><?php site_ad_slot('site-side-right', 'skyscraper'); ?></aside>
-    </div>
-    <?php endif; ?>
-
     <footer class="bw-footer">
         <div class="bw-footer-weevil">
             <img src="/assets/images/weevil.png" alt="" aria-hidden="true">

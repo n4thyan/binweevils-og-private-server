@@ -39,7 +39,6 @@ return [
     // pool of the same shape as its slot:
     //   site-top      -> LEADERBOARD (wide/highizontal: ~728x90, 970x90, 970x250)
     //   home-rectangle-> MPU/RECTANGLE (approximately 300x250 / square)
-    //   site-portrait -> PORTRAIT (tall) — only used where a portrait slot exists
     // Measured source dimensions (ffmpeg probe):
     //   bw-ad-1/2.mp4 = 1296x1080  (1.2:1  -> MPU/rectangle pool)
     //   bw-ad-3/4.mp4 = 1920x236   (8.1:1  -> leaderboard/banner pool)
@@ -59,14 +58,6 @@ return [
             ['type' => 'image', 'src' => '/assets/ads/bw-ad-rectangle-static.png', 'href' => '', 'label' => 'Play games in Bin Weevils', 'duration' => 12],
             ['type' => 'video', 'src' => '/assets/ads/bw-ad-1.mp4', 'poster' => '/assets/ads/bw-ad-rectangle-static.png', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
             ['type' => 'video', 'src' => '/assets/ads/bw-ad-2.mp4', 'poster' => '/assets/ads/bw-ad-2-poster.png', 'href' => '', 'label' => 'Bin Weevils', 'duration' => 14],
-        ],
-        // Skyscraper / portrait slot (desktop side gutters, outside the shell).
-        // Tall creatives only — never a stretched banner/rectangle.
-        'site-side-left' => [
-            ['type' => 'image', 'src' => '/assets/ads/bw-side-play.png', 'href' => '/game.php', 'label' => 'Play Bin Weevils'],
-        ],
-        'site-side-right' => [
-            ['type' => 'image', 'src' => '/assets/ads/bw-side-community.png', 'href' => '/community/', 'label' => 'Visit the Bin Weevils community'],
         ],
     ],
 

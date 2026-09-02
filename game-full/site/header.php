@@ -13,11 +13,11 @@ $siteHeaderTitle = $siteLoggedIn ? site_cosmetic_equipped_value($siteCosmetics, 
     <meta name="theme-color" content="#70b52d">
     <title><?php echo site_e($sitePageTitle); ?> · Bin Weevils</title>
     <link rel="icon" href="/assets/images/weevil.png" type="image/png">
-    <link rel="stylesheet" href="/assets/css/site-redesign.css?v=9">
+    <link rel="stylesheet" href="/assets/css/site-redesign.css?v=10">
     <link rel="stylesheet" href="/assets/css/site-preferences.css?v=1">
     <link rel="stylesheet" href="/assets/css/site-live.css?v=1">
     <link rel="stylesheet" href="/assets/css/site-rewards.css?v=1">
-    <link rel="stylesheet" href="/assets/css/site-ads.css?v=5">
+    <link rel="stylesheet" href="/assets/css/site-ads.css?v=6">
 </head>
 <body>
 <div class="bw-page-shell"<?php echo $siteLoggedIn ? ' data-account-live' : ''; ?>>
