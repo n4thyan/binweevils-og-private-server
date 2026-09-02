@@ -2,6 +2,7 @@
 
 Date: 2026-09-02
 Status: READ-ONLY DESIGN — no schema, endpoints, or renderers implemented yet
+UPDATED: Added SECTION 13 — Rendering Recovery Findings
 
 ## 1. PURPOSE
 
@@ -35,43 +36,35 @@ Database `users` table already contains:
 
 No existing cosmetic/profile/backdrop/level-star columns were found in `users` during this read-only audit.
 
-Backend already has:
+## 3. KEY FINDING: STAR COLOUR IS LEVEL-DERIVED, NOT COSMETIC
 
-- `game-full/php2/weevil/setLevelColour.php` — NOT present yet; planned
-- `game-full/php2/backdrops/*` — NOT present yet; planned
-- Live-recon evidence proves observed request contracts only
+From decompiled `StarColourer.as`:
 
-Recovered client evidence:
+```actionscript
+public static function applyColour(param1:Sprite, param2:int) : void
+{
+    if(param2 >= 80) { /* colour 1 */ }
+    else if(param2 >= 70) { /* colour 2 */ }
+    // ... 10 fixed thresholds ...
+    else { /* default colour */ }
+}
+```
 
-- `brainStrain_10_06_13.swf` decompilation confirms Brain Strain endpoints match local backend exactly — ALREADY CORRECT
-- `lotto_01_03_21.swf` decompilation proves 6 Lotto endpoint contracts; bootstrap present, follow-on handlers absent
-- `loyaltyCard_28_11_13.swf` decompilation proves `getProgress`, `getStamp`, `finalReward`, `getVouchers` contracts
-- No decompilation of `backdropUI_230425b.swf` was possible because it is not in the local recovered corpus
+**IMPORTANT:** Current implementation applies colour based on numeric level thresholds. This is NOT a cosmetic selection system.
 
-## 3. RECOVERED LIVE EVIDENCE
+### Proposed Change Required
 
-From HAR/SFS capture 2026-09-02:
+To support level-star style cosmetics, `setStarClr()` must be modified to:
 
-- `POST /php2/weevil/setLevelColour.php` with `userIDX,level,timer,hash`
-- `GET /php2/backdrops/getOwnedBackdrops.php`
-- `GET /php2/backdrops/getShopItems.php`
-- `GET /php2/backdrops/getUnlockableBackdrops.php`
-- Asset URLs: `assetsbackdrops/default.swf`, `assetsbackdrops/backdropUI_230425b.swf`, `externaluis/glowingStars.swf`, `level*.swf` (level0-90 range observed)
+1. Check for `equippedLevelStarStyleID` on player profile
+2. If style ID present and valid, load custom asset
+3. Otherwise, fall back to original level-derivative colour
 
-Response bodies for these routes were NOT captured.
+This is a **breaking change** to the UI rendering path and requires recovered assets (`glowingStars.swf`, `levelXX.swf`) to implement.
 
-## 4. ORIGINAL CLIENT EVIDENCE
+## 4. BACKDROP ARCHITECTURE
 
-- No decompilation of backdrop/level-colour SWFs was completed in this pass because:
-  - `backdropUI_230425b.swf` is not in the local recovered corpus
-  - `cdn.binweevils.app` download attempts returned HTML/redirect pages, not SWF binaries
-  - No alternate download path was available
-
-This means the exact client-consumed response fields for backdrop and level-colour endpoints remain UNKNOWN until SWF recovery is possible.
-
-## 5. BACKDROP ARCHITECTURE
-
-### 5.1 DATA MODEL (PROPOSED — NOT CREATED)
+### 4.1 Data Model (PROPOSED — NOT CREATED)
 
 **Table: `backdropCatalogue`**
 
@@ -95,24 +88,25 @@ This means the exact client-consumed response fields for backdrop and level-colo
 - `equippedBackdropID` INT NULL — FK to `backdropCatalogue.backdropID`
 - NULL or 0 = default backdrop
 
-### 5.2 DEFAULT BEHAVIOUR
+### 4.2 BLOCKER: Player-Card Rendering Mechanism Unknown
 
-If `equippedBackdropID` is NULL/0, the player-card renderer uses a deterministic default backdrop (e.g. `default.swf` or a built-in background).
+`mainProfile.swf` exists in local corpus but:
 
-### 5.3 VALIDATION RULE
+- Decompilation requires Java runtime (ffdec-cli available but unusable)
+- String extraction yielded no profile/backdrop references
+- Cannot determine if backdrop is hard-coded or replacement layer
 
-Server MUST reject equip/purchase requests for backdrops the player does not own.
+**REQUIRED BEFORE IMPLEMENTATION:**
 
-Future XP shop purchase flow:
+1. Decompile `mainProfile.swf` or obtain decompiled AS
+2. Identify backdrop/background display object
+3. Confirm render path accepts external asset or dynamic fill
 
-1. Client requests reward purchase
-2. Server verifies reward exists, enabled, not owned, meets requirement
-3. Server grants ownership (`playerBackdrops` INSERT)
-4. Client may then equip cosmetic
+See `RENDERING-RECOVERY.md` for full analysis.
 
-## 6. LEVEL STAR ARCHITECTURE
+## 5. LEVEL STAR ARCHITECTURE
 
-### 6.1 DATA MODEL (PROPOSED — NOT CREATED)
+### 5.1 Data Model (PROPOSED — NOT CREATED)
 
 **Table: `levelStarStyles`**
 
@@ -133,90 +127,68 @@ Future XP shop purchase flow:
 **Field in `users`:**
 
 - `equippedLevelStarStyleID` INT NULL — FK to `levelStarStyles.styleID`
-- NULL or 0 = default star appearance
+- NULL or 0 = default level-derivative star
 
-### 6.2 ENDPOINT COMPATIBILITY
+### 5.2 BLOCKER: Level-Star Style Assets Not Recovered
 
-The recovered client sends:
+Assets `glowingStars.swf`, `level0.swf` through `level90.swf`:
 
-`POST /php2/weevil/setLevelColour.php` with `userIDX,level,timer,hash`
+- NOT in local recovered corpus
+- Download attempts to cdn.binweevils.app returned HTML/redirect, not SWF binary
+- No decompiled evidence of style catalog exists
 
-The field name `level` in this request is a CLIENT CONTRACT NAME, NOT a gameplay level change.
+**REQUIRED BEFORE IMPLEMENTATION:**
 
-Our endpoint implementation MUST translate this client value to our internal `equippedLevelStarStyleID`.
+1. Obtain actual level-star style SWFs from recovered Bin Weevils assets
+2. Decompile to extract asset paths and style IDs
+3. Verify client has style-switching logic
 
-Example translation:
+## 6. PLAYER CARD DATA FLOW
 
-- Client sends `level=5` → server maps to `styleID=5` in `levelStarStyles`
-- Server updates `users.equippedLevelStarStyleID = 5`
+### 6.1 Current Local Evidence
 
-The server must validate that `styleID` is owned by the player before equipping.
+`charactersMain.xml` exists and defines character data:
 
-## 7. DB MODEL OPTIONS
+```xml
+<characters>
+  <character>
+    <img>images.xml</img>
+    <class>avatarClass</class>
+    <name>username</name>
+    <level>1</level>
+    <location>roomID</location>
+    <weevil>
+      <avatar>avatarID</avatar>
+      <weevilName>weevilName</weevilName>
+    </weevil>
+  </character>
+</characters>
+```
 
-Option A — New dedicated tables (`backdropCatalogue`, `playerBackdrops`, `levelStarStyles`, `playerLevelStars`)
+### 6.2 Unknowns (NEED SWF DECOMPILATION)
 
-- Cleanest separation
-- Minimal migration risk
-- Easy to extend with new reward types
+- How `mainProfile.swf` requests and parses player data
+- Whether backdrop/background is in the response
+- How backdrop asset path is used (Loader, frame, replace, etc.)
+- Whether backdrop field exists: `backdropID`, `backgroundID`, etc.
 
-Option B — Generic reward/cosmetic tables
+## 7. ENDPOINT/API MODEL
 
-- More flexible but adds abstraction overhead now
-- Recommended only if many reward types are imminent
-
-**RECOMMENDATION: Option A** for now. Keep it simple until more cosmetic types are confirmed.
-
-## 8. ENDPOINT/API MODEL (PROPOSED — NOT IMPLEMENTED)
-
-### Backdrop
+### Backdrop (PROPOSED — NOT IMPLEMENTED)
 
 - `GET  /php2/backdrops/getCatalogue.php` — all enabled backdrops
 - `GET  /php2/backdrops/getOwnedBackdrops.php` — player's owned set
 - `POST /php2/backdrops/equipBackdrop.php` — secure `userIDX,backdropID,timer,hash`
-- `POST /php2/backdrops/unequipBackdrop.php` — optional; or set NULL directly
 
-### Level Star
+### Level Star (PROPOSED — NOT IMPLEMENTED)
 
 - `GET  /php2/weevil/getLevelStarCatalogue.php` — all enabled styles
 - `GET  /php2/weevil/getOwnedLevelStars.php` — player's owned set
-- `POST /php2/weevil/setLevelColour.php` — secure `userIDX,level,timer,hash` (client name preserved)
+- `POST /php2/weevil/setLevelColour.php` — secure `userIDX,level,timer,hash`
 
-All catalogue endpoints should be GET (or auth-optional JSON). Equip endpoints must be secure POST with hash.
+**NOTE:** `setLevelColour.php` request name preserves client contract, but server must translate `level` to `equippedLevelStarStyleID`.
 
-## 9. PLAYER-CARD RENDERING HOOK
-
-Current player-card/profile UI evidence:
-
-- `game-full/cdn.binw.net/externalUIs/charactersProfile/mainProfile.swf` exists locally
-- `charactersMain.xml` and `charactersXML/*.xml` define character data
-- No existing PHP endpoint was found that returns profile card data with a backdrop field
-
-**Rendering requirements:**
-
-A. The player-card Flash UI must be able to load an external SWF or image as the card background.
-B. The backend must supply the equipped backdrop asset path (or default) in the player-card data response.
-C. If no new backend field is added, the client may request the backdrop asset independently after reading equipped state.
-
-**Unknown:** Whether `mainProfile.swf` already supports external backdrops. This requires decompilation, which was not possible this pass.
-
-## 10. LEVEL-STAR RENDERING HOOK
-
-Current level rendering:
-
-- `users.level` is the gameplay level
-- The HUD/level display is in `core40.swf` and related UI SWFs
-- `glowingStars.swf` and `level0-90.swf` are referenced by the live server but NOT in the local corpus
-
-**Rendering requirements:**
-
-A. The level-star cosmetic must render independently of `users.level`.
-B. The client needs a way to select the equipped style ID and load the corresponding asset.
-C. Server sends `equippedLevelStarStyleID` alongside level data.
-
-**Unknown:** Exact rendering path in core40 or external SWFs. Requires SWF decompilation.
-
-## 11. OWNERSHIP VALIDATION
+## 8. OWNERSHIP VALIDATION
 
 Common pattern for both cosmetics:
 
@@ -234,16 +206,7 @@ Equip endpoint:
 4. Update equipped field
 5. Return success + current equipped state
 
-Purchase endpoint (future XP shop):
-
-1. Verify session
-2. Verify reward exists, enabled
-3. Verify player does not already own it
-4. Verify player meets lifetime XP/prestige requirement
-5. Grant ownership
-6. Return success
-
-## 12. FUTURE XP/PRESTIGE SHOP INTEGRATION
+## 9. FUTURE XP/PRESTIGE SHOP INTEGRATION
 
 The XP/prestige shop will:
 
@@ -254,14 +217,14 @@ The XP/prestige shop will:
 
 The cosmetics layer does NOT need to know about XP costs. The shop layer handles pricing.
 
-## 13. MIGRATION/COMPATIBILITY
+## 10. MIGRATION/COMPATIBILITY
 
 - New columns in `users` (`equippedBackdropID`, `equippedLevelStarStyleID`) should default to NULL/0
-- Default backdrop/star should be handled client-side or via a server-side constant
+- Default backdrop/star should render when NULL/0 (either deterministic default or level-derived fallback for stars)
 - No existing data migration required for phased rollout
 - Old players without equipped values see defaults
 
-## 14. TEST PLAN
+## 11. TEST PLAN
 
 Once implemented:
 
@@ -289,38 +252,79 @@ Once implemented:
 4. Verify ownership granted on purchase
 5. Verify cosmetics can be equipped after purchase
 
-## 15. IMPLEMENTATION PHASES
+## 12. IMPLEMENTATION PHASES
 
-### PHASE A — Cosmetic Foundations (NO implementation this pass)
+### PHASE A — Cosmetic Foundations (BLOCKED)
 - DB tables: `backdropCatalogue`, `playerBackdrops`, `levelStarStyles`, `playerLevelStars`
 - `users` columns: `equippedBackdropID`, `equippedLevelStarStyleID`
-- Admin/test mechanism to grant cosmetics
+- **BLOCKER:** Requires recovered client SWFs for render hook integration
 
-### PHASE B — Backdrop Rendering
-- Backend: `getOwnedBackdrops`, `equipBackdrop`
+### PHASE B — Backdrop Implementation (BLOCKED)
+- Backend: `getCatalogue`, `getOwned`, `equipBackdrop`
 - Player-card response includes equipped backdrop
 - Client renders backdrop asset
+- **BLOCKER:** `mainProfile.swf` decompile required
 
-### PHASE C — Level-Star Rendering
-- Backend: `getOwnedLevelStars`, `setLevelColour`
+### PHASE C — Level-Star Implementation (BLOCKED)
+- Backend: `getCatalogue`, `getOwned`, `setLevelColour` translation
 - Profile/HUD response includes equipped style
-- Client renders level-star asset
+- Client renders star style asset
+- **BLOCKER:** `glowingStars.swf`, `levelXX.swf` not recovered
 
-### PHASE D — Admin/Test Grant
-- Simple admin endpoint or direct DB insert path
+### PHASE D — Admin/Test Grant (BLOCKED)
+- Admin endpoint or direct DB insert path
 - Allows testing cosmetics without XP shop
+- **BLOCKER:** Schema not created
 
-### PHASE E — XP/Prestige Shop (post-release)
+### PHASE E — XP/Prestige Shop (deferred)
 - Reward catalogue
 - Purchase flow
 - Lifetime XP/prestige requirements
 - Cost calculation and deduction
 
-## 16. OPEN QUESTIONS
+## 13. RENDERING RECOVERY FINDINGS
 
-1. **SWF recovery**: Can `backdropUI_230425b.swf` and `glowingStars.swf` be obtained from the original asset corpus or alternate source? Decompilation is blocked until binaries are available.
-2. **Client render path**: Does `mainProfile.swf` already support external backdrops? Requires decompilation.
-3. **Level-star ID space**: What IDs/styles actually exist in the original client? Requires SWF recovery.
-4. **Prestige interaction**: Does prestige unlock additional star styles or backdrops? Unknown until client evidence is recovered.
-5. **Default asset**: What is the deterministic default backdrop/star for new players? Likely `default.swf` and default core40 star.
-6. **HAR response contract**: What exact JSON/variables do the observed endpoints return? Missing response bodies must be recovered from SWF decompilation before implementation.
+### BLOCKERS BEFORE IMPLEMENTATION
+
+#### Player Card Backdrop
+| Requirement | Status | Notes |
+|-------------|--------|-------|
+| `mainProfile.swf` decompilation | **BLOCKED** | Java runtime unavailable, ffdec-cli JAR exists but no Java |
+| Backdrop insertion layer | **UNKNOWN** | Cannot determine from string extraction |
+| Response contract field | **UNKNOWN** | Need SWF to confirm `backdropID` etc. |
+
+#### Level-Star Styles
+| Requirement | Status | Notes |
+|-------------|--------|-------|
+| `glowingStars.swf` | **MISSING** | Not in local corpus, download failed |
+| `level0-90.swf` | **MISSING** | Not in local corpus, download failed |
+| Style catalog decompile | **BLOCKED** | Assets not available |
+
+#### Existing Assets
+- `ps_backdrop_beach/cny/fireworks.swf` are **Tycoon promotional items**, NOT player-card backgrounds
+- No character profile backdrop assets found locally
+
+### CAN WE IMPLEMENT BACKDROP FOUNDATION NOW?
+
+**NO** — The rendering hook (`mainProfile.swf`) has not been decompiled. We cannot:
+
+1. Know if the profile UI supports replaceable backgrounds
+2. Know how to pass backdrop asset path to the client
+3. Implement non-breaking player-card changes
+
+### CAN WE IMPLEMENT LEVEL-STAR STYLE SUPPORT NOW?
+
+**NO** — The style assets (`glowingStars.swf`, level SWFs) do not exist in our recovered corpus. The current `StarColourer` implementation is **level-derivative**, not style-based. To add cosmetic support:
+
+1. Obtain actual star style SWFs
+2. Modify `WeevilStatManager.setStarClr()` to check for style override
+3. Load custom asset based on `equippedLevelStarStyleID`
+
+### REQUIRED NEXT STEPS
+
+1. **Asset recovery**: Find/obtain `mainProfile.swf` (decompiled), `glowingStars.swf`, `levelXX.swf`
+2. **Decompilation**: Use ffdec, JPEXS, or swfstrings to extract ActionScript contracts
+3. **Render hook identification**: Locate backdrop/background layer in profile SWF
+4. **Response field discovery**: Confirm backdrop/star style fields in profile endpoint response
+
+Only then can the cosmetic foundation be safely implemented without breaking the existing rendering system.
