@@ -4056,7 +4056,7 @@
 			if($loggedIn == true) {
 
                 $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-				if($questID != NULL || $questID != "") {
+                if($questID != NULL && $questID != "") {
 					$q = $db->prepare("INSERT INTO `tasksCompletedByUsers` (`weevilName`, `tasks`, `idx`, `questID`) VALUES (?, ?, ?, ?)");
 					$q->bind_param('ssss', $username, $taskID, $idx, $questID);
 				}
