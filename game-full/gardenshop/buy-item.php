@@ -26,7 +26,23 @@ if(isset($_POST)) {
                 if($bought == true){
                     removeMulch($weevilData['id'], $itemData['price']);
                     addExperience($weevilData['id'], $itemData['expPoints']);
-                    echo "err=10&mulch=".strval($weevilData['mulch']-$itemData['price'])."&xp=".strval($weevilData['xp'] + $itemData['expPoints'])."&quantityPurchased=1&price=".$itemData['price'];
+
+                    // Achievement: record buy_garden_item after authoritative success.
+                    $achDb = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                    $achDb->begin_transaction();
+                    try {
+                        $svc = new AchievementService((int)$weevilData['id'], $_COOKIE['weevil_name'], $achDb);
+                        $svc->recordActivity('buy_garden_item', (int)$itemId, 1, null, true);
+                        $newIds = $svc->evaluateForActivity('buy_garden_item', (int)$itemId, 1, null);
+                        $achDb->commit();
+                        $achCsv = $newIds ? implode(',', $newIds) : '0';
+                    } catch (Throwable $e) {
+                        $achDb->rollback();
+                        $achCsv = '0';
+                    }
+                    $achDb->close();
+
+                    echo "err=10&mulch=".strval($weevilData['mulch']-$itemData['price'])."&xp=".strval($weevilData['xp'] + $itemData['expPoints'])."&quantityPurchased=1&price=".$itemData['price']."&completedAchievements=".$achCsv;
                 }
                 else{
                     echo 'res=999';

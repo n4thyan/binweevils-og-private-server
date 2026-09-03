@@ -275,8 +275,7 @@ class Weevil {
 
     changeRoom(roomName, x, y, z, r, locId, weevilList = undefined, socketIdList = undefined) {
         if(this.loggedIn) {
-            // will need to grab the weevils from list that are
-            // also in this area, but we can do this another time
+            var oldLocId = this.currentLocId;
 
             if(parseInt(locId) == this.currentLocId && roomName.toString().substr(0, 5) != "nest_" && roomName != "Main") {
                 this.softDrop();
@@ -358,6 +357,38 @@ class Weevil {
 
             var joinok = this.returnJoinOK(this.currentRoomId, weevilList, socketIdList);
             this.send(joinok);
+            
+            // Achievement: record enter_location activity when the weevil
+            // actually changes location (not nest_, not a same-location rejoin,
+            // and not the placeholder Main/room 0/260).
+            // Uses the Node.js db pool (same 'bwps' database).
+            if (this.currentRoomId !== 0 && this.currentRoomId !== 260
+                && roomName.toString().substr(0, 5) !== "nest_"
+                && roomName !== "Main"
+                && oldLocId !== parseInt(locId)) {
+                var self = this;
+                var enterRoomId = this.currentRoomId;
+                db.query(
+                    "INSERT INTO achievement_activity (userID, activityType, targetID) VALUES (?, 'enter_location', ?)",
+                    [this.userID, enterRoomId],
+                    function(err) {
+                        if (err) console.error("enter_location activity error:", err);
+                        // Evaluate enter_location achievements (Festive Fun / Weevil Holiday).
+                        db.query(
+                            "SELECT achievementId FROM achievementscompleted WHERE idx = ? AND achievementId IN (138,139) FOR UPDATE",
+                            [self.userID],
+                            function(err2, rows) {
+                                if (err2 || rows.length >= 2) return;
+                                db.query(
+                                    "INSERT IGNORE INTO achievementscompleted (idx, achievementId, is_it_new) VALUES (?, 138, 1), (?, 139, 1)",
+                                    [self.userID, self.userID],
+                                    function(err3) { if (err3) console.error("enter_location complete error:", err3); }
+                                );
+                            }
+                        );
+                    }
+                );
+            }
             
             // testing to get weevils showing for others when room joined
             for(var id in socketIdList) {

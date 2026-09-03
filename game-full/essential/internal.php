@@ -1627,8 +1627,14 @@
 
                 $res = $q->get_result();
 
-                if($q->affected_rows == 1)
-                return true;
+                if($q->affected_rows == 1) {
+                    // Achievement: record earn_trophy activity after authoritative grant,
+                    // then evaluate earn_trophy achievements (Best Nest / Best Garden).
+                    // targetID = level (the trophy level awarded)
+                    $svc = new AchievementService($userIDX, $weevilname, $db);
+                    $svc->recordAndEvaluate('earn_trophy', $level, 1, null, false);
+                    return true;
+                }
             }
         }
 
