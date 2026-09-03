@@ -203,6 +203,9 @@ NUM_STAMPS    = 30
 5. **Duplicate stamp** — verified `lastStampDay` comparison returns responseCode 2.
 6. **Card 16 / Stamp 30** — verified `doshGold 5000 tycoonOnly=1` in DB.
 7. **All PHP files** — passed syntax check (`php -l`).
+8. **Electron local client** — successfully opened during the recovery session; user logged in
+   to the local Bin Weevils client at `localhost` and reached the game. This confirms the local
+   stack (Apache + MySQL + Node SFS bridge) was live and serving during this session.
 
 ## Runtime SWF path
 
@@ -219,12 +222,16 @@ Repo MD5: `59851414e306641c5bd17527252ba233`
 htdocs MD5: `59851414e306641c5bd17527252ba233`
 File size: 890,552 bytes (both identical)
 
-## Original UI entry point
+## UI entry point (DEFERRED — follows the checkpoint)
 
-- The original ActionScript entry point for the Loyalty Card UI was recovered from `loyaltyCard_28_11_13.swf` (class `LoyaltyCardMyVouchers` and related).
-- The original trigger/loader is `myPuzzlesClickHandler` which loads `externalUIs/loyaltyPuzzles_22_06_12.swf` for the puzzle minigame system.
-- The normal Loyalty Card UI trigger in the original client is embedded in the main game shell. The current client build uses `loyaltyCard_28_11_13.swf` as the runtime SWF at the path above.
-- **The original trigger is present in the current client build.** No custom menu entry was invented. No changes were made to the UI entry point.
+KNOWN FOLLOW-UP — newer Nest SWF contains the original clickable Loyalty Card trigger.
+- The Loyalty UI SWF itself (`loyaltyCard_28_11_13.swf`) is recovered and served at
+  `http://localhost/cdn.binw.net/externalUIs/loyaltyCard_28_11_13.swf` (repo + htdocs identical).
+- The backend is implemented and the DB is seeded.
+- The original clickable Loyalty Card button/trigger that opens this UI lives in a newer Nest SWF
+  and has NOT yet been recovered or integrated into the current client build.
+- No custom Settings menu entry or invented client-side trigger was added. The UI entry point is
+  intentionally deferred as the documented follow-up after this backend checkpoint.
 
 ## Puzzle UI status
 
