@@ -4533,6 +4533,473 @@
 		return null;
 	}
 
+	function buyPet($weevilName, $petName, $bedID, $bowlID, $bodyColour, $armColour1, $armColour2, $eyeColour1, $eyeColour2, $rented = 0) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$hadRentedPet = false;
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("SELECT * FROM pets WHERE ownerID = ?;");
+				$q->bind_param('s', $weevilName);
+				$q->execute();
+				
+				$res = $q->get_result();
+
+				if($res = $res->fetch_array(MYSQLI_ASSOC)) {
+					if($res['rented'] == 1) {
+						if(time() < strtotime($res['adoptedDate']) + 86400)
+							return false;
+
+						$q = $db->prepare("DELETE pets, weevilitems, petacquiredskills, petacquiredtricks FROM pets INNER JOIN weevilitems ON weevilitems.ID IN (pets.bowlID, pets.bedID) INNER JOIN petacquiredskills ON petacquiredskills.ownerID = ? INNER JOIN petacquiredtricks ON petacquiredtricks.ownerID = ? WHERE pets.ownerID = ? AND pets.rented = 1;");
+						$q->bind_param('sss', $weevilName, $weevilName, $weevilName);
+						$q->execute();
+
+						if($q->affected_rows <= 0)
+							return false;
+
+						$hadRentedPet = true;
+					}
+					else return false; // already has pet
+				}
+
+				$fuel = mt_rand(50, 100);
+				$mentalEnergy = mt_rand(50, 100);
+				$health = mt_rand(30, 100);
+				$fitness = mt_rand(30, 100);
+				$nameHash = hash('sha256', $weevilName . $petName . $bedID. $bowlID); // probably not too secure but can be changed anyway
+
+				$q = $db->prepare("INSERT INTO pets (`ownerID`, `name`, `bedID`, `bowlID`, `bc`, `ac1`, `ac2`, `ec1`, `ec2`, `fuel`, `mentalEnergy`, `health`, `fitness`, `rented`, `nameHash`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				$q->bind_param('sssssssssssssss', $weevilName, $petName, $bedID, $bowlID, $bodyColour, $armColour1, $armColour2, $eyeColour1, $eyeColour2, $fuel, $mentalEnergy, $health, $fitness, $rented, $nameHash);
+				$q->execute();
+
+				if($q->affected_rows == 1)
+				return array($db->insert_id, $hadRentedPet);
+			}
+		}
+
+		return null;
+	}
+
+	function insertPetSkills($weevilName, $petID, $rented = 0) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$skills = [
+					[
+						'skillID'    => 1,
+						'obedience'  => 20,
+						'skillLevel' => 0
+					],
+					[
+						'skillID'    => 2,
+						'obedience'  => 20,
+						'skillLevel' => 0
+					],
+					[
+						'skillID'    => 3,
+						'obedience'  => 100,
+						'skillLevel' => 0
+					],
+					[
+						'skillID'    => 4,
+						'obedience'  => 100,
+						'skillLevel' => 0
+					],
+					[
+						'skillID'    => 5,
+						'obedience'  => 100,
+						'skillLevel' => 0
+					],
+					[
+						'skillID'    => 6,
+						'obedience'  => 20,
+						'skillLevel' => $rented == 1 ? 20 : 0
+					],
+					[
+						'skillID'    => 7,
+						'obedience'  => 20,
+						'skillLevel' => $rented == 1 ? 10 : 0
+					],
+					[
+						'skillID'    => 8,
+						'obedience'  => 100,
+						'skillLevel' => $rented == 1 ? 30 : 0
+					],
+					[
+						'skillID'    => 10,
+						'obedience'  => 20,
+						'skillLevel' => $rented == 1 ? 10 : 0
+					],
+					[
+						'skillID'    => 11,
+						'obedience'  => 20,
+						'skillLevel' => $rented == 1 ? 20 : 0
+					],
+					[
+						'skillID'    => 12,
+						'obedience'  => 20,
+						'skillLevel' => 0
+					],
+					[
+						'skillID'    => 13,
+						'obedience'  => 20,
+						'skillLevel' => 0
+					],
+					[
+						'skillID'    => 14,
+						'obedience'  => 20,
+						'skillLevel' => $rented == 1 ? 30 : 0
+					],
+					[
+						'skillID'    => 15,
+						'obedience'  => 30,
+						'skillLevel' => 0
+					],
+					[
+						'skillID'    => 16,
+						'obedience'  => 30,
+						'skillLevel' => 0
+					],
+					[
+						'skillID'    => 17,
+						'obedience'  => 30,
+						'skillLevel' => 0
+					],
+				];
+
+				$insertData = "";
+				foreach($skills as $skill) {
+					$insertData .= "('$weevilName', '$petID', ". $skill['skillID'] .", ". $skill['obedience'] .", ". $skill['skillLevel'] ."),";
+				}
+				$insertData = rtrim($insertData, ',');
+
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("INSERT INTO petacquiredskills (`ownerID`, `petID`, `skillID`, `obedience`, `skillLevel`) VALUES $insertData;");
+				$q->execute();
+
+				return $q->affected_rows > 0;
+			}
+		}
+
+		return false;
+	}
+
+	function insertPetJugglingTricks($weevilName, $petID) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$filePath = str_replace('\\\\', '/', __DIR__ . '/petJugglingData.csv');
+
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$weevilName = $db->real_escape_string($weevilName);
+				$petID = (int)$petID;
+				$res = $db->query("LOAD DATA LOCAL INFILE '$filePath' INTO TABLE petacquiredtricks FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES (id, aptitude, numBalls, pattern, difficulty, name) SET ownerID = '$weevilName', petID = $petID");
+
+				return $res && $db->affected_rows > 0;
+			}
+		}
+
+		return false;
+	}
+
+	function getPetProfile($petID) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("SELECT p.id, p.ownerID, p.name, p.bc, p.adoptedDate, p.rented, s.skillID, s.obedience, s.skillLevel FROM `pets` as p INNER JOIN `petacquiredskills` as s ON p.id = s.petID WHERE p.id = ? AND s.skillID IN (6,15,16)");
+				$q->bind_param('s', $petID);
+				$q->execute();
+
+				$res = $q->get_result();
+
+				if($res = $res->fetch_all(MYSQLI_ASSOC)) {
+					$profileData = [];
+
+					foreach($res as $pet) {
+						if(empty($profileData)) {
+							$profileData = [
+								'id' => $pet['id'],
+								'ownerId' => $pet['ownerID'],
+								'name' => $pet['name'],
+								'bc' => $pet['bc'],
+								'adoptedDate' => $pet['adoptedDate'],
+								'rented' => $pet['rented'],
+								'skills' => [],
+							];
+						}
+
+						$profileData['skills'][] = [
+							'skillID' => $pet['skillID'],
+							'obedience' => $pet['obedience'],
+							'skillLevel' => $pet['skillLevel'],
+						];
+					}
+
+					return $profileData;
+				}
+			}
+		}
+		
+		return null;
+	}
+
+	function buyPetFood($weevilName, $feeds, $cost) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("INSERT INTO `petfood` (`weevilName`, `feeds`) VALUES (?, ?) ON DUPLICATE KEY UPDATE `feeds` = `feeds` + ?");
+				$q->bind_param('sss', $weevilName, $feeds, $feeds);
+				$q->execute();
+
+				if($q->affected_rows > 0) {
+					$weevilStats = getAllWeevilStatsByName($weevilName);
+					removeMulch($weevilStats['id'], $cost);
+
+					return 'res=1';
+				}
+			}
+		}
+
+		return 'res=999';
+	}
+
+	function feedPet($weevilName) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("SELECT * FROM `petfood` WHERE `weevilName` = ?");
+				$q->bind_param('s', $weevilName);
+				$q->execute();
+
+				$res = $q->get_result();
+
+				if($res = $res->fetch_array(MYSQLI_ASSOC)) {
+					if(intval($res['feeds']) > 0) {
+						$q = $db->prepare("UPDATE `petfood` SET `feeds` = `feeds` - 1 WHERE `weevilName` = ?");
+						$q->bind_param('s', $weevilName);
+						$q->execute();
+
+						if($q->affected_rows == 1)
+						return 'result=' . $res['feeds'];
+					}
+				}
+			}
+		}
+
+		return 'result=';
+	}
+
+	function getPetJugglingTricks($weevilName, $petID) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("SELECT id, aptitude, numBalls, pattern, difficulty, name FROM `petacquiredtricks` WHERE ownerID = ? AND petID = ?");
+				$q->bind_param('ss', $weevilName, $petID);
+				$q->execute();
+
+				$res = $q->get_result();
+
+				if($res = $res->fetch_all(MYSQLI_ASSOC))
+				return $res;
+			}
+		}
+
+		return null;
+	}
+
+	function updatePetStats($weevilName, $petID, $fuel, $mentalEnergy, $fitness) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("SELECT fuel, mentalEnergy, fitness, lastStatChange FROM pets WHERE id = ? AND ownerID = ?");
+				$q->bind_param('ss', $petID, $weevilName);
+				$q->execute();
+
+				$res = $q->get_result();
+
+				if($res = $res->fetch_array(MYSQLI_ASSOC)) {
+					/*if(($mentalEnergy != $res['mentalEnergy'] || $fitness != $res['fitness']) && time() < ($res['lastStatChange'] + 60))
+					return json_encode(["responseCode" => 2]);*/
+					
+					if($fuel > $res['fuel']) {
+						if ($res['fuel'] < 70) {
+							if ($fuel - $res['fuel'] != 30) {
+								$fuel = $res['fuel'];
+							}
+						}
+						else {
+							if ($fuel != 100) {
+								$fuel = $res['fuel'];
+							}
+						}
+					}
+					else if($fuel < $res['fuel']) {
+						if($res['fuel'] - $fuel != 1)
+							$fuel = $res['fuel'];
+					}
+
+					if($mentalEnergy > $res['mentalEnergy']) {
+						if ($res['mentalEnergy'] < 76) {
+							if ($mentalEnergy - $res['mentalEnergy'] != 24 && $mentalEnergy - $res['mentalEnergy'] != 25)
+								$mentalEnergy = $res['mentalEnergy'];
+						}
+						else {
+							if ($mentalEnergy != 100)
+								$mentalEnergy = $res['mentalEnergy'];
+						}
+					}
+					else if($mentalEnergy < $res['mentalEnergy']) {
+						if($res['mentalEnergy'] - $mentalEnergy != 1)
+							$mentalEnergy = $res['mentalEnergy'];
+					}
+
+					$q = $db->prepare("UPDATE pets SET fuel = ?, mentalEnergy = ?, fitness = ?, lastStatChange = ? WHERE id = ? and ownerID = ?");
+					$q->bind_param('ssssss', $fuel, $mentalEnergy, $fitness, time(), $petID, $weevilName);
+					$q->execute();
+
+					if($q->affected_rows == 1)
+					return json_encode(["responseCode" => 1]);
+					else return json_encode(["responseCode" => 2]);
+				}
+			}
+		}
+
+		return json_encode(["responseCode" => 999]);
+	}
+
+	function updatePetSkill($weevilName, $petID, $skillID, $skillLevel, $obedience) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("SELECT * FROM petacquiredskills WHERE ownerID = ? AND petID = ? AND skillID = ?");
+				$q->bind_param('sss', $weevilName, $petID, $skillID);
+				$q->execute();
+
+				$res = $q->get_result();
+
+				if($res = $res->fetch_array(MYSQLI_ASSOC)) {
+					// calculate new skill level here and then compare with client sent skill level
+					$tenScale = floor($res['skillLevel'] / 10) + 1;
+					$gain = 1 / $tenScale;
+					$newSkillLevel = min(100, $res['skillLevel'] + $gain);
+					$newSkillLevel = intval(($newSkillLevel + 1e-6) * 100) / 100;
+					$clientSkillLevel = intval(($skillLevel + 1e-6) * 100) / 100;
+
+					if(abs($clientSkillLevel - $newSkillLevel) >= 0.005) {
+						// value was probably tampered with, use the calculated skill level
+						$skillLevel = $newSkillLevel;
+					}
+
+					$q = $db->prepare("UPDATE petacquiredskills SET skillLevel = ?, obedience = ? WHERE ownerID = ? AND petID = ? AND skillID = ?");
+					$q->bind_param('sssss', $skillLevel, $obedience, $weevilName, $petID, $skillID);
+					$q->execute();
+
+					if($q->affected_rows == 1)
+					return json_encode(["responseCode" => 1]);
+					else return json_encode(["responseCode" => 2]);
+				}
+			}
+		}
+
+		return json_encode(["responseCode" => 999]);
+	}
+
+	function updateJugglingTrick($weevilName, $petID, $trickID, $aptitude, $skillLevel) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("SELECT * FROM petacquiredtricks AS t RIGHT JOIN petacquiredskills AS s ON s.skillID = 8 AND t.petID = s.petID WHERE t.id = ? AND t.ownerID = ? AND t.petID = ?;");
+				$q->bind_param('sss', $trickID, $weevilName, $petID);
+				$q->execute();
+
+				$res = $q->get_result();
+
+				if($res = $res->fetch_array(MYSQLI_ASSOC)) {
+					$newAptitude = min($res['aptitude'] + (20 / $res['difficulty']), 99);
+
+					$tier = intval($res['skillLevel'] / 10) + 1;
+					$skillLevelDelta = $res['numBalls'] / ($tier * $tier);
+					$newSkillLevel = min($res['skillLevel'] + $skillLevelDelta, 100);
+
+					$newAptitude = intval(($newAptitude + 1e-6) * 100) / 100;
+					$clientAptitude = intval(($aptitude + 1e-6) * 100) / 100;
+					$newSkillLevel = intval(($newSkillLevel + 1e-6) * 100) / 100;
+					$clientSkillLevel = intval(($skillLevel + 1e-6) * 100) / 100;
+
+					if(abs($clientAptitude - $newAptitude) >= 0.005) {
+						// value was probably tampered with, use the calculated aptitude
+						$aptitude = $newAptitude;
+					}
+
+					if(abs($clientSkillLevel - $newSkillLevel) >= 0.005) {
+						// value was probably tampered with, use the calculated skill level
+						$skillLevel = $newSkillLevel;
+					}
+
+					$q = $db->prepare("UPDATE petacquiredtricks SET aptitude = ? WHERE id = ? AND ownerID = ? AND petID = ?;");
+					$q->bind_param('ssss', $aptitude, $trickID, $weevilName, $petID);
+					$q->execute();
+
+					if($q->affected_rows == 1) {
+						$q = $db->prepare("UPDATE petacquiredskills SET skillLevel = ? WHERE skillID = 8 AND ownerID = ? AND petID = ?;");
+						$q->bind_param('sss', $skillLevel, $weevilName, $petID);
+						$q->execute();
+
+						if($q->affected_rows == 1)
+						return json_encode(["responseCode" => 1]);
+					}
+				}
+			}
+		}
+
+		return json_encode(["responseCode" => 999]);
+	}
+
+	function changePetDef($weevilName, $weevilIdx, $curMulch, $cost, $bodyColour, $armColour1, $armColour2, $eyeColour1, $eyeColour2) {
+		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
+			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
+
+			if($loggedIn == true) {
+				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+				$q = $db->prepare("SELECT * FROM pets WHERE ownerID = ? AND rented = 0;");
+				$q->bind_param('s', $weevilName);
+				$q->execute();
+
+				$res = $q->get_result();
+
+				if($res = $res->fetch_array(MYSQLI_ASSOC)) {
+					$q = $db->prepare("UPDATE pets SET bc = ?, ac1 = ?, ac2 = ?, ec1 = ?, ec2 = ? WHERE ownerID = ?");
+					$q->bind_param('ssssss', $bodyColour, $armColour1, $armColour2, $eyeColour1, $eyeColour2, $weevilName);
+					$q->execute();
+
+					if($q->affected_rows == 1) {
+						removeMulch($weevilIdx, $cost);
+						return 'responseCode=1&mulch=' . $curMulch - $cost;
+					}
+				}
+			}
+		}
+
+		return 'responseCode=999';
+	}
+
 	function getTop10RichestPlayers() {
         if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId']))
         {

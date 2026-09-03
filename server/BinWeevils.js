@@ -791,6 +791,34 @@ class BinWeevils {
                             }
                         }
                     }
+                    else if(data[3] == "6#1") {
+                        // pet walks through door into a room
+                        weevil.sendPetJoinNestLoc(data[4], data[5], data[6], data[7], data[8], data[9], data[10], data[11], data[12], this.weevils, this.socketIdList);
+                    }
+                    else if (data[3] == "6#2") {
+                        // send pet nest door marking
+                        weevil.sendPetNestDoor(data[4], data[5], data[6], data[7], this.weevils, this.socketIdList);
+                    }
+                    else if (data[3] == "6#3") {
+                        // pet expression
+                        weevil.sendPetExpression(data[4], data[5], data[6], data[7], this.weevils, this.socketIdList);
+                    }
+                    else if (data[3] == "6#4") {
+                        // pet actions
+                        weevil.sendPetAction(data[4], data[5], data[6], data[7], data[8], this.weevils, this.socketIdList);
+                    }
+                    else if (data[3] == "6#5") {
+                        // pet grabs ball
+                        weevil.sendPetGotBall(data[4], data[5], this.weevils, this.socketIdList);
+                    }
+                    else if (data[3] == "6#6") {
+                        // send pet home to nest (used in certain areas like weevil wheels, if the pet isn't riding the owner)
+                        weevil.sendPetHome(data[4], data[6], data[7], this.weevils, this.socketIdList);
+                    }
+                    else if (data[3] == "6#7") {
+                        // pet command
+                        weevil.sendPetCommand(data[4], data[5], data[6], data[7], this.weevils, this.socketIdList);
+                    }
                     else if(data[3] == "7#2") {
                         // chat ban a user
                         weevil.adminChatBan(data[5], data[6], data[7], data[8], this.weevils, this.socketIdList);

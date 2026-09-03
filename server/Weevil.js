@@ -2583,6 +2583,238 @@ class Weevil {
             }
         });
     }
+
+    applyPetState(p, stateStr) {
+        if (!stateStr || stateStr.indexOf("locID:") !== 0) return;
+        var parts = stateStr.split(",");
+        for (var i = 0; i < parts.length; i++) {
+            var kv = parts[i].split(":");
+            if (kv.length !== 2) continue;
+            switch (kv[0]) {
+                case "locID": p.locID = parseInt(kv[1]);  break;
+                case "ps":    p.ps    = parseInt(kv[1]);  break;
+                case "x":     p.x     = this.isInt(kv[1]) ? parseInt(kv[1]) : parseFloat(kv[1]); break;
+                case "y":     p.y     = this.isInt(kv[1]) ? parseInt(kv[1]) : parseFloat(kv[1]); break;
+                case "z":     p.z     = this.isInt(kv[1]) ? parseInt(kv[1]) : parseFloat(kv[1]); break;
+                case "r":     p.r     = this.isInt(kv[1]) ? parseInt(kv[1]) : parseFloat(kv[1]); break;
+            }
+        }
+        p.scale = this.server.locWithScales[p.locID] * 0.5;
+    }
+
+    toRawTarget(prefixed, pet, cb) {
+        if (!prefixed || prefixed.indexOf("locID:") !== 0) return cb(prefixed);
+        var parts = prefixed.split(",");
+        for (var i = 0; i < parts.length; i++) {
+            var kv = parts[i].split(":");
+            if (kv.length !== 2) continue;
+            if (kv[0] === "x") pet.x = this.isInt(kv[1]) ? parseInt(kv[1]) : parseFloat(kv[1]);
+            else if (kv[0] === "z") pet.z = this.isInt(kv[1]) ? parseInt(kv[1]) : parseFloat(kv[1]);
+            else if (kv[0] === "r") pet.r = this.isInt(kv[1]) ? parseInt(kv[1]) : parseFloat(kv[1]);
+        }
+        if (isNaN(pet.x) || isNaN(pet.z) || isNaN(pet.r)) return cb(prefixed);
+
+        var self = this;
+        function finish(speed) {
+            if (isNaN(speed) || speed <= 0) speed = 4 * 0.14 * 0.5;
+            cb(pet.x + "," + pet.z + "," + pet.r + "," + speed + ",0");
+        }
+        function clampPerf(perf, energy) {
+            if (energy > 75) return Math.max(perf, 0.5);
+            if (energy > 50) return perf;
+            return Math.min(perf, 0.5);
+        }
+
+        if (pet && !isNaN(pet.fitness) && !isNaN(pet.mentalEnergy) && !isNaN(pet.scale)) {
+            var perf = Math.sqrt(pet.fitness * pet.fitness + pet.mentalEnergy * pet.mentalEnergy) * 0.01;
+            finish(4 * pet.scale * clampPerf(perf, pet.mentalEnergy));
+        } else {
+            var owner = (pet && pet.owner) ? pet.owner : self.nickname;
+            db.query("SELECT fitness, mentalEnergy FROM pets WHERE id = ? AND ownerID = ?",
+                [pet ? pet.id : null, owner],
+                function(err, result) {
+                    if (err || !result || result.length === 0) return finish(NaN);
+                    var fit = parseFloat(result[0].fitness);
+                    var men = parseFloat(result[0].mentalEnergy);
+                    var perf = Math.sqrt(fit * fit + men * men) * 0.01;
+                    var scale = (pet && !isNaN(pet.scale)) ? pet.scale : 0.14;
+                    finish(4 * scale * clampPerf(perf, men));
+                });
+        }
+    }
+
+    sendPetAction(roomId, petId, actionId, petState, inNest, weevilList = undefined, socketIdList = undefined) {
+        if(this.loggedIn) {
+            petId    = parseInt(petId);
+            actionId = parseInt(actionId);
+            inNest   = parseInt(inNest);
+
+            var pet = this.myPet[petId];
+            if(!pet) return;
+
+            if(pet.ps == 28 && ![-28, 6, 7, 15, 20, 21, 22, 23, 24].includes(actionId)) return;
+
+            if (actionId == 28) {
+                pet.ps = 28;
+                pet.ridingOwner = true;
+            }
+            else if (actionId == -28) {
+                pet.ps = 0;
+                pet.ridingOwner = false;
+                this.applyPetState(pet, petState);
+            }
+            else if (actionId == 13) {
+                pet.ps = 13;
+            }
+            var self = this;
+            function emitPetAction(argStr) {
+                var packet = "%xt%6#4%-1%" + petId + "%" + actionId + "%" + argStr + "%" + inNest + "%" + "-1%";
+                for(var id in socketIdList) {
+                    if(weevilList[parseInt(id)].currentRoomId == parseInt(roomId) && weevilList[parseInt(id)].socketID != self.socketID) {
+                        weevilList[parseInt(id)].send(packet);
+                    }
+                }
+            }
+
+            if ([1, 2, 3, 16, 30].includes(actionId)) {
+                this.toRawTarget(petState, pet, function(raw) {
+                    emitPetAction(raw);
+                });
+            } else {
+                emitPetAction(petState);
+            }
+        }
+        else {
+            this.socket.end();
+            this.socket.destroy();
+        }
+    }
+
+    sendPetExpression(roomId, petId, expressionId, inNest, weevilList = undefined, socketIdList = undefined) {
+        if(this.loggedIn) {
+            if(parseInt(expressionId) < 0 || parseInt(expressionId) > 7 || !this.myPet[parseInt(petId)]) return;
+
+            var packet = "%xt%6#3%-1%" + petId + "%" + expressionId + "%" + inNest + "%";
+
+            for(var id in socketIdList) {
+                if(weevilList[parseInt(id)].currentRoomId == parseInt(roomId) && weevilList[parseInt(id)].socketID != this.socketID) {
+                    weevilList[parseInt(id)].send(packet);
+                }
+            }
+        }
+        else {
+            this.socket.end();
+            this.socket.destroy();
+        }
+    }
+
+    sendPetGotBall(roomId, petId, weevilList = undefined, socketIdList = undefined) {
+        if(this.loggedIn) {
+            if(!this.myPet[parseInt(petId)]) return;
+
+            var packet = "%xt%6#5%-1%" + petId + "%";
+
+            for(var id in socketIdList) {
+                if(weevilList[parseInt(id)].currentRoomId == parseInt(roomId) && weevilList[parseInt(id)].socketID != this.socketID) {
+                    weevilList[parseInt(id)].send(packet);
+                }
+            }
+        }
+        else {
+            this.socket.end();
+            this.socket.destroy();
+        }
+    }
+
+    sendPetHome(roomId, petId, petState, weevilList = undefined, socketIdList = undefined) {
+        if(this.loggedIn) {
+            var pet = this.myPet[parseInt(petId)];
+            if(!pet) return;
+
+            this.applyPetState(pet, petState);
+
+            var packet = "%xt%6#6%-1%" + petId + "%" + petState + "%";
+
+            for(var id in socketIdList) {
+                if(weevilList[parseInt(id)].currentRoomId == parseInt(roomId) && weevilList[parseInt(id)].socketID != this.socketID) {
+                    weevilList[parseInt(id)].send(packet);
+                }
+            }
+        }
+        else {
+            this.socket.end();
+            this.socket.destroy();
+        }
+    }
+
+    sendPetNestDoor(roomId, petId, doorId, inNest, weevilList = undefined, socketIdList = undefined) {
+        if(this.loggedIn) {
+            if(!this.myPet[parseInt(petId)]) return;
+
+            var packet = "%xt%6#2%-1%"+ petId +"%"+ doorId +"%"+ inNest +"%";
+
+            for(var id in socketIdList) {
+                if(weevilList[parseInt(id)].currentRoomId == parseInt(roomId) && weevilList[parseInt(id)].socketID != this.socketID) {
+                    weevilList[parseInt(id)].send(packet);
+                }
+            }
+        }
+        else {
+            this.socket.end();
+            this.socket.destroy();
+        }
+    }
+
+    sendPetJoinNestLoc(roomId, petId, locId, doorId, x, y, z, r, inNest, weevilList = undefined, socketIdList = undefined) {
+        if(this.loggedIn) {
+            var pet = this.myPet[parseInt(petId)];
+            if(!pet) return;
+
+            pet.locID = parseInt(locId);
+            pet.x = this.isInt(x) ? parseInt(x) : parseFloat(x);
+            pet.y = this.isInt(y) ? parseInt(y) : parseFloat(y);
+            pet.z = this.isInt(z) ? parseInt(z) : parseFloat(z);
+            pet.r = this.isInt(r) ? parseInt(r) : parseFloat(r);
+            pet.scale = this.server.locWithScales[parseInt(locId)] * 0.5;
+
+            var packet = "%xt%6#1%-1%"+ petId +"%"+ locId +"%"+ doorId +"%"+ x +"%"+ y +"%"+ z +"%"+ r +"%"+ inNest +"%";
+
+            for(var id in socketIdList) {
+                if(weevilList[parseInt(id)].currentRoomId == parseInt(roomId) && weevilList[parseInt(id)].socketID != this.socketID) {
+                    weevilList[parseInt(id)].send(packet);
+                }
+            }
+        }
+        else {
+            this.socket.end();
+            this.socket.destroy();
+        }
+    }
+
+    sendPetCommand(roomId, petName, nameHash, commandId, weevilList = undefined, socketIdList = undefined) {
+        if(this.loggedIn) {
+            if(parseInt(commandId) < 0 || parseInt(commandId) > 21) return;
+
+            var pet = this.getPet();
+
+            if(!pet || pet.name != petName || pet.nameHash != nameHash) {
+                console.log("[sendPetCommand] Pet not found or hash mismatch:", petName, nameHash);
+                return;
+            }
+
+            var packet = "%xt%6#7%" + this.nickname + "%" + this.userID + "%" + petName + "%" + commandId + "%";
+            
+            for(var id in socketIdList) {
+                if(weevilList[parseInt(id)].currentRoomId == parseInt(roomId)) {
+                    weevilList[parseInt(id)].send(packet);
+                }
+            }
+        }
+        else {
+            this.socket.end();
+            this.socket.destroy();
+        }
+    }
 }
 
 module.exports = Weevil;
