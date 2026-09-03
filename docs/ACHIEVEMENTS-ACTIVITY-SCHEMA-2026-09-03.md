@@ -229,7 +229,7 @@ against the next SWF decompilation if available.)
 
 | Activity Type            | Trigger Action (authoritative endpoint/handler)        | targetID | value    | metadata              |
 |--------------------------|--------------------------------------------------------|----------|----------|-----------------------|
-| `login`                  | successful `confirmSessionKey` on any authenticated PHP hit where a session is established | NULL | 1 | NULL |
+|| `login`                  | successful `verifyUser` in `login/login.php` — ONE row per genuine successful password-verified login | NULL | 1 | NULL |
 | `change_look`            | successful `changeDefinition` / appearance-save endpoint | NULL | 1 | NULL |
 | `eat_ice_cream`          | successful ice-cream purchase/consume endpoint | ice-cream item ID | 1 | NULL |
 | `buy_item`               | successful `buyItem.php` (department store) | nest item ID | 1 | NULL |
@@ -264,8 +264,8 @@ against the next SWF decompilation if available.)
 | id 1 (Bin Tycoon)      | `users.tycoon` flag                 | User status check                   | (EXISTS on `users.tycoon=1`)   |
 | id 2 (Bin Pet)         | Pet adoption                        | `php2/pets/adoptPet.php`            | `adopt_pet`                    |
 | ids 3,4,6,7,8          | Appearance save                     | `changeDefinition` in internal.php  | `change_look`                  |
-| ids 9-13 (months/years)| Login                               | Any authenticated session           | `login`                        |
-| ids 14-18 (login days) | Login                               | Any authenticated session           | `login`                        |
+| ids 9-13 (months/years)| Login                               | `login/login.php` verifyUser success           | `login`                        |
+| ids 14-18 (login days) | Login                               | `login/login.php` verifyUser success           | `login`                        |
 | ids 19-23 (mulch)      | Nest item purchase                  | `php2/shop/departmentStore/buyItem.php` | `spend_mulch_single_item` |
 | ids 24-28 (dosh)       | Nest item purchase                  | `php2/shop/departmentStore/buyItem.php` | `spend_dosh_single_item`  |
 | ids 29-33 (buy items)  | Nest item purchase                  | `php2/shop/departmentStore/buyItem.php` | `buy_item`                  |
@@ -498,54 +498,87 @@ only in this documentation and must be approved before Phase 4.
 
 ---
 
-## DUPLICATE / REPLAY PROTECTION
+## ACTIVITY LEDGER SEMANTICS
 
-### Events naturally safe from duplicates
+### No same-day deduplication
 
-| Event                  | Why it is inherently idempotent                                   |
-|------------------------|-------------------------------------------------------------------|
-| `login`                | Server-side `confirmSessionKey` returns true/false; one login activity recorded per successful session validation. Flash client retries of login would re-authenticate (not double-count) if the evaluator checks session existence first. |
-| `change_look`          | `changeDefinition` endpoint is called once per appearance save; the server processes it atomically (single UPDATE + return). Client retries with same hash are rejected by `checkHash` (anti-replay via `$_SESSION['theHasher']`). |
-| `task_complete`        | `HasUserCompletedTask` guard prevents recording the same task twice (PROVEN in task-completed.php). |
-| `mission_complete`     | SWS server handler tracks per-mission completion state; a mission cannot be "re-completed" without first resetting. |
-| `eat_ice_cream`        | The ice-cream purchase endpoint is a single atomic transaction (item removed from inventory / currency spent). A retry would fail (no item to spend). |
-| `earn_trophy`          | Trophy is a discrete item; awarded once per level milestone. |
+The achievement_activity table is an EVENT LOG. Every legitimate successful action
+produces an activity row, even if the same activity type already has rows from the
+same day.
 
-### Events requiring explicit dedupe
+Example:
 
-| Event                  | Dedupe strategy                                                        |
-|------------------------|------------------------------------------------------------------------|
-| `spend_mulch_single_item` | Dedupe key: (userID, activityType, targetID, occurredAt rounded to second). The purchase endpoint is atomic (currency deducted + item granted in one prepared transaction), so a Flash retry would receive the same response but not re-deduct. The activity ledger should check for a duplicate row within the same second before inserting. |
-| `spend_dosh_single_item`  | Same as above.                                                    |
-| `buy_item` / `buy_hat` / `buy_seed` / `buy_garden_item` | Same as above — single transaction, check same-second duplicate before insert. |
-| `brain_strain_earn`       | The brain-submit endpoint already enforces "one play per day" via `getSinglePlayerUserData` / `setSingleUserGameData` with a `last_played` date check. A retry within the same day returns `result=3` (already played). Activity is only recorded on `result=1`. |
+User logs in twice today:
+  login | 2026-09-03 10:00
+  login | 2026-09-03 18:00
 
-### Natural dedupe key
+BOTH ROWS EXIST.
 
-For count-based activities, the dedupe key is:
+If an achievement asks "log in on X different days" the QUERY performs the
+distinct-day calculation:
+
+  SELECT COUNT(DISTINCT DATE(occurredAt))
+  FROM achievement_activity
+  WHERE activityType = ? AND userID = ?;
+
+Or when only the count is required:
+
+  SELECT COUNT(*)
+  FROM achievement_activity
+  WHERE activityType = ? AND userID = ?;
+
+This distinction is CRITICAL. The same activity type supports multiple achievements
+with different query rules. The ledger records the actions; the evaluator chooses:
+
+  COUNT(*)
+  COUNT(DISTINCT DATE(...))
+  COUNT(DISTINCT targetID)
+  SUM(value)
+  EXISTS
+
+No UNIQUE constraint on (userID, activityType, DATE) is enforced.
+
+### Retry/replay protection
+
+Retry/replay protection is handled by the AUTHORITATIVE ENDPOINT's own mechanisms:
+
+- `checkHash` anti-replay via `$_SESSION['theHasher']`
+- `HasUserCompletedTask` duplicate guard
+- `brain-submit.php` daily limit (`last_played` date check)
+- Atomic DB transactions for purchases (currency deducted + item granted)
+
+The activity row is recorded AFTER the underlying action genuinely succeeds. A
+replayed request that the endpoint rejects does NOT produce an activity row.
+
+### Duplicate-hook guard for second-resolution events
+
+For activity types where the Flash client may retry the exact same request within
+the same second (e.g. `buy_item`, `buy_hat`, `spend_mulch_single_item`), the
+record helper performs a same-second check before INSERT:
+
+```sql
+SELECT id FROM achievement_activity
+ WHERE userID = ? AND activityType = ? AND targetID = ?
+   AND occurredAt >= DATE_SUB(NOW(3), INTERVAL 1 SECOND)
+ LIMIT 1
 ```
-(userID, activityType, targetID, DATE(occurredAt))
-```
-- For events with a meaningful `targetID` (item purchases, tasks, missions): deduplication
-  at the (user, type, target, day) level prevents Flash retry storms from inflating counts.
-- For day-count events (login, change_look, eat_ice_cream): the activity logger should
-  check whether an activity row already exists for (user, type, same DATE) before inserting,
-  so retrying the endpoint within the same day does NOT create a second row. This is handled
-  in the `recordAchievementActivity()` helper (Phase 2), NOT in the schema.
 
-### Cases where the authoritative endpoint already prevents duplicates
+If a row already exists within the same second, no duplicate is inserted. This
+protects against Flash retry storms while preserving distinct-day semantics for
+day-count evaluations.
 
-- `checkHash()` already implements anti-replay via `$_SESSION['theHasher']` — a second
-  request with the same hash params (even if correctly hashed) returns null from
-  `calcHash()` and is rejected. This covers `login`, `change_look`, `task_complete`,
-  `mission_complete`, and all POST endpoints that use the hash protocol.
-- `HasUserCompletedTask` prevents duplicate task completion.
-- `brain-submit.php` enforces one-play-per-day.
+### Natural dedupe coverage
 
-**Conclusion:** The hash anti-replay system (`theHasher`) already provides the primary
-duplicate protection. The activity ledger adds a secondary same-day guard for
-non-hash-protected events and for events where the hash window could span retries
-within the same second.
+| Event                  | Why naturally safe / retry guard                            |
+|------------------------|-------------------------------------------------------------|
+| `login`                | `verifyUser` is called once per password attempt; activity row is emitted only after successful password_verify + session key generation. |
+| `change_look`          | `checkHash` rejects replay; `affected_rows == 1` confirms single DB update. |
+| `task_complete`        | `HasUserCompletedTask` prevents duplicate task completion.  |
+| `brain_strain_earn`    | Daily `last_played` guard (result=3 if already played).     |
+| `eat_ice_cream`        | Ice cream purchase is a single atomic transaction; retry would fail if item already consumed. |
+| `earn_trophy`          | Trophy is a discrete item; awarded once per level.          |
+| `buy_item`/`buy_hat`/`buy_seed`/`buy_garden_item` | Same-second guard before activity INSERT.       |
+| `spend_mulch_single_item`/`spend_dosh_single_item` | Same-second guard + authoritative endpoint atomicity. |
 
 ---
 

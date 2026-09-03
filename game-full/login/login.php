@@ -32,7 +32,15 @@ function verifyUser($username, $password) {
 
                         setcookie("sessionId", $sessKey, time() + 86400, '/');
                         setcookie("weevil_name", $res['username'], time() + 86400, '/');
-                            
+
+                        // Record one genuine successful login activity.
+                        $activityIns = $db->prepare(
+                            "INSERT INTO achievement_activity (userID, activityType) VALUES (?, 'login')"
+                        );
+                        $activityIns->bind_param('i', $res['id']);
+                        $activityIns->execute();
+                        $activityIns->close();
+
                         header('Location: ../game.php');
                     }
                     else header("Location: http://localhost/?err=" . urlencode($aes->encrypt("This account has been temporarily banned for:<br>" . $bannedUntil->days . " days, " . $bannedUntil->hours . " hours, " . $bannedUntil->minutes . " minutes, " . $bannedUntil->seconds . " seconds.", AES_PASSPHRASE)));

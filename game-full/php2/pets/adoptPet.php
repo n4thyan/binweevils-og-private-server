@@ -82,11 +82,29 @@ if(isset($_POST)) {
             if($ins->affected_rows == 1) {
                 $petID = $ins->insert_id;
                 addExperience($weevilData['id'], $itemData['expPoints']);
-                // Bestow the "Adopt a Bin Pet" achievement (achievement id 2 in getAllAchievements).
-                $ach = $db->prepare("INSERT INTO userachievements (userID, achievementID) VALUES (?, 2) ON DUPLICATE KEY UPDATE achievementID = 2");
-                $ach->bind_param('i', $weevilData['id']);
-                $ach->execute();
-                echo 'responseCode=1&petID=' . $petID . '&mulch=' . ($weevilData['mulch'] - ($itemData['currency']=="mulch"?$itemData['price']:0)) . '&dosh=' . ($weevilData['dosh'] - ($itemData['currency']=="dosh"?$itemData['price']:0));
+
+                // Record adopt_pet activity for achievement id 2.
+                $achDbP = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                $achDbP->begin_transaction();
+                try {
+                    $svcP = new AchievementService((int)$weevilData['id'], $_COOKIE['weevil_name'], $achDbP);
+                    $svcP->recordActivity('adopt_pet', null, 1, null, true);
+                    $newIdsP = $svcP->evaluateForActivity('adopt_pet');
+                    $achDbP->commit();
+                    $achCsvP = $newIdsP ? implode(',', $newIdsP) : '0';
+                } catch (Throwable $e) {
+                    $achDbP->rollback();
+                    $achCsvP = '0';
+                }
+                $achDbP->close();
+
+                // Also write to the legacy userachievements table for compatibility.
+                $legacy = $db->prepare("INSERT IGNORE INTO userachievements (userID, achievementID) VALUES (?, 2)");
+                $legacy->bind_param('i', $weevilData['id']);
+                $legacy->execute();
+                $legacy->close();
+
+                echo 'responseCode=1&petID=' . $petID . '&mulch=' . ($weevilData['mulch'] - ($itemData['currency']=="mulch"?$itemData['price']:0)) . '&dosh=' . ($weevilData['dosh'] - ($itemData['currency']=="dosh"?$itemData['price']:0)) . '&completedAchievements=' . $achCsvP;
             } else {
                 echo 'res=999';
             }

@@ -523,7 +523,30 @@
 
 					$res = $q->get_result();
 
-					if($res = $res->fetch_array()) return "responseCode=1&err=1&mulch=" . $res['mulch'] . "&xp=" . $res['xp'] . "&completedAchievements=";
+					if($res = $res->fetch_array()) {
+						// Record achievement activity after successful appearance change.
+						$userData = getAllWeevilStatsByName($_COOKIE['weevil_name']);
+						$activityIns = $db->prepare(
+							"INSERT INTO achievement_activity (userID, activityType) VALUES (?, 'change_look')"
+						);
+						if ($userData && $activityIns) {
+							$activityIns->bind_param('i', $userData['id']);
+							$activityIns->execute();
+							$activityIns->close();
+
+							// Evaluate change_look achievements for this user.
+							if (class_exists('AchievementService')) {
+								$svc = new AchievementService((int)$userData['id'], $_COOKIE['weevil_name'], $db);
+								$newIds = $svc->evaluateForActivity('change_look');
+								$csv = $newIds ? implode(',', $newIds) : '0';
+							} else {
+								$csv = '0';
+							}
+						} else {
+							$csv = '0';
+						}
+						return "responseCode=1&err=1&mulch=" . $res['mulch'] . "&xp=" . $res['xp'] . "&completedAchievements=" . $csv;
+					}
 				}
 			}
 		}

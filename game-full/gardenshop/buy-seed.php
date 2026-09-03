@@ -21,7 +21,23 @@ if(isset($_POST)) {
             $bought = BuySeed($seedId, $quantity);
             if($bought == true){
                 removeMulch($weevilData['id'], $seedData['price']*$quantity);
-                echo "err=10&mulch=".strval($weevilData['mulch']-$seedData['price']*$quantity)."&xp=".strval($weevilData['xp'])."&quantityPurchased=".strval($quantity)."&price=".strval($seedData['price']*$quantity);
+
+                // Achievement: record buy_seed after authoritative success.
+                $achDb = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                $achDb->begin_transaction();
+                try {
+                    $svc = new AchievementService((int)$weevilData['id'], $_COOKIE['weevil_name'], $achDb);
+                    $svc->recordActivity('buy_seed', (int)$seedId, (int)$quantity, null, true);
+                    $newIds = $svc->evaluateForActivity('buy_seed', (int)$seedId, (int)$quantity, null);
+                    $achDb->commit();
+                    $achCsv = $newIds ? implode(',', $newIds) : '0';
+                } catch (Throwable $e) {
+                    $achDb->rollback();
+                    $achCsv = '0';
+                }
+                $achDb->close();
+
+                echo "err=10&mulch=".strval($weevilData['mulch']-$seedData['price']*$quantity)."&xp=".strval($weevilData['xp'])."&quantityPurchased=".strval($quantity)."&price=".strval($seedData['price']*$quantity)."&completedAchievements=".$achCsv;
             }
             else{
                 echo 'res=999';

@@ -22,7 +22,31 @@ if(isset($_POST)) {
                         if($bought == true){
                             removeMulch($userId, $itemData['price']);
                             addExperience($userId, $itemData['expPoints']);
-                            echo "responseCode=1&mulch=".strval($userData['mulch']-$itemData['price'])."&completedAchievements=0&priceCharged=".strval($itemData['price'])."&xp=".strval($userData['xp']+$itemData['expPoints']);
+
+                            // Achievement: record activity after authoritative success.
+                            $achDb = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                            $achDb->begin_transaction();
+                            try {
+                                $svc = new AchievementService($userId, $_COOKIE['weevil_name'], $achDb);
+
+                                // buy_item activity
+                                $svc->recordActivity('buy_item', $itemId, 1, null, true);
+
+                                // spend_mulch_single_item activity (value = actual price paid)
+                                $svc->recordActivity('spend_mulch_single_item', $itemId, $itemData['price'], null, true);
+
+                                $newIds = $svc->evaluateForActivity('buy_item', $itemId, 1, null);
+                                $newIds2 = $svc->evaluateForActivity('spend_mulch_single_item', $itemId, $itemData['price'], null);
+
+                                $achDb->commit();
+                                $achCsv = implode(',', array_unique(array_merge($newIds, $newIds2)));
+                            } catch (Throwable $e) {
+                                $achDb->rollback();
+                                $achCsv = '0';
+                            }
+                            $achDb->close();
+
+                            echo "responseCode=1&mulch=".strval($userData['mulch']-$itemData['price'])."&completedAchievements=".$achCsv."&priceCharged=".strval($itemData['price'])."&xp=".strval($userData['xp']+$itemData['expPoints']);
                         }
                         else{
                             echo 'responseCode=999';
@@ -36,8 +60,26 @@ if(isset($_POST)) {
                         if($bought == true){
                             removeDosh($userId, $itemData['price']);
                             addExperience($userId, $itemData['expPoints']);
-                            echo "responseCode=1&dosh=".strval($userData['dosh']-$itemData['price'])."&completedAchievements=0&priceCharged=".strval($itemData['price'])."&xp=".strval($userData['xp']+$itemData['expPoints']);
-                        }               
+
+                            // Achievement: record dosh spend activity after authoritative success.
+                            $achDb2 = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                            $achDb2->begin_transaction();
+                            try {
+                                $svc2 = new AchievementService($userId, $_COOKIE['weevil_name'], $achDb2);
+                                $svc2->recordActivity('buy_item', $itemId, 1, null, true);
+                                $svc2->recordActivity('spend_dosh_single_item', $itemId, $itemData['price'], null, true);
+                                $newIdsD = $svc2->evaluateForActivity('buy_item', $itemId, 1, null);
+                                $newIdsD2 = $svc2->evaluateForActivity('spend_dosh_single_item', $itemId, $itemData['price'], null);
+                                $achDb2->commit();
+                                $achCsv2 = implode(',', array_unique(array_merge($newIdsD, $newIdsD2)));
+                            } catch (Throwable $e) {
+                                $achDb2->rollback();
+                                $achCsv2 = '0';
+                            }
+                            $achDb2->close();
+
+                            echo "responseCode=1&dosh=".strval($userData['dosh']-$itemData['price'])."&completedAchievements=".$achCsv2."&priceCharged=".strval($itemData['price'])."&xp=".strval($userData['xp']+$itemData['expPoints']);
+                        }
                         else{
                             echo 'responseCode=999';
                         }

@@ -19,7 +19,24 @@ if(isset($_POST)) {
             if($bought == true){
                 removeDosh($userId, $itemData['price']);
                 addExperience($userId, $itemData['price']*10);
-                echo "responseCode=1&message=Success&dosh=".strval($userData['dosh']-$itemData['price'])."&completedAchievements=&hash=0242f5022d15e5e862c0b2406a7042c7&colour=".$colour."&idx=".$userId."&id=".$id."&timer=114899&voucher=%2D1&xp=".strval($userData['xp']+$itemData['price']*10);
+
+                // Achievement: after successful hat purchase, evaluate from actual hat inventory.
+                // HAT ACHIEVEMENTS query weevilhats directly — buy_hat activity rows are NOT the progress source.
+                $achDb = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                $achDb->begin_transaction();
+                try {
+                    $svc = new AchievementService($userId, $_COOKIE['weevil_name'], $achDb);
+                    // Trigger inventory re-evaluation after authoritative purchase success.
+                    $newIds = $svc->recordAndEvaluate('hat_inventory_changed', $itemId, 1, null, false);
+                    $achDb->commit();
+                    $achCsv = $newIds ? implode(',', $newIds) : '0';
+                } catch (Throwable $e) {
+                    $achDb->rollback();
+                    $achCsv = '0';
+                }
+                $achDb->close();
+
+                echo "responseCode=1&message=Success&dosh=".strval($userData['dosh']-$itemData['price'])."&completedAchievements=".$achCsv."&hash=0242f5022d15e5e862c0b2406a7042c7&colour=".$colour."&idx=".$userId."&id=".$itemId."&timer=114899&voucher=%2D1&xp=".strval($userData['xp']+$itemData['price']*10);
             }               
             else{
                 echo 'responseCode=999';

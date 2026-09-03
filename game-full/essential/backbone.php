@@ -49,5 +49,11 @@
     }
 
     include_once(dirname(__FILE__) . '/sock.php');
-    //echo $checksum;
+
+    // Achievement service (activity ledger + evaluator + completion + rewards).
+    // Safe to include once; guarded internally against non-backbone loads.
+    if (!defined('ACHIEVEMENT_SERVICE_LOADED')) {
+        define('ACHIEVEMENT_SERVICE_LOADED', true);
+        include_once(dirname(__FILE__) . '/achievements.php');
+    }
 ?>
