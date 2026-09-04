@@ -47,6 +47,30 @@ if (!$user || (int) $user['id'] !== $idx) {
 
 $db->begin_transaction();
 try {
+    // Evaluate enter_location achievements (Festive Fun 138, etc.)
+    // Node.js records enter_location activities; PHP evaluates them here.
+    // This ensures room-based achievements are properly evaluated.
+    $enterLocStmt = $db->prepare(
+        'SELECT DISTINCT targetID FROM achievement_activity WHERE userID = ? AND activityType = \'enter_location\' LIMIT 20'
+    );
+    if ($enterLocStmt) {
+        $enterLocStmt->bind_param('i', $idx);
+        $enterLocStmt->execute();
+        $enterLocResult = $enterLocStmt->get_result();
+        $enteredRooms = [];
+        while ($row = $enterLocResult->fetch_assoc()) {
+            $enteredRooms[] = (int)$row['targetID'];
+        }
+        $enterLocStmt->close();
+        
+        if (!empty($enteredRooms)) {
+            $svc = new AchievementService($idx, $_COOKIE['weevil_name'], $db);
+            foreach ($enteredRooms as $roomId) {
+                $svc->evaluateForActivity('enter_location', $roomId);
+            }
+        }
+    }
+    
     $select = $db->prepare(
         'SELECT id, achievementId FROM achievementscompleted WHERE idx = ? AND is_it_new = 1 ORDER BY completedDate ASC, id ASC FOR UPDATE'
     );
