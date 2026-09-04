@@ -163,15 +163,13 @@ define('ACHIEVEMENT_DEFS', serialize([
 
     // EXISTS — enter_location
     // id=138: Festive Fun - Entered the Winter Wonderland (Room 131: PartyBoxInside3)
-    // id=139: Weevil Holiday - Flew with Weevil Air (DEFERRED - flight trigger not recovered)
+    // id=139: Weevil Holiday - Flew with Weevil Air
     // 
-    // Weevil Holiday trigger requires proving the Weevil Air flight event.
-    // Per the original game flow: Airport Interior -> Plane boarding -> Mulch Island arrival.
-    // The achievement is for "Flew with Weevil Air", NOT "arrived at Mulch Island".
-    // Until the actual flight transition is proven, achievement 139 cannot be triggered.
-    // Using a dummy non-existent targetID (999) to prevent accidental completion.
+    // REVIVAL IMPLEMENTATION: Completes when player first enters Mulch Island (room 133).
+    // Historical context: Original game used Airport/Weevil Air flight sequence.
+    // For revival purposes, entering Mulch Island destination is the practical trigger.
     ['id' => 138, 'activityType' => 'enter_location',  'queryType' => 'exists_target', 'targetIDs' => [131], 'threshold' => 0],
-    ['id' => 139, 'activityType' => 'enter_location',  'queryType' => 'exists_target', 'targetIDs' => [999], 'threshold' => 0],  // DEFERRED - needs flight event
+    ['id' => 139, 'activityType' => 'enter_location',  'queryType' => 'exists_target', 'targetIDs' => [133], 'threshold' => 0],
 
     // COUNT — task_complete
     ['id' => 60, 'activityType' => 'task_complete',    'queryType' => 'count',         'threshold' => 1],

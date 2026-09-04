@@ -464,36 +464,37 @@
 
 					$res = $q->get_result();
 
-					if($res = $res->fetch_array()) {
-						// Record achievement activity for ice cream purchases (type 1 = ice cream)
-						// Per task requirements: each successful purchase records a distinct activity row
-						// Same-second dedupe removed - each purchase is a legitimate action
-						$userData = getAllWeevilStatsByName($_COOKIE['weevil_name']);
-						$csv = '0';
+					if ($res = $res->fetch_array()) {
+										// Record achievement activity for ice cream purchases
+										// NOTE: type=1 for ice cream is ASSUMED but NOT PROVEN.
+										// During manual playtest, capture the actual buy-food.php POST to verify.
+										// For now: each successful purchase records a distinct activity row
+										// Same-second dedupe removed - each purchase is a legitimate action
+										$userData = getAllWeevilStatsByName($_COOKIE['weevil_name']);
+										$csv = '0';
 						
-						if ($type == 1 && $userData) {
-							// Type 1 = ice cream: record eat_ice_cream activity
-							$activityIns = $db->prepare(
-								"INSERT INTO achievement_activity (userID, activityType) VALUES (?, 'eat_ice_cream')"
-							);
-							if ($activityIns) {
-								$activityIns->bind_param('i', $userData['id']);
-								$activityIns->execute();
-								$activityIns->close();
-
-								// Evaluate eat_ice_cream achievements
-								if (class_exists('AchievementService')) {
-									$svc = new AchievementService((int)$userData['id'], $_COOKIE['weevil_name'], $db);
-									$newIds = $svc->evaluateForActivity('eat_ice_cream');
-									$csv = $newIds ? implode(',', $newIds) : '0';
-								}
-							}
-						}
+										// ICE CREAM TYPE=1 IS NOT PROVEN - DISABLED UNTIL LIVE CAPTURE
+										// if ($type == 1 && $userData) {
+										//     $activityIns = $db->prepare(
+										//         "INSERT INTO achievement_activity (userID, activityType) VALUES (?, 'eat_ice_cream')"
+										//     );
+										//     if ($activityIns) {
+										//         $activityIns->bind_param('i', $userData['id']);
+										//         $activityIns->execute();
+										//         $activityIns->close();
+										//         
+										//         if (class_exists('AchievementService')) {
+										//             $svc = new AchievementService((int)$userData['id'], $_COOKIE['weevil_name'], $db);
+										//             $newIds = $svc->evaluateForActivity('eat_ice_cream');
+										//             $csv = $newIds ? implode(',', $newIds) : '0';
+										//         }
+										//     }
+										// }
 						
-						// Build response with completed achievements
-						$response = "res=1&mulch=" . $res['mulch'] . "&food=" . $res['food'] . "&success=1&completedAchievements=" . $csv;
-						return $response;
-					}
+										// Build response with completed achievements
+										$response = "res=1&mulch=" . $res['mulch'] . "&food=" . $res['food'] . "&success=1&completedAchievements=" . $csv;
+										return $response;
+									}
 				}
 			}
 		}
