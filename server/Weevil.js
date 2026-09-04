@@ -362,6 +362,8 @@ class Weevil {
             // actually changes location (not nest_, not a same-location rejoin,
             // and not the placeholder Main/room 0/260).
             // Uses the Node.js db pool (same 'bwps' database).
+            // NOTE: Direct achievement grants removed - the evaluator owns the rules.
+            // Location achievements (138 Festive Fun, etc.) are defined in AchievementService.
             if (this.currentRoomId !== 0 && this.currentRoomId !== 260
                 && roomName.toString().substr(0, 5) !== "nest_"
                 && roomName !== "Main"
@@ -373,19 +375,9 @@ class Weevil {
                     [this.userID, enterRoomId],
                     function(err) {
                         if (err) console.error("enter_location activity error:", err);
-                        // Evaluate enter_location achievements (Festive Fun / Weevil Holiday).
-                        db.query(
-                            "SELECT achievementId FROM achievementscompleted WHERE idx = ? AND achievementId IN (138,139) FOR UPDATE",
-                            [self.userID],
-                            function(err2, rows) {
-                                if (err2 || rows.length >= 2) return;
-                                db.query(
-                                    "INSERT IGNORE INTO achievementscompleted (idx, achievementId, is_it_new) VALUES (?, 138, 1), (?, 139, 1)",
-                                    [self.userID, self.userID],
-                                    function(err3) { if (err3) console.error("enter_location complete error:", err3); }
-                                );
-                            }
-                        );
+                        // Note: Location achievement evaluation is handled by the PHP AchievementService
+                        // when getNewAchievements is called. Do NOT hard-code achievement 138/139 grants here
+                        // as they are specific to Winter Wonderland, Weevil Air, etc.
                     }
                 );
             }

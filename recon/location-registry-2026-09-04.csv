@@ -1,0 +1,67 @@
+# Room Registry CSV - Bin Weevils Location Definitions
+# Generated 2026-09-04
+# Source: game-full/binConfig/locationDefinitions*.xml
+
+room_id,internal_name,room_type,bound_type,boundary,cam_pos,cam_aim,entry_pos,entry_dir,weevil_scale,room_events,room_bg,notes
+001,Main,2,node,0,0,0,0,0,0,,,
+101,PeelPark,1,rect,-27,425,390,360,-206,212,222,-55,609,-90,0.22,Mulch Island entrance
+102,DoshPalace,1,rect,-200,485,400,520,-320,260,200,0,440,-180,0.22,Dosh currency hub
+103,GongsPipenest,2,rad,0,280,130,0,0,261,-231,0,190,-160,0.26,Serene nest
+104,ShoppingMall,2,rect,-185,0,351,177,258,219,-271,-62,20,284,0,28,Shopping Mall
+105,ShoppingMallInside,2,rect,-110,0,340,365,250,157,-106,-20,24,357,0,23,Inside shopping mall
+107,BinPetsShop,2,rect,-130,20,250,320,0,400,0,0.19,0,400,180,0.50,Bin Pets store
+108,UnderScrapyardRoom1,2,rect,-200,-70,490,350,-276,240,-246,0,146,0.26,Scrapyard
+109,GrottoClub,1,rect,-150,353,270,265,-373,187,274,-22,354,-180,0.13,Secret club
+110,InksOrange,1,rect,-150,188,450,440,-42,197,-37,-93,320,-180,0.18,Ink-themed area
+111,Palladium,2,rect,-250,-8,394,269,-276,240,-246,0,80,0.26,Main plaza
+112,PalladiumLobbyG,2,rect,-180,20,360,360,0,190,-330,0,80,0.28,Movie theater lobby
+113,CastleGam,1,rect,-114,373,281,220,-274,235,152,28,360,180,0.16,Castle Game
+114,CastleGamInside,2,rect,-180,20,360,300,0,190,-330,0,80,0.28,Inside Castle Game
+120,WeevilPost,2,rect,-150,20,300,310,0,190,-330,0,80,0.34,Weevil Post
+121,DirtValley1,2,rect,-170,40,370,265,-276,240,-246,109,225,0.15,Mining area
+122,MerchandiseShop,2,rect,-140,20,260,280,0,190,-330,0,80,0.28,Merchandise shop
+123,DirtValley2,2,rect,-170,40,370,265,-276,240,-246,0,80,0.15,roomEvents=yes,Dirt valley continuation
+124,FlemManorLobby,2,rect,-170,80,340,250,0,190,-330,0,80,-180,0.22,manitainY=yes,Art gallery entrance
+125,FlemManorRoom2,2,rect,-170,80,340,290,-170,80,-330,0,80,180,0.24,Castle room
+127,PartyBox,2,rect,-180,20,600,280,-276,240,-246,53,3,0.22,Party area
+128,PartyBoxInside,2,rect,-270,20,540,560,0,190,-330,0,80,0.28,Party inside
+129,RumsCove,2,rect,-240,75,680,252,0,80,-180,0,190,0.22,Rum area
+130,PartyBoxInside2,2,rect,-160,20,320,310,0,190,-330,0,80,0.28,timerID=38,playList=22,Party area 2
+131,PartyBoxInside3,2,rect,-290,20,580,360,0,190,-330,0,80,0.20,timerID=38,playList=23,**WINTER WONDERLAND**
+132,RumsCoveInterior,2,rect,-170,70,320,150,0,190,-330,0,80,0.28,Rum area interior
+134,BinPetsShop,2,rect,-141,20,281,270,0,190,-330,0,80,0.28,Bin Pets store
+138,UnderScrapyardRoom2,2,rect,-107,65,150,270,0,190,-330,0,80,0.28,Scrapyard
+139,UnderScrapyardRoom3,2,rect,-165,80,300,325,0,190,-330,0,80,180,0.28,Scrapyard
+140,SameDifferenceIsland,2,rect,-240,75,680,400,0,190,-330,0,80,0.28,hasAudio=yes,Ambient island
+141,SameDifferenceIslandVideo,2,rect,-240,75,680,400,0,190,-330,0,80,0.28,hasAudio=yes,Ambient video
+142,WormPoint,2,rect,-340,0,680,650,0,80,180,0.28,**Ice cream location**
+143,PipeRoom1,2,rect,-180,20,220,360,0,190,-330,180,0.28,Rest area
+144,FlemManorLobby,2,rect,-170,80,340,250,0,190,-330,0,80,-180,0.22,Art gallery
+145,FlemManorRoom2,2,rect,-170,80,340,290,0,190,-330,0,80,180,0.24,Castle room 2
+146,CastleGamCode,2,rect,-180,20,320,360,0,190,-330,0,80,0.28,Puzzle area
+147,CastleGamSlidePuzzle,2,rect,-180,20,360,290,0,190,-330,0,80,0.28,Puzzle
+148,CastleGamBells,2,rect,-180,20,360,360,0,190,-330,0,80,0.28,Bell puzzle
+149,SWShq,2,rect,-180,40,450,360,0,190,-330,0,80,0.28,SWS HQ
+150,CastleGamSilverKnight,2,rect,-180,20,360,360,0,190,-330,0,80,0.28,Challenge room
+151,PalladiumLobby1,2,rect,-180,20,360,360,0,190,-330,0,80,0.28,Theater lobby
+152,FlemManorGallery1,2,rect,-170,80,340,290,0,190,-330,0,80,180,0.24,Art gallery 1
+153,FlemManorGallery2,2,rect,-170,80,340,290,0,190,-330,0,80,180,0.24,Art gallery 2
+154,Diner,2,rect,-220,20,520,380,0,190,-330,0,32,0.32,roomEvents=yes,Diner
+155,ClubFling,2,rect,-200,-100,438,420,0,190,-246,0,80,0.28,Party nightclub
+156,FiggsCafeTerrace,2,rect,-230,-24,560,404,-276,240,-246,105,226,0.40,roomEvents=yes,**Ice cream machine located here**
+161,PoolHall,2,rect,-240,-90,490,872,-9,34,-180,0,80,0.34,roomEvents=yes,Pool hall
+162,BlueDiamond1,1,rect,-512,0,1024,1024,-42,197,-37,0,60,0.14,Chess area
+163,BlueDiamond2_1,1,rect,-512,0,1024,1024,-42,197,-37,0,60,0.11,Chess variant
+164,BlueDiamond2_2,1,rect,-512,0,1024,1024,-42,197,-37,0,60,0.14,Chess variant
+165,BlueDiamond2_3,1,rect,-512,0,1024,1024,-42,197,-37,0,60,0.11,Chess variant
+166,BlueDiamond2_4,1,rect,-512,0,1024,1024,-42,197,-37,0,60,0.11,Chess variant
+167,BlueDiamond2_5,1,rect,-512,0,1024,1024,0,197,-400,0,0,0.12,Chess variant
+168,FlemManorLibrary,2,rect,-170,80,340,290,0,190,-330,0,80,0.24,manitainY=yes,Library
+
+# Room Events Flags
+# roomEvents='yes' indicates seasonal/custom event handling
+
+# Key Achievement Rooms:
+# 131 - Winter Wonderland (Festive Fun achievement id=138)
+# 142 - Worm's Point (Ice cream purchases)
+# 156 - FiggsCafeTerrace (Ice cream machine object)

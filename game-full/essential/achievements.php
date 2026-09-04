@@ -29,7 +29,8 @@ if (!defined('DB_NAME')) {
  *   'count_distinct_date' = COUNT(DISTINCT DATE(occurredAt))
  *   'count_distinct_target' = COUNT(DISTINCT targetID)
  *   'sum'              = SUM(value)
- *   'exists'           = EXISTS any row (no threshold)
+ *   'exists'           = EXISTS any row (optionally filtered by targetID)
+ *   'exists_target'    = EXISTS for targetID in specified array (for location achievements)
  *   'exists_state'     = EXISTS based on current DB state (no activity row needed)
  *   'inventory_count'  = COUNT(*) of owned items from the authoritative inventory table
  *                        (e.g. weevilhats for hat achievements). Triggered after a successful
@@ -161,8 +162,10 @@ define('ACHIEVEMENT_DEFS', serialize([
     ['id' => 137, 'activityType' => 'join_sws',        'queryType' => 'exists',        'threshold' => 0],
 
     // EXISTS — enter_location
-    ['id' => 138, 'activityType' => 'enter_location',  'queryType' => 'exists',        'threshold' => 0],
-    ['id' => 139, 'activityType' => 'enter_location',  'queryType' => 'exists',        'threshold' => 0],
+    // id=138: Festive Fun - Entered the Winter Wonderland (Room 131: PartyBoxInside3)
+    // id=139: Weevil Holiday - Flew with Weevil Air (DEFERRED - location unknown)
+    ['id' => 138, 'activityType' => 'enter_location',  'queryType' => 'exists_target', 'targetIDs' => [131], 'threshold' => 0],
+    ['id' => 139, 'activityType' => 'enter_location',  'queryType' => 'exists',        'threshold' => 0],  // DEFERRED
 
     // COUNT — task_complete
     ['id' => 60, 'activityType' => 'task_complete',    'queryType' => 'count',         'threshold' => 1],
@@ -399,8 +402,22 @@ class AchievementService {
 
             case 'exists':
                 $r = $this->queryScalar($db,
-                    "SELECT COUNT(*) FROM achievement_activity WHERE userID = ? AND activityType = ?",
-                    'is', [$userID, $def['activityType']]);
+                    "SELECT COUNT(*) FROM achievement_activity WHERE userID = ? AND activityType = ?" .
+                    ($targetID !== null ? " AND targetID = ?" : ""),
+                    $targetID !== null ? 'isi' : 'is',
+                    $targetID !== null ? [$userID, $def['activityType'], $targetID] : [$userID, $def['activityType']]);
+                return $r > 0;
+
+            case 'exists_target':
+                // EXISTS with specific targetID (for location-based achievements)
+                // Definition must include 'targetIDs' as array of allowed room IDs
+                if (!isset($def['targetIDs']) || !is_array($def['targetIDs'])) {
+                    return false;
+                }
+                $inClause = str_repeat('?,', count($def['targetIDs']) - 1) . '?';
+                $sql = "SELECT COUNT(*) FROM achievement_activity WHERE userID = ? AND activityType = ? AND targetID IN ($inClause)";
+                $params = array_merge([$userID, $def['activityType']], $def['targetIDs']);
+                $r = $this->queryScalar($db, $sql, str_repeat('i', count($params)), $params);
                 return $r > 0;
 
             case 'exists_state':

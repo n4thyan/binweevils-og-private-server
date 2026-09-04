@@ -442,7 +442,7 @@
 		return "res=999";
 	}
 
-	function buyFood($energyValue, $cost) {
+	function buyFood($energyValue, $cost, $type = null) {
 		if(isset($_COOKIE['weevil_name']) && isset($_COOKIE['sessionId'])) {
 			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
 
@@ -465,10 +465,34 @@
 					$res = $q->get_result();
 
 					if($res = $res->fetch_array()) {
-						if(intval($res['food']) >= 100) {
-							return "res=1&mulch=" . $res['mulch'] . "&food=100&success=1&x=y";
+						// Record achievement activity for ice cream purchases (type 1 = ice cream)
+						// Per task requirements: each successful purchase records a distinct activity row
+						// Same-second dedupe removed - each purchase is a legitimate action
+						$userData = getAllWeevilStatsByName($_COOKIE['weevil_name']);
+						$csv = '0';
+						
+						if ($type == 1 && $userData) {
+							// Type 1 = ice cream: record eat_ice_cream activity
+							$activityIns = $db->prepare(
+								"INSERT INTO achievement_activity (userID, activityType) VALUES (?, 'eat_ice_cream')"
+							);
+							if ($activityIns) {
+								$activityIns->bind_param('i', $userData['id']);
+								$activityIns->execute();
+								$activityIns->close();
+
+								// Evaluate eat_ice_cream achievements
+								if (class_exists('AchievementService')) {
+									$svc = new AchievementService((int)$userData['id'], $_COOKIE['weevil_name'], $db);
+									$newIds = $svc->evaluateForActivity('eat_ice_cream');
+									$csv = $newIds ? implode(',', $newIds) : '0';
+								}
+							}
 						}
-						else return "res=1&mulch=" . $res['mulch'] . "&food=" . $res['food'] . "&success=1&x=y";
+						
+						// Build response with completed achievements
+						$response = "res=1&mulch=" . $res['mulch'] . "&food=" . $res['food'] . "&success=1&completedAchievements=" . $csv;
+						return $response;
 					}
 				}
 			}
