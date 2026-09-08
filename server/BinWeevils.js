@@ -122,6 +122,8 @@ class BinWeevils {
             this.teleporterRegistry.recentHistorySize
         );
 
+        console.log("[TELEPORTER-LIVE] " + weevil.nickname + " -> locID " + destination.locId + " (" + destination.roomName + ")");
+
         // The client receives only the server-selected allowlisted location.
         weevil.send("<msg t='xt'><body action='xtRes' r='-1'><![CDATA[<dataObj>" +
             "<var n='commandType' t='s'>teleporter</var>" +

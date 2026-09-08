@@ -24,6 +24,34 @@
       "disabledReason": null
     },
     {
+      "locId": 100,
+      "name": "bppLandingRight",
+      "roomId": 450,
+      "swf": "fixedCam/seasons/christmas/2015/BinPetParadise_landingArea_right.swf",
+      "category": "STANDARD",
+      "enabled": true,
+      "weight": 1.0,
+      "eventActive": true,
+      "archiveAllowed": false,
+      "dependencyConfidence": "high",
+      "source": "getFile/1 locationDefinitions + server/roomids.txt + recovered/repo asset census",
+      "disabledReason": null
+    },
+    {
+      "locId": 101,
+      "name": "bppLandingLeft",
+      "roomId": 449,
+      "swf": "fixedCam/seasons/christmas/2014/BinPetParadise_landingArea_left.swf",
+      "category": "STANDARD",
+      "enabled": true,
+      "weight": 1.0,
+      "eventActive": true,
+      "archiveAllowed": false,
+      "dependencyConfidence": "high",
+      "source": "getFile/1 locationDefinitions + server/roomids.txt + recovered/repo asset census",
+      "disabledReason": null
+    },
+    {
       "locId": 102,
       "name": "DoshPalace",
       "roomId": 264,
