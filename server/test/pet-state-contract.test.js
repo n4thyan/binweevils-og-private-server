@@ -188,7 +188,11 @@ test('setUVars reconstructs mounted pet state and relays all received owner vari
     assert.match(packet, /ps:28/);
 });
 
-test('changeRoom keeps a mounted pet synchronized and passes it to room spawn', () => {
+test('changeRoom keeps a mounted pet synchronized and passes it to room spawn', (t) => {
+    const originalQuery = db.query;
+    t.after(() => { db.query = originalQuery; });
+    db.query = (sql, params, callback) => callback(null, [{def: '401135129001323200'}]);
+
     const owner = new Weevil(socketStub());
     owner.loggedIn = true;
     owner.nickname = 'Owner';

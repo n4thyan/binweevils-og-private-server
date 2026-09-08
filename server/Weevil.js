@@ -41,6 +41,7 @@ function isTcpLoginBlocked(addr) {
 // DIFFERENT weevil via weevilList[...].socket) is intentionally untouched.
 const PROTO_VIOLATION_WINDOW_MS = 60 * 1000;  // 60 second window
 const PROTO_VIOLATION_THRESHOLD = 10;        // max protocol violations per window before soft-disconnect
+const CANONICAL_WEEVIL_DEF_RE = /^\d{18}(?:~[0-9A-Fa-f]{30})?$/;
 
 class Weevil {
 
@@ -105,6 +106,32 @@ class Weevil {
         this.loadingPetDefs = new Set();
         this.pendingPetRvars = [];
 
+    }
+
+    refreshDefinition(done = function() {}) {
+        if(!this.loggedIn || !this.nickname) {
+            done();
+            return;
+        }
+        db.query("SELECT def FROM users WHERE username = ? LIMIT 1", [this.nickname], (err, result) => {
+            if(!err && result && result[0] && typeof result[0].def === "string" && CANONICAL_WEEVIL_DEF_RE.test(result[0].def)) {
+                this.def = result[0].def;
+            }
+            done();
+        });
+    }
+
+    broadcastDefinition(weevilList = undefined, socketIdList = undefined) {
+        if(!this.loggedIn || !this.currentRoomId) return;
+        const packet = "<msg t='sys'><body action='uVarsUpdate' r='" + this.currentRoomId + "'><user id='" + this.userID + "' /><vars><var n='weevilDef' t='s'><![CDATA[" + this.def + "]]></var></vars></body></msg>";
+        this.send(packet);
+        if(!weevilList || !socketIdList) return;
+        for(const id in socketIdList) {
+            const recipient = weevilList[parseInt(id)];
+            if(recipient && recipient.socketID != this.socketID && recipient.currentRoomId === this.currentRoomId) {
+                recipient.send(packet);
+            }
+        }
     }
 
     getPet(id = undefined) {
@@ -301,6 +328,14 @@ class Weevil {
     }
 
     changeRoom(roomName, x, y, z, r, locId, weevilList = undefined, socketIdList = undefined) {
+        if(this.loggedIn) {
+            const definitionBeforeRefresh = this.def;
+            this.refreshDefinition(() => {
+                if(this.def !== definitionBeforeRefresh && this.currentRoomName == roomName) {
+                    this.broadcastDefinition(weevilList, socketIdList);
+                }
+            });
+        }
         if(this.loggedIn) {
             var oldLocId = this.currentLocId;
 

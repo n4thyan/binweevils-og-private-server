@@ -19,7 +19,7 @@
 <script src="/assets/js/site-redesign.js?v=2"></script>
 <script src="/assets/js/site-ads.js?v=3"></script>
 <?php if(is_file(dirname(__DIR__) . '/weevil-creator/src/runtime/WeevilDef.js')): ?>
-<script type="module" src="/assets/js/site-weevil-renderer.js?v=4"></script>
+<script type="module" src="/assets/js/site-weevil-renderer.js?v=5"></script>
 <?php endif; ?>
 </body>
 </html>

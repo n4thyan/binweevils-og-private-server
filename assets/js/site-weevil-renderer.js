@@ -72,7 +72,7 @@ import { WeevilCanvasRenderer } from '/weevil-creator/src/runtime/WeevilCanvasRe
 
             function renderDefinition(rawDefinition) {
                 var source = String(rawDefinition || '').trim();
-                var defString = /^\d{18}$/.test(source) ? source : '401135129001323200';
+                var defString = /^\d{18}(?:~[0-9A-Fa-f]{30})?$/.test(source) ? source : '401135129001323200';
                 var definition = getDefObj(defString);
 
                 // Website previews are body-only. This wrapper deliberately omits

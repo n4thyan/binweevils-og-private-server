@@ -1,6 +1,7 @@
 <?php
 include('../site/bootstrap.php');
 include_once('../site/referrals.php');
+include_once('../site/weevil-appearance.php');
 
 if(!$siteLoggedIn || !is_array($siteUser)) {
     header('Location: /#login');
@@ -13,6 +14,16 @@ $referralPath = '/register/?ref=' . rawurlencode($referralSummary['code']);
 $profileNameColor = site_cosmetic_equipped_value($siteCosmetics, 'username_color', '#075984');
 $profileTitle = site_cosmetic_equipped_value($siteCosmetics, 'title', '');
 $customNameColourOwned = !empty($siteCosmetics['unlocked']['custom-name-colour']);
+$advancedAppearanceEligible = weevil_advanced_update_allowed($siteUser['prestige_count']);
+$appearanceDefinition = weevil_parse_definition((string)$siteUser['def']);
+if($appearanceDefinition === null) {
+    $appearanceDefinition = weevil_parse_definition('401135129001323200');
+}
+$headTypes = [1 => 'Spheroid', 2 => 'Cone', 3 => 'Inverted cone', 4 => 'Cuboid'];
+$bodyTypes = [1 => 'Spheroid', 2 => 'Cone', 3 => 'Narrow inverted cone', 4 => 'Cuboid'];
+$eyeTypes = [1 => 'Standard', 2 => 'Wide', 3 => 'Raised', 4 => 'High', 5 => 'Outer', 6 => 'Far outer'];
+$antennaTypes = weevil_antenna_types();
+$legTypes = weevil_leg_types();
 
 $sitePageTitle = 'My Weevil';
 $siteActive = 'settings';
@@ -130,16 +141,62 @@ include('../site/header.php');
         </section>
         <?php endif; ?>
 
-        <details class="bw-panel bw-content-panel bw-disclosure">
-            <summary><p class="bw-eyebrow">Your look</p><span>Advanced / Appearance data</span></summary>
-            <h2 class="bw-card-title">Weevil Definition</h2>
-            <p class="bw-muted">This is read directly from your Bin Weevils account. The website renderer follows your saved appearance whenever your account changes.</p>
-            <div class="bw-field">
-                <label for="current-weevil-def">Current definition</label>
-                <input class="bw-input" id="current-weevil-def" type="text" value="<?php echo site_e($siteUser['def']); ?>" readonly>
-            </div>
-            <button class="bw-button bw-button--blue bw-button--small" type="button" data-copy-definition>Copy definition</button>
-        </details>
+        <section class="bw-panel bw-content-panel" id="advanced-weevil-appearance">
+            <p class="bw-eyebrow">Prestige perk</p>
+            <h2 class="bw-card-title">Advanced Weevil Appearance</h2>
+            <?php if(!$advancedAppearanceEligible): ?>
+                <p class="bw-muted">Reach Prestige 1 to change your full definition, choose any RGB colour and edit individual body parts here. The original Dosh's Palace editor remains available normally.</p>
+                <div class="bw-field">
+                    <label for="current-weevil-def">Current definition</label>
+                    <input class="bw-input" id="current-weevil-def" type="text" value="<?php echo site_e($siteUser['def']); ?>" readonly>
+                </div>
+                <button class="bw-button bw-button--blue bw-button--small" type="button" data-copy-definition>Copy Def</button>
+            <?php else: ?>
+                <p class="bw-muted">Edit native Weevil parts and exact RGB colours for free. Changes are stored on your account and refresh in-game on the next room change.</p>
+                <form id="advanced-weevil-form" action="/settings/weevil-appearance-action.php" method="post">
+                    <input type="hidden" name="csrf" value="<?php echo site_e(site_csrf_token()); ?>">
+                    <input type="hidden" name="mode" value="parts">
+                    <div class="bw-field">
+                        <label for="current-weevil-def">Current definition</label>
+                        <input class="bw-input" id="current-weevil-def" type="text" value="<?php echo site_e($siteUser['def']); ?>" readonly>
+                    </div>
+                    <div class="bw-button-row bw-definition-actions">
+                        <button class="bw-button bw-button--blue bw-button--small" type="button" data-copy-definition>Copy Def</button>
+                        <button class="bw-button bw-button--blue bw-button--small" type="button" id="change-def-toggle" aria-expanded="false" aria-controls="change-def-panel">Change Def</button>
+                        <button class="bw-button bw-button--green bw-button--small" type="submit">Apply / Save</button>
+                    </div>
+                    <div id="change-def-panel" class="bw-change-def-panel" hidden>
+                        <div class="bw-field">
+                            <label for="pasted-weevil-def">Paste full Weevil definition</label>
+                            <textarea class="bw-input" id="pasted-weevil-def" rows="3" maxlength="255" spellcheck="false"></textarea>
+                        </div>
+                        <button class="bw-button bw-button--green bw-button--small" type="button" id="change-def-apply">Validate &amp; Change Def</button>
+                    </div>
+
+                    <h3 class="bw-settings-subtitle">Body parts</h3>
+                    <div class="bw-appearance-grid">
+                        <div class="bw-field"><label for="head-type">Head shape</label><select class="bw-input" id="head-type" name="head_type"><?php foreach($headTypes as $id => $label): ?><option value="<?php echo $id; ?>"<?php echo (int)$appearanceDefinition['head_type'] === $id ? ' selected' : ''; ?>><?php echo site_e($label); ?></option><?php endforeach; ?></select></div>
+                        <div class="bw-field"><label for="body-type">Body shape</label><select class="bw-input" id="body-type" name="body_type"><?php foreach($bodyTypes as $id => $label): ?><option value="<?php echo $id; ?>"<?php echo (int)$appearanceDefinition['body_type'] === $id ? ' selected' : ''; ?>><?php echo site_e($label); ?></option><?php endforeach; ?></select></div>
+                        <div class="bw-field"><label for="eye-type">Eye layout</label><select class="bw-input" id="eye-type" name="eye_type"><?php foreach($eyeTypes as $id => $label): ?><option value="<?php echo $id; ?>"<?php echo (int)$appearanceDefinition['eye_type'] === $id ? ' selected' : ''; ?>><?php echo site_e($label); ?></option><?php endforeach; ?></select></div>
+                        <div class="bw-field"><label for="eyelids">Eyelids</label><select class="bw-input" id="eyelids" name="eyelids"><option value="0"<?php echo (int)$appearanceDefinition['eyelids'] === 0 ? ' selected' : ''; ?>>Off</option><option value="1"<?php echo (int)$appearanceDefinition['eyelids'] === 1 ? ' selected' : ''; ?>>On</option></select></div>
+                        <div class="bw-field"><label for="antenna-type">Antennae</label><select class="bw-input" id="antenna-type" name="antenna_type"><?php foreach($antennaTypes as $id => $label): ?><option value="<?php echo $id; ?>"<?php echo (int)$appearanceDefinition['antenna_type'] === $id ? ' selected' : ''; ?>><?php echo site_e($id . ' · ' . $label); ?></option><?php endforeach; ?></select></div>
+                        <div class="bw-field"><label for="leg-type">Legs</label><select class="bw-input" id="leg-type" name="leg_type"><?php foreach($legTypes as $id => $label): ?><option value="<?php echo $id; ?>"<?php echo (int)$appearanceDefinition['leg_type'] === $id ? ' selected' : ''; ?>><?php echo site_e($id . ' · ' . $label); ?></option><?php endforeach; ?></select></div>
+                    </div>
+
+                    <h3 class="bw-settings-subtitle">Exact RGB colours</h3>
+                    <p class="bw-form-note">Use exactly six hexadecimal digits, with an optional #.</p>
+                    <div class="bw-appearance-grid bw-appearance-colours">
+                        <?php foreach(['head' => 'Head', 'body' => 'Body', 'eye' => 'Eyes', 'antenna' => 'Antennae', 'leg' => 'Legs'] as $key => $label): $hex = $appearanceDefinition[$key . '_colour']; ?>
+                        <div class="bw-field bw-appearance-colour-field">
+                            <label for="<?php echo $key; ?>-colour"><?php echo $label; ?> colour</label>
+                            <span><input type="color" value="#<?php echo site_e($hex); ?>" data-appearance-picker="<?php echo $key; ?>-colour"><input class="bw-input" id="<?php echo $key; ?>-colour" name="<?php echo $key; ?>_colour" type="text" value="#<?php echo site_e($hex); ?>" maxlength="7" pattern="#?[0-9A-Fa-f]{6}" spellcheck="false" autocomplete="off"></span>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <p class="bw-form-note" id="advanced-weevil-status" role="status" aria-live="polite"></p>
+                </form>
+            <?php endif; ?>
+        </section>
 
         <section class="bw-panel bw-content-panel" id="game-settings">
             <p class="bw-eyebrow">Game</p>
@@ -202,7 +259,7 @@ include('../site/header.php');
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(field.value);
                 copy.textContent = 'Copied!';
-                setTimeout(function () { copy.textContent = 'Copy definition'; }, 1400);
+                setTimeout(function () { copy.textContent = 'Copy Def'; }, 1400);
             } else {
                 field.select();
                 document.execCommand('copy');
@@ -258,6 +315,95 @@ include('../site/header.php');
         }).finally(function () {
             button.disabled = false;
         });
+    });
+}());
+
+(function () {
+    var form = document.getElementById('advanced-weevil-form');
+    var status = document.getElementById('advanced-weevil-status');
+    if (!form || !status || !window.fetch) return;
+
+    var current = document.getElementById('current-weevil-def');
+    var toggle = document.getElementById('change-def-toggle');
+    var panel = document.getElementById('change-def-panel');
+    var pasted = document.getElementById('pasted-weevil-def');
+    var change = document.getElementById('change-def-apply');
+    var validHex = /^#?[0-9A-Fa-f]{6}$/;
+
+    Array.prototype.forEach.call(form.querySelectorAll('[data-appearance-picker]'), function (picker) {
+        var target = document.getElementById(picker.getAttribute('data-appearance-picker'));
+        if (!target) return;
+        picker.addEventListener('input', function () { target.value = picker.value.toUpperCase(); });
+        target.addEventListener('input', function () {
+            var value = target.value.trim();
+            if (validHex.test(value)) picker.value = (value.charAt(0) === '#' ? value : '#' + value);
+        });
+    });
+
+    function displaySavedDefinition(data) {
+        if (!data.ok || !data.definition) return;
+        current.value = data.definition;
+        Array.prototype.forEach.call(document.querySelectorAll('[data-weevil-render]'), function (mount) {
+            mount.setAttribute('data-weevil-definition', data.definition);
+            mount.dispatchEvent(new CustomEvent('bw:weevil-definition-change', {detail: {definition: data.definition}}));
+        });
+    }
+
+    function send(body, button) {
+        button.disabled = true;
+        status.textContent = 'Validating and saving appearance…';
+        return fetch(form.action, {
+            method: 'POST',
+            body: body,
+            credentials: 'same-origin',
+            headers: {'X-Requested-With': 'XMLHttpRequest'}
+        }).then(function (response) {
+            return response.json().catch(function () { return {ok:false, message:'Unexpected server response.'}; });
+        }).then(function (data) {
+            status.textContent = data.message || (data.ok ? 'Appearance saved.' : 'Appearance could not be saved.');
+            displaySavedDefinition(data);
+            return data;
+        }).catch(function () {
+            status.textContent = 'Could not contact the server.';
+            return {ok:false};
+        }).finally(function () { button.disabled = false; });
+    }
+
+    toggle.addEventListener('click', function () {
+        var willOpen = panel.hidden;
+        panel.hidden = !willOpen;
+        toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        if (willOpen) {
+            pasted.value = current.value;
+            pasted.focus();
+        }
+    });
+
+    change.addEventListener('click', function () {
+        var raw = pasted.value.trim();
+        if (!raw) {
+            status.textContent = 'Paste a Weevil definition first.';
+            return;
+        }
+        var body = new FormData();
+        body.append('csrf', form.querySelector('[name="csrf"]').value);
+        body.append('mode', 'definition');
+        body.append('definition', raw);
+        send(body, change).then(function (data) {
+            if (data.ok) window.setTimeout(function () { window.location.reload(); }, 450);
+        });
+    });
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var invalid = Array.prototype.some.call(form.querySelectorAll('[name$="_colour"]'), function (field) {
+            return !validHex.test(field.value.trim());
+        });
+        if (invalid) {
+            status.textContent = 'Each colour must contain exactly six hexadecimal digits.';
+            return;
+        }
+        send(new FormData(form), form.querySelector('button[type="submit"]'));
     });
 }());
 
