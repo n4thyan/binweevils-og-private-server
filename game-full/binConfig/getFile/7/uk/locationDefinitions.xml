@@ -419,6 +419,16 @@
       <pin x1="375" y1="50" z1="470" x2="371" y2="0" z2="472" scale="0.7"/>
     </library>
     </location>
+    <!-- Restored permanent Nest Street map destination. 196 avoids the current CastleGam2 id 115 collision. -->
+    <location id="196" name="NestStreet" type="2" boundType="rect" boundary="-320,0,640,550" camPos="0,190,-330" camAim="0,90,260" entryPos="-13,220" entryDir="0" weevilScale="0.26" noZoom="yes">
+      <roomBG path="fixedCam/NestStreet_170718.swf"/>
+      <door id="1" toLoc="5" x1="5" z1="302" x2="51" z2="500" entryDir="0"/>
+      <object name="connectMulch" x="-100" y="0" z="33" type="gameSlot" lbl="Play Konnect Mulch!" gamePath="multiplayerGames/mulch4_11_04_21.swf" slot="19" arrivalPoints="-175,35,-94,26" playerPositions="-131,7,-131,11,-131,13,-131,70,-131,65,-131,60"/>
+      <object name="flipMulch" x="155" y="0" z="444" type="gameSlot" lbl="Play Flip-Mulch!" gamePath="multiplayerGames/flipMulch_11_04_21.swf" slot="4" arrivalPoints="60,360,146,380" playerPositions="121,476,121,470,121,465,96,308,96,310,96,314"/>
+      <object name="squares_mc" x="0" y="0" z="360" type="gameSlot" lbl="Play Squares!" gamePath="multiplayerGames/squares_11_04_21.swf" slot="6" arrivalPoints="-178,430,-35,380" playerPositions="-176,511,-156,499,-150,474,-66,509,-75,483,-60,471"/>
+      <object name="poolTable" x="58" y="0" z="37" type="gameSlot" lbl="Play 2 Ball!" gamePath="multiplayerGames/ballGame/BallGame2Ball_11_04_21.swf" slot="2" arrivalPoints="53,53,145,39" playerPositions="53,15,67,19,57,17,166,83,143,55,150,67"/>
+      <object name="front_bushes_mc" x="0" y="0" z="-120"/>
+    </location>
     <!-- END OF 3D PLACES -->
     <!-- START OF CLUB FLING 2D -->
 <location id="194" name="ClubFlingExterior" type="2" boundType="rect" boundary="-185,60,225,140" camPos="-108,170,-102" camAim="10,32,174" entryPos="-110,100" weevilScale="0.14" maintainY="yes" roomEvents="yes" noZoom="yes" playList="42">
