@@ -77,6 +77,7 @@ class Weevil {
         this.currentRoomId = 0;
         this.currentLocId = 0;
         this.currentRoomName = "";
+        this.teleporterRecentLocIds = [];
         this.destroyed = false;
 
         this.socket = socket;

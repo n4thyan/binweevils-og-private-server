@@ -10,6 +10,7 @@ var fs = require('fs');
 var filter = require('leo-profanity');
 var linereader = require('line-reader');
 var db = require('./db');
+const { loadRegistry, selectDestination } = require('./teleporter');
 
 class BinWeevils {
 
@@ -28,6 +29,7 @@ class BinWeevils {
         this.canSpawnPuddles = true;
         this.puddleTimer = undefined;
         this.roomWithIds = {};
+        this.teleporterRegistry = loadRegistry();
 
         // Flum's Fountain (modern mushroom event state)
         this.flumsMushrooms = [];
@@ -101,6 +103,30 @@ class BinWeevils {
                 });
             });
         });
+    }
+
+    handleTeleporter(weevil) {
+        if (!weevil.loggedIn) return;
+        // The pad is a Nest object. A forged packet from any public room is ignored.
+        if (weevil.currentRoomName !== ("nest_" + weevil.nickname)) return;
+        if (!weevil.actionAllowed("nest-teleporter", 6, 10000)) return;
+
+        const destination = selectDestination(this.teleporterRegistry, {
+            currentLocId: Number.isInteger(weevil.currentLocId) ? weevil.currentLocId : null,
+            recentLocIds: weevil.teleporterRecentLocIds
+        });
+
+        weevil.teleporterRecentLocIds.unshift(destination.locId);
+        weevil.teleporterRecentLocIds = weevil.teleporterRecentLocIds.slice(
+            0,
+            this.teleporterRegistry.recentHistorySize
+        );
+
+        // The client receives only the server-selected allowlisted location.
+        weevil.send("<msg t='xt'><body action='xtRes' r='-1'><![CDATA[<dataObj>" +
+            "<var n='commandType' t='s'>teleporter</var>" +
+            "<var n='locID' t='n'>" + destination.locId + "</var>" +
+            "</dataObj>]]></body></msg>");
     }
 
     // ---- Room-event timer helpers (Flum's Fountain / Dosh's Palace) ----
@@ -891,6 +917,10 @@ class BinWeevils {
                         }
 
                         weevil.send("%xt%12#3%-1%-1%");
+                    }
+                    else if(data[3] == "13#1") {
+                        // Nest teleporter: the client requests use; the server selects an allowlisted destination.
+                        this.handleTeleporter(weevil);
                     }
                     else if(data[3] == "tbmt") {
                         var gameTypeID = data[5].split('gameTypeID:')[1].split(',')[0];
