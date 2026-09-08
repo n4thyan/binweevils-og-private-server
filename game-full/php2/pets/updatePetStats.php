@@ -25,7 +25,7 @@ if(isset($_POST)) {
             $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
             // Confirm ownership before mutating.
-            $own = $db->prepare('SELECT id, fuel, health, fitness, experience FROM pets WHERE id = ? AND ownerID = ?');
+            $own = $db->prepare('SELECT id, fuel, mentalEnergy, health, fitness, experience FROM pets WHERE id = ? AND ownerID = ?');
             $own->bind_param('is', $petID, $weevilData['username']);
             $own->execute();
             $pet = $own->get_result()->fetch_array();

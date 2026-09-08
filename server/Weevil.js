@@ -95,6 +95,32 @@ class Weevil {
         // Checkpoint D (D10): generic per-action sliding-window rate-limit buckets.
         this.actionRateBuckets = {};
 
+        // Canonical Bin Pets state, keyed by pet id after an ownership-validated
+        // petDef room-variable update.
+        this.myPet = [];
+        // petDef ownership is asynchronous. The Flash client sends petState/petIDs
+        // immediately afterward, so defer those packets only while that pet's
+        // definition is actively being verified.
+        this.loadingPetDefs = new Set();
+        this.pendingPetRvars = [];
+
+    }
+
+    getPet(id = undefined) {
+        if (this.myPet.length == 0) return false;
+
+        if (id !== undefined) {
+            return this.myPet[id];
+        }
+
+        return Object.values(this.myPet)[0];
+    }
+
+    petVars(pet, suffix = "") {
+        if (!pet) return "";
+        return "<var n='petDef" + suffix + "' t='s'><![CDATA[name:" + pet.name + ",id:" + pet.id + ",ac1:" + pet.defObj.ac1 + ",ac2:" + pet.defObj.ac2 + ",bc:" + pet.defObj.bc + ",ec1:" + pet.defObj.ec1 + ",ec2:" + pet.defObj.ec2 + "]]></var>" +
+            "<var n='petState" + suffix + "' t='s'><![CDATA[locID:" + pet.locID + ",ps:" + pet.ps + ",x:" + pet.x + ",y:" + pet.y + ",z:" + pet.z + ",r:" + pet.r + "]]></var>" +
+            "<var n='petIDs' t='s'><![CDATA[" + pet.id + "]]></var>";
     }
 
     // Checkpoint B: soft-disconnect for genuine malformed/protocol errors.
@@ -355,6 +381,25 @@ class Weevil {
             this.Z = parseInt(z);
             this.R = parseInt(r);
 
+            const pet = this.getPet();
+            if (pet && pet.ps === 28) {
+                // A mounted pet follows the owner across room boundaries. In the
+                // owner's nest loc 5 is represented as -5; elsewhere it is +5.
+                if (this.currentLocId === 5 && roomName === "nest_" + this.nickname) {
+                    pet.locID = -5;
+                } else {
+                    pet.locID = this.currentLocId;
+                }
+                pet.x = this.X;
+                pet.y = this.Y;
+                pet.z = this.Z;
+                pet.r = this.R;
+                pet.ps = 28;
+                pet.ridingOwner = true;
+                pet.inNest = pet.locID < 0;
+                pet.scale = this.server.locWithScales[pet.locID] * 0.5;
+            }
+
             var joinok = this.returnJoinOK(this.currentRoomId, weevilList, socketIdList);
             this.send(joinok);
             
@@ -385,7 +430,7 @@ class Weevil {
             // testing to get weevils showing for others when room joined
             for(var id in socketIdList) {
                 if(weevilList[parseInt(id)].socketID != this.socketID && weevilList[parseInt(id)].currentRoomId != 260 && weevilList[parseInt(id)].currentRoomId == this.currentRoomId) { // will check list of weevils if their currentLocId is the same as this locid
-                    weevilList[parseInt(id)].spawnWeevil(this.currentRoomId, this.currentLocId, this.userID, this.nickname, this.isModerator, this.def, this.X, this.Y, this.Z, this.R, this.idx, this.curHat, this.curExpression); // send packet to users in same place so have other weevil show
+                    weevilList[parseInt(id)].spawnWeevil(this.currentRoomId, this.currentLocId, this.userID, this.nickname, this.isModerator, this.def, this.X, this.Y, this.Z, this.R, this.idx, this.curHat, this.curExpression, pet); // send packet to users in same place so have other weevil show
                 }
             }
         }
@@ -397,6 +442,19 @@ class Weevil {
     returnJoinOK(roomId, weevilList = undefined, socketIdList = undefined) {
         if(this.loggedIn) {
             var joinok = "<msg t='sys'><body action='joinOK' r='" + roomId + "'><pid id='0'/>";
+
+            // A nest visitor must receive the owner's resident pet even when the
+            // owner is currently elsewhere. Nest pet vars are room-scoped and use
+            // the canonical id-suffixed petDef/petState names.
+            for (var nestIndex in socketIdList) {
+                const candidate = weevilList[parseInt(nestIndex)];
+                if (!candidate || this.server.roomWithIds["nest_" + candidate.nickname] !== this.currentRoomId) continue;
+                const nestPet = candidate.getPet();
+                if (nestPet && nestPet.locID < 0 && nestPet.locID >= -20) {
+                    joinok += "<vars>" + this.petVars(nestPet, nestPet.id) + "</vars>";
+                }
+                break;
+            }
 
             if(parseInt(roomId) == 282 && this.server.flumsMushrooms.length != 0) { // Flum's Fountain mushrooms
                 joinok += "<vars>";
@@ -484,7 +542,15 @@ class Weevil {
             else {
                 for(var id in socketIdList) {
                     if(weevilList[parseInt(id)].currentRoomId == parseInt(roomId)) {
-                        joinok += "<u i='" + weevilList[parseInt(id)].userID + "' m='" + weevilList[parseInt(id)].isModerator + "'><n><![CDATA[" + weevilList[parseInt(id)].nickname + "]]></n><vars><var n='weevilDef' t='s'><![CDATA[" + weevilList[parseInt(id)].def + "]]></var><var n='r' t='n'><![CDATA[" + weevilList[parseInt(id)].R + "]]></var><var n='ps' t='n'><![CDATA[" + weevilList[parseInt(id)].ps + "]]></var><var n='ex' t='n'><![CDATA[" + weevilList[parseInt(id)].curExpression + "]]></var><var n='x' t='n'><![CDATA[" + weevilList[parseInt(id)].X + "]]></var><var n='y' t='n'><![CDATA[" + weevilList[parseInt(id)].Y + "]]></var><var n='apparel' t='s'><![CDATA[" + (weevilList[parseInt(id)].curHat.toString().includes("|") ? weevilList[parseInt(id)].curHat : "|null:-140,-140,-140") + "]]></var><var n='z' t='n'><![CDATA[" + weevilList[parseInt(id)].Z + "]]></var><var n='idx' t='s'><![CDATA[" + weevilList[parseInt(id)].idx + "]]></var><var n='doorID' t='n'><![CDATA[0]]></var><var n='locID' t='s'><![CDATA[" + weevilList[parseInt(id)].currentLocId + "]]></var></vars></u>";
+                        const occupant = weevilList[parseInt(id)];
+                        joinok += "<u i='" + occupant.userID + "' m='" + occupant.isModerator + "'><n><![CDATA[" + occupant.nickname + "]]></n><vars><var n='weevilDef' t='s'><![CDATA[" + occupant.def + "]]></var><var n='r' t='n'><![CDATA[" + occupant.R + "]]></var><var n='ps' t='n'><![CDATA[" + occupant.ps + "]]></var><var n='ex' t='n'><![CDATA[" + occupant.curExpression + "]]></var><var n='x' t='n'><![CDATA[" + occupant.X + "]]></var><var n='y' t='n'><![CDATA[" + occupant.Y + "]]></var><var n='apparel' t='s'><![CDATA[" + (occupant.curHat.toString().includes("|") ? occupant.curHat : "|null:-140,-140,-140") + "]]></var><var n='z' t='n'><![CDATA[" + occupant.Z + "]]></var><var n='idx' t='s'><![CDATA[" + occupant.idx + "]]></var><var n='doorID' t='n'><![CDATA[0]]></var><var n='locID' t='s'><![CDATA[" + occupant.currentLocId + "]]></var>";
+
+                        const occupantPet = occupant.getPet();
+                        if (occupantPet && Math.abs(occupantPet.locID) === occupant.currentLocId && ![-1, -2, -3, -4, -5, -6, -7, -8, -9].includes(occupant.currentLocId)) {
+                            joinok += this.petVars(occupantPet);
+                        }
+
+                        joinok += "</vars></u>";
                     }
                     /*else if(weevilList[parseInt(id)].socketID == this.socketID) {
                         joinok += "<u i='" + weevilList[parseInt(id)].userID + "' m='0'><n><![CDATA[" + weevilList[parseInt(id)].nickname + "]]></n><vars><var n='weevilDef' t='s'><![CDATA[" + weevilList[parseInt(id)].def + "]]></var><var n='r' t='n'><![CDATA[" + weevilList[parseInt(id)].R + "]]></var><var n='ps' t='n'><![CDATA[0]]></var><var n='ex' t='n'><![CDATA[" + weevilList[parseInt(id)].curExpression + "]]></var><var n='x' t='n'><![CDATA[" + weevilList[parseInt(id)].X + "]]></var><var n='y' t='n'><![CDATA[" + weevilList[parseInt(id)].Y + "]]></var><var n='apparel' t='s'><![CDATA[" + (weevilList[parseInt(id)].curHat.toString().includes("|") ? weevilList[parseInt(id)].curHat : "|null:-140,-140,-140") + "]]></var><var n='z' t='n'><![CDATA[" + weevilList[parseInt(id)].Z + "]]></var><var n='idx' t='s'><![CDATA[" + weevilList[parseInt(id)].idx + "]]></var><var n='doorID' t='n'><![CDATA[0]]></var><var n='locID' t='s'><![CDATA[" + weevilList[parseInt(id)].currentLocId + "]]></var></vars></u>";
@@ -607,34 +673,247 @@ class Weevil {
 
     setUVars(data, weevilList = undefined, socketIdList = undefined) {
         if(this.loggedIn) {
-            var roomId = data.split('r=\'')[1].split('\'>')[0];
-            var x = "";
-            var y = "";
-            var z = "";
-            var r = "";
+            const roomMatch = data.match(/\br=['"]([^'"]+)['"]/);
+            if (!roomMatch) { this.dropOnly("setUvars: missing room"); return; }
+            const roomId = parseInt(roomMatch[1]);
+            if (roomId !== this.currentRoomId) { this.softDrop("setUvars: room mismatch"); return; }
 
-            try {
-                x = data.split('n=\'x\' t=\'s\'><![CDATA[')[1].split(']]>')[0];
-                y = data.split('n=\'y\' t=\'s\'><![CDATA[')[1].split(']]>')[0];
-                z = data.split('n=\'z\' t=\'s\'><![CDATA[')[1].split(']]>')[0];
-                r = data.split('n=\'r\' t=\'s\'><![CDATA[')[1].split(']]>')[0];
-            } catch { x = this.X.toString(); y = this.Y.toString(); z = this.Z.toString(); r = this.R.toString(); }
+            // Parse and faithfully relay every user variable. Bin Pets uses this path
+            // for the owner's unsuffixed/suffixed mount-state update in the nest.
+            const vars = {};
+            const varRe = /<var\b([^>]*)>([\s\S]*?)<\/var>/g;
+            let match;
+            while ((match = varRe.exec(data)) !== null) {
+                const nameMatch = match[1].match(/\bn=['"]([^'"]+)['"]/);
+                const cdataMatch = match[2].match(/<!\[CDATA\[([\s\S]*?)\]\]>/);
+                if (nameMatch && cdataMatch) vars[nameMatch[1]] = cdataMatch[1];
+            }
 
+            const x = vars.x !== undefined ? vars.x : this.X.toString();
+            const y = vars.y !== undefined ? vars.y : this.Y.toString();
+            const z = vars.z !== undefined ? vars.z : this.Z.toString();
+            const r = vars.r !== undefined ? vars.r : this.R.toString();
             this.X = parseInt(x);
             this.Y = parseInt(y);
             this.Z = parseInt(z);
             this.R = parseInt(r);
-            var packet = "<msg t='sys'><body action='uVarsUpdate' r='" + roomId + "'><user id='" + this.userID + "' /><vars><var n='x' t='s'><![CDATA[" + x + "]]></var><var n='z' t='s'><![CDATA[" + z + "]]></var><var n='r' t='s'><![CDATA[" + r + "]]></var><var n='y' t='s'><![CDATA[" + y + "]]></var></vars></body></msg>";
+
+            const defaultPetId = () => {
+                for (const id in this.myPet) {
+                    if (this.myPet[id].ridingOwner) return parseInt(id);
+                }
+                const ids = Object.keys(this.myPet);
+                return ids.length ? parseInt(ids[0]) : null;
+            };
+
+            for (const name in vars) {
+                let petId = null;
+                let kind = null;
+                if (name === 'petState') { petId = defaultPetId(); kind = 'state'; }
+                else if (name === 'petDef') { petId = defaultPetId(); kind = 'def'; }
+                else if (/^petState\d+$/.test(name)) { petId = parseInt(name.slice(8)); kind = 'state'; }
+                else if (/^petDef\d+$/.test(name)) { petId = parseInt(name.slice(6)); kind = 'def'; }
+                else continue;
+
+                const pet = this.myPet[petId];
+                if (!pet || pet.owner !== this.nickname) continue;
+                if (kind === 'def') {
+                    pet.def = vars[name];
+                } else {
+                    this.applyPetState(pet, vars[name]);
+                    pet.ridingOwner = pet.ps === 28;
+                }
+            }
+
+            let varXml = "";
+            for (const name in vars) {
+                varXml += "<var n='" + name + "' t='s'><![CDATA[" + vars[name] + "]]></var>";
+            }
+            const packet = "<msg t='sys'><body action='uVarsUpdate' r='" + roomId + "'><user id='" + this.userID + "' /><vars>" + varXml + "</vars></body></msg>";
 
             for(var id in socketIdList) {
-                if(weevilList[parseInt(id)].socketID != this.socketID && weevilList[parseInt(id)].currentRoomId == parseInt(roomId)) {
-                    weevilList[parseInt(id)].send(packet);
+                const recipient = weevilList[parseInt(id)];
+                if(recipient && recipient.socketID != this.socketID && recipient.currentRoomId === roomId) {
+                    recipient.send(packet);
                 }
             }
         }
         else {
             this.dropOnly("pre-login action (race) ignored");
         }
+    }
+
+    extractPetInfo(xml) {
+        const match = xml.match(/<!\[CDATA\[([\s\S]*?)\]\]>/);
+        if (!match) return null;
+
+        const result = {};
+        for (const pair of match[1].split(',')) {
+            const separator = pair.indexOf(':');
+            if (separator === -1) continue;
+            result[pair.slice(0, separator)] = pair.slice(separator + 1);
+        }
+        return result;
+    }
+
+    isInt(n) {
+        return Number.isInteger(Number(n));
+    }
+
+    getPetIDs(xml) {
+        const match = xml.match(/<var\s+n=['"]petIDs['"][^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/var>/);
+        if (!match) return [];
+
+        return match[1].split(',').map(id => id.trim()).filter(Boolean);
+    }
+
+    deferPetRvars(data, weevilList, socketIdList) {
+        // Three packets are expected per pet (petDef, petState, petIDs). Keep a
+        // defensive cap so malformed clients cannot grow this queue indefinitely.
+        if (this.pendingPetRvars.length >= 16) {
+            this.dropOnly("pet setRvars: deferred queue full");
+            return;
+        }
+        this.pendingPetRvars.push({ data, weevilList, socketIdList });
+    }
+
+    flushPendingPetRvars() {
+        if (!this.loggedIn || this.pendingPetRvars.length === 0) return;
+        const pending = this.pendingPetRvars.splice(0);
+        for (const entry of pending) {
+            this.setRvars(entry.data, entry.weevilList, entry.socketIdList);
+        }
+    }
+
+    setRvars(data, weevilList = undefined, socketIdList = undefined) {
+        if (!this.loggedIn) {
+            this.dropOnly("pre-login action (race) ignored");
+            return;
+        }
+
+        const weevil = this;
+        const roomMatch = data.match(/\br=['"]([^'"]+)['"]/);
+        const variableMatch = data.match(/<var[^>]*\bn=['"]([^'"]+)['"]/);
+        if (!roomMatch || !variableMatch) {
+            this.dropOnly("pet setRvars: malformed packet");
+            return;
+        }
+
+        const roomId = parseInt(roomMatch[1]);
+        if (roomId !== this.currentRoomId) {
+            this.softDrop("pet setRvars: room mismatch");
+            return;
+        }
+
+        const fullName = variableMatch[1];
+        const name = fullName.replace(/\d+$/, '');
+        const relay = function(packet) {
+            for (var id in socketIdList) {
+                const recipient = weevilList[parseInt(id)];
+                if (recipient && recipient.currentRoomId === roomId) recipient.send(packet);
+            }
+        };
+
+        if (name === 'petDef') {
+            const petDef = this.extractPetInfo(data);
+            if (!petDef || !petDef.id || !petDef.name) {
+                this.dropOnly("pet setRvars: malformed petDef");
+                return;
+            }
+
+            const verifiedPetId = parseInt(petDef.id);
+            this.loadingPetDefs.add(verifiedPetId);
+            db.query("SELECT * FROM pets WHERE id = ? AND ownerID = ? AND name = ?", [petDef.id, weevil.nickname, petDef.name], function(err, result) {
+                if (err) {
+                    weevil.loadingPetDefs.delete(verifiedPetId);
+                    console.log(err);
+                    weevil.dropOnly("pet setRvars: database error");
+                    return;
+                }
+                if (!result || result.length === 0) {
+                    weevil.loadingPetDefs.delete(verifiedPetId);
+                    weevil.softDrop("pet setRvars: unowned petDef");
+                    return;
+                }
+
+                const row = result[0];
+                if (petDef.bc != row.bc || petDef.ec1 != row.ec1 || petDef.ec2 != row.ec2 || petDef.ac1 != row.ac1 || petDef.ac2 != row.ac2) {
+                    weevil.loadingPetDefs.delete(verifiedPetId);
+                    weevil.softDrop("pet setRvars: definition mismatch");
+                    return;
+                }
+                if (row.rented == 1 && row.adoptedDate && Date.now() > (new Date(row.adoptedDate).getTime() + 86400000)) {
+                    weevil.loadingPetDefs.delete(verifiedPetId);
+                    weevil.softDrop("pet setRvars: expired rented pet");
+                    return;
+                }
+
+                weevil.myPet[petDef.id] = {
+                    id: parseInt(petDef.id),
+                    owner: row.ownerID,
+                    name: row.name,
+                    defObj: { bc: row.bc, ac1: row.ac1, ac2: row.ac2, ec1: row.ec1, ec2: row.ec2 },
+                    fitness: row.fitness,
+                    mentalEnergy: row.mentalEnergy,
+                    nameHash: row.nameHash,
+                    scale: 0,
+                    locID: -5,
+                    ps: 0,
+                    x: 0,
+                    y: 0,
+                    z: 0,
+                    r: 0,
+                    inNest: true,
+                    ridingOwner: false
+                };
+
+                relay("<msg t='sys'><body action='rVarsUpdate' r='" + roomId + "'><vars><var n='petDef" + petDef.id + "' t='s'><![CDATA[name:" + row.name + ",id:" + row.id + ",ac1:" + row.ac1 + ",ac2:" + row.ac2 + ",bc:" + row.bc + ",ec1:" + row.ec1 + ",ec2:" + row.ec2 + "]]></var></vars></body></msg>");
+                weevil.loadingPetDefs.delete(verifiedPetId);
+                weevil.flushPendingPetRvars();
+            });
+            return;
+        }
+
+        if (name === 'petState') {
+            const petIdMatch = fullName.match(/^petState(\d+)$/);
+            const petState = this.extractPetInfo(data);
+            const petId = petIdMatch ? petIdMatch[1] : null;
+            const pet = petId ? this.myPet[petId] : null;
+            if (!pet && petId && this.loadingPetDefs.has(parseInt(petId))) {
+                this.deferPetRvars(data, weevilList, socketIdList);
+                return;
+            }
+            if (!pet || pet.owner !== this.nickname || !petState) {
+                this.softDrop("pet setRvars: unowned petState");
+                return;
+            }
+
+            this.applyPetState(pet, Object.entries(petState).map(([key, value]) => key + ':' + value).join(','));
+            pet.ridingOwner = pet.ps === 28;
+            relay("<msg t='sys'><body action='rVarsUpdate' r='" + roomId + "'><vars><var n='petState" + petId + "' t='s'><![CDATA[locID:" + pet.locID + ",ps:" + pet.ps + ",x:" + pet.x + ",y:" + pet.y + ",z:" + pet.z + ",r:" + pet.r + "]]></var></vars></body></msg>");
+            return;
+        }
+
+        if (name === 'petIDs') {
+            let petIDs = this.getPetIDs(data);
+            if (petIDs.some(petId => this.loadingPetDefs.has(parseInt(petId)))) {
+                this.deferPetRvars(data, weevilList, socketIdList);
+                return;
+            }
+            if (petIDs.length === 0) {
+                const pet = this.getPet();
+                petIDs = pet ? [pet.id.toString()] : [];
+            }
+            if (petIDs.some(petId => !this.myPet[petId])) {
+                this.softDrop("pet setRvars: unowned petIDs");
+                return;
+            }
+
+            relay("<msg t='sys'><body action='rVarsUpdate' r='" + roomId + "'><vars><var n='petIDs' t='s'><![CDATA[" + petIDs.join(',') + "]]></var></vars></body></msg>");
+            return;
+        }
+
+        this.dropOnly("pet setRvars: unsupported variable");
     }
 
     publicMessageTimer(weevil) {
@@ -745,10 +1024,11 @@ class Weevil {
         }
     }
 
-    spawnWeevil(roomId, locId, userId, weevilName, isMod, weevilDef, x, y, z, r, weevilIdx, currentHat, currentExpression) {
+    spawnWeevil(roomId, locId, userId, weevilName, isMod, weevilDef, x, y, z, r, weevilIdx, currentHat, currentExpression, pet = undefined) {
         if(this.loggedIn) {
             var packet = "<msg t='sys'><body action='uER' r='" + roomId + "'>";
             packet += "<u i ='" + userId + "' m='" + isMod + "'><n><![CDATA[" + weevilName + "]]></n><vars><var n='weevilDef' t='s'><![CDATA[" + weevilDef + "]]></var><var n='r' t='n'><![CDATA[" + r + "]]></var><var n='ps' t='n'><![CDATA[0]]></var><var n='ex' t='n'><![CDATA[" + currentExpression + "]]></var><var n='x' t='n'><![CDATA[" + x + "]]></var><var n='y' t='n'><![CDATA[" + y + "]]></var><var n='apparel' t='s'><![CDATA[" + (currentHat.toString().includes("|") ? currentHat : "|null:-140,-140,-140") + "]]></var><var n='z' t='n'><![CDATA[" + z + "]]></var><var n='idx' t='s'><![CDATA[" + weevilIdx + "]]></var><var n='doorID' t='n'><![CDATA[0]]></var><var n='locID' t='s'><![CDATA[" + locId + "]]></var>";
+            if (pet && pet.locID == locId) packet += this.petVars(pet);
             packet += "</vars></u></body></msg>";
             this.send(packet);
         }

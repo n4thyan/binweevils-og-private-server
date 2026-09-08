@@ -4745,14 +4745,39 @@
 			$loggedIn = confirmSessionKey($_COOKIE['weevil_name'], $_COOKIE['sessionId']);
 
 			if($loggedIn == true) {
-				$filePath = str_replace('\\\\', '/', __DIR__ . '/petJugglingData.csv');
+				$filePath = __DIR__ . '/petJugglingData.csv';
+				$handle = fopen($filePath, 'r');
+				if($handle === false) return false;
 
 				$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-				$weevilName = $db->real_escape_string($weevilName);
-				$petID = (int)$petID;
-				$res = $db->query("LOAD DATA LOCAL INFILE '$filePath' INTO TABLE petacquiredtricks FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES (id, aptitude, numBalls, pattern, difficulty, name) SET ownerID = '$weevilName', petID = $petID");
-
-				return $res && $db->affected_rows > 0;
+				$db->begin_transaction();
+				try {
+					// Skip the CSV header. Do not import its source `id`: each adopted
+					// pet needs fresh auto-increment row ids and must not collide with
+					// tricks belonging to an earlier pet.
+					fgetcsv($handle);
+					$q = $db->prepare("INSERT INTO petacquiredtricks (aptitude, numBalls, pattern, difficulty, name, ownerID, petID) VALUES (?, ?, ?, ?, ?, ?, ?)");
+					$inserted = 0;
+					while(($row = fgetcsv($handle)) !== false) {
+						if(count($row) < 6) continue;
+						$aptitude = floatval($row[1]);
+						$numBalls = intval($row[2]);
+						$pattern = $row[3];
+						$difficulty = intval($row[4]);
+						$name = $row[5];
+						$ownedPetID = intval($petID);
+						$q->bind_param('disissi', $aptitude, $numBalls, $pattern, $difficulty, $name, $weevilName, $ownedPetID);
+						$q->execute();
+						if($q->affected_rows == 1) $inserted++;
+					}
+					fclose($handle);
+					$db->commit();
+					return $inserted > 0;
+				} catch(Throwable $e) {
+					fclose($handle);
+					$db->rollback();
+					return false;
+				}
 			}
 		}
 

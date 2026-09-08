@@ -640,8 +640,12 @@ class BinWeevils {
                                     weevil.setBVars(dataStr[i], self.weevils, self.socketIdList);
                                 }
                                 else if(action == "setUvars") {
-                                    // this doesnt really do anything, but it sends back shit in game so doing it anyway
+                                    // User vars include owner movement and mount-state pet updates.
                                     weevil.setUVars(dataStr[i], self.weevils, self.socketIdList);
+                                }
+                                else if(action == "setRvars") {
+                                    // Canonical Bin Pets room variables: petDef, petState and petIDs.
+                                    weevil.setRvars(dataStr[i], self.weevils, self.socketIdList);
                                 }
                                 else if(action == "pubMsg") {
                                     weevil.sendPublicMessage(dataStr[i], self.weevils, self.socketIdList);

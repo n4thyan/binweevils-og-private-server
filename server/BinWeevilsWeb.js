@@ -94,6 +94,9 @@ class BinWeevilsWeb {
 
     async handleData(dataStr, weevil) {
         try {
+            // ws delivers text frames as Buffer objects on current releases.
+            // Normalize at the transport boundary before applying the legacy parser.
+            if(Buffer.isBuffer(dataStr)) dataStr = dataStr.toString('utf8');
             switch(dataStr.split('{')[0]) {
                 case "friends/get-list":
                     await weevil.getBuddyList(this.weevils, this.socketIdList);

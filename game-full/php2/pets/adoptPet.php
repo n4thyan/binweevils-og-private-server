@@ -57,15 +57,14 @@ if(isset($_POST)) {
                 exit;
             }
 
-            // Currency check + deduct (mirrors buyDoshShopItem.php).
-            if($itemData['currency'] == "mulch") {
-                if($weevilData['mulch'] < $itemData['price']) { echo 'responseCode=4'; exit; }
-                $paid = removeMulch($weevilData['id'], $itemData['price']);
+            // Validate funds now; charge only after pet + canonical state rows exist.
+            $currency = $itemData['currency'];
+            $price = intval($itemData['price']);
+            if($currency == "mulch") {
+                if($weevilData['mulch'] < $price) { echo 'responseCode=4'; exit; }
             } else {
-                if($weevilData['dosh'] < $itemData['price']) { echo 'responseCode=4'; exit; }
-                $paid = removeDosh($weevilData['id'], $itemData['price']);
+                if($weevilData['dosh'] < $price) { echo 'responseCode=4'; exit; }
             }
-            if($paid != true) { echo 'res=999'; exit; }
 
             // Insert the adopted pet with sensible starting stats + visual fields.
             $ownerID = $weevilData['username'];
@@ -75,12 +74,27 @@ if(isset($_POST)) {
                 "INSERT INTO pets (ownerID, name, bedID, bowlID, bc, ac1, ac2, ec1, ec2, fuel, mentalEnergy, health, fitness, experience, adoptedDate, nameHash) " .
                 "VALUES (?, ?, 0, 0, ?, ?, ?, ?, ?, 100, 100, 100, 0, 0, ?, ?)"
             );
-            // 11 columns -> 11 type chars (s,s,i,i,i,i,i,i,s,s,s).
-            $ins->bind_param('ssiiiiissss', $ownerID, $petName, $bc, $ac1, $ac2, $ec1, $ec2, $adoptedDate, $nameHash);
+            // Nine placeholders: owner/name, five colour integers, adoptedDate, nameHash.
+            $ins->bind_param('ssiiiiiss', $ownerID, $petName, $bc, $ac1, $ac2, $ec1, $ec2, $adoptedDate, $nameHash);
             $ins->execute();
 
             if($ins->affected_rows == 1) {
                 $petID = $ins->insert_id;
+                $skillsInserted = insertPetSkills($ownerID, $petID);
+                $tricksInserted = insertPetJugglingTricks($ownerID, $petID);
+                if(!$skillsInserted || !$tricksInserted) {
+                    $db->query("DELETE FROM petacquiredskills WHERE ownerID = '" . $db->real_escape_string($ownerID) . "' AND petID = " . intval($petID));
+                    $db->query("DELETE FROM petacquiredtricks WHERE ownerID = '" . $db->real_escape_string($ownerID) . "' AND petID = " . intval($petID));
+                    $db->query("DELETE FROM pets WHERE id = " . intval($petID) . " AND ownerID = '" . $db->real_escape_string($ownerID) . "'");
+                    echo 'res=996';
+                    exit;
+                }
+
+                $paid = $currency == "mulch"
+                    ? removeMulch($weevilData['id'], $price)
+                    : removeDosh($weevilData['id'], $price);
+                if($paid != true) { echo 'res=999'; exit; }
+
                 addExperience($weevilData['id'], $itemData['expPoints']);
 
                 // Record adopt_pet activity for achievement id 2.
@@ -98,11 +112,15 @@ if(isset($_POST)) {
                 }
                 $achDbP->close();
 
-                // Also write to the legacy userachievements table for compatibility.
-                $legacy = $db->prepare("INSERT IGNORE INTO userachievements (userID, achievementID) VALUES (?, 2)");
-                $legacy->bind_param('i', $weevilData['id']);
-                $legacy->execute();
-                $legacy->close();
+                // Also write to the legacy userachievements table when that schema
+                // exists; absence must never swallow the successful adoption response.
+                $legacy = @$db->prepare("INSERT IGNORE INTO userachievements (userID, achievementID) VALUES (?, 2)");
+                if($legacy) {
+                    $legacyUserID = intval($weevilData['id']);
+                    $legacy->bind_param('i', $legacyUserID);
+                    $legacy->execute();
+                    $legacy->close();
+                }
 
                 echo 'responseCode=1&petID=' . $petID . '&mulch=' . ($weevilData['mulch'] - ($itemData['currency']=="mulch"?$itemData['price']:0)) . '&dosh=' . ($weevilData['dosh'] - ($itemData['currency']=="dosh"?$itemData['price']:0)) . '&completedAchievements=' . $achCsvP;
             } else {

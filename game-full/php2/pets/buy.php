@@ -15,10 +15,10 @@ function grantRewardItem($weevilId, $itemId, $colour) {
     return $q->affected_rows == 1 ? $q->insert_id : 0;
 }
 
-// Bowl/basket items are PER-COLOUR itemTypeIDs (2625=Blue .. 2633=Purple). The SWF
-// sends `bowlItemTypeId` which is EITHER a bowl-type code (20,33..40) OR the real
-// itemTypeID (2625..2633). Map either form to the correct bowl item, and derive the
-// matching-colour bed (2855=Blue .. 2863=Purple) so bowl + bed stay in sync.
+// The working Bin Pets package sends bowl selector codes 20,33..40. This
+// database stores the corresponding colour-specific bowls at 2625..2633, but
+// the bed is NOT colour-specific: it is item 2634 (`f_petBasket2`) tinted with
+// the separately posted bedColour. Never synthesize `f_petBed_*` item IDs.
 $BOWL_TYPE_TO_ITEM = [
     20 => 2625, // blue
     33 => 2626, // black
@@ -30,30 +30,16 @@ $BOWL_TYPE_TO_ITEM = [
     39 => 2632, // pink
     40 => 2633, // purple
 ];
-$BED_BASE_ITEM = 2855;
+$PET_BASKET_ITEM = 2634;
+$PET_BODY_COLOURS = [8913032, 43520, 11198463, 26367, 15597568, 16750848, 16763904, 16745604];
+$PET_BED_COLOURS = [16759552, 15597568, 16777215, 65314, 16764108, 238, 13369565, 16776960, 3158064];
 
-function resolvePetBowlBed($bowlItemTypeId) {
-    global $BOWL_TYPE_TO_ITEM, $BED_BASE_ITEM;
-    if(array_key_exists($bowlItemTypeId, $BOWL_TYPE_TO_ITEM)) {
-        $bowlItem = $BOWL_TYPE_TO_ITEM[$bowlItemTypeId];
-        $idx = array_search($bowlItemTypeId, array_keys($BOWL_TYPE_TO_ITEM), true);
-        return array($bowlItem, $BED_BASE_ITEM + $idx);
-    }
-    if($bowlItemTypeId >= 2625 && $bowlItemTypeId <= 2633) {
-        return array($bowlItemTypeId, $BED_BASE_ITEM + ($bowlItemTypeId - 2625));
-    }
-    return array(2625, 2855); // Blue fallback
+function resolvePetBowl($bowlItemTypeId) {
+    global $BOWL_TYPE_TO_ITEM;
+    if(array_key_exists($bowlItemTypeId, $BOWL_TYPE_TO_ITEM)) return $BOWL_TYPE_TO_ITEM[$bowlItemTypeId];
+    if($bowlItemTypeId >= 2625 && $bowlItemTypeId <= 2633) return $bowlItemTypeId;
+    return 0;
 }
-
-// The default Bin Pet skill tree (skillID => [obedience, skillLevel]). Seeded into
-// petacquiredskills at adoption so getPetSkills returns the contract the petBuilder
-// SWF expects. skillID 9 is intentionally absent (matches the reference response).
-$PET_DEFAULT_SKILLS = array(
-    array(1,20,0), array(2,20,0), array(3,100,0), array(4,100,0), array(5,100,0),
-    array(6,20,2), array(7,20,0), array(8,100,0), array(10,20,19), array(11,20,0),
-    array(12,20,0), array(13,20,0), array(14,20,0), array(15,30,5), array(16,30,10),
-    array(17,30,1),
-);
 
 // buy.php — called by the petBuilder SWF to complete a Bin Pet adoption.
 // Real contract captured from the live SWF POST:
@@ -62,10 +48,6 @@ $PET_DEFAULT_SKILLS = array(
 // The SWF renders the result as "ERROR:<code>", so success = error=0.
 // Adoption price is 5000 mulch (hardcoded in the SWF's UI), deducted here.
 if(isset($_POST)) {
-    // TEMP DEBUG: capture the exact POST the SWF sends (remove once confirmed).
-    file_put_contents(dirname(__FILE__) . '/buy_post_debug.log',
-        date('c') . " " . print_r($_POST, true), FILE_APPEND);
-
     // Auth via session cookie (getAllWeevilStatsByName validates the session).
     $weevilData = getAllWeevilStatsByName($_COOKIE['weevil_name']);
     if(!is_array($weevilData) || !isset($weevilData['id'])) {
@@ -74,20 +56,26 @@ if(isset($_POST)) {
     }
 
     $petName = isset($_POST['name']) ? trim($_POST['name']) : (isset($_POST['petName']) ? trim($_POST['petName']) : '');
-    $bc  = isset($_POST['bc'])  ? intval($_POST['bc'])  : 1;
-    $ac1 = isset($_POST['ac1']) ? intval($_POST['ac1']) : 0;
-    $ac2 = isset($_POST['ac2']) ? intval($_POST['ac2']) : 0;
-    $ec1 = isset($_POST['ec1']) ? intval($_POST['ec1']) : 1;
-    $ec2 = isset($_POST['ec2']) ? intval($_POST['ec2']) : 0;
-    // Each bowl/basket is its OWN per-colour itemTypeID. The SWF sends `bowlItemTypeId`
-    // as either a bowl-type code or the real item; resolvePetBowlBed maps it to the
-    // correct bowl item AND the matching-colour bed item.
+    $bc  = isset($_POST['bc']) ? intval($_POST['bc']) : 0;
+    // Canonical builder contract: arms remain black and eyelids match the body.
+    $ac1 = 2631720;
+    $ac2 = 2631720;
+    $ec1 = $bc;
+    $ec2 = $bc;
+    $bedColour = isset($_POST['bedColour']) ? intval($_POST['bedColour']) : 0;
     $bowlItemTypeId = isset($_POST['bowlItemTypeId']) ? intval($_POST['bowlItemTypeId']) : 0;
-    list($BOWL_ITEM, $BED_ITEM) = resolvePetBowlBed($bowlItemTypeId);
+    $BOWL_ITEM = resolvePetBowl($bowlItemTypeId);
+    $BED_ITEM = $PET_BASKET_ITEM;
 
+    if(!in_array($bc, $PET_BODY_COLOURS, true) ||
+       !in_array($bedColour, $PET_BED_COLOURS, true) ||
+       $BOWL_ITEM === 0) {
+        echo 'error=4';
+        exit;
+    }
 
-    // Name rules.
-    if(strlen($petName) < 2 || strlen($petName) > 16) {
+    // Canonical pet names are 1-10 ASCII letters.
+    if(strlen($petName) == 0 || strlen($petName) > 10 || !preg_match('/^[a-zA-Z]+$/', $petName)) {
         echo 'error=1';
         exit;
     }
@@ -119,11 +107,16 @@ if(isset($_POST)) {
         exit;
     }
 
-    // Grant the bowl + matching bed items (the SWF picks the colour; we resolve the
-    // real per-colour itemTypeIDs). grantRewardItem returns the new weevilitems ID so
-    // the pet row can reference them.
+    // Grant the colour-specific bowl and the canonical colour-tinted basket. The
+    // returned ownership row IDs are persisted on the pet as bowlID/bedID.
     $bowlId = grantRewardItem($weevilData['id'], $BOWL_ITEM, 0);
-    $bedId  = grantRewardItem($weevilData['id'], $BED_ITEM, 0);
+    $bedId  = grantRewardItem($weevilData['id'], $BED_ITEM, $bedColour);
+    if(!$bowlId || !$bedId) {
+        if($bowlId) $db->query("DELETE FROM weevilitems WHERE ID = " . intval($bowlId) . " AND weevilID = " . intval($weevilData['id']));
+        if($bedId) $db->query("DELETE FROM weevilitems WHERE ID = " . intval($bedId) . " AND weevilID = " . intval($weevilData['id']));
+        echo 'error=998';
+        exit;
+    }
 
     // Insert the adopted pet with starting stats + visual fields.
     $ownerID = $weevilData['username'];
@@ -139,21 +132,37 @@ if(isset($_POST)) {
     $ins->execute();
 
     if($ins->affected_rows == 1) {
-        // Pet inserted successfully — only NOW deduct the adoption price.
-        removeMulch($weevilData['id'], $PRICE);
         $petID = $ins->insert_id;
+
+        // Canonical package contract: every adopted pet receives the full default
+        // skill tree and all juggling definitions before adoption is acknowledged.
+        $skillsInserted = insertPetSkills($ownerID, $petID);
+        $tricksInserted = insertPetJugglingTricks($ownerID, $petID);
+        if(!$skillsInserted || !$tricksInserted) {
+            $cleanup = $db->prepare("DELETE FROM petacquiredskills WHERE ownerID = ? AND petID = ?");
+            $cleanup->bind_param('si', $ownerID, $petID);
+            $cleanup->execute();
+            $cleanup = $db->prepare("DELETE FROM petacquiredtricks WHERE ownerID = ? AND petID = ?");
+            $cleanup->bind_param('si', $ownerID, $petID);
+            $cleanup->execute();
+            $cleanup = $db->prepare("DELETE FROM pets WHERE id = ? AND ownerID = ?");
+            $cleanup->bind_param('is', $petID, $ownerID);
+            $cleanup->execute();
+            $cleanup = $db->prepare("DELETE FROM weevilitems WHERE ID IN (?, ?) AND weevilID = ?");
+            $weevilId = intval($weevilData['id']);
+            $cleanup->bind_param('iii', $bowlId, $bedId, $weevilId);
+            $cleanup->execute();
+            echo 'res=996';
+            exit;
+        }
+
+        // Pet state is complete — only now charge and grant rewards.
+        removeMulch($weevilData['id'], $PRICE);
         addExperience($weevilData['id'], 50);
         // Bestow the "Adopt a Bin Pet" achievement (id 2). Guarded: the live DB has
         // `achievementscompleted`, not `userachievements`, so wrap so a missing/renamed
         // table can NEVER swallow the success response (that was the empty-body hang).
         @$db->query("INSERT INTO achievementscompleted (idx, achievementId) VALUES (" . intval($weevilData['id']) . ", 2) ON DUPLICATE KEY UPDATE achievementId = 2");
-        // Seed the pet's default skill tree into petacquiredskills so getPetSkills
-        // returns the contract the petBuilder SWF expects on first inspection.
-        $skStmt = $db->prepare("INSERT INTO petacquiredskills (ownerID, petID, skillID, obedience, skillLevel) VALUES (?, ?, ?, ?, ?)");
-        foreach($PET_DEFAULT_SKILLS as $s) {
-            $skStmt->bind_param('siiii', $ownerID, $petID, $s[0], $s[1], $s[2]);
-            $skStmt->execute();
-        }
         $newMulch = $weevilData['mulch'] - $PRICE;
         $newDosh  = $weevilData['dosh'];
         // Contract the petBuilder SWF expects (matches the rest of the php2 family):

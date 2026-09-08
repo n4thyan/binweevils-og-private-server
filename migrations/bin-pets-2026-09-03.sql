@@ -13,6 +13,14 @@ ALTER TABLE `pets`
   ADD COLUMN IF NOT EXISTS `rented` int(11) NOT NULL DEFAULT 0 AFTER `lastStatChange`,
   ADD COLUMN IF NOT EXISTS `adoptedDate` datetime NOT NULL DEFAULT current_timestamp() AFTER `rented`;
 
+-- Earlier partial schemas already had experience/adoptedDate, so ADD IF NOT EXISTS
+-- alone left incompatible definitions (experience without its default and
+-- adoptedDate as varchar). These MODIFY operations are idempotent and preserve
+-- the existing valid timestamp values.
+ALTER TABLE `pets`
+  MODIFY COLUMN `experience` int(11) NOT NULL DEFAULT 0,
+  MODIFY COLUMN `adoptedDate` datetime NOT NULL DEFAULT current_timestamp();
+
 -- petacquiredskills: ensure id PK present and skillLevel is float.
 SET @col_exists = 0;
 SELECT COUNT(*) INTO @col_exists FROM INFORMATION_SCHEMA.COLUMNS
