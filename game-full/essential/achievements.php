@@ -248,12 +248,13 @@ function addDoshByNameTx($weevilName, $total, $db = null) {
 }
 
 function addExperienceByNameTx($weevilName, $total, $db = null) {
-    $t = intval($total);
+    $t = max(0, intval($total));
     if ($db) {
         $q = $db->prepare("UPDATE `users` SET `xp` = xp + ?, `xp1` = xp1 + ? WHERE username = ?;");
-        $q->bind_param('sss', $t, $t, $weevilName);
+        $q->bind_param('iis', $t, $t, $weevilName);
         $q->execute();
-        return $q->affected_rows === 1;
+        if ($q->affected_rows !== 1) return false;
+        return reconcileWeevilProgression($weevilName, $db);
     }
     return addExperienceByName($weevilName, $total);
 }
@@ -326,7 +327,7 @@ class AchievementService {
             "INSERT INTO achievement_activity (userID, activityType, targetID, value, metadata)
              VALUES (?, ?, ?, ?, ?)"
         );
-        $ins->bind_param('isis', $t, $activityType, $targetID, $value, $metaJson);
+        $ins->bind_param('isiis', $t, $activityType, $targetID, $value, $metaJson);
         $ins->execute();
         $id = (int)$ins->insert_id;
         $ins->close();
