@@ -65,14 +65,9 @@ include('site/header.php');
             $homeTitle = site_cosmetic_equipped_value($siteCosmetics, 'title', '');
         ?>
             <h1>Welcome back, <span data-account-stat="username"><?php echo site_e($siteUser['username']); ?></span>!</h1>
-            <div class="bw-hero-weevil" data-weevil-render data-weevil-definition="<?php echo site_e($siteUser['def']); ?>" data-weevil-name="<?php echo site_e($siteUser['username']); ?>">
-                <div class="bw-render-pending">Weevil</div>
-            </div>
-            <p class="bw-hero-meta"><span data-account-stat="username"><?php echo site_e($siteUser['username']); ?></span> · Level <span data-account-stat="level"><?php echo (int)$siteUser['level']; ?></span> · Prestige <span data-account-stat="prestige"><?php echo (int)$siteUser['prestige_count']; ?></span></p>
-            <p class="bw-hero-xp"><span data-account-stat="next-xp"><?php echo site_int($siteUser['xp2']); ?></span> XP to next level</p>
+            <p class="bw-hero-lead">Ready to head back to the Bin?</p>
             <div class="bw-button-row">
-                <a class="bw-button bw-button--green" href="/game.php">Play Bin Weevils</a>
-                <a class="bw-button bw-button--blue" href="/settings/">My Weevil</a>
+                <a class="bw-button bw-button--green" href="/game.php">Enter Bin</a>
             </div>
         <?php else: ?>
             <h1>Welcome back to the Bin!</h1>

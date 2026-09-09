@@ -1,95 +1,70 @@
 # Bin Weevils OG Flash Private Server
 
-Local-first recovery and extension of the original Bin Weevils Flash private server.
+Local-first preservation, recovery and extension of the original Bin Weevils Flash stack.
 
-## Status at end of 1 September 2026
+## Current status — 9 September 2026
 
-The current development checkpoint is on `website-redesign`. It contains the restored website, local server integration work and additive database migrations completed during the 1 September session.
+The complete known-working local development history has been consolidated for promotion to `main`. The previous `main` checkpoint from 28 August is historical; do not use old feature branches as newer sources of truth.
 
-This project is **not release-candidate clean**. Manual gameplay testing exposed an unresolved XP, level and progression integration concern. The next session must begin with a full local stabilisation pass and trace real gameplay failures through the server, database, Flash packets, HUD and website before any further feature work.
-
-`main` remains unchanged at `a7c792f2970c9a6937ff22a8c270c90d4444e24c` and must not be used for this checkpoint.
-
-No VPS deployment has been performed.
-
-## Source of truth
-
-Localhost is authoritative until the final local regression pass is complete:
+Authoritative locations:
 
 - Repository: `C:\repos\binweevils-og-private-server`
-- Active checkpoint branch: `website-redesign`
-- Served website: `C:\xampp\htdocs`
-- Website source: repository root paths such as `index.php`, `assets/`, `site/`, `settings/`, `register/` and `weevil-creator/`
-- Legacy game/PHP tree: `game-full/`
-- Node server: `server/`
+- Release branch after consolidation: `main`
+- Local Apache DocumentRoot: `C:\xampp\htdocs`
+- Website source: repository-root paths such as `index.php`, `assets/`, `site/`, `settings/`, `register/` and `weevil-creator/`
+- Legacy game/PHP/CDN source: `game-full/`
+- Node/SmartFox server: `server/`
 - Electron/PepperFlash client: `electron/`
+- Additive database migrations: `migrations/`
 
-The same logical PHP endpoint may have a repository-root website copy, a `game-full/` copy, or both. Do not overwrite one whole tree with another. Compare and synchronize only the intended counterpart files.
+The same served path can have a repository-root copy and a `game-full/` counterpart. Do not overwrite either tree wholesale. Compare exact counterparts and preserve the newer proven implementation.
 
-## What this checkpoint preserves
+No VPS deployment has been performed. Promotion to `main` records the local working checkpoint; it is not by itself a public-release declaration.
 
-### Website
+## Preserved systems
 
-- Repaired website redesign and previously truncated CSS/Settings files
-- Original and supplementary Bin Weevils font integration
-- Responsive homepage, Play, Settings and XP Rewards layouts
-- Logged-in Weevil renderer using the stored account definition
-- Custom Username Colour with strict `#RRGGBB` validation
-- Prestige 0 and 1 XP Rewards catalogue
-- DB-backed Bin Bulletin and shared Nest News source
-- Format-aware local advertisement rotation and visible placements
-- Electron 11 advert-size compatibility fallbacks
-- Selective supplied character artwork on the Bulletin page
-- Production-only Electron viewport with DevTools gated to explicit development mode
+The September checkpoint includes the accumulated website, backend, client and preservation work from the former development branches, including:
 
-### Game and server integration
+- Restored responsive website and authenticated account surfaces
+- Local font and artwork dependencies used by the website
+- Website Weevil rendering and advanced arbitrary-RGB appearance support
+- Local XAMPP, MySQL, Node/SmartFox, websockify and Electron integration
+- Recovered endpoint, shop, quest, loyalty-card and live-recon work
+- Bin Pets integration and later pet-state/nest-inventory corrections
+- XP/level reconciliation and Prestige-aware progression fixes
+- Achievement catalogue, activity-ledger and implementation work
+- Current map and server-authoritative Nest teleporter work
+- Account activation and logged-in homepage cleanup
 
-- Local Apache, MySQL, Node, SmartFox and Electron stack recovery
-- SmartFox TCP on 9339
-- websockify bridge on 3993 to 9339
-- Authenticated local WebSocket service on 2087
-- Runtime website status output into the actual XAMPP DocumentRoot
-- Nestco and BinMart catalogue request/store corrections
-- Flum, Figg and Dosh room-event corrections and replay-safe reward support
-- Durable referral/invite registration and one-time reward lifecycle
-- Flash-compatible Nest News XML from the same database source as the website Bulletin
-- Local CDN/core client routing
-- Additive migrations under `migrations/`
+Historical implementation and investigation detail remains in `ROADMAP.md` and `docs/`. Old dates and branch names in explicitly historical sections are evidence, not current instructions.
 
-These systems are preserved, but several still require real Electron/Flash gameplay regression testing. Passing syntax, HTTP, database probes or isolated harnesses is not equivalent to passing the real client flow.
+## Verification boundaries
 
-## XP semantics and open warning
+A clean commit and passing syntax/contract tests prove repository integrity, not every visual gameplay path. Existing manual-test gates and open issues remain explicit in `HANDOFF.md` and `ROADMAP.md`. Do not mark a gameplay system complete solely from PHP lint, Node syntax, direct HTTP probes or isolated harnesses.
 
-Intended accounting:
+Known policy:
 
-- `users.xp`: lifetime XP earned. It must only increase.
-- `users.xp1`: current banked/spendable XP.
-- Earning XP should normally increase both values appropriately.
-- XP Rewards purchases should decrease only `xp1`.
-- A purchase must never reduce lifetime `xp`, an earned level, prestige or trophy.
-
-Manual testing on 1 September showed that the displayed XP/progression state can behave inconsistently. Do not make speculative fixes. The next pass must trace:
-
-`game event -> server award -> database xp/xp1 -> level calculation -> prestige calculation -> Flash packet -> HUD display -> website account display`
-
-See `HANDOFF.md` and the high-priority section at the top of `ROADMAP.md`.
+- `users.xp` is lifetime XP and must not decrease.
+- `users.xp1` is banked/spendable progression XP.
+- XP purchases must not remove earned levels, Prestige or trophies.
+- Nestco remains Mulch-only and BinMart remains Dosh-only.
+- Missing authoritative inventory, rewards or room contracts must not be fabricated.
+- VPS deployment remains deferred pending a deliberate release/security review.
 
 ## Local stack
 
-Use the repository and XAMPP paths exactly.
-
 ### Apache and MySQL
 
-Start the existing XAMPP Apache and MySQL services. The active DocumentRoot is `C:\xampp\htdocs`.
+Start the existing XAMPP Apache and MySQL services.
 
 Expected listeners:
 
-- Apache: 80
-- MySQL/MariaDB: 3306
+- Apache: `80`
+- MySQL/MariaDB: `3306`
 
 ### Node game server
 
-The working directory is required because server data files are relative to `server/`:
+Run from `server/`; its data paths are relative to that directory:
 
 ```bash
 cd '/c/repos/binweevils-og-private-server/server'
@@ -98,10 +73,8 @@ cd '/c/repos/binweevils-og-private-server/server'
 
 Expected listeners:
 
-- SmartFox TCP: 9339
-- Authenticated local website WebSocket: 2087 using plain `ws://`
-
-Public TLS, when deployed later, belongs at a reverse proxy and must forward to the local Node service.
+- SmartFox TCP: `9339`
+- Authenticated local website WebSocket: `2087` (`ws://` locally)
 
 ### websockify
 
@@ -116,53 +89,21 @@ cd '/c/repos/binweevils-og-private-server/electron'
 './node_modules/electron/dist/electron.exe' .
 ```
 
-The client loads `http://localhost`. DevTools opens only when `NODE_ENV=development`.
+The client loads `http://localhost`. Do not automatically launch or replace the user's browser profile.
 
-## Database migrations
+## Database safety
 
-The local database received these additive migrations during the 1 September session:
+Migrations are additive records of schema work. Before applying one to another environment:
 
-1. `migrations/2026-09-01-room-event-claims.sql`
-   - Widens `claimedmushrooms.lastClaimed`
-   - Adds unique replay protection on `(idx, mushroomType)`
-2. `migrations/2026-09-01-referrals.sql`
-   - Adds `referral_codes` and `referrals`
-   - Preserves existing users, `users.invitedBy` and `gameinvites`
-3. `migrations/2026-09-01-nest-news.sql`
-   - Adds `news_articles` and `news_article_links`
-   - Inserts the current private-server testing story if absent
+1. Inspect the target schema and migration history.
+2. Back up affected tables.
+3. Confirm the migration is applicable and idempotent.
+4. Never reset, drop or reimport the working database merely to test a feature.
 
-Do not reapply migrations blindly. Review the target schema and backups first. VPS deployment remains deferred until local stabilisation and schema review are complete.
+## Where to continue
 
-## Verification boundaries
+- `HANDOFF.md` — current checkpoint and verification boundary
+- `ROADMAP.md` — current priorities followed by preserved historical detail
+- `docs/` — dated audits, designs, recovery notes and evidence
 
-Observed manually or in the real local client:
-
-- The repository Electron/PepperFlash client launches against localhost.
-- Website homepage, Play and Settings surfaces were visually inspected.
-- Advertisements render in Electron after the Electron 11 size fallback.
-- Manual gameplay exposed the unresolved XP/progression concern.
-
-Verified only through syntax checks, HTTP/database probes or isolated harnesses:
-
-- PHP and JavaScript syntax
-- Catalogue response counts and currency separation
-- Room-event packet/state harnesses and reward claim probes
-- Referral registration/status probes
-- Bulletin and Nest News XML responses
-- TCP 9339, WebSocket 3993 and authenticated WebSocket 2087 connectivity
-- Served/source hash coherence for the files covered by the checkpoint review
-
-Every gameplay-facing path remains subject to the next real-client regression pass.
-
-## Next action
-
-Begin with the `FINAL LOCAL STABILISATION PASS` at the top of `ROADMAP.md`:
-
-1. Reproduce the XP/level/HUD mismatch manually.
-2. Capture the real request, packet and database transition.
-3. Trace the complete progression path.
-4. Fix only the demonstrated root cause.
-5. Repeat the same manual flow.
-
-Do not start achievements, additional Bin Pets integration, homepage feature changes or VPS deployment before that pass is complete.
+Begin future work from freshly fetched `origin/main`. Keep any retained historical branch only when its unique context is intentionally required; do not merge a stale branch over newer `main` content.

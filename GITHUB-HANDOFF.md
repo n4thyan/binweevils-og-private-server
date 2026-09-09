@@ -1,24 +1,30 @@
+# GitHub handoff — 9 September 2026
 
----
+## Canonical repository state
 
-## 2026-09-01 Final Website Asset Cleanup & Simplification
+The project is consolidated onto `main` from the complete known-working local development line. The pre-consolidation source was `feature/achievements-followup` at `fbbe851f57f8e09585e199f3e918a85044bd9224`; the old `main` at `a7c792f2` was an ancestor 134 commits behind.
 
-### Completed
-- Simplified XP Shop catalog from 5 name-colour presets to 1 "Custom Name Colour" unlock (100k Banked XP)
-- Removed all profile_background rewards (deferred to future cosmetic feature)
-- Settings username colour: added hex colour picker plus live preview with save/reset
-- xp-reward-action.php: added colour_hex validation plus meta storage for per-user colours
-- cosmetics.php: added meta JSON column support in site_cosmetic_equipped()
-- Removed unused background assets (gang, garden, renovation, newsroom, golden, flat, background.jpg, background2.jpg, banner.jpg, logo2.png)
-- Recovered/login artwork: Tink_Jump, Tink_Clott, returning-player, three-image-panel, rigg, mulch, dosh, weevil, weevil-tophat
-- Register artwork diversified: Tink_Jump.png instead of repeating character assets
-- 59 files changed, 801 insertions, 124 deletions vs parent 79f801af
+All reviewed development branch tips were ancestors of the source line. Old branches must not be merged back over `main` after consolidation.
 
-### XP Accounting Safety
-- Purchases deduct from Banked XP (xp1) only
-- Lifetime XP (xp) never touched
-- Schema ready for future lifetime-XP leaderboard
+## Preservation additions in this pass
 
-### Next Steps
-- User inspection/merge decision on website-redesign branch
-- Future: custom background gallery (deferred)
+- Added the seven locally served font files referenced by the committed redesign CSS to `assets/fonts/` and `game-full/assets/fonts/`.
+- Synchronized repository-root `index.php` with the already committed and actively served simplified homepage in `game-full/index.php`.
+- Updated `README.md`, `HANDOFF.md`, `GITHUB-HANDOFF.md` and the authoritative header of `ROADMAP.md` for the September 2026 state.
+
+No gameplay feature implementation, database mutation or VPS deployment occurred.
+
+## Source layout
+
+- Root website tree: deploys directly to the Apache DocumentRoot.
+- `game-full/`: recovered legacy game/PHP/CDN tree and matching endpoint sources.
+- `server/`: Node/SmartFox server.
+- `electron/`: local PepperFlash client.
+- `migrations/`: additive migration records; review before applying.
+- `docs/` and the historical roadmap: preserved evidence and chronology.
+
+When root and `game-full/` contain the same logical served path, compare exact files. Never replace an entire tree blindly.
+
+## Release caveat
+
+A GitHub consolidation checkpoint is not a claim that every gameplay path is release-tested. Preserve manual-test gates and known open issues. No VPS deployment has been performed.

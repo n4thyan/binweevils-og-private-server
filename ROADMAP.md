@@ -1,8 +1,47 @@
 # ROADMAP.md — Bin Weevils Private Server
 
-## Authoritative status: end of 1 September 2026
+## Authoritative status — 9 September 2026
 
-This section supersedes older status notes later in this historical roadmap.
+This section supersedes older operational status and branch instructions below.
+Historical sections remain intact as chronology and investigation evidence.
+
+- Canonical repository branch after consolidation: `main`
+- Pre-consolidation working source: `feature/achievements-followup` at `fbbe851f57f8e09585e199f3e918a85044bd9224`
+- Repository: `C:\repos\binweevils-og-private-server`
+- Served local site: `C:\xampp\htdocs`
+- No VPS deployment has been performed
+- The former development branches reviewed on 9 September were all ancestors of the complete working line; do not merge stale branch tips back over newer `main`
+
+The September line preserves the website redesign, endpoint recovery, sanitized
+recon evidence, loyalty work, Bin Pets integration, XP/progression corrections,
+achievement work, current map/teleporter implementation, account activation,
+homepage cleanup and arbitrary-RGB Weevil appearance support. This statement
+records preservation status, not universal gameplay sign-off.
+
+### Current operating rules
+
+1. Fetch and begin future work from `origin/main`.
+2. Treat repository root, `game-full/`, `server/`, `electron/` and `migrations/`
+   as distinct source areas; compare duplicate served paths instead of copying
+   whole trees.
+3. Preserve manual Electron/PepperFlash test gates and explicit open bugs.
+4. Do not fabricate unknown shop inventory, rewards, IDs, formulas or room contracts.
+5. Keep lifetime XP (`users.xp`) separate from banked/spendable XP (`users.xp1`).
+6. Review schema, backups, login/session-key security and served artifacts before
+   any VPS/public deployment.
+7. Do not treat a historical branch name or dated handoff as newer authority than
+   this section and current `main`.
+
+### Current release boundary
+
+The repository has a coherent consolidation checkpoint, but public release remains
+a separate decision. Before VPS deployment, perform a deliberate security/schema
+review and focused real-client regression of release-critical flows. Passing syntax
+and isolated contract tests is not equivalent to complete gameplay validation.
+
+## Historical status: end of 1 September 2026
+
+This section records the superseded 1 September checkpoint and is retained for history.
 
 - Active checkpoint branch: `website-redesign`
 - Repository: `C:\repos\binweevils-og-private-server`
