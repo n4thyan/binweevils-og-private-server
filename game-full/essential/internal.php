@@ -507,20 +507,34 @@
 			$clrs1 = [10027008,43520,153,10057472,8913032,11198463,26367,16750848,13421568,61166,13369548,16777215,16766429,11206400,16763904,15658496,16745604,2631720,10066329,16777145,15597568,26112,1184274,12733185,16736768,16425579,16767167,7620096,16771473,6394113,8899328,14548127,62720,11993014,25670,110971,61093,7011535,25219,50886,10289151,2797311,3014772,5243334,8334079,14138879,16729855,16756735,11338573,15597672,15952037,16757203];
 			$clrs2 = [52224,4474077,15610675,13421568,52428,13369548,8943360,2136473,11206400,16763904,15658496,16745604,10027008,15597568,16766429,12733185,16736768,16425579,16767167,7620096,16750848,16771473,10057472,16777145,6394113,8899328,11206400,14548127,26112,43520,62720,11993014,25670,110971,61093,7011535,25219,50886,61166,10289151,153,26367,2797311,11198463,3014772,5243334,8334079,14138879,8913032,16729855,16756735,11338573,15597672,15952037,16757203,10066329,16777215,2631720];
 
-			$ht = intval(substr($weevilDef, 0, 1));
-			$hc = $clrs1[intval(substr($weevilDef, 1, 2))];
-			$bt = intval(substr($weevilDef, 3, 1));
-			$bc = $clrs1[intval(substr($weevilDef, 4, 2))];
-			$et = intval(substr($weevilDef, 6, 1));
-			$ec = $clrs2[intval(substr($weevilDef, 7, 2))];
-			$lids = intval(substr($weevilDef, 9, 1));
-			$at = intval(substr($weevilDef, 10, 2));
-			$ac = $clrs1[intval(substr($weevilDef, 12, 2))];
-			$lc = $clrs1[intval(substr($weevilDef, 14, 2))];
-			$lt = intval(substr($weevilDef, 16, 2));
+			$extended = false;
+			if(strlen($weevilDef) === 49 && $weevilDef[18] === '~') {
+				$extended = true;
+				$legacy = substr($weevilDef, 0, 18);
+			} else {
+				$legacy = $weevilDef;
+			}
+			if(strlen($legacy) !== 18 || preg_match('/\D+/', $legacy)) return false;
+			$ht = intval(substr($legacy, 0, 1));
+			$hc = $clrs1[intval(substr($legacy, 1, 2))];
+			$bt = intval(substr($legacy, 3, 1));
+			$bc = $clrs1[intval(substr($legacy, 4, 2))];
+			$et = intval(substr($legacy, 6, 1));
+			$ec = $clrs2[intval(substr($legacy, 7, 2))];
+			$lids = intval(substr($legacy, 9, 1));
+			$at = intval(substr($legacy, 10, 2));
+			$ac = $clrs1[intval(substr($legacy, 12, 2))];
+			$lc = $clrs1[intval(substr($legacy, 14, 2))];
+			$lt = intval(substr($legacy, 16, 2));
 
 			// if there wasnt an error already, do other checks
-			if(strlen($weevilDef) > 18 || strlen($weevilDef) != 18 || preg_match('/\D+/', $weevilDef) || $hc == 7 || $hc == 0 || $ht == 0 || $bc == 7 || $bc == 0 || $bt == 0 || $lc == 7 || $lc == 0 || $ac == 7 || $ac == 0 || $et == 0 || $weevilDef == "000000000000000000" || $ht > 4 || $bt > 4 || $et > 6 || $lids > 1 || $bc == 1184274 && $hc == 1184274 || $bc == 1184274 && $ac == 1184274 || $bc == 1184274 && $lc == 1184274 || $bc == 1184274 && $ec == 1184274 || $hc == 1184274 && $ec == 1184274 || $hc == 1184274 && $lc == 1184274 || $hc == 1184274 && $ac == 1184274 || $ac == 1184274 && $lc == 1184274 || $ec == 1184274 && $ac == 1184274 || $bc == 22 && $hc == 22 || $bc == 22 && $ac == 22 || $bc == 22 && $lc == 22 || $bc == 22 && $ec == 22 || $hc == 22 && $ec == 22 || $hc == 22 && $lc == 22 || $hc == 22 && $ac == 22 || $ac == 22 && $lc == 22 || $ec == 22 && $ac == 22 || $weevilDef == 322311313109222200 || $weevilDef == 322311313109172200) return false;
+			if($hc == 7 || $hc == 0 || $ht == 0 || $bc == 7 || $bc == 0 || $bt == 0 || $lc == 7 || $lc == 0 || $ac == 7 || $ac == 0 || $et == 0 || $legacy == "000000000000000000" || $ht > 4 || $bt > 4 || $et > 6 || $lids > 1 || $bc == 1184274 && $hc == 1184274 || $bc == 1184274 && $ac == 1184274 || $bc == 1184274 && $lc == 1184274 || $bc == 1184274 && $ec == 1184274 || $hc == 1184274 && $ec == 1184274 || $hc == 1184274 && $lc == 1184274 || $hc == 1184274 && $ac == 1184274 || $ac == 1184274 && $lc == 1184274 || $ec == 1184274 && $ac == 1184274 || $bc == 22 && $hc == 22 || $bc == 22 && $ac == 22 || $bc == 22 && $lc == 22 || $bc == 22 && $ec == 22 || $hc == 22 && $ec == 22 || $hc == 22 && $lc == 22 || $hc == 22 && $ac == 22 || $ac == 22 && $lc == 22 || $ec == 22 && $ac == 22 || $legacy == "322311313109222200" || $legacy == "322311313109172200") return false;
+
+			// Validate extended RGB suffix if present
+			if($extended) {
+				$rgb = substr($weevilDef, 19);
+				if(!preg_match('/^[0-9A-Fa-f]{30}$/', $rgb)) return false;
+			}
 
 			return true;
 		}
